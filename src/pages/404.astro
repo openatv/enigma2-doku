@@ -1,0 +1,35 @@
+---
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>Seite nicht gefunden · openATV</title>
+    <link rel="icon" href={`${base}/branding/openatv-icon.png`} />
+  </head>
+  <body>
+    <main>
+      <p class="brand">openATV Handbuch</p>
+      <p class="code">404</p>
+      <h1>Seite nicht gefunden</h1>
+      <p>Unter dieser Adresse gibt es keine Seite. Öffne das Handbuch und nutze dort die Suche.</p>
+      <p lang="en">This page could not be found. Open the handbook and use its search.</p>
+      <nav aria-label="Handbuch / Handbook">
+        <a href={`${base}/de/`}>Handbuch auf Deutsch</a>
+        <a href={`${base}/en/`} lang="en">Handbook in English</a>
+      </nav>
+    </main>
+  </body>
+</html>
+<style>
+  body { margin: 0; background: #101a25; color: #edf5fa; font: 1.05rem/1.7 system-ui, sans-serif; border-top: 4px solid #1583a9; }
+  main { max-width: 38rem; margin: 10vh auto; padding: 1.5rem; }
+  .brand { font-weight: 700; color: #a4d7f5; }
+  .code { font-size: 4rem; font-weight: 750; margin-bottom: 0; color: #71bfe5; }
+  h1 { line-height: 1.2; }
+  nav { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+  a { color: #bde3ff; text-underline-offset: .25em; }
+</style>

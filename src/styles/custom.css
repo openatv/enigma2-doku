@@ -1,0 +1,35 @@
+:root {
+  --sl-color-accent-low: #112d46;
+  --sl-color-accent: #208ddd;
+  --sl-color-accent-high: #bbdfff;
+  --sl-font: system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --sl-content-width: 52rem;
+  --sl-text-body: 1rem;
+  --atv-blue: #1583a9;
+}
+:root[data-theme='light'] {
+  --sl-color-accent-low: #e8f3fc;
+  --sl-color-accent: #096caf;
+  --sl-color-accent-high: #124064;
+}
+header.header { border-top: 3px solid var(--atv-blue); }
+.site-title img { width: auto; max-width: 14rem; height: 2.4rem; object-fit: contain; }
+.site-title { font-weight: 750; letter-spacing: -.025em; }
+.sl-markdown-content { line-height: 1.75; }
+.sl-markdown-content h2 { margin-top: 2.5rem; letter-spacing: -.025em; }
+.sl-markdown-content h3 { letter-spacing: -.015em; }
+.sl-markdown-content kbd {
+  font-family: inherit; font-size: .88em; font-weight: 600;
+  background: var(--sl-color-gray-6); padding: .12em .5em;
+  border: 1px solid var(--sl-color-gray-4); border-bottom-width: 2px; border-radius: .3rem;
+}
+.sl-markdown-content a { text-underline-offset: .2em; }
+.sl-markdown-content table { font-size: .94rem; }
+.sl-markdown-content th { white-space: normal; }
+.sl-markdown-content :is(td, th) { vertical-align: top; }
+.intro-note { color: var(--sl-color-gray-2); max-width: 65ch; }
+.menu-path { padding: .9rem 1.15rem; border-left: 3px solid var(--atv-blue); background: var(--sl-color-gray-6); border-radius: 0 .4rem .4rem 0; }
+.setting-entry { border-top: 1px solid var(--sl-color-gray-5); margin-top: 2rem; padding-top: .5rem; }
+.setting-entry code { overflow-wrap: anywhere; }
+.source-note { font-size: .875rem; color: var(--sl-color-gray-2); }
+@media (max-width: 50rem) { :root { --sl-content-pad-x: 1rem; } }

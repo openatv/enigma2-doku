@@ -1,0 +1,23 @@
+---
+title: Einstellung finden
+description: Wo stellt man das ein? Menüwege, Originalhilfe und technische Schlüssel der openATV-Einstellungen durchsuchen.
+---
+import SettingsDirectory from '../../../../components/SettingsDirectory.astro';
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+Suche oben nach einer Bezeichnung wie **EPG speichern**, **DHCP**, **AC3** oder **Untertitel**. Auch englische Menünamen und technische Schlüssel wie `config.epg.saveepg` werden gefunden.
+
+## Häufig gesucht
+
+<CardGrid>
+  <LinkCard title="IP-Adresse & DHCP" href="../netzwerk/lan/" description="Wann die automatische Adressvergabe genügt." />
+  <LinkCard title="NAS, SMB & NFS" href="../netzwerk/freigaben/" description="Freigaben mounten und auf Dateien zugreifen." />
+  <LinkCard title="EPG speichern" href="../epg/grundlagen/" description="Programmdaten und ihren Speicherort verstehen." />
+  <LinkCard title="Eine Option fehlt?" href="../hilfe/probleme/" description="Bedienebene und den richtigen Dialog prüfen." />
+</CardGrid>
+
+## Alle Einstellungsbereiche
+
+Die folgenden Einträge übernehmen die **Originalhilfe aus openATV**. Sie sind als Nachschlagewerk gedacht; die Anleitungen links erklären vollständige Aufgaben. Noch nicht zugeordnete Menüwege sind ausdrücklich gekennzeichnet. Dynamisch erzeugte Felder außerhalb der zentralen Einstellungsdatei sind noch nicht vollständig enthalten.
+
+<SettingsDirectory lang="de" />

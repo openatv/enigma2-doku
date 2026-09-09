@@ -1,0 +1,48 @@
+---
+title: EPG einrichten und speichern
+description: Programminformationen in openATV anzeigen, EPG-Ansichten wählen und epg.dat samt Speicherort verstehen.
+---
+
+Der **EPG** ist der elektronische Programmführer. Er zeigt Informationen zu laufenden und kommenden Sendungen. Welche Daten vorhanden sind, hängt von den verfügbaren Programminformationen und der verwendeten Datenquelle ab.
+
+## EPG öffnen
+
+Öffne den Programmführer über die entsprechend belegte Taste oder die angebotene EPG-Aktion. openATV besitzt mehrere Ansichten: eine Liste für einen Sender, Übersichten für mehrere Sender und grafische Zeitachsen.
+
+Die Ansicht verändert die Darstellung der vorhandenen Daten. Sie erzeugt selbst keine fehlenden Programminformationen.
+
+## Menüweg zu den Grundeinstellungen
+
+**Menü → Einstellungen → EPG → EPG**
+
+In der englischen Oberfläche heißt der letzte Eintrag **EPG Settings**. Weitere EPG-Menüpunkte konfigurieren jeweils eine bestimmte Ansicht. Falls der Bereich fehlt, prüfe den [Einstellungsmodus](../../erste-schritte/bedienung/).
+
+## EPG-Daten speichern
+
+1. Öffne die EPG-Grundeinstellungen.
+2. Suche **EPG-Daten speichern** (*Save EPG data*) und aktiviere die Option, wenn Programmdaten als Datei erhalten bleiben sollen.
+3. Prüfe **EPG-Speicherort** (*EPG location*) und Dateiname. Der Speicherort muss auch beim Start verfügbar sein.
+4. Bei Bedarf aktiviere das regelmäßige Speichern und wähle das angebotene Stundenintervall.
+5. Speichere die Einstellungen.
+
+| Option | Zweck |
+| --- | --- |
+| EPG-Daten speichern | Bestimmt, ob die EPG-Datei gespeichert wird |
+| Speicherort | Verzeichnis für die gespeicherten Programmdaten |
+| Dateiname | Name der Cache-Datei, üblicherweise `epg.dat` |
+| Geplantes Speichern | Sichert den Cache zusätzlich in einem regelmäßigen Abstand |
+
+`epg.dat` ist ein Zwischenspeicher für Programminformationen. Das Speichern dieser Datei lädt keine zusätzlichen Sendungen aus dem Internet herunter.
+
+## Wenn der EPG leer bleibt
+
+1. Prüfe, ob der betreffende Sender empfangbar ist, und lasse ihn einige Zeit eingeschaltet.
+2. Vergleiche einen anderen Sender. Nicht alle Sender liefern denselben Umfang an Daten.
+3. Kontrolliere Datum und Uhrzeit, wenn Sendungen zeitlich falsch zugeordnet erscheinen.
+4. Wenn du einen zusätzlichen EPG-Importer verwendest, prüfe dessen Datenquellen und Einstellungen separat.
+
+EPGImport oder EPGRefresh sind zusätzliche Erweiterungen mit eigenen Abläufen. Ihre ausführlichen Anleitungen können später im [Add-on-Bereich](../../addons/) ergänzt werden.
+
+[Alle EPG-Grundoptionen](../../einstellungen/referenz/epg/) · [Einstellungsverzeichnis](../../einstellungen/)
+
+Quellen: [EPG-Optionen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [EPG-Konfiguration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py).

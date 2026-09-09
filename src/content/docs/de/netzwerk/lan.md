@@ -1,0 +1,47 @@
+---
+title: LAN und IP-Einstellungen
+description: openATV per Netzwerkkabel verbinden und DHCP, IP-Adresse, Gateway sowie DNS verstehen.
+---
+
+Eine Netzwerkverbindung wird für Plugin-Downloads, Netzwerkfreigaben und den Zugriff über OpenWebif verwendet. Für den Einstieg kannst du die Adressen automatisch vom Router beziehen lassen.
+
+## Menüweg
+
+**Menü → Einstellungen → Netzwerk → Netzwerkübersicht**
+
+Wähle den kabelgebundenen Adapter und öffne mit <kbd>OK</kbd> die **Netzwerkadaptereinstellungen**.
+
+## Verbindung mit DHCP einrichten
+
+1. Verbinde die Box über ein Netzwerkkabel mit dem Router oder einem angeschlossenen Switch.
+2. Öffne die Adaptereinstellungen und aktiviere den Adapter.
+3. Aktiviere **Adresse automatisch beziehen (DHCP)** (*Use DHCP*). Die grundlegenden IPv4-Adressen werden dadurch automatisch bezogen.
+4. Lasse benutzerdefinierte DNS-Einstellungen zunächst ausgeschaltet, sofern dein Netzwerk sie nicht benötigt.
+5. Speichere die Einstellungen über die im Dialog angezeigte Aktion.
+6. Kehre in die Netzwerkübersicht zurück und prüfe, ob eine Verbindung und eine IP-Adresse angezeigt werden. Über <kbd>INFO</kbd> sind weitere Verbindungsinformationen erreichbar.
+
+## Was bedeuten die Adressen?
+
+| Einstellung | Wofür wird sie verwendet? |
+| --- | --- |
+| DHCP | Bezieht IP-Adresse und weitere Netzwerkeinstellungen automatisch |
+| IP-Adresse | Adresse der Box im eigenen Netzwerk |
+| Subnetzmaske | Legt fest, welche IPv4-Adressen zum lokalen Netzwerk gehören |
+| Standardgateway | Weg in andere Netzwerke, normalerweise die Adresse des Routers |
+| DNS | Übersetzt Namen wie einen Download-Server in IP-Adressen |
+
+## Eine feste Adresse verwenden
+
+Für einen dauerhaft gleichen Zugriff kann eine DHCP-Reservierung im Router praktisch sein: Die Box bleibt auf DHCP, erhält vom Router aber dieselbe Adresse. Alternativ kannst du DHCP am Adapter ausschalten und IP-Adresse, Subnetzmaske und Gateway selbst eintragen. Die Adresse muss zu deinem Netzwerk passen und darf nicht bereits vergeben sein.
+
+Globale DNS-Einstellungen erreichst du unter **Menü → Einstellungen → Netzwerk → DNS-Einstellungen**. Ein aktivierter DNS-Override im Adapter verwendet dessen eigene Vorgaben.
+
+## Ergebnis und Fehler eingrenzen
+
+- **Keine IP-Adresse:** Kabel, Router-Anschluss, Adapteraktivierung und DHCP prüfen.
+- **Lokale Geräte erreichbar, Downloads nicht:** Gateway und DNS prüfen. Ein erreichbares NAS allein bestätigt noch keinen Internetzugang.
+- **Verbindung bricht wiederholt ab:** Kabel und Verbindung prüfen, bevor du Spezialoptionen wie die Link-Geschwindigkeit änderst.
+
+Weiter: [WLAN](../wlan/) · [NAS und Freigaben](../freigaben/) · [Alle Adapteroptionen](../../einstellungen/referenz/networkadapter/)
+
+Quelle: [openATV-Netzwerkeinstellungen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkSetup.py).

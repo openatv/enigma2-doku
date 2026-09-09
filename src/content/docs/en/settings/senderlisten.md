@@ -1,0 +1,36 @@
+---
+title: Settings, channel lists and bouquets
+description: Understand the difference between Enigma2 configuration, settings packages, channel lists and bouquets.
+---
+
+In the Enigma2 community, “settings” can refer to two different things. This matters particularly when downloading packages.
+
+| Term | Meaning |
+| --- | --- |
+| System settings | Configuration values for the interface, recordings, networking and other features |
+| Service database | Known channels and their reception details |
+| Bouquet / favourites list | An ordered selection of channels, such as news or favourite stations |
+| Settings package | Often a prepared channel list with bouquets, not necessarily a backup of your entire configuration |
+
+## Use a channel list
+
+1. Configure the [tuner](../../tuner/konfiguration/) for your reception first.
+2. Scan for channels or install a channel-list package intended for your reception from the offered package feed.
+3. Open the channel list and use its labelled action to open favourites or bouquets.
+4. Select a list and test several channels.
+
+An imported list may contain channels that are unavailable on your connection. It does not unlock encrypted services.
+
+## Organise favourites
+
+Press <kbd>MENU</kbd> in the channel list to see its editing actions. Depending on the current view, you can create a bouquet, add services or edit their order. Read the selected action and leave editing mode when finished.
+
+Options for the list's appearance and behaviour are under **Menu → Setup → Usage & GUI → Channel Selection Settings**. The reference includes **Enable multiple bouquets**, **Numbering mode** and **Always show bouquets**. [Look up channel list options](../../einstellungen/referenz/channelselection/).
+
+## Back up before replacing lists
+
+A new settings package may replace existing channel lists. First use **Menu → Setup → Software Management → Backup System Settings** and check which files the backup includes. Keep a backup if you want to preserve custom bouquets.
+
+For general options such as audio, EPG or networking, use [Find a setting](../../einstellungen/).
+
+Sources: [Channel lists and bouquets](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ChannelSelection.py), [software management menu](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/menu.xml).

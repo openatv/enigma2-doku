@@ -1,0 +1,25 @@
+---
+import catalog from '../../data/catalog.json';
+const { lang = 'de' } = Astro.props;
+const de = lang === 'de';
+const tr = (value: string) => de ? (catalog.translations as Record<string, string>)[value] || value : value;
+const sections = [...catalog.setups].sort((a, b) => tr(a.title).localeCompare(tr(b.title), lang));
+---
+<p class="directory-summary">{sections.length} {de ? 'Einstellungsbereiche' : 'settings sections'} · {sections.reduce((n, s) => n + s.items.length, 0)} {de ? 'Einträge mit Suchbegriffen und Originalhilfe' : 'entries with searchable terms and built-in help'}</p>
+<div class="settings-directory">
+  {sections.map(section => <a href={`./referenz/${section.slug}/`}>
+    <strong>{tr(section.title)}</strong>
+    <span>{section.items.length} {de ? 'Optionen' : 'options'}</span>
+    <small>{section.routes.length ? section.routes[0].slice(1).map(tr).join(' › ') : (de ? 'Menüweg noch nicht zugeordnet' : 'Menu location not yet mapped')}</small>
+  </a>)}
+</div>
+<style>
+  .directory-summary { color: var(--sl-color-gray-2); }
+  .settings-directory { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .8rem; }
+  .settings-directory a { display: grid; grid-template-columns: 1fr auto; gap: .4rem .7rem; padding: 1rem; border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; text-decoration: none; margin: 0; }
+  .settings-directory a:hover, .settings-directory a:focus-visible { border-color: var(--sl-color-accent); background: var(--sl-color-accent-low); }
+  strong { color: var(--sl-color-white); font-size: 1rem; }
+  span { color: var(--sl-color-gray-2); font-size: .875rem; white-space: nowrap; }
+  small { grid-column: 1/-1; color: var(--sl-color-gray-2); font-size: .875rem; line-height: 1.5; }
+  @media (max-width: 40rem) { .settings-directory { grid-template-columns: 1fr; } }
+</style>

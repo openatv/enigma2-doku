@@ -1,0 +1,23 @@
+---
+title: Find a setting
+description: Search openATV menu locations, built-in help and technical configuration keys.
+---
+import SettingsDirectory from '../../../../components/SettingsDirectory.astro';
+import { LinkCard, CardGrid } from '@astrojs/starlight/components';
+
+Use the search above for **save EPG**, **DHCP**, **AC3** or **subtitles**. Technical keys such as `config.epg.saveepg` are searchable too.
+
+## Common tasks
+
+<CardGrid>
+  <LinkCard title="IP addresses & DHCP" href="../netzwerk/lan/" description="Understand automatic address configuration." />
+  <LinkCard title="NAS, SMB & NFS" href="../netzwerk/freigaben/" description="Mount a share and access its files." />
+  <LinkCard title="Save EPG" href="../epg/grundlagen/" description="Understand programme data and its storage location." />
+  <LinkCard title="Missing an option?" href="../hilfe/probleme/" description="Check the setup level and the dialog you opened." />
+</CardGrid>
+
+## All settings sections
+
+The following entries reproduce **openATV's built-in help**. Use them as a reference; the guides in the sidebar explain complete tasks. Unmapped menu locations are clearly marked. Fields generated dynamically outside the central settings file are not yet fully covered.
+
+<SettingsDirectory lang="en" />

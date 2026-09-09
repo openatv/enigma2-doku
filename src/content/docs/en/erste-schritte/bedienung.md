@@ -1,0 +1,44 @@
+---
+title: Controls and menus
+description: Understand the remote control, colour buttons, saving changes and expert setup mode in openATV.
+---
+
+Many dialogs follow the same pattern. Follow the labels on the current screen: a colour button can perform a different action in another dialog.
+
+## Main controls
+
+| Button | Common use |
+| --- | --- |
+| MENU | Open the main menu; inside a list, often opens additional actions |
+| Up/down arrows | Select an entry |
+| Left/right arrows | Change an offered value or move between areas |
+| OK | Open or confirm a selection |
+| EXIT | Go back or leave a dialog; read any prompt about unsaved changes |
+| Colour buttons | Perform the action labelled at the bottom of the screen |
+| HELP | Open control help where the dialog provides it |
+
+A path such as **Menu → Setup → Network** means: open the menu, choose “Setup”, then “Network”. Bold text identifies labels; `monospace text` identifies values such as paths and technical keys.
+
+## Change and save
+
+1. Select the option you want to change.
+2. Read the help text for that row.
+3. Change the value using the offered controls or open its input field.
+4. Choose the labelled **Save** action to keep the change. Leaving a dialog does not always save it.
+5. Follow any request to restart the GUI or the system.
+
+## A setting is missing
+
+Open **Menu → Setup → Usage & GUI → Customize System Settings** and look for **Settings mode**.
+
+| Level | Meaning |
+| --- | --- |
+| Simple | Fewer options for basic setup |
+| Intermediate | Additional configuration options |
+| Expert | Includes entries marked as expert options |
+
+Expert mode makes more options visible. It does not automatically change their values. Some entries appear only after enabling a related feature or opening a particular plugin.
+
+Use [Find a setting](../../einstellungen/) to locate the right section. The handbook follows menu labels so it remains useful with different skins.
+
+Sources: [Settings display](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Setup.py) and [menu structure](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/menu.xml).

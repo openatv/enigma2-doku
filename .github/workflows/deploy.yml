@@ -1,0 +1,61 @@
+name: Build and publish handbook
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: handbook-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  ASTRO_TELEMETRY_DISABLED: '1'
+  SITE_URL: https://openatv.github.io
+  BASE_PATH: /enimga2-doku
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '24'
+      - name: Install the pinned package manager
+        run: npm install --global pnpm@11.19.0
+      - name: Install locked dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Validate source and catalog
+        run: |
+          pnpm check
+          pnpm test
+          python3 -m unittest discover -s tests -p 'test_*.py'
+      - name: Build and verify both languages
+        run: pnpm build
+      - name: Check Pages size limit
+        run: pnpm size:pages
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.publish.outputs.page_url }}
+    steps:
+      - name: Publish to GitHub Pages
+        id: publish
+        uses: actions/deploy-pages@v5

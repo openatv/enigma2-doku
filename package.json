@@ -1,0 +1,27 @@
+{
+  "name": "openatv-enigma2-documentation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.19.0",
+  "engines": { "node": ">=24.0.0" },
+  "scripts": {
+    "dev": "node node_modules/astro/bin/astro.mjs dev --host 127.0.0.1",
+    "build": "node node_modules/astro/bin/astro.mjs build && node scripts/verify-build.mjs && node scripts/verify-search.mjs",
+    "preview": "node node_modules/astro/bin/astro.mjs preview --host 127.0.0.1",
+    "check": "node node_modules/astro/bin/astro.mjs check",
+    "size": "node scripts/check-size.mjs",
+    "size:pages": "node scripts/check-size.mjs --pages",
+    "catalog:import": "python scripts/import-settings.py ../enigma2",
+    "test": "node --test tests/*.test.mjs"
+  },
+  "dependencies": {
+    "@astrojs/starlight": "0.42.0",
+    "astro": "^7.2.10",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.6",
+    "typescript": "^5.9.3"
+  }
+}

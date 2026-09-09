@@ -1,0 +1,48 @@
+---
+title: Set up and save EPG
+description: View programme information, choose EPG views and understand epg.dat and its storage location in openATV.
+---
+
+The **EPG** is the electronic programme guide. It shows information about current and upcoming programmes. Available data depends on the programme information being provided and the source in use.
+
+## Open the EPG
+
+Use the assigned programme guide button or an offered EPG action. openATV provides several views, including a single-channel list, multi-channel overviews and graphical timelines.
+
+Changing the view changes how existing data is displayed. It does not generate missing programme information.
+
+## Basic settings location
+
+**Menu → Setup → EPG → EPG Settings**
+
+Other entries in the EPG menu configure individual views. If the section is missing, check the [settings mode](../../erste-schritte/bedienung/).
+
+## Save EPG data
+
+1. Open EPG Settings.
+2. Find **Save EPG data** and enable it if you want programme data retained in a file.
+3. Check **EPG location** and **EPG filename**. The storage location must be available at boot time as well.
+4. If required, enable **Scheduled save of 'epg.dat'** and choose the offered interval in hours.
+5. Save your settings.
+
+| Option | Purpose |
+| --- | --- |
+| Save EPG data | Controls whether the EPG file is saved |
+| EPG location | Directory used for saved programme data |
+| EPG filename | Cache filename, typically `epg.dat` |
+| Scheduled save | Saves the cache additionally at regular intervals |
+
+`epg.dat` is a cache of programme information. Saving it does not download additional programme data from the internet.
+
+## If the guide stays empty
+
+1. Check that the channel can be received and leave it tuned for a while.
+2. Compare another channel. Providers do not all supply the same amount of information.
+3. Check the date and time if programmes appear at incorrect times.
+4. If you use an additional EPG importer, check its sources and settings separately.
+
+EPGImport and EPGRefresh are additional extensions with their own workflows. Detailed guides can later be added to the [add-on section](../../addons/).
+
+[All basic EPG options](../../einstellungen/referenz/epg/) · [Settings directory](../../einstellungen/)
+
+Sources: [EPG options](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [EPG configuration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py).

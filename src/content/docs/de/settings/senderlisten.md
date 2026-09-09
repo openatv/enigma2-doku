@@ -1,0 +1,36 @@
+---
+title: Settings, Senderlisten und Bouquets
+description: Den Unterschied zwischen Enigma2-Einstellungen, Settings-Paketen, Senderlisten und Bouquets verstehen.
+---
+
+„Settings“ wird im Enigma2-Umfeld für zwei verschiedene Dinge verwendet. Das ist besonders bei Downloads wichtig.
+
+| Begriff | Bedeutung |
+| --- | --- |
+| Systemeinstellungen | Werte für Oberfläche, Aufnahme, Netzwerk und andere Funktionen |
+| Senderdatenbank | Bekannte Sender mit ihren Empfangsdaten |
+| Bouquet / Favoritenliste | Eine geordnete Auswahl von Sendern, zum Beispiel Nachrichten oder Lieblingssender |
+| Settings-Paket | Häufig eine vorbereitete Senderliste mit Bouquets; nicht automatisch eine Sicherung deiner gesamten Konfiguration |
+
+## Eine Senderliste verwenden
+
+1. Richte zunächst den [Tuner](../../tuner/konfiguration/) passend zum Empfang ein.
+2. Führe eine Sendersuche durch oder installiere ein für deinen Empfang vorgesehenes Senderlistenpaket aus dem angebotenen Paketkatalog.
+3. Öffne die Senderliste und rufe die Favoriten beziehungsweise Bouquets über die dort beschriftete Aktion auf.
+4. Wähle eine Liste und prüfe einige Sender.
+
+Eine importierte Liste kann Sender enthalten, die an deinem Anschluss nicht verfügbar sind. Sie schaltet auch keine verschlüsselten Programme frei.
+
+## Eigene Favoriten ordnen
+
+In der Senderliste öffnet <kbd>MENU</kbd> die angebotenen Bearbeitungsaktionen. Je nach aktueller Ansicht kannst du ein Bouquet erstellen, Sender hinzufügen oder die Reihenfolge bearbeiten. Lies die gewählte Aktion und verlasse einen aktivierten Bearbeitungsmodus anschließend wieder.
+
+Unter **Menü → Einstellungen → Bedienung / Oberfläche → Senderliste** liegen die Optionen zur Darstellung und Verwendung der Senderliste. In der Referenz findest du unter anderem Optionen für mehrere Bouquets, die Nummerierung und das Anzeigen von Bouquets. [Senderlistenoptionen nachschlagen](../../einstellungen/referenz/channelselection/).
+
+## Vor dem Austausch sichern
+
+Ein neues Settings-Paket kann vorhandene Senderlisten ersetzen. Erstelle vorher über **Menü → Einstellungen → Softwareverwaltung → Systemeinstellungen sichern** eine Sicherung und kontrolliere, welche Dateien sie umfasst. Bewahre eine Sicherung auf, wenn du eigene Bouquets behalten möchtest.
+
+Für allgemeine Optionen wie Ton, EPG oder Netzwerk verwendest du dagegen [Einstellung finden](../../einstellungen/).
+
+Quellen: [Senderlisten und Bouquets](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ChannelSelection.py), [Softwareverwaltung im Menü](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/menu.xml).
