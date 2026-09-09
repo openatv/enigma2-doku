@@ -3,6 +3,8 @@ title: Tuners and channel scanning
 description: Find tuner configuration, prepare reception and run an automatic channel scan in openATV.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 Tuner configuration tells openATV how to use your reception connection. A channel scan then finds the services available through it. Installing a channel list does not replace correct tuner configuration.
 
 ## Configure a tuner
@@ -22,6 +24,18 @@ Tuner configuration tells openATV how to use your reception connection. A channe
 | Additional tuners | Whether and how they are connected; do not copy values simply because labels look similar |
 
 Special reception arrangements will be covered in appendices. The shared workflow uses the details of your own installation.
+
+## Example: one satellite cable for Astra 19.2° East
+
+This example uses a conventional satellite connection with one cable supplying one orbital position. It does not cover Unicable, motorised dishes or FBC configuration.
+
+<Capture id="reception-menu" language="en" alt="Reception menu with tuner configuration, tuner settings and automatic and manual scans" caption="Tuner Configuration opens connection settings. Tuner Settings is a separate group of general options." />
+
+Select the tuner that is physically connected. The tested connection uses **Configuration mode: Simple**, **Mode: Single** and **Satellite: 19.2E Astra**. The additional satellite names may change when the satellite list is updated.
+
+<Capture id="satellite-settings" language="en" alt="Satellite tuner settings with simple configuration, single mode and Astra 19.2 degrees East" caption="A simple configuration for one satellite cable. The tuner letter only identifies the selected input in this test installation." />
+
+**Send DiSEqC** controls switching signals sent to the reception installation. Set it according to your connection. The image shows existing test values, not a preset for every installation. Do not copy a connected tuner's configuration onto additional unconnected inputs.
 
 ## Run an automatic scan
 

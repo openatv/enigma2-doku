@@ -3,6 +3,8 @@ title: Erste Einrichtung
 description: Den ersten Start von openATV abschließen – Sprache, Netzwerk, Empfang und Sender Schritt für Schritt einrichten.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 Nach dem ersten Start führt dich openATV durch die grundlegende Einrichtung. Du musst dabei nicht jede Einstellung kennen. Ziel ist zunächst eine verständliche Oberfläche, eine funktionierende Verbindung und eine nutzbare Senderliste.
 
 ## Vorbereiten
@@ -24,6 +26,18 @@ Diese Anleitung beginnt beim laufenden Image. Das Installieren beziehungsweise F
 
 Die angebotenen Schritte können sich unterscheiden. Du musst den Assistenten nicht erneut starten, um später eine einzelne Einstellung zu ändern.
 
+## So sehen die ersten Schritte aus
+
+Wähle **Assistenten für die Grundeinstellung benutzen** und bestätige mit <kbd>OK</kbd>. Die Abbildungen zeigen den MetrixHD-Skin. Entscheidend sind die Tasten und Menütexte; die dargestellte Fernbedienung kann von deiner abweichen.
+
+<Capture id="wizard-welcome" language="de" alt="Startassistent mit der markierten Auswahl Assistenten für die Grundeinstellung benutzen" caption="Der Begrüßungsdialog erklärt die Bedienung mit Pfeiltasten und OK." />
+
+Wähle anschließend die passende Netzwerkschnittstelle. **LAN (eth0)** ist hier der kabelgebundene Anschluss. Mit **Netzwerkeinrichtung überspringen** lässt sich dieser Teil später erledigen.
+
+<Capture id="wizard-network" language="de" alt="Adapterauswahl im Startassistenten mit LAN eth0 und Netzwerkeinrichtung überspringen" caption="Beispiel einer Einrichtung über ein Netzwerkkabel." />
+
+In den Adaptereinstellungen genügen für ein übliches Heimnetz ein aktivierter Adapter und **Adresse automatisch beziehen (DHCP): Ja**. Speichere über die angezeigte Aktion. Die genaue Bedeutung der Felder erklärt [LAN und IP-Einstellungen](../../netzwerk/lan/).
+
 ## Das Ergebnis prüfen
 
 - Sind Menüs und Hilfetexte in der gewünschten Sprache?
@@ -38,4 +52,4 @@ Die angebotenen Schritte können sich unterscheiden. Du musst den Assistenten ni
 - [LAN einrichten](../../netzwerk/lan/) oder [WLAN verbinden](../../netzwerk/wlan/)
 - [Netzwerkfreigaben einbinden](../../netzwerk/freigaben/)
 
-Quelle: [openATV-Ersteinrichtungsassistent](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/startwizard.xml). Diese Grundfassung wurde anhand des Quellcodes erstellt; eine vollständige Bildserie des Assistenten folgt separat.
+Quelle: [openATV-Ersteinrichtungsassistent](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/startwizard.xml). Die gezeigten Assistenten-Seiten wurden auf einem laufenden openATV 8.0 aufgenommen. Die Bilder belegen die jeweiligen Ansichten; ein vollständiger Durchlauf nach einer Neuinstallation ist noch separat zu prüfen.

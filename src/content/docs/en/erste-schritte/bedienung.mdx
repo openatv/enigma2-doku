@@ -3,6 +3,8 @@ title: Controls and menus
 description: Understand the remote control, colour buttons, saving changes and expert setup mode in openATV.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 Many dialogs follow the same pattern. Follow the labels on the current screen: a colour button can perform a different action in another dialog.
 
 ## Main controls
@@ -19,6 +21,16 @@ Many dialogs follow the same pattern. Follow the labels on the current screen: a
 
 A path such as **Menu → Setup → Network** means: open the menu, choose “Setup”, then “Network”. Bold text identifies labels; `monospace text` identifies values such as paths and technical keys.
 
+## Example: find the settings
+
+Press <kbd>MENU</kbd>, select **Setup** in the main menu and press <kbd>OK</kbd>.
+
+<Capture id="main-menu" language="en" alt="openATV main menu with Setup selected" caption="The main menu in MetrixHD. Additional plugins can add more entries." />
+
+Choose the relevant topic. **Usage & GUI** contains the settings mode. Network, EPG and reception have their own sections.
+
+<Capture id="setup-menu" language="en" alt="Setup menu showing picture, sound, user interface, EPG, reception and network sections" caption="Settings are grouped by task." />
+
 ## Change and save
 
 1. Select the option you want to change.
@@ -28,6 +40,8 @@ A path such as **Menu → Setup → Network** means: open the menu, choose “Se
 5. Follow any request to restart the GUI or the system.
 
 ## A setting is missing
+
+<Capture id="usage-settings" language="en" alt="Customize System Settings with Settings mode Expert selected and its help text" caption="The selected option is on the left and its explanation on the right. Save applies changes; Cancel discards them." />
 
 Open **Menu → Setup → Usage & GUI → Customize System Settings** and look for **Settings mode**.
 

@@ -3,6 +3,8 @@ title: LAN und IP-Einstellungen
 description: openATV per Netzwerkkabel verbinden und DHCP, IP-Adresse, Gateway sowie DNS verstehen.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 Eine Netzwerkverbindung wird für Plugin-Downloads, Netzwerkfreigaben und den Zugriff über OpenWebif verwendet. Für den Einstieg kannst du die Adressen automatisch vom Router beziehen lassen.
 
 ## Menüweg
@@ -10,6 +12,8 @@ Eine Netzwerkverbindung wird für Plugin-Downloads, Netzwerkfreigaben und den Zu
 **Menü → Einstellungen → Netzwerk → Netzwerkübersicht**
 
 Wähle den kabelgebundenen Adapter und öffne mit <kbd>OK</kbd> die **Netzwerkadaptereinstellungen**.
+
+<Capture id="network-menu" language="de" alt="Netzwerkmenü mit markierter Netzwerkübersicht" caption="Von hier erreichst du die Adapter, Netzwerkfreigaben und DNS-Einstellungen." />
 
 ## Verbindung mit DHCP einrichten
 
@@ -19,6 +23,10 @@ Wähle den kabelgebundenen Adapter und öffne mit <kbd>OK</kbd> die **Netzwerkad
 4. Lasse benutzerdefinierte DNS-Einstellungen zunächst ausgeschaltet, sofern dein Netzwerk sie nicht benötigt.
 5. Speichere die Einstellungen über die im Dialog angezeigte Aktion.
 6. Kehre in die Netzwerkübersicht zurück und prüfe, ob eine Verbindung und eine IP-Adresse angezeigt werden. Über <kbd>INFO</kbd> sind weitere Verbindungsinformationen erreichbar.
+
+<Capture id="lan-settings" language="de" alt="Aktivierter Ethernet-Adapter mit DHCP Ja, DNS überschreiben Nein und Verbindungsgeschwindigkeit Auto" caption="Eine funktionierende Konfiguration mit automatischer Adressvergabe. Der Adaptername kann abweichen." />
+
+Bei aktiviertem DHCP blendet dieser Dialog die manuellen IPv4-Adressfelder aus. Die tatsächlich zugewiesenen Adressen stehen in der Netzwerkübersicht. **IP-Protokoll** legt fest, ob IPv4, IPv6 oder beide verwendet werden; **DNS überschreiben** aktiviert eigene DNS-Vorgaben für diesen Adapter.
 
 ## Was bedeuten die Adressen?
 

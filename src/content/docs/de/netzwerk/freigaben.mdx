@@ -3,6 +3,8 @@ title: NAS und Netzwerkfreigaben einbinden
 description: Eine Netzwerkfreigabe in openATV mounten. SMB, CIFS, NFS, autofs und lokale Speicherpfade verständlich erklärt.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 Eine Netzwerkfreigabe macht einen Ordner auf einem NAS oder Server in openATV nutzbar. Das **Mounten** verbindet die entfernte Freigabe mit einem lokalen Verzeichnis. Dadurch können Anwendungen darauf ähnlich wie auf einen angeschlossenen Datenträger zugreifen.
 
 ## Was du benötigst
@@ -31,17 +33,33 @@ Mit **Durchsuchen** kannst du nach angebotenen Freigaben suchen. Für einen beka
 | Aktiviert | Ja – die Definition soll verwendet werden |
 | Protokoll | SMB / CIFS – beide Namen beziehen sich hier auf Windows-artige Netzwerkfreigaben |
 | Server | `nas` oder die tatsächliche IP-Adresse des NAS |
-| Entfernter Pfad | `Aufnahmen` – der freigegebene Name auf dem NAS; Server und Freigabe getrennt eintragen |
+| Remote-Pfad | `Aufnahmen` – der freigegebene Name auf dem NAS; Server und Freigabe getrennt eintragen |
 | Lokale Freigabe | `nas-aufnahmen` – der Name des lokalen Mount-Verzeichnisses |
-| Mount-Modus | Zugriff bei Bedarf (*autofs*) für den Einstieg |
+| Einhängemodus | Beim ersten Zugriff einbinden (*autofs*) für den Einstieg |
 | Benutzername / Passwort | Zugangsdaten des NAS-Benutzers |
 | SMB-Version | SMB3, sofern der Server es unterstützt; im geprüften Dialog ist dies die Vorgabe für neue Freigaben |
 | Zugriffsmodus | Lesen/Schreiben für Aufnahmen; Nur Lesen genügt zum Abspielen vorhandener Dateien |
-| Als HDD-Ersatz verwenden | Für dieses erste Beispiel ausgeschaltet lassen |
+| Als Festplattenersatz verwenden | Für dieses erste Beispiel ausgeschaltet lassen |
 
 4. Speichere die Definition über die angezeigte Speicheraktion.
-5. Öffne den lokalen Pfad `/media/net/nas-aufnahmen` über die Dateiauswahl der Anwendung, in der du die Freigabe nutzen möchtest. Bei **autofs** löst dieser Zugriff das Einbinden aus.
+5. Öffne den lokalen Pfad `/media/autofs/nas-aufnahmen` über die Dateiauswahl der Anwendung, in der du die Freigabe nutzen möchtest. Bei **autofs** löst dieser Zugriff das Einbinden aus.
 6. Prüfe, ob die Dateien der Freigabe sichtbar sind. Für die Nutzung als Aufnahmeziel wähle den entsprechenden Ordner zusätzlich in den Aufnahmeeinstellungen und teste eine kurze Aufnahme.
+
+## Beispiel einer eingebundenen Freigabe
+
+<Capture id="nas-overview" language="de" alt="Netzwerkfreigabeübersicht mit der aktivierten und eingehängten CIFS-Freigabe media im Modus autofs" caption="Eine vorhandene Testfreigabe: media ist der lokale Freigabename, darunter stehen Server, entfernter Pfad und Einhängemodus." />
+
+In diesem Beispiel lautet der lokale Zugriffspfad `/media/autofs/media`. Dort wurden Schreiben und Lesen mit einer kleinen Testdatei geprüft. Der Status **Aktiviert** beschreibt die gespeicherte Definition; **Eingehängt** beschreibt den ermittelten Zugriffszustand. Entscheidend bleibt, ob die Zielanwendung die Dateien tatsächlich öffnen und gegebenenfalls schreiben kann.
+
+### Welcher lokale Pfad gehört zu welchem Modus?
+
+| Modus | Lokaler Pfad |
+| --- | --- |
+| Beim ersten Zugriff einbinden (`autofs`) | `/media/autofs/NAME` |
+| Beim Start einbinden (`fstab`), ohne HDD-Ersatz | `/media/net/NAME` |
+| `fstab` mit HDD-Ersatz | `/media/hdd` |
+
+`NAME` entspricht dem Feld **Lokale Freigabe**. Diese Zuordnung ist für den hier geprüften openATV-8.0-Stand bestätigt.
 
 ## SMB oder NFS?
 
@@ -51,8 +69,8 @@ SMB verwendet üblicherweise den Freigabenamen und ein Benutzerkonto. Bei NFS gi
 
 - **autofs:** Bindet die Freigabe beim ersten Dateizugriff ein. Eine vorher nicht als aktiv gemountet angezeigte Freigabe muss deshalb noch kein Fehler sein.
 - **fstab:** Bindet die Freigabe beim Start ein. Der Server muss dann entsprechend erreichbar sein.
-- **HDD-Ersatz:** Verwendet `/media/hdd` anstelle eines eigenen Pfades unter `/media/net`. Das betrifft Anwendungen, die diesen zentralen Speicherort nutzen. Verwende es erst bewusst, wenn die Freigabe zuverlässig funktioniert.
-- **Optionale Argumente:** Zusätzliche Mount-Parameter. Für den ersten Versuch leer lassen, solange keine konkrete Anforderung besteht.
+- **HDD-Ersatz:** Verwendet beim `fstab`-Modus `/media/hdd` anstelle eines eigenen Pfades unter `/media/net`. Im hier geprüften `autofs`-Modus bleibt der Pfad unter `/media/autofs`. Bei einer bereits unter `/media/hdd` eingebundenen Festplatte lasse den HDD-Ersatz für die zusätzliche NAS-Freigabe ausgeschaltet.
+- **Optionale Einstellungen:** Zusätzliche Mount-Parameter. Für den ersten Versuch leer lassen, solange keine konkrete Anforderung besteht.
 
 ## Wenn es nicht klappt
 
@@ -65,4 +83,4 @@ SMB verwendet üblicherweise den Freigabenamen und ein Benutzerkonto. Bei NFS gi
 
 [Alle Optionen der Netzwerkfreigabe](../../einstellungen/referenz/networkmounts/) · [Häufige Fragen](../../hilfe/probleme/)
 
-Quelle: [Freigabedialog und Vorgaben für neue Mounts](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkMounts.py). Der Ablauf ist anhand des Quellcodes beschrieben.
+Quellen: [Freigabedialog und Vorgaben für neue Mounts](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkMounts.py), [Zuordnung der Einhängepfade](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NetworkManager.py). Die vorhandene CIFS-/autofs-Freigabe wurde praktisch auf Schreib- und Lesezugriff geprüft; die Neueinrichtung aller Protokollvarianten ist damit nicht vollständig getestet.

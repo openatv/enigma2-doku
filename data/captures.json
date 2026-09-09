@@ -1,0 +1,475 @@
+{
+  "schema": 1,
+  "capture_tool": "https://github.com/openatv/enigma2-plugin-test",
+  "capture_tool_commit": "3df80b90a8ae776c770c58c0fcb3975afd182a32",
+  "captures": [
+    {
+      "id": "main-menu",
+      "language": "de",
+      "article": "erste-schritte/bedienung",
+      "screen_key": "mainmenu",
+      "captured_at": "2026-09-09T21:54:59.631900+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7a63f256386c7b6630fd1f0f04e3ad3db4ac23b2ec0e44a3e59f3132fd794c71",
+      "file": "de/main-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "setup-menu",
+      "language": "de",
+      "article": "erste-schritte/bedienung",
+      "screen_key": "setup",
+      "captured_at": "2026-09-09T21:55:02.336980+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "241bcf1fd4ac64ebdb91b5a3d662ca47c4c1f4a9dffd22c3ee9c9749f4c5519a",
+      "file": "de/setup-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "network-menu",
+      "language": "de",
+      "article": "netzwerk/lan",
+      "screen_key": "network",
+      "captured_at": "2026-09-09T21:55:07.748665+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "45ae7b49570034fbd0de8950f506adfda43d71349be8edec61e30fdd0a8f7dd3",
+      "file": "de/network-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "epg-menu",
+      "language": "de",
+      "article": "epg/grundlagen",
+      "screen_key": "epg",
+      "captured_at": "2026-09-09T21:55:10.561258+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "792b6df8c9c37a4c77d178cd402ed0021be4736e8d5c9227753b1901f45119da",
+      "file": "de/epg-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "usage-settings",
+      "language": "de",
+      "article": "einstellungen",
+      "screen_key": "Usage",
+      "captured_at": "2026-09-09T21:55:13.307763+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "e20665f25dbe3094aa0bef40cbebeea3730cede0ea29a78e3ad8b6a6018594b1",
+      "file": "de/usage-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "epg-settings",
+      "language": "de",
+      "article": "epg/grundlagen",
+      "screen_key": "EPG",
+      "captured_at": "2026-09-09T21:55:16.115751+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "e81f5247830556e45d854050cd2f799e22a43b9fa06063ce84eba68186fe6b88",
+      "file": "de/epg-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "wizard-welcome",
+      "language": "de",
+      "article": "erste-schritte/ersteinrichtung",
+      "screen_key": "wizard-welcome",
+      "captured_at": "2026-09-09T21:55:21.657094+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "70f773c1072ddb512aa14baed2d3f40c2231637e1d2463c8815eeb98746b3c2c",
+      "file": "de/wizard-welcome.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "wizard-network",
+      "language": "de",
+      "article": "erste-schritte/ersteinrichtung",
+      "screen_key": "wizard-network",
+      "captured_at": "2026-09-09T21:55:24.496341+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "63fb1914fa4eaca2526f9ccadd206e9b7b3af61f36eab43eea9fef3f643adbd1",
+      "file": "de/wizard-network.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "lan-settings",
+      "language": "de",
+      "article": "netzwerk/lan",
+      "screen_key": "lan-settings",
+      "captured_at": "2026-09-09T21:55:32.206295+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "cc17a37edb3f1f3b63aae48ac40924fc68a9004a3e3e45b60710c6dab085d9b3",
+      "file": "de/lan-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "nas-overview",
+      "language": "de",
+      "article": "netzwerk/freigaben",
+      "screen_key": "nas-overview",
+      "captured_at": "2026-09-09T21:55:34.903966+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "90f3c53a0160c242044086c03be7f67e0bbf85ffd17a8428995ace5830210df4",
+      "file": "de/nas-overview.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "reception-menu",
+      "language": "de",
+      "article": "tuner/konfiguration",
+      "screen_key": "scan",
+      "captured_at": "2026-09-09T21:55:43.614828+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f707577cadbc3e342afb10b1d78b746723c211da6a250c2882f0b5080a48305f",
+      "file": "de/reception-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "satellite-settings",
+      "language": "de",
+      "article": "tuner/konfiguration",
+      "screen_key": "satellite-settings",
+      "captured_at": "2026-09-09T21:55:46.407110+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "8fe1ac6a077be2c8414aa7642d8e15d98a8c0523c99064eb544da536a9a776b5",
+      "file": "de/satellite-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "plugin-feed",
+      "language": "de",
+      "article": "plugins/installieren",
+      "screen_key": "plugin-feed",
+      "captured_at": "2026-09-09T21:55:57.374601+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1b5eb2b5db7c80927ab275302c38dbcdbe5b02f42827732ee4a1c8cbf5802738",
+      "file": "de/plugin-feed.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "main-menu",
+      "language": "en",
+      "article": "erste-schritte/bedienung",
+      "screen_key": "mainmenu",
+      "captured_at": "2026-09-09T21:56:23.116284+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "761338a85b422b389d6089d4f3e2c3cffab50f15c3a0fc5d522c731dbf0ca86c",
+      "file": "en/main-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "setup-menu",
+      "language": "en",
+      "article": "erste-schritte/bedienung",
+      "screen_key": "setup",
+      "captured_at": "2026-09-09T21:56:25.828943+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "bf2ecca06d1fa61e5c6f07607940135dc92abb2a480d9e8d82e05d632c6563b2",
+      "file": "en/setup-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "network-menu",
+      "language": "en",
+      "article": "netzwerk/lan",
+      "screen_key": "network",
+      "captured_at": "2026-09-09T21:56:31.358271+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1072aa5ca07882d815a4b5e58f0f9cf32eef4583ef322a0c242b0693e65bcc0f",
+      "file": "en/network-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "epg-menu",
+      "language": "en",
+      "article": "epg/grundlagen",
+      "screen_key": "epg",
+      "captured_at": "2026-09-09T21:56:34.170062+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b6e31b33cf0197ba91f47dbaabdc55f91b782b4419b420412180bff684d56599",
+      "file": "en/epg-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "usage-settings",
+      "language": "en",
+      "article": "einstellungen",
+      "screen_key": "Usage",
+      "captured_at": "2026-09-09T21:56:37.020304+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "acfc2ba9026e6701dd0a5d96fdce454bf01a5100b689f4dd0a826acb6913cd69",
+      "file": "en/usage-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "epg-settings",
+      "language": "en",
+      "article": "epg/grundlagen",
+      "screen_key": "EPG",
+      "captured_at": "2026-09-09T21:56:39.725386+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "aab45aadf882657f3c862a2680ac1abdaac17cbc162903fe65930d529faae00b",
+      "file": "en/epg-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "wizard-welcome",
+      "language": "en",
+      "article": "erste-schritte/ersteinrichtung",
+      "screen_key": "wizard-welcome",
+      "captured_at": "2026-09-09T21:56:44.991395+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "490427585ebe1a9e4d389b9f80bdd2fd3c8f6773d9b13f489461dbbe94c01bcb",
+      "file": "en/wizard-welcome.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "wizard-network",
+      "language": "en",
+      "article": "erste-schritte/ersteinrichtung",
+      "screen_key": "wizard-network",
+      "captured_at": "2026-09-09T21:56:47.830750+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "60541843dc84aebf0ae176c0920a61c55d441e1b74e793dc081faf0e1981eaa6",
+      "file": "en/wizard-network.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "lan-settings",
+      "language": "en",
+      "article": "netzwerk/lan",
+      "screen_key": "lan-settings",
+      "captured_at": "2026-09-09T21:56:55.525447+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "a0260b3a0e46825999c3300f989fc43bd40c23cd300e784adc0ff639d00417bb",
+      "file": "en/lan-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "nas-overview",
+      "language": "en",
+      "article": "netzwerk/freigaben",
+      "screen_key": "nas-overview",
+      "captured_at": "2026-09-09T21:56:58.227812+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "4453b4f18ccdf7ce044363d3c34bf73532455ff24147a394df30ab447792bf56",
+      "file": "en/nas-overview.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "reception-menu",
+      "language": "en",
+      "article": "tuner/konfiguration",
+      "screen_key": "scan",
+      "captured_at": "2026-09-09T21:57:04.917692+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7aae12fc402227bfd98f170be79f80ce05debdfb3d6b5876ff1a4f468e19aaa4",
+      "file": "en/reception-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "satellite-settings",
+      "language": "en",
+      "article": "tuner/konfiguration",
+      "screen_key": "satellite-settings",
+      "captured_at": "2026-09-09T21:57:07.610855+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "0f8564d4eb182ba606ae00fdb55569c738b6a48acfca493cc9a705e870dc9a62",
+      "file": "en/satellite-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    },
+    {
+      "id": "plugin-feed",
+      "language": "en",
+      "article": "plugins/installieren",
+      "screen_key": "plugin-feed",
+      "captured_at": "2026-09-09T21:57:18.928403+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "a5b9365d3671f8535fbf060bddeaddcc3a063e84493e571e965146c9c807ddc0",
+      "file": "en/plugin-feed.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true
+    }
+  ]
+}

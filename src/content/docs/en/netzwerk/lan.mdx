@@ -3,6 +3,8 @@ title: LAN and IP settings
 description: Connect openATV with a network cable and understand DHCP, IP addresses, gateways and DNS.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 A network connection is used for plugin downloads, network shares and access through OpenWebif. For a first setup, let the router provide the addresses automatically.
 
 ## Menu location
@@ -10,6 +12,8 @@ A network connection is used for plugin downloads, network shares and access thr
 **Menu → Setup → Network → Network Overview**
 
 Select the wired adapter and press <kbd>OK</kbd> to open **Network Adapter Settings**.
+
+<Capture id="network-menu" language="en" alt="Network menu with Network Overview selected" caption="This menu leads to adapters, network shares and DNS settings." />
 
 ## Connect using DHCP
 
@@ -19,6 +23,10 @@ Select the wired adapter and press <kbd>OK</kbd> to open **Network Adapter Setti
 4. Leave custom DNS settings disabled initially unless your network requires them.
 5. Save using the action labelled in the dialog.
 6. Return to the network overview and check for a connection and an IP address. Press <kbd>INFO</kbd> for further connection details.
+
+<Capture id="lan-settings" language="en" alt="Enabled Ethernet adapter with DHCP Yes, DNS override No and link speed Auto" caption="A working configuration using automatic addressing. The adapter name may differ." />
+
+With DHCP enabled, this dialog hides the manual IPv4 address fields. The network overview shows the assigned addresses. **IP protocol** selects IPv4, IPv6 or both; **DNS override** enables custom DNS settings for this adapter.
 
 ## What do the addresses mean?
 

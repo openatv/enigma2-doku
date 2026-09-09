@@ -3,6 +3,8 @@ title: Settings, channel lists and bouquets
 description: Understand the difference between Enigma2 configuration, settings packages, channel lists and bouquets.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 In the Enigma2 community, “settings” can refer to two different things. This matters particularly when downloading packages.
 
 | Term | Meaning |
@@ -20,6 +22,14 @@ In the Enigma2 community, “settings” can refer to two different things. This
 4. Select a list and test several channels.
 
 An imported list may contain channels that are unavailable on your connection. It does not unlock encrypted services.
+
+## Channel lists from the feed
+
+Open **Menu → Plugin Browser → Install Plugins** and select **Setting Packages**. These packages contain prepared collections of channels and bouquets.
+
+<Capture id="plugin-feed" language="en" alt="Plugin feed with the Setting Packages category for prepared channel lists" caption="Channel lists use the same package catalogue as other extensions." />
+
+For an Astra 19.2° East connection, choose a package whose description covers that position. A multi-satellite list can include services that your connection cannot receive. The first-run wizard and an installed channel-list plugin may provide further sources; downloading a list is different from scanning for channels.
 
 ## Organise favourites
 

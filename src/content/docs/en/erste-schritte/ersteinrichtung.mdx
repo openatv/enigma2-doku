@@ -3,6 +3,8 @@ title: First setup
 description: Complete the first start of openATV – language, network, reception and channels, step by step.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 On first start, openATV guides you through its basic configuration. You do not need to understand every setting yet. Start with a readable interface, a working connection and a usable channel list.
 
 ## Before you start
@@ -24,6 +26,18 @@ This guide starts with an image that is already running. Installing or flashing 
 
 The exact sequence can vary. You do not need to run the wizard again to change a single setting later.
 
+## The first screens
+
+Select **Use the wizard to set up basic features** and press <kbd>OK</kbd>. These examples use the MetrixHD skin. Follow the button names and menu labels; the remote control illustration may differ from yours.
+
+<Capture id="wizard-welcome" language="en" alt="Start Wizard with Use the wizard to set up basic features selected" caption="The welcome screen explains navigation with the arrow keys and OK." />
+
+Choose the appropriate network interface. **LAN (eth0)** is the wired connection in this example. **Skip network setup** lets you configure the connection later.
+
+<Capture id="wizard-network" language="en" alt="Start Wizard showing LAN eth0 and Skip network setup" caption="An example of first setup using a network cable." />
+
+For a typical home network, enable the adapter and set **Use DHCP: Yes**. Use the labelled save action. [LAN and IP settings](../../netzwerk/lan/) explains the individual fields.
+
 ## Check the result
 
 - Are menus and help text in the selected language?
@@ -38,4 +52,4 @@ The exact sequence can vary. You do not need to run the wizard again to change a
 - [Configure LAN](../../netzwerk/lan/) or [connect Wi-Fi](../../netzwerk/wlan/)
 - [Mount a network share](../../netzwerk/freigaben/)
 
-Source: [openATV first-run wizard](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/startwizard.xml). This first guide was checked against source code; a complete wizard screenshot series will be added separately.
+Source: [openATV first-run wizard](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/startwizard.xml). The illustrated wizard pages were captured on a running openATV 8.0 installation. They verify the individual views; a complete run after a fresh installation still needs separate testing.

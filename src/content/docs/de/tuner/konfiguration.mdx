@@ -3,6 +3,8 @@ title: Tuner und Sendersuche
 description: Die Tuner-Konfiguration finden, Empfang vorbereiten und in openATV einen automatischen Sendersuchlauf durchführen.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 Die Tuner-Konfiguration legt fest, wie openATV deinen Empfangsanschluss nutzt. Eine Sendersuche findet anschließend die darüber verfügbaren Sender. Eine installierte Senderliste allein ersetzt keine passende Tuner-Konfiguration.
 
 ## Tuner konfigurieren
@@ -22,6 +24,18 @@ Die Tuner-Konfiguration legt fest, wie openATV deinen Empfangsanschluss nutzt. E
 | Weitere Tuner | Ob und wie sie angeschlossen sind; Werte nicht allein wegen gleicher Bezeichnungen kopieren |
 
 Spezielle Empfangsanlagen werden später in Anhängen behandelt. Für die Grundanleitung ist entscheidend, die Daten der eigenen Installation zu verwenden.
+
+## Beispiel: ein Sat-Kabel für Astra 19,2° Ost
+
+Dieses Beispiel passt zu einem herkömmlichen Sat-Anschluss, an dem ein Kabel eine einzelne Satellitenposition bereitstellt. Es beschreibt keine Unicable-, Motor- oder FBC-Konfiguration.
+
+<Capture id="reception-menu" language="de" alt="Empfangsmenü mit Tuner, Tunereinstellungen sowie automatischem und manuellem Suchlauf" caption="Tuner öffnet die Anschlusskonfiguration. Tunereinstellungen ist ein separater Bereich mit allgemeinen Optionen." />
+
+Wähle den tatsächlich angeschlossenen Tuner. Für den hier geprüften Anschluss sind **Konfiguration: Einfach**, **Modus: Einzeln** und **Satellit: 19.2E Astra** eingestellt. Der genaue Zusatz im Satellitennamen kann sich mit der Satellitenliste ändern.
+
+<Capture id="satellite-settings" language="de" alt="Empfangseinstellungen eines Sat-Tuners mit Konfiguration Einfach, Modus Einzeln und Astra 19,2 Grad Ost" caption="Beispiel einer einfachen Konfiguration für ein einzelnes Sat-Kabel. Der Tunerbuchstabe ist nur die Auswahl dieser Testinstallation." />
+
+**DiSEqC senden** betrifft Steuersignale an die Empfangsanlage. Übernimm diese Option passend zu deinem Anschluss. Das Bild zeigt vorhandene Testwerte und ist keine Vorgabe für jede Anlage. Weitere unverbundene Tuner benötigen keine kopierte Empfangskonfiguration.
 
 ## Automatischen Suchlauf starten
 

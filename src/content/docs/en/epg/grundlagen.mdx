@@ -3,6 +3,8 @@ title: Set up and save EPG
 description: View programme information, choose EPG views and understand epg.dat and its storage location in openATV.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 The **EPG** is the electronic programme guide. It shows information about current and upcoming programmes. Available data depends on the programme information being provided and the source in use.
 
 ## Open the EPG
@@ -16,6 +18,8 @@ Changing the view changes how existing data is displayed. It does not generate m
 **Menu → Setup → EPG → EPG Settings**
 
 Other entries in the EPG menu configure individual views. If the section is missing, check the [settings mode](../../erste-schritte/bedienung/).
+
+<Capture id="epg-menu" language="en" alt="EPG menu showing basic settings and several EPG view settings" caption="Basic EPG settings and the settings for individual views are separate menu entries." />
 
 ## Save EPG data
 
@@ -33,6 +37,10 @@ Other entries in the EPG menu configure individual views. If the section is miss
 | Scheduled save | Saves the cache additionally at regular intervals |
 
 `epg.dat` is a cache of programme information. Saving it does not download additional programme data from the internet.
+
+<Capture id="epg-settings" language="en" alt="EPG settings with Save EPG data selected and set to Yes" caption="This option controls saving the EPG file. Its location and filename are shown above." />
+
+The other EPG source switches visible in the example do not all need to be enabled. Their use depends on the services and data available through your reception setup.
 
 ## If the guide stays empty
 

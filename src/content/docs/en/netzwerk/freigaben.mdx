@@ -3,6 +3,8 @@ title: Mount a NAS or network share
 description: Mount network storage in openATV. Understand SMB, CIFS, NFS, autofs and local paths.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 A network share makes a folder on a NAS or server available in openATV. **Mounting** connects the remote share to a local directory, allowing applications to access it much like an attached storage device.
 
 ## What you need
@@ -40,8 +42,24 @@ Choose **Browse** to look for shares. If you know the server details, you can al
 | Use as HDD replacement | Leave disabled for this first example |
 
 4. Save the definition using the labelled save action.
-5. Open `/media/net/nas-recordings` in the file selector of the application where you want to use the share. With **autofs**, accessing the directory triggers the mount.
+5. Open `/media/autofs/nas-recordings` in the file selector of the application where you want to use the share. With **autofs**, accessing the directory triggers the mount.
 6. Check that the share's files are visible. To record to it, also select the intended folder in recording settings and test a short recording.
+
+## Example of a mounted share
+
+<Capture id="nas-overview" language="en" alt="Network Mounts Overview with the enabled and mounted CIFS share media using autofs" caption="An existing test share: media is the local share name. The line below identifies the server, remote path and mount mode." />
+
+This example is accessed at `/media/autofs/media`. Writing and reading a small test file were verified there. **Enabled** describes the saved definition; **Mounted** describes the detected access state. The practical check is whether your target application can open the files and, when needed, write to the directory.
+
+### Which local path belongs to each mode?
+
+| Mode | Local path |
+| --- | --- |
+| Mount on first access (`autofs`) | `/media/autofs/NAME` |
+| Mount at boot time (`fstab`), without HDD replacement | `/media/net/NAME` |
+| `fstab` with HDD replacement | `/media/hdd` |
+
+`NAME` is the **Local share** field. These paths are confirmed for the openATV 8.0 version used here.
 
 ## SMB or NFS?
 
@@ -51,7 +69,7 @@ SMB normally uses a share name and a user account. For NFS, enter the export pat
 
 - **autofs:** Mounts on the first file access. A share that does not appear actively mounted beforehand is not necessarily broken.
 - **fstab:** Mounts at boot time, when the server must be reachable as required.
-- **HDD replacement:** Uses `/media/hdd` instead of a separate path below `/media/net`. This affects applications using that central storage location. Enable it deliberately only after verifying reliable access.
+- **HDD replacement:** In `fstab` mode, uses `/media/hdd` instead of a separate path below `/media/net`. In the tested `autofs` mode, the path remains below `/media/autofs`. If a hard disk is already mounted at `/media/hdd`, leave HDD replacement disabled for an additional NAS share.
 - **Optional arguments:** Additional mount parameters. Leave empty initially unless there is a specific requirement.
 
 ## Troubleshooting
@@ -65,4 +83,4 @@ SMB normally uses a share name and a user account. For NFS, enter the export pat
 
 [All network mount options](../../einstellungen/referenz/networkmounts/) · [Common questions](../../hilfe/probleme/)
 
-Source: [Mount dialog and new-share defaults](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkMounts.py). This procedure is based on source inspection.
+Sources: [Mount dialog and new-share defaults](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkMounts.py), [mount path selection](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NetworkManager.py). Read and write access to the existing CIFS/autofs share was tested on the receiver; this does not verify every protocol's complete setup procedure.

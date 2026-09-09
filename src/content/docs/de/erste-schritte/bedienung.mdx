@@ -3,6 +3,8 @@ title: Bedienung und Menüs
 description: Fernbedienung, Farbtasten, Speichern und Expertenansicht in openATV verstehen.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 Viele Dialoge funktionieren nach demselben Muster. Die Beschriftung im geöffneten Bildschirm ist dabei entscheidend: Eine Farbtaste kann in einem anderen Dialog eine andere Aufgabe haben.
 
 ## Die wichtigsten Tasten
@@ -18,6 +20,16 @@ Viele Dialoge funktionieren nach demselben Muster. Die Beschriftung im geöffnet
 | HELP | Verfügbare Bedienhilfe öffnen, sofern der Dialog sie anbietet |
 
 Eine Anleitung mit **Menü → Einstellungen → Netzwerk** meint: erst das Menü öffnen, dann „Einstellungen“ und anschließend „Netzwerk“ auswählen. Ein fett gedruckter Begriff ist eine Beschriftung; ein Wert in `Schreibmaschinenschrift` ist beispielsweise ein Dateipfad oder technischer Schlüssel.
+
+## Beispiel: zu den Einstellungen gehen
+
+Öffne mit <kbd>MENU</kbd> das Hauptmenü, markiere **Einstellungen** und drücke <kbd>OK</kbd>.
+
+<Capture id="main-menu" language="de" alt="Hauptmenü von openATV mit markiertem Eintrag Einstellungen" caption="Das Hauptmenü im MetrixHD-Skin. Zusätzliche Plugins können weitere Einträge ergänzen." />
+
+Wähle anschließend den Themenbereich. Für die Einstellungsansicht ist das **Bedienung / Oberfläche**. Netzwerk, EPG und Empfang besitzen eigene Bereiche.
+
+<Capture id="setup-menu" language="de" alt="Einstellungen mit den Bereichen Bild, Ton, Bedienung und Oberfläche, EPG, Empfang und Netzwerk" caption="Die Einstellungen sind nach Aufgaben gegliedert." />
 
 ## Ändern und speichern
 
@@ -38,6 +50,8 @@ Unter **Menü → Einstellungen → Bedienung / Oberfläche → Systemeinstellun
 | Experte | Auch die als Expertenoptionen eingestuften Einträge |
 
 Die Expertenansicht macht zusätzliche Optionen sichtbar. Sie ändert deren Werte nicht automatisch. Manche Einträge erscheinen erst nach der Auswahl einer übergeordneten Funktion oder innerhalb eines bestimmten Plugins.
+
+<Capture id="usage-settings" language="de" alt="Systemeinstellungen mit der markierten Einstellungsansicht Experte und zugehörigem Hilfetext" caption="Markierte Option links, Erklärung rechts. Speichern übernimmt eine Änderung; Abbrechen verwirft sie." />
 
 Nutze [Einstellung finden](../../einstellungen/), um den passenden Bereich zu suchen. Das Handbuch orientiert sich an Menübezeichnungen, damit es mit unterschiedlichen Skins nutzbar bleibt.
 

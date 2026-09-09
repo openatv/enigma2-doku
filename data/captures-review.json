@@ -1,0 +1,158 @@
+[
+  {
+    "language": "de",
+    "id": "main-menu",
+    "run": "doc-03-de-foundation",
+    "sha256": "7a63f256386c7b6630fd1f0f04e3ad3db4ac23b2ec0e44a3e59f3132fd794c71"
+  },
+  {
+    "language": "de",
+    "id": "setup-menu",
+    "run": "doc-03-de-foundation",
+    "sha256": "241bcf1fd4ac64ebdb91b5a3d662ca47c4c1f4a9dffd22c3ee9c9749f4c5519a"
+  },
+  {
+    "language": "de",
+    "id": "network-menu",
+    "run": "doc-03-de-foundation",
+    "sha256": "45ae7b49570034fbd0de8950f506adfda43d71349be8edec61e30fdd0a8f7dd3"
+  },
+  {
+    "language": "de",
+    "id": "epg-menu",
+    "run": "doc-03-de-foundation",
+    "sha256": "792b6df8c9c37a4c77d178cd402ed0021be4736e8d5c9227753b1901f45119da"
+  },
+  {
+    "language": "de",
+    "id": "usage-settings",
+    "run": "doc-03-de-foundation",
+    "sha256": "e20665f25dbe3094aa0bef40cbebeea3730cede0ea29a78e3ad8b6a6018594b1"
+  },
+  {
+    "language": "de",
+    "id": "epg-settings",
+    "run": "doc-03-de-foundation",
+    "sha256": "e81f5247830556e45d854050cd2f799e22a43b9fa06063ce84eba68186fe6b88"
+  },
+  {
+    "language": "de",
+    "id": "wizard-welcome",
+    "run": "doc-03-de-onboarding",
+    "sha256": "70f773c1072ddb512aa14baed2d3f40c2231637e1d2463c8815eeb98746b3c2c"
+  },
+  {
+    "language": "de",
+    "id": "wizard-network",
+    "run": "doc-03-de-onboarding",
+    "sha256": "63fb1914fa4eaca2526f9ccadd206e9b7b3af61f36eab43eea9fef3f643adbd1"
+  },
+  {
+    "language": "de",
+    "id": "lan-settings",
+    "run": "doc-03-de-connections",
+    "sha256": "cc17a37edb3f1f3b63aae48ac40924fc68a9004a3e3e45b60710c6dab085d9b3"
+  },
+  {
+    "language": "de",
+    "id": "nas-overview",
+    "run": "doc-03-de-connections",
+    "sha256": "90f3c53a0160c242044086c03be7f67e0bbf85ffd17a8428995ace5830210df4"
+  },
+  {
+    "language": "de",
+    "id": "reception-menu",
+    "run": "doc-03-de-satellite-single",
+    "sha256": "f707577cadbc3e342afb10b1d78b746723c211da6a250c2882f0b5080a48305f"
+  },
+  {
+    "language": "de",
+    "id": "satellite-settings",
+    "run": "doc-03-de-satellite-single",
+    "sha256": "8fe1ac6a077be2c8414aa7642d8e15d98a8c0523c99064eb544da536a9a776b5"
+  },
+  {
+    "language": "de",
+    "id": "plugin-feed",
+    "run": "doc-03-de-plugins",
+    "sha256": "1b5eb2b5db7c80927ab275302c38dbcdbe5b02f42827732ee4a1c8cbf5802738"
+  },
+  {
+    "language": "en",
+    "id": "main-menu",
+    "run": "doc-03-en-foundation",
+    "sha256": "761338a85b422b389d6089d4f3e2c3cffab50f15c3a0fc5d522c731dbf0ca86c"
+  },
+  {
+    "language": "en",
+    "id": "setup-menu",
+    "run": "doc-03-en-foundation",
+    "sha256": "bf2ecca06d1fa61e5c6f07607940135dc92abb2a480d9e8d82e05d632c6563b2"
+  },
+  {
+    "language": "en",
+    "id": "network-menu",
+    "run": "doc-03-en-foundation",
+    "sha256": "1072aa5ca07882d815a4b5e58f0f9cf32eef4583ef322a0c242b0693e65bcc0f"
+  },
+  {
+    "language": "en",
+    "id": "epg-menu",
+    "run": "doc-03-en-foundation",
+    "sha256": "b6e31b33cf0197ba91f47dbaabdc55f91b782b4419b420412180bff684d56599"
+  },
+  {
+    "language": "en",
+    "id": "usage-settings",
+    "run": "doc-03-en-foundation",
+    "sha256": "acfc2ba9026e6701dd0a5d96fdce454bf01a5100b689f4dd0a826acb6913cd69"
+  },
+  {
+    "language": "en",
+    "id": "epg-settings",
+    "run": "doc-03-en-foundation",
+    "sha256": "aab45aadf882657f3c862a2680ac1abdaac17cbc162903fe65930d529faae00b"
+  },
+  {
+    "language": "en",
+    "id": "wizard-welcome",
+    "run": "doc-03-en-onboarding",
+    "sha256": "490427585ebe1a9e4d389b9f80bdd2fd3c8f6773d9b13f489461dbbe94c01bcb"
+  },
+  {
+    "language": "en",
+    "id": "wizard-network",
+    "run": "doc-03-en-onboarding",
+    "sha256": "60541843dc84aebf0ae176c0920a61c55d441e1b74e793dc081faf0e1981eaa6"
+  },
+  {
+    "language": "en",
+    "id": "lan-settings",
+    "run": "doc-03-en-connections",
+    "sha256": "a0260b3a0e46825999c3300f989fc43bd40c23cd300e784adc0ff639d00417bb"
+  },
+  {
+    "language": "en",
+    "id": "nas-overview",
+    "run": "doc-03-en-connections",
+    "sha256": "4453b4f18ccdf7ce044363d3c34bf73532455ff24147a394df30ab447792bf56"
+  },
+  {
+    "language": "en",
+    "id": "reception-menu",
+    "run": "doc-03-en-satellite-single",
+    "sha256": "7aae12fc402227bfd98f170be79f80ce05debdfb3d6b5876ff1a4f468e19aaa4"
+  },
+  {
+    "language": "en",
+    "id": "satellite-settings",
+    "run": "doc-03-en-satellite-single",
+    "sha256": "0f8564d4eb182ba606ae00fdb55569c738b6a48acfca493cc9a705e870dc9a62"
+  },
+  {
+    "language": "en",
+    "id": "plugin-feed",
+    "run": "doc-03-en-plugins",
+    "sha256": "a5b9365d3671f8535fbf060bddeaddcc3a063e84493e571e965146c9c807ddc0"
+  }
+]

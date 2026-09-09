@@ -25,9 +25,11 @@ Das JSON-Inventar enthält auch `self.*`-Felder. Ihr Kontext gehört zur Identit
 
 ## Bilder
 
-Für künftige Bildserien echte OSD-Aufnahmen verwenden und Version, Sprache und Skin festhalten. Keine künstlich nachgebauten Screenshots als echte E2-Aufnahme ausgeben. Zugangsdaten, persönliche Dateinamen und unnötige Geräteinformationen vor einer Veröffentlichung vermeiden. Rohaufnahmen können lokal unter `.capture-private/` bleiben; dieser Ordner wird nicht eingecheckt.
+Für Bildserien echte OSD-Aufnahmen verwenden und Version, Sprache und Skin festhalten. Keine künstlich nachgebauten Screenshots als echte E2-Aufnahme ausgeben. Zugangsdaten, persönliche Dateinamen und unnötige Geräteinformationen vor einer Veröffentlichung vermeiden. Rohaufnahmen bleiben lokal unter `.capture-private/`; dieser Ordner wird nicht eingecheckt.
 
-Geprüfte Bilder möglichst unter `src/assets/` einbinden, damit Astro sie optimieren kann. Eine verständliche Bildbeschreibung ergänzen. Nur die Bilder aufnehmen, die einen Schritt erklären; große Rohbildarchive gehören nicht in die veröffentlichte Website.
+Die Anleitung [Bildserien erstellen](docs/CAPTURE.md) beschreibt den vollständigen Weg. `data/captures-review.json` legt die nach Sichtprüfung ausgewählten Bilder mit Prüfsummen fest. `scripts/import-captures.py` übernimmt nur diese Dateien nach `src/assets/captures/de/` und `en/` und schreibt `data/captures.json`. Jede Kennung benötigt ein Bild in beiden Sprachen. Geänderte Bilder erfordern eine erneute Prüfung.
+
+In einem Artikel mit der Endung `.mdx` die Komponente `Capture.astro` importieren und mit Bildkennung, Sprache, Alternativtext und Bildunterschrift verwenden. Das Beispiel steht in der Capture-Anleitung. Beim Umbenennen von `.md` nach `.mdx` bleibt der URL-Pfad gleich. Astro erzeugt passende Bildgrößen; das Original bleibt über einen Link erreichbar. Nur Bilder aufnehmen, die einen Schritt erklären. Der Build benötigt ausschließlich die eingecheckten, geprüften Assets.
 
 ## Veröffentlichung
 

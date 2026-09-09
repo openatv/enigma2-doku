@@ -11,13 +11,17 @@ Die gemeinsame, modellneutrale Grunddokumentation für openATV: Deutsch und Engl
 - Einstellungsreferenz mit vorhandenen Beschriftungen und Originalhilfetexten
 - Erweiterbare Bereiche für Skins, Add-ons und spätere Anhänge
 
-Die Anleitungen wurden anhand des openATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. Ein vollständiger Praxistest aller beschriebenen Abläufe und eine bebilderte Ersteinrichtungsserie sind noch offen. Es wurden keine Tuner-, Netzwerk- oder anderen Einstellungen auf der bereitgestellten Box verändert. Das Capture-Plugin ist kein Bestandteil dieser Grundlage.
+Die Anleitungen wurden anhand des openATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. Acht Kapitel pro Sprache enthalten jetzt echte OSD-Aufnahmen: insgesamt 26 geprüfte Bilder aus einer Serie von 34 Aufnahmen mit openATV 8.0.2-devel und MetrixHD. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz.
+
+Die vorhandene NAS-Freigabe und die HDD wurden auf Schreib- und Lesezugriff geprüft. Ihre Einbindung sowie Tuner- und LAN-Konfiguration blieben erhalten. Für einheitliche Bilder wurde MetrixHD verwendet; nach den DE/EN-Läufen wurde die ursprüngliche Sprache wiederhergestellt. Einzelne Assistentenansichten sind bebildert, der vollständige Neuinstallationsablauf ist noch nicht durchgetestet. WLAN und FBC folgen auf passender Hardware. Der [Prüfstand](docs/PRAXISTESTS.md) trennt aufgenommene Ansichten von vollständig getesteten Bedienabläufen.
+
+Das bestehende [ScreenshotTour-Projekt](https://github.com/openatv/enigma2-plugin-test) wurde in einem separaten Repository um Aufnahmeprofile, `grab`, DE/EN-Läufe und Prüfsummen erweitert. Installation, Bildprüfung und Übernahme ins Handbuch: [Bildserien erstellen](docs/CAPTURE.md). Die Website benötigt das Plugin und die Testbox nur zum Erstellen neuer Bilder, nicht beim Build oder beim Lesen.
 
 Das automatisch erzeugte Verzeichnis enthält 68 Bereiche und 968 Einstellungsreferenzen, einschließlich dialoglokaler Felder. 44 Bereiche haben einen aus dem Quellcode zugeordneten Menüweg. Weitere dynamische Menüs sind noch nicht vollständig erfasst. Der Originalhilfetext ist keine zusätzliche redaktionelle Prüfung. Deutsche Übersetzungen kommen aus `po/de.po`; fehlt eine passende Übersetzung, bleibt die englische Quellbezeichnung erhalten.
 
 ## Lokal starten
 
-Voraussetzungen: Node.js 24 und pnpm 11.19.0. Python 3.10 oder neuer wird nur für den Quellimport und dessen Tests benötigt.
+Voraussetzungen: Node.js 24 und pnpm 11.19.0. Python 3.10 oder neuer wird für die Quell-/Bildimporte und deren Tests benötigt.
 
 ```sh
 npm install --global pnpm@11.19.0
@@ -70,7 +74,7 @@ Nach einem Import den Diff prüfen, neue oder geänderte Optionen redaktionell b
 
 ## Platzbedarf und Apache2
 
-`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Rohbilder, `node_modules` und `.git` werden nicht veröffentlicht.
+`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Für die 26 freigegebenen Aufnahmen enthält die Website das Original-PNG zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite.
 
 Bei einem Wechsel auf Apache2 wird dieselbe Website für die neue Adresse gebaut. Sie benötigt dort nur statische Dateiauslieferung. [Apache2-Bereitstellung](docs/APACHE2.md).
 

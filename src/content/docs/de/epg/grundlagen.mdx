@@ -3,6 +3,8 @@ title: EPG einrichten und speichern
 description: Programminformationen in openATV anzeigen, EPG-Ansichten wählen und epg.dat samt Speicherort verstehen.
 ---
 
+import Capture from '../../../../components/Capture.astro';
+
 Der **EPG** ist der elektronische Programmführer. Er zeigt Informationen zu laufenden und kommenden Sendungen. Welche Daten vorhanden sind, hängt von den verfügbaren Programminformationen und der verwendeten Datenquelle ab.
 
 ## EPG öffnen
@@ -16,6 +18,8 @@ Die Ansicht verändert die Darstellung der vorhandenen Daten. Sie erzeugt selbst
 **Menü → Einstellungen → EPG → EPG**
 
 In der englischen Oberfläche heißt der letzte Eintrag **EPG Settings**. Weitere EPG-Menüpunkte konfigurieren jeweils eine bestimmte Ansicht. Falls der Bereich fehlt, prüfe den [Einstellungsmodus](../../erste-schritte/bedienung/).
+
+<Capture id="epg-menu" language="de" alt="EPG-Menü mit den Grundeinstellungen und mehreren EPG-Ansichten" caption="Die Grundeinstellungen und die Einstellungen einzelner EPG-Ansichten sind getrennte Menüpunkte." />
 
 ## EPG-Daten speichern
 
@@ -32,7 +36,9 @@ In der englischen Oberfläche heißt der letzte Eintrag **EPG Settings**. Weiter
 | Dateiname | Name der Cache-Datei, üblicherweise `epg.dat` |
 | Geplantes Speichern | Sichert den Cache zusätzlich in einem regelmäßigen Abstand |
 
-`epg.dat` ist ein Zwischenspeicher für Programminformationen. Das Speichern dieser Datei lädt keine zusätzlichen Sendungen aus dem Internet herunter.
+<Capture id="epg-settings" language="de" alt="EPG-Einstellungen mit der markierten Option EPG-Daten speichern und dem Wert Ja" caption="Die markierte Option steuert die Speicherung der EPG-Datei. Speicherort und Dateiname stehen darüber." />
+
+`epg.dat` ist ein Zwischenspeicher für Programminformationen. Das Speichern dieser Datei lädt keine zusätzlichen Sendungen aus dem Internet herunter. Die weiteren im Beispiel sichtbaren EPG-Quellen müssen nicht pauschal aktiviert werden; ihre Verwendung hängt vom empfangenen Angebot ab.
 
 ## Wenn der EPG leer bleibt
 
