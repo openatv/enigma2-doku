@@ -38,6 +38,14 @@ const checks = [
   ['en', 'WQHD', '/en/skins/metrixhd/aufloesung/'],
   ['en', 'Skinparts', '/en/skins/metrixhd/skinparts/'],
   ['en', 'Picture grid', '/en/settings/kanalliste/'],
+  ['de', 'Einfache Infoleiste', '/de/erste-schritte/infobar/'],
+  ['de', 'Zweite Infoleiste', '/de/erste-schritte/infobar/'],
+  ['de', 'Versteckte Menüoptionen', '/de/erste-schritte/menue-anpassen/'],
+  ['de', 'horizontal', '/de/erste-schritte/menue-anpassen/'],
+  ['en', 'Simple Infobar', '/en/erste-schritte/infobar/'],
+  ['en', 'Second Infobar', '/en/erste-schritte/infobar/'],
+  ['en', 'Hidden menu options', '/en/erste-schritte/menue-anpassen/'],
+  ['en', 'horizontal', '/en/erste-schritte/menue-anpassen/'],
 ];
 for (const lang of ['de', 'en']) {
   language = lang;

@@ -47,8 +47,10 @@ Die SSH-Hostkennung muss bereits bekannt sein. Eine getrennte bekannte Hostdatei
 | `metrix` | 9 | MyMetrixLite, Schriften, Farben, Wetter, sonstige Optionen, Skinparts und Sicherungen |
 | `channel-controls` | 3 | Kontextmenü und die zwei Modi der Senderlisten-Einstellungen |
 | `channel-styles` | 19 | Vier klassische MetrixHD-Varianten und drei neue Bildschirme mit je fünf Listenstilen |
+| `infobars` | 8 | Normale Infobar, Lite, zweite INFO/ECM, Sendungsinformationen und drei OSD-Gruppen |
+| `menu-options` | 5 | Vertikales/horizontales Menü, Bearbeitungsmodus, Menü- und Hilfeoptionen |
 
-Die vollständige Serie erzeugt 96 Bilder in Deutsch und Englisch. Enigma2 wird für jede Sprache neu gestartet, weil bereits angelegte Auswahlwerte sonst in der vorherigen Sprache bleiben können. Das Werkzeug stellt die vier ursprünglichen Spracheinstellungen anschließend wieder her. Die Details zu Abbruch und Wiederherstellung stehen in der README des Pluginrepositories.
+Die oben gezeigte Bootlogo-Serie mit den bisherigen acht Profilen erzeugt 96 Bilder in Deutsch und Englisch. Die zwei neuen Profile ergänzen 26 Bilder mit Senderhintergrund. Enigma2 wird für jede Sprache neu gestartet, weil bereits angelegte Auswahlwerte sonst in der vorherigen Sprache bleiben können. Das Werkzeug stellt die vier ursprünglichen Spracheinstellungen anschließend wieder her. Die Details zu Abbruch und Wiederherstellung stehen in der README des Pluginrepositories.
 
 `--bootlogo` benötigt zusätzlich `/usr/bin/showiframe` und `/usr/share/bootlogo.mvi`. Dieser Modus stoppt die Wiedergabe und nimmt OSD plus Bootlogo auf. Er prüft vor und nach der Aufnahme, dass kein Sender aktiv ist, und verwirft ein Bild bei gestarteter Wiedergabe. Ein nicht empfangbarer Startsender verhindert zwischen den Sprachneustarts laufendes TV. Für die neutrale Übergabe nach dem letzten Neustart nochmals ein einzelnes Profil in der ursprünglichen Sprache mit `--bootlogo` ausführen.
 
@@ -57,6 +59,24 @@ Die Senderlisten-Galerie markiert für aussagekräftige Spalten vorhandene Sende
 Die Profile öffnen Ansichten und speichern keine darin gezeigten Konfigurationen. Das Paketprofil aktualisiert den Katalog, installiert jedoch kein Paket. Die beiden Assistentenbilder belegen die jeweiligen Ansichten; sie ersetzen keinen Test des gesamten Assistentenablaufs.
 
 ## Ergebnisse prüfen und übernehmen
+
+### Infobar-Serie mit Senderinformationen
+
+Für die Infobar vorab einen geeigneten Beispielsender mit EPG auswählen und die Serie im Pluginrepository starten:
+
+```sh
+python tools/capture.py --host root@BOX --run-prefix infobar-001 \
+  --profiles infobars menu-options --languages de en \
+  --restart-languages --service-background
+```
+
+Dieser Modus benötigt den lokalen OpenWebif-Zugang der Box. Er hält den gewählten Sender aktiv und stellt ihn nach den Sprachneustarts wieder ein. `--bootlogo` und `--service-background` schließen sich aus. Der Hintergrund wird nicht eingefroren; Sender und Zeitraum müssen für die geplanten Bilder geeignet sein.
+
+Die erste Infobar wird an der bestehenden InfoBar-Instanz mit nativen Skinvorlagen aufgenommen. Temporäre Darstellung und Zeitlimits werden zurückgesetzt. Zweite Infobars und Sendungsinformationen verwenden die originalen Enigma2-Dialoge. Es wird weder eine zweite InfoBar-Singleton-Instanz erzeugt noch ein Timer angelegt. Beim Menü-Bearbeitungsbild werden keine Einträge verschoben oder ausgeblendet.
+
+Der Client prüft, dass der ausgewählte Sender vor und während der Bilder aktiv bleibt. Die Servicereferenz und der Ausgangszustand stehen nur in privaten Dateien. Der öffentliche Import übernimmt lediglich die festgelegte Hintergrundbeschreibung, niemals die vollständigen Aufträge.
+
+### Sichtprüfung und Import
 
 Auf der Box und dem PC liegt pro Lauf ein eigener Ordner mit `manifest.json` und Sprachordner. Ergebnisse zunächst in `.capture-private/` des Handbuchrepositories ablegen. Der Ordner bleibt außerhalb von Git.
 
@@ -75,22 +95,23 @@ Die freigegebenen Dateien stehen in `data/captures-review.json`:
     "language": "de",
     "id": "main-menu",
     "run": "handbuch-001-de-foundation",
-    "sha256": "vollständige SHA-256-Prüfsumme der geprüften PNG-Datei"
+    "sha256": "vollständige SHA-256-Prüfsumme der geprüften PNG-Datei",
+    "tool_commit": "vollständiger Git-Commit des Aufnahmeplugins für dieses Bild"
   }
 ]
 ```
 
-Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme und sein englisches Gegenstück. Die aktuelle Datei enthält 88 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
+Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme, einen gültigen Werkzeug-Commit und sein englisches Gegenstück. Die aktuelle Datei enthält 114 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
 
 Im Handbuchrepository importieren:
 
 ```sh
 python scripts/import-captures.py --source .capture-private \
   --review data/captures-review.json \
-  --tool-commit 32677d7566a1f07f68a11b353df6dbab378ac3fb
+  --tool-commit c6a9fbdb68dcef6a8323ee337feecf0556dda6f8
 ```
 
-Bei einer neuen Pluginversion ihren tatsächlichen Commit verwenden. Der Importer prüft erfolgreiche Läufe, Bildpfade, Prüfsummen und vollständige Sprachpaare, bevor er Dateien kopiert. Bereits veröffentlichte Bilder, die aus der Auswahl entfernt werden, müssen bewusst aus dem Assetordner gelöscht werden; der Importer meldet solche Reste. Er exportiert keine vollständigen Rohmanifeste und keine Verbindungsdaten.
+Bei einer neuen Pluginversion ihren tatsächlichen Commit verwenden. `tool_commit` je Prüfeintrag bewahrt den Werkzeugstand älterer Bilder; fehlt es, gilt der Wert von `--tool-commit`. Das öffentliche Inventar nennt den tatsächlichen Stand je Bild als `capture_tool_commit`; der gleichnamige Wert auf oberster Ebene ist die Importvorgabe. Der Importer prüft erfolgreiche Läufe, Bildpfade, Prüfsummen und vollständige Sprachpaare, bevor er Dateien kopiert. Bereits veröffentlichte Bilder, die aus der Auswahl entfernt werden, müssen bewusst aus dem Assetordner gelöscht werden; der Importer meldet solche Reste. Er exportiert keine vollständigen Rohmanifeste und keine Verbindungsdaten.
 
 ## Bilder im Artikel
 

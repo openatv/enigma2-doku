@@ -1,0 +1,139 @@
+---
+title: Understand and configure the Infobar
+description: Standard and simple InfoBar Lite, Second Infobar INFO and ECM, Event Info, icons, timeouts and hidden OSD options in OpenATV.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+The **Infobar** displays information about the channel currently playing. You can choose how much it shows, when it appears and how long it stays visible. These examples use MetrixHD; the OpenATV settings described here are independent of the receiver model.
+
+## The shortcut: MENU, then MENU again
+
+Press <kbd>MENU</kbd> while watching TV to display the main menu. **With the main menu open**, press <kbd>MENU</kbd> again. This opens **OSD Settings**. Scroll to **InfoBar Timing And Appearance**. Further down you will find groups for Infobar behaviour and content.
+
+The full path is **Menu → Setup → Usage & GUI → OSD Settings**. [Customise menus](../menue-anpassen/) explains menu layouts and the other options in this dialog. These are two consecutive steps, not a rapid double-click.
+
+## Show the Infobar and cycle through views
+
+With **OK button mode = InfoBar**:
+
+1. Press <kbd>OK</kbd> while the TV picture is visible without an Infobar to show the first Infobar.
+2. Press <kbd>OK</kbd> again while it is visible to open the view selected under **2nd InfoBar**. With **Off**, the first Infobar disappears.
+3. Use <kbd>EXIT</kbd> to close the current view. Another press of <kbd>OK</kbd> also hides the second Infobar.
+
+If the first Infobar times out before the second press, <kbd>OK</kbd> shows it again. Increase its timeout while trying the different views.
+
+**Does OK open the channel list instead?** Go to **Menu → Setup → Usage & GUI → Remote Control Button Settings → OK button mode** and select **InfoBar**. Custom button assignments can also change the behaviour. Use <kbd>HELP</kbd> to see the actions available in the current screen.
+
+## Reading the standard Infobar
+
+<Capture id="infobar-standard" language="en" alt="Standard MetrixHD Infobar showing KiKA HD, the current and next programme, progress, signal readings and icons" caption="The standard Infobar on the selected example channel. The picture and EPG come from the running receiver; readings are a snapshot." />
+
+| Display | Meaning |
+| --- | --- |
+| Channel name and number | The channel playing and its position in the channel list. The number is not a frequency. |
+| Picon | A channel logo from the installed picon collection. A missing logo does not mean reception has failed. |
+| Current and next programme | Titles supplied by the EPG. This example shows “Sendeschluss”, the channel's overnight break, followed by the next scheduled programme. |
+| Progress bar, start/end time, minutes | Programme progress and timing. OSD settings control whether remaining time, elapsed time or both are displayed. |
+| Clock and date | The receiver's system time. An incorrect clock can also affect the interpretation of EPG and timers. |
+| Tuner letters | Indications of tuners and their status. Their number, colour and position depend on the equipment and skin. |
+| SNR | A reception quality reading in percent or dB depending on the setting. It is not volume and is not directly comparable across all receivers. |
+| Orbital position | For satellite reception, the position of the satellite being received, here 19.2° East. |
+| Video resolution, HD, WIDE | Properties of the received picture. Here, “1280×720” describes the video signal; it does not change HDMI output or skin resolution. |
+| REC and other icons | Indications such as recording, subtitles, teletext, HbbTV, audio format or encryption. The distinction between active/bright and inactive/grey icons depends on the skin. |
+
+Weather, programme artwork and additional system data are optional skin features. They are not present in every Infobar. [MyMetrixLite](../../skins/metrixhd/sonstiges/) controls which elements MetrixHD displays; see the separate guides to [weather](../../skins/metrixhd/wetter/) and [skinparts](../../skins/metrixhd/skinparts/).
+
+The EPG in these examples remains in the broadcaster's language. The existing weather widget also retains German weekday abbreviations from its cached data; the OpenATV controls use the selected menu language.
+
+## The simple Infobar: InfoBar Lite
+
+Enable **OSD Settings → Show InfoBar lite** to use the reduced first Infobar. Save and accept the offered **GUI restart**. <kbd>OK</kbd> then displays the simple bar. To return to the standard version, select **No**, save and restart the GUI again.
+
+<Capture id="infobar-lite" language="en" alt="Simple MetrixHD InfoBar Lite with a picon, current and next programme and timing" caption="InfoBar Lite reduces MetrixHD's first bar to essential programme information. Additional skinparts may remain visible." />
+
+**Simple Infobar**, **Lite** and **InfoBar Lite** refer to this reduced view. It is independent of the **2nd InfoBar** selection. The skin must provide a Lite layout; otherwise OpenATV can fall back to the standard Infobar.
+
+## Second Infobar: four choices
+
+Under **OSD Settings → 2nd InfoBar**, choose:
+
+| Selection | What appears when you press OK again |
+| --- | --- |
+| Off | No second view; the first Infobar disappears. |
+| Event Info | A separate detail view for the current programme. |
+| 2nd InfoBar INFO | The skin's second Infobar with more programme information. |
+| 2nd InfoBar ECM | The skin's second Infobar with additional technical reception/encryption information where available. |
+
+### Event Info
+
+<Capture id="infobar-event" language="en" alt="Event Info for the current overnight break, including title, channel, timing and description" caption="This selection opens a separate EPG dialog. The broadcaster supplies its text; changing the menu language does not translate the EPG." />
+
+Choose this if you mainly want to read the programme description. Follow the labelled colour buttons for further actions. Opening this view does not create a timer.
+
+### 2nd InfoBar INFO
+
+<Capture id="infobar-second-info" language="en" alt="Second Infobar INFO with descriptions of the current and next programme" caption="MetrixHD provides more space for EPG descriptions here. Other skins may arrange the information differently." />
+
+This view offers more programme detail without opening the full programme guide menu. The second Infobar also provides actions for browsing or timers; check <kbd>HELP</kbd> or the visible button hints for the active assignments.
+
+### 2nd InfoBar ECM
+
+<Capture id="infobar-second-ecm" language="en" alt="Second Infobar ECM with an additional technical line for reception and encryption" caption="Technical information appears at the top. CRYPT is empty for this free-to-air example channel; that is not a fault." />
+
+**ECM** means *Entitlement Control Message* and relates to information used by encrypted services. This view is for technical diagnosis; it does not enable decryption. For free-to-air channels, the relevant fields can be empty or have no applicable information. Frequency, polarisation, symbol rate, AGC and BER are additional reception readings where the skin and reception method provide them.
+
+## Timeouts and appearance
+
+<Capture id="infobar-settings-timing" language="en" alt="OSD settings for Infobar timeouts, second Infobar selection, picons and InfoBar Lite" caption="The main Infobar options are grouped in OSD Settings. Scroll down to reach the other groups." />
+
+| Option | Purpose |
+| --- | --- |
+| 1st InfoBar timeout | Hide automatically after 1–20 seconds or keep it visible with no timeout. |
+| 2nd InfoBar / timeout | Choose the second view and its display duration. The separate Event Info dialog can behave differently and is closed explicitly. |
+| Show InfoBar picons | Show or hide existing channel logos. This switch does not download picons. |
+| Show InfoBar lite | Use the reduced first Infobar; observe the GUI restart prompt. |
+| Enable InfoBar fade-out / speed | Fade the Infobar smoothly where supported. The speed option appears when fading is enabled. |
+| InfoBar EPG mode | Choose access to QuickEPG, for example long OK, EXIT or LEFT/RIGHT. This is a separate feature from the second Infobar. |
+
+## When the Infobar appears automatically
+
+<Capture id="infobar-settings-behavior" language="en" alt="OSD options for showing the Infobar on channel changes, skipping, pause and event changes" caption="These options control when the Infobar appears. Some require Intermediate or Expert settings mode." />
+
+| Behaviour | Purpose |
+| --- | --- |
+| Show InfoBar on channel change | Identify the channel and programme immediately after switching. |
+| Show InfoBar on skip forward/backward | See playback information while moving through media. |
+| Show persistent InfoBar while paused | Keep playback information visible during a pause. |
+| Show InfoBar on event change | Be notified when the EPG reports a new programme, even without changing channels. |
+
+The pause setting concerns playback information; it does not automatically pause live TV.
+
+## Choosing the contents
+
+<Capture id="infobar-settings-content" language="en" alt="OSD options for channel number, picon background, genre and remaining or elapsed time" caption="Time formatting and the visible contents can be configured separately." />
+
+| Option group | Explanation |
+| --- | --- |
+| Channel number | Show the number in the Infobar where used by the skin. |
+| Picon background colour | Change the background behind transparent channel logos. Availability can depend on the skin. |
+| Event genre | Display the category supplied by the EPG; missing data means no category can be shown. |
+| Time remaining/elapsed | Choose remaining time, time already elapsed or both. |
+| Positive/negative elapsed time | Change the sign used in the time display. This does not change the schedule. |
+| Live-TV / media time display | Choose their display formats separately, for example minutes or progress. |
+| Subservices | Control the indication of subservices depending on availability or EPG. |
+| Crypto information | Show technical encryption details if the skin supports them. |
+| Front end data source | Choose stored reception information or readings reported by the tuner. |
+| SNR in percent / dB | Change the unit used by supported signal displays. |
+
+If an option is missing, check [settings mode](../bedienung/#a-setting-is-missing). **Expert** reveals extra options; it does not enable them automatically. The [OSD reference](../../einstellungen/referenz/userinterface/) contains all imported original help texts and technical keys, including `config.usage.show_infobar_lite` and `config.usage.show_second_infobar`.
+
+## Common questions
+
+- **No second bar:** Check “2nd InfoBar”, the OK assignment and whether the first bar is still visible.
+- **Missing programme titles or description:** Check the [EPG](../../epg/grundlagen/). The Infobar does not generate its own programme data.
+- **Lite looks unchanged:** Restart the GUI after saving and check whether the skin provides a Lite view.
+- **Clock, weather or large channel number differs from the example:** [MyMetrixLite](../../skins/metrixhd/sonstiges/) and active skinparts also control the appearance.
+- **Saved but no visible difference:** Open the same view again. Some options only affect a second bar or media playback; changes marked with an asterisk or restart notice require a restart.
+
+Sources: [OSD options](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [choices and defaults](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py), [Infobar controls](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBarGenerics.py), [Lite selection](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBar.py).

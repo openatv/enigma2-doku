@@ -54,6 +54,21 @@ class CaptureImportTests(unittest.TestCase):
             self.run_import()
         self.assertEqual(list(self.output.iterdir()), [])
 
+    def test_mixed_tool_versions_and_service_background_keep_reference_private(self):
+        self.items[0]['tool_commit'] = 'b' * 40
+        self.review.write_text(json.dumps(self.items), encoding='utf-8')
+        file = self.source / 'run-en/manifest.json'
+        data = json.loads(file.read_text(encoding='utf-8'))
+        data['request'] = {'backend': 'grab-service', 'expected_service': 'private:service:reference'}
+        data['background'] = 'operator-selected service; playback preserved'
+        file.write_text(json.dumps(data), encoding='utf-8')
+        self.run_import()
+        result = json.loads((self.output / 'data/captures.json').read_text(encoding='utf-8'))
+        self.assertEqual([item['capture_tool_commit'] for item in result['captures']], ['b' * 40, 'a' * 40])
+        self.assertEqual(result['captures'][1]['background'], data['background'])
+        self.assertNotIn('private:service:reference', json.dumps(result))
+        self.assertNotIn('expected_service', json.dumps(result))
+
     def test_missing_translation_and_incomplete_run_are_rejected(self):
         self.review.write_text(json.dumps(self.items[:1]), encoding='utf-8')
         with self.assertRaisesRegex(ValueError, 'DE/EN counterparts'):

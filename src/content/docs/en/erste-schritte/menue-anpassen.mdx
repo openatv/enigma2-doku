@@ -1,0 +1,116 @@
+---
+title: Hidden menu options and OSD
+description: Press MENU again in the main menu, choose vertical or horizontal menus, change entry styles, sort and hide entries, and configure help in OpenATV.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Press MENU again while the main menu is open.** This easily missed shortcut opens **OSD Settings**, where you can customise menus and find many [Infobar](../infobar/) options. OSD means *On-Screen Display*: the overlays and controls shown on the TV picture.
+
+## MENU depends on the current screen
+
+| Where you are | What MENU opens |
+| --- | --- |
+| Watching TV | The main menu. |
+| Main menu or a regular submenu | OSD Settings. Open the menu first, then press MENU again. |
+| Channel list | The channel list's context menu, including access to its settings. See [channel list and styles](../../settings/kanalliste/). |
+| Settings dialog with a selection option highlighted | When MENU is offered: a list of the available values, such as the second Infobar variants. |
+| Other dialogs or plugins | The action assigned there, if any. Follow the labels and HELP. |
+
+The second press does not open the same dialog in every plugin. It is the additional action provided by regular OpenATV menus.
+
+## Open OSD Settings and apply a change
+
+1. Press <kbd>MENU</kbd> while watching TV.
+2. Once the main menu is open, press <kbd>MENU</kbd> again.
+3. Select an option in **OSD Settings** and change it with <kbd>←</kbd>/<kbd>→</kbd>.
+4. Read the help for the selected row and choose **Save**.
+5. Reopen the main menu to see its new appearance. Follow any GUI restart prompt for options that require it.
+
+Alternative path: **Menu → Setup → Usage & GUI → OSD Settings**.
+
+**See all values together:** Highlight an option such as **2nd InfoBar**. If the dialog offers MENU, press it to open the available choices as a list. This can be easier than pressing Left/Right repeatedly. Choose a value with OK, then use **Save** to apply the settings dialog.
+
+<Capture id="osd-menu-options" language="en" alt="OSD Settings with menu style, entry style, sort order and screen menu path" caption="The first OSD options affect menus and setup dialogs. The Infobar groups are further down." />
+
+## Vertical or horizontal menus
+
+**OSD Settings → Menu style** controls the arrangement:
+
+| Selection | Navigation and use |
+| --- | --- |
+| Vertical menu | Entries appear below each other; navigate with Up/Down. Useful for scanning several entries as a list. |
+| Horizontal menu | Entries appear next to each other; navigate with Left/Right. Useful if you prefer a row of larger menu fields. |
+
+<Capture id="menu-vertical" language="en" alt="Vertical OpenATV main menu with entries arranged below each other" caption="Vertical layout with numbers and images where displayed by the skin." />
+
+<Capture id="menu-horizontal" language="en" alt="Horizontal OpenATV main menu with entries arranged next to each other" caption="Horizontal layout of the same menu functions. The skin controls positioning, artwork and field sizes." />
+
+This changes menu arrangement. [Channel list styles](../../settings/kanalliste/) and the vertical EPG have their own settings.
+
+## Text, numbers and images
+
+**OSD Settings → Menu entry style** provides four combinations:
+
+| Selection | Meaning |
+| --- | --- |
+| Entry text only | Identify entries by their labels. |
+| Entry number and text | Add numbers for direct selection with the number buttons. |
+| Entry image and text | Allow the skin to display an icon or picture for the entry. |
+| Entry image, number and text | Combine all available display elements. |
+
+The skin's menu template determines which images appear and where. Enabling images does not download missing artwork. Menu numbers belong to the current menu; they are not channel numbers.
+
+## Sort, move and hide entries
+
+**Menu entry sort order** offers **Alphabetical**, **Default** and **User defined**. Default uses the order specified by the menu. User defined allows your own order and hidden entries.
+
+<Capture id="menu-edit" language="en" alt="Main menu in edit mode with Move Mode On, Hide and Edit Mode Off actions" caption="With user-defined sorting, the blue button offers edit mode. Colour labels indicate the action currently available." />
+
+1. Select **User defined** sorting in **OSD Settings**, save and reopen the menu you want to edit.
+2. Press <kbd>BLUE</kbd> at **Edit Mode On**.
+3. Select an entry. Press <kbd>GREEN</kbd> at **Move Mode On**, move it with the navigation buttons, then press <kbd>GREEN</kbd> again to finish moving it.
+4. Press <kbd>YELLOW</kbd> to hide or show the selected entry. Its label changes to reflect the action available.
+5. Press <kbd>BLUE</kbd> at **Edit Mode Off**. The menu applies the edited order when leaving edit mode.
+
+Hiding an entry does not remove its plugin or function. To bring an entry back, open edit mode again; hidden entries become accessible there. Changes apply to the menu being edited. The Plugin Browser and Extension Menu have separate sorting options.
+
+## Other menu and setup options
+
+| Option | Purpose |
+| --- | --- |
+| Show screen menu path | Display the path through previously opened menus in a small or large format; None hides it. This helps you find a settings area again. |
+| Sort Extension Menu | Set the ordering of entries in the Extension Menu. |
+| Sort Plugin Browser | Set the ordering of the Plugin Browser independently of the main menu. |
+| Show Movie Selection in Main Menu | Add access to the movie list, for example when no suitable remote button is assigned. Observe the restart prompt. |
+| File sorting mode | Decide whether uppercase/lowercase affects ordering in file lists. |
+| Show setup default value | Show an option's default alongside its help. Displaying the default does not reset the setting. |
+| Show True/False as graphical switch | Display boolean settings as graphical switches where supported. |
+| Show additional slider value | Display the numeric value alongside a slider. |
+
+## Help and visual feedback
+
+<Capture id="osd-help-options" language="en" alt="OSD options for help screen style, help animation speed and button error timeout" caption="The presentation of control help can also be configured in OSD Settings." />
+
+| Option | Purpose |
+| --- | --- |
+| Help screen style | Arrange help entries, for example alphabetically or within groups. |
+| Help animation speed | Control the movement of button indicators in help screens. |
+| Button error timeout | Set how long feedback appears for a button that has no applicable action there. |
+| Show animation while busy | Show a waiting animation while the system is busy. It does not speed up the operation. |
+| Show screen saver | Use a screen saver after the configured period of relevant inactivity; more options depend on enabling it. |
+| Information screens | Offer additional information pages or more spacing for readability. |
+
+Some rows only appear in **Intermediate** or **Expert** settings mode. [Controls and menus](../bedienung/#a-setting-is-missing) explains how to change that mode.
+
+## Where to find the other display options
+
+| What you want to change | Relevant area |
+| --- | --- |
+| Simple/second Infobar, timeouts, automatic display | [Infobar and OSD](../infobar/) |
+| MetrixHD clock, large channel number, weather, colours, skinparts | [MyMetrixLite](../../skins/metrixhd/) |
+| Classic and new channel list styles | [Channel list and styles](../../settings/kanalliste/) |
+| EPG layout and programme data | [EPG](../../epg/grundlagen/) |
+| An exact option or technical key | [OSD reference](../../einstellungen/referenz/userinterface/), for example `config.usage.menuType` |
+
+Sources: [MENU action and menu editing](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Menu.py), [OSD settings](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [menu choices](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py).

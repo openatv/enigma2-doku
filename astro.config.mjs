@@ -21,6 +21,8 @@ export default defineConfig({
         { slug: '', label: 'Übersicht', translations: { en: 'Overview' } },
         { slug: 'erste-schritte/ersteinrichtung', label: 'Erste Einrichtung', translations: { en: 'First setup' } },
         { slug: 'erste-schritte/bedienung', label: 'Bedienung & Menüs', translations: { en: 'Controls & menus' } },
+        { slug: 'erste-schritte/menue-anpassen', label: 'Menüoptionen & OSD', translations: { en: 'Menu options & OSD' } },
+        { slug: 'erste-schritte/infobar', label: 'Infobar verstehen', translations: { en: 'Understand the Infobar' } },
       ] },
       { label: 'Einrichten', translations: { en: 'Set up' }, items: [
         { slug: 'tuner/konfiguration', label: 'Tuner & Sendersuche', translations: { en: 'Tuners & channel scan' } },

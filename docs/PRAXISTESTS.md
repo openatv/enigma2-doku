@@ -78,7 +78,7 @@ MetrixHD/MyMetrixLite wurde mit Quellstand `c26f35adc71480851291a44da243ec0ba7b8
 
 Die übernommenen Grund- und MetrixHD-Bilder stammen aus `logo-02`, die abschließend mit EPG-Daten wiederholten Kanallisten aus `logo-03`. Vorläufe und die zusätzliche Übergabeserie bleiben privat. Die Namen und Zeiten der Programme in den Bildern sind Beispielinhalte aus dem vorhandenen EPG, auch in der englischen Oberfläche.
 
-### Aktuelle Website-Prüfungen
+### Website-Prüfungen dieser Bootlogo-Serie
 
 - 182 HTML-Seiten mit vollständigen DE/EN-Gegenstücken; 15 bebilderte Kapitel pro Sprache.
 - 88 geprüfte Original-PNGs plus responsive WebP-Varianten; alle Bilder mit neutralem Hintergrund protokolliert.
@@ -90,3 +90,33 @@ Die übernommenen Grund- und MetrixHD-Bilder stammen aus `logo-02`, die abschlie
 - Veröffentlichungsgröße mit Originalen und optimierten Bildern: rund 55,86 MB; deutlich innerhalb des 1-GB-Budgets.
 
 Die offenen vollständigen Bedienabläufe, WLAN und FBC aus der ersten Grundlage bleiben als weitere Arbeitsschritte bestehen. Es wurde auch in diesem Abschnitt nichts nach GitHub gepusht.
+
+## Ergänzung: Infobars und Menüoptionen mit Senderhintergrund
+
+Stand: 10. September 2026, nach der Bootlogo-Serie. Der Betreiber hat KiKA HD während „Sendeschluss“ als Beispielsender ausgewählt und für diese Aufnahmen ausdrücklich das Senderbild mit Programminformationen gewünscht. Die vorhandenen 88 Bootlogo-Bilder bleiben erhalten; 26 neue Bilder ergänzen sie.
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| Zwei neue Profile in DE/EN | `infobars`: 8 und `menu-options`: 5 Bilder je Sprache; alle 26 vollständig und einzeln gesichtet |
+| Infobar-Varianten | Standard, Lite, zweite INFO, zweite ECM und Sendungsinformationen als native Ansichten aufgenommen |
+| OSD-Optionen | Zeitlimits/zweite Leiste, automatisches Einblenden, Zeit-/Inhaltsanzeige, Menüoptionen und Hilfe bebildert |
+| Menüformen | Vertikale und horizontale native Menüs sowie Bearbeitungsmodus aufgenommen; kein Menüeintrag verschoben oder ausgeblendet |
+| Hintergrundprüfung | `grab-service` prüft den erwarteten aktiven Sender vor und während der Aufnahme; kein Bootlogo eingesetzt |
+| Sprache und Übergabe | DE/EN nach GUI-Neustarts, anschließend ursprüngliches Deutsch und gewählter Sender wiederhergestellt; Aufnahmedienst bereit |
+| EPG und Wetter | Echte Senderdaten unverändert, auch in EN; das vorhandene Wetterwidget behält teils deutsche Tageskürzel aus seinem Cache. Im Artikel erklärt. |
+| Vorübergehende Darstellung | Infobar-Skin, Zeitlimits und Menüdarstellung nach den Szenen zurückgestellt; danach Vertikal, Bild und Text, normale erste/ECM-zweite Infobar kontrolliert |
+| Öffentliche Metadaten | Werkzeugstand je Bild; die bisherigen 88 Aufnahmen behalten ihren alten Commit. Keine Servicereferenz oder vollständigen Aufträge importiert |
+
+Die veröffentlichten Ergänzungen stammen aus `infobar-01-de-infobars`, `infobar-01-en-infobars`, `infobar-01-de-menu-options` und `infobar-01-en-menu-options`. Aufnahmeplugin: `c6a9fbdb68dcef6a8323ee337feecf0556dda6f8`. Die zusätzliche Webremote-Probe lieferte zwar bestätigte Tastensendungen, zeigte im Kontrollbild aber nicht zuverlässig den erwarteten OSD-Zielzustand; sie wird nicht als erfolgreicher Ende-zu-Ende-Test der Tastenkette gewertet. Die dokumentierte MENU-Zuordnung wurde in `Screens/Menu.py`, `Components/ConfigList.py` und der Menüstruktur geprüft. Die Prüfung mit physischer Fernbedienung bleibt davon getrennt.
+
+### Website-Prüfungen der Ergänzung
+
+- 186 HTML-Seiten mit DE/EN-Gegenstücken; 17 bebilderte Kapitel je Sprache.
+- 114 geprüfte Original-PNGs plus responsive WebP-Varianten.
+- Astro-Prüfung ohne Fehler, Warnungen oder Hinweise; 6 Node-Tests und 7 Python-Tests im Handbuch erfolgreich.
+- Aufnahmeplugin: 19 Python-Tests erfolgreich, einschließlich Senderwechsel/Abbruch und Wiederherstellung ohne Schließen der Live-TV-Infobar; Python-Dateien kompilierbar.
+- GitHub-Pages-Build erfolgreich, interne Links, Bilddateien, Sprungmarken und Sprachpaare geprüft.
+- 21 Suchanfragen gegen den erzeugten Index erfolgreich, einschließlich einfacher/zweiter Infobar, versteckter Menüoptionen und horizontaler Menüs in DE/EN.
+- Rund 69,93 MB veröffentlichte Dateien; knapp 7 Prozent des konservativen 1-GB-Budgets.
+
+Die Änderungen werden ausschließlich lokal committed. Die Website benötigt zur Veröffentlichung nur ihre eigenen eingecheckten Bilder und keinen Zugriff auf die Testbox.

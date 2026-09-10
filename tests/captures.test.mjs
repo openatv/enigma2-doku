@@ -11,6 +11,7 @@ test('published screenshots match the reviewed inventory and have both languages
   assert.match(metadata.capture_tool_commit, /^[0-9a-f]{40}$/);
   assert.ok(metadata.captures.length > 0);
   const expected = new Map(review.map(item => [`${item.language}/${item.id}.png`, item.sha256]));
+  const toolCommits = new Map(review.map(item => [`${item.language}/${item.id}.png`, item.tool_commit || metadata.capture_tool_commit]));
   assert.equal(expected.size, review.length, 'duplicate review entries');
   assert.equal(metadata.captures.length, review.length);
   const seen = new Set();
@@ -20,6 +21,12 @@ test('published screenshots match the reviewed inventory and have both languages
     assert.equal(item.file, `${item.language}/${item.id}.png`);
     assert.equal(item.reviewed, true);
     assert.equal(item.sha256, expected.get(item.file));
+    assert.equal(item.capture_tool_commit, toolCommits.get(item.file));
+    assert.match(item.capture_tool_commit, /^[0-9a-f]{40}$/);
+    if (item.backend === 'grab-service') {
+      assert.equal(item.background, 'operator-selected service; playback preserved');
+      assert.ok(!('expected_service' in item), 'private selected service leaked');
+    }
     assert.ok(!seen.has(item.file), 'duplicate capture metadata');
     seen.add(item.file);
     languageIds[item.language].push(item.id);

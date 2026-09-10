@@ -45,11 +45,17 @@ def import_review(source, review, tool_commit):
             raise ValueError(f'Reviewed image changed: {relative}')
         metadata = {key: entry[key] for key in ('id', 'language', 'article', 'screen_key', 'captured_at', 'width', 'height', 'sha256')}
         metadata.update({'file': relative, 'image': manifest['image'], 'skin': manifest['skin'], 'reviewed': True})
+        entry_commit = item.get('tool_commit', tool_commit)
+        if not isinstance(entry_commit, str) or not re.fullmatch(r'[0-9a-f]{40}', entry_commit):
+            raise ValueError('Invalid per-image capture tool commit')
+        metadata['capture_tool_commit'] = entry_commit
         backend = manifest.get('request', {}).get('backend')
-        if backend in ('grab', 'grab-logo', 'x11'):
+        if backend in ('grab', 'grab-logo', 'grab-service', 'x11'):
             metadata['backend'] = backend
         if backend == 'grab-logo' and manifest.get('background') == 'receiver-bootlogo; playback stopped':
             metadata['background'] = 'receiver-bootlogo; playback stopped'
+        if backend == 'grab-service' and manifest.get('background') == 'operator-selected service; playback preserved':
+            metadata['background'] = 'operator-selected service; playback preserved'
         pending.append((image, metadata))
     if {name for lang, name in ids if lang == 'de'} != {name for lang, name in ids if lang == 'en'}:
         raise ValueError('Reviewed images must have matching DE/EN counterparts')

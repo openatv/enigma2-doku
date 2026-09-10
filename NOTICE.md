@@ -18,7 +18,7 @@ Die Dateien stammen aus demselben oben genannten Commit. Markenbezeichnungen und
 
 ## Echte Bildschirmaufnahmen
 
-Die Dateien unter `src/assets/captures/` sind unveränderte PNG-Aufnahmen einer bereitgestellten OpenATV-Testbox mit MetrixHD. Sie zeigen das echte OSD zusammen mit dem Bootlogo bei gestoppter Wiedergabe. Die Auswahl und Prüfsummen stehen in `data/captures-review.json`; Aufnahmezeit, Image, Skin und Herkunftswerkzeug in `data/captures.json`. Die Website erzeugt daraus zusätzlich verkleinerte WebP-Dateien. Es wurden keine Bildschirme künstlich nachgebaut und keine Bedienoberflächen nachträglich in die Aufnahmen montiert.
+Die Dateien unter `src/assets/captures/` sind unveränderte PNG-Aufnahmen einer bereitgestellten OpenATV-Testbox mit MetrixHD. Die bisherigen 88 Aufnahmen zeigen das echte OSD zusammen mit dem Bootlogo bei gestoppter Wiedergabe. Die 26 ergänzenden Infobar-/Menüaufnahmen zeigen den vom Betreiber gewählten Sender KiKA HD während „Sendeschluss“ mit seinen EPG-Daten. Die Auswahl und Prüfsummen stehen in `data/captures-review.json`; Aufnahmezeit, Image, Skin, Hintergrund und Werkzeugstand je Bild in `data/captures.json`. Die Website erzeugt daraus zusätzlich verkleinerte WebP-Dateien. Es wurden keine Bildschirme künstlich nachgebaut und keine Bedienoberflächen nachträglich in die Aufnahmen montiert.
 
 Die Aufnahmen zeigen die Benutzeroberfläche von Enigma2, MetrixHD und den sichtbaren Erweiterungen. Deren Urheber- und Markenrechte verbleiben bei den jeweiligen Inhabern. Die dargestellte Fernbedienung stammt aus der laufenden Oberfläche und ist kein unterstütztes Modellprofil des Handbuchs.
 

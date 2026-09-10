@@ -1,0 +1,116 @@
+---
+title: Versteckte Menüoptionen und OSD
+description: MENU im geöffneten Hauptmenü, vertikales und horizontales Menü, Menüanzeige, Sortieren, Einträge verbergen und Hilfen in OpenATV erklärt.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Drücke im geöffneten Hauptmenü noch einmal MENU.** Dieser leicht übersehene Weg öffnet **OSD**: Hier kannst du Menüs anpassen und findest viele Einstellungen für die [Infobar](../infobar/). OSD bedeutet *On-Screen Display*, also die Einblendungen und Bedienoberfläche auf dem Fernsehbild.
+
+## MENU hat je nach Bildschirm eine andere Aufgabe
+
+| Wo du dich befindest | Was MENU dort öffnet |
+| --- | --- |
+| Fernsehen | Das Hauptmenü. |
+| Hauptmenü oder ein normales Untermenü | Die OSD-Einstellungen. Erst das Menü öffnen, dann erneut MENU drücken. |
+| Kanalliste | Das Kontextmenü der Kanalliste, unter anderem mit dem Zugang zu ihren Einstellungen. Siehe [Kanalliste und Stile](../../settings/kanalliste/). |
+| Einstellungsdialog mit markierter Auswahloption | Wenn MENU eingeblendet ist: die verfügbaren Werte als Auswahlliste, zum Beispiel die Varianten der zweiten Infoleiste. |
+| Andere Dialoge oder Plugins | Die dort zugewiesene Aktion, sofern vorhanden. Beschriftung und HELP beachten. |
+
+Der zweite Tastendruck ist kein allgemeiner Trick, der in jedem Plugin denselben Dialog öffnet. Er ist die zusätzliche Aktion der normalen OpenATV-Menüs.
+
+## OSD öffnen und eine Änderung übernehmen
+
+1. Drücke beim Fernsehen <kbd>MENU</kbd>.
+2. Wenn das Hauptmenü offen ist, drücke erneut <kbd>MENU</kbd>.
+3. Markiere in **OSD** die gewünschte Option und ändere ihren Wert mit <kbd>←</kbd>/<kbd>→</kbd>.
+4. Lies den Hilfetext zur ausgewählten Zeile und verwende **Speichern**.
+5. Öffne das Hauptmenü erneut, um seine neue Darstellung zu sehen. Folge einem angebotenen GUI-Neustart bei entsprechend gekennzeichneten Optionen.
+
+Alternativ: **Menü → Einstellungen → Bedienung / Oberfläche → OSD**.
+
+**Alle Werte auf einmal sehen:** Markiere beispielsweise **Zweite Infoleiste**. Wenn der Dialog MENU anbietet, öffnet diese Taste die Liste der Auswahlwerte. Das ist oft übersichtlicher als wiederholt Links/Rechts zu drücken. Wähle einen Wert mit OK; die eigentliche Übernahme des Einstellungsdialogs erfolgt anschließend mit **Speichern**.
+
+<Capture id="osd-menu-options" language="de" alt="OSD-Dialog mit Menüdarstellung, Menüanzeige, Sortierung und Bildschirmmenüpfad" caption="Die ersten OSD-Optionen betreffen Menüs und Einstellungsdialoge. Die Infobar-Gruppen stehen weiter unten." />
+
+## Vertikales oder horizontales Menü
+
+**OSD → Menüdarstellung** bestimmt die Anordnung:
+
+| Auswahl | Bedienung und Verwendung |
+| --- | --- |
+| Vertikal | Einträge untereinander; mit Hoch/Runter auswählen. Praktisch, um mehrere Punkte als Liste zu überblicken. |
+| Horizontal | Einträge nebeneinander; mit Links/Rechts auswählen. Praktisch, wenn du eine Reihe größerer Menüfelder bevorzugst. |
+
+<Capture id="menu-vertical" language="de" alt="Vertikales OpenATV-Hauptmenü mit untereinander angeordneten Einträgen" caption="Vertikale Darstellung mit Nummern und Bildern, soweit der Skin sie anzeigt." />
+
+<Capture id="menu-horizontal" language="de" alt="Horizontales OpenATV-Hauptmenü mit nebeneinander angeordneten Menüfeldern" caption="Horizontale Darstellung derselben Menüfunktionen. Position, Grafiken und Feldgröße werden durch den Skin gestaltet." />
+
+Die Auswahl ändert die Anordnung der Menüs. Die [Kanallistenstile](../../settings/kanalliste/) und der vertikale EPG werden in ihren eigenen Einstellungen gewählt.
+
+## Texte, Nummern und Bilder
+
+**OSD → Menüanzeige** bietet vier Kombinationen:
+
+| Auswahl | Bedeutung |
+| --- | --- |
+| Nur Text | Der Menüeintrag wird über seine Bezeichnung dargestellt. |
+| Nummer und Text | Zusätzlich erscheint eine Nummer zur direkten Auswahl mit den Zifferntasten. |
+| Bild und Text | Der Skin kann ein Symbol oder Bild zum Eintrag anzeigen. |
+| Bild, Nummer und Text | Alle verfügbaren Darstellungselemente kombinieren. |
+
+Die tatsächlichen Auswahltexte können etwas ausführlicher lauten. Welche Bilder an welcher Stelle erscheinen, bestimmt die Menüvorlage des Skins. Eine aktivierte Bildoption beschafft keine fehlenden Grafiken. Menünummern gehören zur jeweiligen Menüansicht und sind keine Sendernummern.
+
+## Sortieren, verschieben und Einträge verbergen
+
+Unter **Sortierung der Menüeinträge** stehen **Alphabetisch**, **Standard** und **Benutzerdefiniert** zur Verfügung. Standard verwendet die vom Menü vorgegebene Reihenfolge; benutzerdefiniert ermöglicht eigene Reihenfolge und ausgeblendete Einträge.
+
+<Capture id="menu-edit" language="de" alt="Hauptmenü im Bearbeitungsmodus mit Verschiebemodus, Verbergen und Bearbeitungsmodus Aus" caption="Bei benutzerdefinierter Sortierung bietet die blaue Taste den Bearbeitungsmodus. Die Farbtasten zeigen die jeweils mögliche Aktion." />
+
+1. Wähle in **OSD** die Sortierung **Benutzerdefiniert**, speichere und öffne das gewünschte Menü erneut.
+2. Drücke <kbd>BLAU</kbd> bei **Bearbeitungsmodus Ein**.
+3. Markiere einen Eintrag. Mit <kbd>GRÜN</kbd> aktivierst du **Verschiebemodus Ein**; verschiebe ihn mit den Navigationstasten und beende das Verschieben wieder mit <kbd>GRÜN</kbd>.
+4. Mit <kbd>GELB</kbd> kannst du den markierten Eintrag verbergen beziehungsweise wieder anzeigen. Die Beschriftung wechselt passend zum Zustand.
+5. Beende mit <kbd>BLAU</kbd> bei **Bearbeitungsmodus Aus**. Dabei übernimmt das Menü die bearbeitete Reihenfolge.
+
+Verbergen entfernt kein Plugin und keine Funktion. Um einen Menüpunkt zurückzuholen, öffne wieder den Bearbeitungsmodus; dort werden auch verborgene Einträge zugänglich. Die Änderungen beziehen sich auf das bearbeitete Menü. Pluginübersicht und Erweiterungsmenü haben eigene Sortieroptionen.
+
+## Weitere Menü- und Einstellungsoptionen
+
+| Option | Wofür sie verwendet wird |
+| --- | --- |
+| Bildschirmmenüpfad anzeigen | Den Weg durch die zuvor geöffneten Menüs klein oder groß anzeigen; „Keine“ blendet den Pfad aus. Hilft dabei, einen Einstellungsbereich wiederzufinden. |
+| Sortierung des Erweiterungsmenüs | Die Reihenfolge der Einträge des Erweiterungsmenüs festlegen. |
+| Pluginübersicht sortieren | Die Reihenfolge der Pluginübersicht festlegen; diese ist unabhängig vom Hauptmenü. |
+| Filmauswahl im Hauptmenü anzeigen | Die Filmliste zusätzlich über das Hauptmenü zugänglich machen, zum Beispiel wenn keine passende Taste belegt ist. Neustarthinweis beachten. |
+| Dateisortierung | In Dateilisten festlegen, ob Groß-/Kleinschreibung die Reihenfolge beeinflusst. |
+| Standardwert anzeigen | Den Vorgabewert einer Einstellung beim Hilfetext anzeigen. Der Hinweis setzt die Einstellung nicht zurück. |
+| Grafische Ja/Nein-Schalter | Boolesche Werte als Schalter darstellen, soweit unterstützt. |
+| Zusätzlicher Schiebereglerwert | Den Zahlenwert zusätzlich am Schieberegler anzeigen. |
+
+## Hilfe und sichtbare Rückmeldungen
+
+<Capture id="osd-help-options" language="de" alt="OSD-Einstellungen für Fernbedienungstasten-Hilfe, Tastenanimation und Timeout für Tastenfehler" caption="Auch die Darstellung der Bedienhilfe lässt sich im OSD einstellen." />
+
+| Option | Verwendung |
+| --- | --- |
+| Stil der Hilfeanzeige | Hilfeeinträge beispielsweise nach Gruppen oder alphabetisch ordnen. |
+| Animationsgeschwindigkeit der Hilfe | Die Bewegung der Tastenhinweise in der Hilfe steuern. |
+| Anzeigedauer bei nicht belegter Taste | Bestimmen, wie lange die Rückmeldung zu einer dort nicht verwendbaren Taste eingeblendet wird. |
+| Animation bei Beschäftigung | Eine Warteanimation anzeigen, während das System beschäftigt ist. Sie beschleunigt die Aktion nicht. |
+| Bildschirmschoner | Nach der eingestellten Zeit ohne passende Aktivität eine Schonanzeige verwenden; weitere Optionen erscheinen je nach Aktivierung. |
+| Informationsbildschirme | Zusätzliche Informationsseiten beziehungsweise mehr Abstand für bessere Lesbarkeit anbieten. |
+
+Einige Zeilen sind erst unter **Fortgeschritten** oder **Experte** sichtbar. Den Weg zur Einstellungsansicht beschreibt [Bedienung und Menüs](../bedienung/#eine-einstellung-wird-nicht-angezeigt).
+
+## Wo gehören die anderen Anzeigeoptionen hin?
+
+| Gesuchte Funktion | Passender Bereich |
+| --- | --- |
+| Einfache/zweite Infobar, Anzeigedauer, Einblenden | [Infobar und OSD](../infobar/) |
+| MetrixHD-Uhr, große Sendernummer, Wetter, Farben, Skinparts | [MyMetrixLite](../../skins/metrixhd/) |
+| Klassische und neue Senderlistenstile | [Kanalliste und Stile](../../settings/kanalliste/) |
+| EPG-Darstellung und Programmdaten | [EPG](../../epg/grundlagen/) |
+| Exakte Option oder technischer Schlüssel | [OSD-Referenz](../../einstellungen/referenz/userinterface/), etwa `config.usage.menuType` |
+
+Quellen: [MENU-Aktion und Menübearbeitung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Menu.py), [OSD-Einstellungen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [Menü-Auswahlwerte](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py).

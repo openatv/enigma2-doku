@@ -1,0 +1,137 @@
+---
+title: Infobar verstehen und einstellen
+description: Normale und einfache Infoleiste, Second Infobar INFO und ECM, Sendungsinformationen, Symbole, Anzeigedauer und versteckte OSD-Optionen in OpenATV.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Die **Infobar** oder **Infoleiste** zeigt Informationen zum gerade eingeschalteten Sender. Du entscheidest, wie ausführlich sie ist, wann sie erscheint und wie lange sie sichtbar bleibt. Die Beispiele zeigen MetrixHD; die beschriebenen OpenATV-Einstellungen gelten unabhängig vom Boxmodell.
+
+## Schnell zu den Einstellungen: MENU, dann noch einmal MENU
+
+Drücke beim Fernsehen <kbd>MENU</kbd>, sodass das Hauptmenü sichtbar ist. Drücke **im geöffneten Hauptmenü erneut** <kbd>MENU</kbd>. Damit öffnest du **OSD**. Scrolle dort zur Gruppe **Zeitpunkt und Darstellung der Infoleiste**. Weiter unten folgen Verhalten und Inhalte der Infoleiste.
+
+Der vollständige Weg lautet **Menü → Einstellungen → Bedienung / Oberfläche → OSD**. Die Menüformen und weitere Optionen dieses Dialogs erklärt [Menüs anpassen](../menue-anpassen/). Es sind zwei aufeinanderfolgende Schritte, kein schneller Doppelklick.
+
+## Einblenden und weiterschalten
+
+Bei der Tastenbelegung **Taste OK = Infoleiste** gilt:
+
+1. Während das Fernsehbild ohne Infoleiste sichtbar ist, öffnet <kbd>OK</kbd> die erste Infobar.
+2. Drücke während ihrer Anzeige erneut <kbd>OK</kbd>, um die unter **Zweite Infoleiste** gewählte Ansicht zu öffnen. Bei **Aus** wird die erste Leiste ausgeblendet.
+3. Mit <kbd>EXIT</kbd> schließt du die geöffnete Ansicht. Bei der zweiten Infobar blendet auch ein weiterer Druck auf <kbd>OK</kbd> die Anzeige aus.
+
+Verschwindet die erste Leiste vor dem zweiten Tastendruck, zeigt <kbd>OK</kbd> sie wieder an. Verlängere zum Ausprobieren ihre Anzeigedauer.
+
+**OK öffnet stattdessen die Kanalliste?** Öffne **Menü → Einstellungen → Bedienung / Oberfläche → Fernbedienungseinstellungen → Taste OK** und wähle **Infoleiste**. Eine angepasste Tastenbelegung kann das Verhalten zusätzlich beeinflussen. <kbd>HELP</kbd> zeigt die im jeweiligen Bildschirm verfügbaren Aktionen.
+
+## Was die normale Infobar anzeigt
+
+<Capture id="infobar-standard" language="de" alt="Normale MetrixHD-Infobar mit KiKA HD, Sendeschluss, nächster Sendung, Fortschritt, Signalwerten und Symbolen" caption="Die normale Infobar am ausgewählten Beispielsender. Senderbild und EPG stammen aus der laufenden Box; die Werte sind eine Momentaufnahme." />
+
+| Anzeige | Bedeutung |
+| --- | --- |
+| Sendername und Nummer | Welcher Sender eingeschaltet ist und wo er in der Senderliste steht. Die Nummer ist keine Frequenz. |
+| Picon | Das Senderlogo aus dem installierten Piconbestand. Ein fehlendes Logo bedeutet nicht, dass der Sender nicht funktioniert. |
+| Laufende und nächste Sendung | Titel aus dem EPG. Im Beispiel läuft „Sendeschluss“, danach folgt die nächste angekündigte Sendung. |
+| Balken, Anfangs-/Endzeit, Minuten | Fortschritt und Zeitangaben der Sendung. Ob Restzeit, verstrichene Zeit oder beides erscheint, wird im OSD eingestellt. |
+| Uhr und Datum | Die Systemzeit der Box. Eine falsche Uhrzeit kann auch die Einordnung von EPG und Timern stören. |
+| Tunerbuchstaben | Hinweise auf die Tuner und deren Status. Anzahl, Farbe und Anordnung hängen von Ausstattung und Skin ab. |
+| SNR | Ein Messwert zur Empfangsqualität, je nach Einstellung in Prozent oder dB. Er ist keine Lautstärke und kein über alle Geräte vergleichbarer Qualitätsmaßstab. |
+| Orbitalposition | Bei Satellitenempfang die Position des empfangenen Satelliten, hier 19,2° Ost. |
+| Videoauflösung, HD, WIDE | Eigenschaften des empfangenen Bildes. „1280×720“ beschreibt hier das Videosignal; es stellt weder die HDMI-Ausgabe noch die Skinauflösung um. |
+| REC und weitere Symbole | Hinweise beispielsweise auf Aufnahme, Untertitel, Teletext, HbbTV, Tonformat oder Verschlüsselung. Helle/aktive und graue/inaktive Symbole unterscheiden sich je nach Skin. |
+
+Wetter, Sendungsbilder und zusätzliche Systemdaten sind ergänzende Skin-Anzeigen. Nicht jede Infobar enthält sie. [MyMetrixLite](../../skins/metrixhd/sonstiges/) bestimmt, welche Elemente MetrixHD darstellt; [Wetter](../../skins/metrixhd/wetter/) und [Skinparts](../../skins/metrixhd/skinparts/) haben eigene Anleitungen.
+
+## Einfache Infoleiste: InfoBar Lite
+
+Unter **OSD → Einfache Infoleiste anzeigen** schaltest du die reduzierte erste Infobar ein. Speichere und führe den angebotenen **GUI-Neustart** aus. Danach blendet <kbd>OK</kbd> die einfache Leiste ein. Mit **Nein** und erneutem GUI-Neustart kehrst du zur normalen Leiste zurück.
+
+<Capture id="infobar-lite" language="de" alt="Einfache MetrixHD-Infoleiste mit Picon, laufender und nächster Sendung sowie Zeitangaben" caption="InfoBar Lite reduziert in MetrixHD die erste Leiste auf die wesentlichen Programminformationen. Zusätzliche Skinparts können weiterhin sichtbar sein." />
+
+**Einfach**, **Lite** und **Simple Infobar** bezeichnen hier diese reduzierte Darstellung. Sie ist unabhängig von der Auswahl **Zweite Infoleiste**. Ein Skin muss die Lite-Ansicht bereitstellen; andernfalls kann OpenATV auf die normale Infobar zurückfallen.
+
+## Zweite Infoleiste: vier Möglichkeiten
+
+Unter **OSD → Zweite Infoleiste** findest du diese Auswahl:
+
+| Auswahl | Was nach dem erneuten Druck auf OK erscheint |
+| --- | --- |
+| Aus | Keine zweite Ansicht; die erste Infobar wird ausgeblendet. |
+| Sendungsinformationen | Eine eigene Detailansicht zur aktuellen Sendung. |
+| Zweite Infoleiste INFO | Die zweite Skin-Infobar mit ausführlicheren Programminformationen. |
+| Zweite Infoleiste ECM | Die zweite Skin-Infobar mit zusätzlichen technischen Empfangs-/Verschlüsselungsinformationen, soweit verfügbar. |
+
+### Sendungsinformationen
+
+<Capture id="infobar-event" language="de" alt="Sendungsinformationen zur aktuellen Sendepause mit Titel, Sender, Zeit und Beschreibung" caption="Diese Auswahl öffnet einen eigenen EPG-Dialog. Die Informationen liefert der Sender; ihre Sprache hängt nicht von der Menüsprache ab." />
+
+Die Detailansicht eignet sich, wenn du hauptsächlich den Beschreibungstext lesen möchtest. Weitere Aktionen richten sich nach den angezeigten Farbtasten. Das bloße Öffnen legt keinen Timer an.
+
+### Zweite Infoleiste INFO
+
+<Capture id="infobar-second-info" language="de" alt="Zweite Infoleiste INFO mit Beschreibungen der aktuellen und nächsten Sendung" caption="MetrixHD zeigt hier zusätzlichen Platz für die EPG-Beschreibungen. Andere Skins können die Informationen anders aufteilen." />
+
+Diese Variante bietet mehr Informationen zur Sendung, ohne in das vollständige Programmführer-Menü zu wechseln. In der zweiten Infobar sind auch Aktionen zum Blättern oder für Timer möglich; die aktuelle Belegung findest du über <kbd>HELP</kbd> beziehungsweise an den sichtbaren Tastenhinweisen.
+
+### Zweite Infoleiste ECM
+
+<Capture id="infobar-second-ecm" language="de" alt="Zweite Infoleiste ECM mit zusätzlicher technischer Zeile für Empfang und Verschlüsselung" caption="Oben kommen technische Angaben hinzu. Beim frei empfangbaren Beispielsender ist das Feld CRYPT leer; das ist kein Fehler." />
+
+**ECM** steht für *Entitlement Control Message* und gehört zu den Informationen verschlüsselter Dienste. Diese Ansicht ist für technische Diagnose gedacht. Sie aktiviert keine Entschlüsselung. Bei frei empfangbaren Sendern sind entsprechende Felder leer oder ohne relevante Angaben. Frequenz, Polarisation, Symbolrate, AGC und BER sind zusätzliche Empfangsangaben, sofern Skin und Empfangsweg sie liefern.
+
+## Anzeigedauer und Aussehen
+
+<Capture id="infobar-settings-timing" language="de" alt="OSD-Einstellungen mit Anzeigedauer, Auswahl der zweiten Infoleiste, Picons und einfacher Infoleiste" caption="Die wichtigsten Infobar-Optionen stehen gemeinsam im OSD-Dialog. Weitere Gruppen erreichst du durch Scrollen." />
+
+| Option | Wozu sie dient |
+| --- | --- |
+| Erste Infoleiste Anzeigedauer | Automatisch nach 1–20 Sekunden ausblenden oder ohne Zeitlimit sichtbar lassen. |
+| Zweite Infoleiste / Anzeigedauer | Die zweite Ansicht wählen und ihre Einblendzeit festlegen. Der eigene Dialog „Sendungsinformationen“ kann sich anders verhalten und wird gezielt geschlossen. |
+| Picons in der Infoleiste anzeigen | Vorhandene Senderlogos ein-/ausblenden. Zum Beschaffen von Picons ist dieser Schalter nicht gedacht. |
+| Einfache Infoleiste anzeigen | Reduzierte erste Infobar verwenden; GUI-Neustart beachten. |
+| Ausblendeffekt und Geschwindigkeit | Die Infobar weich ausblenden, sofern die Oberfläche diese Funktion unterstützt. Die Geschwindigkeitsoption erscheint erst mit aktiviertem Effekt. |
+| Infoleisten-EPG-Modus | Den Zugriff auf den QuickEPG festlegen, etwa über langes OK, EXIT oder Links/Rechts. Das ist eine eigene Funktion neben der zweiten Infobar. |
+
+## Wann die Infobar automatisch erscheint
+
+<Capture id="infobar-settings-behavior" language="de" alt="OSD mit Infobar-Optionen für Senderwechsel, Spulen, Pause und Sendungswechsel" caption="Diese Optionen steuern Anlässe für das Einblenden. Einige erscheinen erst in der fortgeschrittenen oder Expertenansicht." />
+
+| Verhalten | Verwendung |
+| --- | --- |
+| Bei Senderwechsel anzeigen | Nach dem Umschalten sofort Sender und Programm erkennen. |
+| Beim Vor-/Zurückspulen anzeigen | Bei Medienwiedergabe den aktuellen Wiedergabestand sehen. |
+| Während Pause dauerhaft anzeigen | Wiedergabeinformationen während einer Pause stehen lassen. |
+| Bei Sendungswechsel anzeigen | Auch ohne Umschalten informiert werden, wenn laut EPG eine neue Sendung beginnt. |
+
+Die Einstellung zur Pause betrifft die Wiedergabe; sie hält kein laufendes Fernsehprogramm automatisch an.
+
+## Welche Inhalte angezeigt werden
+
+<Capture id="infobar-settings-content" language="de" alt="OSD mit Sendernummer, Piconhintergrund, Genre und verstrichener beziehungsweise verbleibender Zeit" caption="Zeitformat und sichtbare Inhalte lassen sich getrennt einstellen." />
+
+| Optionengruppe | Erklärung |
+| --- | --- |
+| Sendernummer | Die Nummer zusätzlich in der Infobar anzeigen, soweit vom Skin genutzt. |
+| Piconhintergrund | Den Hintergrund transparenter Senderlogos anpassen. Sichtbarkeit der Option kann vom Skin abhängen. |
+| Genre | Die vom EPG gelieferte Kategorie anzeigen; ohne passende EPG-Daten bleibt die Angabe aus. |
+| Restzeit / verstrichene Zeit | Festlegen, ob die Anzeige Restzeit, bereits vergangene Zeit oder beides enthält. |
+| Positives/negatives Vorzeichen | Die Schreibweise der Zeitangabe wählen. Das verändert keine Sendezeiten. |
+| Zeitdarstellung für Live-TV / Medien | Die jeweilige Darstellung getrennt festlegen, beispielsweise Minuten oder Fortschritt. |
+| Unterkanäle | Anzeige von Unterdiensten abhängig von Verfügbarkeit beziehungsweise EPG festlegen. |
+| Verschlüsselungsinformationen | Technische Angaben zur Verschlüsselung einblenden, wenn der Skin sie unterstützt. |
+| Frontend-Datenquelle | Zwischen gespeicherten Empfangsdaten und den vom Tuner gemeldeten Angaben wählen. |
+| SNR in Prozent / dB | Die Einheit der unterstützten Signalanzeige wechseln. |
+
+Wenn eine Option fehlt, prüfe zuerst die [Einstellungsansicht](../bedienung/#eine-einstellung-wird-nicht-angezeigt). **Experte** blendet zusätzliche Optionen ein; es schaltet sie nicht automatisch an. Die [OSD-Referenz](../../einstellungen/referenz/userinterface/) enthält alle importierten Originalhilfen und technischen Schlüssel, etwa `config.usage.show_infobar_lite` und `config.usage.show_second_infobar`.
+
+## Häufige Fragen
+
+- **Keine zweite Leiste:** Prüfe „Zweite Infoleiste“, die Belegung von OK und ob die erste Leiste noch sichtbar ist.
+- **Fehlende Sendungstitel oder Beschreibung:** Prüfe den [EPG](../../epg/grundlagen/). Die Infobar erzeugt keine eigenen Programmdaten.
+- **Lite sieht unverändert aus:** Nach dem Speichern die GUI neu starten und prüfen, ob der verwendete Skin eine Lite-Ansicht enthält.
+- **Uhr, Wetter oder große Sendernummer anders als im Beispiel:** Diese Gestaltung wird zusätzlich durch [MyMetrixLite](../../skins/metrixhd/sonstiges/) und aktive Skinparts bestimmt.
+- **Gespeichert, aber kein Unterschied:** Dieselbe Ansicht erneut öffnen. Manche Optionen betreffen nur eine zweite Leiste oder nur Medienwiedergabe; mit Stern beziehungsweise Neustarthinweis markierte Änderungen benötigen einen Neustart.
+
+Quellen: [OSD-Optionen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [Auswahlwerte und Vorgaben](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py), [Infobar-Bedienung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBarGenerics.py), [Lite-Auswahl](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBar.py).

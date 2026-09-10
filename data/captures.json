@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capture_tool": "https://github.com/openatv/enigma2-plugin-test",
-  "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
+  "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
   "captures": [
     {
       "id": "main-menu",
@@ -20,6 +20,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -40,6 +41,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -60,6 +62,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -80,6 +83,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -100,6 +104,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -120,6 +125,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -140,6 +146,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -160,6 +167,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -180,6 +188,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -200,6 +209,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -220,6 +230,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -240,6 +251,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -260,6 +272,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -280,6 +293,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -300,6 +314,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -320,6 +335,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -340,6 +356,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -360,6 +377,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -380,6 +398,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -400,6 +419,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -420,6 +440,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -440,6 +461,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -460,6 +482,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -480,6 +503,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -500,6 +524,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -520,6 +545,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -540,6 +566,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -560,6 +587,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -580,6 +608,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -600,6 +629,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -620,6 +650,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -640,6 +671,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -660,6 +692,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -680,6 +713,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -700,6 +734,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -720,6 +755,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -740,6 +776,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -760,6 +797,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -780,6 +818,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -800,6 +839,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -820,6 +860,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -840,6 +881,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -860,6 +902,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -880,6 +923,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -900,6 +944,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -920,6 +965,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -940,6 +986,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -960,6 +1007,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -980,6 +1028,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1000,6 +1049,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1020,6 +1070,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1040,6 +1091,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1060,6 +1112,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1080,6 +1133,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1100,6 +1154,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1120,6 +1175,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1140,6 +1196,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1160,6 +1217,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1180,6 +1238,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1200,6 +1259,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1220,6 +1280,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1240,6 +1301,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1260,6 +1322,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1280,6 +1343,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1300,6 +1364,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1320,6 +1385,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1340,6 +1406,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1360,6 +1427,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1380,6 +1448,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1400,6 +1469,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1420,6 +1490,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1440,6 +1511,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1460,6 +1532,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1480,6 +1553,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1500,6 +1574,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1520,6 +1595,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1540,6 +1616,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1560,6 +1637,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1580,6 +1658,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1600,6 +1679,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1620,6 +1700,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1640,6 +1721,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1660,6 +1742,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1680,6 +1763,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1700,6 +1784,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1720,6 +1805,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1740,6 +1826,7 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     },
@@ -1760,8 +1847,555 @@
       },
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
+      "capture_tool_commit": "32677d7566a1f07f68a11b353df6dbab378ac3fb",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "infobar-standard",
+      "language": "de",
+      "article": "erste-schritte/infobar",
+      "screen_key": "standard",
+      "captured_at": "2026-09-10T03:04:16.295959+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f90c18350a129e9a34db80a5541bf51dc185e451944713cd7fbd650581035bf3",
+      "file": "de/infobar-standard.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-lite",
+      "language": "de",
+      "article": "erste-schritte/infobar",
+      "screen_key": "lite",
+      "captured_at": "2026-09-10T03:04:19.575292+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "db5be28062f43ecf8634a6659e3de58d265f8e8435a9f82bd1fb708e42940aba",
+      "file": "de/infobar-lite.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-second-info",
+      "language": "de",
+      "article": "erste-schritte/infobar",
+      "screen_key": "second-info",
+      "captured_at": "2026-09-10T03:04:22.903252+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "04b84755aeb03090b5641da6e094929e70618ed4354a08325e817be0eda7603d",
+      "file": "de/infobar-second-info.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-second-ecm",
+      "language": "de",
+      "article": "erste-schritte/infobar",
+      "screen_key": "second-ecm",
+      "captured_at": "2026-09-10T03:04:26.056556+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7464ceea1f0d2f892250373a28598b4ce97d285b61dcf25cf1ca2000ae15444c",
+      "file": "de/infobar-second-ecm.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-event",
+      "language": "de",
+      "article": "erste-schritte/infobar",
+      "screen_key": "event",
+      "captured_at": "2026-09-10T03:04:29.087333+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b1ee81f1e8ec8439b419d30f07088ff8e099505bc4905a1b23166c6a672e12a1",
+      "file": "de/infobar-event.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-settings-timing",
+      "language": "de",
+      "article": "erste-schritte/infobar",
+      "screen_key": "UserInterface",
+      "captured_at": "2026-09-10T03:04:32.279326+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "173e3804c8d869fc93abd0db7e0c37920249febbcfcfe2642e17cc82e8132ab3",
+      "file": "de/infobar-settings-timing.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-settings-behavior",
+      "language": "de",
+      "article": "erste-schritte/infobar",
+      "screen_key": "UserInterface",
+      "captured_at": "2026-09-10T03:04:35.405628+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "42c88648a899a77285f916951ca501787f9c8178a272c4a4b02fca28ddcd846c",
+      "file": "de/infobar-settings-behavior.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-settings-content",
+      "language": "de",
+      "article": "erste-schritte/infobar",
+      "screen_key": "UserInterface",
+      "captured_at": "2026-09-10T03:04:38.543401+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c859d154b9685ff07246254c7635ea8579d7d0513da74beb658f78491c7e31c7",
+      "file": "de/infobar-settings-content.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "menu-vertical",
+      "language": "de",
+      "article": "erste-schritte/menue-anpassen",
+      "screen_key": "vertical",
+      "captured_at": "2026-09-10T03:04:43.822554+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c0547baefc4e6e062c967eb30af60837e9153c5fa9f7dcec352c33d6609d5d30",
+      "file": "de/menu-vertical.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "menu-horizontal",
+      "language": "de",
+      "article": "erste-schritte/menue-anpassen",
+      "screen_key": "horizontal",
+      "captured_at": "2026-09-10T03:04:47.290352+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "04f3f423be63c9682e381f76b45d239598e647e7b4b8e29eac2699d26b299271",
+      "file": "de/menu-horizontal.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "menu-edit",
+      "language": "de",
+      "article": "erste-schritte/menue-anpassen",
+      "screen_key": "edit",
+      "captured_at": "2026-09-10T03:04:50.790925+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1b28a0b0d2e2b69a2084372a82c480e538f67fe6ebd3c366013292c1a38bdb8c",
+      "file": "de/menu-edit.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "osd-menu-options",
+      "language": "de",
+      "article": "erste-schritte/menue-anpassen",
+      "screen_key": "UserInterface",
+      "captured_at": "2026-09-10T03:04:54.239365+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "323176912c63733c5597f12ef2a4f4049552aa1374430803048d6ae598c5d5bc",
+      "file": "de/osd-menu-options.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "osd-help-options",
+      "language": "de",
+      "article": "erste-schritte/menue-anpassen",
+      "screen_key": "UserInterface",
+      "captured_at": "2026-09-10T03:04:57.506205+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "5c07da714f9fcc00f6dae3145ac04323b610e2d0db3ad80d481dc0f01b90a694",
+      "file": "de/osd-help-options.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-standard",
+      "language": "en",
+      "article": "erste-schritte/infobar",
+      "screen_key": "standard",
+      "captured_at": "2026-09-10T03:05:27.478775+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b1a66c7ba10e32844c673c3e3ae51d3ffe4051fd8d626a534cd32a93362859d4",
+      "file": "en/infobar-standard.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-lite",
+      "language": "en",
+      "article": "erste-schritte/infobar",
+      "screen_key": "lite",
+      "captured_at": "2026-09-10T03:05:31.309159+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "56fab42c7c23448651bee063207f6181305eed5163f5295cf879a51630df3ab9",
+      "file": "en/infobar-lite.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-second-info",
+      "language": "en",
+      "article": "erste-schritte/infobar",
+      "screen_key": "second-info",
+      "captured_at": "2026-09-10T03:05:34.749098+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "811e22adae61f81935b2c8b135d191d9e0b30e1279653a868ba3e2efa0c4d788",
+      "file": "en/infobar-second-info.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-second-ecm",
+      "language": "en",
+      "article": "erste-schritte/infobar",
+      "screen_key": "second-ecm",
+      "captured_at": "2026-09-10T03:05:37.803246+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "8a5c3651d362f04f2c326bf86f44b58651227b3371cc2ca2238eeb110e3be055",
+      "file": "en/infobar-second-ecm.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-event",
+      "language": "en",
+      "article": "erste-schritte/infobar",
+      "screen_key": "event",
+      "captured_at": "2026-09-10T03:05:40.957022+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "ceb0e95ac43b5c333bb5bb46efe9f0665d26ef745bbb70a5e7c5ca1ca4268d89",
+      "file": "en/infobar-event.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-settings-timing",
+      "language": "en",
+      "article": "erste-schritte/infobar",
+      "screen_key": "UserInterface",
+      "captured_at": "2026-09-10T03:05:44.040431+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "34233b2995a757fd10c5c1b725fa716555352c40337dd84532e842e9d5a396ad",
+      "file": "en/infobar-settings-timing.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-settings-behavior",
+      "language": "en",
+      "article": "erste-schritte/infobar",
+      "screen_key": "UserInterface",
+      "captured_at": "2026-09-10T03:05:47.166869+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "3df4c4cea428823af11ad8a695a10303232b45fe616beeb394896d11bb61d630",
+      "file": "en/infobar-settings-behavior.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "infobar-settings-content",
+      "language": "en",
+      "article": "erste-schritte/infobar",
+      "screen_key": "UserInterface",
+      "captured_at": "2026-09-10T03:05:50.297879+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "6f33dcc716338e695092cf9eeb2c1fcdf3069bf1c87d99397baa6db1632c9df3",
+      "file": "en/infobar-settings-content.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "menu-vertical",
+      "language": "en",
+      "article": "erste-schritte/menue-anpassen",
+      "screen_key": "vertical",
+      "captured_at": "2026-09-10T03:05:56.811551+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "6d17c74ba7796f8f2e68562de4995245266d03878a4296831b3be90820c69c8f",
+      "file": "en/menu-vertical.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "menu-horizontal",
+      "language": "en",
+      "article": "erste-schritte/menue-anpassen",
+      "screen_key": "horizontal",
+      "captured_at": "2026-09-10T03:05:59.926844+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "4371e1f9cf97ced0a7d291bfc48b4d033f546d789f010bb4c4f23f74a3903bb2",
+      "file": "en/menu-horizontal.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "menu-edit",
+      "language": "en",
+      "article": "erste-schritte/menue-anpassen",
+      "screen_key": "edit",
+      "captured_at": "2026-09-10T03:06:03.078156+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "eb2a085143745fb6a731fac45b012ac1b42d0a252cb0fc09fea753f4263c319b",
+      "file": "en/menu-edit.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "osd-menu-options",
+      "language": "en",
+      "article": "erste-schritte/menue-anpassen",
+      "screen_key": "UserInterface",
+      "captured_at": "2026-09-10T03:06:06.101362+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "df8d12cfccb6cb15aee44cefecd93218639397c002eb1c42f9bb5bd450c737cb",
+      "file": "en/osd-menu-options.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "osd-help-options",
+      "language": "en",
+      "article": "erste-schritte/menue-anpassen",
+      "screen_key": "UserInterface",
+      "captured_at": "2026-09-10T03:06:09.223721+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1646d6b2b79a506298b44a4add13d4e859d40191967ad7c7e825dda22858bde2",
+      "file": "en/osd-help-options.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+      "backend": "grab-service",
+      "background": "operator-selected service; playback preserved"
     }
   ]
 }
