@@ -107,7 +107,7 @@ Die freigegebenen Dateien stehen in `data/captures-review.json`:
 ]
 ```
 
-Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme, einen gültigen Werkzeug-Commit und sein englisches Gegenstück. Die aktuelle Datei enthält 154 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
+Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme, einen gültigen Werkzeug-Commit und sein englisches Gegenstück. Die aktuelle Datei enthält 192 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
 
 Im Handbuchrepository importieren:
 
@@ -188,3 +188,15 @@ python tools/capture.py --host root@BOX --run-prefix network-001 --profiles netw
 Diese Beispiele verwenden die nativen Dialogklassen mit lokalen, ungespeicherten Formularwerten. Die Dokumentationsadressen `192.0.2.10` und `192.0.2.50`, Freigabenamen und Benutzerbeispiele sind keine erreichbaren Testserver. Das Passwort bleibt leer. Speichern ist gesperrt; beim NFS-Server zusätzlich die Verzeichnisauswahl. Die Tour erstellt weder Client-Mounts noch Serverexporte und startet keinen Netzwerkdienst. Der Serverdialog benötigt das bereits installierte NFS-Paket.
 
 Alle acht PNGs wurden einzeln auf Inhalt, Sprache und Lesbarkeit geprüft. Native Hilfetexte, einschließlich der sichtbaren Legacy-SMB1-Auswahl, bleiben in den Pixeln erhalten; der Artikel erklärt ausdrücklich, warum SMB1 kein Einrichtungsweg ist. Die Prüfsummen von `fstab`, `auto.network`, `exports` und `nfs.conf` waren vor und nach der Serie identisch. Die ursprüngliche Sprache wurde wiederhergestellt.
+
+## EPG, Timer und Zeit
+
+Die Profile `epg-views` (8), `epg-tools` (7) und `timer-guides` (4) ergänzen 19 Ansichten je Sprache. Der Katalog enthält jetzt 19 Profile mit 100 Szenen. Die 38 geprüften Bilder der sechs `epg-e-…`-Läufe wurden vollständig und einzeln gesichtet; zusammen sind 192 Originalbilder freigegeben. Werkzeugstand: `e6487baa4a3fe0d1d2cde8590a173eb9890305e9`.
+
+```sh
+python tools/capture.py --host root@BOX --run-prefix epg-001 --profiles epg-views epg-tools timer-guides --restart-languages --bootlogo
+```
+
+Die Auswahl bevorzugt ein vorhandenes Bouquet mit echtem Das-Erste-/ARD-EPG und ZDF. Im EPG werden keine Ereignisse erzeugt und keine Sender eingeschaltet. Die native MetrixHD-Anzeige bleibt einschließlich vorhandener Metadaten und kleiner Darstellungsartefakte unverändert. Das EPGRefresh-Formular zeigt eine ungespeicherte Das-Erste-/ZDF-Auswahl. Aufnahme- und Scheduler-Objekte werden nie an die laufenden Timerlisten übergeben. Automatische Plugin-Optionen werden nur mit abgetrennten Formularfeldern sichtbar gemacht; Speichern, Import, Quellenupdate, Geolokalisierung und Timerstart sind gesperrt.
+
+Die ursprüngliche Sprache wurde wiederhergestellt. Die Serie ist kein Nachweis eines erfolgreichen manuellen/automatischen Imports, einer Aufnahme, eines Cronjobs oder eines Hardware-Wecklaufs. Die genaue Abgrenzung und Quellstände stehen in [PRAXISTESTS.md](PRAXISTESTS.md). Frühere Rohserien wurden wegen unpassender Senderwahl, Darstellung oder eines abgebrochenen Dialogaufbaus nicht importiert.

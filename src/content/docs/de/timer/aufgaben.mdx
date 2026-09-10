@@ -1,0 +1,62 @@
+---
+title: Aufgabenplanung und Ausschalttimer
+description: Enigma2-Aufgaben für Aufwachen, Standby und Neustart, Plugin-Funktionen, Sleeptimer und ihre Bedingungen einrichten.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Unter **Menü → Timer** findest du mehrere Arten von Zeitplanung. Wähle zuerst die Aufgabe, dann den passenden Planer. Ein Cronjob, ein Aufnahmetimer und ein Ausschalttimer haben unterschiedliche Fähigkeiten.
+
+<Capture id="timers-menu" language="de" alt="Timer-Menü mit Timer, Aufgabenplanung, CronTimer, Ausschalttimer und installiertem AutoTimer" caption="Das gemeinsame Timer-Menü. Zusätzliche Einträge wie AutoTimer hängen von installierten Erweiterungen ab." />
+
+| Planer | Gedacht für | Wo einrichten? |
+| --- | --- | --- |
+| Aufnahme-/Umschalttimer | Bestimmte Sendung aufnehmen oder Sender wechseln | Timer → Timer; siehe [Aufnahmen](../aufnahmen/). |
+| Aufgabenplanung / Scheduler | Aufwachen, Bereitschaft, Herunterfahren, Neustart und unterstützte Plugin-Funktionen | Timer → Aufgabenplanung. |
+| Ausschalttimer / Sleeptimer | Nach einer Dauer oder am Sendungsende in den gewählten Ruhezustand wechseln | Timer → Ausschalttimer. |
+| AutoTimer | EPG nach Regeln durchsuchen und daraus Aufnahmetimer erstellen | Zusätzliches AutoTimer-Plugin. |
+| EPGRefresh / EPGImport | DVB-Daten einsammeln beziehungsweise externe Daten importieren | Eigene [Plugin-Zeitpläne](../../addons/). |
+| Linux-Cron | Ein Shell-Kommando nach Kalender ausführen | Timer → CronTimer; siehe [Cron](../cron/). |
+
+## Eine Enigma2-Aufgabe anlegen
+
+1. Öffne **Aufgabenplanung** und wähle **Hinzufügen**.
+2. Wähle die **Timerart**, etwa **Aufwachen**. Die danach sichtbaren Felder hängen von dieser Art ab.
+3. Trage Datum und Startzeit ein. Wähle einmalig oder den gewünschten Wiederholungsrhythmus.
+4. Prüfe, ob eine Endzeit/Nachaktion sowie Bedingungen für Standby, Aktivität oder Netzwerk angeboten werden und für deinen Zweck benötigt sind.
+5. Speichere mit **Grün** und prüfe den Termin in der Übersicht. Teste zunächst einen einzelnen Termin mit genügend Vorlauf und beobachte das Ergebnis.
+
+<Capture id="scheduler-example" language="de" alt="Aufgabeneinstellungen für einen einmaligen Aufwachtermin" caption="Ungespeichertes Beispiel einer Aufwachaufgabe. Es wurde keine Weckzeit auf der Hardware programmiert." />
+
+## Welche Aufgaben gibt es?
+
+- **Aufwachen:** Box in den aktiven Zustand bringen; aus Deep-Standby nur mit Unterstützung des Geräts.
+- **Aufwachen in Standby:** System starten, während Bild und Ton im Bereitschaftszustand bleiben. Nützlich vor Hintergrundaufgaben.
+- **Standby / Deep-Standby:** Wechsel in Bereitschaft oder geregeltes Herunterfahren. Weitere Termine und laufende Nutzung können Rückfragen oder Verzögerungen verursachen.
+- **Automatischer Standby / automatischer Deep-Standby:** Auf Inaktivität reagieren. Tastendrücke können die Wartezeit erneuern; je nach Aufgabe sind Zeitfenster und Prüfungen auf Netzwerkverkehr beziehungsweise erreichbare Geräte verfügbar.
+- **Neustart / GUI-Neustart:** Gesamtes System oder nur Enigma2 neu starten. Ein GUI-Neustart unterbricht Enigma2 ebenfalls; er ist keine für laufende Aufnahmen folgenlose Wartungsaktion.
+- **Plugin-Funktion:** Nur von installierten Plugins beim Scheduler registrierte Funktionen erscheinen. Die Auswahl ist kein beliebiger Shell-Befehl. Zusätzliche Standby-Bedingungen und Wiederholungsversuche können angeboten werden.
+
+Nicht jede Aufgabe zeigt alle Optionen. Eine Ping-Prüfung beweist beispielsweise nicht, dass auf einem NAS gerade keine andere Arbeit läuft. Verwende Aktivitätsprüfungen passend zu deinem tatsächlichen Netz und kontrolliere zunächst, ob sie überhaupt den gewünschten Zustand erkennen.
+
+## Ausschalttimer und Inaktivität
+
+Der **Ausschalttimer** ist für eine begrenzte Dauer gedacht, etwa noch 30 Minuten Fernsehen. Je nach Wiedergabe lässt sich auch das Sendungs-/Filmende verwenden; beim Live-Programm hängt dieses von brauchbaren EPG-Zeiten ab. Der **Inaktivitätstimer** reagiert dagegen auf ausbleibende Bedienung. Er ist nicht dasselbe wie ein festes tägliches Abschalten um 23:00 Uhr.
+
+Kontrolliere die eingestellte Aktion und die Abschaltmeldung. Ein Bildschirmdialog kann eine Zeitüberschreitung und eine voreingestellte Antwort haben. In den Bedienungsoptionen findet sich zudem die **Verzögerung der Abschaltmeldungen**; die Wirkung hängt von der jeweiligen Timeraktion ab. Lies die tatsächlich angezeigte Meldung, statt pauschal mit „es passiert erst nach OK etwas“ zu rechnen.
+
+## Reihenfolge, Konflikte und nächste Weckzeit
+
+Plane zusammengehörige Schritte mit Abstand: **System/Netz bereit → EPG auffüllen → AutoTimer auswerten → Aufnahme**. Ein Zeitpunkt allein garantiert nicht, dass ein voriger Schritt bereits abgeschlossen ist. Nutze vorhandene Optionen „AutoTimer nach Import/Aktualisierung“ für diese Abhängigkeit.
+
+Enigma2 vergleicht beim geregelten Herunterfahren anstehende Aufnahme-, Umschalt-, Scheduler- und von Plugins gemeldete Wecktermine. Es kann den frühesten relevanten Termin an die Hardware übergeben. Das setzt nicht voraus, dass alle Termine als Einträge in derselben sichtbaren Liste erscheinen. Ein ausgeschaltetes Gerät führt währenddessen weder Enigma2 noch Cron aus.
+
+Vermeide gegeneinander arbeitende Pläne, etwa Herunterfahren zur Importzeit und direkt danach einen Neustart. Beachte Aufnahme-/Timeshift-/Streamingwarnungen. Nach dem Aufwachen muss zuerst eine gültige Zeit verfügbar sein; Details unter [Zeit und Aufwachen](../../system/zeit-aufwachen/).
+
+## Protokolle und gespeicherte Aufgaben
+
+Die aktuelle Aufgabenplanung speichert ihre Einträge in **`/etc/enigma2/scheduler.xml`**. Aufnahme-Timer stehen getrennt in `timers.xml`; Plugin-Zeitpläne haben eigene Einstellungen. Nutze Status-/Protokollfunktionen der Übersicht und bei Bedarf das [Debug-Log](../../hilfe/logs-diagnose/) mit Meldungen des Schedulers. Das Löschen einer Cronzeile entfernt keinen Enigma2-Timer.
+
+**Prüfstand:** Menü und ungespeicherter Aufgabeneditor aufgenommen, Aufgabenarten und Abschaltlogik im Quellcode geprüft. Automatisches Ausschalten, Neustarten und Wecken wurden für diese Serie nicht ausgeführt.
+
+Quellen: [Scheduler und Plugin-Funktionsregistrierung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Scheduler.py), [Aufgabeneditor](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Timers.py), [Ausschalttimer](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SleepTimer.py), [Wecktermin beim Herunterfahren](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/StartEnigma.py).

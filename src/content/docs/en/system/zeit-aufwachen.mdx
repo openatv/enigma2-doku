@@ -1,0 +1,83 @@
+---
+title: Time, NTP and wakeup
+description: Understand DVB transponder time, NTP, time zones, daylight saving, clock drift and hardware wakeup for dependable EPG and timer times.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**EPG, timers and wakeup need a correct clock.** A suitable display format is not enough: date, time zone and the actual synchronised time must be correct.
+
+## Configure time
+
+Open **Menu → Setup → System → Time Settings**. First choose the time-zone area and location, for example **Europe / Berlin** for Germany. This also applies local daylight-saving rules. Do not manually adjust the clock at every seasonal change.
+
+<Capture id="time-settings" language="en" alt="Time settings showing Europe, Berlin and transponder time as the source" caption="The test receiver uses transponder time here. NTP server and polling interval appear when NTP is selected." />
+
+| Setting | What it controls |
+| --- | --- |
+| Time-zone area and time zone | Local display including the installed daylight-saving rules. |
+| Synchronise using transponder time | Use time information from DVB reception. |
+| Synchronise using NTP | Obtain time from a reachable network time server. |
+| NTP server | Name or address of an actual NTP service; `pool.ntp.org` is the checked source's default. |
+| NTP interval | Repeat the time check. The checked version offers 30 minutes, 60 minutes or daily. |
+| Date/time format | Change display formatting; does not correct system time. |
+
+For NTP, select that source, check server and interval, then save with **Green**. Ensure the receiver has network access. A public server requires Internet access, working DNS when using a name, and reachable NTP traffic, normally UDP 123. A router or NAS is a suitable local server only if it actually provides NTP.
+
+The offered geolocation action can determine the time zone; it does not replace time synchronisation. Manually selecting the area and location is sufficient.
+
+## DVB time or NTP?
+
+**DVB transponder time** can work without Internet if a received service provides valid time information. With no reception or incorrect broadcaster data, synchronisation may be absent or wrong. IPTV-only operation does not automatically provide the same DVB time source.
+
+**NTP** is particularly helpful for IPTV, variable reception and devices whose startup time is not reliably retained. Regular synchronisation corrects a free-running clock's error. Internet access also helps external EPG sources, but **is not required for every correct receiver clock**: valid DVB time or an accessible local NTP server may suffice.
+
+Use OpenATV's intended time settings. Installing a package such as Chrony does not prove that synchronisation is active. Do not start several independent time services by combining Linux tutorials; they may all affect the same system clock. In the checked Enigma2 version, NTP synchronisation explicitly invokes `ntpd`. [OpenATV time synchronisation](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NetworkTime.py).
+
+## Does an Enigma2 receiver have a real-time clock?
+
+There is **no single answer for every model**. Distinguish three things:
+
+- **Linux system clock:** Runs while the system operates, including ordinary standby. Without synchronisation it can gradually drift.
+- **Hardware real-time clock / RTC:** Can keep time while the main system is off. Presence, backup power and survival of mains loss depend on the device.
+- **Front processor or wakeup logic:** Can monitor a programmed appointment and start the main system while the necessary standby power remains available.
+
+An RTC does not necessarily support every alarm feature. Conversely, a missing `/dev/rtc` does not prove that a receiver lacks separate front-processor wakeup. Linux documents differing RTC/alarm capabilities; OpenATV also uses receiver-specific front-processor interfaces. [Linux RTC basics](https://docs.kernel.org/admin-guide/rtc.html), [OpenATV hardware interfaces](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Tools/StbHardware.py).
+
+## Why does the receiver not wake at the desired time?
+
+During a regular shutdown Enigma2 selects a forthcoming relevant wakeup and passes it, with lead time, to supported hardware. **NTP does not switch on an already shut-down receiver.** The network service can obtain time again only after the system starts.
+
+Check in this order:
+
+1. **Power:** A mains switch turned off or an unplugged receiver normally prevents self-initiated scheduled startup.
+2. **Correct timer type:** Use a recording timer, supported wakeup task or plugin with wakeup enabled. A cron line alone is insufficient.
+3. **Date and time before shutdown:** Working wakeup logic cannot correct an appointment set in the wrong week.
+4. **Clean shutdown:** Enigma2 needs an opportunity to save and program the next appointment. A crash or pulling power is not equivalent.
+5. **Device support and resting state:** Model-specific power-saving/front-processor features may impose limits. Such details belong in a device appendix.
+6. **Startup lead time:** Networking, synchronisation and storage must be ready in time. A receiver may wake yet still miss the recording because its NAS is unavailable or its clock is corrected too late.
+
+Test an important setup with one appointment and observe shutdown, startup and the actual start of recording. An entry in the timer list or a time on the display does not prove successful wakeup.
+
+## Clock drift: long standby without networking
+
+In ordinary standby, the system clock continues running. Without successful NTP or DVB correction, its error can accumulate over days; a running tuner does not guarantee fresh time data in every state. Deep standby is different: retaining time depends on hardware. Loss of mains power can additionally cause complete time loss.
+
+Regular synchronisation limits drift. Saying “the receiver was in standby” does not establish whether a time source was reachable. [NTP on free-running clocks and synchronisation](https://www.ntp.org/ntpfaq/ntp-s-trbl-general/).
+
+## Diagnose time errors and read logs
+
+Over [SSH](../../netzwerk/fernzugriff/), these commands read time without changing it:
+
+```sh
+date
+date -u
+```
+
+Compare local time and UTC with a reliable reference. If only local time is one hour wrong, check the time zone. If the date/year or both times are wrong, investigate synchronisation. An incorrect year can also break HTTPS access to feeds and EPG sources through certificate errors.
+
+In the [Enigma2 debug log](../../hilfe/logs-diagnose/), look for **`NetworkTime`**, NTP errors and messages about system time being unavailable. In the checked implementation, a “Setting time” line alone does not confirm successful server contact; consider preceding errors and compare the actual clock. If Chrony really runs as a service on your image, `chronyc tracking` and `chronyc sources` can provide additional diagnostics. [Chrony diagnostics](https://chrony-project.org/doc/4.8/chronyc.html).
+
+**Verification:** Captured the native time dialog and checked configuration and Enigma2 wakeup logic. No time server was changed, no clock was deliberately shifted and no cross-model RTC/deep-standby test was performed.
+
+Further sources: [Time dialog](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Time.py), [Time options](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [Wakeup selection during shutdown](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/StartEnigma.py).

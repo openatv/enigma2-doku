@@ -1,0 +1,83 @@
+---
+title: Uhrzeit, NTP und Aufwachen
+description: DVB-Transponderzeit, NTP, Zeitzone, Sommerzeit, Uhrendrift und Hardware-Weckfunktionen für zuverlässige EPG- und Timerzeiten verstehen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**EPG, Timer und Aufwachen brauchen eine richtige Uhr.** Ein korrektes Uhrzeitformat allein genügt nicht: Datum, Zeitzone und die tatsächlich synchronisierte Zeit müssen stimmen.
+
+## Zeit einstellen
+
+Öffne **Menü → Einstellungen → System → Zeit**. Wähle zunächst das Zeitzonengebiet und den Ort, beispielsweise **Europe / Berlin** für Deutschland. Dadurch wird auch die örtliche Sommer-/Winterzeit berücksichtigt. Stelle nicht bei jeder Zeitumstellung die Uhr von Hand um.
+
+<Capture id="time-settings" language="de" alt="Zeiteinstellungen mit Europe, Berlin und Transponderzeit als Quelle" caption="Die Testbox verwendet hier Transponderzeit. NTP-Server und Abfrageintervall erscheinen erst bei Auswahl von NTP." />
+
+| Einstellung | Was du damit festlegst |
+| --- | --- |
+| Zeitzonengebiet und Zeitzone | Örtliche Darstellung einschließlich der hinterlegten Sommerzeitregeln. |
+| Zeitsynchronisierung mit Transponderzeit | Zeitinformationen aus dem DVB-Empfang verwenden. |
+| Zeitsynchronisierung mit NTP | Zeit von einem erreichbaren Netzwerk-Zeitserver beziehen. |
+| NTP-Server | Servername oder Adresse eines tatsächlich angebotenen NTP-Dienstes; im geprüften Quellstand ist `pool.ntp.org` voreingestellt. |
+| NTP-Abfrageintervall | Regelmäßig erneut abgleichen. Der geprüfte Stand bietet 30 Minuten, 60 Minuten oder täglich. |
+| Datum-/Zeitformat | Anzeigeformat ändern; korrigiert keine falsche Systemzeit. |
+
+Für NTP wähle die entsprechende Quelle, kontrolliere Server und Intervall und speichere mit **Grün**. Stelle sicher, dass die Box Netzwerkzugang hat. Ein öffentlicher Server benötigt Internet, funktionierendes DNS bei Verwendung eines Namens und erreichbaren NTP-Verkehr, üblicherweise UDP 123. Ein Router oder NAS ist nur dann ein geeigneter lokaler Server, wenn dort tatsächlich ein NTP-Dienst bereitsteht.
+
+Die angebotene Geolokalisierung kann die Zeitzone ermitteln; sie ist kein Ersatz für die Zeitsynchronisierung. Die manuelle Auswahl von Gebiet und Ort genügt.
+
+## DVB-Zeit oder NTP?
+
+**DVB-Transponderzeit** ist ohne Internet verwendbar, sofern ein empfangener Dienst gültige Zeitinformationen liefert. Ohne Empfang oder bei fehlerhaften Senderdaten kann der Abgleich fehlen beziehungsweise falsch sein. Reiner IPTV-Betrieb bietet nicht automatisch dieselbe DVB-Zeitquelle.
+
+**NTP** ist besonders hilfreich bei IPTV, wechselndem Empfang und Geräten, deren Startzeit nicht zuverlässig erhalten bleibt. Regelmäßiger Abgleich korrigiert die Abweichung einer frei laufenden Uhr. Internet ist außerdem für externe EPG-Quellen hilfreich, aber **keine allgemeine Voraussetzung für jede korrekte Box-Uhr**: gültige DVB-Zeit oder ein erreichbarer lokaler NTP-Server können genügen.
+
+Verwende die vorgesehenen OpenATV-Zeiteinstellungen. Die bloße Installation eines Pakets wie Chrony beweist keinen aktiven Zeitabgleich. Starte nicht zusätzlich mehrere unabhängige Zeitdienste nach verschiedenen Linux-Anleitungen; sie können dieselbe Systemuhr beeinflussen. Im geprüften Enigma2-Stand ruft der NTP-Abgleich `ntpd` gezielt auf. [OpenATV-Zeitabgleich](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NetworkTime.py).
+
+## Hat eine Enigma2-Box eine Echtzeituhr?
+
+Das lässt sich **nicht für alle Modelle gleich beantworten**. Unterscheide drei Dinge:
+
+- **Linux-Systemuhr:** Läuft, solange das System arbeitet, auch im normalen Standby. Ohne Abgleich kann sie langsam abweichen.
+- **Hardware-Echtzeituhr / RTC:** Kann Zeit während eines ausgeschalteten Hauptsystems weiterführen. Ob sie existiert, gepuffert ist und einen Stromausfall übersteht, hängt vom Gerät ab.
+- **Frontprozessor beziehungsweise Wecklogik:** Kann einen programmierten Termin überwachen und das Hauptsystem starten, solange die nötige Bereitschaftsversorgung vorhanden ist.
+
+Eine vorhandene RTC muss nicht jede Weckfunktion unterstützen. Umgekehrt beweist ein fehlendes `/dev/rtc` bei einem Receiver nicht, dass seine separate Frontprozessor-Weckfunktion fehlt. Linux beschreibt unterschiedliche RTC-/Alarmfähigkeiten; OpenATV spricht zusätzlich gerätespezifische Frontprozessor-Schnittstellen an. [Linux-RTC-Grundlagen](https://docs.kernel.org/admin-guide/rtc.html), [OpenATV-Hardwareschnittstellen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Tools/StbHardware.py).
+
+## Warum kann die Box nicht zur Wunschzeit aufwachen?
+
+Beim regulären Herunterfahren ermittelt Enigma2 einen kommenden relevanten Wecktermin und übergibt ihn mit Vorlauf an die unterstützte Hardware. **NTP schaltet eine bereits ausgeschaltete Box nicht ein.** Erst nach dem Systemstart kann der Netzwerkdienst wieder Zeit beziehen.
+
+Prüfe in dieser Reihenfolge:
+
+1. **Stromversorgung:** Netzschalter aus oder Stecker gezogen bedeutet normalerweise keine geplante Einschaltung durch die Box selbst.
+2. **Richtige Timerart:** Aufnahmetimer, unterstützte Aufwachaufgabe oder Plugin mit eingeschaltetem Wecken verwenden. Eine reine Cronzeile reicht nicht.
+3. **Datum und Uhr vor dem Ausschalten:** Einen Termin in der falschen Woche kann auch eine funktionierende Wecklogik nicht korrigieren.
+4. **Geregeltes Herunterfahren:** Enigma2 muss Gelegenheit bekommen, seinen nächsten Termin zu speichern und zu programmieren. Absturz oder Stromziehen ist nicht gleichwertig.
+5. **Geräteunterstützung und Bereitschaftszustand:** Modellabhängige Energiespar-/Frontprozessorfunktionen können Grenzen setzen. Solche Besonderheiten gehören in einen Geräteanhang.
+6. **Vorlauf nach dem Start:** Netzwerk, Zeitsynchronisierung und Aufnahmeziel müssen rechtzeitig bereit sein. Ein aufwachendes Gerät kann trotzdem die Aufnahme verpassen, wenn das NAS fehlt oder die Uhr erst spät stimmt.
+
+Teste eine wichtige Konfiguration mit einem einzelnen Termin und beobachte Ausschalten, Einschalten und tatsächlichen Aufnahmebeginn. Ein Timer in der Liste oder ein Zeitpunkt im Display beweist noch keinen erfolgreichen Wecklauf.
+
+## Uhrendrift: lange im Standby und ohne Netz
+
+Im normalen Standby läuft die Systemuhr weiter. Ohne erfolgreiche NTP- oder DVB-Korrektur kann sich ihr Fehler über Tage vergrößern; der laufende Tuner liefert nicht in jedem Zustand zuverlässig neue Zeitdaten. Deep-Standby ist anders: Hier hängt der Zeiterhalt von der vorhandenen Hardware ab. Ein Stromausfall kann zusätzlich einen vollständigen Verlust der Zeit bewirken.
+
+Regelmäßiger Zeitabgleich begrenzt Drift. Nur „die Box war doch im Standby“ erklärt nicht, ob tatsächlich eine Zeitquelle erreichbar war. [NTP zu frei laufenden Uhren und Synchronisation](https://www.ntp.org/ntpfaq/ntp-s-trbl-general/).
+
+## Zeitfehler eingrenzen und Logs lesen
+
+Über [SSH](../../netzwerk/fernzugriff/) kannst du lesen, ohne die Uhr zu verändern:
+
+```sh
+date
+date -u
+```
+
+Vergleiche Ortszeit und UTC mit einer verlässlichen Referenz. Ist nur die Ortszeit um eine Stunde falsch, prüfe die Zeitzone. Sind Datum/Jahr oder beide Zeiten falsch, prüfe den Abgleich. Eine falsche Jahreszahl kann auch HTTPS-Zugriffe auf Feeds und EPG-Quellen durch Zertifikatsfehler stören.
+
+Im [Enigma2-Debug-Log](../../hilfe/logs-diagnose/) suche nach **`NetworkTime`**, NTP-Fehlern und Meldungen zur noch fehlenden Systemzeit. Eine Zeile „Setting time“ allein bestätigt im geprüften Ablauf keinen erfolgreichen Serverkontakt; beachte auch vorherige Fehlermeldungen und den tatsächlichen Zeitvergleich. Falls auf deinem Image Chrony wirklich als Dienst läuft, können dessen `chronyc tracking` und `chronyc sources` zusätzliche Diagnose liefern. [Chrony-Diagnose](https://chrony-project.org/doc/4.8/chronyc.html).
+
+**Prüfstand:** Nativen Zeitdialog aufgenommen, Konfiguration und Enigma2-Wecklogik geprüft. Kein Zeitserver umgestellt, keine Uhr absichtlich verstellt und kein modellübergreifender RTC-/Deep-Standby-Test durchgeführt.
+
+Weitere Quellen: [Zeitdialog](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Time.py), [Zeitoptionen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [Wecktermin beim Herunterfahren](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/StartEnigma.py).

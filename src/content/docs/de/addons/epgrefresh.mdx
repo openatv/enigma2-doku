@@ -1,0 +1,51 @@
+---
+title: EPGRefresh einrichten
+description: DVB-Programmdaten automatisch einsammeln, Sender und Bouquets auswählen, Zeitfenster und Aufwachen mit EPGRefresh einstellen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**EPGRefresh schaltet Empfangsdienste durch und sammelt deren DVB-EPG.** Es lädt keine XMLTV-Liste aus dem Internet. Für IPTV ohne mitgelieferte Programmdaten ist meist [EPGImport](../epgimport/) mit passender Senderzuordnung nötig.
+
+## Installieren und einen kleinen Test vorbereiten
+
+1. Installiere **EPGRefresh** aus den [Erweiterungen des Feeds](../../plugins/installieren/).
+2. Öffne **Menü → Einstellungen → EPG → EPGRefresh**. Bei abweichender Plugin-Version kann der Einstieg auch unter Erweiterungen stehen.
+3. Öffne mit **Blau – Sender** die Sender-/Bouquetauswahl. Wähle die gewünschte Listenart und füge über **Neu** zunächst wenige empfangbare Sender hinzu, beispielsweise Das Erste HD und ZDF HD.
+4. Speichere die Auswahl und anschließend die Konfiguration mit **Grün**.
+5. Starte über **Gelb – Funktionen → Aktualisierung starten** einen manuellen Test. Rechne dabei mit einem Senderwechsel, wenn das Hauptbild als Aktualisierungsmodus dient.
+6. Öffne anschließend den EPG dieser Sender. Prüfe auch spätere Tage und über **INFO** in EPGRefresh den letzten Lauf. Ein erfolgreicher Aufruf allein beweist noch keine vollständigen Daten.
+
+<Capture id="refresh-services" language="de" alt="EPGRefresh-Auswahl für Sender und Bouquets" caption="Hier wird festgelegt, welche Empfangsdienste EPGRefresh abarbeitet. Das Bild zeigt eine ungespeicherte Auswahl mit Das Erste HD und ZDF HD; die vorhandene Plugin-Liste wurde nicht ersetzt." />
+
+Ein DVB-Transponder liefert oft Daten für mehrere Sender. Die geprüfte Erweiterung fasst gleiche Transponderkennungen zusammen; ein großes Bouquet bedeutet deshalb nicht zwingend einen eigenen Durchlauf für jeden Sender. Der Umfang der gesendeten Daten bleibt vom Anbieter abhängig.
+
+## Automatisch während einer ruhigen Zeit aktualisieren
+
+Aktiviere die automatische Aktualisierung und wähle ein Zeitfenster, etwa **05:00 bis 07:00**, in dem die Box normalerweise im Standby ist und keine wichtigen Aufnahmen laufen. Das ist ein Beispiel, keine für jeden Haushalt passende Vorgabe.
+
+<Capture id="refresh-settings" language="de" alt="EPGRefresh-Konfiguration mit erweitertem Einstellungsumfang" caption="Für das Bild wurden die erweiterten Optionen in einem ungespeicherten Formular eingeblendet. Daraus wurde kein neuer Zeitplan angelegt." />
+
+| Einstellung | Bedeutung und Entscheidung |
+| --- | --- |
+| Früheste/späteste Aktualisierungszeit | Zeitraum, in dem die automatische Aktualisierung beginnen beziehungsweise bei belegter Box erneut versucht werden kann. Die Endzeit ist keine zugesicherte harte Abschaltung eines bereits laufenden Durchgangs. |
+| Verweildauer pro Sender | Zeit zum Einsammeln von EPG. Beginne beispielsweise mit 120 Sekunden; erhöhe sie bei nachweislich unvollständigen Daten. |
+| Verzögerung, wenn nicht im Standby | Wartezeit bis zum nächsten Versuch bei laufender Nutzung oder Aufnahme. |
+| Aktualisierung erzwingen | Kann die Rücksicht auf Nutzung/Aufnahmen aufheben. Für den normalen Nachtlauf zunächst ausgeschaltet lassen. |
+| Aktualisierung mit Hauptbild, PiP oder anderem angebotenen Adapter | Bestimmt, welcher Empfangspfad genutzt wird. Die Auswahl hängt von der vorhandenen Unterstützung ab; ein Hintergrundmodus schafft keinen zusätzlichen freien Tuner. |
+| Aus Deep-Standby aufwecken | Meldet eine Aufwachzeit an Enigma2. Funktioniert nur mit geeigneter Hardware und korrekter Uhr. |
+| Nach Aktualisierung herunterfahren | Im geprüften Stand an einen durch EPGRefresh ausgelösten Aufwachlauf gebunden, nicht an jeden manuellen Import. Weitere Abschaltprüfungen können eingreifen. |
+| EPG vor Aktualisierung löschen | Entfernt vorhandene Daten. Nicht als allgemeine Voraussetzung einschalten: Bei einem fehlgeschlagenen Lauf bleibt sonst weniger EPG übrig. |
+| AutoTimer übernehmen/ausführen | Optional Dienste aus AutoTimer-Regeln berücksichtigen oder nach dem Auffüllen Regeln auswerten. Nur bei installiertem AutoTimer relevant. |
+
+EPGRefresh besitzt eine **eigene Zeitplanung**. Lege dafür nicht zusätzlich dieselbe Aktion in [Cron](../../timer/cron/) an. Ein manueller Start ist absichtlich unmittelbarer als der normale Standby-Lauf und eignet sich nicht zum Prüfen aller automatischen Schutzbedingungen.
+
+## Wenn der Lauf nichts bringt
+
+Prüfe Empfang, ausgewählte Dienste, Standby-/Aufnahmebedingungen und das Zeitfenster. Ein nicht empfangbarer Transponder liefert keine Daten; ein IPTV-Sender wird durch bloßes Umschalten nicht automatisch mit XMLTV verknüpft. Vergleiche außerdem die [Uhrzeit](../../system/zeit-aufwachen/).
+
+Die Sender-/Bouquetauswahl liegt im geprüften Plugin unter `/etc/enigma2/epgrefresh.xml`, die allgemeinen Optionen in `/etc/enigma2/settings`. Bearbeite diese Dateien normalerweise über die Oberfläche. Diagnosemeldungen mit `EPGRefresh` stehen im [Enigma2-Debug-Log](../../hilfe/logs-diagnose/), sofern dieses aktiviert ist. Der Menüpunkt für den letzten Lauf ist kein vollständiges Fehlerprotokoll.
+
+**Prüfstand:** Native DE-/EN-Dialoge der installierten Version aufgenommen und den Ablauf im Quellcode geprüft. Es wurde kein neuer automatischer Lauf gespeichert und kein Aufwachen aus Deep-Standby getestet.
+
+Quelle: [EPGRefresh – Konfiguration, Ablauf und Timer, Stand 0f1eab407f](https://github.com/oe-alliance-plugins/EPGRefresh/tree/0f1eab407ff699e0cbef9e58cce061d2bf7d461f/src/EPGRefresh).

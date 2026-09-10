@@ -1,0 +1,51 @@
+---
+title: Set up EPGRefresh
+description: Collect DVB programme data automatically, choose services and bouquets, and configure the refresh window and wakeup behaviour.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**EPGRefresh tunes reception services to collect their DVB EPG.** It does not download an XMLTV schedule from the Internet. IPTV without programme data usually needs [EPGImport](../epgimport/) and suitable channel mappings instead.
+
+## Install and prepare a small test
+
+1. Install **EPGRefresh** from the [feed's extensions](../../plugins/installieren/).
+2. Open **Menu → Setup → EPG → EPGRefresh**. Other plugin versions may also offer an Extensions entry.
+3. Use **Blue – Edit Services** to open the service/bouquet editor. Choose the list type and use **New** to add a few receivable services, for example Das Erste HD and ZDF HD.
+4. Save the selection, then save the configuration with **Green**.
+5. Use **Yellow – Functions → Refresh now** for a manual test. Expect a channel change if the main picture is used for refreshing.
+6. Open these channels' EPG afterwards. Check later days too, and use **INFO** in EPGRefresh to inspect the last refresh. Starting successfully does not prove that all data was collected.
+
+<Capture id="refresh-services" language="en" alt="EPGRefresh service and bouquet selection" caption="This list determines which reception services EPGRefresh visits. This image shows an unsaved selection of Das Erste HD and ZDF HD; the existing plugin list was not replaced." />
+
+A DVB transponder often carries EPG for several channels. The checked plugin groups matching transponder identifiers, so a large bouquet does not necessarily require a separate visit to every channel. The broadcaster still determines how much information is transmitted.
+
+## Refresh automatically at a quiet time
+
+Enable automatic refreshing and select a window such as **05:00 to 07:00**, when the receiver is normally in standby and no important recordings are running. This is an example, not a universal recommendation for every household.
+
+<Capture id="refresh-settings" language="en" alt="EPGRefresh configuration showing advanced options" caption="Advanced options were displayed using an unsaved form for this image. No new schedule was created." />
+
+| Setting | Meaning and choice |
+| --- | --- |
+| Earliest/latest refresh time | Window for starting the automatic refresh or retrying while the receiver is busy. The end time is not a guaranteed hard stop for an already running cycle. |
+| Duration per service | Time allowed for collecting EPG. For example, start with 120 seconds and increase it if data is demonstrably incomplete. |
+| Delay when not in standby | Delay before retrying while the receiver is in use or recording. |
+| Force refresh | Can override consideration for viewing/recordings. Initially leave this off for a normal overnight run. |
+| Main picture, PiP or another offered adapter | Selects the reception path used. Available options depend on support; a background mode does not create an extra free tuner. |
+| Wake up from deep standby | Registers a wakeup time with Enigma2. This needs suitable hardware and a correct clock. |
+| Shutdown after refresh | In the checked version this is tied to a wakeup initiated by EPGRefresh, not every manual run. Other shutdown checks may intervene. |
+| Flush EPG before refresh | Removes existing data. It is not a general requirement: a failed refresh could then leave less EPG available. |
+| Inherit/run AutoTimer | Optionally include services from AutoTimer rules or evaluate rules after refreshing. Relevant only with AutoTimer installed. |
+
+EPGRefresh has its **own scheduler**. Do not duplicate the same action in [cron](../../timer/cron/). A manual refresh deliberately starts more directly than a normal standby run and does not test all automatic safeguards.
+
+## When a refresh adds no data
+
+Check reception, selected services, standby/recording conditions and the refresh window. An unavailable transponder cannot provide data. Tuning an IPTV service does not automatically link it to XMLTV. Also check the [clock](../../system/zeit-aufwachen/).
+
+In the checked plugin, service/bouquet selections are stored in `/etc/enigma2/epgrefresh.xml`, with general options in `/etc/enigma2/settings`. Normally change them through the interface. Messages containing `EPGRefresh` appear in the [Enigma2 debug log](../../hilfe/logs-diagnose/) when logging is enabled. The last-refresh display is not a full error log.
+
+**Verification:** Captured native DE/EN dialogs of the installed version and checked the implementation. No new automatic schedule was saved and no deep-standby wakeup was tested.
+
+Source: [EPGRefresh configuration, refresh and timers, revision 0f1eab407f](https://github.com/oe-alliance-plugins/EPGRefresh/tree/0f1eab407ff699e0cbef9e58cce061d2bf7d461f/src/EPGRefresh).

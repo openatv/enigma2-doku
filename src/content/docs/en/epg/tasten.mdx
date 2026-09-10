@@ -1,0 +1,50 @@
+---
+title: Configure INFO, EPG and long presses
+description: Set short and long INFO/EPG actions, default guides, hotkeys and InfoBar EPG activation in OpenATV.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Remote Control Button Settings** determines the normal INFO/EPG behaviour. **Hotkey Setup** assigns individual actions to short and long presses. Inside an open guide, the same keys can instead control that screen.
+
+## INFO and EPG while watching TV
+
+Open **Menu → Setup → Usage & GUI → Remote Control Button Settings**. Find **EPG button mode** and **INFO button mode**, also searchable by those names.
+
+| Key | Available behaviour in the inspected version |
+| --- | --- |
+| Short EPG | Graphical, Single, Multi or Vertical EPG, or EventView. |
+| Short INFO | EventView, the configured EPG choice, or Single EPG. |
+| Long INFO | Default hotkey opens the EPG/event-information extension selection. |
+| Long EPG | EPG/extension selection with an additional default-guide selection entry. |
+
+<Capture id="epg-buttons" language="en" alt="Remote control settings with EPG and INFO button modes" caption="EPG and INFO are configured separately. The screenshot shows existing settings; no new assignment was saved." />
+
+A useful starting point is **INFO → EventView**, **EPG → Graphical EPG**. Save, close the menus and test both keys while watching TV. A listed extra such as Merlin EPG Center needs the corresponding plugin; its appearance as a choice alone does not establish a working launch.
+
+In the checked version, the long INFO/EPG selection requires registered EPG extensions. Without them, the default action opens the single-service EPG directly. During movie playback it can show event information instead.
+
+## Assign a long press
+
+1. Open **Menu → Setup → Usage & GUI → Hotkey Setup** in Expert mode.
+2. Select **Info (EPG) long** or **Epg/Guide long**, or hold that button in the setup screen.
+3. Open its function assignment and choose the intended available EPG action or extension. Several assigned actions may produce a selection menu.
+4. Save and test **short and long presses separately**, outside the settings dialog.
+
+A custom hotkey can bypass the button mode selected above. If behaviour is unexpected, check both layers and then any alternative keymap. The remote must actually provide the required key code. The [long-press directory](../../anhaenge/langtasten/) lists mappings from `keymap.xml`; it does not guarantee every physical remote supports them.
+
+**Select default EPG type** in the long-EPG menu belongs to the EPG extension selection. It does not universally replace every EPG button and screen setting. [Colour buttons and hotkeys](../../erste-schritte/farbtasten-langdruck/) explains the assignment dialog.
+
+## Activate InfoBar EPG
+
+In the remote-control dialog shown above, find **QuickEPG mode**. The same choice may also appear as **InfoBar EPG mode** under **Usage & GUI → Settings**. The inspected version offers **long OK**, **EXIT** or **Left/Right** as activation methods. Particularly with Left/Right, consider which existing behaviour you are replacing.
+
+Configure its content separately under **Menu → Setup → EPG → InfoBar EPG Settings** or **Graphical InfoBar EPG Settings**, including type and presentation. InfoBar EPG is not the second InfoBar; see the [EPG gallery](../ansichten/).
+
+## Keys inside a guide
+
+**MENU** opens the current view's settings. **INFO** normally displays the selected programme; **long INFO** can open that channel's single EPG. In the graphical guide, **9** jumps to prime time. Colour buttons, OK and long OK can be configured per view. Follow the labels and **HELP** in the current screen.
+
+**Verification:** Default assignments, source entry points and the native settings screen checked; no personal button assignments overwritten.
+
+Sources: [Default hotkeys](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ButtonSetup.py), [INFO/EPG entry points](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBarGenerics.py), [settings fields](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml).

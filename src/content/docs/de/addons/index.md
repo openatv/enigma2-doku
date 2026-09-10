@@ -14,8 +14,13 @@ Add-ons erweitern die gemeinsame Enigma2-Oberfläche. Im Alltag werden sie häuf
 
 ## Beispiel: zusätzlicher EPG
 
-Die [EPG-Grundanleitung](../epg/grundlagen/) beschreibt den Programmführer und dessen Cache. Ein zusätzliches Import-Plugin benötigt gegebenenfalls eigene Datenquellen und Zeitpläne. Diese Einstellungen gehören in eine eigene Anleitung zur Erweiterung.
+Die [EPG-Grundanleitung](../epg/grundlagen/) beschreibt den Programmführer und dessen Cache. Zwei Erweiterungen haben eigene Anleitungen:
+
+- [EPGRefresh](./epgrefresh/) sammelt DVB-Programmdaten durch Empfang ausgewählter Dienste und Bouquets.
+- [EPGImport](./epgimport/) lädt XMLTV-Daten aus Quellen und besitzt eine eigene Tage-/Zeitplanung.
+
+[Fehlende Daten und IPTV](../epg/fehlende-daten/) erklärt die Senderzuordnung. Beide Erweiterungen sind zusammen mit dem übrigen Handbuch durchsuchbar.
 
 ## Eigene Anleitungen ergänzen
 
-Für jede Erweiterung kann hier ein eigener Unterordner mit Einführung, Einrichtung und Problemlösungen entstehen. So bleiben umfangreiche Zusatzfunktionen getrennt lesbar und trotzdem gemeinsam durchsuchbar. Die erste Ausgabe enthält die gemeinsame Installationsanleitung; ausführliche Anleitungen einzelner Add-ons folgen nach Bedarf.
+Für jede Erweiterung kann hier ein eigener Unterordner mit Einführung, Einrichtung und Problemlösungen entstehen. So bleiben umfangreiche Zusatzfunktionen getrennt lesbar und trotzdem gemeinsam durchsuchbar. Weitere Add-ons lassen sich nach demselben Muster ergänzen.

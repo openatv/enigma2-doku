@@ -1,0 +1,61 @@
+---
+title: Recording and zap timers
+description: Record EPG programmes, create manual timers, configure repeats, margins and destinations, and understand conflicts and shutdown behaviour.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+A **recording timer** schedules a recording at a particular time. A **zap timer** selects a service without necessarily recording a file. Both require a correct [clock](../../system/zeit-aufwachen/); a recording timer also requires an accessible, writable destination.
+
+## Create a timer from the EPG
+
+1. Open the [EPG](../../epg/ansichten/) and select the desired programme.
+2. Choose the displayed timer action, **Green – Add Timer** in this example. Custom colour-button assignments may differ.
+3. Check service, date, start and end. Select **Record** to create a recording.
+4. Check margins and recording location. A NAS share must be available when recording starts.
+5. Save with **Green**. Resolve a reported conflict before relying on the timer.
+6. Check the entry under **Menu → Timers → RecordTimers**. Practise with a short, unimportant recording and check its file, duration and playback afterwards.
+
+<Capture id="record-example" language="en" alt="Unsaved recording timer for Das Erste HD with start, end and destination" caption="Example in the native timer editor: the recording named EPG Demo was neither saved nor started." />
+
+For a **manual recording without EPG**, open the recording timer list and choose **Add**. Enter the title, service, date and times yourself. If the programme crosses midnight, the end date is the following day.
+
+## Which fields matter?
+
+| Field | Meaning |
+| --- | --- |
+| Timer type | Record, zap, or zap and record. A zap-only timer creates no recording. |
+| Once/repeated | One event or a pattern such as daily, weekly, Monday–Friday or selected weekdays. Check the first applicable day. |
+| Start/end | Planned duration. Zap timers may offer different end-time and execution conditions. |
+| Before/after margins | Extra minutes around a programme. They also consume reception and storage resources. |
+| Service | Actual service from the channel list; similarly named HD/SD/regional services are not necessarily interchangeable. |
+| Recording location | Destination for this timer. Bookmarks and global defaults help selection, but each timer still needs checking. |
+| Tags | Labels for organising recordings later. |
+| After recording | Do nothing, standby, deep standby or automatic. Automatic considers the sequence and previous state; it does not always mean shutdown. |
+| Zap conditions | Where offered, zap only while running, only from (deep) standby, or always. |
+
+An EPG-created timer takes the known programme times. **This does not guarantee tracking every subsequent schedule change.** Check important recordings and use sensible margins. **AutoTimer** is an additional plugin: it searches EPG data and creates individual timers from rules. A repeated clock-time timer does not automatically search for programme titles.
+
+## Understand and resolve conflicts
+
+Overlapping timers are not automatically a conflict. Depending on reception, several services from a transponder can share resources; other combinations require additional available reception capacity. This guide therefore does not assume a particular tuner count.
+
+For a conflict warning, compare **the full duration including margins**, services, repeats and recordings already running. Reduce margins deliberately, use a repeat broadcast or disable the less important timer. Do not delete arbitrary entries just to dismiss the warning.
+
+A passed timer conflict check guarantees neither free disk space, NAS availability, network throughput nor available connections from an IPTV provider. Such limits may only become apparent at runtime. See [NAS recording](../../speicher/nas-aufnahmen/).
+
+## Standby, shutdown and wakeup
+
+In normal **standby**, Enigma2 keeps running and can record. During a regular shutdown to **deep standby**, Enigma2 determines the next relevant wakeup time. This requires suitable hardware, power and a correct clock. A timer cannot start a receiver disconnected from mains power.
+
+Current or imminent recordings can produce a **shutdown warning**. Time shift, streaming and background work may cause messages too. Forcing a confirmed shutdown can still interrupt recording; a warning is not an absolute lock. Timeouts and default answers vary by dialog.
+
+After wakeup the receiver needs time to boot, obtain the correct time and possibly access the NAS. Avoid placing overnight imports immediately before a recording starts. Afterwards, the timer's after-event action, other appointments and receiver use affect the next state. See [scheduled tasks](../aufgaben/) and [time/wakeup](../../system/zeit-aufwachen/).
+
+## Status, files and diagnosis
+
+Open the affected timer and its offered log/status display. Note the planned time, actual behaviour and error. Add an [Enigma2 debug log](../../hilfe/logs-diagnose/) when necessary. The checked image stores definitions in **`/etc/enigma2/timers.xml`**. Use the interface to edit them so Enigma2 does not later overwrite manual file changes.
+
+**Verification:** Captured the timer editor with an unsaved example. No new recording, conflict scenario or automatic hardware wakeup was performed.
+
+Sources: [Timer editors and overviews](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Timers.py), [Recording operation](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/RecordTimer.py), [Shutdown messages](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Standby.py).

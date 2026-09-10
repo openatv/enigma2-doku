@@ -1,0 +1,50 @@
+---
+title: INFO, EPG und Langdruck anpassen
+description: Kurze und lange INFO-/EPG-Tastendrücke, Standard-EPG, Hotkeys und Aktivierung des Infobar-EPG in OpenATV konfigurieren.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Die **Fernbedienungseinstellungen** bestimmen das normale Verhalten von INFO und EPG. **Hotkey Setup** weist kurzen und langen Tastendrücken eigene Aktionen zu. In einem geöffneten EPG können dieselben Tasten wiederum eine Funktion dieses Bildschirms haben.
+
+## INFO und EPG beim Fernsehen
+
+Öffne **Menü → Einstellungen → Bedienung / Oberfläche → Fernbedienungseinstellungen**. Suche **Taste EPG** und **Taste INFO**; bei abweichender Übersetzung findest du sie auch über „EPG button mode“ beziehungsweise „INFO button mode“ in der Suche.
+
+| Taste | Möglichkeiten im geprüften Stand |
+| --- | --- |
+| EPG kurz | Grafischer EPG, SingleEPG, MultiEPG, vertikaler EPG oder Sendungsinformation. |
+| INFO kurz | Sendungsinformation, EPG entsprechend der EPG-Auswahl oder SingleEPG. |
+| INFO lang | In der Standard-Hotkeybelegung die Auswahl der EPG-/Sendungsinfo-Erweiterungen. |
+| EPG lang | EPG-/Erweiterungsauswahl mit zusätzlichem Eintrag zur Standard-EPG-Auswahl. |
+
+<Capture id="epg-buttons" language="de" alt="Fernbedienungseinstellungen mit den Modi für EPG und INFO" caption="EPG und INFO werden getrennt konfiguriert. Das Bild zeigt den vorhandenen Zustand, keine neu gespeicherte Belegung." />
+
+Praktischer Einstieg: **INFO → Sendungsinformation**, **EPG → Grafischer EPG**. Speichern, alle Menüs schließen und beide Tasten beim Fernsehen testen. Ein eventuell gelisteter Zusatz wie Merlin EPG Center benötigt das passende Plugin; eine Auswahlbeschriftung allein garantiert dessen Aufruf nicht.
+
+Die lange INFO-/EPG-Auswahl setzt im geprüften Stand passende registrierte EPG-Erweiterungen voraus. Ohne diese öffnet der Standardaufruf direkt den Einzel-EPG. Bei Filmwiedergabe kann stattdessen die Sendungsinformation erscheinen.
+
+## Eigene lange Tastendrücke
+
+1. Öffne **Menü → Einstellungen → Bedienung / Oberfläche → Hotkey Setup** in der Expertenansicht.
+2. Wähle **Info (EPG) lang** oder **Epg/Guide lang**, beziehungsweise halte die betreffende Taste dort gedrückt.
+3. Öffne die Funktionszuordnung und wähle die gewünschte vorhandene EPG-Aktion oder Erweiterung. Mehrere zugeordnete Aktionen können eine Auswahlliste ergeben.
+4. Speichere und teste **kurz und lang getrennt**, außerhalb des Einstellungsdialogs.
+
+Eine eigene Hotkey-Zuordnung kann den oben gewählten Tastenmodus umgehen. Prüfe bei unerwartetem Verhalten zuerst beide Ebenen, danach eine eventuell alternative Keymap. Eine physische Taste muss vom Gerät überhaupt mit einem passenden Tastencode geliefert werden. Das [Langdruck-Verzeichnis](../../anhaenge/langtasten/) nennt die Zuordnungen aus `keymap.xml`; es ist keine Garantie für jede Fernbedienung.
+
+**Standard-EPG auswählen** in der langen EPG-Auswahl gehört zur EPG-Erweiterungsauswahl. Dieser Standard ersetzt nicht pauschal die Einstellung für jede EPG-Taste und jeden Bildschirm. [Farbtasten und Hotkeys](../../erste-schritte/farbtasten-langdruck/) erläutert die Bedienung des Zuordnungsdialogs.
+
+## Infobar-EPG aktivieren
+
+Im oben gezeigten Fernbedienungsdialog findest du **Grafischen Infoleisten-EPG aufrufen** (*QuickEPG mode*). Unter **Bedienung / Oberfläche → Einstellungen** kann dieselbe Auswahl zusätzlich als Infobar-EPG-Modus erscheinen. Im geprüften Stand sind **OK lang**, **EXIT** oder **Links/Rechts** als Aktivierungswege vorgesehen. Überlege besonders bei Links/Rechts, welche bisherige Funktion du dadurch ersetzt.
+
+Den Inhalt stellst du getrennt unter **Menü → Einstellungen → EPG → Infobar-EPG** beziehungsweise **Grafischer Infobar-EPG** ein. Dort gibt es unter anderem Typ und Darstellung. Ein Infobar-EPG ist nicht die „zweite Infoleiste“; die Unterschiede zeigt die [EPG-Galerie](../ansichten/).
+
+## Tasten innerhalb des EPG
+
+**MENU** öffnet die Einstellungen dieser Ansicht. **INFO** zeigt normalerweise die markierte Sendung, **INFO lang** kann den Einzel-EPG des markierten Senders öffnen. Im grafischen EPG führt **9** zur Primetime. Farbtasten, OK und OK lang sind teilweise pro Ansicht konfigurierbar. Die Beschriftung und **HELP** im aktuellen Dialog sind deshalb maßgeblich.
+
+**Prüfstand:** Standardbelegung und Aufruflogik im Quellcode sowie der native Einstellungsdialog geprüft; keine persönliche Tastenbelegung überschrieben.
+
+Quellen: [Standard-Hotkeys](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ButtonSetup.py), [INFO-/EPG-Aufrufe](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBarGenerics.py), [Einstellungsfelder](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml).

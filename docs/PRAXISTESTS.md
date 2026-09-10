@@ -226,3 +226,44 @@ Die Bilder aus `network-a-de-network-shares` und `network-a-en-network-shares` w
 Auf dem Windows-PC wurden keine Konten, Freigaben, Profile oder Firewall-Regeln verändert. Ein vollständiger Windows-SMB-Aufnahmetest, neu eingerichtete NFS-Exporte mit Clientzugriff, NAS-Timer/Timeshift unter Last und ein absichtlich ausgelöster NAS-Ausfall wurden in diesem Abschnitt nicht durchgeführt. Die Anleitung nennt dafür konkrete Kontrollen, behauptet aber keine gemessenen Ausfallzeiten. Die vorhandene CIFS-Freigabe war bereits in der ersten Serie schreibend und lesend geprüft worden.
 
 Es wurde kein Laufwerk formatiert, kein aktuelles Image überschrieben und keine Aufnahmeziel-Konfiguration umgestellt. Rohserien und private Prüfprotokolle bleiben lokal. Handbuch und Aufnahmeplugin werden jeweils nur lokal committed; kein Push und keine Veröffentlichung in diesem Abschnitt.
+
+## Ergänzung: EPG, Timer, Aufgaben und Uhrzeit
+
+Am 10. September 2026 wurden neun Kapitel je Sprache ergänzt: EPG-Ansichten/Primetime, INFO-/EPG-Tasten, EPGRefresh, EPGImport, fehlende Daten/IPTV, Aufnahme-/Umschalttimer, Aufgaben-/Ausschalttimer, Linux-Cron sowie Zeit/NTP/Aufwachen. Navigation, Startseiten, EPG-Einstieg, Add-ons, Langdruck-Kapitel und FAQ verweisen darauf.
+
+### Quellen und Bildserie
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| Gemeinsamer Enigma2-Stand | `fdc9347241245fd18fd0b8bc93727237189c916c`: EPG-Aufrufe/-Ansichten, Keymap/Hotkeys, Setup-/Menütexte, Timer/Scheduler, Standby, NetworkTime und Hardware-Weckzugriff geprüft |
+| EPGRefresh | Installierter Stand `0f1eab407ff699e0cbef9e58cce061d2bf7d461f`, Dialogversion 2.1.4; native Konfiguration und Sendereditor aufgenommen, Zeitfenster/Standby-/Weckablauf im Quellcode geprüft |
+| EPGImport | Installierter XMLTV-Import-Stand `a32929f2d0`; Quellenpaket `4eaaa70fca`; Konfiguration, Quellen und Tageprofil aufgenommen, Kanal-ID-/Reference-Zuordnung und Filter geprüft |
+| Aufnahmeplugin | `e6487baa4a3fe0d1d2cde8590a173eb9890305e9`; 27 Python-Tests bestanden, darunter Schutz der Formularobjekte, gebundene Skin-Callbacks und ARD-/ZDF-Auswahl |
+| Neue Profile | `epg-views`: 8, `epg-tools`: 7, `timer-guides`: 4 Ansichten je Sprache; alle sechs `epg-e-…`-Läufe vollständig |
+| Sichtprüfung | Alle 38 neuen PNGs einzeln auf Inhalt, Sprache und Lesbarkeit geprüft; native Texte und vorhandene Skin-Artefakte unverändert belassen |
+| Senderauswahl | Vorhandenes Bouquet mit Das Erste HD, ZDF HD, 3sat HD und weiteren Diensten; echte Cache-Daten, keine erfundenen Sendungen und keine TV-Wiedergabe während der Bilder |
+| Beispiel-Formulare | EPGRefresh-Auswahl mit Das Erste/ZDF und automatische Plugin-Felder nur lokal im Formular; Aufnahme-/Scheduler-Beispiel nie registriert, Speichern/Import/Quellenupdate gesperrt |
+| Boxzustand | Enigma2 läuft; ursprüngliche Sprache `de_DE` nach den Sprachneustarts wiederhergestellt |
+
+Der EPG-Cache enthält deutschsprachige Sendungstitel und Beschreibungen, die beim Wechsel auf Englisch erhalten bleiben. Die vorhandene Metadaten-Erweiterung ergänzt teilweise Bilder und Texte. Beim einfachen und erweiterten Einzel-EPG zeigt der aktive Skin dieselbe Grundgestaltung, einen angeschnittenen großen Hintergrundtitel und leere Metadatenklammern. Die Artikel benennen diese sichtbaren Artefakte; es erfolgte keine Pixelkorrektur. Frühere Versuche mit unpassenden Sendern, fehlenden Detailfeldern oder abgebrochenem Dialogaufbau wurden nicht importiert.
+
+Die SHA-256-Werte von `timers.xml`, `scheduler.xml`, `epgrefresh.xml`, `/etc/crontab`, `/etc/fstab`, `/etc/auto.network`, `/etc/exports` und `/etc/nfs.conf` stimmten nach der endgültigen Serie mit den Ausgangswerten überein. HDD, NAS und aktuelles Image wurden nicht verändert.
+
+### Besondere fachliche Befunde
+
+- Lange INFO-/EPG-Standardaktionen bieten eine Erweiterungsauswahl nur bei passenden registrierten Plugins; andernfalls kann direkt der Einzel-EPG erscheinen. Die Aktivierung des QuickEPG ist auch in den Fernbedienungseinstellungen sichtbar.
+- EPGRefresh fasst gleiche Transponderkennungen zusammen. Sein Abschalten ist im geprüften Stand an einen eigenen Aufwachlauf gebunden. EPGImport benötigt ausgewählte Quellen und passende Kennungen; Sendernamen allein sind keine Zuordnung.
+- Aufnahmetimer, Scheduler-Aufgaben, Plugin-Zeitpläne und Linux-Cron werden ausdrücklich getrennt. Cron programmiert keine Hardware-Weckzeit und kennt laufende Enigma2-Aufnahmen nicht automatisch.
+- Cronie 1.7.2 ist installiert. `/var/spool/cron/crontabs` verweist auf `/etc/cron/crontabs`. Der geprüfte Cronmanager verwendet beim Speichern jedoch noch `-c` als Verzeichnisoption, während Cronies Werkzeug eine andere Bedeutung hat. Deshalb beschreibt das Kapitel `crontab -e` als Ausweichweg und behauptet keinen getesteten GUI-Speicherablauf.
+- Das Zeittutorial vermeidet die pauschale Aussage, alle Boxen hätten keine RTC. Systemuhr, gepufferte RTC, Frontprozessor, Standby und Deep-Standby werden unterschieden. NTP braucht einen erreichbaren Zeitserver, aber nicht zwingend einen öffentlichen Internetserver; gültige DVB-Zeit kann ohne Internet funktionieren.
+
+### Website-Prüfungen und Grenzen
+
+- Astro: 21 Dateien geprüft, keine Fehler, Warnungen oder Hinweise.
+- Handbuch: 11 Node-Tests und 8 Python-Tests bestanden, einschließlich Inventar, SHA-256 und Sprachpaaren.
+- Produktionsbuild für GitHub Pages und Apache am Domain-Ursprung erfolgreich. Je 246 HTML-Dateien, lokale Links, Assets, Sprungmarken und Sprachgegenstücke geprüft.
+- Je 89 Suchprüfungen bestanden, darunter Primetime, INFO lang, tvg-id, custom.channels.xml, EPGRefresh, epgimport.log, Umschalttimer, scheduler.xml, crontab, Uhrendrift und NTP.
+- Gebautes deutsches EPG-Kapitel im lokalen Browser geöffnet: neue Navigation, Tabelle, Bild-/Originaldateilinks, Quellen, Kapitelübergänge und Sprachmenü kontrolliert.
+- 122 Inhalte je Sprache; 37 Kapitel je Sprache mit Bildern. Insgesamt 192 Original-PNGs, davon 166 mit Bootlogo und 26 aus der früheren Senderhintergrund-Serie, sowie 576 responsive WebP-Varianten. Pages-Build rund 115,83 MB in 1303 Dateien, etwa 11,58 Prozent des 1-GB-Budgets.
+
+Es wurde kein neuer Aufnahme-, Scheduler- oder Cronauftrag gespeichert, kein Import ausgelöst, kein Konflikt künstlich erzeugt und kein automatischer Deep-Standby-/RTC-Wecklauf getestet. Die beschriebenen Anleitungen stützen sich auf native Dialoge und abgeglichene Quellen, nicht auf einen behaupteten vollständigen Praxistest aller Abläufe. Ein durchgehender Import mit Senderzuordnung und daraus folgender Testaufnahme sowie Hardware-Wecktests können später ergänzend protokolliert werden. Änderungen werden nur lokal committed; kein Push.

@@ -1,0 +1,62 @@
+---
+title: Scheduled tasks and sleep timers
+description: Configure Enigma2 wakeup, standby and restart tasks, supported plugin functions, sleep timers and their conditions.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Timers** contains several kinds of scheduling. Choose the task first, then the appropriate scheduler. A cronjob, a recording timer and a sleep timer have different capabilities.
+
+<Capture id="timers-menu" language="en" alt="Timers menu showing recording timers, Scheduler, Cron Timers, Sleep Timers and installed AutoTimer" caption="The shared Timers menu. Additional entries such as AutoTimer depend on installed extensions." />
+
+| Scheduler | Intended for | Where to configure |
+| --- | --- | --- |
+| Recording/zap timers | Record a programme or change service | Timers → RecordTimers; see [recording](../aufnahmen/). |
+| Scheduler | Wakeup, standby, shutdown, restart and supported plugin functions | Timers → Scheduler. |
+| Sleep timers | Enter the selected resting state after a duration or programme end | Timers → Sleep Timers. |
+| AutoTimer | Search EPG using rules and create recording timers | Additional AutoTimer plugin. |
+| EPGRefresh / EPGImport | Collect DVB information or import external data | Their own [plugin schedules](../../addons/). |
+| Linux cron | Execute a shell command on a calendar schedule | Timers → Cron Timers; see [cron](../cron/). |
+
+## Create an Enigma2 task
+
+1. Open **Scheduler** and choose **Add**.
+2. Select the **timer type**, for example **Wake up**. Subsequent fields depend on the type.
+3. Enter the date and start time. Choose once or the required repeat pattern.
+4. Check whether an end time/after-event action and standby, activity or network conditions are offered and needed.
+5. Save with **Green**, then check the entry in the overview. Start with a single appointment allowing sufficient lead time and observe the result.
+
+<Capture id="scheduler-example" language="en" alt="Scheduler settings for a one-off wakeup" caption="Unsaved example of a wakeup task. No hardware wakeup alarm was programmed." />
+
+## Which tasks are available?
+
+- **Wake up:** Bring the receiver into its active state; waking from deep standby requires device support.
+- **Wake up to standby:** Start the system while picture and sound remain in standby. Useful before background work.
+- **Standby / deep standby:** Enter standby or shut down cleanly. Other appointments and current use can cause questions or delays.
+- **Automatic standby / automatic deep standby:** Respond to inactivity. Key presses can renew the delay; depending on the task, time windows and checks for network traffic or reachable devices are available.
+- **Reboot / restart GUI:** Restart the whole system or just Enigma2. A GUI restart still interrupts Enigma2 and is not harmless maintenance during recordings.
+- **Plugin function:** Only functions registered with the Scheduler by installed plugins appear. This is not an arbitrary shell command field. Extra standby conditions and retries may be offered.
+
+Not every task exposes every option. A ping check, for example, does not prove that a NAS has no other work in progress. Match activity checks to your actual network and first verify that they detect the intended state.
+
+## Sleep timer and inactivity
+
+A **sleep timer** applies to a limited duration, such as another 30 minutes of viewing. Depending on playback, programme/movie end may also be available; live programme end depends on usable EPG times. The **inactivity timer** responds to a lack of interaction instead. It is different from a fixed daily shutdown at 23:00.
+
+Check the configured action and shutdown message. A dialog can have a timeout and a default answer. Usage options also include **Time delay of the shutdown messages**; its effect depends on the timer action. Read the displayed message instead of assuming nothing happens until you press OK.
+
+## Sequence, conflicts and the next wakeup
+
+Allow gaps between related steps: **system/network ready → populate EPG → evaluate AutoTimer → record**. A scheduled time does not guarantee the previous step has finished. Use existing “AutoTimer after import/refresh” options for that dependency.
+
+During a clean shutdown, Enigma2 compares upcoming recording, zap, Scheduler and plugin-provided wakeup appointments. It can pass the earliest relevant time to the hardware. Those appointments do not all have to appear in one visible list. While shut down, the receiver runs neither Enigma2 nor cron.
+
+Avoid opposing plans such as shutting down at import time and restarting immediately afterwards. Observe recording/time-shift/streaming warnings. After wakeup, a valid time must first be available; see [time and wakeup](../../system/zeit-aufwachen/).
+
+## Logs and saved tasks
+
+The current Scheduler stores entries in **`/etc/enigma2/scheduler.xml`**. Recording timers are separate in `timers.xml`; plugin schedules have their own settings. Use overview status/log functions and, if needed, the [debug log](../../hilfe/logs-diagnose/) with Scheduler messages. Deleting a cron line does not remove an Enigma2 timer.
+
+**Verification:** Captured the menu and an unsaved task editor; checked task types and shutdown logic in source. Automatic shutdown, restart and wakeup were not executed for this series.
+
+Sources: [Scheduler and plugin-function registration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Scheduler.py), [Task editor](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Timers.py), [Sleep timers](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SleepTimer.py), [Wakeup selection at shutdown](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/StartEnigma.py).

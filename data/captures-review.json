@@ -1076,5 +1076,271 @@
     "sha256": "1758bf157fea6ffdbcfc2387350952f253e830ea54a1b5b31e4a0e994db8dd31",
     "run": "network-a-en-network-shares",
     "tool_commit": "e1e6f83685c16dbe51ca7449607f506d98c559e2"
+  },
+  {
+    "language": "de",
+    "id": "epg-view-single",
+    "sha256": "ecb710fbaa143c52e15f06e770ed5bd65217da829e8939bf3493fe36b5599bc8",
+    "run": "epg-e-de-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "epg-view-enhanced",
+    "sha256": "a858f1cbbc707c27429280f5c39f2637eab0bb962f134860f09cd2c5e35fe76b",
+    "run": "epg-e-de-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "epg-view-multi",
+    "sha256": "0765fd2bb26cd7cc0ef91da61a02ec2dd02d5d5ed0fc65b6997a84f56dacaecc",
+    "run": "epg-e-de-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "epg-view-graph",
+    "sha256": "8a568ea9697da674f45c6c6a42982652d9d0aa272e66e7334e6a3fb76f3487f1",
+    "run": "epg-e-de-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "epg-view-vertical",
+    "sha256": "a0d25b33cfacb9d1988a7ce61131b5ab60060137f37c97f8a612d324632cdeb1",
+    "run": "epg-e-de-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "epg-view-infobar",
+    "sha256": "dad5c2d610793f5ca027c84359eec66327b4650f8f574c7a32f74db12d55c304",
+    "run": "epg-e-de-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "epg-view-infobargraph",
+    "sha256": "2deeabfe089518397e18a8d9436e55ea187edd927d5ad34b803049d38f7930b0",
+    "run": "epg-e-de-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "epg-view-primetime",
+    "sha256": "cab57d3aa32e3998f105831064798f70947062530b18f2cc7ae316b20477fde2",
+    "run": "epg-e-de-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "epg-buttons",
+    "sha256": "e5b7ce32370cd5ea12cc4f643de0a6b5035cbd956dcee6a7e3b16f29d7210475",
+    "run": "epg-e-de-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "epg-graph-settings",
+    "sha256": "31493ec1c759304a6b37e632c6aa01327959e28bd1651e42eb8d866bb7b451fb",
+    "run": "epg-e-de-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "refresh-settings",
+    "sha256": "ff74724f37296bfa8f0f2136e38eb3dd4e1379a54abd559b91e95682a76c296d",
+    "run": "epg-e-de-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "refresh-services",
+    "sha256": "d005f0813ac1de4282a0c2092754b5093d0cf89e177b58f8b9dd63230649ad40",
+    "run": "epg-e-de-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "import-settings",
+    "sha256": "130ccd2b4e5534a16a8ecb25d792bc60787c9f7e65234995ef42fe5aac2e0054",
+    "run": "epg-e-de-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "import-sources",
+    "sha256": "854aac7f527c7b66b37d41f72b5c65f7df87318bc24c3cb1a2f82a880587af26",
+    "run": "epg-e-de-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "import-days",
+    "sha256": "3524756546e30f92fa435569a64f698c97294b0295d7967235e296008296e0d6",
+    "run": "epg-e-de-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "timers-menu",
+    "sha256": "c61193ecbd935feff8494d14ec9139799f928cc3013083332f762999c28125e5",
+    "run": "epg-e-de-timer-guides",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "record-example",
+    "sha256": "771cececf94df3e5d51eb9f38f506a07937127d141ec2cf3b955cee0af38248f",
+    "run": "epg-e-de-timer-guides",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "scheduler-example",
+    "sha256": "1a759185e4b22a407959dc9198b0a19df260e42edc25395edcdb59763a55ac23",
+    "run": "epg-e-de-timer-guides",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "time-settings",
+    "sha256": "cec340fbb0dc8b2db528333bccd3fd8d0cd576c9ca3c0f6d17e388e0524fd3f1",
+    "run": "epg-e-de-timer-guides",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "epg-view-single",
+    "sha256": "fc4e9b973199dfcc02c16ec2748f408239f066ad461230c27c0ec1fdd863d60d",
+    "run": "epg-e-en-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "epg-view-enhanced",
+    "sha256": "acb540bb4481d080f718ef120f82a4e8d548ec161fbbe54ed92ac4a0d20b7f6d",
+    "run": "epg-e-en-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "epg-view-multi",
+    "sha256": "6da0e1d576772bfa1e70a536f202eb298e16d564fd6f111a257b8ed4ec46763f",
+    "run": "epg-e-en-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "epg-view-graph",
+    "sha256": "5baf0437a4f7883ebb0ffb69b4f0f07fcb4e32198750dece79f3c03e388aca95",
+    "run": "epg-e-en-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "epg-view-vertical",
+    "sha256": "fbf509f2bc2b36e7afd8bcc6ccf5fb87575ecb7773525eeb62ce1f5c68da1709",
+    "run": "epg-e-en-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "epg-view-infobar",
+    "sha256": "78d8ea586d5ec3526242295f8bde2cebb01e162db573fde1f594b631fc483349",
+    "run": "epg-e-en-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "epg-view-infobargraph",
+    "sha256": "1604eb8d904b2ed887b8412c98a90bb28d88c43f2d640584f1d143be614dc996",
+    "run": "epg-e-en-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "epg-view-primetime",
+    "sha256": "6ff81baf1c4251aa02e1220123abf19a688546c9edc51f49126b97aa0195adc0",
+    "run": "epg-e-en-epg-views",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "epg-buttons",
+    "sha256": "39f78eae700287d12e80de22b3be31a8b82ca0472d4ec076f1898ef3245ecaab",
+    "run": "epg-e-en-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "epg-graph-settings",
+    "sha256": "de6593bc12f3745816bdc299bad02ea76c3271b6be95bf05c0816ef07025f153",
+    "run": "epg-e-en-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "refresh-settings",
+    "sha256": "fd486b4200af44f9d18bd6120266a3ce010492ee37d812caed0cc2f004e801d0",
+    "run": "epg-e-en-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "refresh-services",
+    "sha256": "f0c9a6f491827546a4f0ecbf40c7246da77e45adb93daefc9a40f8d8f92c3069",
+    "run": "epg-e-en-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "import-settings",
+    "sha256": "f41e0536fcbaab49d56c3f3bfb9d3fd266c74256c1d5ee9ec2d22378a417d165",
+    "run": "epg-e-en-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "import-sources",
+    "sha256": "9435dee3533eb593e7c9d04c1435750f42cbcf9df15a68de7c5dacb7bee4a8ca",
+    "run": "epg-e-en-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "import-days",
+    "sha256": "61e40d40235aa930f98b3f3c63796a5e28a041d98025fb8d0289c837be36366c",
+    "run": "epg-e-en-epg-tools",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "timers-menu",
+    "sha256": "6bc598f2bf8a67d9e219bf0fd10dde95af0594b53417863fd7e206598d90e302",
+    "run": "epg-e-en-timer-guides",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "record-example",
+    "sha256": "8bd22de5a3b2842c6e3531dddee2193d1ebdc70e7ccb61d400c25797359d80bd",
+    "run": "epg-e-en-timer-guides",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "scheduler-example",
+    "sha256": "e990ce88699880f810efe6695c79ddd9ec0a3700c0a07ec8f779ad44d427f112",
+    "run": "epg-e-en-timer-guides",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "en",
+    "id": "time-settings",
+    "sha256": "29e2820ca755b1fd3beab26705dd4c6f92def700109203d985391d3825a0ea00",
+    "run": "epg-e-en-timer-guides",
+    "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
   }
 ]

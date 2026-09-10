@@ -1,0 +1,54 @@
+---
+title: EPGImport und XMLTV-Quellen
+description: EPGImport installieren, Quellen auswählen, manuell importieren und automatische Tage, Startzeiten, Filter und Aufwachen einstellen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**EPGImport lädt Programmdaten aus konfigurierten Quellen und ordnet sie Enigma2-Sendern zu.** Eine Quelle enthält nicht automatisch die passende Zuordnung für jede IPTV-Liste. Empfangsbasierte Aktualisierung erklärt [EPGRefresh](../epgrefresh/).
+
+## Quellen auswählen und zunächst manuell testen
+
+1. Installiere **EPGImport** aus dem [Plugin-Feed](../../plugins/installieren/), einschließlich des angebotenen Quellenpakets.
+2. Öffne **Menü → Einstellungen → EPG → EPG-Importer**. Ein Eintrag im Plugin-Browser ist in dieser Version zusätzlich einschaltbar.
+3. Öffne **Blau – Quellen**. Klappe die benötigte Kategorie auf und markiere mit **OK** gezielt passende Quellen für dein Programmangebot.
+4. Speichere mit **Grün**. Starte im Hauptdialog mit **Gelb – Manuell** einen Import und beachte eine eventuelle Rückfrage.
+5. Warte auf das Ergebnis. Prüfe danach mehrere Sender sowie die nächsten Tage im EPG.
+
+<Capture id="import-sources" language="de" alt="EPGImport-Quellenliste mit Kategorien und Auswahlkästchen" caption="Wähle benötigte Quellen gezielt aus. Mehr Quellen bedeuten mehr Daten, aber nicht automatisch bessere Senderzuordnungen." />
+
+Die Quellenliste ist ein Katalog. **Quellen aktualisieren** erneuert dessen Definitionen; **Importieren** lädt die eigentlichen Sendungen. Bei der Quellenaktualisierung kann eine Variante mit Löschen vorhandener Definitionen angeboten werden. Wähle sie nicht unbedacht, wenn du eigene Quellen gepflegt hast. Verfügbarkeit und Nutzungsbedingungen liegen beim jeweiligen Datenanbieter.
+
+## Automatischen Import einrichten
+
+Nach einem erfolgreichen manuellen Test aktiviere **Automatischer EPG-Import**, wähle eine ruhige Startzeit und öffne die **Tageauswahl** mit OK. Speichere beide Dialoge. Plane genug Zeit vor Aufnahmen oder einer anschließenden AutoTimer-Auswertung ein.
+
+<Capture id="import-settings" language="de" alt="EPGImport-Konfiguration mit automatischem Start und Filtern" caption="Die automatische Option wurde nur für dieses ungespeicherte Formular eingeblendet." />
+
+<Capture id="import-days" language="de" alt="EPGImport-Tageprofil mit den Wochentagen" caption="Das Tageprofil grenzt die regulären Importtage ein. Startaktionen nach Boot oder Standby haben zusätzliche Optionen." />
+
+| Option | Wozu sie dient |
+| --- | --- |
+| Startzeit und Wochentage | Regelmäßigen Lauf festlegen; ohne gespeicherte Quellenauswahl fehlen die Eingabedaten. |
+| Bei Deep-Standby überspringen oder aufwecken | Entscheiden, ob ein Lauf bei ausgeschalteter Oberfläche ausfallen darf. Aufwecken benötigt Unterstützung der Box. |
+| Nach Import zurück in Deep-Standby | Für passende automatische Aufwachläufe; kein allgemeiner Abschaltbefehl nach jedem manuellen Test. |
+| Wiederholung nach Stunden | Zusätzliche Importe, wenn angeboten und benötigt. Ein täglicher Lauf genügt für viele Datenquellen. |
+| Import nach Booten, GUI-Neustart oder Standby | Zusätzliche Startbedingungen. Prüfe die angebotenen Ausnahmen und die Berücksichtigung des Tageprofils, um unnötige Wiederholungen zu vermeiden. |
+| Nur Sender in Bouquets | Spart Daten, kann aber Sender außerhalb deiner Bouquets ausschließen. |
+| Nur IPTV-Sender | DVB-Sender werden ausgefiltert. Zum allgemeinen DVB-Test ausgeschaltet lassen. |
+| Lange Beschreibungen für X Tage | Begrenzt den Umfang ausführlicher Texte und damit den Speicherbedarf. |
+| Aktuellen EPG vor Import löschen | Entfernt vorhandene Daten. Zunächst ausgeschaltet lassen, damit ein Quellenausfall nicht den bisherigen EPG beseitigt. |
+| Channel-ID-Filter auch für eigene Zuordnungen | Regeln aus `/etc/epgimport/channel_id_filter.conf` können auch `custom.channels.xml` betreffen. Bei scheinbar ignorierten eigenen Einträgen mit prüfen. |
+| AutoTimer nach Import | Erst die neuen Sendungen laden, dann daraus Regeln für Aufnahmetimer auswerten. Nur mit installiertem AutoTimer. |
+
+EPGImport verwaltet seinen Zeitplan selbst und meldet unterstützte Aufwachtermine an Enigma2. Ein zusätzlicher Cronjob ist für diesen Ablauf nicht erforderlich. [Zeit und Aufwachen](../../system/zeit-aufwachen/) erklärt die Grenzen bei Deep-Standby.
+
+## Ergebnis und Fehler prüfen
+
+**INFO im EPGImport-Hauptdialog** öffnet das Importprotokoll. Die Speicheraktion darin schreibt im geprüften Stand nach **`/tmp/epgimport.log`**. Diese Datei entsteht durch Speichern des Logs und liegt im flüchtigen Bereich: Vor Neustart oder Fehlerbericht eine geprüfte Kopie sichern.
+
+Bei null importierten Ereignissen prüfe Netzwerk, DNS, richtige Uhrzeit, Quellenwahl, Download-/XML-Fehler und Filter. Bei vielen importierten Ereignissen, aber einem weiterhin leeren Sender, prüfe dessen **Service-Reference und XMLTV-ID**. Die Gesamtzahl bestätigt keine erfolgreiche Zuordnung jedes einzelnen Senders. [Fehlende EPG-Daten und IPTV](../../epg/fehlende-daten/) zeigt den Zusammenhang und Beispiel-Dateien.
+
+**Prüfstand:** Native Einstellungen, Quellenliste und Tageprofil in DE/EN aufgenommen. Die Aufnahmeserie hat weder Quellen importiert noch einen neuen Plugin-Zeitplan gespeichert. Externe Angebote können sich unabhängig von der Anleitung ändern.
+
+Quellen: [EPGImport-Oberfläche und Ablauf, Stand a32929f2d0](https://github.com/oe-alliance/XMLTV-Import/blob/a32929f2d0/src/EPGImport/plugin.py), [Quellen- und Senderzuordnung](https://github.com/oe-alliance/XMLTV-Import/blob/a32929f2d0/src/EPGImport/EPGConfig.py), [OE-Alliance-Quellenpaket](https://github.com/oe-alliance/EPGImport-Sources).

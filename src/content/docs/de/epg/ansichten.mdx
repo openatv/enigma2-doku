@@ -1,0 +1,71 @@
+---
+title: EPG-Ansichten und Primetime
+description: Einfacher EPG, SingleEPG, MultiEPG, grafischer und vertikaler EPG sowie Infobar-EPG im Vergleich; Primetime und MENU-Optionen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Alle EPG-Ansichten verwenden die vorhandenen Programmdaten. Du wählst eine andere Übersicht, keine andere Datenquelle. Zum Öffnen legst du die [EPG-/INFO-Tasten](../tasten/) passend fest oder verwendest die EPG-Auswahl bei langem Tastendruck.
+
+## Welche Ansicht passt zu welchem Zweck?
+
+| Ansicht | Zeigt | Praktisch für |
+| --- | --- | --- |
+| Einfacher EPG / Simple EPG | Sendungsliste genau eines Senders | Das Programm dieses Senders durchsuchen. |
+| SingleEPG | Einzelsenderliste mit zusätzlicher Sender-/Bouquetnavigation | Nacheinander mehrere Sender prüfen. |
+| MultiEPG | Je eine Sendung mehrerer Sender; Wechsel zwischen Jetzt, Danach und weiteren Zeiten | Schnell vergleichen, was parallel läuft. |
+| Grafischer EPG / GraphicalEPG | Senderzeilen und horizontale Zeitachse; Sendungen als Blöcke | Überschneidungen und den Abend überblicken. |
+| Vertikaler EPG | Mehrere Sender nebeneinander, deren Sendungen untereinander | Mehr Programmtext pro Sender vergleichen. |
+| Infobar-EPG | Kompakte Einzel- oder Mehrsenderübersicht | EPG kurz über dem Fernsehbild einblenden. |
+
+Die Bezeichnung „einfach“ wird umgangssprachlich auch für SingleEPG verwendet. Im geprüften Quellstand existieren getrennte Ansichten `single` und `enhanced`; der normale SingleEPG-Aufruf verwendet die erweiterte Einzelansicht. Skin und Übersetzung können ihre sichtbaren Titel anders benennen.
+
+## Einfacher EPG und SingleEPG
+
+Wähle eine Sendung mit den Pfeiltasten. **INFO** öffnet ihre Beschreibung; die angezeigte Timeraktion übernimmt die markierte Sendung in einen [Aufnahmetimer](../../timer/aufnahmen/). Links/Rechts kann in diesen Listen seitenweise blättern; die kontextbezogene **HELP**-Anzeige erklärt die aktuelle Navigation.
+
+<Capture id="epg-view-single" language="de" alt="Einfacher EPG mit der Sendungsliste eines Senders" caption="Die einfache Liste konzentriert sich auf einen Sender." />
+
+<Capture id="epg-view-enhanced" language="de" alt="SingleEPG mit vorhandenen Sendungen und Sendernavigation" caption="SingleEPG verwendet eine erweiterte Einzelansicht. Die Daten stammen aus dem vorhandenen EPG-Cache." />
+
+## MultiEPG
+
+MultiEPG beantwortet vor allem „Was läuft auf den anderen Sendern?“. Mit der Zeitnavigation wechselst du zu nachfolgenden Sendungen. Eine leere Zeile kann einen Sender ohne Daten darstellen; sie ist nicht automatisch ein Darstellungsfehler.
+
+<Capture id="epg-view-multi" language="de" alt="MultiEPG mit mehreren Sendern und ihren Programminformationen" caption="Mehrere Sender werden zeilenweise verglichen, ohne grafische Zeitblöcke." />
+
+## Grafischer und vertikaler EPG
+
+Im grafischen EPG wechseln Links/Rechts entlang der Zeitachse, Hoch/Runter zwischen Sendern. Die sichtbare Zeitspanne ist eine Zoom-/Darstellungsentscheidung. Sie verlängert nicht den gelieferten EPG-Vorlauf. **OK**, **OK lang** und die Farbtasten können abhängig von der Konfiguration Vorschau, Umschalten, Sendungsinfo oder Timer anbieten. Lies ihre Beschriftung, bevor du eine Aktion auslöst.
+
+<Capture id="epg-view-graph" language="de" alt="Grafischer EPG mit Senderzeilen und Zeitblöcken" caption="Die Blocklänge zeigt die geplante Dauer einer Sendung." />
+
+<Capture id="epg-view-vertical" language="de" alt="Vertikaler EPG mit mehreren Programmlisten nebeneinander" caption="Der vertikale EPG ordnet Sender als Spalten an." />
+
+## Primetime: direkt zum Abend springen
+
+Primetime ist eine **wählbare Uhrzeit**, keine eigene EPG-Quelle. Im geprüften grafischen EPG springt **9** zur Primetime. Der Startmodus kann die Ansicht bereits dort öffnen; beispielsweise ist **20:15** eine sinnvolle persönliche Vorgabe für den deutschen Fernsehabend. Datum und Tageswechsel mit beachten.
+
+Öffne **Menü → Einstellungen → EPG → Grafischer EPG** oder drücke **MENU innerhalb des grafischen EPG**. Stelle Primetime-Stunde/-Minute und bei Bedarf den Startmodus ein. Infobar- und vertikaler EPG besitzen eigene Einstellungen; eine Änderung muss nicht auf alle Ansichten wirken.
+
+<Capture id="epg-view-primetime" language="de" alt="Grafischer EPG auf der Primetime-Zeitachse" caption="Für diese Ansicht wurde vorübergehend der Primetime-Startmodus verwendet und danach zurückgestellt." />
+
+<Capture id="epg-graph-settings" language="de" alt="Grafische EPG-Einstellungen mit Primetime-Auswahl" caption="MENU im EPG führt zu dessen Darstellungsoptionen." />
+
+## Infobar-EPG
+
+Der Infobar-EPG ist ein eigener Programmführer, nicht die normale erste oder zweite [Infoleiste](../../erste-schritte/infobar/). Sein Typ kann Einzel-EPG, Text oder grafischer MultiEPG sein. Aktivierung und Typ werden getrennt eingestellt; siehe [Tastenbelegung](../tasten/).
+
+<Capture id="epg-view-infobar" language="de" alt="Kompakter Infobar-EPG eines Senders" caption="Eine kleine Programmliste für den schnellen Blick." />
+
+<Capture id="epg-view-infobargraph" language="de" alt="Grafischer Infobar-EPG mit mehreren Sendern" caption="Der Infobar-EPG kann auch eine kompakte Zeitachse zeigen." />
+
+## Versteckte Optionen mit MENU
+
+**MENU in der geöffneten EPG-Ansicht** öffnet deren Einstellungen. Unter **Menü → Einstellungen → EPG** findest du die entsprechenden Einzelbereiche ebenfalls. Typische Optionen sind Zeilenanzahl, Schriftgröße, Sendername/Picon, Vorschau, Zeitspanne, Bouquetauswahl, Startmodus und Farbtasten. Die angebotenen Felder unterscheiden sich je Ansicht und Skin. Prüfe Änderungen einzeln und öffne die Ansicht bei Bedarf erneut.
+
+**Prüfstand:** Native Ansichten mit bereits vorhandenen Senderdaten aufgenommen; keine erfundenen Sendungen und keine TV-Wiedergabe während der Bilder. Original-Sendungstitel werden beim Wechsel zu EN nicht übersetzt. Die vollständigen Fernbedienungsketten und jede Darstellungsoption wurden nicht einzeln durchgespielt.
+
+Quellen: [EPG-Ansichten und Tastenaktionen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/EpgSelection.py), [Aufruf aus der Infobar](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBarGenerics.py).
+
+**Hinweis zu den Bildern:** Das Erste HD, ZDF HD und weitere Sender stammen aus der bestehenden Liste. Sendungsbilder, Kurztexte und Logos können durch vorhandene EPG-/Metadaten-Erweiterungen ergänzt sein. Einzel- und SingleEPG sehen in diesem Skin weitgehend gleich aus. Die sichtbaren leeren Klammern und der große angeschnittene Hintergrundtitel gehören zur aufgenommenen Skin-Anzeige und wurden nicht retuschiert.

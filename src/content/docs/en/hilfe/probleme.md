@@ -54,3 +54,11 @@ A file access can wait, even with autofs. A `stat()` call or free-space check ma
 ## Windows 11 is missing from the share browser
 
 Check the private network profile, targeted firewall rules, account and share permissions. Enter a known server manually when needed. **Do not install SMB1 or disable the firewall.** [Prepare Windows 11](../../netzwerk/windows11/) covers both connection directions.
+
+## IPTV picture works, but EPG is empty
+
+Check XMLTV ID, service reference and importer filters. Matching channel names alone do not connect the data. [Missing EPG and IPTV mapping](../../epg/fehlende-daten/) provides checks and file templates.
+
+## Missed timer or receiver does not wake
+
+Check date, time zone, actual NTP/DVB synchronisation and timer status. Cron cannot wake a shut-down receiver itself. [Time and wakeup](../../system/zeit-aufwachen/) explains limitations; [recording timers](../../timer/aufnahmen/) covers conflicts and destinations.

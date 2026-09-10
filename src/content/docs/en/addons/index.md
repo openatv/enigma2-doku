@@ -14,8 +14,13 @@ Add-ons extend the shared Enigma2 interface. They are often simply called plugin
 
 ## Example: additional EPG data
 
-The [basic EPG guide](../epg/grundlagen/) explains the programme guide and its cache. An additional importer may require its own sources and schedule. Those settings belong in a dedicated extension guide.
+The [basic EPG guide](../epg/grundlagen/) explains the guide and cache. Two extensions have dedicated instructions:
+
+- [EPGRefresh](./epgrefresh/) collects DVB programme data by receiving selected services and bouquets.
+- [EPGImport](./epgimport/) downloads XMLTV sources and has its own day/time schedule.
+
+[Missing data and IPTV](../epg/fehlende-daten/) explains channel mapping. Both extensions share the handbook's search.
 
 ## Extend this handbook
 
-Each extension can have a subdirectory with an introduction, setup guide and troubleshooting. This keeps extensive additional features in separate articles while retaining one shared search. The first edition includes the common installation guide; detailed add-on guides can follow as needed.
+Each extension can have a subdirectory with an introduction, setup guide and troubleshooting. This keeps extensive additional features in separate articles while retaining one shared search. Further add-ons can follow the same pattern.

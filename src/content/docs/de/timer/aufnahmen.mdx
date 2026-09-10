@@ -1,0 +1,61 @@
+---
+title: Aufnahme- und Umschalttimer
+description: EPG-Sendungen aufnehmen, Timer manuell anlegen, Wiederholungen, Vorlauf, Nachlauf, Aufnahmeziele und Konflikte verstehen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Ein **Aufnahmetimer** plant eine Aufnahme zu einer bestimmten Zeit. Ein **Umschalttimer** wählt einen Sender, ohne zwingend eine Datei aufzunehmen. Beide benötigen eine korrekte [Uhrzeit](../../system/zeit-aufwachen/); nur ein Aufnahmetimer benötigt zusätzlich ein erreichbares, beschreibbares Aufnahmeziel.
+
+## Eine Sendung aus dem EPG übernehmen
+
+1. Öffne den [EPG](../../epg/ansichten/) und markiere die gewünschte Sendung.
+2. Wähle die eingeblendete Timeraktion, im gezeigten EPG **Grün – Timer hinzufügen**. Eigene Farbtastenbelegungen können abweichen.
+3. Prüfe Sender, Datum, Anfang und Ende. Wähle **Aufnehmen**, wenn eine Aufnahme entstehen soll.
+4. Prüfe Vor-/Nachlauf und Aufnahmeverzeichnis. Bei einem NAS muss die Freigabe zur Aufnahmezeit verfügbar sein.
+5. Speichere mit **Grün**. Bearbeite eine gemeldete Überschneidung, bevor du dich auf den Timer verlässt.
+6. Kontrolliere den Eintrag unter **Menü → Timer → Timer** (Aufnahmetimerliste). Zum Üben genügt eine kurze, unkritische Aufnahme; prüfe anschließend Datei, Dauer und Wiedergabe.
+
+<Capture id="record-example" language="de" alt="Ungespeicherter Aufnahmetimer für Das Erste HD mit Anfang, Ende und Zielverzeichnis" caption="Beispiel im nativen Timereditor: Die Aufnahme mit dem Namen EPG Demo wurde nicht gespeichert oder gestartet." />
+
+Für eine **manuelle Aufnahme ohne EPG** öffnest du die Aufnahmetimerliste und wählst **Hinzufügen**. Trage Titel, Sender, Datum und Zeiten selbst ein. Bei einer Sendung über Mitternacht gehört die Endzeit zum Folgetag.
+
+## Welche Felder sind wichtig?
+
+| Feld | Bedeutung |
+| --- | --- |
+| Timerart | Aufnehmen, Umschalten oder Umschalten plus Aufnehmen. Ein reiner Umschalttimer erzeugt keine Aufnahme. |
+| Einmalig/wiederholt | Einzeltermin oder Rhythmus, etwa täglich, wöchentlich, Montag–Freitag oder ausgewählte Wochentage. Prüfe den ersten gültigen Tag. |
+| Anfang/Ende | Geplante Laufzeit. Beim Umschalttimer können Ende und Ausführungsbedingungen anders angeboten werden. |
+| Vorlauf/Nachlauf | Zusätzliche Minuten vor/nach der Sendung. Sie belegen ebenfalls Empfangs- und Speicherressourcen. |
+| Sender | Konkreter Dienst aus der Senderliste; ähnlich benannte HD-/SD-/Regionaldienste sind nicht zwangsläufig austauschbar. |
+| Aufnahmeverzeichnis | Ziel dieses Timers. Lesezeichen und globale Standardpfade helfen bei der Auswahl, ersetzen aber keine Prüfung des einzelnen Timers. |
+| Tags | Kennzeichnungen für die spätere Sortierung von Aufnahmen. |
+| Nach der Aufnahme | Nichts tun, Standby, Deep-Standby oder automatisch. Automatisch berücksichtigt den Ablauf und vorherigen Zustand; es bedeutet nicht immer Herunterfahren. |
+| Umschaltbedingungen | Falls angeboten, nur bei laufender Box, nur aus (Deep-)Standby oder immer umschalten. |
+
+Ein aus dem EPG angelegter Timer übernimmt die bekannten Zeiten. **Eine beliebige spätere Programmänderung wird dadurch nicht garantiert verfolgt.** Prüfe wichtige Aufnahmen und verwende sinnvolle Zeitreserven. Serienregeln über **AutoTimer** sind ein zusätzliches Plugin: Es durchsucht EPG-Daten und erzeugt daraus einzelne Timer. Ein wiederholter Uhrzeittimer sucht dagegen nicht automatisch nach einem Sendungstitel.
+
+## Konflikte erkennen und beheben
+
+Gleichzeitig laufende Timer sind nicht automatisch ein Konflikt. Je nach Empfangsweg können mehrere Dienste eines Transponders gemeinsam empfangen werden; andere Kombinationen brauchen zusätzliche verfügbare Empfangsressourcen. Die Anleitung bleibt deshalb unabhängig von einer bestimmten Tunerzahl.
+
+Bei einer Konfliktmeldung vergleiche **die gesamte Zeit einschließlich Vor- und Nachlauf**, beteiligte Sender, Wiederholungen und bereits laufende Aufnahmen. Kürze Reserven nur bewusst, verschiebe eine Aufnahme auf eine Wiederholung oder deaktiviere den weniger wichtigen Timer. Lösche nicht einfach beliebige Einträge, um die Meldung loszuwerden.
+
+Ein bestandener Timerkonflikttest garantiert weder freien Speicher noch ein erreichbares NAS, ausreichende Netzwerkgeschwindigkeit oder freie Verbindungen eines IPTV-Anbieters. Diese Grenzen können erst zur Laufzeit auffallen. Siehe [NAS-Aufnahmen](../../speicher/nas-aufnahmen/).
+
+## Standby, Ausschalten und Aufwachen
+
+Im normalen **Standby** läuft Enigma2 weiter und kann aufnehmen. Beim regulären Herunterfahren in **Deep-Standby** ermittelt Enigma2 den nächsten relevanten Aufwachtermin. Das setzt geeignete Hardware, Stromversorgung und richtige Zeit voraus. Ohne Netzspannung kann ein Timer die Box nicht einschalten.
+
+Laufende beziehungsweise unmittelbar bevorstehende Aufnahmen können beim Herunterfahren eine **Warnung** auslösen. Auch Timeshift, Streaming oder Hintergrundaufgaben können Meldungen verursachen. Bestätigtes Erzwingen kann trotzdem eine Aufnahme abbrechen; eine Warnung ist keine absolute Sperre. Dauer und Standardantwort hängen vom jeweiligen Dialog ab.
+
+Nach dem Aufwachen braucht die Box Zeit zum Booten, für die Uhr und gegebenenfalls für das NAS. Plane Nachtimporte nicht unmittelbar an den Aufnahmestart. Nach Ende entscheiden Timer-Nachaktion, weitere Termine und Benutzung über den folgenden Zustand. [Aufgabenplanung](../aufgaben/) und [Zeit/Aufwachen](../../system/zeit-aufwachen/) erklären die Zusammenhänge.
+
+## Status, Dateien und Fehlersuche
+
+Öffne in der Timerliste den betroffenen Eintrag und dessen angebotene Protokoll-/Statusanzeige. Notiere Sollzeit, tatsächliches Verhalten und Fehlermeldung. Bei Bedarf ergänze das [Enigma2-Debug-Log](../../hilfe/logs-diagnose/). Die Definitionen stehen im geprüften Image in **`/etc/enigma2/timers.xml`**. Änderungen über die Oberfläche vermeiden, dass Enigma2 eine manuelle Dateibearbeitung später überschreibt.
+
+**Prüfstand:** Timereditor mit ungespeichertem Beispiel aufgenommen; kein neuer Aufnahmeauftrag, kein Konfliktfall und kein automatischer Hardware-Aufwachlauf ausgeführt.
+
+Quellen: [Timereditor und Übersichten](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Timers.py), [Aufnahmeablauf](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/RecordTimer.py), [Abschaltmeldungen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Standby.py).

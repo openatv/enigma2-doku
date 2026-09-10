@@ -54,3 +54,11 @@ Ein Dateizugriff kann warten, auch bei autofs. Schon `stat()` oder die Prüfung 
 ## Windows 11 wird nicht in der Freigabensuche gefunden
 
 Prüfe privates Netzwerkprofil, gezielte Firewall-Regeln, Benutzer und Freigaberechte. Trage einen bekannten Server bei Bedarf manuell ein. **SMB1 nicht installieren und die Firewall nicht abschalten.** [Windows 11 vorbereiten](../../netzwerk/windows11/) führt durch beide Verbindungsrichtungen.
+
+## IPTV-Bild vorhanden, aber kein EPG
+
+Prüfe XMLTV-ID, Service-Reference und die Filter des Importers. Gleiche Sendernamen allein verbinden die Daten nicht. [Fehlender EPG und IPTV-Zuordnung](../../epg/fehlende-daten/) zeigt die Prüfschritte und Dateivorlagen.
+
+## Timer verpasst oder Box wacht nicht auf
+
+Kontrolliere Datum, Zeitzone, tatsächlichen NTP-/DVB-Abgleich und den Timerstatus. Cron weckt eine ausgeschaltete Box nicht selbst. [Uhrzeit und Aufwachen](../../system/zeit-aufwachen/) erklärt die Grenzen; [Aufnahmetimer](../../timer/aufnahmen/) behandelt Konflikte und Aufnahmeziele.

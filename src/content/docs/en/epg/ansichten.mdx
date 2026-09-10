@@ -1,0 +1,71 @@
+---
+title: EPG views and prime time
+description: Compare Simple EPG, SingleEPG, MultiEPG, graphical and vertical guides and InfoBar EPG; configure prime time and MENU options.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+All EPG views use the programme data already available. You are choosing a presentation, not another data source. Open a view through your [EPG/INFO button assignments](../tasten/) or the EPG selection available on a long press.
+
+## Which view suits your task?
+
+| View | Displays | Useful for |
+| --- | --- | --- |
+| Simple EPG | The programme list of one service | Browsing that channel's schedule. |
+| SingleEPG | A single-channel list with additional service/bouquet navigation | Checking several channels in turn. |
+| MultiEPG | One event per service, with navigation through Now, Next and later times | Comparing programmes running in parallel. |
+| GraphicalEPG | Channel rows with programme blocks along a horizontal timeline | Seeing overlaps and planning the evening. |
+| VerticalEPG | Several channels side by side, each with events underneath | Comparing more programme text per channel. |
+| InfoBar EPG | A compact single- or multi-channel guide | Briefly displaying a guide over the picture. |
+
+People sometimes also call SingleEPG “simple EPG”. The inspected source has separate `single` and `enhanced` views; the usual SingleEPG action opens the enhanced single-channel view. Skins and translations can use different visible titles.
+
+## Simple EPG and SingleEPG
+
+Select an event with the arrow buttons. **INFO** opens its description; the labelled timer action transfers it to a [recording timer](../../timer/aufnahmen/). Left/Right can move by pages in these lists; contextual **HELP** explains navigation in the current screen.
+
+<Capture id="epg-view-single" language="en" alt="Simple EPG showing one channel's programme list" caption="The simple list focuses on one service." />
+
+<Capture id="epg-view-enhanced" language="en" alt="SingleEPG with cached events and channel navigation" caption="SingleEPG uses an enhanced single-channel view. The events come from the existing EPG cache." />
+
+## MultiEPG
+
+MultiEPG mainly answers “What is on the other channels?”. Use time navigation to view later events. An empty row can mean that no data exists for that service; it is not automatically a display fault.
+
+<Capture id="epg-view-multi" language="en" alt="MultiEPG comparing programmes on multiple channels" caption="Services are compared in rows without graphical time blocks." />
+
+## Graphical and vertical guides
+
+In the graphical guide, Left/Right moves along time while Up/Down changes channel. The visible time span is a presentation/zoom choice: it does not extend the supplied schedule. Depending on configuration, **OK**, **long OK** and the colour buttons can preview, zap, display information or create a timer. Read the labelled action first.
+
+<Capture id="epg-view-graph" language="en" alt="Graphical EPG with channel rows and programme blocks" caption="Block length represents the programme's scheduled duration." />
+
+<Capture id="epg-view-vertical" language="en" alt="Vertical EPG with programme lists beside one another" caption="The vertical guide arranges channels as columns." />
+
+## Jump straight to prime time
+
+Prime time is a **configurable time of day**, not an EPG source. In the inspected graphical guide, **9** jumps to prime time. A start mode can open the guide there immediately; **20:15**, for example, is a useful personal choice for a German TV evening. Also check the displayed date and day changes.
+
+Open **Menu → Setup → EPG → GraphicalEPG Settings**, or press **MENU inside the graphical guide**. Set the prime-time hour/minute and optionally the start mode. InfoBar and vertical guides have their own settings; changing one view need not change them all.
+
+<Capture id="epg-view-primetime" language="en" alt="Graphical guide positioned at prime time" caption="The prime-time start mode was applied temporarily for this view, then restored." />
+
+<Capture id="epg-graph-settings" language="en" alt="Graphical EPG settings with prime-time selection" caption="MENU inside the guide opens its display options." />
+
+## InfoBar EPG
+
+InfoBar EPG is a separate guide, not the normal first or second [InfoBar](../../erste-schritte/infobar/). Its type can be Single EPG, Text or graphical Multi EPG. Activation and presentation are separate settings; see [button assignments](../tasten/).
+
+<Capture id="epg-view-infobar" language="en" alt="Compact single-channel InfoBar EPG" caption="A small programme list for a quick look." />
+
+<Capture id="epg-view-infobargraph" language="en" alt="Graphical InfoBar EPG for several channels" caption="InfoBar EPG can also provide a compact timeline." />
+
+## Find extra options with MENU
+
+**MENU inside an EPG view** opens that view's configuration. The corresponding sections also appear under **Menu → Setup → EPG**. Typical controls cover row count, font size, service names/picons, preview, time span, bouquet selection, start mode and colour buttons. Available fields depend on the view and skin. Change one option at a time and reopen the guide when required.
+
+**Verification:** Native views captured with existing channel data; no invented events or TV playback during capture. Original programme titles are not translated when the interface switches to EN. Complete remote-control sequences and every display option were not individually tested.
+
+Sources: [EPG views and actions](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/EpgSelection.py), [InfoBar entry points](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBarGenerics.py).
+
+**About the images:** Das Erste HD, ZDF HD and other services come from the existing list. Programme artwork, short text and logos may be supplemented by installed EPG/metadata extensions. Simple and SingleEPG look largely alike in this skin. Visible empty brackets and the large clipped background title belong to the captured skin display and were not retouched.
