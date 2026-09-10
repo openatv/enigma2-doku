@@ -26,6 +26,28 @@ Wenn sich nicht nur ein Bild, sondern der ganze Aufbau ändert, kann der Skin zw
 
 Für die Senderauswahl den letzten Schalter durch config.plugins.e2mdb.epgChannelSelectionEnabled.value ersetzen. Für andere Screens nur die tatsächlich erforderlichen Schalter verwenden. Eine Medien-EventView ist nicht automatisch eine Live-TV-InfoBar.
 
+### Beide Panel-Aufrufe als XML
+
+Die beiden Aufrufe stehen im selben InfoBar-Screen. Die Panel-Definitionen `MyBase_InfoBar` und `MyMedia_InfoBar` legt der Skin selbst an; die Medien-Definition enthält die Widgets aus [Anhang E](../skinner-bilder/). Das Ausrufezeichen steht direkt am Anfang des Attributwerts. Bei fehlendem Plugin oder ausgeschalteter Integration bleibt die Basisansicht aktiv.
+
+```xml
+<panel name="MyBase_InfoBar" condition="!(isfile('/usr/lib/enigma2/python/Plugins/Extensions/e2MDB/plugin.py')
+   or isfile('/usr/lib/enigma2/python/Plugins/Extensions/e2MDB/plugin.pyc'))
+  and (isfile('/usr/lib/enigma2/python/Components/Converter/E2MDBEventInfo.py')
+   or isfile('/usr/lib/enigma2/python/Components/Converter/E2MDBEventInfo.pyc'))
+  and config.plugins.e2mdb.enableDatabase.value
+  and config.plugins.e2mdb.epgMetaEnabled.value
+  and config.plugins.e2mdb.epgInfoBarEnabled.value" />
+
+<panel name="MyMedia_InfoBar" condition="(isfile('/usr/lib/enigma2/python/Plugins/Extensions/e2MDB/plugin.py')
+   or isfile('/usr/lib/enigma2/python/Plugins/Extensions/e2MDB/plugin.pyc'))
+  and (isfile('/usr/lib/enigma2/python/Components/Converter/E2MDBEventInfo.py')
+   or isfile('/usr/lib/enigma2/python/Components/Converter/E2MDBEventInfo.pyc'))
+  and config.plugins.e2mdb.enableDatabase.value
+  and config.plugins.e2mdb.epgMetaEnabled.value
+  and config.plugins.e2mdb.epgInfoBarEnabled.value" />
+```
+
 ## Bedingung und Bildstatus trennen
 
 | Prüfung | Zeitpunkt und Zweck |

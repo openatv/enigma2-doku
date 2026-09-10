@@ -26,6 +26,28 @@ When the whole layout changes, define two panels, for example **MyBase_InfoBar**
 
 For channel selection, replace the last switch with **config.plugins.e2mdb.epgChannelSelectionEnabled.value**. For other screens, check only the switches required by their actual integration. A media EventView is not a live-TV InfoBar.
 
+### Both panel calls in XML
+
+Place both calls in the same InfoBar screen. Define `MyBase_InfoBar` and `MyMedia_InfoBar` in the skin; the media definition contains the widgets from [Appendix E](../skinner-bilder/). The exclamation mark is the first character of the attribute value. The base view remains active when the plugin is absent or integration is disabled.
+
+```xml
+<panel name="MyBase_InfoBar" condition="!(isfile('/usr/lib/enigma2/python/Plugins/Extensions/e2MDB/plugin.py')
+   or isfile('/usr/lib/enigma2/python/Plugins/Extensions/e2MDB/plugin.pyc'))
+  and (isfile('/usr/lib/enigma2/python/Components/Converter/E2MDBEventInfo.py')
+   or isfile('/usr/lib/enigma2/python/Components/Converter/E2MDBEventInfo.pyc'))
+  and config.plugins.e2mdb.enableDatabase.value
+  and config.plugins.e2mdb.epgMetaEnabled.value
+  and config.plugins.e2mdb.epgInfoBarEnabled.value" />
+
+<panel name="MyMedia_InfoBar" condition="(isfile('/usr/lib/enigma2/python/Plugins/Extensions/e2MDB/plugin.py')
+   or isfile('/usr/lib/enigma2/python/Plugins/Extensions/e2MDB/plugin.pyc'))
+  and (isfile('/usr/lib/enigma2/python/Components/Converter/E2MDBEventInfo.py')
+   or isfile('/usr/lib/enigma2/python/Components/Converter/E2MDBEventInfo.pyc'))
+  and config.plugins.e2mdb.enableDatabase.value
+  and config.plugins.e2mdb.epgMetaEnabled.value
+  and config.plugins.e2mdb.epgInfoBarEnabled.value" />
+```
+
 ## Availability and current artwork are different checks
 
 | Check | Purpose |

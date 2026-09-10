@@ -7,6 +7,15 @@ Das Plugin liefert den Converter E2MDBEventInfo. Er liest bereits bereitgestellt
 
 ## Die Quelle muss zum Bildschirm passen
 
+Die Skin-XML-Beispiele gehören ausdrücklich zu dieser Anleitung:
+
+- [Cover und InfoLine mit `E2MDBEventInfo`](../skinner-bilder/)
+- [Picon-Ersatz mit `HasCover` und `ConditionalShowHide`](../skinner-bilder/#eine-fläche-nur-bei-vorhandenem-cover-zeigen)
+- [Optionale Panels und Umschaltung zwischen Basis- und Medienansicht](../skinner-panels/)
+- [Native Senderlisten-Vorlage mit `ImageOrPicon1`](../skinner-listen/)
+
+Die Beispielnamen sind frei gewählte Namen eines Skins. Die XML-Verträge und die zugehörigen Erklärungen gelten unabhängig von dessen Produktnamen.
+
 | Kontext | Quelle oder Datenweg |
 | --- | --- |
 | Live-TV-InfoBar | session.Event_Now für das aktuelle Ereignis, sofern die InfoBar-Integration aktiv ist. |

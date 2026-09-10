@@ -7,6 +7,15 @@ The plugin supplies the **E2MDBEventInfo** converter. It reads metadata already 
 
 ## Choose the correct source
 
+The skin XML examples are an integral part of this handbook:
+
+- [Cover and InfoLine with `E2MDBEventInfo`](../skinner-bilder/)
+- [Picon fallback with `HasCover` and `ConditionalShowHide`](../skinner-bilder/)
+- [Optional panels and switching between base and media layouts](../skinner-panels/)
+- [Native service-list template with `ImageOrPicon1`](../skinner-listen/)
+
+The example panel names are names chosen by a skin author. The XML contracts and their explanations apply independently of a skin's product name.
+
 | Context | Source or data path |
 | --- | --- |
 | Live-TV InfoBar | `session.Event_Now` for the current event when InfoBar integration is enabled. |
