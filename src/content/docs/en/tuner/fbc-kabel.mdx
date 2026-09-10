@@ -1,0 +1,64 @@
+---
+title: "DVB-C FBC: configure eight cable tuners together"
+description: "One cable feed and eight QAM demodulators: IN and OUT, shared configuration, provider scans and simultaneous recording with DVB-C FBC."
+---
+
+import Capture from '../../../../components/Capture.astro';
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**An eight-demodulator DVB-C FBC block needs one cable TV feed and one shared configuration.** It requires neither SCR numbers nor satellite planes nor eight individual LNB configurations.
+
+## Connect the cable correctly
+
+<Wiring id="fbc-cable" language="en" alt="Cable TV outlet connected to a cable FBC input with eight internal QAM demodulators" caption="One coaxial feed supplies the block. Numbers 1–8 represent its demodulators, not eight external sockets." />
+
+Connect the cable TV outlet to **CABLE IN / ANT IN**. Exact labels depend on the receiver. A **LOOP OUT**, if fitted, can pass the RF signal to another device. It is not an additional input and does not increase this receiver's reception capacity. Loop-through operation when powered off depends on the hardware.
+
+HDMI connects the receiver to the television and carries processed video and audio. It does not require an additional RF loop-through cable to the TV. Do not enable power for an active terrestrial aerial on a cable TV connection.
+
+## Configure once
+
+**Menu → Setup → Reception → Tuner configuration**
+
+1. Select the **first tuner of the DVB-C FBC block**. If eight satellite tuners precede it, this may be **I**; an independently installed cable block may begin at A.
+2. Enable DVB-C or choose **Configuration mode = Enabled**, where offered.
+3. Select the scan method for the cable network: **Provider** with the correct operator profile, or suitable frequency bands/steps.
+4. Adjust network scan, frequency steps, modulations and symbol rates according to the cable operator's specifications.
+5. Save. The other demodulators inherit the block's shared configuration. Normal tuner selection therefore does not configure them as eight separate reception installations.
+6. Start a suitable automatic or manual cable scan. The resulting channel list is shared by the block.
+
+<Capture id="fbc-list-cable" language="en" alt="Cable FBC block in OpenATV tuner selection" caption="In this mixed installation the cable block follows eight satellite tuners. Its letters are examples, not required names on other receivers." />
+
+<Capture id="fbc-cable-root" language="en" alt="Shared configuration of the first DVB-C FBC tuner" caption="The selected cable provider belongs to the example installation. Use your actual operator; there is no need to repeat configuration eight times." />
+
+## Which scan option should I use?
+
+| Option / method | Purpose |
+| --- | --- |
+| Network ID | Cable-network identifier supplied by the operator; 0 means all networks in the dialog shown. This is neither an IP address nor an SSID. |
+| Country / region | Selects the relevant regional provider profile. The example operator is not a default for other installations. |
+| Force Legacy Signal stats | Uses older driver signal statistics instead of the newer API when specifically required. This display option improves neither signal quality nor tuner capacity. |
+| Provider | Uses frequency definitions for the selected cable network |
+| Frequency bands / steps | Searches ranges when no suitable provider profile exists; extensive searches may take longer |
+| Modulation / QAM | Describes the modulation, such as QAM64 or QAM256; follow the operator's specification |
+| Symbol rate | Must match the network or individual multiplex |
+| Network scan | May discover additional frequencies from transmitted network information |
+| Automatic scan | Scans using the prepared cable configuration |
+| Manual scan | Checks one known multiplex using its frequency, symbol rate and modulation |
+| CableScan | Separate scan method/plugin with provider-specific parameters; FBC alone does not require it |
+
+For detailed dialogs, see [DVB-C](../dvb-c/), [automatic scan](../automatischer-suchlauf/), [manual scan](../manueller-suchlauf/), [CableScan](../cablescan/) and the [scan option reference](../scan-optionen/). Scanning once per virtual tuner does not create additional reception paths.
+
+## Eight multiplexes are not eight channels
+
+The cable feed contains many frequencies simultaneously. Eight demodulators can process up to eight different **QAM multiplexes**. Each may carry several services. Another service on an already received multiplex may share its demodulator; another distinct multiplex needs a free one.
+
+This differs from conventional satellite reception: DVB-C does not switch H/V or low/high planes per cable. Shared limitations involving decryption, demux, storage, streaming and playback decoders still apply. Even a normal single DVB-C tuner may receive several services on one multiplex; FBC increases the number of simultaneously received multiplexes.
+
+## Check reception and parallel recordings
+
+First check one free-to-air service and its signal quality. Then record free-to-air services on **different cable frequencies** simultaneously. Only eight different multiplexes test all eight reception paths. Different services on the same multiplex are insufficient.
+
+For interruptions, check cable/outlet condition, level and quality on affected frequencies, provider parameters and decryption limits. An overloaded input can fail despite a high indicated level. This screenshot series shows the genuine configuration of an eight-way cable block; it does not claim a completed eight-way RF/recording test on the cable connection.
+
+Sources: [OpenATV visibility and shared cable configuration](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Screens/Satconfig.py), [NimManager cable-FBC root configuration](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Components/NimManager.py), [Broadcom on cable FBC and multiple QAM demodulators](https://investors.broadcom.com/news-releases/news-release-details/broadcom-unveils-new-line-cable-set-top-box-12-ghz-full-band).

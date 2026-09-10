@@ -1,0 +1,79 @@
+---
+title: "DVB-S FBC: acht Empfangswege verstehen"
+description: "FBC, Root-Tuner A/B, virtuelle Tuner C–H, Universal-LNB und Unicable: welche Sender parallel empfangbar sind und welche Verkabelung dazu passt."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Zwei SAT-Eingänge können acht Transponder gleichzeitig versorgen. Welche Transponder das sind, bestimmt aber die Antennenanlage.** Ein FBC-Tuner hebt die Grenzen eines konventionellen SAT-Kabels nicht auf. Mit acht passend eingerichteten Unicable-Userbändern stehen dagegen acht unabhängig wählbare Empfangswege zur Verfügung.
+
+## Was bedeutet FBC?
+
+FBC heißt **Full Band Capture**. Ein breit erfasster Eingangsbereich versorgt mehrere **Demodulatoren**. Jeder Demodulator verarbeitet einen Transponder; darin können mehrere TV- und Radiosender liegen. Die hier gezeigten DVB-S-FBC-Blöcke haben **acht Demodulatoren und zwei HF-Eingänge**. Die Bezeichnung FBC allein garantiert bei jeder denkbaren Hardware nicht dieselbe Anzahl.
+
+| Begriff | Was damit gemeint ist |
+| --- | --- |
+| Ein FBC-Block / FBC-Modul | Eine Empfangseinheit mit gemeinsam genutzten Eingängen und mehreren Demodulatoren |
+| SAT IN A und SAT IN B | Zwei physische Koaxialbuchsen; die Gehäusebeschriftung kann anders lauten |
+| Root-Tuner A/B | Die beiden Eingängen zugeordneten Tuner des hier gezeigten SAT-Blocks |
+| Virtuelle / interne Tuner C–H | Weitere echte Demodulatoren, deren Signalzuführung intern zugeordnet wird; keine sechs zusätzlichen Buchsen |
+| Transponder | Empfangspaket auf einer Frequenz, Polarisation und SAT-Position |
+| Sender / Service | Ein einzelnes Programm innerhalb eines Transponders |
+| User Band / SCR | Eigene Empfangsfrequenz im Unicable-System, die einen angeforderten Transponder transportiert |
+
+Die Buchstaben sind Beispiele: In einer anderen Tunerreihenfolge kann der Block später beginnen. Entscheidend sind **Blockzugehörigkeit und die beiden zugehörigen Eingänge**, nicht der erste Buchstabe allein.
+
+<Capture id="fbc-list-sat" language="de" alt="OpenATV-Tunerauswahl mit einzeln eingerichteten SAT-FBC-Tunern" caption="Native Tunerauswahl: Im Unicable-Beispiel haben die acht SAT-Demodulatoren eigene SCR-Zuteilungen. Die hier sichtbaren Hardwarebezeichnungen sind nur Teil des Beispielbildes." />
+
+## Welche Anschlussart habe ich?
+
+| Anschluss | Gleichzeitig verfügbar | Einrichtung |
+| --- | --- | --- |
+| Ein Kabel von einem Universal-LNB oder klassischen Multischalter | Bis zu acht Transponder **einer gerade gewählten SAT-Ebene** | [Ein Universal-Kabel](../fbc-sat-universal/#ein-universal-kabel) |
+| Zwei unabhängige klassische Teilnehmerleitungen | Bis zu acht Transponder aus **bis zu zwei gewählten Ebenen** | [Zwei Universal-Kabel](../fbc-sat-universal/#zwei-unabhängige-universal-kabel) |
+| Ein Unicable-Kabel, acht exklusiv zugeteilte Userbänder | Acht unabhängig gewählte Transponder aus den von der Anlage angebotenen Positionen und Ebenen | [Unicable Schritt für Schritt](../fbc-sat-unicable/) |
+| Zwei Leitungen von unterschiedlichen festen SAT-Positionen | Je Eingang dessen Position und gewählte Ebene, insgesamt acht Demodulatoren | [Astra und Hotbird getrennt](../fbc-sat-universal/#zwei-feste-positionen-ohne-diseqc-schalter) |
+| Feste Antenne und separate Motorantenne | Feste Position plus die aktuelle Position der Motorantenne; Ebenengrenzen bleiben | [Feste Antenne plus Motor](../fbc-sat-universal/#feste-antenne-plus-separate-motorantenne) |
+
+Ein **Single-Universal-LNB** mit nur einem Ausgang wird durch einen Splitter nicht zu zwei unabhängigen Anschlüssen. Ein **Unicable-LNB** kann dagegen über seinen einen SCR-Ausgang mehrere unabhängige Empfangswege liefern. Die Zahl der Ausgänge allein beschreibt die Funktion daher nicht.
+
+## „FBC automatisch“ oder „FBC SCR (Unicable/JESS)“?
+
+**FBC automatisch** ist die normale Betriebsart der internen Tuner bei klassischen Universal-Zuführungen. Enigma2 ordnet freie Demodulatoren nach Bedarf einem nutzbaren Root-Tuner zu. Es sucht dabei keine freien Userbänder und richtet keine acht SCRs ein.
+
+Bei **Unicable/JESS** bekommt jeder unabhängig gewünschte Demodulator eine eigene SCR-Zuteilung. Dafür werden C–H auf **FBC SCR (Unicable/JESS)** gestellt. A/B verwenden die passende erweiterte Unicable-Konfiguration. Ein bei Unicable unkonfigurierter interner Tuner ersetzt keinen zugewiesenen SCR. Siehe die vollständige [Zuordnung A–H](../fbc-sat-unicable/).
+
+## Fernsehen und mehrere Aufnahmen
+
+Ein Sender wird aufgenommen, während andere Sender desselben Transponders häufig denselben Demodulator mitbenutzen können. Ein zweiter Transponder benötigt einen weiteren Demodulator und muss zur vorhandenen Signalzuführung passen. **Acht Transponder bedeutet weder acht Sender als starres Maximum noch acht gleichzeitig am Fernseher darstellbare Bilder.**
+
+Beispiel: Zwei Aufnahmen und Live-TV vom selben Transponder können einen Empfangsweg teilen. Acht Aufnahmen von acht verschiedenen Transpondern können alle acht Demodulatoren belegen. Eine zusätzliche Aufnahme von einem bereits empfangenen Transponder kann noch möglich sein; ein neunter unabhängig gewählter Transponder nicht.
+
+Weitere Grenzen können durch Entschlüsselung/CI, verfügbare Demux-Ressourcen, Bilddecoder, Festplatte oder Netzwerk entstehen. Fast Channel Change, PiP, Streaming, EPG-Suchen und laufende Timer können Empfangswege bereits verwenden. Eine ausgegraute Kanalliste ist deshalb nicht automatisch ein Defekt des Tuners.
+
+## Typische Missverständnisse
+
+| Beobachtung / Annahme | Erklärung und nächste Prüfung |
+| --- | --- |
+| „Ich habe acht Tuner, warum gehen manche Sender nicht?“ | Ein klassisches Kabel liefert nur eine Ebene. Anschlussart und parallel benötigte Ebenen prüfen. |
+| „Zwei Eingänge ergeben 16 Tuner.“ | Beim gezeigten Block versorgen beide Eingänge zusammen acht Demodulatoren. |
+| „A versorgt immer vier und B immer vier Tuner.“ | C–H werden bei klassischer FBC-Automatik nach Bedarf zugeordnet; keine starre 4+4-Aufteilung. |
+| „Ein Kabel heißt, B muss immer aus sein.“ | Entscheidend ist die interne Versorgung: B kann bei unterstützter Verbindung die klassische Ebene von A mitnutzen. Bei Unicable arbeitet **der logische B** intern über A mit eigenem SCR. |
+| „Gleich wie A gibt B automatisch einen anderen SCR.“ | Nein. Gleiche Konfiguration und eigene Userband-Zuteilung sind verschiedene Dinge. |
+| „Unicable braucht acht Kabel.“ | Acht Userbänder werden gemeinsam auf einer geeigneten Koaxialleitung transportiert. |
+| „Ein Suchlauf muss achtmal laufen.“ | Die Senderliste ist gemeinsam. Ein vollständiger Suchlauf pro benötigter Empfangsquelle genügt. |
+| „Ein starker Pegel beweist eine richtige SCR-Zuordnung.“ | Doppelte SCRs können erst bei paralleler Nutzung auffallen. Nummern und Frequenzen vergleichen. |
+
+## Eine FBC-Einrichtung sinnvoll prüfen
+
+1. Zuerst einen frei empfangbaren Sender einschalten und Lock/Signalqualität prüfen.
+2. Mehrere frei empfangbare Sender von **verschiedenen Transpondern** für zeitlich überlappende Aufnahmen wählen. Verschiedene Sendernamen allein reichen als Nachweis nicht.
+3. Bei Universal-Zuführung innerhalb der verfügbaren Ebenen testen; bei acht zugeteilten Unicable-UBs bis zu acht unterschiedliche Transponder verwenden.
+4. In der Tuner-/Serviceinformation die Belegung kontrollieren. Ein Live-Bild oder ein Stream kann bereits einen Empfangsweg beanspruchen.
+5. Aufnahmen kurz wiedergeben und Bild/Ton prüfen. Anschließend die Testtimer beenden bzw. entfernen.
+
+So prüfst du die eigene Anlage. Die Menübilder zeigen reale OpenATV-Dialoge, aber ein Einstellungsbild allein belegt weder acht erfolgreiche Aufnahmen noch die Funktion einer nicht angeschlossenen Antennenanlage.
+
+Weiter: [Universal-Verkabelung](../fbc-sat-universal/), [Unicable-Verkabelung und alle acht SCRs](../fbc-sat-unicable/), [DVB-C FBC](../fbc-kabel/), [Signal-Finder](../signalfinder/).
+
+Grundlagen: [Vu+ Herstellerhandbuch, FBC und Unicable, S. 93](https://gzhls.at/blob/ldb/a/3/6/8/cd1c3b577a5a8e6dd8ddf4e40b3ed2b16c72.pdf#page=93). Menü- und Zuordnungslogik: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Screens/Satconfig.py), [FBC-Zuordnung im Enigma2-Kern](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/dvb/fbc.cpp). Bildbasis: OpenATV 8.0; Begriffe und Verkabelung gelten geräteneutral für die beschriebenen Anschlussarten.

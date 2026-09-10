@@ -18,7 +18,7 @@ Form examples were separated from the active reception configuration. The series
 
 After capture, tuner values, language, skin and hashes of service database/bouquets, timers, mount files and protected e2MDB files matched the initial state. The complete settings file is rewritten across GUI restarts and is not claimed to be byte-identical.
 
-**Not yet tested with an actual signal:** Hotbird/DiSEqC switches, Unicable, motor, SPAUN C/T switching, terrestrial USB DAB+ and FBC. Those chapters explain topology and options. DVB-S FBC and DVB-C FBC will receive separate practical extensions.
+**Not yet tested with an actual signal:** Hotbird/DiSEqC switches, Unicable, motor, SPAUN C/T switching, terrestrial USB DAB+ and FBC. Those chapters explain topology and options. The new [DVB-S FBC series](../fbc-sat/) and [DVB-C FBC series](../fbc-kabel/) now show native menus of eight-way satellite and cable blocks. Additional wiring diagrams explain one/two universal feeds and eight individual Unicable SCRs; an RF parallel-reception test is not part of this configuration series.
 
 ## Traceable sources
 

@@ -16,7 +16,7 @@ Verified **10 September 2026**. This expansion adds 21 chapters per language: si
 
 26 native DE/EN images show real forms with playback stopped and the bootlogo. Another 16 browser images show Classic/Modern, channels, recordings, timers, settings and installed editors. Native IP, DNS, parental-control and HTTPS examples were not saved. Browser captures involved no zapping, form submission, package installation or file changes.
 
-No softcam or external feed was installed. CI+/CAM operation, VPN, DNSCrypt and all optional servers were not fully functionally tested. A visible menu is not treated as proof of compatibility. Practical Wi-Fi and FBC coverage still awaits suitable hardware.
+No softcam or external feed was installed. CI+/CAM operation, VPN, DNSCrypt and all optional servers were not fully functionally tested. A visible menu is not treated as proof of compatibility. The [Wi-Fi configuration guide](../wlan/) now includes native adapter/profile screenshots, multiple profiles, WPA3 and the distinction from Enterprise. [FBC](../../tuner/fbc-sat/) also has native configuration screenshots and new wiring diagrams. These series document setup rather than RF or wireless connection tests.
 
 German and original automation settings were restored after GUI language changes. Network addresses, selected configuration and inspected network packages are unchanged. 75 of 76 protected path states (file hash or absence), including timers, channel lists, mounts, root account files and e2MDB, match by hash; only the complete Enigma2 settings file was rewritten by the GUI. The capture helper passes 42 tests. No passwords, PINs or API keys are visible in published captures.
 

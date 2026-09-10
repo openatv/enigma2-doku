@@ -1,0 +1,108 @@
+---
+title: "FBC with Unicable/JESS: eight SCRs over one cable"
+description: "Configure A through H with individual user bands: Unicable multiswitch, SCR, frequency, internal connection through A, PIN and duplicate-SCR faults."
+---
+
+import Capture from '../../../../components/Capture.astro';
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**For eight independently selectable transponders, give each of the eight demodulators its own user band. One suitable coaxial cable is sufficient.** The satellite installation must provide those user bands and assign them to this receiver.
+
+## Wiring and prerequisites
+
+<Wiring id="fbc-unicable" language="en" alt="One SCR feed into A, eight distinct user bands for A through H, B through H internally connected through A" caption="Recommended simple arrangement for one shared Unicable feed: one cable into A, B–H connected internally through A. The second socket stays empty, but logical tuner B remains usable." />
+
+Before starting, obtain the LNB/multiswitch manufacturer and model, supported protocol, **assigned UB numbers and their frequencies**, available satellite positions and a PIN if required. Ask the operator for these details in a shared installation. A free demodulator does not prove that a user band is available.
+
+**EN50494 (Unicable/SCR)** supports up to eight user bands; **EN50607 (JESS/Unicable II)** allows more, up to 32. The actual installation may provide fewer. Match both protocol and equipment type to the installation. A 32-UB output does not turn an eight-way FBC block into 32 demodulators. Background: [JULTEC on channel-stacking systems](https://jultec.de/gloss_CSS.html), [Inverto on one-cable distribution](https://inverto.tv/one-cable-satellite-distribution%20).
+
+## Step 1: configure root tuner A
+
+**Menu → Setup → Reception → Tuner configuration → Tuner A**
+
+1. Select **Configuration mode = Advanced**.
+2. Select an available satellite position and assign it to an LNB entry. The example assigns Astra 19.2°E to **LNB 1**.
+3. Set the LNB/LOF type to **Unicable / JESS**.
+4. Choose the actual equipment type: **Unicable LNB**, **Unicable matrix** or appropriate user-defined settings. An external distribution matrix is different from an SCR output directly on an LNB.
+5. Choose manufacturer and model to obtain the corresponding frequency/protocol settings. Do not select a merely similar product name.
+6. Select A's assigned **SCR/user band** and matching **frequency**.
+7. A receives the cable directly. Do not unnecessarily connect A through another tuner.
+
+<Capture id="fbc-sat-a" language="en" alt="Advanced Unicable configuration of the first FBC tuner" caption="Configured installation example: Astra, LNB 1 and a Unicable matrix. These values describe the example system, not defaults suitable for every installation." />
+
+<Capture id="fbc-sat-a-scr" language="en" alt="Manufacturer, Unicable matrix, SCR and frequency for tuner A" caption="SCR and frequency form a pair. This is the user-band frequency on the cable, not the satellite transponder frequency." />
+
+## Step 2: give B–H their own SCR through A
+
+1. Open tuner B and configure its advanced Unicable settings. For internal tuners C–H, select **FBC SCR (Unicable/JESS)**.
+2. Configure the same installation and the satellites it actually provides.
+3. Enable **Connected through another tuner**, unless the dialog already enforces it, and select **Connected to = Tuner A**. Part of this connection may be preset depending on hardware and dialog state.
+4. Give every tuner its **own** SCR number and matching frequency. Do not copy the first assignment unchanged seven times.
+5. Save and compare all eight assignments once more.
+
+<Capture id="fbc-sat-b-link" language="en" alt="Logical tuner B internally connected through A to the shared Unicable feed" caption="B has its own SCR but receives the signal internally from A's feed. No additional cable is needed in the second satellite socket." />
+
+<Capture id="fbc-sat-c-scr" language="en" alt="Individual SCR assignment for internal FBC tuner C" caption="An internal demodulator also receives a unique assignment. FBC automatic alone would not provide this allocation." />
+
+## Example: eight assigned user bands
+
+This table belongs to the **TechniRouter 9/1x8 profile used by the example installation**. All eight bands were assigned exclusively to this receiver. Use the correct table for a different LNB or matrix.
+
+| Tuner | Displayed SCR | Frequency | Signal path |
+| --- | --- | --- | --- |
+| A | 1 | 1284 MHz | Cable directly into A |
+| B | 2 | 1400 MHz | Internally through A |
+| C | 3 | 1516 MHz | Internally through A |
+| D | 4 | 1632 MHz | Internally through A |
+| E | 5 | 1748 MHz | Internally through A |
+| F | 6 | 1864 MHz | Internally through A |
+| G | 7 | 1980 MHz | Internally through A |
+| H | 8 | 2096 MHz | Internally through A |
+
+<Capture id="fbc-sat-h-scr" language="en" alt="Tuner H with SCR 8 at 2096 MHz" caption="The eighth reception path also has its own user band. No SCR is reused within this shared branch." />
+
+Some manuals or software number bands from **0**, others from **1**. Compare the numbering and frequency together. A band called UB 0 in one system may appear as SCR 1 in another; this does not mean that the next higher band should be selected arbitrarily. Profile source: [OpenATV unicable.xml](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/data/unicable.xml).
+
+## Other options and their purpose
+
+| Option / term | Purpose |
+| --- | --- |
+| Satellite / LNB assignment | Links an available satellite position to its LNB entry. The installation determines which positions exist. |
+| Unicable configuration mode | Selects a known LNB/matrix table or user-defined values |
+| Priority | Influences preference for this LNB/reception path during tuner selection; initially leave Auto. It does not replace SCR allocation. |
+| Externally powered | Enable only when a power inserter or external supply actually powers the Unicable device. |
+| Unicable position | **0** derives the position from the LNB number and device profile. Explicit values 1–64 are intended for appropriately reprogrammed devices; this is not the 19.2°E orbital position. |
+| Tuning algorithm | Adjusts SCR timing, for example with several SCR devices and suitable outlets. Start with the default selection. |
+| Manufacturer / model | Supplies frequency and protocol defaults for the actual equipment |
+| SCR / user band | Unique reception-path address on the shared branch |
+| Frequency | The matching SCR centre frequency in MHz; not interchangeable at will |
+| Channel / protocol in user-defined settings | Must match the installation's EN50494/EN50607 operation |
+| PIN | Use only when the installation protects a user band with a PIN and provides the correct PIN |
+| Connected through / connected to | Describes the real shared cable and internal FBC signal route |
+| Increased voltage / power-on delay / repeats | Special supply and switching adjustments; retain defaults initially and change only according to installation requirements |
+| DiSEqC / position mapping | Must match the actual multi-satellite installation. A second position offered by a profile does not prove that two satellites are connected. |
+
+Not every field appears in every combination. Visibility depends on equipment type, configuration mode and hardware. See the [reception configuration options](../optionen/) for the wider catalog.
+
+## Two cables, splitters and other receivers
+
+One suitable SCR feed is sufficient for the eight tuners shown here. Two cables can be useful when they provide **different reception installations or separate SCR outputs**. Assign each demodulator to the root tuner actually supplying it and to that feed's user bands; do not indiscriminately connect everything through A.
+
+When several receivers share one SCR output, user-band assignments must remain **unique across all those receivers**. A second splitter output does not create a separate numbering domain. Truly independent SCR outputs may reuse numbers if the manufacturer's design permits it.
+
+Use SAT/SCR-compatible splitters with the required frequency range and intended DC/control-signal paths. Follow the equipment specifications for isolation and power supply. Do not arbitrarily connect two powered outputs together. This differs from a conventional universal-feed Y splitter.
+
+## Troubleshooting
+
+| Symptom | First checks |
+| --- | --- |
+| One channel works, concurrent recordings interfere | Duplicate SCR on this receiver or another receiver sharing the branch |
+| Only A works | B–H lack individual SCRs, their internal connection is wrong or frequencies do not match |
+| One particular tuner never locks | Its SCR/frequency, assigned availability, protocol and PIN if used |
+| Tuners remain unused after switching to Unicable | C–H still set to FBC automatic instead of FBC SCR |
+| Only one satellite works | Actual available positions and mapping; a model profile cannot create reception |
+| Failures when several tuners start | Supply, cable, outlets, splitters and voltage drop before special timing adjustments |
+
+Use **different transponders** simultaneously for a practical test. Several channels on one transponder do not prove eight independent paths. See [testing FBC](../fbc-sat/#testing-an-fbc-installation).
+
+Menu and automatic-allocation logic: [OpenATV NimManager](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Components/NimManager.py), [FBC core](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/dvb/fbc.cpp).

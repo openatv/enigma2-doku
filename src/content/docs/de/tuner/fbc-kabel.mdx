@@ -1,0 +1,64 @@
+---
+title: "DVB-C FBC: acht Kabeltuner gemeinsam einrichten"
+description: "Ein Kabelanschluss, acht QAM-Demodulatoren: IN und OUT, gemeinsame Konfiguration, Anbietersuche und mehrere Aufnahmen bei DVB-C FBC."
+---
+
+import Capture from '../../../../components/Capture.astro';
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**Ein DVB-C-FBC-Block mit acht Demodulatoren benötigt eine Kabel-TV-Zuführung und eine gemeinsame Konfiguration.** SCR-Nummern, SAT-Ebenen und acht einzelne LNB-Konfigurationen gibt es hier nicht.
+
+## Richtig anschließen
+
+<Wiring id="fbc-cable" language="de" alt="Kabel-TV-Dose an den Eingang des Kabel-FBC-Blocks mit acht internen QAM-Demodulatoren" caption="Eine Koaxialleitung versorgt den Block. Die Nummern 1–8 stehen für seine Demodulatoren, nicht für acht Außenbuchsen." />
+
+Das Koaxialkabel der Kabel-TV-Dose kommt an **CABLE IN / ANT IN**. Die genaue Beschriftung richtet sich nach dem Gerät. Ein vorhandener **LOOP OUT** kann das HF-Signal an ein weiteres Gerät durchschleifen. Er ist kein zusätzlicher Eingang und vergrößert die Empfangskapazität dieser Box nicht. Ob das Durchschleifen auch im ausgeschalteten Zustand funktioniert, hängt von der Hardware ab.
+
+HDMI verbindet die Box mit dem Fernseher und überträgt das bereits verarbeitete Bild und den Ton. Ein HF-Durchschleifkabel zum TV ist dafür nicht erforderlich. Am Kabel-TV-Anschluss keine Versorgung für eine aktive terrestrische Antenne einschalten.
+
+## Einmal konfigurieren
+
+**Menü → Einstellungen → Empfang → Tuner-Konfiguration**
+
+1. Den **ersten Tuner des DVB-C-FBC-Blocks** auswählen. Sind vorher acht SAT-Tuner vorhanden, kann dieser beispielsweise **I** heißen; allein eingebaut kann er bei A beginnen.
+2. DVB-C aktivieren bzw. **Konfiguration = Aktiviert** wählen, soweit diese Auswahl angeboten wird.
+3. Die Suchart passend zum Kabelnetz wählen: **Anbieter** mit dem richtigen Betreiberprofil oder eine Suche nach passenden Frequenzbändern/-schritten.
+4. Netzwerksuche, Frequenzschritte, Modulationen und Symbolraten nur nach den Angaben des Kabelbetreibers anpassen.
+5. Speichern. Die weiteren Demodulatoren des Blocks übernehmen die gemeinsame Konfiguration. Sie werden in der normalen Tunerauswahl deshalb nicht wie acht unabhängige Empfangsanlagen eingerichtet.
+6. Einen passenden automatischen oder manuellen Kabelsuchlauf starten. Die gefundene Senderliste ist für den Block gemeinsam verfügbar.
+
+<Capture id="fbc-list-cable" language="de" alt="Kabel-FBC-Block in der OpenATV-Tunerauswahl" caption="In dieser gemischten Tunerbestückung folgt der Kabelblock auf die acht SAT-Tuner. Die Buchstaben sind ein Beispiel, keine Vorgabe für andere Geräte." />
+
+<Capture id="fbc-cable-root" language="de" alt="Gemeinsame Konfiguration des ersten DVB-C-FBC-Tuners" caption="Der ausgewählte Kabelanbieter gehört zur Beispielinstallation. Für den eigenen Anschluss den tatsächlichen Betreiber verwenden; kein achtmaliges Wiederholen der Einrichtung nötig." />
+
+## Welche Suchoption wofür?
+
+| Option / Verfahren | Zweck |
+| --- | --- |
+| Netzwerk-ID | Kennung des Kabelnetzes laut Betreiber; 0 steht im gezeigten Dialog für alle Netzwerke. Nicht mit IP-Adresse oder SSID verwechseln. |
+| Land / Region | Wählt das passende regionale Betreiberprofil. Der Beispielanbieter ist keine Vorgabe für andere Anschlüsse. |
+| Ursprünglichen Signalstatus erzwingen | Verwendet ältere Treiber-Signalwerte statt der neueren API, wenn dafür ein konkreter Grund besteht. Diese Anzeigeoption erhöht weder Signalqualität noch Tuneranzahl. |
+| Anbieter | Nutzt die Frequenzvorgaben des ausgewählten Kabelnetzes |
+| Frequenzbänder / Frequenzschritte | Sucht Bereiche, wenn kein passendes Anbieterprofil vorhanden ist; umfangreiche Suchen können länger dauern |
+| Modulation / QAM | Beschreibt die verwendete Modulation, beispielsweise QAM64 oder QAM256; Angaben des Betreibers beachten |
+| Symbolrate | Muss zum Netz bzw. zum konkreten Multiplex passen |
+| Netzwerksuche | Kann weitere Frequenzen aus ausgesendeten Netzwerkinformationen übernehmen |
+| Automatischer Suchlauf | Sucht mit der vorbereiteten Kabelkonfiguration |
+| Manueller Suchlauf | Prüft gezielt einen bekannten Multiplex mit Frequenz, Symbolrate und Modulation |
+| CableScan | Eigenes Suchverfahren/Plugin mit anbieterspezifischen Parametern; keine Voraussetzung allein wegen FBC |
+
+Die detaillierten Dialoge stehen bei [DVB-C](../dvb-c/), [automatischem Suchlauf](../automatischer-suchlauf/), [manuellem Suchlauf](../manueller-suchlauf/), [CableScan](../cablescan/) und in der [Suchlauf-Optionsreferenz](../scan-optionen/). Ein Suchlauf pro virtuellem Tuner erzeugt keinen zusätzlichen Empfangsweg.
+
+## Acht Multiplexe sind nicht acht Sender
+
+Das Kabelsignal enthält viele Frequenzen gleichzeitig. Die acht Demodulatoren können bis zu acht verschiedene **QAM-Multiplexe** verarbeiten. Jeder davon kann mehrere Sender enthalten. Ein weiterer Sender auf einem schon empfangenen Multiplex kann denselben Demodulator mitnutzen; ein zusätzlicher anderer Multiplex benötigt einen freien.
+
+Damit unterscheiden sich die Grenzen von klassischem SAT: Bei DVB-C wird pro Leitung keine H/V- oder Low/High-Ebene geschaltet. Die gemeinsamen Grenzen durch Entschlüsselung, Demux, Speicher, Streaming und Wiedergabedecoder bleiben jedoch bestehen. Auch bei einem normalen Single-DVB-C-Tuner können mehrere Sender desselben Multiplexes möglich sein; FBC erweitert die Zahl gleichzeitig empfangener Multiplexe.
+
+## Empfang und Parallelaufnahmen prüfen
+
+Zuerst einen frei empfangbaren Sender und dessen Signalqualität prüfen. Danach mehrere frei empfangbare Sender von **unterschiedlichen Kabel-Frequenzen** gleichzeitig aufnehmen. Erst acht verschiedene Multiplexe prüfen die acht Empfangswege aus. Verschiedene Sender desselben Multiplexes reichen dafür nicht aus.
+
+Bei Aussetzern Kabel und Dose, Pegel/Signalqualität auf den betroffenen Frequenzen, Anbieterparameter sowie Entschlüsselungsgrenzen prüfen. Ein übersteuerter Eingang kann trotz hoher Pegelanzeige gestört sein. Diese Menüserie zeigt die echte Konfiguration eines achtfachen Kabelblocks; ein achtfacher RF-/Aufnahmetest des Kabelanschlusses ist damit nicht behauptet.
+
+Quellen: [OpenATV: Sichtbarkeit und gemeinsame Kabelkonfiguration](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Screens/Satconfig.py), [NimManager: Kabel-FBC-Root-Konfiguration](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Components/NimManager.py), [Broadcom zu Kabel-FBC mit mehreren QAM-Demodulatoren](https://investors.broadcom.com/news-releases/news-release-details/broadcom-unveils-new-line-cable-set-top-box-12-ghz-full-band).

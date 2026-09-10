@@ -1,0 +1,81 @@
+---
+title: "FBC mit Universal-LNB: ein Kabel, zwei Kabel, mehrere Positionen"
+description: "SAT-Ebenen VL HL VH HH, A/B und C–H richtig einrichten. Schaubilder für ein Kabel, zwei Leitungen, Astra/Hotbird und eine separate Motorantenne."
+---
+
+import Capture from '../../../../components/Capture.astro';
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+Ein konventioneller **Universal-LNB** liefert pro Teilnehmerleitung eine gewählte SAT-Ebene. FBC kann aus dieser Ebene mehrere Transponder empfangen. Es kann über dieselbe Leitung aber nicht gleichzeitig die anderen drei Ebenen anfordern.
+
+## Die vier SAT-Ebenen
+
+| Ebene | Polarisation | Band | Typische Steuerung beim Universal-LNB |
+| --- | --- | --- | --- |
+| VL | Vertikal | Lowband | 13 V, 22 kHz aus |
+| HL | Horizontal | Lowband | 18 V, 22 kHz aus |
+| VH | Vertikal | Highband | 13 V, 22 kHz ein |
+| HH | Horizontal | Highband | 18 V, 22 kHz ein |
+
+Low/High beschreibt das Frequenzband am Satelliten, **nicht HD/SD oder die Bildqualität**. Ein Universal-Ku-LNB verwendet üblicherweise 9750/10600 MHz als lokale Oszillatorfrequenzen und 11700 MHz als Bandgrenze. OpenATV steuert Spannung und Ton anhand des gewünschten Transponders. Die Standardwerte müssen bei einem normalen Universal-LNB nicht manuell verändert werden; andere [LNB-Typen](../lnb/) haben andere Vorgaben.
+
+## Ein Universal-Kabel
+
+<Wiring id="fbc-legacy-one" language="de" alt="Ein Universal-Kabel liefert eine SAT-Ebene an Eingang A und bis zu acht FBC-Demodulatoren" caption="Beispiel: A wählt HL. Weitere Demodulatoren können andere Transponder aus HL verwenden; VL, VH und HH stehen parallel nicht über diese Leitung bereit." />
+
+1. Das Teilnehmerkabel an den **ersten SAT-Eingang des FBC-Blocks** anschließen. Vor dem Umstecken die Box stromlos machen.
+2. **Menü → Einstellungen → Empfang → Tuner-Konfiguration** öffnen und den zugehörigen Root-Tuner A wählen.
+3. Für eine direkte Astra-Anlage: **Konfiguration = Einfach**, **Modus = Einzeln**, **Satellit = Astra 19.2°E**. Ohne vorgeschalteten DiSEqC-Schalter wird kein DiSEqC-Befehl benötigt.
+4. Für B die angebotene **interne Verbindung mit Tuner A** nutzen, wenn dieser Demodulator ebenfalls aus der einzigen Leitung versorgt werden soll. Nicht **Gleich wie A** als unabhängige zweite Leitung vorgeben. B ohne externe oder unterstützte interne Versorgung bleibt **Nicht konfiguriert** und trägt dann keinen eigenen Empfangsweg bei.
+5. Die internen Tuner C–H auf **FBC automatisch** belassen. Sie benötigen bei dieser Anschlussart keine eigene Satellitenliste und keine SCR-Nummer.
+6. Speichern und einen passenden Sender testen. Die automatische interne Zuordnung erfolgt beim Empfang.
+
+<Capture id="fbc-universal-a" language="de" alt="Einfacher FBC-Root-Tuner A für Astra 19.2 Ost" caption="Nicht gespeichertes Menübeispiel für einen klassischen Astra-Anschluss. Die Testanlage selbst nutzt Unicable; sie wurde für dieses Bild nicht auf Universal-Empfang umgestellt." />
+
+<Capture id="fbc-automatic" language="de" alt="Interner Tuner in der Betriebsart FBC automatisch" caption="C–H: FBC automatisch verteilt die verfügbaren Empfangswege intern. Diese Option vergibt keine Unicable-Userbänder." />
+
+**Beispiel einer Grenze:** Eine Aufnahme hält A auf HL. Ein weiterer HL-Transponder kann einen freien internen Demodulator nutzen. Ein Sender auf VH lässt sich parallel über dieses eine klassische Kabel nicht empfangen, auch wenn noch Demodulatoren frei sind.
+
+## Zwei unabhängige Universal-Kabel
+
+<Wiring id="fbc-legacy-two" language="de" alt="Zwei unabhängige Universal-Zuführungen versorgen A und B mit zwei SAT-Ebenen; C bis H nutzen sie automatisch" caption="Zwei Leitungen erweitern die Auswahl auf bis zu zwei gleichzeitig gewählte Ebenen. Der Block hat weiterhin insgesamt acht Demodulatoren." />
+
+Geeignet sind beispielsweise zwei Ausgänge eines **Twin-/Quad-LNBs** oder zwei Teilnehmerausgänge eines klassischen Multischalters. Ein normaler Y-Verteiler, der eine Leitung aufteilt, erzeugt keine zweite unabhängig schaltbare Ebene.
+
+1. Zwei unabhängige Teilnehmerleitungen an die beiden SAT-Eingänge anschließen.
+2. A passend zur Anlage einrichten.
+3. B ebenfalls passend einrichten. Wenn beide Leitungen **dieselben Satelliten mit derselben Schalterbelegung** anbieten, kann **Gleich wie Tuner A** verwendet werden. B bleibt dabei ein eigenständig ansteuerbarer Eingang.
+4. C–H auf **FBC automatisch** belassen und speichern.
+
+<Capture id="fbc-universal-b" language="de" alt="Root-Tuner B mit gleicher Konfiguration wie A" caption="Nicht gespeichertes Beispiel: Gleich wie A passt nur zu einer zweiten unabhängigen Leitung mit gleicher Empfangskonfiguration. Es bedeutet weder Durchschleifen noch einen zweiten SCR." />
+
+**Gleich wie** kopiert die Empfangsbeschreibung. **Verbunden mit / Durchschleifen** beschreibt dagegen einen gemeinsamen Signalweg mit Einschränkungen. Damit kann B bei unterstützter interner Verbindung die Leitung von A mitnutzen; eine zweite unabhängig wählbare Ebene entsteht dadurch nicht.
+
+Auch zwei Kabel liefern nicht alle vier Ebenen gleichzeitig. Die internen Demodulatoren werden passend zur laufenden Belegung verteilt; eine feste Zuordnung „A hat vier, B hat vier“ ist nicht erforderlich. Ein DiSEqC-Multischalter kann je Teilnehmerleitung zusätzlich die SAT-Position wählen. Dann begrenzt pro klassischer Leitung die Kombination aus **Position und Ebene** die parallel erreichbaren Transponder.
+
+## Zwei feste Positionen ohne DiSEqC-Schalter
+
+<Wiring id="fbc-two-sat" language="de" alt="Astra direkt an Eingang A und Hotbird direkt an Eingang B eines FBC-Blocks" caption="Zwei getrennte feste Zuführungen: Ein Eingang kann nicht zu der Position wechseln, deren LNB nur am anderen Eingang angeschlossen ist." />
+
+- A: **Einfach → Einzeln → Astra 19.2°E**.
+- B: **Einfach → Einzeln → Hotbird 13.0°E**.
+- C–H: **FBC automatisch**.
+- Ohne Schalter auf den jeweiligen Leitungen keinen DiSEqC-Port erfinden. **B ist hier nicht „Gleich wie A“**, weil die Satelliten verschieden sind.
+
+Beide Positionen können gleichzeitig empfangen werden, jeweils innerhalb der gerade gewählten Ebene ihres Eingangs. Für mehrere Positionen über **eine** klassische Leitung siehe [DiSEqC und AutoDiSEqC](../diseqc/).
+
+## Feste Antenne plus separate Motorantenne
+
+<Wiring id="fbc-motor" language="de" alt="Feste Astra-Antenne an A, separate drehbare Antenne über ihren Motor an B" caption="Schematisches Anschlussbeispiel. Die Motorantenne ist eine eigene Antenne und wurde für diese Dokumentationsserie nicht praktisch verfahren." />
+
+A wird für die feste Position eingerichtet. B bekommt seine eigene [Motor-/USALS-Konfiguration](../motor/) mit korrektem Standort bzw. den passenden DiSEqC-1.2-Positionen. C–H bleiben für die klassische Zuführung automatisch zugeordnet.
+
+Eine Motorbewegung verändert die Position der **gesamten Motorantenne**. Aufnahmen und interne Demodulatoren, die diese Antenne verwenden, sind davon mitbetroffen. Die separate feste Antenne an A bleibt unabhängig. Zwei Kabel aus **derselben** motorisierten Antenne können zwar verschiedene Ebenen liefern, aber keine unterschiedlichen Orbitalpositionen gleichzeitig.
+
+## Nicht mit Unicable oder Wideband verwechseln
+
+Für einen Universal-LNB keine erfundenen SCRs eintragen. Für [Unicable](../fbc-sat-unicable/) umgekehrt nicht bei der klassischen Automatik stehenbleiben, wenn acht unabhängige SCR-Empfangswege genutzt werden sollen. Wideband-Ausgänge mit dauerhaft H/V sind ebenfalls kein normaler Twin-Universal-Anschluss; dazu sind passende Hardware und Anlagenvorgaben nötig.
+
+Die klassischen Anschlussbilder sind bewusst allgemeine Konfigurationsbeispiele. Die nativen Beispielmenüs wurden ohne Speichern geöffnet; die eingerichtete Unicable-Anlage blieb erhalten. Quellbasis: [OpenATV Tuner-Konfiguration](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Screens/Satconfig.py), [Tuner- und LNB-Konfiguration](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Components/NimManager.py).
+
+Herstellerbeispiel zur internen Verbindung bei einem klassischen Kabel: [GigaBlue FBC configuration](https://wiki.gigablue.de/index.php?title=Tunerkonfiguration_mit_einem_DVB-S2_FBC_Dual_Tuner).

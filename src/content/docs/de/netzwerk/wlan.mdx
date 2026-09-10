@@ -1,0 +1,112 @@
+---
+title: "WLAN verbinden: Adapter, Profile und alle Optionen"
+description: "OpenATV-WLAN mit SSID, WPA2/WPA3, versteckten Netzen, Priorität, DHCP, DNS und Verbindungsprüfung. Native Menübilder und Hilfe bei Verbindungsproblemen."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+WLAN verbindet die Box drahtlos mit dem Router. Dafür benötigt OpenATV einen erkannten WLAN-Adapter mit passendem Treiber und Firmware. **Ein gespeichertes WLAN-Profil allein bedeutet noch keine aktive Verbindung.**
+
+## Wo finde ich WLAN?
+
+**Menü → Einstellungen → Netzwerk → Netzwerkübersicht**
+
+Die Übersicht unterscheidet den **Adapter** (beispielsweise `wlan0`) und seine **gespeicherten Netzwerke**. Die Adaptereinstellungen betreffen unter anderem IP und DHCP. Das WLAN-Profil enthält SSID, Verschlüsselung und Schlüssel. Eine Änderung des Router-WLAN-Passworts gehört daher in das Profil und nicht in die DNS-Einstellungen.
+
+<Capture id="wifi-overview" language="de" alt="OpenATV-Netzwerkübersicht mit LAN- und WLAN-Adapter" caption="Die Netzwerkübersicht zeigt Adapter und gespeicherte Verbindungen getrennt. Ein vorhandener Profileintrag ist noch kein Nachweis einer verbundenen WLAN-Strecke." />
+
+## Ein sichtbares Netzwerk hinzufügen
+
+1. In der Netzwerkübersicht den **WLAN-Adapter** markieren.
+2. Mit <kbd>MENU</kbd> das Kontextmenü öffnen und **WLAN-Netzwerke suchen** (*Scan Wi-Fi Networks*) wählen. Die beschrifteten Farbtasten/OK-Aktionen passen sich der aktuellen Auswahl an.
+3. Die Suche abwarten und die richtige **SSID** auswählen. Mehrere Zugangspunkte eines Mesh-WLANs können denselben Namen, aber unterschiedliche BSSIDs haben.
+4. Die angebotene Verschlüsselung mit dem Router vergleichen und den **WLAN-Schlüssel** eingeben. Groß-/Kleinschreibung und Sonderzeichen müssen stimmen. Das ist nicht das Passwort der Router-Verwaltungsseite und nicht das root-Passwort der Box.
+5. **Aktiviert = Ja** wählen, speichern und dem Verbindungsdialog folgen. Bei einem bereits vorhandenen Profil die angebotene Aktion **Verbinden** verwenden.
+6. Nach dem Verbinden die Adapterinformationen prüfen: WLAN verbunden, IP-Adresse vorhanden, passendes Gateway und funktionierende Namensauflösung.
+
+In einer gefüllten Liste helfen Signalstärke, Kanal/Frequenz und Verschlüsselung bei der Auswahl. Ein verstecktes Netz lässt sich nicht allein anhand einer leeren SSID sicher identifizieren. Die Suche speichert noch kein neues Passwort.
+
+## Alle Felder des gespeicherten WLAN-Profils
+
+<Capture id="wifi-profile" language="de" alt="WLAN-Profil mit SSID, Aktivierung, Verschlüsselung und geschwärztem Schlüssel" caption="Native Profileinstellungen. Das Schlüsselfeld ist für die Dokumentation geschwärzt; die gespeicherten Zugangsdaten werden nicht veröffentlicht oder durch den Platzhalter ersetzt." />
+
+| Feld | Bedeutung und Verwendung |
+| --- | --- |
+| Netzwerkname (SSID) | Exakter Name des WLANs. Bei manueller Anlage vollständig und mit richtiger Groß-/Kleinschreibung eingeben. |
+| Aktiviert | Erlaubt, dieses gespeicherte Profil beim Verbindungsaufbau zu verwenden. Deaktivieren löscht das Profil nicht. |
+| Priorität | Ordnet mehrere gespeicherte WLANs nach Bevorzugung, sofern angeboten. In der Rangliste steht **1 für die höchste Priorität**. Bei einem einzigen Profil kann das Feld entfallen. Diese Rangliste ist nicht dieselbe Zahl wie die interne Priorität in wpa_supplicant. |
+| Verstecktes Netzwerk | Aktivieren, wenn der Router die SSID nicht öffentlich aussendet. Das versteckt weder die Funkübertragung noch ersetzt es Verschlüsselung. |
+| Verschlüsselung | Muss zur Routerkonfiguration passen. Angeboten werden je nach Zustand Keine, WEP, WPA, WPA2, WPA2/WPA3 und WPA3. Treiber und Adapter müssen das gewählte Verfahren unterstützen. |
+| Passwort / Schlüssel | WLAN-Zugangsschlüssel. Eingabe prüfen; Leerzeichen am Anfang/Ende können Teil eines falsch eingegebenen Schlüssels sein. |
+
+**WPA2/WPA3** bezeichnet einen Übergangsmodus. Eine entsprechende Auswahl garantiert nicht, dass ein älterer Adapter WPA3 unterstützt. Für ein übliches Heimnetz WPA2 mit AES/CCMP oder WPA3 entsprechend den Fähigkeiten von Router und Adapter verwenden. WEP und altes WPA sind veraltete Verfahren; sie sind keine sinnvolle Abhilfe bei Treiber- oder Verbindungsproblemen. Ein offenes WLAN verschlüsselt die Funkstrecke nicht.
+
+### WPA3-Enterprise: kurze Einordnung
+
+**WPA3-Enterprise** verwendet eine zentrale Anmeldung über **802.1X/EAP**, meist mit einem RADIUS-Server. Je nach EAP-Verfahren werden eine Benutzeridentität, Zugangsdaten, vertrauenswürdige CA-/Serverzertifikate und gegebenenfalls ein Clientzertifikat samt privatem Schlüssel benötigt. Welche Zertifikate und Verfahren gelten, bestimmt die Firmen-IT. [Cisco: WPA3 Deployment Guide](https://www.cisco.com/c/en/us/td/docs/wireless/controller/9800/technical-reference/wpa3-dg.pdf).
+
+Diese Enterprise-Einrichtung ist **über die OpenATV-GUI nicht vollständig möglich**. Sie erfolgt manuell, beispielsweise in `wpa_supplicant.conf`, nach den Vorgaben der IT. Eine Unternehmensanleitung ist hier nicht enthalten. Für typische private WLANs sind **WPA2/WPA3-Personal** mit einem WLAN-Schlüssel die passenden Verfahren; die Auswahl WPA3 in der einfachen Maske ist keine Einrichtung für WPA3-Enterprise.
+
+Die ursprünglichen Hilfetexte und Suchschlüssel stehen in der [WLAN-Optionsreferenz](../../einstellungen/referenz/networkwifi/).
+
+## Verstecktes WLAN und vorhandene Profile
+
+Über <kbd>MENU</kbd> → **WLAN manuell hinzufügen** den Namen, die Verschlüsselung und den Schlüssel eintragen. **Verstecktes Netzwerk = Ja** nur verwenden, wenn dies tatsächlich zur Routerkonfiguration gehört. Danach aktivieren, speichern und verbinden.
+
+Bei mehreren Profilen zunächst den WLAN-Adapter und dann den richtigen Eintrag in der Liste der gespeicherten Netzwerke auswählen. Dort stehen abhängig vom Zustand Bearbeiten/Verbinden, Trennen und das Kontextmenü zur Verfügung. **Trennen** beendet die laufende Verbindung; **Netzwerk löschen** entfernt das gespeicherte Profil. Ein Profilwechsel kann Streams und NAS-Zugriffe unterbrechen.
+
+## Mehrere WLAN-Profile pro Adapter und gezielt wechseln
+
+Du kannst **mehrere WLAN-Profile für denselben Adapter** speichern, beispielsweise für das Heimnetz und einen mobilen Hotspot. Jedes Profil behält seine eigene SSID, Verschlüsselung und seinen Schlüssel. Der Adapter verbindet sich jeweils mit einem ausgewählten WLAN.
+
+1. Den WLAN-Adapter auswählen und über **WLAN hinzufügen**, die Suche oder **WLAN manuell hinzufügen** ein weiteres Netz speichern. Das bestehende Profil muss dafür nicht gelöscht werden.
+2. In der Liste **Gespeicherte WLAN-Netzwerke** das gewünschte Profil markieren.
+3. Die angebotene Aktion **Verbinden** auswählen. Falls erforderlich zuerst die aktuelle Verbindung trennen. Nach dem Wechsel IP-Adresse und Erreichbarkeit kontrollieren: Ein anderes WLAN kann einen anderen Adressbereich verwenden.
+4. Häufig verwendete Profile aktiviert lassen und ihre **Priorität** festlegen, soweit die Rangliste angeboten wird. Das bevorzugte erreichbare und nutzbare Profil soll oben stehen.
+5. Ein zeitweise nicht gewünschtes Profil deaktivieren. **Löschen** nur wählen, wenn auch die gespeicherten Zugangsdaten entfernt werden sollen.
+
+Ein aktives Profil und eine gespeicherte Verbindung sind verschiedene Zustände. Die Priorität steuert die Bevorzugung beim Verbindungsaufbau; sie ist keine Zusage eines sofortigen unterbrechungsfreien Wechsels bei jeder Signaländerung. Beim gezielten Wechsel können Streams und NAS-Verbindungen abbrechen.
+
+## Adapter: IP, DHCP, DNS und Bevorzugung
+
+<Capture id="wifi-adapter" language="de" alt="IP- und Aktivierungseinstellungen des WLAN-Adapters" caption="Der Adapterdialog konfiguriert die Netzwerkseite der Verbindung. Der WLAN-Schlüssel wird im getrennten Profil eingegeben." />
+
+| Adapteroption | Wozu sie dient |
+| --- | --- |
+| Adapter aktivieren | Schaltet die Nutzung dieses Netzwerkadapters ein bzw. aus |
+| DHCP | Bezieht IP-Konfiguration vom Router; für den Einstieg meist die passende Wahl |
+| IP-Modus | Wählt die angebotenen IPv4-/IPv6-Betriebsarten; passend zum eigenen Netz verwenden |
+| IP-Adresse / Netzmaske / Gateway | Bei manueller IPv4-Konfiguration eine freie Adresse und die richtigen Netzparameter eintragen |
+| Eigene DNS-Einstellungen | Namensserver dieses Adapters festlegen, wenn automatische bzw. allgemeine DNS-Vorgaben nicht verwendet werden sollen |
+| Routenmetrik / Adapterpriorität | Entscheidet bei mehreren nutzbaren Routen über deren Bevorzugung; kleinere Metrik ist normalerweise bevorzugt. Das ist etwas anderes als die WLAN-Profilrangliste. |
+| Wake on Wi-Fi / nur Aufwecken | Erscheint nur mit entsprechender Unterstützung. Eine WLAN-Verbindung allein bedeutet nicht, dass die Box aus Deep-Standby drahtlos aufweckbar ist. |
+
+Sichtbarkeit hängt von Hardware, IP-Modus und Bedienebene ab. Details: [manuelle IP](../manuelle-ip/), [DNS](../dns/) und [Netzwerktest](../neustart-test/). Für eine dauerhafte Adresse kann auch eine DHCP-Reservierung im Router sinnvoll sein.
+
+Wenn LAN und WLAN gleichzeitig aktiv sind, beweist ein funktionierender Download noch keinen WLAN-Verkehr. Die Route kann weiterhin über LAN laufen. Für einen eindeutigen WLAN-Test IP, Route und Adapterstatus prüfen; einen LAN-Stecker erst entfernen, wenn lokale Bedienung und WLAN-Zugang sichergestellt sind. Laufende Aufnahmen auf ein NAS vorher berücksichtigen.
+
+## Verbindung prüfen
+
+<Capture id="wifi-status" language="de" alt="Native WLAN-Adapterinformationen in OpenATV" caption="Die Adapterinformationen zeigen den tatsächlichen Zustand. IP-Adresse, Gateway und Funkstatus gemeinsam prüfen." />
+
+- **SSID**: Name des WLANs. **BSSID**: Kennung des konkreten Zugangspunkts; bei Mesh kann sie wechseln.
+- **Kanal/Frequenz**: Funkband und verwendeter Kanal. 2,4 GHz, 5 GHz oder 6 GHz müssen jeweils von Adapter, Treiber und Router unterstützt werden.
+- **Signalqualität/Pegel**: Funkempfang am Standort. Die Prozentanzeige ist treiberabhängig.
+- **Linkrate**: Ausgehandelte Funkrate, nicht die garantierte Nutzdatenrate für Aufnahmen oder Streams.
+- **IP/Gateway/DNS**: Prüfen die Netzwerkfunktionen nach dem Funk-Verbindungsaufbau.
+
+## Probleme der Reihe nach eingrenzen
+
+| Zustand | Prüfung |
+| --- | --- |
+| WLAN-Adapter fehlt | Adaptererkennung, unterstützter Chipsatz, Treiber/Firmware und USB-Anschluss |
+| Kein Netz gefunden | Adapter aktiviert, Antenne/Standort, Router-WLAN eingeschaltet, unterstütztes Frequenzband und Kanal |
+| SSID sichtbar, Anmeldung scheitert | Schlüssel und Verschlüsselung; WPA3-Unterstützung, Router-Zugangsbeschränkungen |
+| Verbunden, aber keine IP | DHCP-Server, Adressbereich und Router; eine gespeicherte IP allein beweist keine aktive Verbindung |
+| IP vorhanden, Internet fehlt | Gateway und tatsächliche Route, danach DNS und Erreichbarkeit des Ziels |
+| Internet geht, NAS fehlt | Gleicher Netzbereich, Gastnetz-/Client-Isolation, NAS-Dienst und Mount-Einstellungen |
+| Verbindung schwankt | Signal, Störungen, Standort und Auslastung prüfen; reale Übertragungsrate für NAS-Aufnahmen testen |
+
+Für erfahrene Nutzer sind `ip addr show wlan0`, `ip route` und – bei vorhandenem Werkzeug – `wpa_cli -i wlan0 status` nützliche Statusabfragen. Den tatsächlichen Adapternamen verwenden. Keine komplette WLAN-Konfigurationsdatei veröffentlichen: Sie kann Schlüssel enthalten. [NAS und Freigaben](../freigaben/) werden erst geprüft, nachdem die Netzwerkverbindung funktioniert.
+
+Die Bilder zeigen die Einrichtung; eine erfolgreiche Funkverbindung wird durch diese Konfigurationsserie nicht belegt. Grundlage: [OpenATV Netzwerkübersicht und WLAN-Dialoge](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Screens/NetworkSetup.py), [NetworkManager](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Components/NetworkManager.py).

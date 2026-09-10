@@ -1,0 +1,81 @@
+---
+title: "FBC with a universal LNB: one cable, two cables, multiple positions"
+description: "Satellite planes VL HL VH HH, A/B and C–H explained with wiring diagrams for one feed, two feeds, Astra/Hotbird and a separate motor dish."
+---
+
+import Capture from '../../../../components/Capture.astro';
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+A conventional **universal LNB** supplies one selected satellite plane per subscriber feed. FBC can receive several transponders from that plane. It cannot simultaneously request the other three planes through that same cable.
+
+## The four satellite planes
+
+| Plane | Polarisation | Band | Typical universal-LNB control |
+| --- | --- | --- | --- |
+| VL | Vertical | Low band | 13 V, 22 kHz off |
+| HL | Horizontal | Low band | 18 V, 22 kHz off |
+| VH | Vertical | High band | 13 V, 22 kHz on |
+| HH | Horizontal | High band | 18 V, 22 kHz on |
+
+Low/high refers to the satellite frequency band, **not HD/SD or picture quality**. A universal Ku-band LNB typically uses local oscillator frequencies of 9750/10600 MHz and a band switch at 11700 MHz. OpenATV selects voltage and tone according to the transponder requested. Normal universal LNBs need no manual adjustment of these defaults; other [LNB types](../lnb/) require their own specifications.
+
+## One universal cable
+
+<Wiring id="fbc-legacy-one" language="en" alt="One universal feed supplies one satellite plane to input A and up to eight FBC demodulators" caption="Example: A selects HL. Additional demodulators can receive other HL transponders; VL, VH and HH are not simultaneously available through this feed." />
+
+1. Connect the subscriber cable to the **first satellite input of the FBC block**. Switch off and disconnect power before moving coaxial cables.
+2. Open **Menu → Setup → Reception → Tuner configuration** and select its root tuner A.
+3. For a direct Astra feed: **Configuration mode = Simple**, **Mode = Single**, **Satellite = Astra 19.2°E**. A direct feed without a DiSEqC switch needs no DiSEqC command.
+4. Use the offered **internal connection from B to tuner A** if B is to share the single feed. Do not use **Equal to A** to describe a second independent feed. Without an external or supported internal feed, B remains **Not configured** and contributes no reception path.
+5. Leave internal tuners C–H on **FBC automatic**. They need no individual satellite lists or SCR numbers for this connection type.
+6. Save and test a suitable service. Internal allocation takes place automatically during reception.
+
+<Capture id="fbc-universal-a" language="en" alt="Simple configuration of FBC root tuner A for Astra 19.2 East" caption="Unsaved menu example for a conventional Astra feed. The actual test installation uses Unicable and was not changed to universal reception for this image." />
+
+<Capture id="fbc-automatic" language="en" alt="Internal tuner set to FBC automatic" caption="C–H: FBC automatic assigns available reception paths internally. This setting does not allocate Unicable user bands." />
+
+**Example of a limit:** A recording holds A on HL. Another HL transponder can use a free internal demodulator. A service on VH cannot be received at the same time through this single conventional feed, even if unused demodulators remain.
+
+## Two independent universal cables
+
+<Wiring id="fbc-legacy-two" language="en" alt="Two independent universal feeds supply A and B with two satellite planes; C through H use them automatically" caption="Two feeds allow up to two selected planes at once. The block still contains eight demodulators in total." />
+
+Suitable sources include two outputs of a **Twin/Quad LNB** or two subscriber outputs of a conventional multiswitch. A normal Y splitter does not turn one feed into two independently switchable planes.
+
+1. Connect two independent subscriber feeds to the two satellite inputs.
+2. Configure A for the installation.
+3. Configure B accordingly. If both feeds offer **the same satellites with the same switch assignments**, **Equal to tuner A** is suitable. B remains an independently controlled input.
+4. Leave C–H on **FBC automatic** and save.
+
+<Capture id="fbc-universal-b" language="en" alt="Root tuner B using the same configuration as A" caption="Unsaved example: Equal to A fits a second independent feed with the same reception configuration. It means neither loop-through nor a second SCR." />
+
+**Equal to** copies the reception description. **Connected to / loop-through** describes a shared signal path with restrictions. A supported internal connection allows B to share A’s feed; it does not create a second independently selectable plane.
+
+Even two cables cannot supply all four planes simultaneously. Internal demodulators are assigned to the active reception requirements; there is no need for a fixed “four for A, four for B” allocation. A DiSEqC multiswitch may additionally select a satellite position per subscriber feed. Each conventional feed is then limited to its selected **position and plane**.
+
+## Two fixed positions without a DiSEqC switch
+
+<Wiring id="fbc-two-sat" language="en" alt="Astra directly into input A and Hotbird directly into input B of an FBC block" caption="Two separate fixed feeds: an input cannot switch to a satellite whose LNB is connected only to the other input." />
+
+- A: **Simple → Single → Astra 19.2°E**.
+- B: **Simple → Single → Hotbird 13.0°E**.
+- C–H: **FBC automatic**.
+- Without a switch in either feed, do not invent a DiSEqC port. **B is not “Equal to A” here**, because the satellites differ.
+
+Both positions can be received concurrently, within the currently selected plane of each input. For several positions through **one** conventional feed, see [DiSEqC and AutoDiSEqC](../diseqc/).
+
+## Fixed dish plus separate motor dish
+
+<Wiring id="fbc-motor" language="en" alt="Fixed Astra dish into A and a separate motorised dish through its motor into B" caption="Schematic wiring example. The motor dish is a separate antenna and was not moved during this documentation capture series." />
+
+Configure A for the fixed position. Give B its own [motor/USALS configuration](../motor/) with the correct location or DiSEqC 1.2 positions. C–H remain automatically allocated for these conventional feeds.
+
+Moving the motor changes the position of the **entire motor dish**. Recordings and internal demodulators using that dish are affected. The separate fixed dish on A remains independent. Two cables from **the same** motor dish can supply different planes, but never different orbital positions at the same time.
+
+## Do not confuse universal, Unicable and wideband feeds
+
+Do not assign imaginary SCRs to a universal LNB. Conversely, with [Unicable](../fbc-sat-unicable/), do not leave internal tuners on conventional automatic settings when eight independent SCR paths are required. Wideband outputs carrying permanent H/V are not a normal Twin universal connection either; they require matching hardware and installation settings.
+
+The conventional diagrams are general configuration examples. Native example menus were opened without saving, preserving the working Unicable installation. Source: [OpenATV tuner configuration](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Screens/Satconfig.py), [tuner and LNB configuration](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Components/NimManager.py).
+
+Manufacturer example of an internal connection with one conventional feed: [GigaBlue FBC configuration](https://wiki.gigablue.de/index.php?title=Tunerkonfiguration_mit_einem_DVB-S2_FBC_Dual_Tuner).

@@ -24,6 +24,28 @@ globalThis.fetch = async input => {
   return new Response(body, { status: 200, headers: { 'content-type': file.endsWith('.json') ? 'application/json' : 'application/octet-stream' } });
 };
 const checks = [
+  ['de', 'FBC', '/de/tuner/fbc-sat/'],
+  ['de', 'Root', '/de/tuner/fbc-sat/'],
+  ['de', 'Universal', '/de/tuner/fbc-sat-universal/'],
+  ['de', 'VL', '/de/tuner/fbc-sat-universal/'],
+  ['de', 'SCR', '/de/tuner/fbc-sat-unicable/'],
+  ['de', '2096', '/de/tuner/fbc-sat-unicable/'],
+  ['de', 'QAM', '/de/tuner/fbc-kabel/'],
+  ['de', 'WPA3', '/de/netzwerk/wlan/'],
+  ['de', 'SSID', '/de/netzwerk/wlan/'],
+  ['de', '802.1X', '/de/netzwerk/wlan/'],
+  ['de', 'Hotspot', '/de/netzwerk/wlan/'],
+  ['en', 'FBC', '/en/tuner/fbc-sat/'],
+  ['en', 'Root', '/en/tuner/fbc-sat/'],
+  ['en', 'Universal', '/en/tuner/fbc-sat-universal/'],
+  ['en', 'VL', '/en/tuner/fbc-sat-universal/'],
+  ['en', 'SCR', '/en/tuner/fbc-sat-unicable/'],
+  ['en', '2096', '/en/tuner/fbc-sat-unicable/'],
+  ['en', 'QAM', '/en/tuner/fbc-kabel/'],
+  ['en', 'WPA3', '/en/netzwerk/wlan/'],
+  ['en', 'SSID', '/en/netzwerk/wlan/'],
+  ['en', '802.1X', '/en/netzwerk/wlan/'],
+  ['en', 'hotspot', '/en/netzwerk/wlan/'],
   ...['de', 'en'].flatMap(lang => [
     [lang, 'Flash Expander', `/${lang}/system/`],
     [lang, 'swapautostart', `/${lang}/system/swap/`],

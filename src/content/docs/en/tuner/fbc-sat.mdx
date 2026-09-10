@@ -1,0 +1,79 @@
+---
+title: "DVB-S FBC: understanding eight reception paths"
+description: "FBC, root tuners A/B, internal tuners C–H, universal LNBs and Unicable: simultaneous reception, wiring choices and common misunderstandings."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Two satellite inputs can supply eight transponders simultaneously. The antenna installation determines which transponders are available.** FBC does not remove the restrictions of a conventional satellite cable. With eight correctly configured Unicable user bands, however, eight independently selectable reception paths become available.
+
+## What does FBC mean?
+
+FBC stands for **Full Band Capture**. A broadly captured input spectrum feeds several **demodulators**. Each demodulator processes one transponder, which may carry several television and radio services. The DVB-S FBC blocks covered here have **eight demodulators and two RF inputs**. FBC as a general technology name does not guarantee this count for every hardware design.
+
+| Term | Meaning |
+| --- | --- |
+| FBC block / module | One reception unit sharing input circuitry between several demodulators |
+| SAT IN A and SAT IN B | Two physical coaxial sockets; case labels may differ |
+| Root tuners A/B | The tuners associated with the two inputs of the satellite block shown here |
+| Virtual / internal tuners C–H | Additional real demodulators with internally assigned signal paths; not six more sockets |
+| Transponder | A reception package identified by frequency, polarisation and satellite position |
+| Channel / service | One individual programme within a transponder |
+| User band / SCR | An individual reception frequency in a Unicable system carrying a requested transponder |
+
+The letters are examples. Another tuner order may place the block later in the alphabet. Identify the **block and its two inputs**, rather than relying on letters alone.
+
+<Capture id="fbc-list-sat" language="en" alt="OpenATV tuner selection showing individually configured satellite FBC tuners" caption="Native tuner selection: the eight satellite demodulators in this Unicable example have individual SCR assignments. Hardware names in the screenshot belong to the example receiver." />
+
+## Which connection do I have?
+
+| Connection | Available simultaneously | Setup guide |
+| --- | --- | --- |
+| One cable from a universal LNB or conventional multiswitch | Up to eight transponders from **one currently selected satellite plane** | [One universal feed](../fbc-sat-universal/#one-universal-cable) |
+| Two independent conventional subscriber feeds | Up to eight transponders from **up to two selected planes** | [Two universal feeds](../fbc-sat-universal/#two-independent-universal-cables) |
+| One Unicable cable, eight exclusively assigned user bands | Eight independently selected transponders from the positions and planes provided by the installation | [Unicable step by step](../fbc-sat-unicable/) |
+| Two feeds from different fixed satellite positions | Each input's own position and selected plane, eight demodulators in total | [Separate Astra and Hotbird feeds](../fbc-sat-universal/#two-fixed-positions-without-a-diseqc-switch) |
+| Fixed dish plus separate motor dish | The fixed position plus the motor dish's current position, still subject to plane restrictions | [Fixed dish and motor](../fbc-sat-universal/#fixed-dish-plus-separate-motor-dish) |
+
+A **single universal LNB** with one output does not become two independent feeds when a splitter is added. A **Unicable LNB**, however, can supply several independent reception paths through its one SCR output. The number of sockets alone therefore does not identify its capabilities.
+
+## “FBC automatic” or “FBC SCR (Unicable/JESS)”?
+
+**FBC automatic** is the normal setting for internal tuners with conventional universal feeds. Enigma2 assigns free demodulators to a usable root tuner as required. It does not discover free user bands or configure eight SCRs.
+
+With **Unicable/JESS**, each independently required demodulator receives its own SCR assignment. Select **FBC SCR (Unicable/JESS)** for C–H; A/B use the appropriate advanced Unicable configuration. An unconfigured internal tuner does not replace an assigned SCR. See the complete [A–H assignment](../fbc-sat-unicable/).
+
+## Watching television and recording simultaneously
+
+When one service is recorded, other services on that transponder can often share its demodulator. A second transponder requires another demodulator and must be reachable through the available feeds. **Eight transponders is neither a fixed maximum of eight channels nor a promise of eight pictures displayed on the television.**
+
+For example, two recordings and live TV from one transponder may share a reception path. Eight recordings from eight different transponders can occupy all eight demodulators. Another recording from an already received transponder may still be possible; a ninth independently selected transponder is not.
+
+Decryption/CI, demux resources, video decoders, storage and network throughput can impose further limits. Fast Channel Change, PiP, streaming, EPG scans and active timers may already occupy reception paths. Greyed-out services do not automatically indicate a faulty tuner.
+
+## Common misunderstandings
+
+| Observation / assumption | Explanation and next check |
+| --- | --- |
+| “I have eight tuners. Why are some channels unavailable?” | One conventional cable supplies one plane. Check the feed type and planes required simultaneously. |
+| “Two inputs mean 16 tuners.” | Both inputs of the block shown here supply eight demodulators in total. |
+| “A always supplies four tuners and B supplies four.” | Conventional FBC automatic assigns C–H as required; there is no fixed 4+4 split. |
+| “One cable means B must always be disabled.” | The internal feed is what matters: a supported connection lets B share A’s conventional plane. With Unicable, **logical B** can receive internally through A using its own SCR. |
+| “Equal to A automatically gives B another SCR.” | Equal configuration and an individual user-band assignment are different things. |
+| “Unicable needs eight cables.” | Eight user bands travel together along one suitable coaxial cable. |
+| “I must scan eight times.” | The channel list is shared. One complete scan per required reception source is enough. |
+| “A strong signal proves that SCR allocation is correct.” | Duplicate SCRs may fail only during concurrent use. Compare both numbers and frequencies. |
+
+## Testing an FBC installation
+
+1. Start with a free-to-air service and check lock and signal quality.
+2. Select free-to-air services from **different transponders** for overlapping recordings. Different channel names alone are not sufficient evidence.
+3. With universal feeds, stay within the available planes. With eight allocated Unicable UBs, test up to eight different transponders.
+4. Check tuner/service information for resource use. Live TV or a stream may already consume a reception path.
+5. Play back short sections of the recordings and check picture and sound. Stop/remove the test timers afterwards.
+
+This tests your own installation. The screenshots show real OpenATV dialogs, but a settings screenshot alone proves neither eight successful recordings nor the operation of an antenna system that was not connected.
+
+Continue with [universal wiring](../fbc-sat-universal/), [Unicable wiring and all eight SCRs](../fbc-sat-unicable/), [DVB-C FBC](../fbc-kabel/) or the [signal finder](../signalfinder/).
+
+Background: [Vu+ manufacturer manual, FBC and Unicable, p. 93](https://gzhls.at/blob/ldb/a/3/6/8/cd1c3b577a5a8e6dd8ddf4e40b3ed2b16c72.pdf#page=93). Menu and allocation logic: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Screens/Satconfig.py), [Enigma2 FBC allocation](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/dvb/fbc.cpp). Screenshots use OpenATV 8.0; the described wiring concepts are model neutral.

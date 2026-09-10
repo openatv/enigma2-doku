@@ -1,0 +1,112 @@
+---
+title: "Connect Wi-Fi: adapter, profiles and all options"
+description: "OpenATV Wi-Fi with SSID, WPA2/WPA3, hidden networks, priority, DHCP, DNS and connection checks. Native menu screenshots and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Wi-Fi connects the receiver wirelessly to the router. OpenATV needs a recognised wireless adapter with the appropriate driver and firmware. **A saved Wi-Fi profile does not by itself mean that a connection is active.**
+
+## Where is Wi-Fi configured?
+
+**Menu → Setup → Network → Network Overview**
+
+The overview distinguishes the **adapter**, such as `wlan0`, from its **saved networks**. Adapter settings include IP configuration and DHCP. The Wi-Fi profile contains the SSID, encryption and key. A changed router Wi-Fi password therefore belongs in the profile, not in DNS settings.
+
+<Capture id="wifi-overview" language="en" alt="OpenATV network overview with Ethernet and Wi-Fi adapters" caption="The network overview separates adapters and saved connections. A saved profile is not proof of an active wireless link." />
+
+## Add a visible network
+
+1. Highlight the **Wi-Fi adapter** in the network overview.
+2. Press <kbd>MENU</kbd> for its context menu and select **Scan Wi-Fi Networks**. Labelled colour-button/OK actions change with the current selection.
+3. Wait for the scan and select the correct **SSID**. Several access points in a mesh network may share a name but have different BSSIDs.
+4. Compare the offered encryption with the router and enter the **Wi-Fi key**. Case and special characters must match. This is neither the router administration password nor the receiver's root password.
+5. Set **Enabled = Yes**, save and follow the connection dialog. For an existing profile, use the offered **Connect** action.
+6. After connecting, check adapter information: wireless link established, IP address present, appropriate gateway and working name resolution.
+
+In a populated list, signal strength, channel/frequency and encryption help identify the intended network. An empty SSID alone cannot reliably identify a hidden network. Scanning does not save a new password.
+
+## Every saved Wi-Fi profile field
+
+<Capture id="wifi-profile" language="en" alt="Wi-Fi profile with SSID, activation, encryption and a blacked-out key field" caption="Native profile settings. The key field is blacked out for documentation; saved credentials are neither published nor replaced by the placeholder." />
+
+| Field | Meaning and use |
+| --- | --- |
+| Network name (SSID) | Exact network name. Enter it fully with the correct case when adding manually. |
+| Enabled | Allows this saved profile to be used when connecting. Disabling it does not delete it. |
+| Priority | Orders multiple saved Wi-Fi networks by preference, where offered. In the ranking list, **1 is the highest priority**. The field may be absent with one profile. This ranking is not the same number as the internal wpa_supplicant priority. |
+| Hidden network | Enable if the router does not publicly broadcast the SSID. This hides neither radio transmissions nor replaces encryption. |
+| Encryption | Must match the router. Available choices depend on state and include None, WEP, WPA, WPA2, WPA2/WPA3 and WPA3. Driver and adapter must support the chosen method. |
+| Password / key | Wireless access key. Check the entry; accidental leading/trailing spaces may cause a mismatch. |
+
+**WPA2/WPA3** is a transition mode. Its presence in a menu does not guarantee WPA3 support in an older adapter. For a normal home network, use WPA2 with AES/CCMP or WPA3 according to router and adapter capabilities. WEP and original WPA are obsolete and are not useful remedies for driver or connection problems. An open network does not encrypt the wireless link.
+
+### WPA3-Enterprise: brief context
+
+**WPA3-Enterprise** uses centrally managed authentication through **802.1X/EAP**, usually with a RADIUS server. Depending on the EAP method, it requires an identity, credentials, trusted CA/server certificates and possibly a client certificate with its private key. The organisation’s IT team specifies the certificates and methods. [Cisco: WPA3 Deployment Guide](https://www.cisco.com/c/en/us/td/docs/wireless/controller/9800/technical-reference/wpa3-dg.pdf).
+
+This enterprise configuration **cannot be completed through the OpenATV GUI**. It must be configured manually, for example in `wpa_supplicant.conf`, according to IT requirements. An enterprise deployment tutorial is outside this handbook. Typical private networks use **WPA2/WPA3-Personal** with a Wi-Fi key; choosing WPA3 in the simple form does not configure WPA3-Enterprise.
+
+Original help text and search keys are in the [Wi-Fi option reference](../../einstellungen/referenz/networkwifi/).
+
+## Hidden networks and existing profiles
+
+Use <kbd>MENU</kbd> → **Add Wi-Fi Manually** and enter the name, encryption and key. Set **Hidden network = Yes** only when this matches the router configuration. Then enable, save and connect.
+
+With multiple profiles, first select the wireless adapter and then the intended saved-network entry. Depending on its state, editing/connection, disconnection and context-menu actions are available. **Disconnect** ends the current connection; **Delete Network** removes the saved profile. Switching profiles can interrupt streams and NAS access.
+
+## Multiple Wi-Fi profiles per adapter and switching networks
+
+You can save **multiple Wi-Fi profiles for the same adapter**, for example a home network and a mobile hotspot. Each profile keeps its own SSID, encryption and key. The adapter connects to one selected wireless network at a time.
+
+1. Select the wireless adapter and save another network using **Add Wi-Fi**, scanning or **Add Wi-Fi Manually**. There is no need to delete the existing profile.
+2. Highlight the desired entry in **Saved Wi-Fi Networks**.
+3. Choose the offered **Connect** action. Disconnect the current connection first if required. After switching, check the IP address and reachability: a different WLAN may use a different address range.
+4. Keep frequently used profiles enabled and set their **priority** where the ranking list is offered. Place the preferred reachable, usable profile first.
+5. Disable a profile that should temporarily not be used. Choose **Delete** only when its saved credentials should also be removed.
+
+An active profile and a saved connection are different states. Priority controls preference during connection establishment; it does not promise an immediate seamless switch whenever signal conditions change. Deliberately switching networks may interrupt streams and NAS connections.
+
+## Adapter: IP, DHCP, DNS and preference
+
+<Capture id="wifi-adapter" language="en" alt="IP and activation settings of the wireless adapter" caption="The adapter dialog configures the network side of the connection. Enter the Wi-Fi key in the separate profile." />
+
+| Adapter option | Purpose |
+| --- | --- |
+| Enable adapter | Enables or disables use of this network adapter |
+| DHCP | Obtains IP configuration from the router; usually a suitable starting point |
+| IP mode | Selects the offered IPv4/IPv6 modes to match the network |
+| IP address / netmask / gateway | With manual IPv4 configuration, enter an unused address and correct network parameters |
+| Override DNS settings | Supplies this adapter's name servers when automatic/general DNS settings should not be used |
+| Route metric / adapter priority | Selects preferred routes when several are available; a lower metric is normally preferred. This is separate from the Wi-Fi profile ranking. |
+| Wake on Wi-Fi / wake only | Appears only with relevant support. A wireless connection does not guarantee wireless wake-up from deep standby. |
+
+Visibility depends on hardware, IP mode and setup level. See [manual IP](../manuelle-ip/), [DNS](../dns/) and [network tests](../neustart-test/). A router DHCP reservation can also provide a stable address.
+
+With Ethernet and Wi-Fi both active, a successful download does not prove that it used Wi-Fi. Traffic may still use Ethernet. For a clear wireless test, check IP, route and adapter status; remove an Ethernet cable only when local control and Wi-Fi access are available. Consider any ongoing recordings to a NAS first.
+
+## Check the connection
+
+<Capture id="wifi-status" language="en" alt="Native wireless adapter information in OpenATV" caption="Adapter information reports the actual state. Check IP address, gateway and wireless state together." />
+
+- **SSID** is the network name. **BSSID** identifies the particular access point and may change within a mesh.
+- **Channel/frequency** identifies the radio band and channel. The adapter, driver and router must support the relevant 2.4, 5 or 6 GHz band.
+- **Signal quality/level** describes reception at the location. Percentage scales depend on the driver.
+- **Link rate** is the negotiated wireless rate, not guaranteed useful throughput for recordings or streams.
+- **IP/gateway/DNS** describe network functions after the radio connection is established.
+
+## Troubleshoot in order
+
+| State | Check |
+| --- | --- |
+| Wireless adapter missing | Detection, supported chipset, driver/firmware and USB connection |
+| No networks found | Adapter enabled, antenna/location, router wireless enabled, supported band and channel |
+| SSID visible but authentication fails | Key and encryption, WPA3 support and router access restrictions |
+| Connected but no IP | DHCP server, address range and router; a stored IP alone does not prove an active link |
+| IP present but no Internet | Gateway and actual route, then DNS and destination reachability |
+| Internet works but NAS does not | Network range, guest/client isolation, NAS service and mount configuration |
+| Intermittent connection | Signal, interference, placement and load; test actual throughput for NAS recording |
+
+Experienced users can inspect status with `ip addr show wlan0`, `ip route` and, where available, `wpa_cli -i wlan0 status`. Substitute the actual adapter name. Do not publish the complete wireless configuration file, which can contain keys. Check [NAS and shares](../freigaben/) after basic network connectivity works.
+
+The images demonstrate configuration; this series does not establish a successful wireless connection. Sources: [OpenATV network overview and Wi-Fi dialogs](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Screens/NetworkSetup.py), [NetworkManager](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Components/NetworkManager.py).

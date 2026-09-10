@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "date": "2026-09-10",
+  "image": "OpenATV 8.0.0-beta",
+  "enigma2_commit": "77874189f00c32f32ef96ecfc73dab3f53da5f13",
+  "capture_tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a",
+  "sources": [
+    {
+      "path": "lib/python/Screens/Satconfig.py",
+      "sha256": "fc47e657d3064ad85e505a6e69b8860ccd5c2f844cb975968fbd874e44f34d89",
+      "url": "https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Screens/Satconfig.py"
+    },
+    {
+      "path": "lib/python/Components/NimManager.py",
+      "sha256": "4af062e417b79b1a7a719cce85a9a30106e36bcfea23a8aedf60be84e68b0731",
+      "url": "https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Components/NimManager.py"
+    },
+    {
+      "path": "lib/dvb/fbc.cpp",
+      "sha256": "1afa333e76d02498b04048b5d5ac9a6b12ca28088164096d893c89df673be641",
+      "url": "https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/dvb/fbc.cpp"
+    },
+    {
+      "path": "lib/python/Screens/NetworkSetup.py",
+      "sha256": "5d29ceca83534d60e9bc0ab871262b26d36b90d404932c70284b77717d8423f5",
+      "url": "https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Screens/NetworkSetup.py"
+    },
+    {
+      "path": "lib/python/Components/NetworkManager.py",
+      "sha256": "981d1ac5d87f196c3861963fbf8b624c76c61f5293bf9da22b2637ee6e311e5c",
+      "url": "https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Components/NetworkManager.py"
+    },
+    {
+      "path": "data/unicable.xml",
+      "sha256": "a5205975ce560c6ca67888b389a8c339fa72410c966dcd1e54acb7ac1dd2aa01",
+      "url": "https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/data/unicable.xml"
+    }
+  ],
+  "hardware_capabilities": {
+    "sat_fbc_demodulators": 8,
+    "sat_inputs": 2,
+    "cable_fbc_demodulators": 8,
+    "wifi_adapters": 1
+  },
+  "published_captures": {
+    "sat_and_cable_fbc": 22,
+    "wifi": 8,
+    "languages": [
+      "de",
+      "en"
+    ],
+    "empty_wifi_scan_published": false
+  },
+  "diagrams": {
+    "scenarios": 6,
+    "languages": [
+      "de",
+      "en"
+    ],
+    "format": "original SVG"
+  },
+  "example_scr_assignments": [
+    {
+      "tuner": "A",
+      "scr": 1,
+      "mhz": 1284,
+      "feed": "direct A"
+    },
+    {
+      "tuner": "B",
+      "scr": 2,
+      "mhz": 1400,
+      "feed": "internal through A"
+    },
+    {
+      "tuner": "C",
+      "scr": 3,
+      "mhz": 1516,
+      "feed": "internal through A"
+    },
+    {
+      "tuner": "D",
+      "scr": 4,
+      "mhz": 1632,
+      "feed": "internal through A"
+    },
+    {
+      "tuner": "E",
+      "scr": 5,
+      "mhz": 1748,
+      "feed": "internal through A"
+    },
+    {
+      "tuner": "F",
+      "scr": 6,
+      "mhz": 1864,
+      "feed": "internal through A"
+    },
+    {
+      "tuner": "G",
+      "scr": 7,
+      "mhz": 1980,
+      "feed": "internal through A"
+    },
+    {
+      "tuner": "H",
+      "scr": 8,
+      "mhz": 2096,
+      "feed": "internal through A"
+    }
+  ],
+  "verification_scope": {
+    "native_configuration_dialogs": true,
+    "unsaved_legacy_examples": true,
+    "rf_parallel_reception_test": false,
+    "wifi_association_test": false,
+    "wifi_profile_switch_test": false,
+    "enterprise_configuration_tutorial": false
+  },
+  "preservation": {
+    "archived_paths": 86,
+    "unchanged_paths": 83,
+    "changed_files": [
+      "MetrixWeather.dat",
+      "epg.dat",
+      "settings"
+    ],
+    "settings_changes": "Four authorised SCR/frequency entries; wakeup, start counter, shutdown status and two derived date-format values. Network/Wi-Fi/account/mount configuration unchanged."
+  }
+}

@@ -11,7 +11,7 @@ description: "Netzwerk: einrichten, verbinden und verwalten – OpenATV Enigma2"
 | Feste IP und eigene Adapter-DNS festlegen | [Manuelle IP](./manuelle-ip/) |
 | Namen auflösen, DNS-Anbieter auswählen | [DNS und DNSCrypt](./dns/) |
 | Verbindung testen oder DHCP neu beziehen | [Netzwerktest und Neustart](./neustart-test/) |
-| WLAN anschließen | [WLAN-Grundlagen](./wlan/) – praktische Bildserie folgt mit anderer Hardware |
+| WLAN anschließen | [WLAN: Adapter, Profile und Optionen](./wlan/) |
 | Dienste installieren, starten und beim Booten aktivieren | [Alle 22 Netzwerkdienste](./dienste/) |
 | NAS/Windows-Freigabe auf der Box nutzen | [Freigaben](./freigaben/), [NFS](./nfs/), [SMB/CIFS](./smb-cifs/), [Windows 11](./windows11/) |
 | Dateien der Box für andere Geräte anbieten | [Samba-Server](./samba-server/), [NFS-Server](./nfs-server/) |

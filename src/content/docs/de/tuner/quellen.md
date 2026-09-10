@@ -18,7 +18,7 @@ Die Beispielwerte der Formulare waren von der laufenden Empfangskonfiguration ge
 
 Nach der Serie stimmten Tunerwerte, Sprache, Skin sowie Prüfsummen der Senderdatenbank/Bouquets, Timer, Mountdateien und geschützten e2MDB-Dateien mit dem Ausgangszustand überein. Die komplette Settings-Datei wird bei GUI-Neustarts neu geschrieben und ist nicht als bytegleich ausgewiesen.
 
-**Noch kein praktischer Empfangstest:** Hotbird/DiSEqC-Schalter, Unicable, Motor, SPAUN-C/T-Umschaltung, terrestrisches USB-DAB+ und FBC. Die entsprechenden Kapitel erklären Topologie und Optionen. DVB-S-FBC und DVB-C-FBC erhalten spätere eigenständige Praxisergänzungen.
+**Noch kein praktischer Empfangstest:** Hotbird/DiSEqC-Schalter, Unicable, Motor, SPAUN-C/T-Umschaltung, terrestrisches USB-DAB+ und FBC. Die entsprechenden Kapitel erklären Topologie und Optionen. Die neue [DVB-S-FBC-Serie](../fbc-sat/) und [DVB-C-FBC-Serie](../fbc-kabel/) zeigen inzwischen die nativen Menüs eines achtfachen SAT- und Kabelblocks. Ihre Anschlussbilder erklären zusätzlich ein/zwei Universal-Kabel sowie acht eigene Unicable-SCRs; ein HF-Parallelempfangstest ist nicht Teil dieser Konfigurationsserie.
 
 ## Nachvollziehbare Quellen
 

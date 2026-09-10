@@ -342,3 +342,20 @@ Der wirkliche Erststart benötigt einen anderen Ablauf: Der opt-in `wizard_obser
 Für `wizard-real-de` und `wizard-real-en` wurde Enigma2 tatsächlich gestoppt, die Settings-Datei umbenannt und die Oberfläche neu gestartet. Je 22 Bilder dokumentieren Sprache, Video, LAN/DNS, vorhandene Mountpunkte, Zeit, Tuner und den Suchlauf. Die Bilder sind echte `grab`-Aufnahmen des erreichten Wizardzustands, kein nachgestelltes Einzelmenü und keine pauschale Bootlogo-Serie. Beide Manifeste enden vollständig an der InfoBar. Es wurde je ein automatischer Astra-Suchlauf mit 1120 gefundenen Diensten ohne vorheriges Löschen ausgeführt. Der manuelle Suchdialog wurde nur besichtigt; die angebotene Standardliste nicht installiert.
 
 Alle 58 neuen Bilder wurden einzeln visuell geprüft; zusammen 482 native PNGs. Rohzustände und Konfigurationssicherungen bleiben privat. Wiederherstellung, Abweichungen nach normalem GUI-Neustart und Website-Prüfungen stehen in `docs/PRAXISTESTS.md`. WLAN und FBC werden mit der nächsten Testbox ergänzt.
+# FBC und WLAN: Konfigurationsserie
+
+Die neue Serie ergänzt **30 geprüfte native PNGs**: elf FBC-Motive und vier WLAN-Motive je Sprache. Freigegeben sind `fbc-c-de-fbc-tuners`, `fbc-c-en-fbc-tuners`, `wifi-e-de-wifi-guides` und `wifi-e-en-wifi-guides`, jeweils ohne die leere WLAN-Suchansicht. Aufnahmehelfer: `fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a`. Gesamtbestand: 512 native PNGs.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix fbc-demo --profiles fbc-tuners wifi-guides --restart-languages --bootlogo --output .capture-private
+```
+
+`fbc_wifi.py` öffnet die vorhandenen SAT- und Kabel-FBC-Formulare auf abgetrennten Konfigurationsbäumen. Die Hardware muss tatsächlich je einen achtfachen SAT- und Kabelblock bereitstellen. Universal-/Gleich-wie-/FBC-Automatik-Beispiele werden nicht gespeichert; Unicable-SCRs stammen aus der eingerichteten Konfiguration. Keine RF-Messwerte werden erzeugt.
+
+Die WLAN-Übersicht wählt den realen WLAN-Adapter und zeigt dessen vorhandene Profilliste. Für das Profil ersetzt der Helfer den Schlüssel bereits vor dem Öffnen des nativen Dialogs durch einen Platzhalter und legt zusätzlich eine schwarze native Fläche über das Schlüsselfeld. Die Originaldatei bleibt unverändert. Das Profil wird weder gespeichert noch verbunden. Ein Suchlauf darf echte Ergebnisse anzeigen; die öffentliche Freigabe kann ihn weglassen. Die aktuelle Website enthält keine leere Suchansicht.
+
+Alle neuen Originalbilder wurden visuell geprüft. Zwei Tests sichern die getrennte Profilkopie und den Abbruch bei einem unerwartet echten Schlüssel im Formular. Der Aufnahmehelfer hat 34 Profile, 240 Szenen und 48 bestandene Tests. Beim Sprach-Restore wird die zu Beginn beobachtete GUI-Sprache verwendet, auch wenn die betreffenden Default-Schlüssel in der Settingsdatei fehlen.
+
+Die sechs neuen Verkabelungsszenarien werden mit `python scripts/create-fbc-diagrams.py` als zwölf DE/EN-SVGs reproduziert. Sie erläutern ein/zwei Universal-Kabel, eine Unicable-Zuführung mit acht UBs, getrennte feste SAT-Positionen, eine separate Motorantenne und Kabel-FBC. Dies sind schematische Signalwege, keine behaupteten Hardwaretests dieser Anlagen.
+
+Quellrevision, Dateihashes, Beispiel-SCR-Tabelle und Prüfumfang: `data/fbc-wifi-coverage.json`. Die Konfigurationsserie benötigt keinen angeschlossenen SAT-Empfang; WLAN-Verbindungsaufbau und Profilwechsel sind in dieser Serie nicht funktional nachgewiesen. Die gesonderte Beschreibung von WPA3-Enterprise bleibt eine Begriffserklärung ohne Unternehmens-Setup-Anleitung.

@@ -1,14 +1,14 @@
 ---
 interface Props { id: string; language: 'de' | 'en'; alt: string; caption: string; }
 const { id, language, alt, caption } = Astro.props;
-const allowed = ['single-sat','diseqc','multiswitch','unicable','cable-terrestrial','spaun-0v','spaun-5v','motor'];
+const allowed = ['single-sat','diseqc','multiswitch','unicable','cable-terrestrial','spaun-0v','spaun-5v','motor','fbc-legacy-one','fbc-legacy-two','fbc-unicable','fbc-two-sat','fbc-motor','fbc-cable'];
 if (!allowed.includes(id)) throw new Error(`Unknown wiring diagram: ${id}`);
 const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 const url = `${base}/diagrams/reception/${language}/${id}.svg`;
 const open = language === 'de' ? 'Schaubild vergrößern' : 'Enlarge wiring diagram';
 ---
 <figure class="reception-wiring">
-  <a href={url} target="_blank" rel="noopener" aria-label={`${open}: ${alt}`}><img src={url} alt={alt} loading="lazy" width="980" height={id === 'unicable' ? 620 : 580} /></a>
+  <a href={url} target="_blank" rel="noopener" aria-label={`${open}: ${alt}`}><img src={url} alt={alt} loading="lazy" width="980" height={id.startsWith('fbc-') ? 720 : id === 'unicable' ? 620 : 580} /></a>
   <figcaption>{caption} <a href={url} target="_blank" rel="noopener">{open} ↗</a></figcaption>
 </figure>
 <style>

@@ -11,7 +11,7 @@ description: "Network: configure, connect and manage – OpenATV Enigma2"
 | Set a fixed address and adapter-specific DNS | [Manual IP](./manuelle-ip/) |
 | Resolve names and choose DNS servers | [DNS and DNSCrypt](./dns/) |
 | Test connectivity or renew DHCP | [Network test and restart](./neustart-test/) |
-| Connect Wi-Fi | [Wi-Fi fundamentals](./wlan/) – practical screenshots will follow on other hardware |
+| Connect Wi-Fi | [Wi-Fi: adapter, multiple profiles and options](./wlan/) |
 | Install, start and enable services at boot | [All 22 network services](./dienste/) |
 | Access a NAS/Windows share from the receiver | [Shares](./freigaben/), [NFS](./nfs/), [SMB/CIFS](./smb-cifs/), [Windows 11](./windows11/) |
 | Share receiver files with other devices | [Samba server](./samba-server/), [NFS server](./nfs-server/) |

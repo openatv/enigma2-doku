@@ -1,0 +1,108 @@
+---
+title: "FBC mit Unicable/JESS: acht SCRs über ein Kabel"
+description: "A bis H mit eigenen Userbändern konfigurieren: Unicable-Matrix, SCR, Frequenz, interne Verbindung über A, PIN und Fehler durch doppelte SCRs."
+---
+
+import Capture from '../../../../components/Capture.astro';
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**Für acht unabhängig wählbare Transponder bekommt jeder der acht Demodulatoren ein eigenes User Band. Ein geeignetes Koaxialkabel reicht dafür aus.** Die SAT-Anlage muss diese Userbänder bereitstellen und sie dieser Box zugewiesen haben.
+
+## Verkabelung und Voraussetzungen
+
+<Wiring id="fbc-unicable" language="de" alt="Ein SCR-Kabel an Eingang A, acht unterschiedliche Userbänder für A bis H, B bis H intern über A verbunden" caption="Empfohlene einfache Anordnung bei einer gemeinsamen Unicable-Zuführung: ein Kabel an A, B–H intern über A. Die zweite Buchse bleibt frei, der logische Tuner B ist trotzdem nutzbar." />
+
+Vor Beginn benötigt werden: Hersteller und Typ von LNB/Matrix, unterstütztes Protokoll, die **zugeteilten UB-Nummern mit ihren Frequenzen**, angebotene SAT-Positionen und gegebenenfalls eine PIN. In einer Gemeinschaftsanlage diese Angaben beim Betreiber erfragen. Ein freier Demodulator ist kein Nachweis für ein frei verfügbares Userband.
+
+**EN50494 (Unicable/SCR)** unterstützt bis zu acht Userbänder; **EN50607 (JESS/Unicable II)** erlaubt mehr, bis zu 32. Die tatsächliche Anlage kann weniger anbieten. Protokoll und Gerätetyp müssen zur Anlage passen. Ein 32-UB-Ausgang vergrößert einen achtfachen FBC-Block nicht auf 32 Demodulatoren. Grundlagen: [JULTEC zu teilnehmergesteuerten Einkabelsystemen](https://jultec.de/gloss_CSS.html), [Inverto zur Einkabelverteilung](https://inverto.tv/one-cable-satellite-distribution%20).
+
+## Schritt 1: Root-Tuner A einrichten
+
+**Menü → Einstellungen → Empfang → Tuner-Konfiguration → Tuner A**
+
+1. **Konfiguration = Erweitert** wählen.
+2. Die angebotene SAT-Position auswählen und einem LNB-Eintrag zuordnen. Im Beispiel ist Astra 19.2°E dem **LNB 1** zugeordnet.
+3. Als LNB-/LOF-Typ **Unicable / JESS** verwenden.
+4. Den tatsächlich verwendeten Gerätetyp wählen: **Unicable-LNB**, **Unicable-Matrix** oder eine passende benutzerdefinierte Einrichtung. Eine externe Verteilmatrix ist nicht dasselbe wie ein SCR-Ausgang direkt am LNB.
+5. Hersteller und Modell auswählen. Dadurch werden die zugehörigen Frequenzen/Protokollvorgaben angeboten. Nicht bloß ein ähnlich klingendes Produkt auswählen.
+6. Das A zugeteilte **SCR/User Band** und die dazugehörige **Frequenz** einstellen.
+7. A erhält das Kabel direkt. Für A keine unnötige Verbindung über einen anderen Tuner eintragen.
+
+<Capture id="fbc-sat-a" language="de" alt="Erweiterte Unicable-Konfiguration des ersten FBC-Tuners" caption="Beispiel der eingerichteten Anlage: Astra, LNB 1, Unicable-Matrix. Diese Werte beschreiben das Testsystem und sind keine allgemeinen Vorgaben für jede Anlage." />
+
+<Capture id="fbc-sat-a-scr" language="de" alt="Hersteller, Unicable-Matrix, SCR und Frequenz für Tuner A" caption="SCR und Frequenz gehören als Paar zusammen. Die Frequenz ist die Userband-Frequenz auf dem Kabel, nicht die Satelliten-Transponderfrequenz." />
+
+## Schritt 2: B–H mit eigenem SCR über A verbinden
+
+1. Tuner B öffnen und seine erweiterte Unicable-Konfiguration einrichten. Bei den internen Tunern C–H lautet die Betriebsart **FBC SCR (Unicable/JESS)**.
+2. Dieselbe Anlage und die tatsächlich angebotenen Satelliten konfigurieren.
+3. **Verbunden über einen anderen Tuner** aktivieren, soweit der Dialog dies nicht bereits vorgibt, und **Verbunden mit = Tuner A** wählen. Je nach Übersetzung/Hardware ist ein Teil dieser Verknüpfung bereits vorgegeben.
+4. Jedem Tuner seine **eigene** SCR-Nummer und passende Frequenz geben. Den ersten Eintrag nicht unverändert siebenmal kopieren.
+5. Nach dem Speichern alle acht Zuteilungen noch einmal vergleichen.
+
+<Capture id="fbc-sat-b-link" language="de" alt="Logischer Tuner B über Tuner A mit der gemeinsamen Unicable-Zuführung verbunden" caption="B hat einen eigenen SCR, bekommt sein Signal aber intern von der Leitung an A. Dafür wird an der zweiten SAT-Buchse kein zusätzliches Kabel benötigt." />
+
+<Capture id="fbc-sat-c-scr" language="de" alt="Eigener SCR für den internen FBC-Tuner C" caption="Auch ein interner Demodulator bekommt eine eindeutige Zuteilung. FBC automatisch allein würde diese Zuordnung nicht herstellen." />
+
+## Beispiel: acht zugeteilte Userbänder
+
+Die folgende Tabelle gehört zum **TechniRouter 9/1x8-Profil der Beispielanlage**. Die acht Bänder wurden dieser Box exklusiv zugewiesen. Für ein anderes LNB oder eine andere Matrix unbedingt deren Tabelle verwenden.
+
+| Tuner | Angezeigter SCR | Frequenz | Signalzuführung |
+| --- | --- | --- | --- |
+| A | 1 | 1284 MHz | Kabel direkt an A |
+| B | 2 | 1400 MHz | Intern über A |
+| C | 3 | 1516 MHz | Intern über A |
+| D | 4 | 1632 MHz | Intern über A |
+| E | 5 | 1748 MHz | Intern über A |
+| F | 6 | 1864 MHz | Intern über A |
+| G | 7 | 1980 MHz | Intern über A |
+| H | 8 | 2096 MHz | Intern über A |
+
+<Capture id="fbc-sat-h-scr" language="de" alt="Tuner H mit SCR 8 und 2096 MHz" caption="Der achte Empfangsweg hat ebenfalls ein eigenes Userband. Kein SCR wird innerhalb dieses gemeinsam genutzten Strangs doppelt belegt." />
+
+Manche Unterlagen oder Software zählen ab **0**, andere ab **1**. Daher Nummerierung und Frequenz gemeinsam vergleichen. Ein als UB 0 bezeichnetes Band kann in einer anderen Anzeige SCR 1 heißen; das ist kein Grund, willkürlich das nächsthöhere Band zu wählen. Profilquelle für dieses Beispiel: [OpenATV unicable.xml](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/data/unicable.xml).
+
+## Weitere Optionen und ihre Bedeutung
+
+| Option / Begriff | Verwendung |
+| --- | --- |
+| Satellit / LNB-Zuordnung | Verknüpft eine angebotene SAT-Position mit dem passenden LNB-Eintrag. Die Anlage bestimmt, welche Positionen verfügbar sind. |
+| Unicable-Konfigurationsmodus | Auswahl einer bekannten LNB-/Matrix-Tabelle oder benutzerdefinierter Werte |
+| Priorität | Beeinflusst die Bevorzugung dieses LNB-/Empfangswegs bei der Tunerauswahl; zunächst Auto belassen. Kein Ersatz für eine SCR-Zuteilung. |
+| Extern angetrieben / Externally powered | Aktivieren, wenn ein Power-Inserter oder eine externe Versorgung das Unicable-Gerät tatsächlich speist. |
+| Unicable-Position | **0** leitet die Position aus LNB-Nummer und Geräteprofil ab. Explizite Werte 1–64 sind für passend umprogrammierte Geräte vorgesehen; nicht mit 19.2°E verwechseln. |
+| Tuning-Algorithmus | Passt das SCR-Timing an, etwa beim Betrieb mehrerer SCR-Geräte und geeigneter Anschlussdosen. Die Standardauswahl zunächst beibehalten. |
+| Hersteller / Typ | Wählt die Frequenz- und Protokollvorgaben des konkreten Geräts |
+| SCR / User Band | Eindeutige Adresse eines Empfangswegs auf dem gemeinsam verwendeten Strang |
+| Frequenz | Zum SCR gehörende Mittenfrequenz in MHz; nicht frei austauschbar |
+| Kanal / Protokoll bei benutzerdefinierter Anlage | Muss dem EN50494-/EN50607-Betrieb der Anlage entsprechen |
+| PIN | Nur verwenden, wenn die Anlage ein Userband mit PIN schützt und die korrekte PIN zugeteilt wurde |
+| Verbunden über / Verbunden mit | Beschreibt die reale gemeinsame Leitung und interne FBC-Signalzuführung |
+| Erhöhte Spannung / Einschaltverzögerung / Wiederholungen | Spezialanpassungen für Versorgung und Schaltverhalten; Standardwerte zunächst beibehalten und nur nach Anlagenvorgaben ändern |
+| DiSEqC / Positionszuordnung | Nur passend zur realen Mehrsatellitenanlage einstellen. Eine im Profil angebotene zweite Position bedeutet nicht, dass tatsächlich zwei Satelliten angeschlossen sind. |
+
+Nicht jeder Eintrag erscheint in jeder Konstellation. Die Auswahl verändert sich mit Gerätetyp, Konfigurationsmodus und Hardware. Die vollständigen sichtbarkeitsabhängigen Einträge stehen im [Tuner-Optionskatalog](../optionen/).
+
+## Zwei Kabel, Verteiler und weitere Receiver
+
+Eine einzige passende SCR-Zuführung ist für die gezeigten acht Tuner ausreichend. Zwei Kabel können sinnvoll sein, wenn sie **verschiedene Empfangsanlagen oder getrennte SCR-Ausgänge** erschließen. Dann muss jeder Demodulator dem tatsächlich versorgenden Root-Tuner und dessen Zuteilungen zugeordnet werden; nicht alle pauschal mit A verbinden.
+
+Werden mehrere Receiver über denselben SCR-Ausgang versorgt, müssen die Userbänder **über alle diese Receiver hinweg eindeutig** bleiben. Ein zweiter Splitterausgang erzeugt keinen neuen Nummernraum. Auf wirklich getrennten SCR-Ausgängen können sich Nummern dagegen wiederholen, soweit der Anlagenhersteller dies vorsieht.
+
+Nur für SAT/SCR geeignete Verteiler mit passendem Frequenzbereich und vorgesehener DC-/Steuersignal-Durchleitung verwenden; Entkopplung und Stromversorgung nach Datenblatt planen. Keine zwei mit Spannung versorgten Ausgänge beliebig zusammenschalten. Das ist ein anderer Aufbau als ein klassischer Universal-Y-Verteiler.
+
+## Fehler eingrenzen
+
+| Symptom | Zuerst prüfen |
+| --- | --- |
+| Einzelner Sender geht, mehrere gleichzeitige Aufnahmen stören sich | Doppelte SCR-Zuteilung auf dieser Box oder einem anderen Receiver am selben Strang |
+| Nur A funktioniert | B–H nicht auf eigene SCRs eingerichtet, interne Verbindung falsch oder Frequenzen nicht passend |
+| Ein bestimmter Tuner lockt nie | Seine SCR-Nummer/Frequenz, verfügbare Zuteilung, Protokoll und gegebenenfalls PIN |
+| Nach Wechsel zu Unicable bleiben Tuner ungenutzt | C–H noch auf FBC automatisch statt FBC SCR |
+| Nur ein Satellit funktioniert | Tatsächlich vorhandene Positionen und deren Zuordnung; Modellprofil allein schafft keinen Empfang |
+| Ausfälle beim Einschalten mehrerer Tuner | Versorgung, Kabel, Dosen, Splitter, Spannungsabfall und erst danach spezielle Timingwerte |
+
+Zum Praxistest **verschiedene Transponder** gleichzeitig verwenden; mehrere Sender auf demselben Transponder beweisen keine acht unabhängigen Empfangswege. Siehe [FBC-Prüfung](../fbc-sat/#eine-fbc-einrichtung-sinnvoll-prüfen).
+
+Menü- und Automatiklogik: [OpenATV NimManager](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/python/Components/NimManager.py), [FBC-Kern](https://github.com/openatv/enigma2/blob/77874189f00c32f32ef96ecfc73dab3f53da5f13/lib/dvb/fbc.cpp).

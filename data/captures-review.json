@@ -3372,5 +3372,215 @@
     "sha256": "d95eb9612fa1d2cda7be6ba222b9c351dd78f456d2320b31650f47240aa1dd59",
     "run": "system-a-en-system-guides",
     "tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414"
+  },
+  {
+    "language": "de",
+    "id": "fbc-list-sat",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "a979c6f3f2e05971d2a9d55e242212d9ceda1499ac09f7a25a4c1bee6837f4e4",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "fbc-list-cable",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "9759ff3783502ab30c38658a4fd1d8c114209702d321b9d259909593bc1a1f2a",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "fbc-sat-a",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "ce5e63cb798a2a7c43edffcb28e1fc5006e0d0ee54652af2f1107df3181b3098",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "fbc-sat-a-scr",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "930cc594459372b955c380d3fc851d870ed3adec014266999ef3c7f2918ea350",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "fbc-sat-b-link",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "075d50454ca073dd45164fceca4418c02b5cc57040a2a3589f54e25f978d7d8b",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "fbc-sat-c-scr",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "052df6b9ccaa47002ea7e8e606362952fb86a7c879b57a97f326774efae44da9",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "fbc-sat-h-scr",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "ece0a2902f69253fca9c248b94d165fa7ba6a6916dda0510b90071e42c27437c",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "fbc-universal-a",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "d91d86403ce61c48d7e9c5353210c5bc3b568d2b583503b4c56a605f14503d38",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "fbc-universal-b",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "0de8df6b3856b69f7f3dc412d185876f3c56af13b4f2e1069e860d6bb87a3674",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "fbc-automatic",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "3bc41a7adc441ef4e0f9a19102cf1bd759a0e84c097c164d45725f188d039001",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "fbc-cable-root",
+    "run": "fbc-c-de-fbc-tuners",
+    "sha256": "85247d779672aeeaab72371f151e3361fe1d215ec00a50daeb1ea8568cca3494",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "wifi-overview",
+    "run": "wifi-e-de-wifi-guides",
+    "sha256": "6a06dce36b6b47b3976b6fe30bb2cba0581e0592b9b08923ee9b8ac99441df4f",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "wifi-adapter",
+    "run": "wifi-e-de-wifi-guides",
+    "sha256": "fa2cfe34ef9d4b80626c39c2fa1be803e0ed375c1d9f2ce2269d83dc784b5a9a",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "wifi-profile",
+    "run": "wifi-e-de-wifi-guides",
+    "sha256": "1b8aba7d3e2fb8b29c8c3a75aa6a58c178ab739de4597523014765278c9a539a",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "de",
+    "id": "wifi-status",
+    "run": "wifi-e-de-wifi-guides",
+    "sha256": "e2c99fa7ccb4b8a7fa4ac591bb192877b49617e250a9a2cdfbc020abe65339a0",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-list-sat",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "489a7ee3a1605d656be165f7727964e81a146b79842e5e5d84c15b09cb738752",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-list-cable",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "93777e8bf1bad78fe4a535ac035ab925de00d23dd678c612cc34d50d6ac9898b",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-sat-a",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "65656baa222a65da897e2397bb1741e82b514ead2b6b7da67c48d2acefba1b0f",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-sat-a-scr",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "906cd8e9e4bc01d425e990d6a5729b40305a30a198c140415f25c4561c1de171",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-sat-b-link",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "2f1b4a629f7d9f28d07b892340c4948977d6ac596c771c2c300b49aac8abac36",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-sat-c-scr",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "80b6a7867f7b4696ca64dba929ad9f1b3c0be050a8bf5d6e3b3037313de9c132",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-sat-h-scr",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "9951568d4d6afc1a79df4d585152d2df7cd9313af3e1465951fbe2e941390174",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-universal-a",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "7f299bcba1b2b78ca8526e29333a5cfe562c5e869772adb593a504dc48dab360",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-universal-b",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "d16f63c03ef9876d3a99c6a7f3f60d3b408a31c47578aa5d86a6c9288579cb52",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-automatic",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "fdc449c3adb31d9c3cbfb0e3db44ec70ce3776701a637a5c7858d278622cbdb7",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "fbc-cable-root",
+    "run": "fbc-c-en-fbc-tuners",
+    "sha256": "134d8ab0c1d75d7eebc2b677433dad9f4e719619331f7c79c633c31c3f726bd1",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "wifi-overview",
+    "run": "wifi-e-en-wifi-guides",
+    "sha256": "43bedfe64581f84bc816c802fc446e48e8cde8cccbfdba3601055d7ee63e49a7",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "wifi-adapter",
+    "run": "wifi-e-en-wifi-guides",
+    "sha256": "d48be1b193c74b28d51297cf8020df9c74c3411d9d04374be741ba8681284d80",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "wifi-profile",
+    "run": "wifi-e-en-wifi-guides",
+    "sha256": "5df218348c4dbf5a6b0ff2907b6a55a92c07b55bf49ba28e7891473fd70083b0",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
+  },
+  {
+    "language": "en",
+    "id": "wifi-status",
+    "run": "wifi-e-en-wifi-guides",
+    "sha256": "6d61fc7014fcfcba71b894406a678c23ffee09784eab3b784cdd50ca407c2406",
+    "tool_commit": "fc939f97ab0a487fdd93d7c7fdaa85c6d4b1895a"
   }
 ]
