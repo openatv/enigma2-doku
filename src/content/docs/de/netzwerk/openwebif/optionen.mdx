@@ -1,0 +1,285 @@
+---
+title: "OpenWebif: alle 23 Konfigurationsfelder"
+description: "OpenWebif: alle 23 Konfigurationsfelder – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+import Capture from '../../../../../components/Capture.astro';
+
+**Erweiterungen → OpenWebif** beziehungsweise der OpenWebif-Eintrag im Netzwerkmenü. Diese Referenz erläutert alle **23 Felder** der geprüften `setup.xml` von OpenWebif 2.4.0. Viele erscheinen erst nach Aktivieren der zugehörigen Funktion. Die Bilder sind nicht gespeicherte Formularbeispiele, kein Nachweis für aktiviertes HTTPS auf der Testbox.
+
+## OpenWebinterface einschalten
+
+Startet/stoppt OpenWebif nach dem Speichern. Bei deaktivierter Oberfläche am TV wieder aktivieren.
+
+`config.OpenWebif.enabled` · Suchbegriff: `enabled`
+
+English: **OpenWebInterface Enabled**.
+
+## Neues Design / moderne Oberfläche
+
+Wählt die responsive statt der klassischen Webansicht; ändert nicht den Enigma2-TV-Skin.
+
+`config.OpenWebif.webcache.responsive_enabled` · Suchbegriff: `webcache.responsive_enabled`
+
+English: **Use modern interface**.
+
+## Design-Modus
+
+Darstellung der modernen Oberfläche, etwa hell/dunkel. Nur bei moderner Ansicht sichtbar.
+
+`config.OpenWebif.responsive_themeMode` · Suchbegriff: `responsive_themeMode`
+
+English: **Theme mode**.
+
+## Benutzerdefinierte Farbe
+
+Akzent-/Farbwahl für die moderne Oberfläche.
+
+`config.OpenWebif.responsive_skinColor` · Suchbegriff: `responsive_skinColor`
+
+English: **Use custom Color**.
+
+## Boxnamen in der Kopfzeile anzeigen
+
+Hilft, mehrere Receiver auseinanderzuhalten. Verändert keine Netzwerkadresse.
+
+`config.OpenWebif.identifier` · Suchbegriff: `identifier`
+
+English: **Show box name in header**.
+
+## Eigenen Boxnamen verwenden
+
+Schaltet von der automatisch ermittelten Bezeichnung auf einen selbst gewählten Anzeigenamen.
+
+`config.OpenWebif.identifier_custom` · Suchbegriff: `identifier_custom`
+
+English: **Use custom box name**.
+
+## Eigener Boxname
+
+Text für die Kopfzeile; kein Hostname/DNS-Eintrag. Erscheint bei eingeschaltetem eigenen Namen.
+
+`config.OpenWebif.identifier_text` · Suchbegriff: `identifier_text`
+
+English: **Custom box name**.
+
+## Port für HTTP
+
+HTTP-Zugangsport, normalerweise 80. Andere Ports in der Browseradresse ergänzen. Ein Portwechsel verschlüsselt nichts.
+
+`config.OpenWebif.port` · Suchbegriff: `port`
+
+English: **HTTP port**.
+
+## Authentifizierung für HTTP
+
+Verlangt Anmeldung für HTTP. Zuerst ein funktionierendes Benutzerpasswort setzen. HTTP verschlüsselt diese Verbindung nicht.
+
+`config.OpenWebif.auth` · Suchbegriff: `auth`
+
+English: **Enable HTTP Authentication**.
+
+## HTTPS aktivieren
+
+Schaltet den TLS-Webzugang hinzu. Zertifikat, Name und Uhrzeit müssen passen. Prüft nicht automatisch alle Streaming-Wege.
+
+`config.OpenWebif.https_enabled` · Suchbegriff: `https_enabled`
+
+English: **Enable HTTPS**.
+
+## Port für HTTPS
+
+TLS-Webport, normalerweise 443. Nur bei aktiviertem HTTPS eingeblendet.
+
+`config.OpenWebif.https_port` · Suchbegriff: `https_port`
+
+English: **HTTPS port**.
+
+## Authentifizierung für HTTPS
+
+Anmeldung am HTTPS-Zugang zusätzlich zur Verschlüsselung verlangen. Getrennt vom HTTP-Schalter.
+
+`config.OpenWebif.https_auth` · Suchbegriff: `https_auth`
+
+English: **Enable HTTPS Authentication**.
+
+## Zertifikatsbasierte Anmeldung erzwingen
+
+Verlangt ein passendes Client-Zertifikat für HTTPS. Das Server-Zertifikat allein erfüllt diese Voraussetzung nicht; nur mit eingerichteter eigener Zertifikatsverwaltung verwenden.
+
+`config.OpenWebif.https_clientcert` · Suchbegriff: `https_clientcert`
+
+English: **Require client cert for HTTPS**.
+
+## Authentifizierung für Streaming
+
+Verlangt Anmeldung für den unterstützten Streaming-Zugang. Wird unter HTTP-Authentifizierung angeboten; ohne HTTP-Auth setzt Speichern den Schalter zurück. Den verwendeten Player testen.
+
+`config.OpenWebif.auth_for_streaming` · Suchbegriff: `auth_for_streaming`
+
+English: **Enable Authentication for streaming**.
+
+## Externen Zugriff als root verbieten
+
+Beschränkt root-Anmeldung von externen Adressen. Im geprüften Code bleiben private/lokale Netze ausgenommen; dies sperrt root nicht generell und erstellt kein eingeschränktes Konto.
+
+`config.OpenWebif.no_root_access` · Suchbegriff: `no_root_access`
+
+English: **Disable remote access for user root**.
+
+## Ohne Anmeldung nur lokaler Zugriff
+
+Hinweis/Schutz für Zugriff ohne Authentifizierung. Wird bei einem angebotenen Zugang ohne Anmeldung sichtbar. Keine Zusage, dass alle Geräte im lokalen Netz vertrauenswürdig sind.
+
+`config.OpenWebif.local_access_only` · Suchbegriff: `local_access_only`
+
+English: **Without auth only local access is allowed!**.
+
+## Zugriff aus VPNs erlauben
+
+Erweitert die erlaubten Zugriffswege im zugehörigen Modus. Erst ein bestehendes VPN einrichten; der Schalter erzeugt keinen Tunnel.
+
+`config.OpenWebif.vpn_access` · Suchbegriff: `vpn_access`
+
+English: **Enable access from VPNs**.
+
+## Kindersicherung aktivieren
+
+Bezieht den Enigma2-Jugendschutz in unterstützte Webif-Funktionen ein. Nicht als alleinige Absicherung aller APIs/Dateifreigaben verstehen.
+
+`config.OpenWebif.parentalenabled` · Suchbegriff: `parentalenabled`
+
+English: **Enable Parental Control**.
+
+## Streaming-Port
+
+Port für erzeugte Stream-Verweise, normalerweise 8001. Muss zum tatsächlichen Streaming-Dienst passen.
+
+`config.OpenWebif.streamport` · Suchbegriff: `streamport`
+
+English: **Streaming port**.
+
+## Servicenamen zu Streaminformationen hinzufügen
+
+Ergänzt lesbare Sendernamen in Streaminformationen; hilfreich für Player und Playlists.
+
+`config.OpenWebif.service_name_for_stream` · Suchbegriff: `service_name_for_stream`
+
+English: **Add service name to stream information**.
+
+## IPK-Upload erlauben
+
+Erlaubt den Paket-Upload über die Weboberfläche. Installation verändert die Box mit Systemrechten; nur vertrauenswürdige kompatible Pakete verwenden.
+
+`config.OpenWebif.allow_upload_ipk` · Suchbegriff: `allow_upload_ipk`
+
+English: **Allow IPK Upload**.
+
+## IPTV-Streams im Browser wiedergeben
+
+Bietet direkte Browser-Wiedergabe für IPTV. Browsercodecs, Anbieterzugang, CORS und Mixed Content können Grenzen setzen.
+
+`config.OpenWebif.playiptvdirect` · Suchbegriff: `playiptvdirect`
+
+English: **Playback IPTV Streams in browser**.
+
+## Debug: Tracebacks im Browser anzeigen
+
+Zeigt technische Fehlerdetails für die Diagnose. Nur bei Bedarf aktivieren; vor dem Teilen Pfade und sensible Daten prüfen und anschließend wieder ausschalten.
+
+`config.OpenWebif.displayTracebacks` · Suchbegriff: `displayTracebacks`
+
+English: **Debug - Display Tracebacks in browser**.
+
+## Einstellungen innerhalb des Browsers
+
+Diese Auswahl liegt unter **Einstellungen → OpenWebif-Einstellungen** beziehungsweise dem Zahnrad der modernen Oberfläche. Sie ist von Ports und Anmeldung im TV-Dialog getrennt. Nicht jede Variante bietet alle Bedienelemente gleichzeitig. Manche Werte werden auf der Box gespeichert und sind daher nicht automatisch nur für den aktuellen PC gültig.
+
+### Design, Farbe, Spinner und moderne Ansicht
+
+Darstellung und Warteanzeige wählen.
+
+Zugehörige Webcache-Schlüssel: `theme, responsive_enabled`.
+
+### Vor dem Streamen umschalten
+
+Verändert vor dem Stream auch den TV-Sender.
+
+Zugehörige Webcache-Schlüssel: `zapstream`.
+
+### Picons, Hintergrund, Senderdetails und IPTV-Auswahl
+
+Senderlogos und zusätzliche Einträge anzeigen.
+
+Zugehörige Webcache-Schlüssel: `showpicons, showpiconbackground, showchanneldetails, showiptvchannelsinselection`.
+
+### EPG-Datenbanklink, Historie und Ansichten
+
+Externe Informationsseite, vergangene Ereignisse und EPG-Anordnung auswählen. Ein externer Datenbanklink ist nicht e2MDB.
+
+Zugehörige Webcache-Schlüssel: `moviedb, showepghistory, mepgmode, nownext_columns`.
+
+### EPG-Suche
+
+Auf Bouquets beschränken oder Beschreibungen einbeziehen.
+
+Zugehörige Webcache-Schlüssel: `epgsearch_only_bq, epgsearch_full`.
+
+### Kompakte Listen
+
+Darstellung von EPG, Timern und Aufnahmen verdichten.
+
+Zugehörige Webcache-Schlüssel: `compacttimerlist, compactepglist, minepglist, mintimerlist, minmovielist`.
+
+### Aufnahmesortierung und Verzeichnis
+
+Sortierung und angezeigten Aufnahmeordner wählen.
+
+Zugehörige Webcache-Schlüssel: `moviesort, moviedir`.
+
+### Kleine/große Fernbedienung
+
+Anordnung und Umfang der Web-Fernbedienung wählen.
+
+Zugehörige Webcache-Schlüssel: `smallremote, rcu_full_view`.
+
+### Screenshot
+
+Sendername, hohe Auflösung und Bild zur Fernbedienung steuern.
+
+Zugehörige Webcache-Schlüssel: `screenshotchannelname, screenshot_high_resolution, rcu_screenshot`.
+
+### Automatische Aktualisierung
+
+Aktualisierung und Intervall beeinflussen Webif-Last und Aktualität.
+
+Zugehörige Webcache-Schlüssel: `refresh_auto, refresh_time`.
+
+### Pakete anzeigen
+
+Erweitert die Paketliste; installiert noch kein Paket.
+
+Zugehörige Webcache-Schlüssel: `showallpackages`.
+
+### Playlistformat und Transcoding
+
+M3U/XSPF beziehungsweise verfügbaren Streamingmodus wählen. Hardware-/Backendunterstützung bleibt erforderlich.
+
+Zugehörige Webcache-Schlüssel: `transcoding_mode`.
+
+Weiter: [Zugang absichern](../sicherheit/) · [Browser-Werkzeuge](../werkzeuge/). Quelle: [OpenWebif setup.xml](https://github.com/oe-alliance/OpenWebif/blob/cacd3f69d065fb0eae326aebf456273dc957d2fa/plugin/setup.xml), [plugin.py](https://github.com/oe-alliance/OpenWebif/blob/cacd3f69d065fb0eae326aebf456273dc957d2fa/plugin/plugin.py).
+
+## Ansichten auf der Box
+
+<Capture id="ns-webif-main" language="de" alt="OpenWebif-Konfiguration auf dem TV. Moderne Ansicht und Authentifizierung sind hier ungespeicherte Beispiele." caption="OpenWebif-Konfiguration auf dem TV. Moderne Ansicht und Authentifizierung sind hier ungespeicherte Beispiele." />
+
+<Capture id="ns-webif-auth" language="de" alt="HTTP und HTTPS haben eigene Anmeldeschalter. HTTPS wurde für dieses Formular nur eingeblendet." caption="HTTP und HTTPS haben eigene Anmeldeschalter. HTTPS wurde für dieses Formular nur eingeblendet." />
+
+<Capture id="ns-webif-stream" language="de" alt="Streaming-Port, Stream-Anmeldung und Jugendschutz gehören zu unterschiedlichen Einstellungen." caption="Streaming-Port, Stream-Anmeldung und Jugendschutz gehören zu unterschiedlichen Einstellungen." />
+
+
+## Ansichten im Browser
+
+<WebifCapture id="settings" language="de" alt="Browser-Einstellungen und die vom Image angebotenen Setupbereiche." caption="Browser-Einstellungen und die vom Image angebotenen Setupbereiche." />

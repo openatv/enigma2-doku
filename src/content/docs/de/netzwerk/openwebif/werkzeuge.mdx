@@ -1,0 +1,49 @@
+---
+title: "OpenWebif: Extras und Verwaltung"
+description: "OpenWebif: Extras und Verwaltung – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+OpenWebif bindet vorhandene Enigma2-Funktionen und Plugins ein. Ein fehlender Menüpunkt kann an einem nicht installierten Add-on liegen. Ein sichtbarer Editor ist dagegen keine Kopie: Speichern verändert die Daten der Box.
+
+## BouquetEditor
+
+Der **Bouquet-Editor** zeigt auf einer Seite die verfügbaren Dienste, Anbieter beziehungsweise Satelliten und auf der anderen Seite Bouquets und ihre Einträge. Er kann TV-/Radio-Bouquets anlegen, umbenennen, löschen und sortieren, Sender hinzufügen oder entfernen sowie Marker, Abstandshalter und Alternativen bearbeiten, soweit angeboten.
+
+Vor einer größeren Änderung **Exportieren** als Sicherung verwenden und die Datei außerhalb der Box aufbewahren. Danach ein Bouquet wählen, die gewünschten Dienste markieren und die passende Hinzufügen-/Sortieraktion verwenden. Änderungen können direkt wirken; nicht auf einen überall vorhandenen abschließenden Speichern-Knopf verlassen. **Importieren** kann bestehende Senderlisten ersetzen. Empfangsdaten, Timerzuordnungen und Jugendschutz nach einer solchen Änderung prüfen. Der Editor sucht keine neuen Transponder; dafür ist die [Sendersuche](../../../tuner/suchlauf/) zuständig.
+
+## AutoTimer und EPGRefresh
+
+**AutoTimer** erscheint mit installiertem Plugin. Links eine vorhandene Regel auswählen; rechts stehen Suchtext, Trefferart, Groß-/Kleinschreibung, Zeit-/Datumsgrenzen, Sender/Bouquets, Filter, Vor-/Nachlauf, Zielverzeichnis und Wiederholungsgrenzen bereit. Regeln lassen sich hinzufügen, bearbeiten, speichern sowie importieren/exportieren. **Test/Simulation** und **Parsen/Verarbeiten** unterscheiden: Verarbeiten kann echte Aufnahmetimer erzeugen. Vollständige Anleitung: [AutoTimer](../../../addons/autotimer/).
+
+**EPGRefresh** verwaltet das installierte Refresh-Plugin: Aktivierung, Zeitfenster, Verweildauer, Methode, Standby-Verzögerung, Sender/Bouquets und die Verbindung zu AutoTimer. **Jetzt auffrischen** startet eine echte Aktualisierung und kann abhängig von der Methode Tuner und sichtbares TV beanspruchen. Speichern einer Konfiguration und sofortiger Lauf sind getrennte Aktionen. Siehe [EPGRefresh](../../../addons/epgrefresh/).
+
+## Einstellungen, Pakete und Lesezeichen
+
+**Einstellungen** enthält Webif-Darstellungsoptionen sowie die vom Image für Webzugriff freigegebenen Enigma2-Setupbereiche. Änderungen an Ton, EPG oder Senderliste betreffen die Box, nicht nur den Browser. Nicht jede TV-Einstellung ist als Webformular verfügbar. Für die Bedeutung der Optionen [Einstellung finden](../../../einstellungen/) verwenden.
+
+**Lesezeichen** verwalten angebotene Aufnahme-/Dateiverzeichnisse. Ein Lesezeichen mountet kein NAS. **Pakete** zeigt verfügbare beziehungsweise installierte Pakete; Installation und Entfernung sind Systemänderungen und brauchen passende Paketquellen. Die Option **IPK-Upload** muss für entsprechende Uploadfunktionen aktiviert sein. Ein hochgeladenes unbekanntes IPK ist ausführbarer Systemcode, kein harmloser Dokumentanhang.
+
+## Informationen und optionale Werkzeuge
+
+| Werkzeug | Aufgabe und Grenze |
+| --- | --- |
+| Über / Receiver-Informationen | Versionen, Geräte-/Systemstatus und je nach Ansicht Speicher-/Netzwerk-/Tunerinformationen. Vor Veröffentlichung MAC, öffentliche IPs und private Pfade prüfen. |
+| Satfinder | Signalanzeige bei unterstützter Funktion. Ersetzt keine korrekte Tuner-/LNB-Konfiguration; bei Umschaltaktionen laufende Nutzung berücksichtigen. |
+| Terminal | Browser-Shell über **ShellInABox**. Ausgeführte Befehle haben die Rechte des angemeldeten Kontos. Dienst und Zugang müssen separat funktionieren. |
+| e2MDB | Öffnet den installierten Medien-Datenbankeditor; [eigene umfangreiche Anleitung](../../../addons/e2mdb/weboberflaeche/). API-Schlüssel gehören nicht in Bilder. |
+| MultiBoot | Wird nur bei passender Unterstützung angeboten. Slotwechsel/Neustart sind echte Systemaktionen; siehe [MultiBoot](../../../wartung/multiboot/). |
+| Wake-on-LAN | Kann konfigurierte Geräte per Magic Packet ansprechen. Hardware, Netzwerk und Weckzustand müssen passen. |
+| Skripte / weitere Erweiterungen | Nur bei entsprechender Installation. Ein Skriptaufruf kann die Box verändern; Inhalt und Zweck vorher kennen. |
+| XML-/JSON-API | Schnittstelle für Apps und Automatisierung, üblicherweise unter `/web` bzw. `/api`. Auch HTTP-GET-Endpunkte können Aktionen auslösen; nicht beliebige URLs als reinen Lesetest aufrufen. |
+
+Die Bilder zeigen die tatsächlich installierten Editoren im lesenden Rundgang. Es wurden keine Bouquets gespeichert, Refresh-Läufe gestartet oder Pakete installiert. Quelle: [OpenWebif-Routen](https://github.com/oe-alliance/OpenWebif/blob/cacd3f69d065fb0eae326aebf456273dc957d2fa/plugin/controllers/root.py).
+
+## Ansichten im Browser
+
+<WebifCapture id="bouquets" language="de" alt="BouquetEditor mit tatsächlichen Senderlisten; keine Änderungen gespeichert." caption="BouquetEditor mit tatsächlichen Senderlisten; keine Änderungen gespeichert." />
+
+<WebifCapture id="autotimer" language="de" alt="Vorhandene AutoTimer-Regel im Webeditor. Die Regel ist im Beispiel deaktiviert." caption="Vorhandene AutoTimer-Regel im Webeditor. Die Regel ist im Beispiel deaktiviert." />
+
+<WebifCapture id="epgrefresh" language="de" alt="EPGRefresh-Webeditor mit vorhandener Konfiguration; kein Refresh-Lauf gestartet." caption="EPGRefresh-Webeditor mit vorhandener Konfiguration; kein Refresh-Lauf gestartet." />

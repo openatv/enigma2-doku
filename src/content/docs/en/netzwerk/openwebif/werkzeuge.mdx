@@ -1,0 +1,49 @@
+---
+title: "OpenWebif: extras and administration"
+description: "OpenWebif: extras and administration – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+OpenWebif integrates existing Enigma2 functions and plugins. A missing entry may indicate an absent add-on. A visible editor is not a copy: saving changes receiver data.
+
+## BouquetEditor
+
+The **Bouquet Editor** shows available services, providers or satellites on one side and bouquets with their entries on the other. It can create, rename, delete and sort TV/radio bouquets, add/remove services and edit markers, spacers and alternatives where offered.
+
+Before major changes, use **Export** as a backup and store the file away from the receiver. Then choose a bouquet, select services and use the appropriate add/reorder action. Changes may take effect immediately; do not assume every operation has a final Save button. **Import** may replace existing channel lists. Recheck reception data, timer mappings and parental protection afterwards. The editor does not discover new transponders; use [channel scans](../../../tuner/suchlauf/).
+
+## AutoTimer and EPGRefresh
+
+**AutoTimer** appears with the plugin installed. Select an existing rule on the left; the editor offers match text/type, case sensitivity, time/date windows, services/bouquets, filters, margins, destination and repetition limits. Add, edit, save, import and export rules. Distinguish **Test/Simulate** from **Process/Parse**: processing can create real recording timers. Full guide: [AutoTimer](../../../addons/autotimer/).
+
+**EPGRefresh** manages its installed plugin: enabled state, time window, dwell time, method, standby delay, services/bouquets and AutoTimer integration. **Refresh now** starts a real refresh and may occupy tuners or visible TV depending on the method. Saving configuration and running immediately are separate actions. See [EPGRefresh](../../../addons/epgrefresh/).
+
+## Settings, packages and bookmarks
+
+**Settings** includes web presentation preferences and the Enigma2 setup sections exposed by the image. Changes to sound, EPG or channel lists affect the receiver, not just the browser. Not every TV setting has a web form. Use [Find a setting](../../../einstellungen/) for explanations.
+
+**Bookmarks** manage offered recording/file directories. A bookmark does not mount a NAS. **Packages** lists available or installed packages; installation/removal changes the system and requires compatible feeds. **Allow IPK Upload** must be enabled for the corresponding upload functions. An unknown IPK contains executable system code, not a harmless document attachment.
+
+## Information and optional tools
+
+| Tool | Purpose and limit |
+| --- | --- |
+| About / Box Info | Versions, device/system status and, depending on the view, storage/network/tuner information. Inspect MACs, public IPs and private paths before publishing. |
+| Satfinder | Signal display where supported. Does not replace correct tuner/LNB setup; consider ongoing viewing when invoking tuning actions. |
+| Terminal | Browser shell through **ShellInABox**. Commands run with the logged-in account's privileges. Its service and login must work independently. |
+| e2MDB | Opens the installed media database editor; see its [extensive guide](../../../addons/e2mdb/weboberflaeche/). Keep API keys out of screenshots. |
+| MultiBoot | Offered only with suitable support. Slot changes/reboots are real system actions; see [MultiBoot](../../../wartung/multiboot/). |
+| Wake-on-LAN | Sends Magic Packets to configured devices. Hardware, network and power state must support waking. |
+| Scripts / other extensions | Depend on installation. Invoking a script can change the receiver; understand its content and purpose first. |
+| XML/JSON API | Interface for apps and automation, usually under `/web` and `/api`. HTTP GET endpoints can also perform actions; do not treat arbitrary URLs as read-only tests. |
+
+Screenshots show installed editors during a read-only tour. No bouquets were saved, refresh runs started or packages installed. Source: [OpenWebif routes](https://github.com/oe-alliance/OpenWebif/blob/cacd3f69d065fb0eae326aebf456273dc957d2fa/plugin/controllers/root.py).
+
+## Browser views
+
+<WebifCapture id="bouquets" language="en" alt="BouquetEditor with actual channel lists; no changes saved." caption="BouquetEditor with actual channel lists; no changes saved." />
+
+<WebifCapture id="autotimer" language="en" alt="Existing AutoTimer rule in the web editor. This example rule is disabled." caption="Existing AutoTimer rule in the web editor. This example rule is disabled." />
+
+<WebifCapture id="epgrefresh" language="en" alt="EPGRefresh web editor with existing configuration; no refresh started." caption="EPGRefresh web editor with existing configuration; no refresh started." />

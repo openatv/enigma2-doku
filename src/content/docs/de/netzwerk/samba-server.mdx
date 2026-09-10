@@ -1,0 +1,49 @@
+---
+title: "Box als Samba-Server für Windows"
+description: "Box als Samba-Server für Windows – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Ein **Samba-Server** bietet Dateien der Box im Netzwerk an. Windows greift beispielsweise auf Aufnahmen zu. Für die Gegenrichtung – die Box greift auf ein NAS zu – ist das Kapitel [SMB/CIFS-Freigabe verbinden](../smb-cifs/) zuständig.
+
+## Einrichten
+
+1. Unter **Menü → Einstellungen → Netzwerk → Netzwerkdienste** den **Samba Server** bei Bedarf installieren, starten und den gewünschten Autostart speichern.
+2. **Samba-Server-Einstellungen** im Netzwerkmenü öffnen.
+3. Die vier Optionen prüfen und speichern:
+
+| Option | Wirkung |
+| --- | --- |
+| Auto-Share aktivieren (`config.samba.enableAutoShare`) | Erkannte Speichergeräte automatisch als SMB-Freigaben anbieten. Vor dem Aktivieren prüfen, welche Datenträger dadurch erreichbar werden. |
+| Zugriffsmodus (`config.samba.autoShareAccess`) | Automatische Freigaben auf Lesen/Schreiben oder Nur lesen setzen. Zum Abspielen genügt normalerweise Lesen. |
+| Gastzugang erlauben | Erlaubt passenden Freigaben Zugang ohne Samba-Passwort. Moderne Windows-Konfigurationen können Gastzugriff ablehnen. |
+| Name der Arbeitsgruppe | Beispielsweise WORKGROUP. Dies ist eine Gruppierung für SMB, keine Windows-Domain-Mitgliedschaft und kein Passwort. |
+
+Die gezeigte Testbox erlaubt Gastzugang und Lesen/Schreiben. Das Bild zeigt den vorhandenen Zustand und ist keine Empfehlung, sämtliche Datenträger so freizugeben.
+
+4. Falls der Dienst die geänderte Konfiguration noch nicht nutzt, Samba zu einem geeigneten Zeitpunkt über die Netzwerkdienste stoppen und starten.
+5. In der **Adresszeile des Windows-Explorers** `\\192.168.1.50` eingeben; eigene Box-IP verwenden. Die tatsächlich angebotenen Freigaben auswählen. Nicht voraussetzen, dass jede Box dieselben Freigabenamen hat.
+
+## Anmeldung statt Gastzugang
+
+Das normale Linux-Passwort (`passwd`) und die Samba-Benutzerdatenbank sind unterschiedliche Dinge. Für einen vorhandenen Linux-Benutzer legt beispielsweise `smbpasswd -a BENUTZER` interaktiv den Samba-Eintrag an beziehungsweise aktualisiert ihn. Der Benutzer muss existieren und die betreffende Freigabe sowie deren Dateirechte müssen ihn zulassen. Ein neu angelegter Samba-Eintrag allein erzeugt keine eingeschränkte Freigabe.
+
+Bevorzugt ein eigenes Konto mit Zugriff nur auf benötigte Ordner einrichten. `BENUTZER` ist ein Platzhalter, kein wörtlich zu verwendender Kontoname. Kennwort nicht als Kommandozeilenargument oder in Screenshots schreiben. Die [Samba-Dokumentation](https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html) beschreibt die Passwortverwaltung.
+
+## Dateien und Fehlersuche
+
+Der geprüfte Dialog bearbeitet Arbeitsgruppe und Gastzugang in **`/etc/samba/smb-local.conf`**. Daneben existieren die Hauptkonfiguration **`/etc/samba/smb.conf`** und gegebenenfalls automatisch erzeugte Freigaben. Änderungen an einer generierten Datei können später überschrieben werden. Nicht die gesamte Konfiguration durch ein fremdes Beispiel ersetzen.
+
+- Direkter IP-Zugriff funktioniert, Box fehlt unter „Netzwerk“: **Windows network discovery / wsdd2** und das private Windows-Netzwerkprofil prüfen. Entdeckung und Dateizugriff sind getrennt.
+- Anmeldung scheitert: Richtigen Benutzer, Samba-Passwort, Gastregel und gespeicherte Windows-Anmeldedaten prüfen. Windows kann bereits eine Verbindung mit anderen Zugangsdaten zu derselben Box halten.
+- Lesen funktioniert, Schreiben nicht: Freigabemodus, Linux-Dateirechte, Datenträger-Mount und freien Platz prüfen.
+- Freigabe verschwindet: Datenträger tatsächlich eingehängt? Auto-Share aktiv? Samba läuft?
+
+**Nicht SMB1 nachinstallieren und nicht die Firewall abschalten**, um die Box sichtbar zu machen. Verwende SMB2/3, Anmeldung und passende Freigaberegeln. Die [Windows-11-Anleitung](../windows11/) erläutert Profil, Firewall und Benutzer. Dateien der Box können auch per [SFTP](../fernzugriff/) übertragen werden.
+
+Quelle: [OpenATV-Samba-Dialog](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkServices.py).
+
+## Ansichten auf der Box
+
+<Capture id="ns-samba" language="de" alt="Alle vier Samba-Optionen. Gastzugang und Lesen/Schreiben zeigen den vorhandenen Testzustand." caption="Alle vier Samba-Optionen. Gastzugang und Lesen/Schreiben zeigen den vorhandenen Testzustand." />

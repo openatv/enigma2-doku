@@ -59,3 +59,5 @@ Setup level: Simple.
 ---
 
 Source: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+
+Fundamentals and limits: [CI, CAM and module settings](../../../entschluesselung/ci-cam/).

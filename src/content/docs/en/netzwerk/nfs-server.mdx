@@ -94,3 +94,5 @@ exportfs -v
 **Verification:** Server package, tools and native dialog checked on the receiver. Export, NFS and existing mount files remained unchanged; these captures activated no new export.
 
 Sources: [NFS dialog and managed file section](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkServices.py), [service mapping](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/networkdaemons.xml), [export rules](https://man7.org/linux/man-pages/man5/exports.5.html), [NFS setup](https://ubuntu.com/server/docs/how-to/networking/install-nfs/).
+
+[Network Services](../dienste/) explains installation, Yellow for immediate start/stop and saved autostart separately. Receiver NFS exports and [NAS client mounts](../nfs/) are independent; a NAS-only mount does not require the receiver server.

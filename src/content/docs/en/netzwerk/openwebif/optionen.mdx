@@ -1,0 +1,239 @@
+---
+title: "OpenWebif: all 23 configuration fields"
+description: "OpenWebif: all 23 configuration fields – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+import Capture from '../../../../../components/Capture.astro';
+
+**Plugins → OpenWebif**, or its entry in the Network menu. This reference explains all **23 fields** in the inspected OpenWebif 2.4.0 `setup.xml`. Many appear only when their parent feature is enabled. Screenshots are unsaved form examples, not evidence of active HTTPS on the test receiver.
+
+## OpenWebInterface Enabled
+
+Starts/stops OpenWebif when saved. Re-enable it at the TV if the browser interface is disabled.
+
+`config.OpenWebif.enabled` · Search key: `enabled`
+
+## Use modern interface
+
+Selects the responsive instead of classic web interface; does not change the Enigma2 TV skin.
+
+`config.OpenWebif.webcache.responsive_enabled` · Search key: `webcache.responsive_enabled`
+
+## Theme mode
+
+Appearance of the modern interface, such as light/dark. Shown with the modern view.
+
+`config.OpenWebif.responsive_themeMode` · Search key: `responsive_themeMode`
+
+## Use custom Color
+
+Accent/colour selection for the modern interface.
+
+`config.OpenWebif.responsive_skinColor` · Search key: `responsive_skinColor`
+
+## Show box name in header
+
+Helps distinguish receivers. Does not change a network address.
+
+`config.OpenWebif.identifier` · Search key: `identifier`
+
+## Use custom box name
+
+Switches from the detected name to a custom display name.
+
+`config.OpenWebif.identifier_custom` · Search key: `identifier_custom`
+
+## Custom box name
+
+Header text, not a hostname/DNS entry. Appears when custom naming is enabled.
+
+`config.OpenWebif.identifier_text` · Search key: `identifier_text`
+
+## HTTP port
+
+HTTP access port, normally 80. Append a different port to the browser URL. Changing ports does not add encryption.
+
+`config.OpenWebif.port` · Search key: `port`
+
+## Enable HTTP Authentication
+
+Requires authentication for HTTP. Set a working account password first. HTTP does not encrypt the connection.
+
+`config.OpenWebif.auth` · Search key: `auth`
+
+## Enable HTTPS
+
+Enables TLS web access. Certificate, hostname and time must be correct. Does not automatically secure every streaming path.
+
+`config.OpenWebif.https_enabled` · Search key: `https_enabled`
+
+## HTTPS port
+
+TLS web port, normally 443. Shown when HTTPS is enabled.
+
+`config.OpenWebif.https_port` · Search key: `https_port`
+
+## Enable HTTPS Authentication
+
+Require authentication for HTTPS in addition to encryption. Separate from the HTTP switch.
+
+`config.OpenWebif.https_auth` · Search key: `https_auth`
+
+## Require client cert for HTTPS
+
+Requires a suitable HTTPS client certificate. The server certificate alone does not satisfy this; use only with configured certificate management.
+
+`config.OpenWebif.https_clientcert` · Search key: `https_clientcert`
+
+## Enable Authentication for streaming
+
+Requires authentication for the supported streaming path. Offered under HTTP authentication; saving with HTTP auth disabled resets it. Test your actual player.
+
+`config.OpenWebif.auth_for_streaming` · Search key: `auth_for_streaming`
+
+## Disable remote access for user root
+
+Restricts root logins from external addresses. The inspected code exempts private/local networks; this is not a universal root ban and creates no restricted account.
+
+`config.OpenWebif.no_root_access` · Search key: `no_root_access`
+
+## Without auth only local access is allowed!
+
+Notice/protection for unauthenticated access. Appears when an offered access path has no authentication. It does not establish trust in every local device.
+
+`config.OpenWebif.local_access_only` · Search key: `local_access_only`
+
+## Enable access from VPNs
+
+Extends permitted access in the corresponding mode. Configure a real VPN first; the switch creates no tunnel.
+
+`config.OpenWebif.vpn_access` · Search key: `vpn_access`
+
+## Enable Parental Control
+
+Applies Enigma2 parental control to supported Webif functions. Not complete protection for all APIs/file shares.
+
+`config.OpenWebif.parentalenabled` · Search key: `parentalenabled`
+
+## Streaming port
+
+Port used in generated stream links, normally 8001. Must match the actual streaming service.
+
+`config.OpenWebif.streamport` · Search key: `streamport`
+
+## Add service name to stream information
+
+Adds readable channel names to stream information, useful in players and playlists.
+
+`config.OpenWebif.service_name_for_stream` · Search key: `service_name_for_stream`
+
+## Allow IPK Upload
+
+Allows package upload through the web interface. Installation changes the receiver with system privileges; use only trusted compatible packages.
+
+`config.OpenWebif.allow_upload_ipk` · Search key: `allow_upload_ipk`
+
+## Playback IPTV Streams in browser
+
+Offers direct IPTV browser playback. Browser codecs, provider access, CORS and mixed content may limit it.
+
+`config.OpenWebif.playiptvdirect` · Search key: `playiptvdirect`
+
+## Debug - Display Tracebacks in browser
+
+Shows technical error details for diagnosis. Enable when needed, inspect paths/sensitive data before sharing, then disable again.
+
+`config.OpenWebif.displayTracebacks` · Search key: `displayTracebacks`
+
+## Settings inside the browser
+
+Find these under **Settings → OpenWebif Settings** or the modern interface gear. They are separate from ports/authentication in the TV dialogue. Not every view offers all controls simultaneously. Some preferences are saved on the receiver, so do not assume they apply only to the current PC.
+
+### Appearance, colour, spinner and modern view
+
+Choose appearance and the waiting indicator.
+
+Related webcache keys: `theme, responsive_enabled`.
+
+### Zap before streaming
+
+Also changes the TV service before streaming.
+
+Related webcache keys: `zapstream`.
+
+### Picons, background, service details and IPTV selection
+
+Show channel logos and additional entries.
+
+Related webcache keys: `showpicons, showpiconbackground, showchanneldetails, showiptvchannelsinselection`.
+
+### EPG database link, history and views
+
+Choose an external information site, past events and EPG layout. An external database link is not e2MDB.
+
+Related webcache keys: `moviedb, showepghistory, mepgmode, nownext_columns`.
+
+### EPG search
+
+Restrict to bouquets or include descriptions.
+
+Related webcache keys: `epgsearch_only_bq, epgsearch_full`.
+
+### Compact lists
+
+Condense EPG, timer and movie presentation.
+
+Related webcache keys: `compacttimerlist, compactepglist, minepglist, mintimerlist, minmovielist`.
+
+### Movie sorting and directory
+
+Choose sort order and displayed recording folder.
+
+Related webcache keys: `moviesort, moviedir`.
+
+### Small/large remote
+
+Choose layout and extent of the web remote.
+
+Related webcache keys: `smallremote, rcu_full_view`.
+
+### Screenshot
+
+Control channel name, high resolution and the remote-control screenshot.
+
+Related webcache keys: `screenshotchannelname, screenshot_high_resolution, rcu_screenshot`.
+
+### Automatic refresh
+
+Refresh and interval affect Webif load and freshness.
+
+Related webcache keys: `refresh_auto, refresh_time`.
+
+### Show packages
+
+Expands the package list; does not install a package.
+
+Related webcache keys: `showallpackages`.
+
+### Playlist format and transcoding
+
+Choose M3U/XSPF or an available streaming mode. Hardware/backend support is still required.
+
+Related webcache keys: `transcoding_mode`.
+
+Continue: [secure access](../sicherheit/) · [browser tools](../werkzeuge/). Source: [OpenWebif setup.xml](https://github.com/oe-alliance/OpenWebif/blob/cacd3f69d065fb0eae326aebf456273dc957d2fa/plugin/setup.xml), [plugin.py](https://github.com/oe-alliance/OpenWebif/blob/cacd3f69d065fb0eae326aebf456273dc957d2fa/plugin/plugin.py).
+
+## Receiver views
+
+<Capture id="ns-webif-main" language="en" alt="TV-side OpenWebif configuration. Modern view and authentication are unsaved examples." caption="TV-side OpenWebif configuration. Modern view and authentication are unsaved examples." />
+
+<Capture id="ns-webif-auth" language="en" alt="HTTP and HTTPS have separate authentication switches. HTTPS was only exposed in this example form." caption="HTTP and HTTPS have separate authentication switches. HTTPS was only exposed in this example form." />
+
+<Capture id="ns-webif-stream" language="en" alt="Streaming port, stream authentication and parental control are separate settings." caption="Streaming port, stream authentication and parental control are separate settings." />
+
+
+## Browser views
+
+<WebifCapture id="settings" language="en" alt="Browser settings and the setup sections offered by the image." caption="Browser settings and the setup sections offered by the image." />

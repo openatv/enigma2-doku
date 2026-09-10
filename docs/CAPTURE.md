@@ -297,3 +297,17 @@ Die freigegebenen Serien sind `rx-c-de-reception-guides`, `rx-c-en-reception-gui
 `reception.py` trennt native Konfigurationsbäume, Felder, Auswahlwerte und Notifier von der laufenden Konfiguration. Die erweiterte LNB-Ansicht nutzt nur den isolierten Schemaaufbau; globale Konfigurationsreferenzen und gemeinsame Default-Templates werden auch im Fehlerfall restauriert. Keine SEC-Aktualisierung, Tunerinitialisierung, Motorbewegung oder Suche. Formulareingaben und Aktionen sind gesperrt; ABM-Zeitplanung, SCR-Frequenz, Motorstandort und 5-V-Konfiguration sind ungespeicherte Beispiele. Der Signalfinder wird nicht abgestimmt und zeigt daher N/A; CableScan-Werte sind keine allgemeinen Anbietervorgaben.
 
 USB-Inventar und DAB+-Diagnose sind passive Anzeigen. Einige neue DAB+-Feldnamen sind im installierten deutschen Image noch Englisch; Bilder bleiben original. Während Sprachneustarts werden EMC-/AutoTimer-Automatiken wie bei den anderen Profilen vorübergehend suspendiert und wiederhergestellt. Tunerwerte, Sprache/Skin und geschützte Sender-, Timer-, Mount- und e2MDB-Dateien wurden vor/nachher verglichen. Die vollständige `/etc/enigma2/settings` ist wegen GUI-Neuschreibens nicht als bytegleich ausgewiesen. Das Aufnahmeprojekt hat 41 bestandene Tests, einschließlich isolierter verschachtelter Werte und Wiederherstellung nach Fehlern beim Schemaaufbau.
+
+## Netzwerk und Jugendschutz
+
+Das Profil `network-security` ergänzt 13 native Ansichten pro Sprache: Entschlüsselungsmenü, Sender-/Menüschutz, statische IPv4- und Adapter-DNS-Werte, globale DNS-Einstellungen, drei Dienstelistenpositionen, Samba und drei OpenWebif-Setupansichten. Werkzeugstand: `b9b260f88baad3d12ee676e6383c53c4c4c009ab`; 30 Profile und 203 Szenen insgesamt.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix network-demo --profiles network-security --restart-languages --bootlogo --output .capture-private
+```
+
+Die endgültigen Serien `ns-b-de-network-security` und `ns-b-en-network-security` enthalten 26 geprüfte Bilder. Gesamtbestand: 396 native PNGs, davon 370 Bootlogo und 26 früher ausgewählter Sender. `network_security.py` trennt Netzwerk-, Samba-, Webif- und Jugendschutzfelder einschließlich DNS-Feldern von der Live-Konfiguration. Unbeteiligte native Handles in config.usage werden nicht kopiert. Speichern und aktive Dienstaktionen sind gesperrt; Server und Schutzengine behalten ihre echten Werte. Die PIN-Ausnahme gilt nur für das Aufnahmeformular. 42 Regressionstests bestehen.
+
+Für die Browserbilder wurde OpenWebif in einem isolierten Edge/Playwright-Kontext geöffnet. DE/EN folgen der GUI-Sprache; ein mobiler User-Agent aktiviert die native responsive Ansicht ohne Speichern einer Einstellung. Verwendet wurden nur Navigation und Auswahl vorhandener Bouquets/Editoren. Die acht Motive je Sprache sind Fernsehen, Aufnahmen, Timer, Einstellungen, BouquetEditor, AutoTimer, EPGRefresh und moderne Ansicht. Keine Boxinfo- oder API-Schlüsselseite wird veröffentlicht. Formular-Passwortfelder können vor dem Browser-Screenshot schwarz maskiert werden; die freigegebenen Bilder enthalten keine Geheimnisse.
+
+`data/openwebif-captures-review.json` hält SHA-256, Sprache, Datum und Sichtprüfung der 16 Browser-PNGs unter `src/assets/openwebif/` fest. `WebifCapture.astro` erzeugt lokale WebP-Varianten und verlinkt das Original. Die Website und ihr Build benötigen weder Playwright noch Zugriff auf eine laufende Box. Ein neuer Browserlauf muss erneut geprüft werden; reine GET-URLs sind bei OpenWebif nicht generell frei von Aktionen.

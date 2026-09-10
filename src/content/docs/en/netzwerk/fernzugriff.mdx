@@ -124,3 +124,5 @@ For NAS files, use the actual configured [mount point](../freigaben/). Check the
 **Verification:** SSH and a read-only SFTP connection were tested on the receiver. Runlevel control and network services were checked in its installed configuration. No password was changed for this chapter.
 
 Sources: [Password and network dialogs](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkServices.py), [Enigma2 startup environment](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/tools/enigma2.sh.in), [SSH manual](https://man.openbsd.org/ssh), [SFTP manual](https://man.openbsd.org/sftp), [WinSCP login dialog](https://winscp.net/eng/docs/ui_login).
+
+The root password does not automatically protect every service: enable [OpenWebif authentication](../openwebif/sicherheit/) and check [Samba users](../samba-server/) separately. [Network services](../dienste/) explains installation, start/stop and autostart. The [Enigma2 parental PIN](../../entschluesselung/jugendschutz/) is separate.

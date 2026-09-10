@@ -2588,5 +2588,187 @@
     "sha256": "7c76ed9240c44e2a3372737a7ad4d8dc0ce9685dd7769c5718b0acbfef7aa7dc",
     "run": "rx-tools-a-en-reception-tools",
     "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "ns-cam-menu",
+    "run": "ns-b-de-network-security",
+    "sha256": "65370c65672d4682e0dcf9f003829b62634f5c5fab765298ec308c67f67f9000",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-parental-services",
+    "run": "ns-b-de-network-security",
+    "sha256": "2b5f52938e8ae18f0ffd3f53077d2446f0261d5ed3a87335c04e287fd9b811ff",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-parental-screens",
+    "run": "ns-b-de-network-security",
+    "sha256": "dd7baedc2e7affa2d5fffb68588b2aed637459ca15c21364af9c994ce4bac8e9",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-adapter-ip",
+    "run": "ns-b-de-network-security",
+    "sha256": "f1ce58f4643c9549a71141ec398c876a429fea34c7a210bdf097b71bfee3f336",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-adapter-dns",
+    "run": "ns-b-de-network-security",
+    "sha256": "6f8f1f4b131103106752ffbe4338991559f06674a9957c1da0940e3b5cb9dd60",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-dns",
+    "run": "ns-b-de-network-security",
+    "sha256": "4a199e2cac0f7d42de1de79fdb49e1063173386dfb542072680bc348b71f9b99",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-services-first",
+    "run": "ns-b-de-network-security",
+    "sha256": "f5efee467a71fa23e2cce7e88b94845a1403cc281d039fe1d9ce6b44e2b0ba91",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-services-middle",
+    "run": "ns-b-de-network-security",
+    "sha256": "3b429ac5c1947011309c24df6a05121a025d1f526757d146873170f31e5e96d3",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-services-last",
+    "run": "ns-b-de-network-security",
+    "sha256": "d65dac35c2af9bc107b7395b61f8f2d5585c429034671345653465081240f4bf",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-samba",
+    "run": "ns-b-de-network-security",
+    "sha256": "cc118be10cfe4a7436d79d8e4ddffc33367fd34f4474584431f10c2c5a85e39e",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-webif-main",
+    "run": "ns-b-de-network-security",
+    "sha256": "f6e61884b6805bfaa7118f086e9ef7cee887ca3b39dc38fff5d103cbc2457a31",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-webif-auth",
+    "run": "ns-b-de-network-security",
+    "sha256": "dd2a50f3efcdc7b777a154d3804bd190a94442f0dadf4e1d7618d620ef7ad880",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ns-webif-stream",
+    "run": "ns-b-de-network-security",
+    "sha256": "a8497d042cb2c3b986f59a07ec527298823d8143741850f8607671470e996bcb",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-cam-menu",
+    "run": "ns-b-en-network-security",
+    "sha256": "fb8e35600730a346fbe5f8b4841adf41507bf0a82092a4c0419686185eb7f273",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-parental-services",
+    "run": "ns-b-en-network-security",
+    "sha256": "c485a09e54d549d3941a9065b155543b877c80921b52c21ea4aa3320f2f9cf61",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-parental-screens",
+    "run": "ns-b-en-network-security",
+    "sha256": "23da82684397982d6fc76e65d22f24a2d7cf7e871aad3403d97d3d7f9168026a",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-adapter-ip",
+    "run": "ns-b-en-network-security",
+    "sha256": "76058efd07709fba8f99d4f8c1130f887c3bba36130bd0d0f82a96b3df681b2f",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-adapter-dns",
+    "run": "ns-b-en-network-security",
+    "sha256": "21a50d4f147a4d24929d0c3a9fc3cc8170c99420f9c184cd70a304ab9fa4fdfd",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-dns",
+    "run": "ns-b-en-network-security",
+    "sha256": "06c2db65b0519ec140543069d7def25b4e8426f74c6605655306166c11f7f0e8",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-services-first",
+    "run": "ns-b-en-network-security",
+    "sha256": "a43f136d4d17ac4e1992368d86ecefdb24545cd99df41aa2821f83201669e7a7",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-services-middle",
+    "run": "ns-b-en-network-security",
+    "sha256": "e7054f5e8971bef69df988717dab5cfc25b57a5c5f8d0ceebf9855de16e2beec",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-services-last",
+    "run": "ns-b-en-network-security",
+    "sha256": "59c8d938709dc10893c518f81524976501141b5be4ea6c91761a1915f1e396c2",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-samba",
+    "run": "ns-b-en-network-security",
+    "sha256": "9420133647b4af2f29ad891058f9d48ba683ab90d35351e339fe3aa27fc3c4bf",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-webif-main",
+    "run": "ns-b-en-network-security",
+    "sha256": "216b73f730d9974dd31ad3e6c58559ad1efd1a16e4bee56587feb2d16ff7085c",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-webif-auth",
+    "run": "ns-b-en-network-security",
+    "sha256": "e4b1b4f65fb4156039b3d46bd2bd70e160d41cadd1a366fa44e619d31a3bb76e",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "en",
+    "id": "ns-webif-stream",
+    "run": "ns-b-en-network-security",
+    "sha256": "b70d8822f81643af0e54e5677a3352af28f5e0eefdf03131985a583c5bc0e523",
+    "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
   }
 ]

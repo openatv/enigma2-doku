@@ -1,0 +1,63 @@
+---
+title: "Alle 22 Netzwerkdienste verwalten"
+description: "Alle 22 Netzwerkdienste verwalten – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Netzwerk → Netzwerkdienste** bietet im geprüften Stand 22 Katalogeinträge. Manche Pakete gehören bereits zum Image, andere werden erst bei Bedarf installiert. Die angezeigten Zeilen beschreiben verschiedene Zustände, nicht nur „an“ oder „aus“.
+
+## Installation, Autostart und laufender Prozess
+
+1. Dienst markieren. Bei einem fehlenden optionalen Paket mit Links/Rechts **Installieren** wählen.
+2. **Grün/Speichern** wendet Paket- und Autostartänderungen an. Die Box benötigt für Downloads Internet und passende Paketquellen.
+3. Bei installiertem Dienst den gewünschten **Autostart** wählen und speichern: Er bestimmt das Verhalten beim nächsten Systemstart.
+4. **Gelb/Start oder Stopp** wirkt sofort auf den laufenden Dienst. Ein gestarteter Dienst muss deshalb noch nicht für den nächsten Boot aktiviert sein. Umgekehrt bedeutet Autostart „Aktiviert“ nicht, dass der Prozess gerade fehlerfrei läuft.
+5. **Blau/Log anzeigen** wird nur bei hinterlegtem und verfügbarem Log angeboten. Nicht jeder Dienst hat diese Taste.
+
+Eine geänderte Auswahl wird erst mit Speichern übernommen; Gelb ist eine unmittelbare Aktion. „Deinstallieren“ entfernt Pakete und kann Paketgruppen betreffen. Beende nicht den SSH-Dienst während deiner einzigen Fernwartungssitzung. NFS, Samba und autofs nicht während NAS-Aufnahmen oder aktiven Dateiübertragungen stoppen.
+
+## Vollständiger Dienstekatalog
+
+| Dienst | Aufgabe | Paket / Prozess |
+| --- | --- | --- |
+| AutoFS | Hängt entfernte Dateisysteme bei Bedarf ein; siehe autofs/fstab. | `autofs` / `automount` |
+| Avahi | mDNS/DNS-SD für lokale Namen und Dienstankündigungen; kein Dateiserver. | `avahi-daemon` / `avahi-daemon` |
+| Chrony | Synchronisiert die Systemzeit über NTP. | `chronyd` |
+| Cron | Führt Linux-Zeitpläne aus; unabhängig von Enigma2-Aufnahmetimern. | `crond` |
+| DNSCrypt | Lokaler DNS-Proxy für ausgewählte, gegebenenfalls verschlüsselte Resolver. | `dnscrypt-proxy` / `dnscrypt-proxy` |
+| FTP | Dateizugriff über FTP mit vsftpd; normales FTP überträgt unverschlüsselt. | `vsftpd` / `vsftpd` |
+| Inadyn | Aktualisiert einen DynDNS-Namen bei wechselnder externer Adresse. | `inadyn-mt` / `inadyn-mt` |
+| LLMNR | Lokale Namensauflösung über LLMNR. | `llmnrd` / `llmnrd` |
+| MiniDLNA | Bietet ausgewählte Medienordner als DLNA/UPnP-Server an. | `minidlna` / `minidlnad` |
+| NFS | Exportiert Ordner der Box als NFS-Server. Für einen NAS-Client-Mount nicht erforderlich. | `packagegroup-base-nfs` / `nfsd` |
+| OpenVPN | VPN-Tunnel mit separat bereitgestellter Konfiguration und Zugangsdaten. | `openvpn` / `openvpn` |
+| SABnzbd | Separater Usenet-Downloadmanager; benötigt eigene Einrichtung und Speicher. | `sabnzbd3` / `SABnzbd.py,SABnzbd.pyc` |
+| Samba Client | SMB-Client-Werkzeuge. Dieser Eintrag hat keinen dauerhaft laufenden Server und keinen Autostartschalter. | `packagegroup-base-smbfs-client` |
+| Samba Server | Dateien der Box über SMB anbieten; getrennt vom NAS-Mount. | `packagegroup-base-smbfs-server` / `smbd` |
+| SATPI | SAT>IP-Server: bietet geeignete Tuner über das Netz an; Hardware und Tunerbelegung beachten. | `satpi` / `satpi` |
+| ShellInABox | Shell-Terminal im Browser, auch über OpenWebif erreichbar. | `shellinabox` / `shellinaboxd` |
+| SMART monitoring | Überwacht unterstützte Datenträger per SMART; ersetzt kein Backup. | `smartmontools` / `smartd` |
+| SSH | Verschlüsselte Shell über Dropbear; SFTP benötigt zusätzlich sein Subsystem. | `dropbear` |
+| Telnet | Unverschlüsselte Shell. Für normale Administration SSH verwenden. | `telnetd` |
+| uShare | Alternativer älterer UPnP-AV-Medienserver mit Client-Kompatibilitätsoptionen. | `ushare` / `ushare` |
+| Windows network discovery | WS-Discovery für das Auffinden in der Windows-Netzwerkumgebung; transportiert selbst keine Dateien. | `wsdd2` / `wsdd2` |
+| ZeroTier-One | Virtuelles Netzwerk mit Netzwerk-ID und Freigabe durch den Netzwerkadministrator. | `zerotier` / `zerotier-one` |
+
+**OpenWebif ist kein 23. Eintrag dieser Liste.** Es läuft als Plugin innerhalb Enigma2 und hat eine eigene [Konfiguration](../openwebif/optionen/). Ein GUI-Neustart unterbricht daher auch OpenWebif. FTP und SFTP sind ebenfalls nicht dasselbe: SFTP nutzt SSH, nicht den FTP-Server.
+
+## Ein Dienst startet nicht
+
+Installation, Konfiguration, Portbelegung und Log prüfen. Ein vorhandenes Startskript beweist keinen erfolgreichen Prozessstart. Der Dienstestatus erfasst Prozesse; er testet weder Anmeldungen noch Freigaberechte oder Datendurchsatz.
+
+Im Katalog sind unter anderem `/var/log/samba/log.smbd`, `/var/log/inadyn.log`, `/var/volatile/log/minidlna.log` und `/etc/openvpn/openvpn.log` hinterlegt. Dateien müssen nicht existieren, wenn der Dienst nie gestartet wurde. Logs können Zugriffs- und Verbindungsdaten enthalten.
+
+Weiter: [Samba-Server](../samba-server/), [NFS-Server](../nfs-server/), [weitere Dienstekonfiguration](../zusatzdienste/), [Uhrzeit](../../system/zeit-aufwachen/), [Cron](../../timer/cron/). Quelle: [networkdaemons.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/networkdaemons.xml).
+
+## Ansichten auf der Box
+
+<Capture id="ns-services-first" language="de" alt="Diensteliste: installierter AutoFS-Dienst mit Autostart und laufendem Prozess." caption="Diensteliste: installierter AutoFS-Dienst mit Autostart und laufendem Prozess." />
+
+<Capture id="ns-services-middle" language="de" alt="Optionale Pakete erscheinen als nicht installiert; hier OpenVPN." caption="Optionale Pakete erscheinen als nicht installiert; hier OpenVPN." />
+
+<Capture id="ns-services-last" language="de" alt="Unteres Ende der 22 Einträge mit SSH, Telnet, uShare, Windows-Erkennung und ZeroTier." caption="Unteres Ende der 22 Einträge mit SSH, Telnet, uShare, Windows-Erkennung und ZeroTier." />

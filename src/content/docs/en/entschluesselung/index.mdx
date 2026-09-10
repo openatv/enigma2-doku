@@ -1,0 +1,28 @@
+---
+title: "Decryption and parental control"
+description: "Decryption and parental control – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Decryption & Parental Control** combines two different tasks: authorised access to encrypted programmes and restrictions on using the receiver.
+
+OpenATV does not ship softcams or provide softcam support. Having control menus does not mean decryption software is included. External feeds, their packages and CI/CAM extensions are outside that offering. Before using them, check local legal requirements, your viewing entitlement and the provider's terms.
+
+| Goal | Chapter |
+| --- | --- |
+| Deliberately add an external softcam feed | [Install and check the feed](./softcam-feed/) |
+| Select, restart or automatically assign an installed softcam | [Softcam, AutoCam, cardserver and Stream Relay](./softcam-autocam/) |
+| Use a CI module with valid entitlement | [CI, CAM and options](./ci-cam/) |
+| Restrict channels, EPG age ratings or menus | [Set up parental control](./jugendschutz/) |
+| An encrypted channel stays black | [Troubleshooting](./fehler/) |
+
+Visible entries depend on hardware, installed packages, available startup scripts and setup level. **Expert** reveals additional options; it does not install a missing feature. OSCam/CCcam information requires the corresponding detected software, and Common Interface needs a CI slot. Receivers consequently show different subsets of the menu.
+
+Free-to-air services need no softcam. A CAM does not add a tuner either: recording, streaming and decryption limits can apply independently. See [recording and watching simultaneously](../tuner/single-tuner/).
+
+The menus were checked against the [documented sources](../netzwerk/quellen/). Example screenshots do not verify a working subscription, card activation or CI+ compatibility.
+
+## Receiver views
+
+<Capture id="ns-cam-menu" language="en" alt="The test installation menu: CI and parental control. Softcam entries are absent without the external CAM offering." caption="The test installation menu: CI and parental control. Softcam entries are absent without the external CAM offering." />

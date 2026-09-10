@@ -24,6 +24,25 @@ globalThis.fetch = async input => {
   return new Response(body, { status: 200, headers: { 'content-type': file.endsWith('.json') ? 'application/json' : 'application/octet-stream' } });
 };
 const checks = [
+  ...['de', 'en'].flatMap(lang => [
+    [lang, 'softcam-feed-universal', `/${lang}/entschluesselung/softcam-feed/`],
+    [lang, 'AutoCam', `/${lang}/entschluesselung/softcam-autocam/`],
+    [lang, 'MMI', `/${lang}/entschluesselung/ci-cam/`],
+    [lang, 'storeservicepin', `/${lang}/entschluesselung/jugendschutz/`],
+    [lang, 'DNSCrypt', `/${lang}/netzwerk/dns/`],
+    [lang, 'SATPI', `/${lang}/netzwerk/dienste/`],
+    [lang, 'smb-local.conf', `/${lang}/netzwerk/samba-server/`],
+    [lang, 'CGNAT', `/${lang}/netzwerk/zusatzdienste/`],
+    [lang, 'auth_for_streaming', `/${lang}/netzwerk/openwebif/optionen/`],
+    [lang, 'no_root_access', `/${lang}/netzwerk/openwebif/optionen/`],
+    [lang, 'XSPF', `/${lang}/netzwerk/openwebif/fernsehen-epg/`],
+    [lang, 'BouquetEditor', `/${lang}/netzwerk/openwebif/werkzeuge/`],
+    [lang, 'AutoTimer', `/${lang}/netzwerk/openwebif/werkzeuge/`],
+    [lang, 'cert.pem', `/${lang}/netzwerk/openwebif/sicherheit/`],
+    [lang, 'Shift', `/${lang}/netzwerk/openwebif/fernbedienung/`],
+    [lang, '192.168.1.50', `/${lang}/netzwerk/manuelle-ip/`],
+    [lang, 'nslookup', `/${lang}/netzwerk/neustart-test/`],
+  ]),
   ['de', 'Toneburst', '/de/tuner/diseqc/'],
   ['de', 'AutoDiSEqC', '/de/tuner/autodiseqc/'],
   ['de', 'Quattro', '/de/tuner/lnb/'],

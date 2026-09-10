@@ -1,0 +1,35 @@
+---
+title: "Remote control, long presses and screenshots"
+description: "Remote control, long presses and screenshots – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+The OpenWebif keypad sends remote-control commands to the **real receiver** and acts on the dialogue currently displayed on the TV. <kbd>OK</kbd> may therefore confirm or save something; this is not an isolated practice interface.
+
+## Use the keys
+
+Numbers, direction keys, OK, MENU, EXIT, INFO, EPG, colour buttons and other keys invoke their corresponding Enigma2 actions. Small, large and modern remote layouts may differ. Actual behaviour depends on the current dialogue, keymap and button assignments.
+
+In the classic interface, **hold Shift while clicking the key** to send a long press. Merely holding the mouse button longer is not the same. This can expose additional INFO, EPG or colour-button actions. See the [long-press directory](../../../anhaenge/langtasten/) and [button guide](../../../erste-schritte/farbtasten-langdruck/).
+
+## Other controls
+
+| Function | Purpose |
+| --- | --- |
+| Volume/mute | Changes receiver volume state. With passthrough, the AVR may control actual sound level. |
+| Send text | Supplies text to a suitable input field on the receiver; not a shell command line. |
+| Send message | Displays a message on the TV. Content, type and timeout depend on the dialogue. |
+| Standby/wake | Changes normal standby state while the receiver remains reachable. |
+| Restart GUI/reboot/shutdown | Interrupts the interface or whole receiver. Observe timer warnings and save open work first. |
+| Screenshot/camera | Retrieves a receiver-screen image, not a PC desktop screenshot. |
+
+Screenshot options may cover OSD/video, resolution and refresh. **Automatic refresh** fetches repeated images; a short interval increases load. Protected video planes or unsupported grabbing may omit the TV picture while menus remain visible. Higher resolution cannot restore video that was not captured.
+
+Before sharing support screenshots, ensure PINs, API keys, passwords, private messages and credentials are absent. Images can also include programme content. Coordinate remote commands and captures with anyone using the TV.
+
+A Magic Packet can wake a powered-down receiver only with supported and configured Wake-on-LAN. Unreachable OpenWebif cannot receive normal remote commands. See [adapter options](../../manuelle-ip/).
+
+## Browser views
+
+<WebifCapture id="television" language="en" alt="Native web keypad on the left; Shift-click sends a long press in this view." caption="Native web keypad on the left; Shift-click sends a long press in this view." />

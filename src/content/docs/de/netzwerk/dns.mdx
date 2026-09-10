@@ -1,0 +1,48 @@
+---
+title: "DNS, Namensauflösung und DNSCrypt"
+description: "DNS, Namensauflösung und DNSCrypt – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Netzwerk → DNS-Einstellungen** legt die globalen Namensserver fest. DNS übersetzt Hostnamen in IP-Adressen. Es ist weder die IP-Adresse der Box noch das Gateway und behebt keinen fehlenden Internetanschluss.
+
+## Normaler Einstieg
+
+Im Heimnetz zunächst **Router/Gateway** beziehungsweise die vom Netzwerk bezogenen Resolver verwenden. Der Router kennt häufig auch lokale Gerätenamen. Ein externer öffentlicher Resolver kennt ein nur intern vergebenes `nas` möglicherweise nicht. Bei eigener Vorgabe **Statische IP / Benutzerdefiniert** wählen, passende Nameserver eintragen und speichern. Ein zweiter Resolver ist optional; er ist nicht automatisch eine verlässliche Umgehung jeder Filter- oder Serverstörung.
+
+**DNS überschreiben** in den [Adaptereinstellungen](../manuelle-ip/) hat eine eigene Wirkung. Prüfe bei scheinbar wirkungslosen globalen Änderungen zuerst diesen Schalter. `/etc/resolv.conf` ist die Ausgabe der Netzwerkkonfiguration; dauerhafte Einstellungen über die Menüs vornehmen.
+
+| Feld | Verwendung |
+| --- | --- |
+| Hostname | Name der Box im Netzwerk. Ein kurzer eindeutiger Name vereinfacht die Zuordnung. |
+| Domainname / DNS-Suffix | Ergänzt unvollständige Namen für das eigene Netz; keine Anmeldung bei einer öffentlichen Domain. |
+| DNS-Protokollmodus | IPv4, IPv6 oder beide mit gewünschter Priorität. Muss zur tatsächlich erreichbaren Infrastruktur passen. |
+| DNS-Rotation | Ändert die Reihenfolge der verwendeten Resolver; kein VPN und keine Lastverteilung für Downloads. |
+| DNS-Datenquelle | Router/Netzwerk, eigene Adressen oder ein hinterlegter Anbieter. Die Image-Liste kann sich ändern. |
+| Nameserver 1–4 | Dynamische IPv4-/IPv6-Felder. Eigene Werte sind im benutzerdefinierten Modus editierbar. |
+| Gelb/Blau: nach oben/unten | Verschiebt angebotene Resolver innerhalb der jeweiligen Adressfamilie. Nicht in jedem Datenquellenmodus verfügbar. |
+
+## DNSCrypt und verschlüsselte Resolver
+
+Nach Installation des Dienstes **DNSCrypt** kann die entsprechende Datenquelle angeboten werden. Der lokale Proxy beantwortet DNS-Anfragen und nutzt ausgewählte externe Resolver. Das verschlüsselt DNS-Verbindungen zu diesen Diensten, nicht automatisch sämtlichen Netzwerkverkehr der Box. Zuerst den Dienst starten und eine funktionierende Auflösung prüfen.
+
+| Zusätzliche Einstellung | Wirkung |
+| --- | --- |
+| DNSCrypt-Server | Resolver mit DNSCrypt-Protokoll zur Auswahl zulassen. |
+| DoH-Server | DNS über HTTPS nutzen. |
+| ODoH-Server | Oblivious DoH mit zusätzlicher Proxy-Trennung nutzen, sofern geeignete Ziele verfügbar sind. |
+| Nur DNSSEC-Server | Resolver mit DNSSEC-Unterstützung auswählen. DNSSEC prüft signierte DNS-Daten; es ist nicht gleichbedeutend mit Transportverschlüsselung. |
+| Nur No-Log-Server | Auswahl nach der **Selbstauskunft** des Anbieters; keine unabhängig bewiesene Protokollierungsfreiheit. |
+| Nur No-Filter-Server | Anbieter ausschließen, die eigene Filterlisten einsetzen. Das aktiviert keinen Jugendschutz; es kann gerade einen gewünschten Filter vermeiden. |
+| DNS-Cache | Kürzlich aufgelöste Antworten zwischenspeichern; verringert wiederholte Anfragen. |
+| Monitoring-Oberfläche | Zusätzliche Webansicht für DNSCrypt aktivieren. Sie ist von OpenWebif getrennt. |
+| Benutzername, Passwort, Port, Datenschutzstufe | Zugang und Darstellung dieser Monitoring-Oberfläche festlegen. Portbereich im Dialog: 8080–9999; keinen bereits belegten Port wählen. |
+
+Zu enge Filter oder nicht erreichbare verschlüsselte Resolver können die Namensauflösung verhindern. Bei Problemen zur vorher funktionierenden Quelle zurückkehren und dann einzeln testen. Gültige Uhrzeit ist für verschlüsselte Verbindungen wichtig; siehe [NTP und Zeit](../../system/zeit-aufwachen/).
+
+Details und technische Schlüssel: [DNS-Optionsreferenz](../../einstellungen/referenz/dns/). Quellen: [OpenATV DNSSettings](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkSetup.py), [DNSCrypt-Konfiguration](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Configuration). DNSCrypt wurde für die Bilder nicht nachinstalliert.
+
+## Ansichten auf der Box
+
+<Capture id="ns-dns" language="de" alt="Globale benutzerdefinierte DNS-Werte als Formularbeispiel. Hostname und Adressen wurden nicht gespeichert." caption="Globale benutzerdefinierte DNS-Werte als Formularbeispiel. Hostname und Adressen wurden nicht gespeichert." />

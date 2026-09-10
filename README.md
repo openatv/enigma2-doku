@@ -20,6 +20,9 @@ Ein gemeinsamer Linkblock am Seitenende führt in beiden Sprachen zu Forum, Enig
 - Debug-/Crashlogs aktivieren und auf der Box finden; Fehlerberichte im Forum, bei OpenATV Enigma2 oder OE-Alliance
 - HDD/USB: Einhängen, Aushängen, Mountpunkte, Formatieren und Dateisystemprüfung
 - Empfang: 33 Kapitel je Sprache, Verkabelungsbilder, DiSEqC/AutoDiSEqC, Unicable, Motor, DVB-C/T2 und SPAUN TAR 5; manuelle/automatische Suche, Signalfinder, CableScan, Blindscan, FastScan, ABM und DAB+
+- Entschlüsselung und Jugendschutz: externer Softcam-Feed, AutoCam, CI/CAM, PIN, Menüschutz und Grenzen
+- Netzwerk: DHCP/manuelle IP, DNS/DNSCrypt, Adapter-/Netzwerkneustart und alle 22 Dienste; Installation, Start/Stopp und Autostart
+- OpenWebif 2.4.0: sieben Kapitel je Sprache, Classic/Modern, alle 23 Setupfelder, EPG/Streams, Timer/Aufnahmen, Fernbedienung, Editoren und Zugangsschutz
 - LAN und WLAN; NAS-Freigaben über NFS und SMB/CIFS mit Optionen und Berechtigungen
 - Windows 11: privates Netzwerk, eigener Benutzer mit Passwort, Freigaben, gezielte Firewall-Regeln und Explorer-Zugriff
 - Enigma2 als NFS-Server, Exportdateien, autofs/fstab, Offline-Verhalten und Spinner
@@ -43,7 +46,7 @@ Ein gemeinsamer Linkblock am Seitenende führt in beiden Sprachen zu Forum, Enig
 - Einstellungsreferenz mit vorhandenen Beschriftungen und Originalhilfetexten
 - Erweiterbare Bereiche für Skins, Add-ons und spätere Anhänge
 
-Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 106 Kapitel pro Sprache sind bebildert: Der Bestand umfasst 370 ausgewählte native Enigma2-Bilder, eine ergänzende Web-Editor-Aufnahme und 16 Abbildungen aus dem ursprünglichen Umbra-Handbuch. Die neuen Aufnahmen stammen von OpenATV 8.0.2-devel mit MetrixHD beziehungsweise Umbra. Von den 370 nativen Bildern zeigen 344 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die zusätzlichen Umbra-Vorlagenbilder haben eigene Angaben zu Version und Herkunft, darunter vier berechnete Vergleiche. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für dessen Skin-Kapitel.
+Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 118 Kapitel pro Sprache sind bebildert: Der Bestand umfasst 396 ausgewählte native Enigma2-Bilder, 16 neue OpenWebif-Browserbilder, eine ergänzende e2MDB-Web-Editor-Aufnahme und 16 Abbildungen aus dem ursprünglichen Umbra-Handbuch. Die neuen Aufnahmen stammen von OpenATV 8.0.2-devel mit MetrixHD beziehungsweise Umbra. Von den 396 nativen Bildern zeigen 370 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die zusätzlichen Umbra-Vorlagenbilder haben eigene Angaben zu Version und Herkunft, darunter vier berechnete Vergleiche. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für dessen Skin-Kapitel.
 
 Die vorhandene NAS-Freigabe und die HDD wurden auf Schreib- und Lesezugriff geprüft. Ihre Einbindung sowie Tuner- und LAN-Konfiguration blieben erhalten. Für die allgemeinen Bilder wurde MetrixHD verwendet, für die Umbra-Serie vorübergehend Umbra/FHD. Nach den DE/EN-Läufen wurden ursprüngliche Sprache und Skin wiederhergestellt. Einzelne Assistentenansichten sind bebildert, der vollständige Neuinstallationsablauf ist noch nicht durchgetestet. WLAN und FBC folgen auf passender Hardware. Der [Prüfstand](docs/PRAXISTESTS.md) trennt aufgenommene Ansichten von vollständig getesteten Bedienabläufen.
 
@@ -106,7 +109,7 @@ Nach einem Import den Diff prüfen, neue oder geänderte Optionen redaktionell b
 
 ## Platzbedarf und Apache2
 
-`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Die Website enthält die freigegebenen Original-PNGs zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit 247 Inhalten je Sprache und zusätzlicher Sprachauswahl belegt rund 228,64 MB in 2625 Dateien, etwa 22,86 Prozent des Budgets.
+`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Die Website enthält die freigegebenen Original-PNGs zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit 268 Inhalten je Sprache und zusätzlicher Sprachauswahl belegt rund 251,86 MB in 2879 Dateien, etwa 25,19 Prozent des Budgets.
 
 Bei einem Wechsel auf Apache2 wird dieselbe Website für die neue Adresse gebaut. Sie benötigt dort nur statische Dateiauslieferung. [Apache2-Bereitstellung](docs/APACHE2.md).
 

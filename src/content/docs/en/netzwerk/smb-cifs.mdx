@@ -78,3 +78,5 @@ The manager generates user, password, `ro`/`rw`, `vers` and `iocharset` from ded
 **Verification:** Native SMB dialog captured; the existing CIFS/autofs share was previously checked for reading and writing. Extra options are not individually tested defaults for every NAS.
 
 Sources: [Dialog and dialects](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkMounts.py), [mount parameters](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NetworkManager.py), [CIFS mount options](https://man7.org/linux/man-pages/man8/mount.cifs.8.html), [Linux SMB client](https://docs.kernel.org/admin-guide/cifs/usage.html), [SMB1 in Windows](https://learn.microsoft.com/en-us/windows-server/storage/file-server/troubleshoot/smbv1-not-installed-by-default-in-windows).
+
+For receiver files in Windows File Explorer, configure the [receiver as a Samba server](../samba-server/). SMB client, Samba server and Windows discovery have separate [Network Services](../dienste/) entries.

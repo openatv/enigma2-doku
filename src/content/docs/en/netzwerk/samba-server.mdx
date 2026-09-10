@@ -1,0 +1,49 @@
+---
+title: "Receiver as a Samba server for Windows"
+description: "Receiver as a Samba server for Windows – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+A **Samba server** shares receiver files over the network, for example so Windows can access recordings. For the opposite direction – the receiver accessing a NAS – use [connect an SMB/CIFS share](../smb-cifs/).
+
+## Set up
+
+1. In **Menu → Setup → Network → Network Services**, install **Samba Server** if needed, start it and save the desired autostart state.
+2. Open **Samba Server Settings** in the Network menu.
+3. Review and save the four options:
+
+| Option | Effect |
+| --- | --- |
+| Enable automatic shares (`config.samba.enableAutoShare`) | Automatically publish detected storage devices as SMB shares. Check which drives become accessible. |
+| Access mode (`config.samba.autoShareAccess`) | Set automatic shares to Read/Write or Read-Only. Playback normally requires only reading. |
+| Allow guest access | Allows matching shares to be used without a Samba password. Modern Windows configurations may reject guest access. |
+| Workgroup name | For example WORKGROUP. An SMB grouping, not Windows domain membership or a password. |
+
+The test receiver shown permits guest and read/write access. The screenshot records its existing state; it is not a recommendation to expose every drive that way.
+
+4. If the service has not adopted the changed configuration, stop/start Samba through Network Services at a suitable time.
+5. Enter `\\192.168.1.50` in the **Windows File Explorer address bar**, substituting your receiver's IP. Select an actually offered share. Do not assume identical share names on all receivers.
+
+## Authentication instead of guest access
+
+The Linux password (`passwd`) and Samba's user database are separate. For an existing Linux user, `smbpasswd -a USERNAME` interactively adds or updates the Samba entry. That user must exist, and both the share and file permissions must permit access. Adding a Samba entry alone does not create a restricted share.
+
+Prefer a separate account limited to the required folders. `USERNAME` is a placeholder, not a literal account name. Do not put passwords in command-line arguments or screenshots. [Samba's documentation](https://www.samba.org/samba/docs/current/man-html/smbpasswd.8.html) explains password administration.
+
+## Files and troubleshooting
+
+The inspected dialogue edits workgroup and guest settings in **`/etc/samba/smb-local.conf`**. The main file **`/etc/samba/smb.conf`** and potentially generated shares also exist. Generated files may later be overwritten. Do not replace the entire configuration with an unrelated example.
+
+- Direct IP access works but the receiver is absent from Network: check **Windows network discovery / wsdd2** and Windows' private network profile. Discovery and file access are separate.
+- Login fails: check the username, Samba password, guest rules and cached Windows credentials. Windows may already hold a connection to the same receiver using another account.
+- Reading works but writing fails: check share mode, Linux permissions, the storage mount and free space.
+- A share disappears: is the drive mounted, automatic sharing enabled and Samba running?
+
+**Do not install SMB1 or disable the firewall** to make the receiver visible. Use SMB2/3, authentication and suitable sharing rules. The [Windows 11 guide](../windows11/) covers profiles, firewall and users. [SFTP](../fernzugriff/) is another way to transfer receiver files.
+
+Source: [OpenATV Samba dialogue](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkServices.py).
+
+## Receiver views
+
+<Capture id="ns-samba" language="en" alt="All four Samba options. Guest and read/write access show the existing test configuration." caption="All four Samba options. Guest and read/write access show the existing test configuration." />

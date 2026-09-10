@@ -1,0 +1,50 @@
+---
+title: "Manuelle IP und Adapteroptionen"
+description: "Manuelle IP und Adapteroptionen – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Öffne **Menü → Einstellungen → Netzwerk → Netzwerkübersicht**, markiere den Adapter und drücke <kbd>OK</kbd>. Für einen einfachen stabilen Zugriff ist eine **DHCP-Reservierung im Router** häufig ausreichend: Die Box bleibt auf DHCP und der Router teilt ihr immer dieselbe Adresse zu.
+
+## Feste IPv4-Adresse eintragen
+
+Dieses Beispiel gilt nur für ein Heimnetz `192.168.1.0/24` mit Router `192.168.1.1`. Es ist keine Vorgabe für jedes Netzwerk.
+
+| Feld | Beispiel | Bedeutung |
+| --- | --- | --- |
+| Aktiviert | Ja | Adapter beim Start verwenden |
+| IP-Protokoll | Nur IPv4 | Passend zum Beispiel; Dual-Stack kann IPv4 und IPv6 verwenden |
+| DHCP | Nein | Manuelle IPv4-Felder einblenden |
+| IP-Adresse | 192.168.1.50 | Freie, für die Box reservierte Adresse im eigenen Netz |
+| Subnetzmaske | 255.255.255.0 | Entspricht /24 |
+| Standardgateway | 192.168.1.1 | Router für andere Netze/Internet |
+| DNS überschreiben | Ja | Eigene DNS-Vorgabe nur für diesen Adapter |
+| Primärer DNS IPv4 | 192.168.1.1 | Router als Namensauflöser |
+| Sekundärer DNS | unbenutzt | Optional; kein zweiter Pflichtwert |
+
+1. Routeradresse, Netzmaske und DHCP-Bereich ermitteln.
+2. Eine konfliktfreie Adresse außerhalb des frei vergebenen DHCP-Pools wählen oder im Router ausdrücklich dafür reservieren. Nicht Router-, Netzwerk- oder Broadcastadresse verwenden.
+3. Felder eintragen und **Grün/Speichern** wählen. Die Netzwerkverbindung kann dabei kurz unterbrochen werden.
+4. Neue IP auf dem TV prüfen. Browser/SSH anschließend mit der neuen Adresse verbinden und den [Netzwerktest](../neustart-test/) ausführen.
+
+Eine Adresse wie `192.168.0.50` passt nicht unverändert zum Beispielnetz `192.168.1.0/24`. Doppelte IP-Adressen können zu wechselnden, schwer nachvollziehbaren Ausfällen führen.
+
+## Weitere Adapteroptionen
+
+| Option | Wann relevant? |
+| --- | --- |
+| IP-Protokoll | Nur IPv4, nur IPv6 oder beide. Der DHCP-Schalter und die gezeigten manuellen Adressfelder betreffen IPv4; IPv6 hat andere automatische Konfigurationswege. |
+| Netzwerkmetrik | Bei mehreren Adaptern beeinflusst die niedrigere Metrik die bevorzugte Standardroute. Eine zweite Verbindung nicht mit derselben festen IP konfigurieren. |
+| DNS überschreiben | Verwendet Adapter-DNS statt der globalen Vorgaben. IPv4-/IPv6-Felder erscheinen passend zum Protokoll. Ein globaler DNS-Wechsel wirkt dann möglicherweise nicht auf diesen Adapter. |
+| Verbindungsgeschwindigkeit | Normalerweise Auto/Aushandlung belassen. Erzwungene Geschwindigkeit oder Duplex-Einstellung kann die Verbindung verschlechtern oder trennen. |
+| Wake-on-LAN | Nur bei passender Hardware: Aufwecken per Magic Packet. Es ersetzt keinen Aufnahme-Timer und garantiert kein Aufwachen aus jedem Ausschaltzustand. |
+| Wake-on-WiFi / nur WoW | Nur bei unterstütztem WLAN-Treiber. „Nur WoW“ hält den Adapter für die Weckfunktion bereit, statt ihn als normale Netzwerkverbindung zu nutzen. |
+
+Die [vollständige Adapterreferenz](../../einstellungen/referenz/networkadapter/) enthält alle bedingten Felder. Für die Bilder wurden nur Formularwerte geändert, nicht die aktive Verbindung der Testbox.
+
+## Ansichten auf der Box
+
+<Capture id="ns-adapter-ip" language="de" alt="Beispiel 192.168.1.50/24 mit Gateway 192.168.1.1. Die Werte wurden nicht auf die aktive Verbindung angewendet." caption="Beispiel 192.168.1.50/24 mit Gateway 192.168.1.1. Die Werte wurden nicht auf die aktive Verbindung angewendet." />
+
+<Capture id="ns-adapter-dns" language="de" alt="Eigene DNS-Vorgabe für den Adapter. 0.0.0.0 steht hier für den unbenutzten zweiten Eintrag." caption="Eigene DNS-Vorgabe für den Adapter. 0.0.0.0 steht hier für den unbenutzten zweiten Eintrag." />

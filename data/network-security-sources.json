@@ -1,0 +1,87 @@
+{
+  "date": "2026-09-10",
+  "enigma2_revision": "fdc9347241245fd18fd0b8bc93727237189c916c",
+  "installed_package_revision": "c446c39a38957950de9989538e87c6278d2470cc",
+  "files": [
+    {
+      "file": "data/setup.xml",
+      "sha256": "c725b62e0f57d4e418454a43d486368dd132fad54f250f5e47c294007215744c",
+      "matches_installed_revision": false,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml"
+    },
+    {
+      "file": "data/menu.xml",
+      "sha256": "0d8da7853ce8cc51e0073bb24b071a2662fe97f331afa7f41a46dc16d279fe0f",
+      "matches_installed_revision": false,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/menu.xml"
+    },
+    {
+      "file": "data/networkdaemons.xml",
+      "sha256": "f90861cd673931e800420da2d72bdac7866da3e97bd89f36f61a7af2d5c70133",
+      "matches_installed_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/networkdaemons.xml"
+    },
+    {
+      "file": "lib/python/Screens/NetworkSetup.py",
+      "sha256": "5d29ceca83534d60e9bc0ab871262b26d36b90d404932c70284b77717d8423f5",
+      "matches_installed_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkSetup.py"
+    },
+    {
+      "file": "lib/python/Screens/NetworkServices.py",
+      "sha256": "6ff955cb0609f9c0cca1642f713f43c28f2246808e8839eb19216b558e660cac",
+      "matches_installed_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkServices.py"
+    },
+    {
+      "file": "lib/python/Components/NetworkManager.py",
+      "sha256": "981d1ac5d87f196c3861963fbf8b624c76c61f5293bf9da22b2637ee6e311e5c",
+      "matches_installed_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NetworkManager.py"
+    },
+    {
+      "file": "lib/python/Screens/ParentalControlSetup.py",
+      "sha256": "cce177dfe8b8af01a2d5bfd0fb8c7498abdd54afa8efe59d9de630293a9b16a3",
+      "matches_installed_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ParentalControlSetup.py"
+    },
+    {
+      "file": "lib/python/Components/ParentalControl.py",
+      "sha256": "57a903f4c58596232860c0d87fa42a5ec656395551c74510ccf31bedc902f65d",
+      "matches_installed_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/ParentalControl.py"
+    },
+    {
+      "file": "lib/python/Screens/SoftcamSetup.py",
+      "sha256": "a1a9e9e3ede55dad4081bfbc588ecdebd0e14ae6312a6cf3ad277fff6c568c8b",
+      "matches_installed_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SoftcamSetup.py"
+    },
+    {
+      "file": "lib/python/Screens/Ci.py",
+      "sha256": "74405b03c9397db37024e1e566080f705793b1ffe9baff98f6b996454bfd1a68",
+      "matches_installed_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Ci.py"
+    }
+  ],
+  "openwebif": {
+    "version": "2.4.0",
+    "commit": "cacd3f69d065fb0eae326aebf456273dc957d2fa",
+    "source": "https://github.com/oe-alliance/OpenWebif/blob/cacd3f69d065fb0eae326aebf456273dc957d2fa/plugin/setup.xml",
+    "sha256": "3fb218956b375a839719d0ad28e72a0422b0c969ece5a524157fab5f5629d5f4",
+    "setup_matches_receiver": true
+  },
+  "feed": {
+    "http://updates.mynonpublic.com/oea/feed": {
+      "url": "https://raw.githubusercontent.com/SusanOV/softcamfeed/main/oea/feed",
+      "status": 200,
+      "bytes": 3949,
+      "sha256": "022d29264ff1ed566a22b909485222852ca7484975cea3d3a3d7c6370dcc2c1b"
+    },
+    "https://updates.mynonpublic.com/oea/feed": {
+      "error": "HTTP Error 404: Not Found"
+    }
+  },
+  "feed_executed": false,
+  "xml_differences": "Only upgrade-source menu route and Umbra picon condition differ; network/security sections are unchanged."
+}

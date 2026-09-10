@@ -1,0 +1,42 @@
+---
+title: "Aufnahmen und Timer im Browser"
+description: "Aufnahmen und Timer im Browser – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+OpenWebif verwaltet dieselben Enigma2-Timer und Aufnahmedateien wie die Box. Ein Browser-Timer ist kein eigener Cloud-Aufnahmedienst.
+
+## Timer anlegen und prüfen
+
+1. Unter **Timer → Timer hinzufügen** oder aus einem EPG-Eintrag den Editor öffnen.
+2. Sender, Name/Beschreibung, Datum, Anfang/Ende und gegebenenfalls Wiederholung festlegen. Aufnahme und reines Umschalten unterscheiden.
+3. Aufnahmeziel, Vor-/Nachlauf und Verhalten nach dem Ereignis prüfen; angebotene Felder hängen vom Dialog ab.
+4. Speichern und in der Timerliste prüfen, ob der Timer aktiv ist und kein Konflikt gemeldet wird.
+
+Vorhandene Timer lassen sich bearbeiten, deaktivieren oder löschen. Deaktivieren behält den Eintrag, verhindert aber dessen geplante Ausführung. **Timer aufräumen** betrifft abgearbeitete Listeneinträge, nicht automatisch die Aufnahmedateien. **Neu laden/Aktualisieren** liest den aktuellen Zustand; ungespeicherte Editoränderungen sind dadurch nicht gesichert.
+
+Die Box führt gespeicherte Timer aus, auch wenn der Browser geschlossen ist. Ob sie aus Deep Standby rechtzeitig startet, hängt von Timer, Uhrzeit, Hardware und Ausschaltzustand ab. Stromlos kann sie nicht aufnehmen. NAS-Ziel und Tuner müssen zum Aufnahmezeitpunkt verfügbar sein. Grundlagen: [Aufnahmetimer und Konflikte](../../../timer/aufnahmen/), [Zeit und Aufwachen](../../../system/zeit-aufwachen/).
+
+## Aufnahmen
+
+Unter **Aufnahmen/Movies** ein vorhandenes Aufnahmeverzeichnis beziehungsweise Lesezeichen wählen. Die Beispielaufnahme liegt unter `/media/hdd/movie`. Verzeichnisname und Einhängepunkt können abweichen.
+
+| Aktion | Bedeutung |
+| --- | --- |
+| Informationen | Titel, Beschreibung, Dauer und Dateigröße ansehen, sofern Metadaten vorhanden sind |
+| Auf der Box wiedergeben | Startet Wiedergabe am angeschlossenen Fernseher |
+| Stream/Player | Öffnet Wiedergabe für den Client beziehungsweise eine Playlist |
+| Download | Kopiert die angebotene Datei auf PC/Telefon; Begleitdateien werden nicht zwingend zusammen mit der TS-Datei übertragen |
+| Umbenennen / Verschieben | Ändert echte Dateien auf der Box; Ziel muss erreichbar und beschreibbar sein |
+| Löschen | Entfernt die Aufnahme nach dem angebotenen Ablauf. Nicht davon ausgehen, dass EMC- oder MovieSelection-Papierkorbregeln hier identisch gelten. |
+
+Ein leerer Ordner bedeutet nicht zwingend „keine Aufnahmen“: zuerst richtigen Pfad, Mountstatus, Filter und Jugendschutz prüfen. Bei nicht erreichbarem NAS kann die Liste warten. Für vollständige Übertragung samt Metadaten bei Bedarf [SFTP](../../fernzugriff/) verwenden. Oberflächenvergleich: [MovieSelection und EMC](../../../aufnahmen/).
+
+Die Bilder zeigen vorhandene Dateien und eine leere Timerliste. Für den Rundgang wurden keine Aufnahme-Timer angelegt und keine Dateien gelöscht oder verschoben.
+
+## Ansichten im Browser
+
+<WebifCapture id="movies" language="de" alt="Vorhandene Beispielaufnahme mit Wiedergabe-, Download- und Verwaltungsaktionen." caption="Vorhandene Beispielaufnahme mit Wiedergabe-, Download- und Verwaltungsaktionen." />
+
+<WebifCapture id="timers" language="de" alt="Leere Timerliste der Testbox mit Hinzufügen, Aufräumen und Aktualisieren." caption="Leere Timerliste der Testbox mit Hinzufügen, Aufräumen und Aktualisieren." />

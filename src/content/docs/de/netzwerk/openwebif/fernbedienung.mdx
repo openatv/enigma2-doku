@@ -1,0 +1,35 @@
+---
+title: "Fernbedienung, Langdruck und Screenshots"
+description: "Fernbedienung, Langdruck und Screenshots – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+Das Tastenfeld in OpenWebif sendet Fernbedienungsbefehle an die **wirkliche Box**. Es bedient den gerade auf dem TV geöffneten Dialog. <kbd>OK</kbd> kann deshalb etwas bestätigen oder speichern; der Browser bietet keine isolierte Übungsoberfläche.
+
+## Tasten verwenden
+
+Ziffern, Richtungstasten, OK, MENU, EXIT, INFO, EPG, Farbtasten und weitere Tasten entsprechen den jeweiligen Enigma2-Aktionen. Die kleine, große oder moderne Fernbedienung kann anders angeordnet sein. Die reale Funktion hängt von aktuellem Dialog, Keymap und Tastenbelegung ab.
+
+In der klassischen Oberfläche erzeugt **Umschalttaste/Shift gedrückt halten und die Taste anklicken** den Langdruck. Nicht allein die Maustaste länger halten. So lassen sich beispielsweise weitere INFO-/EPG- oder Farbtastenfunktionen erreichen. Welche langen Tasten vorhanden sind, steht im [Langdruck-Verzeichnis](../../../anhaenge/langtasten/); die [Tastenanleitung](../../../erste-schritte/farbtasten-langdruck/) erklärt die Unterschiede.
+
+## Weitere Bedienelemente
+
+| Funktion | Verwendung |
+| --- | --- |
+| Lautstärke / Stumm | Ändert den Lautstärkezustand der Box. Bei Passthrough kann der AVR die tatsächliche Lautstärke regeln. |
+| Text senden | Übergibt Text an ein dafür geeignetes Eingabefeld auf dem Receiver; keine Shell-Befehlszeile. |
+| Nachricht senden | Blendet eine Nachricht am TV ein. Inhalt, Art und Anzeigedauer sind je nach Dialog wählbar. |
+| Standby / Aufwecken | Schaltet den normalen Bereitschaftszustand, solange die Box erreichbar ist. |
+| GUI-Neustart / Neustart / Herunterfahren | Unterbricht Oberflächen oder die ganze Box. Timerwarnungen beachten und offene Arbeiten vorher speichern. |
+| Screenshot / Kamera | Holt ein Bild der Receiver-Oberfläche; kein Screenshot des PC-Desktops. |
+
+Screenshot-Optionen können OSD/Video, Auflösung und Aktualisierung betreffen. **Automatische Aktualisierung** ruft wiederholt Bilder ab; ein kurzer Intervall erzeugt mehr Last. Bei geschützten Videoebenen oder nicht unterstütztem Grab kann das TV-Bild fehlen, obwohl das Menü sichtbar ist. Hohe Auflösung verbessert nicht automatisch ein nicht erfasstes Video.
+
+Für Supportbilder zuerst sicherstellen, dass keine PINs, API-Schlüssel, Passwörter, private Nachrichten oder Zugangsdaten sichtbar sind. Ein Screenshot kann zusätzlich Programminhalte zeigen. Die Box während Fernbedienung und Aufnahme der Bilder mit dem Benutzer am TV abstimmen.
+
+Ein Magic Packet kann eine ausgeschaltete Box nur bei unterstütztem und eingerichtetem Wake-on-LAN wecken. Ein nicht erreichbares OpenWebif kann keinen normalen Fernbedienungsbefehl mehr empfangen. Siehe [Adapteroptionen](../../manuelle-ip/).
+
+## Ansichten im Browser
+
+<WebifCapture id="television" language="de" alt="Links das native Web-Tastenfeld; Shift-Klick sendet in dieser Ansicht einen Langdruck." caption="Links das native Web-Tastenfeld; Shift-Klick sendet in dieser Ansicht einen Langdruck." />

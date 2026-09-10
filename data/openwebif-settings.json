@@ -1,0 +1,169 @@
+{
+  "version": "2.4.0",
+  "commit": "cacd3f69d065fb0eae326aebf456273dc957d2fa",
+  "source": "https://github.com/oe-alliance/OpenWebif/blob/cacd3f69d065fb0eae326aebf456273dc957d2fa/plugin/setup.xml",
+  "sha256": "3fb218956b375a839719d0ad28e72a0422b0c969ece5a524157fab5f5629d5f4",
+  "settings": [
+    {
+      "key": "config.OpenWebif.enabled",
+      "label_de": "OpenWebinterface einschalten",
+      "label_en": "OpenWebInterface Enabled",
+      "description_de": "Startet/stoppt OpenWebif nach dem Speichern. Bei deaktivierter Oberfläche am TV wieder aktivieren.",
+      "description_en": "Starts/stops OpenWebif when saved. Re-enable it at the TV if the browser interface is disabled."
+    },
+    {
+      "key": "config.OpenWebif.webcache.responsive_enabled",
+      "label_de": "Neues Design / moderne Oberfläche",
+      "label_en": "Use modern interface",
+      "description_de": "Wählt die responsive statt der klassischen Webansicht; ändert nicht den Enigma2-TV-Skin.",
+      "description_en": "Selects the responsive instead of classic web interface; does not change the Enigma2 TV skin."
+    },
+    {
+      "key": "config.OpenWebif.responsive_themeMode",
+      "label_de": "Design-Modus",
+      "label_en": "Theme mode",
+      "description_de": "Darstellung der modernen Oberfläche, etwa hell/dunkel. Nur bei moderner Ansicht sichtbar.",
+      "description_en": "Appearance of the modern interface, such as light/dark. Shown with the modern view."
+    },
+    {
+      "key": "config.OpenWebif.responsive_skinColor",
+      "label_de": "Benutzerdefinierte Farbe",
+      "label_en": "Use custom Color",
+      "description_de": "Akzent-/Farbwahl für die moderne Oberfläche.",
+      "description_en": "Accent/colour selection for the modern interface."
+    },
+    {
+      "key": "config.OpenWebif.identifier",
+      "label_de": "Boxnamen in der Kopfzeile anzeigen",
+      "label_en": "Show box name in header",
+      "description_de": "Hilft, mehrere Receiver auseinanderzuhalten. Verändert keine Netzwerkadresse.",
+      "description_en": "Helps distinguish receivers. Does not change a network address."
+    },
+    {
+      "key": "config.OpenWebif.identifier_custom",
+      "label_de": "Eigenen Boxnamen verwenden",
+      "label_en": "Use custom box name",
+      "description_de": "Schaltet von der automatisch ermittelten Bezeichnung auf einen selbst gewählten Anzeigenamen.",
+      "description_en": "Switches from the detected name to a custom display name."
+    },
+    {
+      "key": "config.OpenWebif.identifier_text",
+      "label_de": "Eigener Boxname",
+      "label_en": "Custom box name",
+      "description_de": "Text für die Kopfzeile; kein Hostname/DNS-Eintrag. Erscheint bei eingeschaltetem eigenen Namen.",
+      "description_en": "Header text, not a hostname/DNS entry. Appears when custom naming is enabled."
+    },
+    {
+      "key": "config.OpenWebif.port",
+      "label_de": "Port für HTTP",
+      "label_en": "HTTP port",
+      "description_de": "HTTP-Zugangsport, normalerweise 80. Andere Ports in der Browseradresse ergänzen. Ein Portwechsel verschlüsselt nichts.",
+      "description_en": "HTTP access port, normally 80. Append a different port to the browser URL. Changing ports does not add encryption."
+    },
+    {
+      "key": "config.OpenWebif.auth",
+      "label_de": "Authentifizierung für HTTP",
+      "label_en": "Enable HTTP Authentication",
+      "description_de": "Verlangt Anmeldung für HTTP. Zuerst ein funktionierendes Benutzerpasswort setzen. HTTP verschlüsselt diese Verbindung nicht.",
+      "description_en": "Requires authentication for HTTP. Set a working account password first. HTTP does not encrypt the connection."
+    },
+    {
+      "key": "config.OpenWebif.https_enabled",
+      "label_de": "HTTPS aktivieren",
+      "label_en": "Enable HTTPS",
+      "description_de": "Schaltet den TLS-Webzugang hinzu. Zertifikat, Name und Uhrzeit müssen passen. Prüft nicht automatisch alle Streaming-Wege.",
+      "description_en": "Enables TLS web access. Certificate, hostname and time must be correct. Does not automatically secure every streaming path."
+    },
+    {
+      "key": "config.OpenWebif.https_port",
+      "label_de": "Port für HTTPS",
+      "label_en": "HTTPS port",
+      "description_de": "TLS-Webport, normalerweise 443. Nur bei aktiviertem HTTPS eingeblendet.",
+      "description_en": "TLS web port, normally 443. Shown when HTTPS is enabled."
+    },
+    {
+      "key": "config.OpenWebif.https_auth",
+      "label_de": "Authentifizierung für HTTPS",
+      "label_en": "Enable HTTPS Authentication",
+      "description_de": "Anmeldung am HTTPS-Zugang zusätzlich zur Verschlüsselung verlangen. Getrennt vom HTTP-Schalter.",
+      "description_en": "Require authentication for HTTPS in addition to encryption. Separate from the HTTP switch."
+    },
+    {
+      "key": "config.OpenWebif.https_clientcert",
+      "label_de": "Zertifikatsbasierte Anmeldung erzwingen",
+      "label_en": "Require client cert for HTTPS",
+      "description_de": "Verlangt ein passendes Client-Zertifikat für HTTPS. Das Server-Zertifikat allein erfüllt diese Voraussetzung nicht; nur mit eingerichteter eigener Zertifikatsverwaltung verwenden.",
+      "description_en": "Requires a suitable HTTPS client certificate. The server certificate alone does not satisfy this; use only with configured certificate management."
+    },
+    {
+      "key": "config.OpenWebif.auth_for_streaming",
+      "label_de": "Authentifizierung für Streaming",
+      "label_en": "Enable Authentication for streaming",
+      "description_de": "Verlangt Anmeldung für den unterstützten Streaming-Zugang. Wird unter HTTP-Authentifizierung angeboten; ohne HTTP-Auth setzt Speichern den Schalter zurück. Den verwendeten Player testen.",
+      "description_en": "Requires authentication for the supported streaming path. Offered under HTTP authentication; saving with HTTP auth disabled resets it. Test your actual player."
+    },
+    {
+      "key": "config.OpenWebif.no_root_access",
+      "label_de": "Externen Zugriff als root verbieten",
+      "label_en": "Disable remote access for user root",
+      "description_de": "Beschränkt root-Anmeldung von externen Adressen. Im geprüften Code bleiben private/lokale Netze ausgenommen; dies sperrt root nicht generell und erstellt kein eingeschränktes Konto.",
+      "description_en": "Restricts root logins from external addresses. The inspected code exempts private/local networks; this is not a universal root ban and creates no restricted account."
+    },
+    {
+      "key": "config.OpenWebif.local_access_only",
+      "label_de": "Ohne Anmeldung nur lokaler Zugriff",
+      "label_en": "Without auth only local access is allowed!",
+      "description_de": "Hinweis/Schutz für Zugriff ohne Authentifizierung. Wird bei einem angebotenen Zugang ohne Anmeldung sichtbar. Keine Zusage, dass alle Geräte im lokalen Netz vertrauenswürdig sind.",
+      "description_en": "Notice/protection for unauthenticated access. Appears when an offered access path has no authentication. It does not establish trust in every local device."
+    },
+    {
+      "key": "config.OpenWebif.vpn_access",
+      "label_de": "Zugriff aus VPNs erlauben",
+      "label_en": "Enable access from VPNs",
+      "description_de": "Erweitert die erlaubten Zugriffswege im zugehörigen Modus. Erst ein bestehendes VPN einrichten; der Schalter erzeugt keinen Tunnel.",
+      "description_en": "Extends permitted access in the corresponding mode. Configure a real VPN first; the switch creates no tunnel."
+    },
+    {
+      "key": "config.OpenWebif.parentalenabled",
+      "label_de": "Kindersicherung aktivieren",
+      "label_en": "Enable Parental Control",
+      "description_de": "Bezieht den Enigma2-Jugendschutz in unterstützte Webif-Funktionen ein. Nicht als alleinige Absicherung aller APIs/Dateifreigaben verstehen.",
+      "description_en": "Applies Enigma2 parental control to supported Webif functions. Not complete protection for all APIs/file shares."
+    },
+    {
+      "key": "config.OpenWebif.streamport",
+      "label_de": "Streaming-Port",
+      "label_en": "Streaming port",
+      "description_de": "Port für erzeugte Stream-Verweise, normalerweise 8001. Muss zum tatsächlichen Streaming-Dienst passen.",
+      "description_en": "Port used in generated stream links, normally 8001. Must match the actual streaming service."
+    },
+    {
+      "key": "config.OpenWebif.service_name_for_stream",
+      "label_de": "Servicenamen zu Streaminformationen hinzufügen",
+      "label_en": "Add service name to stream information",
+      "description_de": "Ergänzt lesbare Sendernamen in Streaminformationen; hilfreich für Player und Playlists.",
+      "description_en": "Adds readable channel names to stream information, useful in players and playlists."
+    },
+    {
+      "key": "config.OpenWebif.allow_upload_ipk",
+      "label_de": "IPK-Upload erlauben",
+      "label_en": "Allow IPK Upload",
+      "description_de": "Erlaubt den Paket-Upload über die Weboberfläche. Installation verändert die Box mit Systemrechten; nur vertrauenswürdige kompatible Pakete verwenden.",
+      "description_en": "Allows package upload through the web interface. Installation changes the receiver with system privileges; use only trusted compatible packages."
+    },
+    {
+      "key": "config.OpenWebif.playiptvdirect",
+      "label_de": "IPTV-Streams im Browser wiedergeben",
+      "label_en": "Playback IPTV Streams in browser",
+      "description_de": "Bietet direkte Browser-Wiedergabe für IPTV. Browsercodecs, Anbieterzugang, CORS und Mixed Content können Grenzen setzen.",
+      "description_en": "Offers direct IPTV browser playback. Browser codecs, provider access, CORS and mixed content may limit it."
+    },
+    {
+      "key": "config.OpenWebif.displayTracebacks",
+      "label_de": "Debug: Tracebacks im Browser anzeigen",
+      "label_en": "Debug - Display Tracebacks in browser",
+      "description_de": "Zeigt technische Fehlerdetails für die Diagnose. Nur bei Bedarf aktivieren; vor dem Teilen Pfade und sensible Daten prüfen und anschließend wieder ausschalten.",
+      "description_en": "Shows technical error details for diagnosis. Enable when needed, inspect paths/sensitive data before sharing, then disable again."
+    }
+  ]
+}

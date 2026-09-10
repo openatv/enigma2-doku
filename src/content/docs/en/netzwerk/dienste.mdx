@@ -1,0 +1,63 @@
+---
+title: "Manage all 22 network services"
+description: "Manage all 22 network services – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Network → Network Services** offers 22 catalogue entries in the inspected version. Some packages belong to the image; others are installed as needed. Rows distinguish several states rather than a single on/off switch.
+
+## Installation, autostart and the running process
+
+1. Select a service. For a missing optional package, use Left/Right to select **Install**.
+2. **Green/Save** applies package and autostart changes. Downloads require Internet access and matching package sources.
+3. For an installed service choose and save the desired **autostart** state, which controls the next system boot.
+4. **Yellow/Start or Stop** immediately changes the running service. A service started now is not necessarily enabled for the next boot. Equally, Enabled autostart does not prove the process is currently healthy.
+5. **Blue/Show Log** is offered only where a log is configured and available. Not every service has this button.
+
+Changed selections are applied by Save; Yellow acts immediately. Uninstall removes packages and can involve package groups. Do not stop SSH during your only remote administration session. Avoid stopping NFS, Samba or autofs during NAS recordings or transfers.
+
+## Complete service catalogue
+
+| Service | Purpose | Package / process |
+| --- | --- | --- |
+| AutoFS | Mounts remote file systems on demand; see autofs/fstab. | `autofs` / `automount` |
+| Avahi | mDNS/DNS-SD for local names and service discovery; not a file server. | `avahi-daemon` / `avahi-daemon` |
+| Chrony | Synchronises system time using NTP. | `chronyd` |
+| Cron | Executes Linux schedules, independently of Enigma2 recording timers. | `crond` |
+| DNSCrypt | Local DNS proxy for selected, potentially encrypted resolvers. | `dnscrypt-proxy` / `dnscrypt-proxy` |
+| FTP | FTP file access using vsftpd; ordinary FTP is unencrypted. | `vsftpd` / `vsftpd` |
+| Inadyn | Updates a dynamic DNS name when the external address changes. | `inadyn-mt` / `inadyn-mt` |
+| LLMNR | Local name resolution using LLMNR. | `llmnrd` / `llmnrd` |
+| MiniDLNA | Publishes selected media folders through a DLNA/UPnP server. | `minidlna` / `minidlnad` |
+| NFS | Exports receiver folders as an NFS server; unnecessary for a NAS client mount. | `packagegroup-base-nfs` / `nfsd` |
+| OpenVPN | VPN tunnel using separately supplied configuration and credentials. | `openvpn` / `openvpn` |
+| SABnzbd | Separate Usenet downloader requiring its own setup and storage. | `sabnzbd3` / `SABnzbd.py,SABnzbd.pyc` |
+| Samba Client | SMB client tools. This entry has no persistent server or autostart switch. | `packagegroup-base-smbfs-client` |
+| Samba Server | Share receiver files over SMB; separate from a NAS mount. | `packagegroup-base-smbfs-server` / `smbd` |
+| SATPI | SAT>IP server: exposes suitable tuners over the network; subject to hardware and tuner allocation. | `satpi` / `satpi` |
+| ShellInABox | Shell terminal in a browser, also accessible through OpenWebif. | `shellinabox` / `shellinaboxd` |
+| SMART monitoring | Monitors supported drives using SMART; not a replacement for backups. | `smartmontools` / `smartd` |
+| SSH | Encrypted shell using Dropbear; SFTP additionally requires its subsystem. | `dropbear` |
+| Telnet | Unencrypted shell. Use SSH for routine administration. | `telnetd` |
+| uShare | Alternative older UPnP AV media server with client compatibility options. | `ushare` / `ushare` |
+| Windows network discovery | WS-Discovery for Windows network browsing; does not itself transfer files. | `wsdd2` / `wsdd2` |
+| ZeroTier-One | Virtual network using a network ID and authorisation by its administrator. | `zerotier` / `zerotier-one` |
+
+**OpenWebif is not a 23rd entry in this list.** It runs inside Enigma2 as a plugin with its own [configuration](../openwebif/optionen/). Restarting the GUI therefore interrupts OpenWebif too. FTP and SFTP are also different: SFTP uses SSH, not the FTP server.
+
+## A service will not start
+
+Check installation, configuration, occupied ports and logs. A startup script does not establish successful startup. Process status does not test login, share permissions or throughput.
+
+Configured log paths include `/var/log/samba/log.smbd`, `/var/log/inadyn.log`, `/var/volatile/log/minidlna.log` and `/etc/openvpn/openvpn.log`. Files may be absent if a service has never run. Logs can contain access and connection details.
+
+Continue with [Samba server](../samba-server/), [NFS server](../nfs-server/), [additional service configuration](../zusatzdienste/), [time](../../system/zeit-aufwachen/) and [Cron](../../timer/cron/). Source: [networkdaemons.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/networkdaemons.xml).
+
+## Receiver views
+
+<Capture id="ns-services-first" language="en" alt="Service list: installed AutoFS with autostart and a running process." caption="Service list: installed AutoFS with autostart and a running process." />
+
+<Capture id="ns-services-middle" language="en" alt="Optional packages appear as not installed; OpenVPN is selected here." caption="Optional packages appear as not installed; OpenVPN is selected here." />
+
+<Capture id="ns-services-last" language="en" alt="End of the 22-entry catalogue: SSH, Telnet, uShare, Windows discovery and ZeroTier." caption="End of the 22-entry catalogue: SSH, Telnet, uShare, Windows discovery and ZeroTier." />

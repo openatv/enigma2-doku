@@ -1,0 +1,162 @@
+[
+  {
+    "id": "television",
+    "language": "de",
+    "file": "src/assets/openwebif/de/television.png",
+    "sha256": "cc5b186861c805f031c154e164cd880fae1be24d615a3cfeafc9a8a29dc1923c",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "movies",
+    "language": "de",
+    "file": "src/assets/openwebif/de/movies.png",
+    "sha256": "884b3af5772b2cb252ac39e99d53d31ff4ef97b2c5e075daa2fbb486df725530",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "timers",
+    "language": "de",
+    "file": "src/assets/openwebif/de/timers.png",
+    "sha256": "5f30f01aa68816edc8b3f61d6a60f122742560ba5fbff320db32905fe88438a7",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "settings",
+    "language": "de",
+    "file": "src/assets/openwebif/de/settings.png",
+    "sha256": "8ab446cd71c5afdba548837ecefaf59105385dc8cccf1bb06ce3a06a2d67d5df",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "bouquets",
+    "language": "de",
+    "file": "src/assets/openwebif/de/bouquets.png",
+    "sha256": "f27d261b7f9c96f5c9342012625d3d0a3728bebee62bea53f770a45ed263864f",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "autotimer",
+    "language": "de",
+    "file": "src/assets/openwebif/de/autotimer.png",
+    "sha256": "d000f3d98d1dd25593e184ed7585e415c1356810230ba923afd4ded42ee64b2b",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "epgrefresh",
+    "language": "de",
+    "file": "src/assets/openwebif/de/epgrefresh.png",
+    "sha256": "188376525978699aeb34caaf5cfd72017b581da6698f46d8e74b561c1592e643",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "modern",
+    "language": "de",
+    "file": "src/assets/openwebif/de/modern.png",
+    "sha256": "4997e3b9b5a82e1feafcf8b10f6981e04417885b06b0b381867ff9811af21bdd",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "television",
+    "language": "en",
+    "file": "src/assets/openwebif/en/television.png",
+    "sha256": "e0622b1969ca0ca6124ad2a9fbe9fd358bd8b7c73fa53e2fd91635fc53b3fd52",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "movies",
+    "language": "en",
+    "file": "src/assets/openwebif/en/movies.png",
+    "sha256": "57f540a7d22733455c2a68226252cbcb1769f701d89e7caa20d62b9dc37f9272",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "timers",
+    "language": "en",
+    "file": "src/assets/openwebif/en/timers.png",
+    "sha256": "5c274655c67bcc55d2047923c00c00bb0b95be326590f32d74c32ea40b8974e6",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "settings",
+    "language": "en",
+    "file": "src/assets/openwebif/en/settings.png",
+    "sha256": "311a8fb071af90f85e518d0b6fafec7d9e834f6302ae348426b0b7057a8e5be8",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "bouquets",
+    "language": "en",
+    "file": "src/assets/openwebif/en/bouquets.png",
+    "sha256": "d8c3a0dc4ec54be7292c8d329bc94e8b9f59b854b64b81002e8634bff99a2ced",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "autotimer",
+    "language": "en",
+    "file": "src/assets/openwebif/en/autotimer.png",
+    "sha256": "d6c383a30ace79c8404314cde5bb532c17e15737adad0635e390169b025bef3f",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "epgrefresh",
+    "language": "en",
+    "file": "src/assets/openwebif/en/epgrefresh.png",
+    "sha256": "235700e2160ced553745515295336a6ad6336029b868b1e2427611e74392a912",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  },
+  {
+    "id": "modern",
+    "language": "en",
+    "file": "src/assets/openwebif/en/modern.png",
+    "sha256": "be00379f015cfa7ed327ac7daa568d9ce3d85be0cb7e4eb4690d8d663ef064ab",
+    "reviewed": true,
+    "captured_at": "2026-09-10",
+    "source_version": "OpenWebif 2.4.0 cacd3f69d0",
+    "notes": "Read-only browser navigation; no form submission, zapping, timer, package or file changes. No credentials visible."
+  }
+]

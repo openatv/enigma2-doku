@@ -78,3 +78,5 @@ Bedienebene: Einfach.
 ---
 
 Quelle: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+
+Anleitung: [Box als Samba-Server](../../../netzwerk/samba-server/).

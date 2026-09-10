@@ -1,0 +1,38 @@
+---
+title: "OpenWebif: your receiver in a browser"
+description: "OpenWebif: your receiver in a browser – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+OpenWebif provides channel lists, EPG, timers, recordings, remote control and administration in a browser. It runs on the receiver inside Enigma2. Screenshots show **OpenWebif 2.4.0**; available functions depend on image, hardware and installed extensions.
+
+## First access
+
+1. Read the receiver's IP in **Network Overview**.
+2. On a reachable home-network PC, tablet or phone, open a URL such as `http://192.168.1.50`. Substitute your own receiver IP.
+3. If a different port is configured, append it, for example `http://192.168.1.50:8080`. The actual URL also appears at the bottom of the TV-side OpenWebif configuration.
+4. If authentication is enabled, use a configured account and its password. First [set the root password and secure access](./sicherheit/).
+
+Find TV-side configuration under **Plugins → OpenWebif** or its entry in the Network menu. **Green/Save** may restart the web server and disconnect the browser. OpenWebif is unavailable while Enigma2 is stopped; deep standby is not normal web operation.
+
+## Classic and modern views
+
+**Use modern interface** enables the responsive view, which adapts to narrower screens and mobile devices. The classic view uses left-hand navigation with an integrated keypad. Labels, icons and arrangement differ; both control the same receiver. Mobile detection can also select the modern view automatically.
+
+Changing the web interface does not change the TV skin. Browser screenshots include the test receiver's model name, but the instructions are model-neutral. Broadcaster-supplied channel names and EPG text are not translated by switching the web interface to English.
+
+| Task | Tour |
+| --- | --- |
+| Television, radio, EPG and streams | [Channels and programmes](./fernsehen-epg/) |
+| Create timers, view and download recordings | [Recordings and timers](./aufnahmen-timer/) |
+| Remote control, long presses, messages and screenshots | [Browser remote control](./fernbedienung/) |
+| Bouquets, AutoTimer, EPGRefresh, e2MDB and more | [Extras and administration](./werkzeuge/) |
+| Ports, authentication, streaming and appearance | [All OpenWebif options](./optionen/) |
+| Protect access and diagnose connection problems | [Security and diagnosis](./sicherheit/) |
+
+Handbook search searches documentation. **OpenWebif EPG search** instead searches the receiver's programme data. Source: [OpenWebif project](https://github.com/oe-alliance/OpenWebif).
+
+## Browser views
+
+<WebifCapture id="modern" language="en" alt="Modern OpenWebif with existing programme data. The model in the header identifies only the test receiver." caption="Modern OpenWebif with existing programme data. The model in the header identifies only the test receiver." />

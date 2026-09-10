@@ -1,0 +1,53 @@
+---
+title: "Jugendschutz für Sender und Menüs"
+description: "Jugendschutz für Sender und Menüs – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Entschlüsselung / Jugendschutz → Jugendschutz-Einstellungen** schützt den Zugang innerhalb Enigma2. Sender und geschützte Menüs verwenden im geprüften Stand **denselben Service-PIN**. Für Netzwerkzugriff bleibt zusätzlich das [root-Passwort](../../netzwerk/fernzugriff/) zuständig; ein CAM kann einen eigenen Modul-PIN abfragen.
+
+## Einrichten und testen
+
+1. **Sender schützen** aktivieren und über **PIN ändern** einen eigenen PIN setzen und bestätigen.
+2. **PIN merken** zunächst auf **Nie** stellen, damit sich die Wirkung eindeutig prüfen lässt.
+3. Einstellungen speichern. In der Kanalliste den gewünschten Sender markieren, <kbd>MENU</kbd> drücken und **Zum Jugendschutz hinzufügen** wählen. Über das entsprechende Kontextmenü lässt sich eine Sperre mit Berechtigung wieder entfernen. Auch Bouquets können im passenden Kontext geschützt werden.
+4. Auf einen anderen Sender wechseln und den gesperrten Sender erneut öffnen: Die PIN-Abfrage muss erscheinen.
+5. Danach gewünschte Menüs schützen und auch deren Zugriff testen. Prüfe zusätzlich Browser, Aufnahmen und installierte Plugins separat.
+
+## Alle angebotenen Schutzoptionen
+
+| Einstellung | Verwendung |
+| --- | --- |
+| Sender schützen (`servicepinactive` / `configured`) | Aktiviert den Enigma2-Schutz für Dienste; beide Namen bezeichnen dieselbe Grundeinstellung. |
+| PIN ändern | Ändert den gemeinsamen PIN; keinen Beispiel-/Standard-PIN übernehmen. |
+| PIN merken (`storeservicepin`) | Nie, 5, 30 oder 60 Minuten oder bis Standby/Neustart. Während einer gültigen Freigabe kann die erneute Abfrage entfallen. |
+| Gesperrte Sender ausblenden (`hideBlacklist`) | Verbirgt geschützte Dienste; erscheint bei einer PIN-Merkzeit ungleich Nie. Eine fehlende Zeile ist kein Fehler. |
+| Nach EPG-Alter schützen (`age`) | Keine Altersblockierung oder Schwelle 3+ bis 18+. Verwendet gesendete EPG-Altersinformationen; fehlende oder falsche Metadaten sind keine zuverlässige Inhaltsprüfung. |
+| Sperrlisten neu laden | Liest die vorhandenen Listen erneut ein, erstellt aber keine neue Sender-/Internetfilterliste. |
+| Menüs schützen (`setuppinactive`) | Blendet die folgenden Menüschalter ein. |
+| Hauptmenü schützen | Schützt den Einstieg ins Hauptmenü. Die einzelnen Untermenüschalter werden dann teilweise ausgeblendet. |
+| Timermenü schützen | Beschränkt Zugriff auf Timerverwaltung. Bereits programmierte Timer werden dadurch nicht pauschal gelöscht. |
+| Erweiterungsverwaltung schützen | Beschränkt den Plugin-Browser. Plugins können eigene Zugangswege haben. |
+| Einstellungen schützen | Beschränkt die Konfiguration. |
+| Standby-Menü schützen | Beschränkt den entsprechenden Ausschalt-/Standby-Menüzugang. |
+| Softwareupdate schützen | Beschränkt den Update-Dialog. |
+| Filmliste schützen | Beschränkt den Zugang zur integrierten Aufnahmeliste. Das ist keine Verschlüsselung der Dateien. |
+| Kontextmenüs schützen | Schützt passende Kontextmenüs. |
+| Quickmenü schützen | Schützt das Schnellmenü. |
+
+## Grenzen verstehen
+
+Eine PIN-Sperre verschlüsselt keine Aufnahmen und sperrt nicht automatisch SSH, FTP, Samba oder NFS. Wer auf Dateien über eine Netzwerkfreigabe zugreifen darf, kann sie möglicherweise unabhängig vom Enigma2-Menü lesen. EMC, Mediaplayer und weitere Plugins können eigene Regeln oder Zugangswege haben.
+
+In **OpenWebif** gibt es zusätzlich **Jugendschutz aktivieren**. Der geprüfte Webif-Code berücksichtigt unter anderem geschützte Dienste beim Umschalten und geschützte Aufnahmeverzeichnisse. Daraus folgt keine vollständige Absicherung sämtlicher Stream-Ports, APIs und Erweiterungen. Aktiviere die Option bewusst, schütze den Webzugang mit Anmeldung und prüfe die verwendeten Wiedergabewege. Siehe [Web-Zugriff absichern](../../netzwerk/openwebif/sicherheit/).
+
+Bleibt die PIN-Abfrage aus, zuerst Merkzeit/Freigabezustand, tatsächlich geschützten Sender und korrekte Servicereferenz prüfen. Nach einer Senderlistenänderung die Sperren erneut testen. EPG-Alter allein ersetzt keine gezielte Sperrliste. Bei vergessenem PIN an den verantwortlichen Administrator beziehungsweise den [Support](../../hilfe/fehler-melden/) wenden; PINs und Kennwörter nicht öffentlich posten.
+
+Quellen: [Dialog](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ParentalControlSetup.py), [Schutzlogik](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/ParentalControl.py).
+
+## Ansichten auf der Box
+
+<Capture id="ns-parental-services" language="de" alt="Sender schützen und PIN-Merkzeit als ungespeichertes Beispiel. Es wurde kein PIN geändert." caption="Sender schützen und PIN-Merkzeit als ungespeichertes Beispiel. Es wurde kein PIN geändert." />
+
+<Capture id="ns-parental-screens" language="de" alt="Einzelne Menüs schützen. Hauptmenü-Schutz ist hier ausgeschaltet, damit die Unteroptionen sichtbar sind." caption="Einzelne Menüs schützen. Hauptmenü-Schutz ist hier ausgeschaltet, damit die Unteroptionen sichtbar sind." />

@@ -291,3 +291,5 @@ Wird abhängig von anderen Optionen oder dem Dialog eingeblendet.
 ---
 
 Quelle: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+
+Redaktionelle Erklärung: [DNS, Namensauflösung und DNSCrypt](../../../netzwerk/dns/).

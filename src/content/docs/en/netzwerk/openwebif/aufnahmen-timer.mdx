@@ -1,0 +1,42 @@
+---
+title: "Recordings and timers in the browser"
+description: "Recordings and timers in the browser – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+OpenWebif manages the same Enigma2 timers and recording files as the receiver. A browser timer is not a separate cloud recording service.
+
+## Create and check a timer
+
+1. Open the editor through **Timers → Add a timer** or an EPG event.
+2. Set the channel, name/description, date, start/end and repetition if required. Distinguish recording from zap-only timers.
+3. Check recording location, margins and after-event action; available fields depend on the dialogue.
+4. Save and verify that the list contains an enabled timer without a reported conflict.
+
+Existing timers can be edited, disabled or deleted. Disabling retains the entry but prevents its scheduled execution. **Cleanup Timers** concerns completed list entries, not automatic deletion of recording files. **Refresh/Reload** reads current state; it does not save unsaved editor changes.
+
+The receiver executes saved timers after the browser is closed. Waking from deep standby depends on the timer, correct time, hardware and power state. A receiver without power cannot record. NAS storage and tuners must be available when recording starts. See [recording timers/conflicts](../../../timer/aufnahmen/) and [time/wakeup](../../../system/zeit-aufwachen/).
+
+## Recordings
+
+Under **Movies**, choose an existing recording directory or bookmark. The sample recording is in `/media/hdd/movie`; directory and mount names may differ.
+
+| Action | Meaning |
+| --- | --- |
+| Information | View title, description, duration and size where metadata exists |
+| Play on receiver | Starts playback on the attached TV |
+| Stream/player | Opens client playback or a playlist |
+| Download | Copies the offered file to the PC/phone; sidecar files are not necessarily downloaded with the TS file |
+| Rename/move | Changes real receiver files; the destination must be reachable and writable |
+| Delete | Removes the recording through the offered flow. Do not assume EMC or MovieSelection trash rules apply identically here. |
+
+An empty folder does not necessarily mean there are no recordings: check path, mount, filters and parental control. An unavailable NAS can leave the list waiting. For complete transfers including metadata, use [SFTP](../../fernzugriff/) if needed. Compare [MovieSelection and EMC](../../../aufnahmen/).
+
+Screenshots show existing files and an empty timer list. The tour created no recording timers and deleted or moved no files.
+
+## Browser views
+
+<WebifCapture id="movies" language="en" alt="Existing sample recording with playback, download and management actions." caption="Existing sample recording with playback, download and management actions." />
+
+<WebifCapture id="timers" language="en" alt="Empty test-receiver timer list with add, cleanup and refresh actions." caption="Empty test-receiver timer list with add, cleanup and refresh actions." />

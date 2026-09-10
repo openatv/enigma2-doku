@@ -1,0 +1,33 @@
+---
+title: "Sender, EPG und Streaming in OpenWebif"
+description: "Sender, EPG und Streaming in OpenWebif – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+Unter **Fernsehen** beziehungsweise **Radio** stehen die vorhandenen Senderlisten zur Verfügung. Die klassische Ansicht bietet unter anderem **Aktuell**, **Favoriten**, **Anbieter**, **Satelliten**, **Alle Sender** und **EPG**. Die moderne Ansicht stellt Bouquets und Programme anders dar.
+
+## Sender finden und Informationen öffnen
+
+1. Ein Bouquet/Favoritenliste öffnen, etwa die Liste mit Das Erste HD und ZDF HD.
+2. Aktuelle und nächste Sendung, Beginn, Ende und Fortschritt ansehen. Programmdetails über die entsprechende Sendungs-/Infoaktion öffnen.
+3. Für weitere Sendungen die EPG-Ansicht beziehungsweise den Sender-EPG verwenden. Suchtext eingeben und bei Bedarf **Beschreibung einbeziehen** und **auf Favoriten beschränken** wählen.
+4. Aus einem passenden EPG-Eintrag einen [Timer](../aufnahmen-timer/) vorbereiten. Vor dem Speichern Sender, Datum, Uhrzeit und Zielverzeichnis prüfen.
+
+**Favoritenliste aufklappen**, **auf der Box umschalten** und **Stream öffnen** sind unterschiedliche Aktionen. Die Bedeutung der kleinen Symbole über deren Tooltip prüfen. Umschalten verändert das Programm am Fernseher und kann Tunerressourcen belegen. Bei einem einzelnen Tuner gelten auch im Browser die [Grenzen des gleichzeitigen Empfangs](../../../tuner/single-tuner/).
+
+## Stream oder WebTV
+
+Die Stream-Aktion kann eine **M3U-/XSPF-Playlist** für einen externen Player liefern; das ist eine Liste mit einer Stream-Adresse, keine heruntergeladene Aufnahme. Je nach installierter WebTV-/Playerfunktion lässt sich eine Wiedergabe auch im Browser öffnen.
+
+- Der normale DVB-Stream nutzt typischerweise Port **8001**. Er kann zusätzlich zur Weboberfläche eigene Authentifizierung und Erreichbarkeit benötigen.
+- **Vor dem Streamen umschalten** lässt die Box zunächst auf den gewünschten Sender wechseln. Das wirkt auf den Fernseher und ist bei belegten Tunern relevant.
+- **Transcoding** wird nur mit passender Hardware und installiertem Backend angeboten. Bitrate/Auflösung beeinflussen Bandbreite und Qualität; die Menüanzeige allein beweist keine Transcoding-Fähigkeit.
+- Browser, externer Player und Box unterstützen nicht automatisch dieselben Codecs. Bei DVB-TS kann ein externer Player nötig sein, obwohl die Weboberfläche funktioniert.
+- Bei direkter **IPTV-Wiedergabe im Browser** ruft der Browser den Stream auf. Anbieterzugang, CORS, HTTPS/Mixed Content und unterstützte Formate können die Wiedergabe begrenzen. IPTV-Zugangsdaten können in Playlists stehen; nicht veröffentlichen.
+
+Ein Stream bleibt an Tuner, Empfang, Netzwerk und gegebenenfalls Entschlüsselungsberechtigung gebunden. Fehlende Programmdaten sind dagegen oft ein EPG-Thema: [kein EPG / Servicereferenz](../../../epg/fehlende-daten/). Formate: [Player und Codecs](../../../wiedergabe/formate/).
+
+## Ansichten im Browser
+
+<WebifCapture id="television" language="de" alt="Klassische Senderübersicht mit aktuellen und nächsten Sendungen. Es wurde nicht auf einen Sender umgeschaltet." caption="Klassische Senderübersicht mit aktuellen und nächsten Sendungen. Es wurde nicht auf einen Sender umgeschaltet." />

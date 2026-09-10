@@ -1,0 +1,48 @@
+---
+title: "DNS, name resolution and DNSCrypt"
+description: "DNS, name resolution and DNSCrypt – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Network → DNS Settings** configures global name servers. DNS translates hostnames into IP addresses. It is neither the receiver's address nor the gateway, and cannot fix a missing Internet connection.
+
+## Normal starting point
+
+Initially use **Router/Gateway** or the resolvers supplied by your network. The router often knows local device names too. A public resolver may not know an internal name such as `nas`. For manual servers choose **Static IP / Custom**, enter suitable addresses and save. A second resolver is optional; it is not a guaranteed workaround for every filter or server failure.
+
+**DNS override** in [adapter settings](../manuelle-ip/) is separate. Check it first when global changes seem ineffective. `/etc/resolv.conf` is generated from network configuration; make persistent changes through the menus.
+
+| Field | Purpose |
+| --- | --- |
+| Hostname | Receiver's network name. A short unique name helps identify it. |
+| Domain name / DNS suffix | Completes short names within your network; does not register a public domain. |
+| DNS protocol mode | IPv4, IPv6 or both with a chosen preference. Match the reachable infrastructure. |
+| DNS rotation | Changes resolver order; neither a VPN nor download load balancing. |
+| DNS data source | Router/network, custom addresses or a listed provider. Image-supplied lists can change. |
+| Name servers 1–4 | Dynamic IPv4/IPv6 fields. Values are editable in Custom mode. |
+| Yellow/Blue: move up/down | Moves offered resolvers within the same address family. Unavailable in some source modes. |
+
+## DNSCrypt and encrypted resolvers
+
+Installing the **DNSCrypt** service can make its data source available. The local proxy answers DNS requests using selected external resolvers. This encrypts DNS connections to those services, not all receiver traffic. Start the service and verify working resolution first.
+
+| Additional setting | Effect |
+| --- | --- |
+| DNSCrypt servers | Include resolvers supporting DNSCrypt. |
+| DoH servers | Use DNS over HTTPS. |
+| ODoH servers | Use Oblivious DoH with an additional proxy separation, where suitable targets are available. |
+| DNSSEC servers only | Select DNSSEC-capable resolvers. DNSSEC validates signed DNS data; it is distinct from transport encryption. |
+| No-log servers only | Select according to the provider's **declaration**; not independent proof of no logging. |
+| No-filter servers only | Exclude providers applying their own blocklists. This does not enable parental control and may avoid a desired filter. |
+| DNS cache | Cache recent answers to reduce repeated requests. |
+| Monitoring UI | Enable an additional DNSCrypt web interface, separate from OpenWebif. |
+| Username, password, port, privacy level | Configure access and presentation for that monitoring interface. Dialogue port range: 8080–9999; avoid occupied ports. |
+
+Overly restrictive filters or unreachable encrypted resolvers can break name resolution. Return to the previous working source and test changes individually. Correct time matters for encrypted connections; see [NTP and time](../../system/zeit-aufwachen/).
+
+Details and technical keys: [DNS options reference](../../einstellungen/referenz/dns/). Sources: [OpenATV DNSSettings](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkSetup.py), [DNSCrypt configuration](https://github.com/DNSCrypt/dnscrypt-proxy/wiki/Configuration). DNSCrypt was not installed for the screenshot series.
+
+## Receiver views
+
+<Capture id="ns-dns" language="en" alt="Global custom DNS form example. Hostname and addresses were not saved." caption="Global custom DNS form example. Hostname and addresses were not saved." />

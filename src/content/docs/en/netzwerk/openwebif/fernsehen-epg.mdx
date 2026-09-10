@@ -1,0 +1,33 @@
+---
+title: "Channels, EPG and streaming in OpenWebif"
+description: "Channels, EPG and streaming in OpenWebif – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+**Television** and **Radio** expose the receiver's existing channel lists. Classic navigation includes **Current**, **Bouquets**, **Providers**, **Satellites**, **All Channels** and **EPG**. The modern view arranges bouquets and programmes differently.
+
+## Find channels and information
+
+1. Open a bouquet, for example the list containing Das Erste HD and ZDF HD.
+2. Inspect current/next programmes, start/end times and progress. Open details through the programme/info action.
+3. Use EPG or channel EPG for more events. Enter search text and optionally enable **Include description** and **Restrict to bouquets**.
+4. Prepare a [timer](../aufnahmen-timer/) from a matching event. Check channel, date, time and destination before saving.
+
+**Expand a bouquet**, **zap the receiver** and **open a stream** are different actions. Check small icons using their tooltips. Zapping changes the programme on the TV and can allocate tuner resources. A single tuner has the same [simultaneous reception limits](../../../tuner/single-tuner/) when controlled through a browser.
+
+## Streaming or WebTV
+
+A stream action may download an **M3U/XSPF playlist** for an external player. This contains a stream URL, not a downloaded recording. Installed WebTV/player support may also offer browser playback.
+
+- Normal DVB streaming typically uses port **8001**. It may require separate reachability and authentication in addition to the web interface.
+- **Zap before streaming** first switches the receiver to the selected service, affecting the TV and potentially occupied tuners.
+- **Transcoding** requires compatible hardware and an installed backend. Bitrate/resolution affect bandwidth and quality; a menu entry alone does not establish transcoding support.
+- Browsers, external players and the receiver do not necessarily support the same codecs. DVB TS may need an external player even though the web interface works.
+- With direct **IPTV playback in the browser**, the browser fetches the stream. Provider access, CORS, HTTPS/mixed content and format support may limit playback. Playlists can contain IPTV credentials; never publish them.
+
+Streams still depend on tuners, reception, networking and, where applicable, decryption entitlement. Missing programme data is often a separate EPG problem: [missing EPG/service references](../../../epg/fehlende-daten/). Formats: [players and codecs](../../../wiedergabe/formate/).
+
+## Browser views
+
+<WebifCapture id="television" language="en" alt="Classic channel overview with current and next programmes. No channel was zapped." caption="Classic channel overview with current and next programmes. No channel was zapped." />

@@ -1,0 +1,50 @@
+---
+title: "Manual IP and adapter options"
+description: "Manual IP and adapter options – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Open **Menu → Setup → Network → Network Overview**, select the adapter and press <kbd>OK</kbd>. A **DHCP reservation on the router** often provides all the stability needed: the receiver keeps DHCP enabled while the router always assigns it the same address.
+
+## Enter a fixed IPv4 address
+
+This example applies only to a `192.168.1.0/24` home network with router `192.168.1.1`. It is not a universal configuration.
+
+| Field | Example | Meaning |
+| --- | --- | --- |
+| Enabled | Yes | Use the adapter at startup |
+| IP protocol | IPv4 only | Matches this example; dual stack supports IPv4 and IPv6 |
+| Use DHCP | No | Reveals manual IPv4 fields |
+| IP address | 192.168.1.50 | An unused address reserved for the receiver in your subnet |
+| Subnet mask | 255.255.255.0 | Equivalent to /24 |
+| Default gateway | 192.168.1.1 | Router towards other networks/the Internet |
+| DNS override | Yes | Adapter-specific DNS configuration |
+| Primary DNS IPv4 | 192.168.1.1 | Router acting as resolver |
+| Secondary DNS | unused | Optional, not a second mandatory address |
+
+1. Determine the router address, subnet mask and DHCP pool.
+2. Choose a conflict-free address outside the freely allocated DHCP pool, or explicitly reserve it at the router. Do not use the router, network or broadcast address.
+3. Fill in the fields and choose **Green/Save**. Connectivity may briefly drop.
+4. Check the new IP on the TV, reconnect browser/SSH to it and run the [network test](../neustart-test/).
+
+An address such as `192.168.0.50` does not fit this `192.168.1.0/24` example unchanged. Duplicate IP addresses can produce intermittent and confusing failures.
+
+## Other adapter options
+
+| Option | When does it matter? |
+| --- | --- |
+| IP protocol | IPv4 only, IPv6 only or both. The DHCP switch and displayed manual address fields concern IPv4; IPv6 has different automatic configuration mechanisms. |
+| Network metric | With multiple adapters, the lower metric influences the preferred default route. Do not give a second connection the same static IP. |
+| DNS override | Uses adapter DNS instead of global settings. IPv4/IPv6 fields follow the protocol choice. Global DNS changes may consequently not affect this adapter. |
+| Link speed | Normally leave Auto/negotiation enabled. Forcing speed or duplex can degrade or disconnect the link. |
+| Wake-on-LAN | Supported hardware only: wake using a Magic Packet. It neither replaces a recording timer nor guarantees wakeup from every power state. |
+| Wake-on-WiFi / WoW only | Supported wireless drivers only. WoW only reserves the adapter for waking instead of a normal connection. |
+
+The [complete adapter reference](../../einstellungen/referenz/networkadapter/) includes all conditional fields. The screenshots changed form values only, not the receiver's active connection.
+
+## Receiver views
+
+<Capture id="ns-adapter-ip" language="en" alt="Example 192.168.1.50/24 with gateway 192.168.1.1. Values were not applied to the active connection." caption="Example 192.168.1.50/24 with gateway 192.168.1.1. Values were not applied to the active connection." />
+
+<Capture id="ns-adapter-dns" language="en" alt="Adapter-specific DNS. Here 0.0.0.0 represents the unused second entry." caption="Adapter-specific DNS. Here 0.0.0.0 represents the unused second entry." />

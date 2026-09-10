@@ -1,0 +1,38 @@
+---
+title: "OpenWebif: die Box im Browser"
+description: "OpenWebif: die Box im Browser – OpenATV Enigma2"
+---
+
+import WebifCapture from '../../../../../components/WebifCapture.astro';
+
+OpenWebif bietet Senderlisten, EPG, Timer, Aufnahmen, Fernbedienung und Verwaltungswerkzeuge im Browser. Es läuft auf dem Receiver innerhalb Enigma2. Die gezeigte Oberfläche gehört zu **OpenWebif 2.4.0**; angebotene Funktionen hängen von Image, Hardware und installierten Erweiterungen ab.
+
+## Erster Zugriff
+
+1. IP-Adresse der Box in **Netzwerkübersicht** ablesen.
+2. Auf PC, Tablet oder Telefon im erreichbaren Heimnetz beispielsweise `http://192.168.1.50` aufrufen. Das ist ein Beispiel; die eigene Box-IP einsetzen.
+3. Falls ein anderer Port eingestellt ist, ihn ergänzen, etwa `http://192.168.1.50:8080`. Die tatsächliche Adresse steht auch unten in der OpenWebif-Konfiguration auf dem TV.
+4. Bei aktivierter Anmeldung ein eingerichtetes Benutzerkonto und dessen Passwort verwenden. Vorher [root-Passwort setzen und Zugriff absichern](./sicherheit/).
+
+Die TV-Konfiguration findest du über **Erweiterungen → OpenWebif** beziehungsweise den eingebundenen OpenWebif-Eintrag im Netzwerkmenü. **Grün/Speichern** kann den Webserver neu starten und die Browserverbindung trennen. Bei ausgeschalteter Enigma2-GUI ist auch OpenWebif nicht verfügbar; Deep Standby ist kein normaler Webbetrieb.
+
+## Klassische und moderne Ansicht
+
+**Nutze neues Design / Use modern interface** aktiviert die responsive Ansicht. Sie passt sich besser an Bildschirmbreite und mobile Geräte an. Die klassische Ansicht verwendet die linke Navigation mit eingebautem Tastenfeld. Beschriftungen, Symbole und Anordnung unterscheiden sich; beide bedienen dieselbe Box. Mobile Erkennung kann die moderne Ansicht auch automatisch auswählen.
+
+Ein Wechsel der Webansicht ist kein Wechsel des TV-Skins. In den Browserbildern steht der Modellname der Testbox; die beschriebenen Aufgaben sind geräteneutral. Sendernamen und EPG-Texte stammen von den Sendern und werden durch die englische Weboberfläche nicht übersetzt.
+
+| Aufgabe | Rundgang |
+| --- | --- |
+| Fernsehen, Radio, EPG und Streams | [Sender und Programme](./fernsehen-epg/) |
+| Timer erstellen, Aufnahmen ansehen und herunterladen | [Aufnahmen und Timer](./aufnahmen-timer/) |
+| Fernbedienung, Langdruck, Nachricht und Screenshot | [Fernbedienung im Browser](./fernbedienung/) |
+| Bouquets, AutoTimer, EPGRefresh, e2MDB und weitere Werkzeuge | [Extras und Verwaltung](./werkzeuge/) |
+| Ports, Anmeldung, Streaming und Design | [Alle OpenWebif-Optionen](./optionen/) |
+| Zugang schützen und Verbindungsfehler finden | [Sicherheit und Diagnose](./sicherheit/) |
+
+Die Handbuchsuche durchsucht die Dokumentation. **EPG-Suche in OpenWebif** durchsucht dagegen Programmdaten der Box. Quelle: [OpenWebif-Projekt](https://github.com/oe-alliance/OpenWebif).
+
+## Ansichten im Browser
+
+<WebifCapture id="modern" language="de" alt="Moderne OpenWebif-Oberfläche mit vorhandenen Programmdaten. Das Modell im Kopf ist nur die verwendete Testbox." caption="Moderne OpenWebif-Oberfläche mit vorhandenen Programmdaten. Das Modell im Kopf ist nur die verwendete Testbox." />

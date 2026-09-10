@@ -1,0 +1,53 @@
+---
+title: "Parental control for channels and menus"
+description: "Parental control for channels and menus – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Decryption & Parental Control → Parental Control Settings** restricts access within Enigma2. In the inspected version, channels and protected menus use **the same service PIN**. Network access separately uses the [root password](../../netzwerk/fernzugriff/), and a CAM may request its own module PIN.
+
+## Configure and test
+
+1. Enable **Protect services**, choose **Change PIN**, enter your own PIN and confirm it.
+2. Initially set **Remember service PIN** to **Never** to make testing unambiguous.
+3. Save. Highlight a channel in the channel list, press <kbd>MENU</kbd> and choose **Add to parental protection**. The corresponding context action removes protection with authorisation. Bouquets can also be protected in the appropriate context.
+4. Switch away and return to the protected service: a PIN prompt should appear.
+5. Enable the required menu restrictions and test their entry points too. Check browser access, recordings and installed plugins separately.
+
+## All offered protection options
+
+| Setting | Purpose |
+| --- | --- |
+| Protect services (`servicepinactive` / `configured`) | Enables Enigma2 service protection; both names represent the same underlying setting. |
+| Change PIN | Changes the shared PIN; do not retain an example/default code. |
+| Remember service PIN (`storeservicepin`) | Never, 5, 30 or 60 minutes, or until standby/restart. A valid remembered unlock can suppress another prompt. |
+| Hide parental locked services (`hideBlacklist`) | Hides protected services; offered when PIN remembering is not Never. Its absence in that mode is expected. |
+| Protect on EPG age (`age`) | No age block or a threshold from 3+ to 18+. Relies on broadcast EPG ratings; absent or inaccurate metadata is not reliable content assessment. |
+| Reload blacklists | Reloads existing lists; does not download a new channel or Internet filter. |
+| Protect Screens (`setuppinactive`) | Reveals the following menu protection controls. |
+| Protect main menu | Restricts entry to the main menu; some individual submenu switches are then hidden. |
+| Protect timer menu | Restricts timer administration. Existing timers are not automatically deleted. |
+| Protect plugin browser | Restricts the plugin browser; plugins may have other entry points. |
+| Protect configuration | Restricts settings access. |
+| Protect standby menu | Restricts the corresponding shutdown/standby menu. |
+| Protect software update screen | Restricts the update dialogue. |
+| Protect movie list | Restricts access to the built-in recording list. Does not encrypt files. |
+| Protect context menus | Protects the relevant context menus. |
+| Protect Quickmenu | Protects the quick menu. |
+
+## Understand the limits
+
+A PIN does not encrypt recordings or automatically restrict SSH, FTP, Samba or NFS. Someone allowed to access files through a network share may read them independently of Enigma2's menus. EMC, media players and other plugins may have separate rules or entry points.
+
+**OpenWebif** has an additional **Enable Parental Control** option. The inspected code checks protected services during zapping and protected recording directories, among other paths. This does not establish comprehensive protection for every streaming port, API or extension. Enable the option deliberately, require web authentication and test the playback paths you actually use. See [secure web access](../../netzwerk/openwebif/sicherheit/).
+
+If no PIN is requested, first check the remembered unlock period, whether the service is actually protected and its service reference. Retest after replacing channel lists. EPG age alone is no substitute for an explicit protection list. For a forgotten PIN, contact the responsible administrator or [support](../../hilfe/fehler-melden/); never post PINs or passwords publicly.
+
+Sources: [dialogue](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ParentalControlSetup.py), [protection logic](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/ParentalControl.py).
+
+## Receiver views
+
+<Capture id="ns-parental-services" language="en" alt="Service protection and PIN memory as an unsaved example. No PIN was changed." caption="Service protection and PIN memory as an unsaved example. No PIN was changed." />
+
+<Capture id="ns-parental-screens" language="en" alt="Protect individual menus. Main-menu protection is off here so the subordinate choices are visible." caption="Protect individual menus. Main-menu protection is off here so the subordinate choices are visible." />

@@ -1,0 +1,28 @@
+---
+title: "Entschlüsselung und Jugendschutz"
+description: "Entschlüsselung und Jugendschutz – OpenATV Enigma2"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Entschlüsselung / Jugendschutz** fasst zwei unterschiedliche Aufgaben zusammen: berechtigten Zugang zu verschlüsselten Programmen und Einschränkungen für die Nutzung der Box.
+
+OpenATV liefert selbst keine Softcams aus und bietet dafür keinen Softcam-Support. Vorhandene Bedienmenüs sind keine mitgelieferte Entschlüsselungssoftware. Ein externer Feed, dessen Pakete und CI-/CAM-Erweiterungen liegen außerhalb dieses Angebots. Prüfe vor der Nutzung die örtlichen gesetzlichen Bestimmungen, deine Empfangsberechtigung und die Bedingungen des Anbieters.
+
+| Ziel | Passendes Kapitel |
+| --- | --- |
+| Externen Softcam-Feed bewusst hinzufügen | [Feed installieren und prüfen](./softcam-feed/) |
+| Installierte Softcam auswählen, starten oder automatisch zuordnen | [Softcam, AutoCam, Cardserver und Stream Relay](./softcam-autocam/) |
+| Ein CI-Modul mit gültiger Berechtigung verwenden | [CI, CAM und Optionen](./ci-cam/) |
+| Sender, EPG-Altersgrenzen oder Menüs sperren | [Jugendschutz einrichten](./jugendschutz/) |
+| Verschlüsselter Sender bleibt dunkel | [Fehler eingrenzen](./fehler/) |
+
+Welche Einträge sichtbar sind, hängt von Hardware, installierten Paketen, vorhandenen Startskripten und der Einstellungsebene ab. **Experte** zeigt weitere Optionen, installiert aber keine fehlende Funktion. OSCam-/CCcam-Informationen erscheinen nur bei passendem erkannten Angebot; Common Interface benötigt einen CI-Schacht. Nicht jede Box zeigt daher jedes Menü.
+
+Freie Sender benötigen keine Softcam. Ein CAM schafft auch keinen weiteren Tuner: Aufnahme-, Streaming- und Entschlüsselungsgrenzen können unabhängig voneinander wirken. Siehe [gleichzeitig aufnehmen und fernsehen](../tuner/single-tuner/).
+
+Die hier beschriebenen Menüs wurden im [dokumentierten Quellstand](../netzwerk/quellen/) geprüft. Ein funktionierendes Pay-TV-Abonnement, Kartenfreischaltung oder CI+-Zusammenspiel wird durch die Beispielbilder nicht bestätigt.
+
+## Ansichten auf der Box
+
+<Capture id="ns-cam-menu" language="de" alt="Das Menü der Testinstallation: CI und Jugendschutz. Ohne externes CAM-Angebot fehlen Softcam-Einträge." caption="Das Menü der Testinstallation: CI und Jugendschutz. Ohne externes CAM-Angebot fehlen Softcam-Einträge." />
