@@ -37,3 +37,9 @@ Die Schreibweise des Produktnamens wurde in den Handbuchtexten auf **OpenATV** v
 ## Website-Abhängigkeiten
 
 Astro, Starlight, Pagefind und weitere Abhängigkeiten sind eigenständige Projekte mit eigenen Lizenzen. Ihre Paketversionen sind in `pnpm-lock.yaml` festgehalten. Es werden keine externen Schriftarten, Analytics-Dienste oder Live-Zugriffe auf eine Enigma2-Box in die Website eingebunden.
+
+## Optionale automatische Übersetzung
+
+Die Sprachbezeichnungen in `data/translation-languages.json` stammen aus `styles/all/theme/gt_full.js` der vom Betreiber bereitgestellten phpBB-Erweiterung `hifikabin/gtranslate` 3.3.1. Deren `composer.json` nennt James Newcombe als Entwickler, [GTranslate](https://gtranslate.io/) als Quelle des Übersetzungscodes und GPL-2.0-only als Lizenz. DE, EN und die automatische Spracherkennung wurden aus dieser Liste entfernt; DE und EN werden separat als Originalfassungen angeboten.
+
+Die Website verwendet eine eigene Integration des Google-Translate-Widgets nach dem in dieser Erweiterung verwendeten Prinzip. Das minifizierte Forumskript, seine Domain-Cookies und die phpBB-Vorlagen wurden nicht übernommen. Google-Skripte werden ausschließlich nach Auswahl einer zusätzlichen Sprache zur Laufzeit geladen und nicht im Repository verteilt. Google Translate und seine Kennzeichen gehören ihren jeweiligen Inhabern. Funktionsweise und externe Verbindung sind in [Weitere Sprachen](docs/TRANSLATION.md) beschrieben.

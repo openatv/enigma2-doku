@@ -12,7 +12,21 @@
   --sl-color-accent: #096caf;
   --sl-color-accent-high: #124064;
 }
-header.header { border-top: 3px solid var(--atv-blue); }
+/* Keep Google's visible translation toolbar above fixed navigation controls. */
+header.header { border-top: 3px solid var(--atv-blue); inset-block-start: var(--atv-translation-offset, 0px); }
+.sidebar-pane { inset-block-start: calc(var(--sl-nav-height) + var(--atv-translation-offset, 0px)); }
+.sl-menu-button { top: calc((var(--sl-nav-height) - var(--sl-menu-button-size)) / 2 + var(--atv-translation-offset, 0px)); }
+mobile-starlight-toc nav { top: calc(var(--sl-nav-height) - 1px + var(--atv-translation-offset, 0px)); }
+html { scroll-padding-top: calc(1.5rem + var(--sl-nav-height) + var(--sl-mobile-toc-height) + var(--atv-translation-offset, 0px)); }
+@media (min-width: 72rem) {
+  .right-sidebar { top: var(--atv-translation-offset, 0px); height: calc(100vh - var(--atv-translation-offset, 0px)); }
+  html { scroll-padding-top: calc(1.5rem + var(--sl-nav-height) + var(--atv-translation-offset, 0px)); }
+}
+/* At the first desktop breakpoint leave room for both language controls. */
+@media (min-width: 50rem) and (max-width: 63.99rem) {
+  header.header site-search button[data-open-modal] { width: 2.5rem; justify-content: center; padding: .5rem; }
+  header.header site-search button[data-open-modal] > :is(span, kbd) { display: none !important; }
+}
 .site-title img { width: auto; max-width: 14rem; height: 2.4rem; object-fit: contain; }
 .site-title { font-weight: 750; letter-spacing: -.025em; }
 .sl-markdown-content { line-height: 1.75; }

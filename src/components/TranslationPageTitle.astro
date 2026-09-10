@@ -1,0 +1,24 @@
+---
+import PageTitle from '@astrojs/starlight/components/PageTitle.astro';
+import { localePath } from '../lib/translation.mjs';
+const de = Astro.locals.starlightRoute.locale === 'de';
+---
+<PageTitle {...Astro.props} />
+<aside class="translation-notice" data-translation-notice hidden data-pagefind-ignore>
+  <p data-translation-status role="status" aria-live="polite"></p>
+  <p>{de ? 'Automatische Übersetzung aus Englisch. Die Bildschirmbilder bleiben Englisch. Bitte verwende englische Suchbegriffe.' : 'Automatic translation from English. Screenshots remain in English. Please use English search terms.'}</p>
+  <div class="translation-actions notranslate" translate="no">
+    <a href={`${localePath(Astro.url.pathname, 'en', import.meta.env.BASE_URL)}?translate=off`} data-native-link="en">English original</a>
+    <button type="button" data-translation-retry hidden>{de ? 'Erneut versuchen' : 'Try again'}</button>
+    <span>Powered by <a href="https://translate.google.com/" target="_blank" rel="noopener noreferrer">Google Translate</a></span>
+  </div>
+</aside>
+<style>
+  .translation-notice { margin-top: 1rem; padding: .85rem 1rem; border-inline-start: 3px solid var(--atv-blue); border-radius: .3rem; background: var(--sl-color-accent-low); font-size: var(--sl-text-sm); line-height: 1.6; }
+  .translation-notice[hidden] { display: none; }
+  p { margin: 0 0 .3rem; }
+  [data-translation-status] { font-weight: 600; }
+  .translation-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .45rem 1rem; }
+  button { color: inherit; font: inherit; background: var(--sl-color-bg); border: 1px solid var(--sl-color-gray-4); border-radius: .3rem; padding: .2rem .6rem; cursor: pointer; }
+  span { color: var(--sl-color-gray-2); font-size: .8rem; }
+</style>

@@ -2,6 +2,8 @@
 
 Die gemeinsame, modellneutrale Grunddokumentation für OpenATV: Deutsch und Englisch, durchsuchbare Anleitungen und ein Verzeichnis der vorhandenen Einstellungen. Mit originalem OpenATV-Logo aus dem Enigma2-Repository.
 
+Über **Weitere Sprachen / More languages** lassen sich die englischen Kapitel automatisch mit Google Translate lesen. Die englischen Bilder bleiben erhalten; DE und EN sind weiterhin direkt als Original verfügbar. Bedienung, Suche und Hosting: [Weitere Sprachen](docs/TRANSLATION.md).
+
 ## Inhalt dieser ersten Ausgabe
 
 - Erste Einrichtung und grundlegende Bedienung
@@ -81,7 +83,7 @@ Nach einem Import den Diff prüfen, neue oder geänderte Optionen redaktionell b
 
 ## Platzbedarf und Apache2
 
-`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Für die 140 freigegebenen Aufnahmen enthält die Website das Original-PNG zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit Tasten- und Wartungskapiteln belegt rund 83,10 MB, etwa 8,31 Prozent des Budgets.
+`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Für die 140 freigegebenen Aufnahmen enthält die Website das Original-PNG zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build einschließlich zusätzlicher Sprachauswahl belegt rund 85,59 MB, etwa 8,56 Prozent des Budgets.
 
 Bei einem Wechsel auf Apache2 wird dieselbe Website für die neue Adresse gebaut. Sie benötigt dort nur statische Dateiauslieferung. [Apache2-Bereitstellung](docs/APACHE2.md).
 

@@ -1,0 +1,50 @@
+---
+import { languages, localePath } from '../lib/translation.mjs';
+const base = import.meta.env.BASE_URL;
+const de = Astro.locals.starlightRoute.locale === 'de';
+const label = de ? 'Weitere Sprachen' : 'More languages';
+---
+<div class="atv-languages notranslate" translate="no" lang={de ? 'de' : 'en'} dir="ltr" data-pagefind-ignore data-translation-controls data-base={base}>
+  <label class="native-language">
+    <span class="sr-only">{de ? 'Originalsprache' : 'Original language'}</span>
+    <select data-native-language aria-label={de ? 'Originalsprache' : 'Original language'}>
+      <option value="" disabled hidden>{de ? 'Originalfassungen' : 'Originals'}</option>
+      <option value="de" selected={de}>Deutsch</option>
+      <option value="en" selected={!de}>English</option>
+    </select>
+  </label>
+  <details class="machine-languages">
+    <summary>{label}</summary>
+    <div class="translation-panel">
+      <p>{de ? 'Automatisch aus Englisch übersetzen. Bilder und Suchbegriffe bleiben Englisch.' : 'Translate automatically from English. Screenshots and search terms remain English.'}</p>
+      <label>
+        {de ? 'Sprache wählen' : 'Choose a language'}
+        <select data-machine-language aria-label={de ? 'Automatische Übersetzung' : 'Automatic translation'}>
+          <option value="">{de ? 'Sprache wählen …' : 'Choose a language …'}</option>
+          {Object.entries(languages).map(([code, name]) => <option value={code}>{name}</option>)}
+        </select>
+      </label>
+      <p class="provider-note">{de ? 'Nach deiner Auswahl wird Google Translate geladen.' : 'Google Translate loads after you choose a language.'}</p>
+      <a href={`${localePath(Astro.url.pathname, 'en', base)}?translate=off`} data-native-link="en">English original</a>
+    </div>
+  </details>
+</div>
+<script>
+  import '../scripts/translation';
+</script>
+<style>
+  .atv-languages { display: flex; align-items: center; gap: .65rem; font-size: var(--sl-text-sm); }
+  select { font: inherit; color: var(--sl-color-white); background: var(--sl-color-black); border: 1px solid var(--sl-color-gray-5); border-radius: .4rem; padding: .45rem .35rem; cursor: pointer; }
+  .native-language select { width: 6.8rem; }
+  summary { cursor: pointer; padding: .5rem .15rem; white-space: nowrap; }
+  summary:focus-visible, select:focus-visible { outline: 2px solid var(--sl-color-accent); outline-offset: 3px; }
+  .machine-languages { position: relative; }
+  .translation-panel { position: absolute; inset-inline-end: 0; top: calc(100% + .6rem); width: min(20rem, calc(100vw - 2rem)); padding: 1rem; background: var(--sl-color-bg); color: var(--sl-color-text); border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; box-shadow: 0 .5rem 1.5rem #0003; z-index: 10; line-height: 1.5; }
+  .translation-panel p { margin: 0 0 .8rem; }
+  .translation-panel label { display: grid; gap: .35rem; }
+  .translation-panel select { width: 100%; }
+  .translation-panel .provider-note { margin: .8rem 0 .4rem; font-size: .8rem; color: var(--sl-color-gray-2); }
+  @media (max-width: 49.99rem) {
+    .translation-panel { position: fixed; inset-inline: 1rem; width: auto; top: auto; bottom: 4rem; max-height: calc(100dvh - var(--sl-nav-height) - 6rem); overflow-y: auto; }
+  }
+</style>

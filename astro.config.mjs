@@ -14,6 +14,10 @@ export default defineConfig({
     defaultLocale: 'de',
     locales: { de: { label: 'Deutsch', lang: 'de' }, en: { label: 'English', lang: 'en' } },
     customCss: ['./src/styles/custom.css'],
+    components: {
+      LanguageSelect: './src/components/LanguageSelect.astro',
+      PageTitle: './src/components/TranslationPageTitle.astro',
+    },
     social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/openatv/enimga2-doku' }],
     editLink: { baseUrl: 'https://github.com/openatv/enimga2-doku/edit/main/' },
     sidebar: [
