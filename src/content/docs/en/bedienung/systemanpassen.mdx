@@ -1,0 +1,57 @@
+---
+title: "Customize system settings"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Usage & GUI → Customize System Settings** contains options shared by several areas. Change one group at a time. **Green/Save** applies changes; **Red/Cancel** discards unsaved form changes. Follow any GUI restart request.
+
+The [existing 31-option reference](../../einstellungen/referenz/usage/) includes the individual expert teletext fields. This guide explains the relationship between the groups.
+
+## Setup level and text input
+
+**Settings mode** selects Simple, Intermediate or Expert. It limits visible settings; it is not a performance mode and does not reset values. A hidden expert option can remain active. **Input scroll position** defines the proportion of the input field at which long text scrolls with the cursor. It does not change key repeat or channel-list scrolling speed.
+
+## Teletext
+
+**Caching** speeds access to pages already received. **Font and resolution** selects a preset or expert mode. Expert mode exposes UseTTF, bold text, horizontal resolution, start/end coordinates, X/Y letter offsets and width/height factors. Factors affect the font; coordinates define its display region. **CleanAlgo** controls how resolution and framebuffer are restored on exit.
+
+Start with a suitable preset. Change individual expert fields only to address a specific display problem; unsuitable borders or scaling can clip text. [Using teletext](../../wiedergabe/teletext/) explains pages, subpages and teletext subtitles. These options do not translate pages or provide teletext where the service carries none.
+
+## Tuners and HTTP streams
+
+| Option | Purpose and limit |
+| --- | --- |
+| Alternative services tuner priority | Prefer a reception type when configured alternatives provide the same service through different tuner types. It does not add reception hardware. |
+| Include ECM in http streams | Include entitlement control data for a legitimately authorised client that needs it. ECM is neither picture data nor an entitlement. |
+| Unscramble http streams | Decrypt outgoing streams on the receiver where possible, requiring appropriate decryption and valid entitlements. |
+| Unscramble receiving http streams | Route received HTTP streams through local decryption; additional demux resources may be used. The code handles services marked with 0x100 in the service type this way regardless of the switch. |
+| Require authentication for http streams | Require credentials on the streaming connection. Check together with [OpenWebif streaming authentication](../../netzwerk/openwebif/optionen/) and the actual player. This is separate from website HTTP authentication. |
+| Http(s) stream start delay | Add a delay before startup, in milliseconds. Increase only when the particular startup process needs it. This is not a general buffer for later network interruptions. |
+
+See [decryption](../../entschluesselung/) and [streaming](../../netzwerk/openwebif/fernsehen-epg/) for the related workflows.
+
+## Startup, power loss and timer wakeup
+
+| Option | Meaning |
+| --- | --- |
+| After power loss | Action after an unclean shutdown or loss of power, separate from normal boot behaviour. |
+| Boot-up action | Start normal playback or enter standby after boot, according to the available choices. |
+| Wake up time before a timer begins | How early the receiver should boot before a timer. A NAS may need extra startup time; also check recording margins and mount availability. |
+| Use workaround for wake up from deep-standby | Detect timer wakeups using a time window when the hardware wakeup indication is unreliable. |
+| Time window for detection of the wake up by a timer | Extend detection when the workaround is active. This does not create another alarm or correct an inaccurate clock. |
+
+**Standby keeps Enigma2 running; Deep Standby stops the running system.** A receiver disconnected from power cannot start itself through an Enigma2 timer. See [time and wakeup](../../system/zeit-aufwachen/) and [recording timers](../../timer/aufnahmen/). Enable the workaround only to address an observed detection issue.
+
+## Media marks and chapters
+
+**Cut file support for non-TS videos** and **for audio files** allow companion files containing marks or resume positions for suitable other formats. **Extended cut file support** stores additional information. **Chapter support** uses chapter positions supplied by the media and playback service.
+
+These switches do not cut, convert or delete media. They cannot add missing chapter support to a playback service. Directory write permissions and retaining companion files matter. See [MovieSelection](../../aufnahmen/movieselection/) and [playback services](../../wiedergabe/).
+
+
+## Receiver views
+
+<Capture id="ui-usage-stream" language="en" alt="System customisation with streaming, startup and Expert view. No streaming option was saved." caption="System customisation with streaming, startup and Expert view. No streaming option was saved." />
+
+<Capture id="ui-usage-wakeup" language="en" alt="Unsaved enabled wakeup workaround exposes its time window. Media marks and chapter options follow." caption="Unsaved enabled wakeup workaround exposes its time window. Media marks and chapter options follow." />

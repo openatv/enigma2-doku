@@ -1,0 +1,46 @@
+---
+title: "Bedienung / Oberfläche: alle Menübereiche"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Bedienung / Oberfläche** bündelt die tägliche Bedienung, die Bildschirmanzeigen und die Eingabegeräte. Hier findest du die 13 festen Unterpunkte des geprüften OpenATV-Menüs. Zusätzliche Plugins können eigene Einträge ergänzen. Gerätespezifische Punkte erscheinen nur, wenn die Box diese Funktion anbietet.
+
+Die vorhandenen ausführlichen Anleitungen sind unten direkt verlinkt. Die **Optionsreferenz** enthält bereits alle aus dem jeweiligen Setup erfassten Bezeichnungen, Hilfetexte, technischen Schlüssel und Sichtbarkeitsbedingungen. Sie ergänzt die praktische Erklärung.
+
+| Unterpunkt | Was du dort einstellst | Anleitung / vorhandene Referenz |
+| --- | --- | --- |
+| OSD | Menüs, Hilfe, Infobar, Meldungen, Bildschirmschoner und PiP | [Menüs und OSD](../erste-schritte/menue-anpassen/), [Infobar](../erste-schritte/infobar/), [PiP](./pip/); [60 Optionen](../einstellungen/referenz/userinterface/) |
+| Fernbedienungseinstellungen | Verhalten von POWER, OK, EPG, INFO, TV und Navigation | [Farbtasten und Langdruck](../erste-schritte/farbtasten-langdruck/); [15 Optionen](../einstellungen/referenz/remotebutton/) |
+| Senderliste | Bouquets, Nummerierung, Umschalten, Picons und Listenstile | [Kanalliste mit Galerie](../settings/kanalliste/); [50 Optionen](../einstellungen/referenz/channelselection/) |
+| Systemeinstellungen anpassen | Bedienebene, Teletext, Streams, Starten/Aufwachen, Medienmarken | [Systemeinstellungen](./systemanpassen/); [31 Optionen](../einstellungen/referenz/usage/) |
+| Skinauswahl | GUI-Skin, Display-Skin, Ersatzschrift und Vorlagen | [Skins installieren und auswählen](../skins/installieren/); [7 Optionen](../einstellungen/referenz/skin/) |
+| Picons | Senderlogos und getrennte Verzeichnisse für ihre Verwendung | [Picons einrichten](./picons/); [9 Optionen](../einstellungen/referenz/picon/) |
+| Display | Helligkeit, Anzeigen, Lauftext, Aufnahmezeichen, Datum und Uhrzeit vorne an der Box | [Frontdisplay und LEDs](./display-led/); [45 bedingte Optionen](../einstellungen/referenz/display/) |
+| Frontpanel-LEDs | Farbe und Helligkeit je Betriebszustand, wenn unterstützt | [Frontdisplay und LEDs](./display-led/); [5 Optionen](../einstellungen/referenz/leds/) |
+| Hotkey-Einstellungen | Funktionen für einzelne Tasten und Langdruck zuordnen | [Hotkeys einrichten](../erste-schritte/farbtasten-langdruck/) und [Langdruck-Verzeichnis](../anhaenge/langtasten/) |
+| Eingabegeräte | Fernbedienung, Fronttasten und angeschlossene Geräte; Wiederholrate/Verzögerung | [Eingabegeräte](./eingabegeraete/); vier dynamische Felder |
+| Fernbedienungscode | Unterstützte Empfänger und passende Fernbedienung auf einen Code abstimmen | [Fernbedienungscode](./fernbedienungscode/) |
+| Tastatur | Layout einer angeschlossenen Tastatur | [Tastatur und Texteingabe](./tastatur/); [Referenz](../einstellungen/referenz/keyboard/) |
+| Sprache / Region | Menüsprache und Länder-/Sprachvariante auswählen | [Sprache und Region](./sprache/); [Listeneinstellungen](../einstellungen/referenz/locale/) |
+
+## Ein Punkt oder eine Option fehlt
+
+Unter **Systemeinstellungen anpassen → Einstellungsmodus** gegebenenfalls **Experte** wählen. Experte zeigt mehr Optionen, ergänzt aber keine fehlende Hardware. Ein Frontdisplay, PiP oder ein einstellbarer Fernbedienungscode wird dadurch nicht nachgerüstet. Unteroptionen können zusätzlich von einem Schalter, der ausgewählten Listenansicht oder dem Skin abhängen. Auch [ausgeblendete Menüeinträge](../erste-schritte/menue-anpassen/) prüfen.
+
+Die Zahl der Referenzeinträge ist der Umfang des Quellkatalogs, nicht die Anzahl gleichzeitig sichtbarer Zeilen auf jeder Box. Bei den Skin-Feldern wird derselbe GUI-Skin-Eintrag mit und ohne Neustartbedingung nur einmal gezählt.
+
+## Schnell zum passenden Thema
+
+- **Ich finde eine Einstellung nicht:** Suchfeld mit sichtbarem Namen, englischer Bezeichnung oder Schlüssel verwenden, beispielsweise `screenSaverMode`, `Picon search mode` oder `Tastenwiederholung`.
+- **MENU im bereits geöffneten Menü:** öffnet die [OSD-Einstellungen](../erste-schritte/menue-anpassen/). MENU in Kanalliste, Plugin oder Einstellungsdialog hat eine eigene Aufgabe.
+- **Ton-/Untertitelsprache:** [automatische Sprachauswahl](../bild-ton/tonspuren/) statt Menüsprache.
+- **Bild abgeschnitten, HDMI-Auflösung falsch:** [OSD-Kalibrierung](../bild-ton/bildanpassung/) beziehungsweise [Videoausgabe](../bild-ton/video/).
+- **Skin gestalten:** [MetrixHD](../skins/metrixhd/) oder [Umbra](../skins/umbra/).
+
+[Quellen und Prüfumfang](./quellen/) erläutern die Grundlage und die Grenzen der Testbox.
+
+
+## Ansichten auf der Box
+
+<Capture id="ui-menu" language="de" alt="Bedienung / Oberfläche auf der Testbox. Hardwareabhängige Einträge fehlen hier teilweise; Sprache steht weiter unten." caption="Bedienung / Oberfläche auf der Testbox. Hardwareabhängige Einträge fehlen hier teilweise; Sprache steht weiter unten." />

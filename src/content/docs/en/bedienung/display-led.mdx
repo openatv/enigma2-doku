@@ -1,0 +1,57 @@
+---
+title: "Front display and LEDs"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Usage & GUI → Display Settings** controls the display on the front of the receiver. **Configure front panel LEDs** is a separate hardware-dependent entry. Both are independent of the TV Infobar.
+
+A segment display supports different content from a graphical LCD/OLED. A [display skin](../../skins/installieren/) arranges information on suitable displays. Brightness settings do not create a weather screen, and a picon path cannot add graphics to a segment display.
+
+## Brightness and power states
+
+1. Set a suitable **Normal** brightness.
+2. If required, select **Dimmed** brightness and **Dim delay**. The delay enables the transition to the dimmed level.
+3. Set **Standby** brightness separately and check it in standby later.
+4. Adjust contrast only where available. Values are device-specific steps, not comparable brightness measurements.
+
+**Deep Standby** is a separate state. Whether a clock or LED works there depends on hardware/front-processor support. Ordinary standby does not necessarily switch the display off completely.
+
+## All groups in the existing display reference
+
+The [45 reference entries](../../einstellungen/referenz/display/) also cover fields unavailable on this test receiver. Their visibility depends on the documented hardware conditions.
+
+| Group / options | Practical meaning |
+| --- | --- |
+| Clone TV screen to LCD | Display video or information on supported front LCDs. Does not add a tuner. |
+| Normal, Dimmed, Dim delay, Standby, Contrast | Brightness and legibility by state; see above. |
+| LED Normal/Standby/Deep Standby | Older driver-specific LED brightness controls within Display Settings. |
+| Power/control LED and standby/deep-standby states | Enable or disable available indicators. Not all receivers have both LEDs. |
+| Operating LED colour for each state | Select colour or switch off, where the driver supports it. |
+| Display state during operation/standby/deep standby | Enable or disable the display for each state. |
+| Show during operation / standby | Choose clock, channel number or blank on applicable segment displays. |
+| Initial/final delay, repetitions and scrolling speed | Scroll long text with pauses; more repetitions repeat the same text more often. |
+| LCD scroll speed and repeat scrolling | Corresponding controls for supported graphical LCDs. |
+| Software renderer scroll speed and delay | Values used by compatible skin renderers; separate from driver controls. |
+| MiniTV, PiP and frame rate | Video on capable front displays. Lower frame rate can save processing time; PiP has additional requirements. |
+| REC symbol during use and standby | Steady, blinking or other supported recording indications. Hiding the symbol does not stop recording. |
+| 12-/8-character mode | Special case for supported text displays: balance character repertoire and text width. |
+| Display icons | Enable status symbols supported by the display. |
+| Remaining/elapsed time, TV/media format, sign | Front-panel time display independent of the TV OSD. Programme timing comes from EPG; media position comes from the player. |
+| Display power, HDMI resolution, HDD indication | Enable the display and available status information. HDMI indication does not change video resolution; HDD indication is not a filesystem check. |
+| Date and time style | Select leading zeros and 12-/24-hour formatting. This does not set NTP, timezone or system time. |
+
+## Front-panel LEDs: five additional fields
+
+Where **Configure front panel LEDs** is available, it provides **Running colour**, **Running brightness**, **Standby colour**, **Standby brightness** and **Deep Standby colour**. A disabled colour can switch the LED off. The [LED reference](../../einstellungen/referenz/leds/) lists each field. This setup has no separate sixth control for Deep Standby brightness.
+
+## Dark display or incorrect content
+
+Check the actual power state, its brightness and enable switch first. For graphical displays, then check display skin and [picon assignment](../picons/). Correct clock errors under [time and wakeup](../../system/zeit-aufwachen/). Missing hardware-dependent fields are not a reason to force drivers or another receiver model.
+
+The image shows the actual available test-receiver dialog. It does not demonstrate functionality on every display or LED variant.
+
+
+## Receiver views
+
+<Capture id="ui-display" language="en" alt="Display options actually available on the test receiver, not evidence of other models’ capabilities." caption="Display options actually available on the test receiver, not evidence of other models’ capabilities." />

@@ -51,3 +51,17 @@ HDMI output is independent of skin resolution. Use WQHD only on a suitable recei
 Picons, front-display skins, e2MDB metadata and subtitles are separate topics. Continue with the [complete Umbra handbook](../umbra/) or [MetrixHD](../metrixhd/).
 
 Sources: [OpenATV package management](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/PluginBrowser.py), [skin selection](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SkinSelection.py).
+
+## Other fields in the general skin selector
+
+The [existing Skin reference](../../einstellungen/referenz/skin/) contains seven fields. In addition to GUI skin and fast reload, it includes:
+
+| Field | Purpose |
+| --- | --- |
+| LCD/Front panel | Select a separate display skin where suitable front-display hardware exists. Independent of the TV GUI skin. |
+| Fallback Font | Select a font for characters missing from regular skin fonts. It does not translate text or change keyboard layout. |
+| Channel Selection Screen | Choose a screen template offered by the current skin. |
+| Channel Selection List | Choose the entry layout within that template; see the [existing gallery](../../settings/kanalliste/). |
+| AutoRefresh | Automatically refresh supported templates. Does not schedule skin-package updates from the feed. |
+
+Channel Selection Screen/List also appear in channel-list settings: they are the same configuration fields. **Fast Skin Reload** avoids a full GUI restart for supported switches; other changes or plugins can still require one. See [Display](../../bedienung/display-led/) for brightness and [Picons](../../bedienung/picons/) for logo sources.

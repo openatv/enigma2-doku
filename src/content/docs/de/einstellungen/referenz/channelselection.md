@@ -5,6 +5,8 @@ editUrl: false
 pagefind: true
 ---
 
+Praktische Erklärung: [Bedienung / Oberfläche – Channel Selection Settings](../../../settings/kanalliste/).
+
 Diese Referenz enthält die vorhandenen Hilfetexte aus OpenATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.
 
 ## Wo finde ich das?

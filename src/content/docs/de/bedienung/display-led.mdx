@@ -1,0 +1,57 @@
+---
+title: "Frontdisplay und LEDs"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Bedienung / Oberfläche → Displayeinstellungen** betrifft die Anzeige vorne an der Box. **Frontpanel-LEDs** ist ein zusätzlicher, hardwareabhängiger Menüpunkt. Beides ist von der Infobar auf dem Fernseher getrennt.
+
+Ein Segmentdisplay zeigt andere Inhalte als ein Grafik-LCD/OLED. Der [Display-Skin](../../skins/installieren/) bestimmt bei geeigneten Displays die Aufteilung. Eine Helligkeitseinstellung erzeugt keine Wetteranzeige und ein Picon-Pfad erweitert kein Segmentdisplay um Grafiken.
+
+## Helligkeit und Betriebszustände
+
+1. Helligkeit für **Normalbetrieb** passend einstellen.
+2. Bei Bedarf **gedimmte Helligkeit** und **Ausblendungsverzögerung / Dim delay** wählen. Erst die Verzögerung macht den Wechsel zum gedimmten Wert wirksam.
+3. **Standby-Helligkeit** separat einstellen und das Verhalten später im Standby prüfen.
+4. Kontrast nur ändern, wenn das Display diesen Regler anbietet. Die Werte sind geräteabhängige Stufen, keine vergleichbaren Helligkeitsmesswerte.
+
+**Deep Standby** ist ein eigener Zustand. Welche Uhr oder LED dann noch arbeitet, hängt von der Frontprozessor-/Hardwareunterstützung ab. Normales Standby schaltet die Anzeige nicht zwangsläufig vollständig aus.
+
+## Alle Gruppen der vorhandenen Display-Referenz
+
+Die [45 Referenzeinträge](../../einstellungen/referenz/display/) erfassen auch Felder, die diese Testbox nicht zeigt. Die Auswahl unterliegt den dort dokumentierten Hardwarebedingungen.
+
+| Gruppe / Optionen | Praktische Bedeutung |
+| --- | --- |
+| TV-Bild auf LCD klonen | Auf geeigneter Hardware TV-Bild oder Informationen auf dem Front-LCD ausgeben. Kein zusätzlicher Tuner. |
+| Normal, gedimmt, Dim delay, Standby, Kontrast | Helligkeit und Lesbarkeit pro Zustand; siehe Ablauf oben. |
+| LED Normal/Standby/Deep Standby | Ältere treiberspezifische LED-Helligkeitsschalter im Displaydialog. |
+| Betriebs-/Kontroll-LED und Zustand in Standby/Deep Standby | Vorhandene LED gezielt ein-/ausschalten. Nicht jede Box besitzt beide LEDs. |
+| Betriebs-LED-Farbe pro Zustand | Farbe wählen oder LED abschalten, soweit der Treiber es anbietet. |
+| Displayzustand pro Betrieb/Standby/Deep Standby | Anzeige je Zustand ein-/ausschalten. |
+| Anzeige im Betrieb / Standby | Auf Segmentanzeigen etwa Uhrzeit, Sendernummer oder nichts wählen. |
+| Anfangs-/Endpause, Wiederholungen und Laufgeschwindigkeit | Lange Texte zeitversetzt rollen lassen; mehr Wiederholungen bedeutet häufigere Anzeige desselben Textes. |
+| LCD-Laufgeschwindigkeit und erneutes Scrollen | Entsprechende Steuerung für unterstützte Grafik-LCDs. |
+| Software-Renderer: Scrollgeschwindigkeit und Pause | Von passenden Skin-Renderern verwendete Lauftextwerte. Sie ersetzen nicht jeden Treiberregler. |
+| MiniTV, PiP und Bildrate | Videobild auf dafür geeigneten Frontdisplays. Weniger Bilder pro Sekunde kann Rechenzeit sparen; PiP benötigt zusätzliche Voraussetzungen. |
+| REC-Symbol im Betrieb und Standby | Aufnahmeanzeige dauerhaft oder blinkend, je nach Display auch andere angebotene Darstellung. Ein ausgeblendetes Symbol beendet keine Aufnahme. |
+| 12-/8-Zeichenmodus | Spezialfall unterstützter Textdisplays: Zeichenumfang gegenüber Textbreite abwägen. |
+| Displaysymbole | Vom Display bereitgestellte Statussymbole aktivieren. |
+| Restzeit/Laufzeit, TV-/Medienformat, Vorzeichen | Zeitdarstellung für Frontdisplay separat vom TV-OSD wählen. Die Sendungszeit kommt aus dem EPG, die Medienposition aus dem Player. |
+| Display ein, HDMI-Auflösung, HDD-Anzeige | Anzeige einschalten und unterstützte Statusinformationen einblenden. HDMI-Anzeige ändert keine Videoauflösung; HDD-Anzeige ist kein Dateisystemtest. |
+| Datum und Uhrzeit | Format wählen. Führende Nullen und 12-/24-Stundenformat betreffen die Darstellung, nicht NTP, Zeitzone oder Systemuhr. |
+
+## Frontpanel-LEDs: fünf zusätzliche Felder
+
+Wenn **Frontpanel-LEDs konfigurieren** vorhanden ist, stehen **Farbe im Betrieb**, **Helligkeit im Betrieb**, **Farbe im Standby**, **Helligkeit im Standby** und **Farbe im Deep Standby** zur Verfügung. Eine deaktivierte Farbe kann die LED abschalten. Die [LED-Referenz](../../einstellungen/referenz/leds/) enthält die einzelnen Felder. Es gibt in diesem Setup keinen separaten sechsten Regler für Deep-Standby-Helligkeit.
+
+## Anzeige bleibt dunkel oder zeigt falsche Inhalte
+
+Zuerst den tatsächlichen Betriebszustand, dessen Helligkeit und Ein-/Ausschalter prüfen. Bei einem Grafikdisplay danach Display-Skin und [Picon-Zuordnung](../picons/) prüfen. Eine falsche Uhrzeit wird unter [Zeit und Aufwachen](../../system/zeit-aufwachen/) korrigiert. Fehlende hardwareabhängige Felder sind kein Grund, fremde Treiber oder einen anderen Modelltyp zu erzwingen.
+
+Das Bild zeigt den tatsächlich angebotenen Dialog der Testbox. Die Anleitung behauptet keinen Funktionstest sämtlicher Display- und LED-Hardwarevarianten.
+
+
+## Ansichten auf der Box
+
+<Capture id="ui-display" language="de" alt="Tatsächlich verfügbare Displayoptionen dieser Testbox. Kein Beleg für die Ausstattung anderer Modelle." caption="Tatsächlich verfügbare Displayoptionen dieser Testbox. Kein Beleg für die Ausstattung anderer Modelle." />

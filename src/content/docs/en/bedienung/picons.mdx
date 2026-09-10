@@ -1,0 +1,61 @@
+---
+title: "Picons: channel logos and directories"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Picons** are small channel logos. The skin determines their position and size; picon settings determine where matching images are found. They are separate from e2MDB covers and posters.
+
+## Set up
+
+1. Install a suitable picon package through [Download plugins](../../plugins/installieren/) or copy your own PNG files to an appropriate directory. Check the package description and destination.
+2. Open **Menu → Setup → Usage & GUI → Picon Settings**.
+3. Select search mode and any directories, then save with Green.
+4. Enable logos in the [Infobar](../../erste-schritte/infobar/) and [channel list](../../settings/kanalliste/). New list templates must support them too.
+5. Check several channels. One matching logo does not establish that the whole package matches.
+
+## Search mode and the nine fields
+
+| Setting | Purpose |
+| --- | --- |
+| Picon search mode | Single-path mode uses the shared automatic search; multi-path mode permits separate assignments. |
+| Picon path 1–4 | Define up to four directories. Path 1 remains; add further paths with Yellow. |
+| InfoBar picon path | Select one of those directories for Infobar logos. |
+| Channel Selection picon path | Select the channel-list directory, for example for another logo shape. |
+| Front panel/Display picon path | Separate logos for a compatible display skin. |
+| OpenWebif picon path | Assign logos to the web interface; also check its own picon options. |
+
+The [nine reference entries](../../einstellungen/referenz/picon/) are already in the settings directory. Multi-path mode provides **Yellow → Add Path**, **Blue → Remove Path** and **OK on a path → directory selector**. Removal targets the last additional path; change any assignment still using it first. It does not delete PNG files. Configured directories must exist when saving.
+
+Automatic search considers local directories such as `/usr/share/enigma2/picon`, `/picon` and suitable `picon` folders on mounted storage. The renderer caches discovered paths. Single-path mode therefore does not imply a freely editable single-directory field in this dialog. Multi-path mode uses a valid assigned directory specifically; missing logos are not freely merged from all other assigned directories.
+
+## Matching filenames to channels
+
+**Service-reference picons** commonly use the first ten reference fields joined with underscores. This illustrates the syntax, not a guaranteed real channel reference:
+
+```text
+1:0:1:1234:5678:9ABC:C00000:0:0:0:
+1_0_1_1234_5678_9ABC_C00000_0_0_0.png
+```
+
+The native renderer also checks certain reference variants and name-based logos. Names are normalised, so the visible channel label is not always the exact filename. IPTV [service references](../../wiedergabe/servicereferenzen/) matter too. A changed URL, reference or channel name can affect matching. Picons do not supply EPG data.
+
+## Storage and troubleshooting
+
+Local flash or permanently mounted USB storage keeps logos available when the NAS is off. Balance PNG size/count against available flash. HDD folders may cause disk access; network paths can delay the interface when the NAS is unavailable. Automatic local search skips `/media/net`; choose an explicitly assigned remote location with care.
+
+| Problem | Check |
+| --- | --- |
+| Default logo everywhere | Package/PNG files, search mode, path and enabled display |
+| Only some missing | Reference, channel name, filename and case |
+| Wrong only in channel list | Assignment, classic/new style and its picon switch |
+| Correct on TV, wrong on front panel | Display skin and separate display assignment |
+| Correct on TV, wrong in OpenWebif | Webif assignment, picon switches and browser cache |
+| Old logos after a change | Save and reopen the view; reload GUI/browser if needed |
+
+The skin scales picons. A transparent logo can disappear against a similar background; check background colour and aspect ratio.
+
+
+## Receiver views
+
+<Capture id="ui-picons" language="en" alt="Unsaved multi-path example using the existing HDD picon directory. No paths were changed." caption="Unsaved multi-path example using the existing HDD picon directory. No paths were changed." />

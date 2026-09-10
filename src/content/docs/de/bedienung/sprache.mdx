@@ -1,0 +1,39 @@
+---
+title: "Sprache und Region auswählen"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Bedienung / Oberfläche → Sprache / Region** stellt die Menüsprache und eine angebotene Länder-/Sprachvariante ein. Die Anzeige kann **Sprachregion-/Sprachauswahl** heißen. Eine Sprache ist zum Beispiel Englisch; Varianten sind Englisch (GB) und Englisch (US).
+
+## Sprache auswählen
+
+1. In der Liste die gewünschte Sprache oder Region markieren. Installiert, verfügbar und aktuell ausgewählt sind unterschiedliche Zustände.
+2. OK wählt einen installierten Eintrag aus. Bei einem nur verfügbaren Eintrag kann OK zunächst das Sprachpaket installieren; dafür braucht die Box einen passenden Feed und Netzwerkzugang.
+3. Mit Grün speichern und einem angebotenen GUI-Neustart folgen. Plugins können Teile ihrer Texte erst danach neu laden.
+4. Rot/Abbrechen verwirft die Auswahl der aktiven Sprache. Bereits installierte Pakete werden dadurch nicht automatisch wieder deinstalliert.
+
+Die Auswahl kann Texte bereits als Vorschau ändern. Das ist noch nicht dasselbe wie dauerhaftes Speichern. **INFO** springt zum aktuellen Eintrag; die eingeblendeten Tasten sind maßgeblich.
+
+## Listenoptionen und Paketverwaltung
+
+**MENU** öffnet die beiden [vorhandenen Locale-Optionen](../../einstellungen/referenz/locale/): nur die Basiseinträge der Sprachpakete oder alle Sprachregionen anzeigen sowie die Sortierung nach den angebotenen Namen/Codes wählen. So lässt sich eine lange Liste leichter durchsuchen. Diese Sortierung ändert keine Senderreihenfolge.
+
+**Gelb** kann je nach Markierung Installieren, Entfernen oder Bereinigen anbieten. Bereinigen entfernt nicht benötigte Sprachpakete unter Berücksichtigung geschützter beziehungsweise permanenter Pakete. Es ist keine reine Suchfilterung. Vor dem Bestätigen prüfen, ob andere Benutzer weitere Sprachen brauchen. Ein rotes/ausgeschaltetes Statussymbol bedeutet nicht, dass ein Sender verschlüsselt ist.
+
+## Was dadurch nicht automatisch übersetzt wird
+
+- EPG-Beschreibungen kommen vom Sender oder EPG-Anbieter.
+- Audio- und Untertitelspuren werden unter [automatische Sprachauswahl](../../bild-ton/tonspuren/) priorisiert.
+- Bouquets, eigene Sendernamen, Dateinamen und Benutzernotizen bleiben erhalten.
+- Plugins benötigen eigene Übersetzungen. Ein englisches Feld in der deutschen GUI kann eine fehlende Pluginübersetzung sein.
+- Tastaturlayout und [Zeitzone/NTP](../../system/zeit-aufwachen/) gesondert prüfen.
+
+Die zusätzliche Sprachauswahl **dieser Website** ist unabhängig von der Box. Deutsch und Englisch sind native Handbuchfassungen; weitere Website-Sprachen übersetzen die englischen Seiten automatisch und behalten deren Bilder.
+
+
+## Ansichten auf der Box
+
+<Capture id="ui-languages" language="de" alt="Sprachliste mit aktuell gewählter Sprache und Paketstatus. Kein Sprachpaket installiert oder entfernt." caption="Sprachliste mit aktuell gewählter Sprache und Paketstatus. Kein Sprachpaket installiert oder entfernt." />
+
+<Capture id="ui-locale-settings" language="de" alt="Die zwei Listeneinstellungen: angezeigte Sprachregionen und Sortierung." caption="Die zwei Listeneinstellungen: angezeigte Sprachregionen und Sortierung." />

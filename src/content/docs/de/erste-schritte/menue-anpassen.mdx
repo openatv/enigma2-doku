@@ -114,3 +114,36 @@ Einige Zeilen sind erst unter **Fortgeschritten** oder **Experte** sichtbar. Den
 | Exakte Option oder technischer Schlüssel | [OSD-Referenz](../../einstellungen/referenz/userinterface/), etwa `config.usage.menuType` |
 
 Quellen: [MENU-Aktion und Menübearbeitung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Menu.py), [OSD-Einstellungen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [Menü-Auswahlwerte](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py).
+
+## Bildschirmschoner genauer einstellen
+
+**Bildschirmschoner anzeigen** bestimmt die Wartezeit oder deaktiviert ihn. Mit aktiver Zeit erscheinen **Bildschirmschoner-Modus** (`screenSaverMode`: leerer Bildschirm, Logo oder Picon) und **Bildschirmschonerbewegung** (Zeit bis zum nächsten Positionswechsel). Im nativen Ablauf wird der Timer insbesondere bei Pause beziehungsweise passenden Radio-/Audiowiedergaben verwendet. Er ist kein allgemeiner Zähler, der jedes laufende Fernsehbild nach fünf Minuten ohne Tastendruck abschaltet. PiP kann die Aktivierung verhindern.
+
+Die nächste Tastenaktion beendet die Schonanzeige. Ein Picon-Modus braucht ein passendes Senderlogo; siehe [Picons](../../bedienung/picons/). Die Schonanzeige schaltet weder die Box noch den Fernseher aus und ersetzt keinen Ausschalttimer.
+
+## Meldungen, Radio und weitere OSD-Funktionen
+
+| Vorhandene Option | Ergänzende Erklärung |
+| --- | --- |
+| Neustart Netzwerk in Erweiterungen anzeigen | Fügt eine Abkürzung ins Erweiterungsmenü ein. Sie kann beim Ausführen aktive Netzwerkverbindungen unterbrechen; kein automatischer Netzwerktest. |
+| Zeitverzögerung der Abschaltmeldungen | Zeit bis zur Standardaktion in passenden Standby-/Neustart-/Abschaltabfragen, etwa bei Timern. Nicht mit Aufnahme-Vorlauf oder Schlafdauer verwechseln. |
+| Jobaufgaben in Erweiterungen anzeigen | Laufende Hintergrundaufgaben dort zugänglich machen. Das ist keine neue Cron-Aufgabe und startet selbst keinen Job. |
+| Rotorbewegung anzeigen | Hinweis oder Symbol für eine laufende Positionerbewegung. Ausblenden bewegt oder stoppt keine Antenne. |
+| Alternativer Radiomodus | Andere Bedienoberfläche für Radio verwenden. Der separate Radiohintergrund beeinflusst dessen Bild, nicht den Empfang. |
+| Position abgeschlossener Timer | Abgelaufene Einträge in der Timerliste oben/unten einordnen. Löscht keine Aufnahme. |
+| Reihenfolge der Umschalthistorie | Reihenfolge zuvor besuchter Sender festlegen. Die HISTORY-Tasten haben eine eigene Funktionsauswahl. |
+| Umschaltfehler verbergen | Fehlermeldung ausblenden; Empfangsfehler bleibt bestehen. Für Fehlersuche wieder sichtbar machen. |
+| CI-Meldungen verbergen | Modulmeldungen ausblenden; aktiviert weder Modul noch Berechtigung. [CI/CAM](../../entschluesselung/ci-cam/) erklärt die Diagnose. |
+| VCR SCART im Hauptmenü | Bedingter Menüeintrag für einen vorhandenen SCART-Umschalter. Fügt keinem HDMI-Gerät einen Anschluss hinzu. |
+| Spinner-Position | Linke obere Ecke der Warteanimation verschieben. Das Schema verwendet skalierte Koordinaten von 0/0 bis 1260/700; keine direkt übertragbaren 4K-Bildpixel. |
+
+Der **Spinner** meldet eine beschäftigte Oberfläche. Ihn auszublenden löst beispielsweise einen nicht erreichbaren NAS-Mount nicht. Dazu [autofs und NAS-Ausfälle](../../netzwerk/autofs-fstab/) lesen.
+
+Für die drei **PiP-Optionen** gibt es eine [ergänzende Anleitung](../../bedienung/pip/). Alle 60 OSD-Referenzeinträge bleiben an ihrer [vorhandenen Stelle](../../einstellungen/referenz/userinterface/). Der [Bereich Bedienung / Oberfläche](../../bedienung/) verbindet sie mit den übrigen Untermenüs.
+
+
+## Ansichten auf der Box
+
+<Capture id="ui-screensaver" language="de" alt="Fünf Minuten und Logo sind ungespeicherte Formularwerte. Auf der Box wurde kein Bildschirmschoner aktiviert." caption="Fünf Minuten und Logo sind ungespeicherte Formularwerte. Auf der Box wurde kein Bildschirmschoner aktiviert." />
+
+<Capture id="ui-osd-messages" language="de" alt="OSD-Meldungen und allgemeines Verhalten. Die Wartezeit betrifft Abschaltabfragen." caption="OSD-Meldungen und allgemeines Verhalten. Die Wartezeit betrifft Abschaltabfragen." />

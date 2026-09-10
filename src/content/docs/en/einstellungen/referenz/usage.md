@@ -5,6 +5,8 @@ editUrl: false
 pagefind: true
 ---
 
+Practical guide: [Usage & GUI – Customize System Settings](../../../bedienung/systemanpassen/).
+
 This reference contains the help text provided by OpenATV. The open dialog and selected options determine which entries are visible.
 
 ## Where do I find it?

@@ -2770,5 +2770,201 @@
     "run": "ns-b-en-network-security",
     "sha256": "b70d8822f81643af0e54e5677a3352af28f5e0eefdf03131985a583c5bc0e523",
     "tool_commit": "b9b260f88baad3d12ee676e6383c53c4c4c009ab"
+  },
+  {
+    "language": "de",
+    "id": "ui-menu",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "99d63b7413255c66934bf43870ecf9d011910d015e2ac35e297e15d9d0ba52b8",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-usage-stream",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "8ca4ef91ac69d1c28b234228a1d564a0278301497ae8da99ff51011a0bcab062",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-usage-wakeup",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "3873b4c45edef52259728e159742abb89d901a637809cc4281d3c16dde22386d",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-screensaver",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "9abd4326905753742a9b1ffe445b8f7d467b6b515ca956028f4e05b11d280763",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-osd-messages",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "1c6dc4b98e7c3e398f12cfad65fcb84ee11589abaf959823a654f68d9f54731d",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-remote-main",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "f96678ad532e2e96c075ad12432fe69d59848a87e4702c134dc4216c09b42050",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-remote-extra",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "b634f171b7c4675323e64f57964b4167dd9b987e824a6d9d728eaba7e64230c2",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-picons",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "302235f30d969a2f5a1d2385c6d059227b5362c32c0dabfef86760b83fc5aaa0",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-display",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "d8ca6c9b765d665e98ad061b0082a16de0b66e48febd4ecb83754dc94b2bcb31",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-input-list",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "3c45c18da8277a04eb7864c5b2b23f9bac742823077a0ce9fc9d550b2a981099",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-input-repeat",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "9000b631c70d11b98c68c89d69fe1d60ce88e58cb68ff43d5598b76951cc56f0",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-keyboard",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "6aa6ab19367d32c8a7c01cc04910310e47d1bfb1ddb3fc8379f17a3e87734b41",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-languages",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "2520444909cff6350ddb8a13038a4302d350a8a57b0fc7e44881803058aa5852",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "de",
+    "id": "ui-locale-settings",
+    "run": "ui-a-de-usage-gui",
+    "sha256": "a127cfc53fc666c43dc305be6210e14314081de21a9414cb4fd55471299c0ebf",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-menu",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "995dec5742cedd2d7bfb7e0e9e6c1282e4c8949fe8a59f1c8c6f81e766ec7f0a",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-usage-stream",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "e36ccf497eb162edf1e95d7a978e61c02f0cd6b58fae0eadc4fe78444a236012",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-usage-wakeup",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "85838c6a9f941e2879cf43d1a5d00a7f3d164e4771262d84e33f522dbecbfd22",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-screensaver",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "5cabd86740be66107eb80abebcc251a51c40c80583c72fc32f756fdf582005b8",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-osd-messages",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "99d30b1588c0b223813024a6170f0ab4ad524a1c163acf8ccc058dfd662f897b",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-remote-main",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "8df9f5861f62a46f87f830db9d01558c7093f65c5fb4dc6ba6e463e1eee865f4",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-remote-extra",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "d4579665f8122b85d42d5c7fb34edf34907606f9f80312584067fdc46b70ede2",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-picons",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "e6aaface653ec6518210baccac7d8462c693a7bb6fee7d11059a808bdf1349b5",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-display",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "66cef71cfc5b99ae8cf13d2931a7aae9b713b50c71715de77c8674af21bd541f",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-input-list",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "b584e89aafe8b322db9f79c72221e949a45e70de30f1950f614753074ac56510",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-input-repeat",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "46812113152ce23e8e8ec14bb67d7d0b0bb818e640c10692f5538feb05294419",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-keyboard",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "7e9c9b5ce83ef3631733034dce01bbb4e4192efb4e809a40ef94e051454d6d79",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-languages",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "61f15f1317da0fc01cb5cc4933391f9a44c44f4c28a3ab4acce2a2cc18e83c20",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
+  },
+  {
+    "language": "en",
+    "id": "ui-locale-settings",
+    "run": "ui-a-en-usage-gui",
+    "sha256": "c18628f771888ac6c741cbbbba2f3f3a9122f6c184716430f4e69343e61de897",
+    "tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3"
   }
 ]

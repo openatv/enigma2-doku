@@ -1,0 +1,42 @@
+---
+title: "Eingabegeräte und Tastenwiederholung"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Bedienung / Oberfläche → Eingabegeräte** zeigt erkannte Eingabequellen: Fernbedienungen, Fronttasten und je nach Anschluss Tastatur, Maus oder HDMI-CEC-Eingaben. Ein Treibername wie „dreambox remote control (native)“ bezeichnet das Eingabegerät beziehungsweise die Treiberschnittstelle; daraus lässt sich nicht zuverlässig das Gehäusemodell ableiten.
+
+## Das richtige Gerät wählen
+
+Markiere das tatsächlich verwendete Gerät und öffne es mit OK. Mehrere Einträge können zur gleichen physischen Box gehören. Fronttasten und Fernbedienung sind getrennte Eingabequellen. **Fernbedienungstyp einstellen** erscheint zusätzlich, wenn die Treiber mehrere Typen unterstützen; siehe [Typ und Code](../fernbedienungscode/).
+
+## Vier dynamische Felder
+
+Diese Optionen werden vom Gerätedialog aufgebaut und stehen nicht als vollständig ausgefülltes Setup im XML-Katalog.
+
+| Feld | Was sich ändert |
+| --- | --- |
+| Wiederholung und Verzögerung ändern? | Ja erlaubt eigene Werte. Nein setzt die Gerätewerte auf ihre Vorgaben zurück; es schaltet nicht die ganze Fernbedienung aus. |
+| Gerätename | Name für diese Konfiguration. Der Name ist keine Tastenbelegung und kein Kopplungscode. |
+| Verzögerung vor Tastenwiederholung | Wartezeit bis eine gehaltene Taste zu wiederholen beginnt, in Millisekunden. Länger hilft gegen ungewolltes Loslaufen. |
+| Intervall bei Tastenwiederholung | Abstand zwischen Wiederholungen, in Millisekunden. Kleiner bedeutet schnelleres Weiterlaufen. |
+
+Beispiel: **700 ms Verzögerung und 100 ms Intervall** bedeutet zunächst ungefähr 0,7 Sekunden warten, danach rund zehn Wiederholungen pro Sekunde, soweit Treiber und Taste das unterstützen. Das sind Beispielwerte aus dem Dialog, keine Vorgabe für alle Geräte.
+
+## Einstellen und prüfen
+
+1. Ausgangswerte notieren und eine gut bedienbare Alternative bereithalten, etwa [OpenWebif](../../netzwerk/openwebif/fernbedienung/).
+2. Nur eine Zeit ändern. Die native Konfiguration kann die Treibereinstellung bereits während der Eingabe anwenden.
+3. In einer Liste kurz drücken und dann gedrückt halten. Auf Doppelschritte und zu schnelles Scrollen achten.
+4. Speichern und die Bestätigung beantworten. Bei unbrauchbarer Bedienung abbrechen oder auf Vorgaben zurückstellen.
+
+Tastenwiederholung, [Langdruck-Aktion](../../erste-schritte/farbtasten-langdruck/) und **Langdruck-Emulation** sind verschiedene Dinge. Eine schnellere Wiederholung erzeugt keine neue Langdruck-Funktion. Doppelte Eingaben können auch entstehen, wenn eine Universalfernbedienung IR sendet und gleichzeitig der Fernseher HDMI-CEC-Tasten weiterleitet. Dann die [CEC-Steuerung](../../bild-ton/hdmi-cec/) prüfen, statt nur die Wiederholzeiten zu verkürzen.
+
+Ein angeschlossenes Gerät ohne passende Treiberunterstützung erscheint möglicherweise gar nicht. Ein Keyboard-Layout kann ein nicht erkanntes USB-Gerät nicht reparieren.
+
+
+## Ansichten auf der Box
+
+<Capture id="ui-input-list" language="de" alt="Vom Treiber erkannte Eingabequellen. Treibernamen sind keine verlässliche Modellbezeichnung." caption="Vom Treiber erkannte Eingabequellen. Treibernamen sind keine verlässliche Modellbezeichnung." />
+
+<Capture id="ui-input-repeat" language="de" alt="Wiederholung für das Formular eingeblendet: 700 ms Verzögerung und 100 ms Intervall. Kein Treiberwert angewendet." caption="Wiederholung für das Formular eingeblendet: 700 ms Verzögerung und 100 ms Intervall. Kein Treiberwert angewendet." />

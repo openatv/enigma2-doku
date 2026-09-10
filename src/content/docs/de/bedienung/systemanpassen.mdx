@@ -1,0 +1,57 @@
+---
+title: "Systemeinstellungen anpassen"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Bedienung / Oberfläche → Systemeinstellungen anpassen** enthält Funktionen, die mehrere Bereiche betreffen. Ändere eine Gruppe nach der anderen. **Grün/Speichern** übernimmt, **Rot/Abbrechen** verwirft die noch nicht gespeicherten Formularänderungen. Hinweise auf einen GUI-Neustart beachten.
+
+Die [vorhandene Referenz mit 31 Optionen](../../einstellungen/referenz/usage/) enthält auch die einzelnen Teletext-Expertenwerte. Hier steht, wie die Gruppen zusammenhängen.
+
+## Bedienebene und Texteingabe
+
+**Einstellungsmodus / Settings mode** wählt Einfach, Fortgeschritten oder Experte. Das begrenzt die sichtbaren Einstellungen; es ist kein Leistungsmodus und setzt keine Werte zurück. Eine ausgeblendete Expertenoption kann weiterhin wirksam sein. **Input scroll position / Eingabe-Scrollposition** legt fest, ab welchem Anteil der Feldbreite sich langer Eingabetext mit dem Cursor verschiebt. Es verändert weder die Tastenwiederholung noch die Laufgeschwindigkeit der Senderliste.
+
+## Teletext
+
+**Zwischenspeicherung** beschleunigt den Zugriff auf bereits empfangene Seiten. **Schrift und Auflösung** wählt ein vorgegebenes Profil oder den Expertenmodus. Erst dann erscheinen UseTTF, Fettschrift, horizontale Auflösung, Start-/Endkoordinaten, X-/Y-Schriftversatz sowie Breiten-/Höhenfaktoren. Die Faktoren beziehen sich auf die Schrift, die Koordinaten auf ihren Darstellungsbereich. **CleanAlgo** steuert die Wiederherstellung von Auflösung und Framebuffer nach dem Verlassen.
+
+Zuerst ein passendes Profil verwenden. Einzelne Expertenwerte nur bei einem konkreten Darstellungsproblem ändern; ein ungeeigneter Rand oder Faktor kann Text abschneiden. [Teletext bedienen](../../wiedergabe/teletext/) erklärt Seiten, Unterseiten und Teletext-Untertitel. Diese Optionen übersetzen keine Seiten und beschaffen keinen Teletext für einen Sender ohne Daten.
+
+## Tuner und HTTP-Streams
+
+| Option | Verwendung und Grenze |
+| --- | --- |
+| Alternative services tuner priority | Bevorzugten Empfangstyp wählen, wenn für einen Dienst passende Alternativen über unterschiedliche Tunerarten eingerichtet sind. Keine zusätzliche Empfangsmöglichkeit und keine Ersatzantenne. |
+| Include ECM in http streams | Entschlüsselungs-Steuerdaten mit ausgeben, wenn ein berechtigter Client diese benötigt. ECM sind keine Bilddaten und keine Zugangsberechtigung. |
+| Unscramble http streams | Ausgehende Streams nach Möglichkeit auf der Box entschlüsseln. Voraussetzung sind geeignete Entschlüsselung und vorhandene Berechtigungen. |
+| Unscramble receiving http streams | Empfangene HTTP-Streams zur lokalen Entschlüsselung führen; kann zusätzliche Demux-Ressourcen beanspruchen. Markierte Dienste mit 0x100 im Servicetyp werden laut Quellcode unabhängig davon entsprechend behandelt. |
+| Require authentication for http streams | Anmeldung für den Streamingzugang verlangen. Mit [OpenWebif-Streaming-Anmeldung](../../netzwerk/openwebif/optionen/) und dem verwendeten Player gemeinsam prüfen. Es ist nicht die HTTP-Anmeldung der Webseite. |
+| Http(s) stream start delay | Zusätzliche Wartezeit vor Streamstart in Millisekunden. Nur erhöhen, wenn der konkrete Startablauf sie benötigt. Das ist kein universeller Puffer gegen spätere Netzwerkaussetzer. |
+
+[Entschlüsselung](../../entschluesselung/) und [Streaming](../../netzwerk/openwebif/fernsehen-epg/) enthalten die weiterführenden Abläufe.
+
+## Einschalten, Stromausfall und Timer-Aufwachen
+
+| Option | Bedeutung |
+| --- | --- |
+| Nach Stromausfall | Verhalten nach nicht ordnungsgemäßem Abschalten beziehungsweise Stromverlust. Von der normalen Einschaltaktion getrennt. |
+| Einschaltaktion | Nach dem Booten normal wiedergeben oder in Standby gehen, entsprechend der angebotenen Auswahl. |
+| Aufwachzeit vor Timerbeginn | Wie früh die Box vor dem Timer hochfahren soll. Ein NAS benötigt möglicherweise zusätzliche Anlaufzeit; auch Timer-Vorlauf und Mount-Verfügbarkeit prüfen. |
+| Workaround für Aufwachen aus Deep Standby | Alternative Erkennung eines Timerstarts über ein Zeitfenster, wenn das Aufwachsignal der Hardware nicht zuverlässig ist. |
+| Zeitfenster zur Timer-Aufwacherkennung | Erweitert die Erkennung bei aktiviertem Workaround. Es erzeugt keinen zusätzlichen Wecker und stellt keine falsche Uhr richtig. |
+
+**Standby lässt Enigma2 weiterlaufen; Deep Standby beendet das laufende System.** Ein vollständig stromloses Gerät kann nicht durch einen Enigma2-Timer starten. Die [Zeit-/Aufwachanleitung](../../system/zeit-aufwachen/) und [Timer](../../timer/aufnahmen/) erklären Voraussetzungen und Verhalten. Den Workaround nicht vorsorglich auf allen Geräten aktivieren: Er dient einem beobachteten Erkennungsproblem.
+
+## Medienmarken und Kapitel
+
+**Schnittdateien für Nicht-TS-Videos** und **Schnittdateien für Audio** erlauben Begleitdateien mit Marken beziehungsweise Wiederaufnahmepositionen auch für passende andere Formate. **Erweiterte Schnittdateiunterstützung** speichert zusätzliche Informationen. **Kapitelunterstützung** verwendet vom Medium und Wiedergabedienst gelieferte Kapitelpositionen.
+
+Diese Schalter schneiden, konvertieren und löschen keine Mediendatei. Sie machen aus einem Player ohne passende Kapitelunterstützung keinen anderen Player. Schreibrechte im Medienverzeichnis und das Mitnehmen von Begleitdateien sind relevant. Weiter: [MovieSelection](../../aufnahmen/movieselection/) und [Wiedergabedienste](../../wiedergabe/).
+
+
+## Ansichten auf der Box
+
+<Capture id="ui-usage-stream" language="de" alt="Systemeinstellungen mit Streaming, Startverhalten und Expertenansicht. Keine Streamoption wurde gespeichert." caption="Systemeinstellungen mit Streaming, Startverhalten und Expertenansicht. Keine Streamoption wurde gespeichert." />
+
+<Capture id="ui-usage-wakeup" language="de" alt="Aufwach-Workaround als ungespeichertes Beispiel, damit das Zeitfenster sichtbar wird. Darunter Medienmarken und Kapitel." caption="Aufwach-Workaround als ungespeichertes Beispiel, damit das Zeitfenster sichtbar wird. Darunter Medienmarken und Kapitel." />

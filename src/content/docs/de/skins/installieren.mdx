@@ -51,3 +51,17 @@ Die HDMI-Ausgabe ist unabhängig von der Skin-Auflösung. WQHD nur auf einer daf
 Picons, Frontdisplay-Skins, e2MDB-Metadaten und Untertitel bleiben eigene Themen. Weiter zum [vollständigen Umbra-Handbuch](../umbra/) oder zu [MetrixHD](../metrixhd/).
 
 Quellen: [OpenATV-Paketverwaltung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/PluginBrowser.py), [Skinauswahl](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SkinSelection.py).
+
+## Weitere Felder der allgemeinen Skinauswahl
+
+Die [bestehende Skin-Referenz](../../einstellungen/referenz/skin/) enthält sieben Felder. Neben GUI-Skin und schnellem Neuladen sind das:
+
+| Feld | Verwendung |
+| --- | --- |
+| LCD/Frontpanel | Separaten Display-Skin wählen, wenn ein geeignetes Frontdisplay vorhanden ist. Der Skin für das TV-Bild bleibt unabhängig. |
+| Ersatzschrift / Fallback Font | Schrift für Zeichen auswählen, die eine reguläre Skin-Schrift nicht abdeckt. Eine Ersatzschrift übersetzt keine Texte und ändert nicht das Tastaturlayout. |
+| Senderlistenbildschirm | Eine vom aktuellen Skin angebotene Bildschirmvorlage wählen. |
+| Senderlistenliste | Die angebotene Darstellung der Einträge innerhalb dieser Vorlage wählen; [vorhandene Galerie](../../settings/kanalliste/). |
+| AutoRefresh | Automatisches Aktualisieren unterstützter Vorlagen. Keine zeitgesteuerte Installation neuer Skinversionen vom Feed. |
+
+Senderlistenbildschirm und -liste erscheinen auch in den Senderlisteneinstellungen: Es sind dieselben Konfigurationsfelder. **Fast Skin Reload** vermeidet bei unterstütztem Wechsel einen vollständigen GUI-Neustart; andere Änderungen oder Plugins können trotzdem einen Neustart benötigen. Für Displayhelligkeit und Piconquellen siehe [Display](../../bedienung/display-led/) und [Picons](../../bedienung/picons/).

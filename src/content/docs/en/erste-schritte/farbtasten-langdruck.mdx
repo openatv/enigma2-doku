@@ -77,3 +77,32 @@ Continue with [menu options](../menue-anpassen/), [Infobar](../infobar/), [chann
 Sources: [default keymap](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/keymap.xml), [hotkey implementation](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ButtonSetup.py) and [button settings](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml).
 
 Related: [Configure INFO, EPG and their long presses](../../epg/tasten/) · [EPG views and prime time](../../epg/ansichten/).
+
+## Map the remaining remote-control options
+
+**Usage & GUI → Remote Control Button Settings** contains 15 options. Alongside the POWER, Blue and emulation functions explained above, it includes:
+
+| Option | Meaning during TV viewing |
+| --- | --- |
+| Use key map | Select an available keymap. An alternative can change many actions; it is not a new IR code. Follow restart notices. |
+| EPG button mode | Assign the desired EPG view to a short press; see [EPG buttons](../../epg/tasten/). |
+| INFO button mode | Select EventView or another offered information view, separately from long INFO. |
+| OK button mode | Open Infobar or channel list. When OK opens the list, use another offered route for the Infobar. |
+| Subservice mode (GREEN button) | Open subservices or, with the appropriate choice, fall back to Plugin Browser. This is not [subtitle selection](../../wiedergabe/untertitel/). |
+| QuickEPG mode | Choose a trigger such as long OK, EXIT or LEFT/RIGHT. The same setting is also exposed in OSD. |
+| TV button mode | Choose the offered TV/radio/bouquet behaviour. Does not change the tuner's reception type. |
+| History buttons mode | Use HISTORY/previous/next buttons for direct switching or a history list. Set ordering in OSD. |
+| Channel +/- button mode | Zap directly or use the offered list action. These buttons can page through an open list. |
+| UP/DOWN button mode | Zap or open the channel list during TV. They remain navigation keys inside menus. |
+| Add legacy LEFT/RIGHT actions | Compatibility with older contexts expecting LEFT/RIGHT as page up/down (`actionLeftRightToPageUpPageDown`). Does not globally redefine every arrow in every plugin. |
+
+Individual keys and conditions remain in the [existing remote-button reference](../../einstellungen/referenz/remotebutton/). Custom hotkeys act in their own contexts; plugins may handle keys themselves. When resolving conflicts, change one setting and test both TV viewing and the affected screen.
+
+**Repeat timing** belongs to [Input Devices](../../bedienung/eingabegeraete/), **IR type/code** to [Remote control code](../../bedienung/fernbedienungscode/), and the external **keyboard layout** to [Keyboard](../../bedienung/tastatur/).
+
+
+## Receiver views
+
+<Capture id="ui-remote-main" language="en" alt="Remote-button options: OK is assigned to the Infobar here." caption="Remote-button options: OK is assigned to the Infobar here." />
+
+<Capture id="ui-remote-extra" language="en" alt="Blue swap and long-press emulation are separate. Emulation is disabled." caption="Blue swap and long-press emulation are separate. Emulation is disabled." />

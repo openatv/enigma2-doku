@@ -1,0 +1,42 @@
+---
+title: "Input devices and key repeat"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Usage & GUI → Input Devices Settings** lists detected input sources: remotes, front-panel keys and, depending on connections, keyboards, mice or HDMI-CEC input. A driver name such as “dreambox remote control (native)” identifies an input/driver interface; it is not a reliable identification of the receiver enclosure.
+
+## Choose the correct device
+
+Select the source actually used and press OK. Several entries may belong to one receiver. Front-panel keys and the remote are separate sources. **Configure remote control type** appears additionally when the driver supports multiple types; see [type and code](../fernbedienungscode/).
+
+## Four dynamic fields
+
+The device dialog creates these fields dynamically; they are not a fully populated setup in the XML catalogue.
+
+| Field | Effect |
+| --- | --- |
+| Change repeat and delay settings? | Yes enables custom values. No restores device defaults; it does not disable the entire remote. |
+| Device name | Name for this configuration, not a key assignment or pairing code. |
+| Delay before key repeat starts | Milliseconds before a held key repeats. A longer delay can prevent accidental repeated steps. |
+| Interval between keys when repeating | Milliseconds between repeats. A smaller value makes movement faster. |
+
+Example: **700 ms delay and 100 ms interval** means roughly 0.7 seconds before repetition, then about ten repeats per second where supported by the driver/button. These are dialog example values, not universal recommendations.
+
+## Adjust and check
+
+1. Note the initial values and retain a usable alternative such as [OpenWebif](../../netzwerk/openwebif/fernbedienung/).
+2. Change one timing value. The native configuration can apply driver values while editing.
+3. Test a short press and a held press in a list. Watch for double steps and excessively fast scrolling.
+4. Save and answer the confirmation. Cancel or restore defaults if controls become difficult.
+
+Key repeat, a [long-press action](../../erste-schritte/farbtasten-langdruck/) and **long-press emulation** are different mechanisms. Faster repeat does not create another long-press function. Duplicate input can also occur when a universal remote sends IR while the TV forwards HDMI-CEC buttons. Check [CEC controls](../../bild-ton/hdmi-cec/) rather than merely shortening repeat timing.
+
+A connected device without suitable driver support may not appear at all. A keyboard layout cannot repair an undetected USB device.
+
+
+## Receiver views
+
+<Capture id="ui-input-list" language="en" alt="Driver-detected input sources. Driver names do not reliably identify the receiver model." caption="Driver-detected input sources. Driver names do not reliably identify the receiver model." />
+
+<Capture id="ui-input-repeat" language="en" alt="Repeat fields exposed for the form: 700 ms delay and 100 ms interval. No driver value was applied." caption="Repeat fields exposed for the form: 700 ms delay and 100 ms interval. No driver value was applied." />

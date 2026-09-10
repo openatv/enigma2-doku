@@ -1,0 +1,46 @@
+---
+title: "Usage & GUI: all menu sections"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Usage & GUI** groups everyday controls, on-screen information and input devices. These are the 13 fixed entries in the reviewed OpenATV menu. Plugins can add further entries. Hardware-specific entries appear only when the receiver exposes that capability.
+
+The existing detailed guides are linked below. The **settings reference** already contains the labels, original help, configuration keys and visibility conditions extracted from each setup. It complements the practical guides.
+
+| Menu entry | Purpose | Guide / existing reference |
+| --- | --- | --- |
+| OSD Settings | Menus, help, Infobar, messages, screen saver and PiP | [Menus and OSD](../erste-schritte/menue-anpassen/), [Infobar](../erste-schritte/infobar/), [PiP](./pip/); [60 options](../einstellungen/referenz/userinterface/) |
+| Remote Control Button Settings | POWER, OK, EPG, INFO, TV and navigation behaviour | [Colour buttons and long presses](../erste-schritte/farbtasten-langdruck/); [15 options](../einstellungen/referenz/remotebutton/) |
+| Channel Selection Settings | Bouquets, numbering, zapping, picons and list styles | [Channel list gallery](../settings/kanalliste/); [50 options](../einstellungen/referenz/channelselection/) |
+| Customize System Settings | Setup level, teletext, streams, startup/wakeup and media marks | [System customisation](./systemanpassen/); [31 options](../einstellungen/referenz/usage/) |
+| Skin Settings | GUI skin, display skin, fallback font and templates | [Install and select skins](../skins/installieren/); [7 options](../einstellungen/referenz/skin/) |
+| Picon Settings | Channel logos and directories for different uses | [Set up picons](./picons/); [9 options](../einstellungen/referenz/picon/) |
+| Display Settings | Front-panel brightness, content, scrolling, recording symbols, date and time | [Front display and LEDs](./display-led/); [45 conditional options](../einstellungen/referenz/display/) |
+| Configure front panel LEDs | Colour and brightness for each power state, if supported | [Front display and LEDs](./display-led/); [5 options](../einstellungen/referenz/leds/) |
+| Hotkey Settings | Assign functions to individual buttons and long presses | [Configure hotkeys](../erste-schritte/farbtasten-langdruck/) and [long-press directory](../anhaenge/langtasten/) |
+| Input Devices Settings | Remote control, front-panel keys and connected devices; delay and repeat interval | [Input devices](./eingabegeraete/); four dynamic fields |
+| Remote Control Code Settings | Match a supported receiver and handset to a control code | [Remote control code](./fernbedienungscode/) |
+| Keyboard Settings | Layout of a connected keyboard | [Keyboard and text input](./tastatur/); [reference](../einstellungen/referenz/keyboard/) |
+| Locale / Language Settings | Menu language and regional variant | [Language and locale](./sprache/); [list settings](../einstellungen/referenz/locale/) |
+
+## A menu entry or option is missing
+
+Select **Customize System Settings → Settings mode → Expert** when needed. Expert reveals additional settings; it does not add missing hardware. It cannot provide an absent display, PiP decoder or configurable remote code. Sub-options may also depend on another switch, list style or skin. Check for [hidden menu entries](../erste-schritte/menue-anpassen/) too.
+
+Reference counts describe the source catalogue, not the number of rows visible simultaneously on every receiver. The GUI skin field, present with two different restart conditions, is counted once.
+
+## Find the right topic
+
+- **Cannot find a setting:** search its visible label, English label or short key, such as `screenSaverMode`, `Picon search mode` or `key repeat`.
+- **MENU inside an open menu:** opens [OSD settings](../erste-schritte/menue-anpassen/). MENU has separate actions in a channel list, plugin or setup dialog.
+- **Audio/subtitle language:** use [automatic language selection](../bild-ton/tonspuren/) rather than menu language.
+- **Clipped picture or incorrect HDMI resolution:** see [OSD calibration](../bild-ton/bildanpassung/) or [video output](../bild-ton/video/).
+- **Style your skin:** see [MetrixHD](../skins/metrixhd/) or [Umbra](../skins/umbra/).
+
+[Sources and verification](./quellen/) explain the basis and the limits of the test receiver.
+
+
+## Receiver views
+
+<Capture id="ui-menu" language="en" alt="Usage & GUI on the test receiver. Some hardware-dependent entries are absent; language is further down." caption="Usage & GUI on the test receiver. Some hardware-dependent entries are absent; language is further down." />

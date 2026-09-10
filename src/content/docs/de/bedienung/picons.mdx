@@ -1,0 +1,61 @@
+---
+title: "Picons: Senderlogos und Verzeichnisse"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Picons** sind kleine Senderlogos. Ein Skin legt fest, wo und in welcher Größe sie erscheinen; die Picon-Einstellungen bestimmen, wo passende Bilddateien gesucht werden. Das ist unabhängig von e2MDB-Covern und Postern.
+
+## Einrichten
+
+1. Ein zum Empfangsangebot passendes Picon-Paket über [Plugins herunterladen](../../plugins/installieren/) installieren oder eigene PNG-Dateien in ein geeignetes Verzeichnis kopieren. Paketbeschreibung und Speicherziel beachten.
+2. **Menü → Einstellungen → Bedienung / Oberfläche → Picons** öffnen.
+3. Suchmodus und gegebenenfalls Verzeichnisse wählen; mit Grün speichern.
+4. Die Anzeige in [Infobar](../../erste-schritte/infobar/) und [Kanalliste](../../settings/kanalliste/) einschalten. Bei neuen Listen müssen die entsprechenden Vorlagen Logos unterstützen.
+5. Mehrere Sender prüfen. Ein Logo für einen Sender beweist noch nicht, dass das ganze Paket passt.
+
+## Suchmodus und die neun Felder
+
+| Einstellung | Verwendung |
+| --- | --- |
+| Picon-Suchmodus | Einzelpfad verwendet die gemeinsame automatische Suche; Mehrfachpfad erlaubt getrennte Zuordnungen. |
+| Picon-Pfad 1–4 | Bis zu vier Verzeichnisse definieren. Pfad 1 bleibt bestehen; weitere Pfade mit Gelb hinzufügen. |
+| Infoleisten-Pfad | Das oben definierte Verzeichnis für Infobar-Logos wählen. |
+| Senderlisten-Pfad | Verzeichnis für die Kanalliste wählen; erlaubt beispielsweise eine andere Logoform. |
+| Frontdisplay-Pfad | Separates Logoangebot für einen passenden Display-Skin. |
+| OpenWebif-Pfad | Zuordnung für die Weboberfläche. Auch deren eigene Picon-Optionen prüfen. |
+
+Die [neun Referenzeinträge](../../einstellungen/referenz/picon/) stehen bereits im Einstellungsverzeichnis. Im Mehrfachpfadmodus sind **Gelb → Pfad hinzufügen**, **Blau → Pfad entfernen** und bei einem Pfad **OK → Verzeichnisauswahl** verfügbar. Entfernen betrifft den letzten zusätzlich definierten Pfad; eine noch verwendete Zuordnung muss zuerst geändert werden. Es werden damit keine PNG-Dateien gelöscht. Beim Speichern müssen eingetragene Verzeichnisse existieren.
+
+Die automatische Suche berücksichtigt lokale Picon-Verzeichnisse wie `/usr/share/enigma2/picon`, `/picon` und passende `picon`-Ordner auf eingebundenen Datenträgern. Der Renderer merkt sich gefundene Pfade. Der Einzelpfadmodus bedeutet deshalb nicht, dass im Dialog ein frei wählbarer Einzelpfad angezeigt wird. Im Mehrfachpfadmodus wird ein gültiger zugewiesener Pfad gezielt verwendet; fehlende Bilder werden nicht beliebig aus allen anderen zugewiesenen Ordnern ergänzt.
+
+## Wie Dateinamen zum Sender passen
+
+Üblich sind **Service-Reference-Picons**: Die ersten zehn Felder der Senderreferenz ergeben mit Unterstrichen den PNG-Namen. Beispiel zur Schreibweise, keine Referenz eines zugesicherten realen Senders:
+
+```text
+1:0:1:1234:5678:9ABC:C00000:0:0:0:
+1_0_1_1234_5678_9ABC_C00000_0_0_0.png
+```
+
+Der native Renderer prüft außerdem bestimmte Varianten und namensbasierte Picons. Dabei werden Namen normalisiert; ein sichtbarer Sendername ist deshalb nicht zwangsläufig der genaue Dateiname. Für IPTV ist die [Service-Reference](../../wiedergabe/servicereferenzen/) ebenso relevant. Ein Stream-URL-Wechsel, eine andere Referenz oder eine Umbenennung kann das Matching verändern. Picons liefern kein EPG.
+
+## Speicher und Fehlersuche
+
+Lokaler Flash oder dauerhaft eingebundener USB-Speicher liefert Logos auch bei ausgeschaltetem NAS. Größe und Anzahl der PNGs gegen den freien Flash abwägen. Ein HDD-Verzeichnis kann Plattenzugriffe auslösen; ein Netzwerkpfad kann bei NAS-Ausfall die Darstellung verzögern. Die automatische lokale Suche überspringt `/media/net`; eine ausdrücklich gewählte entfernte Quelle sollte daher besonders bewusst verwendet werden.
+
+| Problem | Prüfen |
+| --- | --- |
+| Überall Standardlogo | Paket/PNG-Dateien, Suchmodus, Pfad und eingeschaltete Anzeige |
+| Nur einzelne Logos fehlen | Referenz, Sendername, Dateiname und Groß-/Kleinschreibung |
+| Nur in Kanalliste falsch | Senderlisten-Zuordnung, klassischer/neuer Listenstil und dessen Picon-Schalter |
+| TV richtig, Frontdisplay falsch | Display-Skin und eigene Display-Zuordnung |
+| TV richtig, OpenWebif falsch | Webif-Zuordnung, dessen Picon-Schalter und Browsercache |
+| Nach Wechsel veraltete Logos | Einstellungen speichern und Ansicht neu öffnen; bei Bedarf GUI/Browser neu laden |
+
+Picons werden passend zum Skin skaliert. Ein transparentes Logo auf gleichfarbigem Hintergrund kann unsichtbar wirken; Hintergrundfarbe und Seitenverhältnis prüfen.
+
+
+## Ansichten auf der Box
+
+<Capture id="ui-picons" language="de" alt="Mehrfachpfadmodus als ungespeichertes Beispiel mit dem vorhandenen HDD-Picon-Verzeichnis. Keine Pfade geändert." caption="Mehrfachpfadmodus als ungespeichertes Beispiel mit dem vorhandenen HDD-Picon-Verzeichnis. Keine Pfade geändert." />

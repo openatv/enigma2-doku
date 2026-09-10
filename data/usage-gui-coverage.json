@@ -1,0 +1,1138 @@
+{
+  "date": "2026-09-10",
+  "enigma2_revision": "fdc9347241245fd18fd0b8bc93727237189c916c",
+  "installed_package_revision": "c446c39a38957950de9989538e87c6278d2470cc",
+  "menu": [
+    {
+      "key": "user_interface",
+      "label": "OSD Settings",
+      "level": "0",
+      "requires": null
+    },
+    {
+      "key": "remote_setup",
+      "label": "Remote Control Button Settings",
+      "level": "0",
+      "requires": null
+    },
+    {
+      "key": "channelselection_setup",
+      "label": "Channel Selection Settings",
+      "level": "0",
+      "requires": null
+    },
+    {
+      "key": "usage_setup",
+      "label": "Customize System Settings",
+      "level": "0",
+      "requires": null
+    },
+    {
+      "key": "skin_setup",
+      "label": "Skin Settings",
+      "level": "0",
+      "requires": null
+    },
+    {
+      "key": "picon_setup",
+      "label": "Picon Settings",
+      "level": "0",
+      "requires": null
+    },
+    {
+      "key": "display_setup",
+      "label": "Display Settings",
+      "level": "0",
+      "requires": "DisplaySetup"
+    },
+    {
+      "key": "led_setup",
+      "label": "Configure front panel LEDs",
+      "level": "1",
+      "requires": "LEDColorControl"
+    },
+    {
+      "key": "buttonsetup_setup",
+      "label": "Hotkey Settings",
+      "level": "2",
+      "requires": null
+    },
+    {
+      "key": "input_device_setup",
+      "label": "Input Devices Settings",
+      "level": "1",
+      "requires": null
+    },
+    {
+      "key": "remotecode",
+      "label": "Remote Control Code Settings",
+      "level": "1",
+      "requires": "RemoteCode"
+    },
+    {
+      "key": "keyboard",
+      "label": "Keyboard Settings",
+      "level": "1",
+      "requires": null
+    },
+    {
+      "key": "locale_setup",
+      "label": "Locale / Language Settings",
+      "level": "0",
+      "requires": null
+    }
+  ],
+  "setups": [
+    {
+      "key": "ChannelSelection",
+      "reference": "einstellungen/referenz/channelselection",
+      "guide": "settings/kanalliste",
+      "options": [
+        {
+          "expression": "config.channelSelection.screenStyle",
+          "anchor": "option-5deb62b2cc26"
+        },
+        {
+          "expression": "config.channelSelection.widgetStyle",
+          "anchor": "option-6fde9d0ad9ad"
+        },
+        {
+          "expression": "config.misc.use_ci_assignment",
+          "anchor": "option-437ed7d3d1f5"
+        },
+        {
+          "expression": "config.usage.numberMode",
+          "anchor": "option-7e6928bc72de"
+        },
+        {
+          "expression": "config.usage.show_bouquetalways",
+          "anchor": "option-4344437b2b1f"
+        },
+        {
+          "expression": "config.usage.quickzap_bouquet_change",
+          "anchor": "option-c69d18f30284"
+        },
+        {
+          "expression": "config.usage.servicelistpreview_mode",
+          "anchor": "option-62f478f2c6f7"
+        },
+        {
+          "expression": "config.usage.use_pig",
+          "anchor": "option-1930f7fc43e8"
+        },
+        {
+          "expression": "config.usage.servicelist_mode",
+          "anchor": "option-d011ea6f3958"
+        },
+        {
+          "expression": "config.usage.show_servicelist",
+          "anchor": "option-0a4c856981ea"
+        },
+        {
+          "expression": "config.usage.servicelist_cursor_behavior",
+          "anchor": "option-15242b9d5b14"
+        },
+        {
+          "expression": "config.usage.multibouquet",
+          "anchor": "option-73b6bc937fd1"
+        },
+        {
+          "expression": "config.misc.load_unlinked_userbouquets",
+          "anchor": "option-b48277df14f1"
+        },
+        {
+          "expression": "config.usage.hide_number_markers",
+          "anchor": "option-cb6910aee064"
+        },
+        {
+          "expression": "config.usage.panicbutton",
+          "anchor": "option-eb356a6064fb"
+        },
+        {
+          "expression": "config.usage.panicchannel",
+          "anchor": "option-f1bd58e3a7f9"
+        },
+        {
+          "expression": "config.usage.numzappicon",
+          "anchor": "option-10eba6b80b0d"
+        },
+        {
+          "expression": "config.usage.show_channel_jump_in_servicelist",
+          "anchor": "option-be774bc7d46f"
+        },
+        {
+          "expression": "config.usage.show_channel_numbers_in_servicelist",
+          "anchor": "option-90a08fc387e1"
+        },
+        {
+          "expression": "config.usage.service_icon_enable",
+          "anchor": "option-cf4d6751f779"
+        },
+        {
+          "expression": "config.usage.servicelist_picon_ratio",
+          "anchor": "option-b877db33e757"
+        },
+        {
+          "expression": "config.usage.servicelist_picon_downsize",
+          "anchor": "option-86e84db52ac2"
+        },
+        {
+          "expression": "config.usage.servicetype_icon_mode",
+          "anchor": "option-006ea1e565fe"
+        },
+        {
+          "expression": "config.usage.crypto_icon_mode",
+          "anchor": "option-b7c327e88791"
+        },
+        {
+          "expression": "config.usage.record_indicator_mode",
+          "anchor": "option-6dee9820252b"
+        },
+        {
+          "expression": "config.usage.servicelist_twolines",
+          "anchor": "option-66e81b859f9e"
+        },
+        {
+          "expression": "config.usage.servicelist_servicenumber_valign",
+          "anchor": "option-0a7ec44d7bd1"
+        },
+        {
+          "expression": "config.usage.servicelist_eventprogress_valign",
+          "anchor": "option-86f5af272c0e"
+        },
+        {
+          "expression": "config.usage.servicelist_eventprogress_view_mode",
+          "anchor": "option-4093d398518f"
+        },
+        {
+          "expression": "config.usage.show_event_progress_in_servicelist",
+          "anchor": "option-d249c53cdd92"
+        },
+        {
+          "expression": "config.usage.servicelist_column",
+          "anchor": "option-ae9367a948e0"
+        },
+        {
+          "expression": "config.usage.serviceitems_per_page_twolines",
+          "anchor": "option-c085a78abced"
+        },
+        {
+          "expression": "config.usage.serviceitems_per_page",
+          "anchor": "option-e3e6a1dd868e"
+        },
+        {
+          "expression": "config.usage.servicenum_fontsize",
+          "anchor": "option-2c47a11592fd"
+        },
+        {
+          "expression": "config.usage.servicename_fontsize",
+          "anchor": "option-c148208bb167"
+        },
+        {
+          "expression": "config.usage.serviceinfo_fontsize",
+          "anchor": "option-d054488f1622"
+        },
+        {
+          "expression": "config.usage.progressinfo_fontsize",
+          "anchor": "option-c7b440c7318e"
+        },
+        {
+          "expression": "config.channelSelection.showNumber",
+          "anchor": "option-66de82c57468"
+        },
+        {
+          "expression": "config.channelSelection.showPicon",
+          "anchor": "option-e62cbf6f6bb2"
+        },
+        {
+          "expression": "config.channelSelection.piconRatio",
+          "anchor": "option-f915e9481931"
+        },
+        {
+          "expression": "config.channelSelection.showServiceTypeIcon",
+          "anchor": "option-8ce4387e4990"
+        },
+        {
+          "expression": "config.channelSelection.showCryptoIcon",
+          "anchor": "option-44db08dbc9f7"
+        },
+        {
+          "expression": "config.channelSelection.recordIndicatorMode",
+          "anchor": "option-acebfeb799dc"
+        },
+        {
+          "expression": "config.misc.zapmode",
+          "anchor": "option-043fd3f3f510"
+        },
+        {
+          "expression": "config.usage.numberZapDigits",
+          "anchor": "option-42cc746670de"
+        },
+        {
+          "expression": "config.usage.numberZapDisplay",
+          "anchor": "option-739b7b00d295"
+        },
+        {
+          "expression": "config.usage.numberZapTimeouts",
+          "anchor": "option-20d686626ad7"
+        },
+        {
+          "expression": "config.usage.numberZapTimeoutFirst",
+          "anchor": "option-0d1a89e0291d"
+        },
+        {
+          "expression": "config.usage.numberZapTimeoutOther",
+          "anchor": "option-0639d2dd3a5b"
+        },
+        {
+          "expression": "config.usage.servicelist_infokey",
+          "anchor": "option-4b449e785e56"
+        }
+      ]
+    },
+    {
+      "key": "Display",
+      "reference": "einstellungen/referenz/display",
+      "guide": "bedienung/display-led",
+      "options": [
+        {
+          "expression": "config.lcd.fblcddisplay",
+          "anchor": "option-00750dad8253"
+        },
+        {
+          "expression": "config.lcd.bright",
+          "anchor": "option-9c1fcbadbed7"
+        },
+        {
+          "expression": "config.lcd.dimbright",
+          "anchor": "option-4ddb9b8b9a61"
+        },
+        {
+          "expression": "config.lcd.dimdelay",
+          "anchor": "option-631d21593fc8"
+        },
+        {
+          "expression": "config.lcd.standby",
+          "anchor": "option-64977cf0ecbe"
+        },
+        {
+          "expression": "config.lcd.contrast",
+          "anchor": "option-53d02b37bb3c"
+        },
+        {
+          "expression": "config.lcd.ledbrightness",
+          "anchor": "option-814e01a9ae99"
+        },
+        {
+          "expression": "config.lcd.ledbrightnessstandby",
+          "anchor": "option-cdbe5b23d476"
+        },
+        {
+          "expression": "config.lcd.ledbrightnessdeepstandby",
+          "anchor": "option-b847ee3d25d9"
+        },
+        {
+          "expression": "config.usage.lcd_powerled",
+          "anchor": "option-472e71063497"
+        },
+        {
+          "expression": "config.usage.lcd_powerled2",
+          "anchor": "option-512a9d97326b"
+        },
+        {
+          "expression": "config.usage.lcd_standbypowerled",
+          "anchor": "option-5463371679cd"
+        },
+        {
+          "expression": "config.usage.lcd_deepstandbypowerled",
+          "anchor": "option-4e4e2afd19ee"
+        },
+        {
+          "expression": "config.usage.lcd_ledpowercolor",
+          "anchor": "option-1c3b431be8c5"
+        },
+        {
+          "expression": "config.usage.lcd_ledstandbycolor",
+          "anchor": "option-ff6ad7cca5b7"
+        },
+        {
+          "expression": "config.usage.lcd_ledsuspendcolor",
+          "anchor": "option-d65c2def3fba"
+        },
+        {
+          "expression": "config.usage.lcd_power4x7on",
+          "anchor": "option-a64475694583"
+        },
+        {
+          "expression": "config.usage.lcd_power4x7standby",
+          "anchor": "option-bcbb40735942"
+        },
+        {
+          "expression": "config.usage.lcd_power4x7suspend",
+          "anchor": "option-e7e249a0a2f8"
+        },
+        {
+          "expression": "config.usage.show_in_standby",
+          "anchor": "option-5b4e043fbf94"
+        },
+        {
+          "expression": "config.usage.show_in_operation",
+          "anchor": "option-f4f0b5a5ee05"
+        },
+        {
+          "expression": "config.usage.vfd_initial_scroll_delay",
+          "anchor": "option-d10dd58e4592"
+        },
+        {
+          "expression": "config.usage.vfd_final_scroll_delay",
+          "anchor": "option-950f4fbfa890"
+        },
+        {
+          "expression": "config.usage.vfd_scroll_repeats",
+          "anchor": "option-3bf737384f39"
+        },
+        {
+          "expression": "config.usage.vfd_scroll_delay",
+          "anchor": "option-8a988053aee0"
+        },
+        {
+          "expression": "config.usage.lcd_scroll_speed",
+          "anchor": "option-5fd020997709"
+        },
+        {
+          "expression": "config.usage.lcd_scroll_delay",
+          "anchor": "option-b63b21456ecb"
+        },
+        {
+          "expression": "config.lcd.modeminitv",
+          "anchor": "option-0e6e60169399"
+        },
+        {
+          "expression": "config.lcd.modepip",
+          "anchor": "option-4c29cd1ee42d"
+        },
+        {
+          "expression": "config.lcd.fpsminitv",
+          "anchor": "option-33b245b65332"
+        },
+        {
+          "expression": "config.usage.blinking_rec_symbol_during_recording",
+          "anchor": "option-0a30092a5449"
+        },
+        {
+          "expression": "config.usage.blinking_display_clock_during_recording",
+          "anchor": "option-4d7d4ff40937"
+        },
+        {
+          "expression": "config.usage.vfd_xcorevfd",
+          "anchor": "option-2a0f7e1be096"
+        },
+        {
+          "expression": "config.lcd.mode",
+          "anchor": "option-ce316f858955"
+        },
+        {
+          "expression": "config.usage.swap_time_remaining_on_vfd",
+          "anchor": "option-dd407e0818a4"
+        },
+        {
+          "expression": "config.usage.swap_time_display_on_vfd",
+          "anchor": "option-00ed5f923c7c"
+        },
+        {
+          "expression": "config.usage.swap_media_time_display_on_vfd",
+          "anchor": "option-c9aa8565f5b4"
+        },
+        {
+          "expression": "config.usage.elapsed_time_positive_vfd",
+          "anchor": "option-fcfbbb8850c8"
+        },
+        {
+          "expression": "config.lcd.power",
+          "anchor": "option-ab8e53a4298b"
+        },
+        {
+          "expression": "config.lcd.showoutputresolution",
+          "anchor": "option-6b0427df2005"
+        },
+        {
+          "expression": "config.lcd.hdd",
+          "anchor": "option-b4284bee2197"
+        },
+        {
+          "expression": "config.lcd.scrollSpeed",
+          "anchor": "option-04931a377e48"
+        },
+        {
+          "expression": "config.lcd.scrollDelay",
+          "anchor": "option-cf2617968acc"
+        },
+        {
+          "expression": "config.usage.date.display",
+          "anchor": "option-c0fb7c9b0c67"
+        },
+        {
+          "expression": "config.usage.time.display",
+          "anchor": "option-e5c65abbf7a4"
+        }
+      ]
+    },
+    {
+      "key": "Keyboard",
+      "reference": "einstellungen/referenz/keyboard",
+      "guide": "bedienung/tastatur",
+      "options": [
+        {
+          "expression": "config.inputDevices.keyboardsIndex",
+          "anchor": "option-720ba96c312d"
+        }
+      ]
+    },
+    {
+      "key": "LEDs",
+      "reference": "einstellungen/referenz/leds",
+      "guide": "bedienung/display-led",
+      "options": [
+        {
+          "expression": "config.fp.led.default_color",
+          "anchor": "option-d7dc7c659f9e"
+        },
+        {
+          "expression": "config.fp.led.default_brightness",
+          "anchor": "option-cf0e547f592c"
+        },
+        {
+          "expression": "config.fp.led.standby_color",
+          "anchor": "option-9dab1b24ae37"
+        },
+        {
+          "expression": "config.fp.led.standby_brightness",
+          "anchor": "option-10988823911d"
+        },
+        {
+          "expression": "config.fp.led.shutdown_color",
+          "anchor": "option-2311559e80ec"
+        }
+      ]
+    },
+    {
+      "key": "Locale",
+      "reference": "einstellungen/referenz/locale",
+      "guide": "bedienung/sprache",
+      "options": [
+        {
+          "expression": "config.locales.packageLocales",
+          "anchor": "option-97cd6c6faee7"
+        },
+        {
+          "expression": "config.locales.localesSortBy",
+          "anchor": "option-d2abe01bfb08"
+        }
+      ]
+    },
+    {
+      "key": "Picon",
+      "reference": "einstellungen/referenz/picon",
+      "guide": "bedienung/picons",
+      "options": [
+        {
+          "expression": "config.picon.mode",
+          "anchor": "option-e398b00d6cfe"
+        },
+        {
+          "expression": "config.picon.set0.path",
+          "anchor": "option-5a7a2f41eb69"
+        },
+        {
+          "expression": "config.picon.set1.path",
+          "anchor": "option-f3772a26c341"
+        },
+        {
+          "expression": "config.picon.set2.path",
+          "anchor": "option-ebb71e1d8bb0"
+        },
+        {
+          "expression": "config.picon.set3.path",
+          "anchor": "option-ddf743e5b3ac"
+        },
+        {
+          "expression": "config.picon.infobar",
+          "anchor": "option-cbbfdb5a0405"
+        },
+        {
+          "expression": "config.picon.channelselection",
+          "anchor": "option-58170e6a4d2c"
+        },
+        {
+          "expression": "config.picon.display",
+          "anchor": "option-34035385a360"
+        },
+        {
+          "expression": "config.picon.openwebif",
+          "anchor": "option-9f1cac7c457a"
+        }
+      ]
+    },
+    {
+      "key": "RemoteButton",
+      "reference": "einstellungen/referenz/remotebutton",
+      "guide": "erste-schritte/farbtasten-langdruck",
+      "options": [
+        {
+          "expression": "config.usage.keymap",
+          "anchor": "option-2993a2d6635d"
+        },
+        {
+          "expression": "config.usage.on_short_powerpress",
+          "anchor": "option-20fe7f09b9be"
+        },
+        {
+          "expression": "config.usage.on_long_powerpress",
+          "anchor": "option-3949ee980fea"
+        },
+        {
+          "expression": "config.plisettings.PLIEPG_mode",
+          "anchor": "option-6de6328debb6"
+        },
+        {
+          "expression": "config.plisettings.PLIINFO_mode",
+          "anchor": "option-99c3f6743b59"
+        },
+        {
+          "expression": "config.usage.okbutton_mode",
+          "anchor": "option-3ba4d2c15372"
+        },
+        {
+          "expression": "config.usage.subservice",
+          "anchor": "option-808ec11ed05c"
+        },
+        {
+          "expression": "config.plisettings.InfoBarEpg_mode",
+          "anchor": "option-6e146c87083c"
+        },
+        {
+          "expression": "config.usage.tvradiobutton_mode",
+          "anchor": "option-e539f508517b"
+        },
+        {
+          "expression": "config.usage.historymode",
+          "anchor": "option-ac4ef7a999c8"
+        },
+        {
+          "expression": "config.usage.channelbutton_mode",
+          "anchor": "option-a283fbfbe1e7"
+        },
+        {
+          "expression": "config.usage.updownbutton_mode",
+          "anchor": "option-8892bc31b085"
+        },
+        {
+          "expression": "config.workaround.blueswitch",
+          "anchor": "option-81d4636fb804"
+        },
+        {
+          "expression": "config.usage.long_press_emulation_key",
+          "anchor": "option-ff8adfc077aa"
+        },
+        {
+          "expression": "config.misc.actionLeftRightToPageUpPageDown",
+          "anchor": "option-fdc11058eca1"
+        }
+      ]
+    },
+    {
+      "key": "Skin",
+      "reference": "einstellungen/referenz/skin",
+      "guide": "skins/installieren",
+      "options": [
+        {
+          "expression": "config.skin.guiSkin",
+          "anchor": "option-07dcd174cb7a"
+        },
+        {
+          "expression": "config.skin.lcdSkin",
+          "anchor": "option-397a548c72d6"
+        },
+        {
+          "expression": "config.skin.FallbackFont",
+          "anchor": "option-d4175eea95c5"
+        },
+        {
+          "expression": "config.channelSelection.screenStyle",
+          "anchor": "option-21965a007285"
+        },
+        {
+          "expression": "config.channelSelection.widgetStyle",
+          "anchor": "option-844c245e13f1"
+        },
+        {
+          "expression": "config.skin.autorefresh",
+          "anchor": "option-95f698115960"
+        },
+        {
+          "expression": "config.usage.fastSkinReload",
+          "anchor": "option-af9477d85472"
+        }
+      ]
+    },
+    {
+      "key": "Usage",
+      "reference": "einstellungen/referenz/usage",
+      "guide": "bedienung/systemanpassen",
+      "options": [
+        {
+          "expression": "config.usage.setup_level",
+          "anchor": "option-45b02fc15633"
+        },
+        {
+          "expression": "config.usage.cursorscroll",
+          "anchor": "option-5362ed69fe7d"
+        },
+        {
+          "expression": "config.usage.enable_tt_caching",
+          "anchor": "option-2ccd34369ed6"
+        },
+        {
+          "expression": "config.usage.tuxtxt_font_and_res",
+          "anchor": "option-d1e86c18cc8f"
+        },
+        {
+          "expression": "config.usage.tuxtxt_UseTTF",
+          "anchor": "option-caf3947c971b"
+        },
+        {
+          "expression": "config.usage.tuxtxt_TTFBold",
+          "anchor": "option-ebcc68bc2170"
+        },
+        {
+          "expression": "config.usage.tuxtxt_TTFScreenResX",
+          "anchor": "option-904ce2b59c52"
+        },
+        {
+          "expression": "config.usage.tuxtxt_StartX",
+          "anchor": "option-b8fd186b4710"
+        },
+        {
+          "expression": "config.usage.tuxtxt_EndX",
+          "anchor": "option-92586233de76"
+        },
+        {
+          "expression": "config.usage.tuxtxt_StartY",
+          "anchor": "option-ce6d5ad00ae3"
+        },
+        {
+          "expression": "config.usage.tuxtxt_EndY",
+          "anchor": "option-ddd4b95f6227"
+        },
+        {
+          "expression": "config.usage.tuxtxt_TTFShiftY",
+          "anchor": "option-ab36065609df"
+        },
+        {
+          "expression": "config.usage.tuxtxt_TTFShiftX",
+          "anchor": "option-2bc12d5770c9"
+        },
+        {
+          "expression": "config.usage.tuxtxt_TTFWidthFactor16",
+          "anchor": "option-d6a1cac72520"
+        },
+        {
+          "expression": "config.usage.tuxtxt_TTFHeightFactor16",
+          "anchor": "option-3ef4669e54f3"
+        },
+        {
+          "expression": "config.usage.tuxtxt_CleanAlgo",
+          "anchor": "option-2ab56a988da8"
+        },
+        {
+          "expression": "config.usage.alternatives_priority",
+          "anchor": "option-8b2ea404aa9b"
+        },
+        {
+          "expression": "config.streaming.stream_ecm",
+          "anchor": "option-0510352733c3"
+        },
+        {
+          "expression": "config.streaming.descramble",
+          "anchor": "option-fc78cd9bb1d4"
+        },
+        {
+          "expression": "config.streaming.descramble_client",
+          "anchor": "option-a5325073e401"
+        },
+        {
+          "expression": "config.streaming.authentication",
+          "anchor": "option-9f9139c61ef9"
+        },
+        {
+          "expression": "config.usage.http_startdelay",
+          "anchor": "option-3930e4810688"
+        },
+        {
+          "expression": "config.usage.shutdownNOK_action",
+          "anchor": "option-1d80f7b8f0df"
+        },
+        {
+          "expression": "config.usage.boot_action",
+          "anchor": "option-e5ea3d1ce5a4"
+        },
+        {
+          "expression": "config.workaround.wakeuptime",
+          "anchor": "option-8da4f84761a0"
+        },
+        {
+          "expression": "config.workaround.deeprecord",
+          "anchor": "option-526b68a607b8"
+        },
+        {
+          "expression": "config.workaround.wakeupwindow",
+          "anchor": "option-5fe5f744f25c"
+        },
+        {
+          "expression": "config.usage.useVideoCuesheet",
+          "anchor": "option-5d9dd8029902"
+        },
+        {
+          "expression": "config.usage.useAudioCuesheet",
+          "anchor": "option-55d4d9afc85e"
+        },
+        {
+          "expression": "config.usage.nativeCuesheetSupport",
+          "anchor": "option-05e9037ae16d"
+        },
+        {
+          "expression": "config.usage.useChapterInfo",
+          "anchor": "option-ed2068ab6202"
+        }
+      ]
+    },
+    {
+      "key": "UserInterface",
+      "reference": "einstellungen/referenz/userinterface",
+      "guide": "erste-schritte/menue-anpassen",
+      "options": [
+        {
+          "expression": "config.usage.menuType",
+          "anchor": "option-6abd6095a506"
+        },
+        {
+          "expression": "config.usage.menuEntryStyle",
+          "anchor": "option-2d16e4f32ae7"
+        },
+        {
+          "expression": "config.usage.menuSortOrder",
+          "anchor": "option-42decd075bc3"
+        },
+        {
+          "expression": "config.usage.showScreenPath",
+          "anchor": "option-785d7b73282a"
+        },
+        {
+          "expression": "config.usage.sortExtensionslist",
+          "anchor": "option-e3ca59b668f5"
+        },
+        {
+          "expression": "config.usage.show_restart_network_extensionslist",
+          "anchor": "option-a0dc2ac0323d"
+        },
+        {
+          "expression": "config.usage.plugins_sort_mode",
+          "anchor": "option-29b9aa179985"
+        },
+        {
+          "expression": "config.usage.movieSelectionInMenu",
+          "anchor": "option-da2b84530802"
+        },
+        {
+          "expression": "config.usage.fileSortCaseMode",
+          "anchor": "option-7d94fe2a5beb"
+        },
+        {
+          "expression": "config.usage.setupShowDefault",
+          "anchor": "option-5decb61efbaf"
+        },
+        {
+          "expression": "config.usage.boolean_graphic",
+          "anchor": "option-5414aecd10a7"
+        },
+        {
+          "expression": "config.usage.show_slider_value",
+          "anchor": "option-e3769afbf595"
+        },
+        {
+          "expression": "config.usage.helpSortOrder",
+          "anchor": "option-29a3a4c1df84"
+        },
+        {
+          "expression": "config.usage.helpAnimationSpeed",
+          "anchor": "option-5c5da738f83f"
+        },
+        {
+          "expression": "config.usage.unhandledKeyTimeout",
+          "anchor": "option-0ea3f05aa476"
+        },
+        {
+          "expression": "config.usage.show_spinner",
+          "anchor": "option-d7af274cdc8a"
+        },
+        {
+          "expression": "config.usage.screenSaverStartTimer",
+          "anchor": "option-db6307dc8522"
+        },
+        {
+          "expression": "config.usage.screenSaverMode",
+          "anchor": "option-d969d559a90b"
+        },
+        {
+          "expression": "config.usage.screenSaverMoveTimer",
+          "anchor": "option-7f195bf1b2d2"
+        },
+        {
+          "expression": "config.usage.informationShowAllMenuScreens",
+          "anchor": "option-8158651370eb"
+        },
+        {
+          "expression": "config.usage.informationExtraSpacing",
+          "anchor": "option-e083c3078d4e"
+        },
+        {
+          "expression": "config.usage.infobar_timeout",
+          "anchor": "option-3c4aa9977a2b"
+        },
+        {
+          "expression": "config.usage.show_second_infobar",
+          "anchor": "option-4247774a0f86"
+        },
+        {
+          "expression": "config.usage.second_infobar_timeout",
+          "anchor": "option-8e5d5e3d86b8"
+        },
+        {
+          "expression": "config.usage.showpicon",
+          "anchor": "option-a05d3e50cab2"
+        },
+        {
+          "expression": "config.usage.show_infobar_lite",
+          "anchor": "option-29a715fffb54"
+        },
+        {
+          "expression": "config.usage.show_infobar_do_dimming",
+          "anchor": "option-a298ac816ec2"
+        },
+        {
+          "expression": "config.usage.show_infobar_dimming_speed",
+          "anchor": "option-8a62577d44d4"
+        },
+        {
+          "expression": "config.plisettings.InfoBarEpg_mode",
+          "anchor": "option-43935dcfa00a"
+        },
+        {
+          "expression": "config.usage.shutdown_msgbox_timeout",
+          "anchor": "option-1fa1f5c635ef"
+        },
+        {
+          "expression": "config.usage.jobtaksextensions",
+          "anchor": "option-51c52fa1da9c"
+        },
+        {
+          "expression": "config.usage.showdish",
+          "anchor": "option-c535e65e88bc"
+        },
+        {
+          "expression": "config.usage.e1like_radio_mode",
+          "anchor": "option-2dbace0c54f9"
+        },
+        {
+          "expression": "config.usage.timerlist_finished_timer_position",
+          "anchor": "option-552984d1c6b5"
+        },
+        {
+          "expression": "config.usage.show_infobar_on_zap",
+          "anchor": "option-74469cc1620a"
+        },
+        {
+          "expression": "config.usage.show_infobar_on_skip",
+          "anchor": "option-1a7fc27dd3a1"
+        },
+        {
+          "expression": "config.usage.show_infobar_locked_on_pause",
+          "anchor": "option-84c93a1c6370"
+        },
+        {
+          "expression": "config.usage.show_infobar_on_event_change",
+          "anchor": "option-c120cdc867c5"
+        },
+        {
+          "expression": "config.usage.show_infobar_channel_number",
+          "anchor": "option-886bcdf7a578"
+        },
+        {
+          "expression": "config.usage.show_picon_bkgrn",
+          "anchor": "option-fc3251b4d03a"
+        },
+        {
+          "expression": "config.usage.show_genre_info",
+          "anchor": "option-490e6f1ee8e8"
+        },
+        {
+          "expression": "config.misc.showradiopic",
+          "anchor": "option-10cd00df0ee2"
+        },
+        {
+          "expression": "config.usage.swap_time_remaining_on_osd",
+          "anchor": "option-fa796c2171e1"
+        },
+        {
+          "expression": "config.usage.elapsed_time_positive_osd",
+          "anchor": "option-11ef823cd610"
+        },
+        {
+          "expression": "config.usage.swap_time_display_on_osd",
+          "anchor": "option-35b74281d918"
+        },
+        {
+          "expression": "config.usage.showInfoBarSubservices",
+          "anchor": "option-2e7c7a40f0b5"
+        },
+        {
+          "expression": "config.usage.swap_media_time_display_on_osd",
+          "anchor": "option-cd5de7852ff9"
+        },
+        {
+          "expression": "config.usage.show_cryptoinfo",
+          "anchor": "option-933622bd6a7b"
+        },
+        {
+          "expression": "config.softcam.hideServerName",
+          "anchor": "option-cdcd17a27505"
+        },
+        {
+          "expression": "config.usage.infobar_frontend_source",
+          "anchor": "option-054c694d1b0c"
+        },
+        {
+          "expression": "config.usage.swap_snr_on_osd",
+          "anchor": "option-910c30f32915"
+        },
+        {
+          "expression": "config.usage.movieplayer_pvrstate",
+          "anchor": "option-fd72a132c325"
+        },
+        {
+          "expression": "config.usage.zapHistorySort",
+          "anchor": "option-9dd2f1509c40"
+        },
+        {
+          "expression": "config.usage.hide_zap_errors",
+          "anchor": "option-15afcfa841c7"
+        },
+        {
+          "expression": "config.usage.hide_ci_messages",
+          "anchor": "option-dbb469eb7dcb"
+        },
+        {
+          "expression": "config.usage.pip_zero_button",
+          "anchor": "option-3837e1f7082a"
+        },
+        {
+          "expression": "config.usage.pip_hideOnExit",
+          "anchor": "option-bc77999ba352"
+        },
+        {
+          "expression": "config.usage.pip_last_service_timeout",
+          "anchor": "option-e882a00dee97"
+        },
+        {
+          "expression": "config.usage.show_vcr_scart",
+          "anchor": "option-ce69e0230a0e"
+        },
+        {
+          "expression": "config.misc.spinnerPosition",
+          "anchor": "option-07a8183eca15"
+        }
+      ]
+    }
+  ],
+  "dynamic_sections": [
+    "InputDeviceSetup",
+    "ButtonSetup",
+    "RemoteControlType",
+    "RemoteControlCode",
+    "LocaleSelection"
+  ],
+  "sources": [
+    {
+      "path": "data/menu.xml",
+      "sha256_lf": "0d8da7853ce8cc51e0073bb24b071a2662fe97f331afa7f41a46dc16d279fe0f",
+      "matches_installed_package_revision": false,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/menu.xml"
+    },
+    {
+      "path": "data/setup.xml",
+      "sha256_lf": "c725b62e0f57d4e418454a43d486368dd132fad54f250f5e47c294007215744c",
+      "matches_installed_package_revision": false,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml"
+    },
+    {
+      "path": "lib/python/Components/UsageConfig.py",
+      "sha256_lf": "1f0cce2db0f666797d5dfea7074c049e25db5702b764975b3b31d95e97108006",
+      "matches_installed_package_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py"
+    },
+    {
+      "path": "lib/python/Screens/Picon.py",
+      "sha256_lf": "8124e50d666bc6e4f1f50162dbf756175d896f62f0521d8b6d38c4940b89a1ef",
+      "matches_installed_package_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Picon.py"
+    },
+    {
+      "path": "lib/python/Components/Renderer/Picon.py",
+      "sha256_lf": "9d3f2a01c90636d598ff23f5627657762e58cf8506d7efb098d6e206c228e8d1",
+      "matches_installed_package_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/Renderer/Picon.py"
+    },
+    {
+      "path": "lib/python/Screens/InputDeviceSetup.py",
+      "sha256_lf": "e396ee35b7a6597891a95836c12b29477384861ce7315d1a3c6f925bedb38b3e",
+      "matches_installed_package_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InputDeviceSetup.py"
+    },
+    {
+      "path": "lib/python/Components/InputDevice.py",
+      "sha256_lf": "f6625d05023f7ac34269a179723b249123b9c11d7024352160a15c4150b24149",
+      "matches_installed_package_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/InputDevice.py"
+    },
+    {
+      "path": "lib/python/Screens/LocaleSelection.py",
+      "sha256_lf": "3d2ed7ebd4f3966b72bc14d32681060024cdefe051c423c5ba0d5ac574cc2897",
+      "matches_installed_package_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/LocaleSelection.py"
+    },
+    {
+      "path": "lib/python/Screens/SkinSelection.py",
+      "sha256_lf": "3dd0241e7d7a523504174af2d1f489238932225101bc07dd2eb1f921c4a1d0ef",
+      "matches_installed_package_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SkinSelection.py"
+    },
+    {
+      "path": "lib/python/Screens/InfoBarGenerics.py",
+      "sha256_lf": "c4e480599e52806fd26c1e2faed681a2b5cb2714265cd84e1a7a5a3e750c9c4c",
+      "matches_installed_package_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBarGenerics.py"
+    },
+    {
+      "path": "lib/python/Screens/ButtonSetup.py",
+      "sha256_lf": "5d4f648fcc0927a0dfcfa59170414b2744883f473df974757147545230dcd886",
+      "matches_installed_package_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ButtonSetup.py"
+    },
+    {
+      "path": "lib/python/Components/Lcd.py",
+      "sha256_lf": "650336224daad9215ebac9968b9a85aefa87479c0c0417c927962476882a37c3",
+      "matches_installed_package_revision": true,
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/Lcd.py"
+    }
+  ]
+}

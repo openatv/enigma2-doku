@@ -114,3 +114,36 @@ Some rows only appear in **Intermediate** or **Expert** settings mode. [Controls
 | An exact option or technical key | [OSD reference](../../einstellungen/referenz/userinterface/), for example `config.usage.menuType` |
 
 Sources: [MENU action and menu editing](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Menu.py), [OSD settings](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [menu choices](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py).
+
+## Configure the screen saver
+
+**Show screen saver** sets the delay or disables it. An active delay reveals **Screen saver mode** (`screenSaverMode`: blank screen, logo or picon) and **Screen saver movement** (time before changing position). The native timer is used particularly for pause and suitable radio/audio playback. It is not a general timer that blanks any live TV picture after five minutes without a button press. PiP can prevent activation.
+
+A subsequent button action leaves the saver. Picon mode needs a matching [channel logo](../../bedienung/picons/). The saver switches off neither receiver nor TV and does not replace a sleep timer.
+
+## Messages, radio and other OSD functions
+
+| Existing option | Additional explanation |
+| --- | --- |
+| Show Restart Network in Extensions | Adds a shortcut. Executing it can interrupt network connections; it is not an automatic network test. |
+| Time delay of the shutdown messages | Time before the default action in supported standby/restart/shutdown prompts, including timer prompts. Separate from recording margins and sleep duration. |
+| Show job tasks in Extension Menu | Expose running background jobs there. Does not create a cron task or start a new job. |
+| Show positioner movement | Display an indication of rotor movement. Hiding it does not move or stop a dish. |
+| Alternative radio mode | Use an alternative radio interface. The separate radio background affects presentation, not reception. |
+| Position of finished Timers in Timerlist | Place completed entries above/below others. Does not delete recordings. |
+| Zap history sequence | Choose ordering of previously visited channels. HISTORY buttons have a separate action setting. |
+| Hide zap errors | Suppress a message; reception faults remain. Re-enable messages for diagnosis. |
+| Hide CI messages | Suppress module messages; does not enable a module or entitlement. See [CI/CAM](../../entschluesselung/ci-cam/). |
+| Show VCR SCART on main menu | Conditional entry for an available SCART switch. Does not add a connector. |
+| Spinner Position | Move the top-left corner of the busy indicator. Coordinates are scaled from 0/0 to 1260/700; they are not direct 4K picture pixels. |
+
+The **spinner** indicates a busy interface. Hiding it cannot fix, for example, an unavailable NAS mount. See [autofs and NAS outages](../../netzwerk/autofs-fstab/).
+
+The three **PiP options** have an [additional guide](../../bedienung/pip/). All 60 OSD reference entries stay in their [existing location](../../einstellungen/referenz/userinterface/). The [Usage & GUI overview](../../bedienung/) connects them to the other submenus.
+
+
+## Receiver views
+
+<Capture id="ui-screensaver" language="en" alt="Five minutes and Logo are unsaved form values. No screen saver was enabled on the receiver." caption="Five minutes and Logo are unsaved form values. No screen saver was enabled on the receiver." />
+
+<Capture id="ui-osd-messages" language="en" alt="OSD messages and general behaviour. The delay applies to shutdown prompts." caption="OSD messages and general behaviour. The delay applies to shutdown prompts." />

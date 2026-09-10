@@ -1,0 +1,39 @@
+---
+title: "Select language and locale"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Usage & GUI → Locale / Language Settings** selects the menu language and an available regional variant. English is a language; English (GB) and English (US) are regional variants.
+
+## Select a language
+
+1. Highlight a language/locale. Installed, available and currently selected are different states.
+2. OK selects an installed entry. For an available entry, it can first install the package, requiring suitable feeds and network access.
+3. Save with Green and accept a GUI restart if offered. Plugins may reload some text only after a restart.
+4. Red/Cancel abandons the active-language selection. It does not automatically uninstall packages already installed.
+
+Highlighting may preview translated text. This is not the same as saving permanently. **INFO** jumps to the current entry; follow the displayed key actions.
+
+## List options and package management
+
+**MENU** opens the two [existing Locale settings](../../einstellungen/referenz/locale/): show packaged base locales or all regional locales, and select sorting by the offered names/codes. These help navigate a long list and do not change channel order.
+
+**Yellow** can offer Install, Delete or Purge depending on the selection. Purge removes unused language packages while respecting protected/permanent packages. It is not just a display filter. Check whether other users require additional languages before confirming. A red/off status icon here says nothing about encrypted TV channels.
+
+## What is not automatically translated
+
+- EPG descriptions come from broadcasters or EPG providers.
+- Audio/subtitle tracks are prioritised under [automatic language selection](../../bild-ton/tonspuren/).
+- Bouquets, custom channel names, filenames and personal notes remain.
+- Plugins need their own translations. An English field in a German GUI can indicate a missing plugin translation.
+- Check keyboard layout and [timezone/NTP](../../system/zeit-aufwachen/) separately.
+
+The extra language selector on **this website** is independent of the receiver. German and English are native handbook editions; additional website languages translate the English pages automatically while keeping their images.
+
+
+## Receiver views
+
+<Capture id="ui-languages" language="en" alt="Language list with current selection and package state. No language package was installed or removed." caption="Language list with current selection and package state. No language package was installed or removed." />
+
+<Capture id="ui-locale-settings" language="en" alt="The two list settings: displayed locales and sorting." caption="The two list settings: displayed locales and sorting." />

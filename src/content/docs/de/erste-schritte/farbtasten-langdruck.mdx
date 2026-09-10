@@ -77,3 +77,32 @@ Weiterlesen: [Menüoptionen](../menue-anpassen/), [Infobar](../infobar/), [Kanal
 Quellen: [Standard-Keymap](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/keymap.xml), [Hotkey-Implementierung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ButtonSetup.py) und [Fernbedienungseinstellungen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml).
 
 Weiterführend: [INFO, EPG und deren Langdruck konfigurieren](../../epg/tasten/) · [EPG-Ansichten und Primetime](../../epg/ansichten/).
+
+## Die übrigen Fernbedienungsoptionen zuordnen
+
+Der Dialog **Bedienung / Oberfläche → Fernbedienungseinstellungen** enthält 15 Optionen. Neben den oben erklärten POWER-, Blau- und Emulationsfunktionen gehören dazu:
+
+| Option | Bedeutung beim Fernsehen |
+| --- | --- |
+| Tastaturbelegung / Use key map | Vorhandene Keymap auswählen. Eine alternative Map kann viele Aktionen verändern; sie ist kein neuer IR-Code. Neustarthinweis beachten. |
+| Taste EPG | Gewünschte EPG-Ansicht auf den kurzen Tastendruck legen; [EPG-Tasten](../../epg/tasten/). |
+| Taste INFO | Sendungsinformation beziehungsweise angebotene Informationsansicht auswählen; getrennt von INFO lang. |
+| Taste OK | Infobar oder Senderliste öffnen. Wer die Senderliste auf OK legt, muss für die Infobar einen anderen angebotenen Zugriff nutzen. |
+| Taste GRÜN – Unterkanalmodus | Unterkanäle öffnen, bei entsprechender Auswahl ersatzweise Plugin-Browser. Keine Untertitel-Auswahl; [Untertitel](../../wiedergabe/untertitel/). |
+| Grafischen Infoleisten-EPG aufrufen / QuickEPG mode | Aufruf beispielsweise über OK lang, EXIT oder Links/Rechts festlegen. Dieselbe Einstellung wird auch im OSD angezeigt. |
+| Taste TV | Das angebotene TV-/Radio-/Favoritenverhalten wählen. Betrifft den Aufrufweg, nicht die Empfangsart des Tuners. |
+| Taste Verlauf | HISTORY beziehungsweise die markierten Vor-/Zurück-Tasten zum direkten Wechsel oder zur Verlaufsübersicht verwenden. Reihenfolge im OSD einstellen. |
+| Taste P+/CH+ und P−/CH− | Direkt Sender wechseln oder die angebotene Listenaktion verwenden. In offenen Listen können dieselben Tasten seitenweise navigieren. |
+| Tasten Hoch/Runter | Beim Fernsehen direkt zappen oder die Senderliste öffnen. In einem Menü bleiben es dessen Navigationstasten. |
+| Alte LINKS/RECHTS-Aktionen ergänzen | Kompatibilität mit älteren Kontexten, die Links/Rechts für Seite hoch/runter erwarten (`actionLeftRightToPageUpPageDown`). Ändert nicht generell jede Pfeiltaste in jedem Plugin. |
+
+Die einzelnen Schlüssel und Bedingungen findest du in der [bestehenden Fernbedienungsreferenz](../../einstellungen/referenz/remotebutton/). Eigene Hotkeys wirken in ihren jeweiligen Kontexten; ein Plugin kann Tasten selbst behandeln. Bei Konflikten zunächst eine Einstellung ändern und beim Fernsehen sowie im betroffenen Bildschirm testen.
+
+**Tastenwiederholzeit** gehört zu [Eingabegeräte](../../bedienung/eingabegeraete/), **IR-Typ/Code** zu [Fernbedienungscode](../../bedienung/fernbedienungscode/), das externe **Tastaturlayout** zu [Tastatur](../../bedienung/tastatur/).
+
+
+## Ansichten auf der Box
+
+<Capture id="ui-remote-main" language="de" alt="Fernbedienungsoptionen: Die Taste OK ist hier der Infobar zugeordnet." caption="Fernbedienungsoptionen: Die Taste OK ist hier der Infobar zugeordnet." />
+
+<Capture id="ui-remote-extra" language="de" alt="Blau-Tausch und Langdruck-Emulation sind getrennte Optionen. Die Emulation ist ausgeschaltet." caption="Blau-Tausch und Langdruck-Emulation sind getrennte Optionen. Die Emulation ist ausgeschaltet." />

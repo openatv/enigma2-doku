@@ -311,3 +311,15 @@ Die endgültigen Serien `ns-b-de-network-security` und `ns-b-en-network-security
 Für die Browserbilder wurde OpenWebif in einem isolierten Edge/Playwright-Kontext geöffnet. DE/EN folgen der GUI-Sprache; ein mobiler User-Agent aktiviert die native responsive Ansicht ohne Speichern einer Einstellung. Verwendet wurden nur Navigation und Auswahl vorhandener Bouquets/Editoren. Die acht Motive je Sprache sind Fernsehen, Aufnahmen, Timer, Einstellungen, BouquetEditor, AutoTimer, EPGRefresh und moderne Ansicht. Keine Boxinfo- oder API-Schlüsselseite wird veröffentlicht. Formular-Passwortfelder können vor dem Browser-Screenshot schwarz maskiert werden; die freigegebenen Bilder enthalten keine Geheimnisse.
 
 `data/openwebif-captures-review.json` hält SHA-256, Sprache, Datum und Sichtprüfung der 16 Browser-PNGs unter `src/assets/openwebif/` fest. `WebifCapture.astro` erzeugt lokale WebP-Varianten und verlinkt das Original. Die Website und ihr Build benötigen weder Playwright noch Zugriff auf eine laufende Box. Ein neuer Browserlauf muss erneut geprüft werden; reine GET-URLs sind bei OpenWebif nicht generell frei von Aktionen.
+
+## Bedienung / Oberfläche
+
+Das Profil `usage-gui` ergänzt 14 native Szenen je Sprache: Menü, zwei Systemeinstellungsansichten, Bildschirmschoner/Meldungen, zwei Fernbedienungsansichten, Picons, Frontdisplay, Eingabegeräteliste/-zeiten, Tastatur, Sprachliste und Locale-Optionen. Gesamtkatalog: 31 Profile und 217 Szenen. Werkzeugstand: `307d35705e87db4349f5f32eb8226637fe7da4d3`.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix usage-demo --profiles usage-gui --restart-languages --bootlogo --output .capture-private
+```
+
+Die freigegebenen Serien `ui-a-de-usage-gui` und `ui-a-en-usage-gui` enthalten 28 geprüfte Originalbilder. `usage_gui.py` trennt die im nativen Setup verwendeten Konfigurationspfade und die dynamischen Picon-/Eingabegerätebäume ab. Nicht benötigte native Handles bleiben unberührt. Speichern, Paketaktionen und Treiberänderungen sind gesperrt; die Sprachliste aktiviert keine Vorschau-Locale und entfernt ihren Paketcallback beim Schließen.
+
+Bildschirmschoner, Aufwach-Workaround, Mehrfachpfadmodus und aktivierte Gerätebearbeitung müssen als ungespeicherte Beispiele beschriftet bleiben. Der vorhandene HDD-Piconpfad ist ein Bestandsbeispiel. Verfügbare Displayfelder werden nicht um fremde Hardwarefunktionen ergänzt. AutoTimer-/EMC-Schutz und Sprachwiederherstellung gelten wie bei den anderen Profilen. 43 Helfertests bestanden, 424 native Bilder sind insgesamt freigegeben.

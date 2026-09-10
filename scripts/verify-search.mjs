@@ -25,6 +25,19 @@ globalThis.fetch = async input => {
 };
 const checks = [
   ...['de', 'en'].flatMap(lang => [
+    [lang, 'Picon search mode', `/${lang}/bedienung/`],
+    [lang, '700 ms', `/${lang}/bedienung/eingabegeraete/`],
+    [lang, 'QWERTZ', `/${lang}/bedienung/tastatur/`],
+    [lang, 'NTP', `/${lang}/bedienung/sprache/`],
+    [lang, 'Deep Standby', `/${lang}/bedienung/display-led/`],
+    [lang, 'ECM', `/${lang}/bedienung/systemanpassen/`],
+    [lang, '0x100', `/${lang}/bedienung/systemanpassen/`],
+    [lang, 'IR', `/${lang}/bedienung/fernbedienungscode/`],
+    [lang, 'PiP', `/${lang}/bedienung/pip/`],
+    [lang, 'Picon', `/${lang}/bedienung/picons/`],
+    [lang, 'screenSaverMode', `/${lang}/erste-schritte/menue-anpassen/`],
+    [lang, 'actionLeftRightToPageUpPageDown', `/${lang}/erste-schritte/farbtasten-langdruck/`],
+    [lang, 'AutoRefresh', `/${lang}/skins/installieren/`],
     [lang, 'softcam-feed-universal', `/${lang}/entschluesselung/softcam-feed/`],
     [lang, 'AutoCam', `/${lang}/entschluesselung/softcam-autocam/`],
     [lang, 'MMI', `/${lang}/entschluesselung/ci-cam/`],
