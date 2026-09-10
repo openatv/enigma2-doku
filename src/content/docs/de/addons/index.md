@@ -24,3 +24,14 @@ Die [EPG-Grundanleitung](../epg/grundlagen/) beschreibt den Programmführer und 
 ## Eigene Anleitungen ergänzen
 
 Für jede Erweiterung kann hier ein eigener Unterordner mit Einführung, Einrichtung und Problemlösungen entstehen. So bleiben umfangreiche Zusatzfunktionen getrennt lesbar und trotzdem gemeinsam durchsuchbar. Weitere Add-ons lassen sich nach demselben Muster ergänzen.
+
+## Aufnahmen und Dateien
+
+- [EMC installieren, deaktivieren und bedienen](./emc/)
+- [EMC-Bibliothek, Cover und Skin](./emc-bibliothek/)
+- [EMC-Wiedergabe und Sprachen](./emc-wiedergabe/)
+- [EMC-Papierkorb, NAS und Automatik](./emc-papierkorb/)
+- [Alle 135 EMC-Hauptsetup-Optionen](./emc-optionen/)
+- [FileCommander: Dateiverwaltung und alle Optionen](./filecommander/)
+
+Die eingebaute [MovieSelection](../aufnahmen/movieselection/) benötigt kein solches Add-on. Der [Vergleich der drei Oberflächen](../aufnahmen/) hilft bei der Auswahl.

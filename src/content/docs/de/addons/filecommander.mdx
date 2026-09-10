@@ -1,0 +1,100 @@
+---
+title: FileCommander – Dateien verwalten
+description: Zwei-Spalten-Dateimanager, Kopieren, Verschieben, Begleitdateien, Texteditor, Archive, Skripte und alle FileCommander-Einstellungen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**FileCommander verwaltet Dateien und Verzeichnisse.** Anders als [MovieSelection oder EMC](../../aufnahmen/) richtet er sich nicht primär nach Sendungstiteln, Wiedergabefortschritt und einer Filmbibliothek. Er zeigt auch Konfigurationsdateien, Aufnahme-Begleitdateien, Archive und Skripte. Dass er Mediendateien öffnen kann, macht ihn nicht zu einer zweiten EMC-Oberfläche.
+
+Das Plugin heißt im Menü **File Commander**. Falls es fehlt, suche bei der [Plugin-Installation](../../plugins/installieren/) nach **FileCommander**; der geprüfte Paketname ist `enigma2-plugin-extensions-filecommander`. Öffne es unter **Erweiterungen**. Zusätzliche Haupt-/Erweiterungsmenüeinträge sind in seinen Einstellungen schaltbar.
+
+## Zwei Spalten: Quelle und Ziel
+
+<Capture id="file-commander" language="de" alt="FileCommander mit Aufnahmeverzeichnis links und temporärem Beispielverzeichnis rechts" caption="Links liegen die echte Testaufnahme und Begleitdateien. Rechts liegt ein eigens angelegter Beispielordner unter /tmp; dessen Inhalt ist nicht dauerhaft und verschwindet nach einem Neustart." />
+
+Die **aktive Spalte ist die Quelle**, die andere das **Ziel** für Kopieren/Verschieben. Links ist also nicht grundsätzlich die Quelle. Die Pfade oben und die Markierung zeigen, wo du gerade arbeitest. **OK** betritt einen Ordner oder öffnet eine Datei mit der angebotenen Behandlung. Ein eingehängtes NAS erscheint als Pfad; FileCommander erstellt dadurch keine NFS-/SMB-Verbindung.
+
+| Taste | Aktion im geprüften Stand |
+| --- | --- |
+| Rot | Löschen |
+| Grün | In das Zielverzeichnis verschieben |
+| Gelb | In das Zielverzeichnis kopieren |
+| Blau | Umbenennen |
+| MENÜ | Kontextfunktionen; dort erneut MENÜ beziehungsweise „File Commander Einstellungen“ öffnet die Konfiguration. |
+| INFO | Aufgabenliste im normalen Hauptdialog; Dateistatus steht im Kontextmenü. |
+| TEXT | Kleine Dateien anzeigen/bearbeiten; im geprüften Stand ist der Texteditor auf Dateien unter 1 MB begrenzt. |
+| HELP | Verfügbare Aktionen und tatsächliche Tastenbelegung anzeigen. |
+
+**Klassische Navigation = Ja:** CH+/CH− wechselt die Spalte, Links/Rechts blättert seitenweise. **Nein:** Links/Rechts wechselt die Spalte, CH+/CH− blättert. Auf/Ab bewegt jeweils die Zeile. **Schnellauswahl über Ziffern** benutzt die Zahlentasten zur Namenssuche; ausgeschaltet dienen sie als Aktionskürzel. Das Kontextmenü ist deshalb der zuverlässigere Einstieg zum Lernen.
+
+## Eine Datei kopieren
+
+1. In einer Spalte den Quellordner, in der anderen den Zielordner öffnen.
+2. Zur Quellspalte wechseln und die gewünschte Datei markieren. Bei Mehrfachauswahl alle Markierungen prüfen.
+3. **Gelb – Kopieren** drücken. Bei erkannten Aufnahmegruppen entscheiden, ob **alle zusammengehörigen Dateien** oder **nur die markierte Datei** gemeint sind.
+4. In der Bestätigung Quelle, Ziel und einen möglichen Hinweis auf Überschreiben prüfen. Erst dann bestätigen.
+5. Den Hintergrundauftrag in der Aufgabenliste bis zum Abschluss verfolgen. Danach Größe/Inhalt am Ziel prüfen, bevor eine ursprüngliche Datei entfernt wird.
+
+Die Screenshots führen diese Schritte nur bis zur Ansicht vor; es wurde dafür keine Aufnahme kopiert, verschoben oder gelöscht. Zum eigenen Üben eine entbehrliche Textdatei verwenden. Ein NAS oder USB-Datenträger sollte während eines laufenden Auftrags erreichbar bleiben.
+
+## Aufnahmen bestehen aus mehreren Dateien
+
+FileCommander erkennt bei geeigneten Dateinamen zusammengehörige Dateien wie `.ts`, `.eit`, `.ts.meta`, `.ts.cuts`, `.ts.ap` und `.ts.sc`; auch Cover-/Textdateien können dazugehören. **Er kann beim Kopieren, Verschieben und Löschen ausdrücklich zwischen der ganzen Gruppe und nur der markierten Datei fragen.** Das ist keine Garantie, dass jede fremde Dateinamenskonvention erkannt wird. Die aufgelisteten Namen in der Rückfrage lesen.
+
+Nur `.ts` zu kopieren kann zwar Bild und Ton übertragen, aber Beschreibung, Marker oder Fortsetzungspositionen fehlen dann möglicherweise. Umgekehrt kann das Löschen einer `.cuts`-Datei gespeicherte Positionen entfernen, obwohl der Film bestehen bleibt. FileCommander-Löschen benutzt nicht automatisch den EMC- oder MovieSelection-Papierkorb.
+
+## Weitere Funktionen im Kontextmenü
+
+- **Verzeichnis oder symbolische Verknüpfung anlegen**, Lesezeichen verwalten, Liste aktualisieren, Mehrfachauswahl umschalten/alles markieren.
+- **Dateistatus** mit Größe, Zeiten und Berechtigungen; **Ausführungsrechte wechseln** bietet im geprüften Stand den Wechsel 755/644 für Dateien. Das ist kein vollständiger Benutzer-/Rechteeditor.
+- **Prüfsummen/Hashes** berechnen, beispielsweise zum Vergleich einer kopierten Datei.
+- **MediaInfo und ffprobe** für technische Medieninformationen. Fehlt das Programm, kann eine Paketinstallation angeboten werden; diese Werkzeuge sind keine Voraussetzung für normales Kopieren.
+- **Textbetrachter/-editor und Bildanzeige/Diashow**. Text erst speichern, wenn die Änderung beabsichtigt ist. Für Enigma2-Einstellungen normalerweise die zuständige Oberfläche verwenden.
+- **Archive, Installationspakete und Skripte** werden je nach Dateityp mit eigenen Aktionen behandelt. Entpacken schreibt Dateien, Paketinstallation ändert Software und ein Skript führt Befehle mit den Rechten der Box aus. Nur bewusst gewählte Aktionen starten.
+
+## Startpfade, Sortierung und Filter
+
+<Capture id="file-settings-paths" language="de" alt="FileCommander-Einstellungen für Startspalte, Pfade und Sortierung" />
+
+| Einstellung | Wozu sie dient |
+| --- | --- |
+| Im Hauptmenü / Erweiterungsmenü anzeigen | Zusätzliche Programmeinstiege. |
+| Standardseite | Links, rechts oder zuletzt benutzte Spalte aktivieren. |
+| Standardpfad links/rechts | Feste Ausgangspfade der jeweiligen Spalte. |
+| Pfad links/rechts speichern | Beim Verlassen die zuletzt verwendeten Orte merken; dann sind die festen Standardpfade nicht immer der nächste Einstieg. |
+| Ordnersortierung links/rechts; Dateisortierung links/rechts | Für beide Spalten getrennte Sortierung. |
+| Ordner zuerst | Ordner vor Dateien gruppieren. |
+| Aktuelles Verzeichnis anzeigen | Zusätzlicher Eintrag für den aktuellen Ordner; FileCommander nach einer Änderung neu öffnen. |
+| Klassische Navigation | Spaltenwechsel und Seitenwechsel wie oben beschrieben. |
+| Automatische Mehrfachauswahl | Bei Ja wird der Mehrfachauswahlmodus nach einer Operation beendet. Bei Nein bleibt der Modus aktiv; die tatsächlich noch markierten Einträge vor der nächsten Aktion kontrollieren. |
+
+<Capture id="file-settings-filter" language="de" alt="FileCommander-Filter, eigene Dateiendungen und Betrachteroptionen" />
+
+| Einstellung | Bedeutung |
+| --- | --- |
+| Schnellauswahl verwenden | Zifferntasten suchen Namen statt die Aktionskürzel auszuführen. |
+| Dateiendungsfilter | Nur passende Dateien anzeigen. `(*)` im Titel kennzeichnet einen aktiven Filter; versteckt bedeutet nicht gelöscht. |
+| Eigene Dateiendungen | Bei eigenem Filter eine kommaseparierte Liste ohne führenden Punkt, etwa `txt,log`. |
+| Betrachter für unbekannte Dateien | Unbekannte Dateien im internen Betrachter öffnen oder unbearbeitet lassen. |
+| Bearbeitung am Zeilenende starten | Cursor beim Editieren ans Ende statt an den Anfang setzen. |
+| Diashow-Verzögerung / Schleife | Zeit zwischen Bildern und Wiederholung der Bildfolge. |
+
+## Aufgaben, Meldungen und Skripte
+
+<Capture id="file-settings-jobs" language="de" alt="FileCommander-Einstellungen für Hintergrundaufgaben, Skripte und Meldungen" />
+
+| Einstellung | Bedeutung |
+| --- | --- |
+| Dauer der Statusmeldung | Kurze Hinweise innerhalb des Dateimanagers. |
+| Aufgabenmeldungen | Abschlussmeldung, wenn FileCommander während des Hintergrundauftrags nicht mehr geöffnet ist. |
+| Skriptmeldungen | Meldungen beim Ende eines Hintergrundskripts samt erfasster Ausgabe. |
+| Einblenddauer | Dauer der Abschluss-Popups für Aufgaben/Skripte. |
+| CPU-Priorität für Skripte | Nice-Wert; ein höherer Wert gibt dem Skript weniger Vorrang. Das ist keine feste CPU-Begrenzung. |
+| I/O-Priorität für Skripte | Beeinflusst die Ein-/Ausgabepriorität über ionice, soweit vom System unterstützt; keine garantierte Übertragungsrate. |
+| Gespeicherte Ausgabezeilen | Begrenzt die erfassten Standardausgabe-/Fehlerzeilen eines Skripts. |
+| Aufgaben aufteilen | Zerlegt eine Mehrdateioperation in einzelne Aufträge statt eines gemeinsamen Auftrags. |
+
+Diese Aufgaben sind **jetzt gestartete Datei-/Skriptjobs**, keine Aufnahmetimer und kein [Cron-Zeitplan](../../timer/cron/). GUI schließen bedeutet nicht automatisch, dass ein schon gestarteter Hintergrundauftrag fertig oder abgebrochen ist.
+
+Quellen: [FileCommander](https://github.com/openatv/enigma2/blob/c446c39a38/lib/python/Plugins/Extensions/FileCommander/plugin.py) und [alle 30 Setup-Einträge](https://github.com/openatv/enigma2/blob/c446c39a38/lib/python/Plugins/Extensions/FileCommander/setup.xml), abgeglichen mit dem installierten Paket `8.0.2-devel+git35442+c446c390+c446c39a38-r1`. Weiter: [Netzwerkfreigaben](../../netzwerk/freigaben/) und [Fernzugriff per SFTP/FTP](../../netzwerk/fernzugriff/).

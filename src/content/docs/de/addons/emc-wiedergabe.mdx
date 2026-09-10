@@ -1,0 +1,54 @@
+---
+title: EMC – Wiedergabe, Vorschau und Sprachen
+description: Fortsetzen, Filmende, STOP und EXIT, Playlists, MiniTV, Tonspuren und Untertitel in EMC einstellen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Öffne **EMC → MENÜ → EMC-Einstellungen**. Wiedergabeverhalten ist von den Anzeigeoptionen der Liste getrennt. Ein vorhandener Fortschrittsbalken bedeutet nicht, dass dieselbe Startposition in jeder Konfiguration verwendet wird.
+
+## Fortsetzen und Filmende
+
+<Capture id="emc-settings-playback" language="de" alt="EMC-Einstellungen zum Fortsetzen und zum Ende einer laufenden Aufnahme" />
+
+| Option | Auswirkung |
+| --- | --- |
+| Kein Fortsetzen unter 10 Sekunden | Sehr frühe gespeicherte Positionen werden beim Fortsetzen ignoriert. |
+| Zur ersten Marke springen | Kann eine erste Schnitt-/Startmarke berücksichtigen, etwa um Vorlauf zu überspringen. |
+| Fertig gesehene Filme zurückspulen | Als fertig eingestufte Filme beginnen wieder vorne statt nahe dem Abspann. Die Fertig-Prozentgrenze steht in den Skin-/Fortschrittsoptionen. |
+| Letzte Position immer als Marker speichern | Schreibt die zuletzt gespielte Position als Marker. Nicht mit einer rein optischen Markierung verwechseln. |
+| Nach Aufnahme-EOF zum Sender wechseln | Beim Erreichen des aktuellen Endes einer noch laufenden Aufnahme zum Live-Sender wechseln, je nach Auswahl mit/ohne Meldung oder gar nicht. Das ist etwas anderes als das Ende einer fertigen Datei. |
+| Echte Länge laufender Aufnahmen anzeigen | Versucht die wachsende Aufnahme genauer abzubilden; zusätzlicher Zugriff auf die Datei möglich. |
+| Liste nach STOP wieder öffnen | Zur Bibliothek zurückkehren, wenn STOP die Wiedergabe beendet. |
+| Liste nach Filmende wieder öffnen | Separates Verhalten am natürlichen Ende. |
+| Film mit EXIT verlassen | EXIT kann die Wiedergabe beenden statt nur eingeblendete Informationen zu schließen. |
+
+Mit **MENÜ → Playlist-Optionen** beziehungsweise **Zur aktuellen Playlist hinzufügen** lassen sich mehrere Titel zusammenstellen. **Alles abspielen** und **Zufallswiedergabe** sind andere Einstiege als OK auf einer Einzelaufnahme. Die Option „Meldung beim Hinzufügen zur Playlist“ bestätigt den Eintrag; sie startet keine Aufnahme. Vor Mehrfachaktionen auf die markierten Dateien achten.
+
+Schnittlisten-Downloads erscheinen nur mit passender zusätzlicher Erweiterung. Eine Schnittliste enthält Positionsangaben; das Herunterladen schneidet die Videodatei nicht automatisch physisch neu.
+
+## Vorschau und MiniTV
+
+<Capture id="emc-settings-preview" language="de" alt="EMC-Optionen für Filmvorschau, Verzögerung und MiniTV" caption="Die Vorschau blieb für die Bildaufnahme ausgeschaltet. MiniTV- und Vorschaufunktionen sind Optionen des echten Plugins, keine nachgebauten Ansichten." />
+
+**Filmvorschau anzeigen** startet nach einer Verzögerung die markierte Datei. Die Verzögerung wird in **Millisekunden** eingestellt, der Rücksprung vor die letzte Position in **Sekunden**. Vorschau kann NAS-Verbindungen aktivieren, Festplatten aufwecken und das bisherige Fernsehbild ersetzen. Zum ruhigen Durchsuchen zunächst ausgeschaltet lassen und bei Bedarf bewusst testen.
+
+**MiniTV ausblenden** lässt sich getrennt für Live-TV, Live-TV/Timeshift, Wiedergabe oder immer einstellen. Zusätzlich kann das MiniTV verschwinden, wenn ein Cover gezeigt wird. Die Ausblendmethode **Dienst stoppen** und **ein Pixel, stummgeschaltet** unterscheiden sich: Ein unsichtbar/stumm weiterlaufender Dienst kann weiterhin Ressourcen belegen. Der Skin muss ein passendes MiniTV-Feld vorsehen.
+
+## Ton und Untertitel
+
+Unter **Sprache** gibt es getrennte Schalter für automatische Tonspur- und Untertitelauswahl sowie jeweils **erste, zweite und dritte bevorzugte Sprache**. Diese Reihenfolge ist eine Ausweichliste: Fehlt die erste Sprache, versucht EMC eine weitere angebotene Spur. Es werden keine neuen Tonspuren oder Übersetzungen erzeugt.
+
+**AC3-Spur zuerst** beeinflusst die Audioauswahl. Ob die Anlage das gewählte Format hörbar ausgibt, hängt zusätzlich von den Audio-/Downmix-Einstellungen ab. Prüfe bei Stille auch diese Einstellungen. Automatische Untertitel können beim Start erneut eingeblendet werden, obwohl sie während der vorherigen Wiedergabe manuell ausgeschaltet wurden.
+
+Die EMC-Sprachwahl betrifft EMC-Wiedergabe und ist nicht identisch mit [Sprache und Bedienung von Enigma2](../../erste-schritte/bedienung/). Menüsprache, EPG-Sprache, Tonspur und Untertitel sind unterschiedliche Einstellungen.
+
+## Wenn etwas unerwartet startet oder weiterläuft
+
+- Startet beim Blättern ein Film, zuerst **Vorschau** prüfen.
+- Öffnet STOP eine Liste, die du nicht erwartest, **Liste nach STOP** und die verwendete Abspieloberfläche vergleichen.
+- Beginnt ein fast fertiger Film wieder vorne, **Fertig-Prozentgrenze** und **fertige Filme zurückspulen** prüfen.
+- Fehlen Fortsetzungspositionen nach einer Dateiübertragung, die `.cuts`-Begleitdatei prüfen. Marker nicht vorschnell zurücksetzen.
+- Ein schwarzes Bild kann zu Ausblendmethode, nicht unterstützter Datei oder fehlendem Speicherzugriff passen; nicht jede Ursache liegt in EMC.
+
+Quellen: [EMC-Setup](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/EnhancedMovieCenter.py), [EMC-Player](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/EMCMediaCenter.py) und [Vorschau/Listenaktionen](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/MovieSelection.py). [Alle Hauptsetup-Optionen](../emc-optionen/) sind separat durchsuchbar.

@@ -1,0 +1,57 @@
+---
+title: EMC – Bibliothek, Cover und Skin
+description: Movie Home, Ordner, Sortierung, Lesezeichen, Metadaten, Cover, Picons und EMC-Skin verständlich einstellen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Öffne **EMC → MENÜ → EMC-Einstellungen**. Die Anzeigeoptionen wirken in EMC; sie stellen die native MovieSelection nicht um. Für genaue Beschriftungen und technische Suchbegriffe gibt es die [EMC-Optionsreferenz](../emc-optionen/).
+
+## Movie Home und Ordnerstruktur
+
+<Capture id="emc-settings-library" language="de" alt="EMC-Konfiguration von Startverzeichnis, Pfadbegrenzung und Ordnern" />
+
+**Movie Home** ist der Ausgangsordner, beispielsweise `/media/hdd/movie`. **Movie Home beim Start** entscheidet zwischen Startordner, zuletzt besuchtem Ordner und Rückkehr nach Standby. **Pfad-Zugriffsgrenze** begrenzt das Hochblättern; sie ist keine Zugriffskontrolle für SSH, FTP oder andere Plugins.
+
+Ordner, symbolische Links und Lesezeichen sind verschiedene Dinge. Ein Link verweist auf einen anderen Pfad; ein Lesezeichen speichert einen schnellen Einstieg. **E2-Lesezeichen** können auch in anderen Enigma2-Auswahldialogen genutzt werden, **EMC-Lesezeichen** gehören zu EMC. Die Anzeige kann E2, EMC, beide oder keine einblenden.
+
+| Gruppe | Bedeutung |
+| --- | --- |
+| Ordner/Links anzeigen | Blendet diese Einträge in der Liste ein oder aus; löscht sie nicht. |
+| Ordner innerhalb der Filmliste, konfigurierte Ordner oben | Bestimmt die Einordnung relativ zu Filmen. Die zusätzliche Top-Liste stammt aus `/etc/enigma2/emc-topdir.cfg`. |
+| Ordnerinformation und Größe | Zeigt Dateianzahl, Größe oder beides. Das Einlesen kann HDD/NAS-Zugriffe erzeugen. Platzhaltertext/-symbol gilt, solange Werte unbekannt sind. |
+| Neueste Aufnahmen und Begrenzung | Sammelt neuere Aufnahmen aus dem betrachteten Verzeichnisbaum; die Begrenzung reduziert die angezeigte Auswahl. |
+| Standardsortierung / dauerhafte Ordnersortierung | Globale Vorgabe gegenüber einer über MENÜ gespeicherten Ordnerregel. Dauerhafte Regeln liegen in `/etc/enigma2/emc-permsort.cfg`. |
+| Cursor nach Markierung bewegen | Bestimmt, wohin die Auswahl nach dem Markieren springt; hilfreich bei Serienauswahl. |
+
+Die Dateien `emc-hide.cfg` und `emc-noscan.cfg` steuern zusätzliche Ausblend-/Scanregeln. Sie sind keine Mount-Konfiguration. Hinweise für langsame/offline NAS stehen unter [EMC und Netzspeicher](../emc-papierkorb/#nas-cache-und-scanregeln).
+
+## Woher kommen Titel und Beschreibung?
+
+<Capture id="emc-settings-metadata" language="de" alt="EMC-Optionen für meta- und eit-Begleitdaten" />
+
+Eine Aufnahme besteht häufig aus dem Film und Begleitdateien: `.ts` enthält den Datenstrom, `.meta` Metadaten, `.eit` Sendungsinformationen, `.cuts` Schnitt-/Fortsetzungsinformationen und `.ap`/`.sc` Indexdaten. Nicht jede Dateiart besitzt alle davon.
+
+**Titel aus .meta laden**, zusätzliche Informationen daraus sowie **Titel aus .eit laden** erweitern die reine Dateinamenanzeige. Mehr Einlesevorgänge können große Listen verlangsamen. Sonderzeichenersetzung, Format-/Schnittnummeranzeige und Pfad als Ersatzbeschreibung verändern die Darstellung. „Echte Pfade auflösen“ zeigt bei Links das Ziel; es verschiebt den Film nicht.
+
+**Audio-Metadaten** nutzt vorhandene Tags unterstützter Audiodateien. Fehlende Sendertexte in einer Aufnahme lassen sich nicht durch einen gewöhnlichen EPG-Refresh zuverlässig nachträglich herstellen.
+
+## Cover und Filminformationen
+
+Aktiviere **Cover anzeigen**, wenn vorhandene Bilder in der Liste erscheinen sollen. Anzeigeverzögerung verhindert unnötiges Nachladen beim Blättern; Ersatzcover und Hintergrund bestimmen die Darstellung ohne passendes Bild. **Cover anzeigen startet nicht automatisch einen erfolgreichen Cover-Download.**
+
+Über **MENÜ → Cover suchen** beziehungsweise **Filminformationen herunterladen** öffnest du die jeweiligen Werkzeuge. Deren zusätzliche Einstellungen betreffen Sprache, Suchdienst, Titelabgleich/Filter, Bildauflösung, Auswahl mehrerer Treffer sowie das Speichern von Beschreibung und Cover. Der Filminformationsdialog kann Laufzeit, Genre, Produktionsländer, Veröffentlichungsdatum und Bewertung übernehmen. Prüfe Film und Erscheinungsjahr vor dem Speichern: Gleiche Titel oder Serienfolgen können falsche Treffer liefern.
+
+Die Suchdienste sind externe Angebote. Verfügbarkeit, API-Zugang und installierte Zusatzplugins können sich ändern. Die Anleitung und Bilder bestätigen die vorhandenen Bedienelemente; ein erfolgreicher Download von jedem angebotenen Dienst wurde nicht nachgewiesen. Lokale Cover lassen sich unabhängig davon anzeigen. Cover sind Bilder zum Film, **Picons** dagegen Senderlogos.
+
+## Skin, Fortschritt und Farben
+
+<Capture id="emc-settings-skin" language="de" alt="EMC-Skin, Datum, Symbole und Fortschrittsdarstellung" />
+
+**Originalen EMC-Skin verwenden** wählt die eigene EMC-Vorlage; ausgeschaltet kann der aktive Image-Skin seine EMC-Ansicht liefern. Nach einer Änderung EMC schließen und erneut öffnen. Der eigene Skin bietet Informationen **links oder unten**, jeweils mit oder ohne **MiniTV**. Die Bildschirmauflösung selbst wird damit nicht umgestellt; dafür gelten die [MetrixHD-Auflösungseinstellungen](../../skins/metrixhd/aufloesung/).
+
+Weitere Optionen betreffen skinbare Listenzeilen, Datumsformat und Ausrichtung, Dateisymbole/Linkpfeile, Senderpicons samt Position und eigenem Suchpfad. Welche Elemente sichtbar sind, bestimmt auch die tatsächlich verwendete Skinvorlage.
+
+**Fortschritt anzeigen** sowie die Prozentgrenzen für begonnen/fertig bestimmen die Statusdarstellung. Eigene Farben unterscheiden ungesehen, teilweise gesehen, fertig, laufende Aufnahme und hervorgehobenen Eintrag; ein Stern kann neue Aufnahmen kennzeichnen. „Fertig gesehen“ ist ein berechneter Status. Wird daran automatische Löschung geknüpft, hat eine geänderte Prozentgrenze Folgen über die Farbe hinaus: [Papierkorb und Bereinigung](../emc-papierkorb/).
+
+Quellen: [EMC-Setup](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/EnhancedMovieCenter.py), [Dateiliste und Metadaten](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/MovieCenter.py), [Zusatzdialoge für Cover und Filminformationen](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/setup.xml).

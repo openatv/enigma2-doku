@@ -1,0 +1,56 @@
+---
+title: EMC – trash, NAS and automation
+description: Understand trash versus permanent deletion, review automatic cleanup and configure EMC for network storage and large libraries.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+## Configure trash deliberately
+
+EMC has separate trash settings under **EMC → MENU → EMC Setup → Trashcan**. The usual `/media/hdd/movie/trashcan` differs from native MovieSelection's `.Trash`. Check the actual path in your installation; trash is not a backup.
+
+<Capture id="emc-settings-trash" language="en" alt="EMC daily trash cleanup setting" caption="Automatic cleanup and daily actions were temporarily disabled for capture, then restored. Further time/age fields depend on the enabled parent option." />
+
+1. Check **Trashcan enable** and an appropriate path on the intended storage device.
+2. **Show trashcan directory** makes removed entries easier to locate; count/size are additional display options.
+3. Keep **Delete validation** enabled if you want protection against accidental button presses.
+4. Deliberately choose **daily cleanup**, its time and retention days. An enabled automatic cleanup can remove trash contents without asking about each file again.
+
+Normal **Delete** can move files into enabled trash. **Delete permanently** and **Empty trashcan** remove files permanently. To recover an item still present, select it in trash and use Move to return it to the recording folder. Account for any active cleanup first.
+
+A central trash folder on another filesystem may require a data transfer rather than a quick rename. NAS permissions, connection availability and free space also determine whether it succeeds. Trash contents still occupy storage.
+
+## Automatically remove finished movies
+
+**Move finished movies in trashcan** is an additional Expert option. It processes movies classified as finished in Movie home and its subdirectories once the configured age is reached; links are not simply followed as additional subdirectories. Later trash cleanup can remove them permanently.
+
+**Age of finished movies** differs from **days in trash**. The **finished watching percentage** is another criterion, distinct from age. Status colours alone do not require automatic removal. Manually marking a movie watched may also change whether it qualifies.
+
+Cleanup is not limited to times when the EMC list is open. The checked startup code schedules it when Enigma2 starts and can initiate cleanup shortly afterwards. **Disable EMC** therefore does not reliably remove every background effect. Review and, if appropriate, disable automation separately when permanently switching to MovieSelection.
+
+## NAS, cache and scan rules
+
+The file **emc-noscan.cfg** contains excluded scan paths; **emc-hide.cfg** controls hidden entries. The switches below also determine which rules apply.
+
+| Option group | Benefits and limits |
+| --- | --- |
+| File/directory cache | Reduces repeated reads. Changes made by another receiver may need a reload to appear. |
+| Minimum cache limit | A count threshold: directories with more subdirectories or files are cached. Zero includes small non-empty lists; it is not a RAM limit in MB. |
+| Always reload on opening | Fresher data with additional access; opening a slow NAS can take longer. |
+| Directory sizes, file counts, latest recordings | Convenience requires extra reads. Compare these individually when investigating delays. |
+| Suppress structure scans in selected folders | Uses `/etc/enigma2/emc-noscan.cfg`; distinct from hiding entries with `emc-hide.cfg`. |
+| Scan DVD/Blu-ray/ISO/movie structures and linked folders | Recognizes media structures but can read many directories. Detection does not guarantee playback of every format. |
+| Experimental options | Additional scan limits, rescanning affected folders, sleeping-device handling and dead-link checks. Change deliberately rather than enabling everything. |
+| Remote recordings | Detects recordings in progress on another receiver using shared storage under suitable conditions. It does not create a network mount or remote timer. |
+
+An EMC cache cannot repair an unreachable server. Even with [autofs](../../netzwerk/autofs-fstab/), accessing an unavailable NAS can wait and show a spinner. Check mounts, connectivity and permissions first, then decide which preview/metadata/scan features are needed. Starting in a subfolder can reduce the first query for a very large library.
+
+## Daily auto-start, timer cleanup and diagnostics
+
+Here **daily auto-start** schedules **Standby, DeepStandby, Reboot or E2 Restart**. It does not simply mean opening EMC every morning. Start/end of the window and standby after restarting are related settings. It does not replace a recording or wake-up timer; avoid scheduling the same shutdown independently in both EMC and [Enigma2 task scheduling](../../timer/aufgaben/).
+
+**Automatic timers list cleaning** concerns completed timer entries, not deletion of recorded video. Choose accordingly if timer history matters for troubleshooting.
+
+Under **Debug**, enable EMC output and choose its directory and filename. The path must be writable with sufficient space; turn logging back down after targeted troubleshooting. See [logs and diagnostics](../../hilfe/logs-diagnose/) for general Enigma2 logs.
+
+Sources: [EMC startup and cleanup scheduling](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/EnhancedMovieCenter.py), [deletion/cleanup logic](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/MovieSelection.py), [scheduled actions](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/EMCTasker.py). Automatic deletion and power actions were not executed for this guide.

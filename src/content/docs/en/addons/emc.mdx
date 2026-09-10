@@ -1,0 +1,64 @@
+---
+title: EnhancedMovieCenter (EMC)
+description: Install or disable EMC, return to MovieSelection and understand colour buttons, long presses and the list menu.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**EMC adds recording and media management with its own playback interface.** It provides sorting, progress indicators, covers, previews and playlists. It does not replace tuners, EPG import or recording timers. See [MovieSelection, EMC or file manager?](../../aufnahmen/) for a comparison.
+
+## Install and choose how to open it
+
+1. Open [plugin installation](../../plugins/installieren/) and install **EnhancedMovieCenter** from the feed. The package is `enigma2-plugin-extensions-enhancedmoviecenter`.
+2. Restart the GUI and open **Plugins → Enhanced Movie Center (Setup)**.
+3. Check **Disable EMC = No** and **Start EMC with**. **VIDEO/PVR** is the usual recordings entry point; selecting another offered button replaces that function instead.
+4. Set **Movie home home path** to the existing recording directory, for example `/media/hdd/movie`. [Mount a NAS](../../netzwerk/freigaben/) before selecting its path.
+5. Save with **Green** and accept a requested GUI restart. Then press your chosen button.
+
+<Capture id="emc-settings-start" language="en" alt="EMC setup showing Disable EMC and the launch button" caption="Expert setup level exposes the otherwise hidden disable option. Displayed values are not a universal recommended configuration." />
+
+To return to the built-in recording list, set **Disable EMC = Yes**, save and restart the GUI. EMC setup remains accessible in Plugins. **Show plugin config in extensions menu**, **Show EMC in main menu** and **Show EMC in extensions menu** refer to different entries. Hiding a menu entry does not uninstall the plugin.
+
+## Use the library
+
+<Capture id="emc-library" language="en" alt="EMC recording list showing trash, latest recordings and a Das Erste recording" caption="EMC displays the same recording directory as MovieSelection using its own layout. .Trash belongs to native MovieSelection here; EMC uses trashcan." />
+
+**OK** enters a folder or plays the selection. **INFO** shows programme details. **EXIT** closes the list; its playback behaviour is a separate setting. **0** returns to Movie home. “Latest Recordings” is an aggregate view, not an additional copy of the movies.
+
+| Button inside EMC | Function in the checked version |
+| --- | --- |
+| Red / long Red | Separately configurable; offered actions can include delete, copy and cover toggle. |
+| Green / long Green | With the normal sort assignment, short changes sort mode and long reverses sort direction. A freely configurable Green entry is commented out in the checked main setup. |
+| Yellow / long Yellow, Blue / long Blue | Independent selections from available actions such as move, Movie home, bookmarks or playlist. |
+| Long INFO | Opens the selected movie information provider; may require an additional plugin and internet access. |
+| MENU | Context menu for the current list or selection. |
+| Long MENU / AUDIO | Available movie-list plugins for the selected item. |
+| Short / long VIDEO/PVR inside the list | Add/remove an item from the selection, or reset the selection. |
+| TEXT | Begin or end multiple selection. |
+| Short / long TV | Reload the file list or open the timer list. |
+| RADIO | Toggle watched/unwatched status. This changes stored progress information. |
+| Bouquet +/− | Depending on EMC setup: jump to start/end, skip several entries or change folders. |
+
+Your remote must provide the corresponding key codes. **HELP** and the footer show contextual actions; EMC's assignments are independent of [MovieSelection](../../aufnahmen/movieselection/).
+
+## MENU contains more than settings
+
+Available entries depend on selection and installed plugins:
+
+- **Reload directory**, play last, play all and shuffle; create, add to and manage playlists.
+- **Copy, move and rename**, create directories or symbolic links. Check selection and destination before confirming.
+- Add, remove or open **E2 bookmarks and EMC bookmarks** separately. Permanent folder sorting can override the normal default sort mode.
+- **Cover search and movie information downloads**; edit tags or cut lists through available extensions.
+- **Reset markers, delete cut files and remove rogue files** write to storage. Cut and resume information can be lost.
+- **Delete, delete permanently and empty trash** are different operations; see [trash management](../emc-papierkorb/).
+- **EMC Setup** and **EMC Help**.
+
+## Find the many settings
+
+In setup, use **Up/Down** to navigate, **Left/Right** to change values, **Green** to save and **Red/EXIT** to cancel. Bouquet buttons jump between sections. Some entries require **Intermediate/Expert** level; others appear only when a parent option is enabled. **Blue** selects predefined setting groups; **long Blue** restores defaults. These can change several values and are not simply layout switches.
+
+Continue with [library and skin](../emc-bibliothek/), [playback and languages](../emc-wiedergabe/), [trash/NAS/automation](../emc-papierkorb/) and the [complete main setup reference](../emc-optionen/).
+
+Checked plugin revision: `fc7fd6181e`, package `4.0.+git1790+fc7fd610+fc7fd6181e-r0`. Sources: [startup logic](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/plugin.py), [buttons and list](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/MovieSelection.py), [context menu](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/MovieSelectionMenu.py). Wording may vary slightly with the translation.
+
+The checked plugin occasionally displays `DUMMY CONFIGSECTION` section separators or `HELP_…` instead of translated help. These are presentation/translation remnants, not additional settings. The original captures retain them.

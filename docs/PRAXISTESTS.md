@@ -267,3 +267,29 @@ Die SHA-256-Werte von `timers.xml`, `scheduler.xml`, `epgrefresh.xml`, `/etc/cro
 - 122 Inhalte je Sprache; 37 Kapitel je Sprache mit Bildern. Insgesamt 192 Original-PNGs, davon 166 mit Bootlogo und 26 aus der früheren Senderhintergrund-Serie, sowie 576 responsive WebP-Varianten. Pages-Build rund 115,83 MB in 1303 Dateien, etwa 11,58 Prozent des 1-GB-Budgets.
 
 Es wurde kein neuer Aufnahme-, Scheduler- oder Cronauftrag gespeichert, kein Import ausgelöst, kein Konflikt künstlich erzeugt und kein automatischer Deep-Standby-/RTC-Wecklauf getestet. Die beschriebenen Anleitungen stützen sich auf native Dialoge und abgeglichene Quellen, nicht auf einen behaupteten vollständigen Praxistest aller Abläufe. Ein durchgehender Import mit Senderzuordnung und daraus folgender Testaufnahme sowie Hardware-Wecktests können später ergänzend protokolliert werden. Änderungen werden nur lokal committed; kein Push.
+
+## MovieSelection, EMC und FileCommander – 10.09.2026
+
+| Bereich | Geprüfter Umfang |
+| --- | --- |
+| Vergleich | EMC-Tastenübernahme und `ml_disable` im Sessionstart, Neustartbedarf sowie unabhängig initialisierte Hintergrundfunktionen im Quellcode geprüft |
+| MovieSelection | Listen-/Setup-Klassen, Ordner, Sortierung, Tasten, Wiedergabe und Papierkorb mit der vorhandenen Das-Erste-Testaufnahme und dem Enigma2-Referenzstand abgeglichen |
+| EMC | Installiertes Paket `4.0.+git1790+fc7fd610+fc7fd6181e-r0`, passender Quellstand `fc7fd6181e`; 135 aktive Hauptsetup-Einträge per AST gezählt, alle mit eigener Erklärung in DE/EN versehen; zusätzliche Cover-/Playlist-Dialoge erläutert |
+| FileCommander | Installiertes Paket `8.0.2-devel+git35442+c446c390+c446c39a38-r1`; native Zwei-Spaltenansicht und alle 30 Setup-Einträge, Aufnahmegruppen-Rückfragen, Navigation und Hintergrundjobs im passenden Quellcode geprüft |
+| Neue Bilder | 32 Original-PNGs aus den sechs `media-safe-…`-Läufen einzeln gesichtet, in DE/EN, Bootlogo bei gestoppter Wiedergabe |
+| Aufnahmeplugin | `f7251392db31e5988b56a0938258bcae093b1b43`; 30 Python-Tests bestanden, einschließlich vier gezielt begrenzter EMC-Konfigurationsänderungen und Wiederherstellung fehlender Werte/Modulzustände |
+| Erhalt vorhandener Daten | Neun Dateien per SHA-256 unverändert: Aufnahme-Begleitdateien, Timer-/Scheduler- und Mountdateien. Videodatei weiterhin 563403288 Bytes; beide Papierkörbe leer. Vier EMC-Originalwerte und deutsche GUI-Sprache wiederhergestellt. |
+
+Ein erster erneuter Capture-Aufruf wurde von der automatischen Freigabeprüfung wegen aktiver EMC-Hintergrundreinigung abgewiesen. Daraufhin wurde das Verfahren um die Suspendierung der vier Automatiken bei gestoppter GUI, einen privaten Wiederherstellungssnapshot und die Laufzeitprüfung direkter Profilaufrufe ergänzt. Die geschützte Serie wurde freigegeben und erfolgreich ausgeführt; es besteht kein offener Freigabeblocker.
+
+Die Tests belegen native Ansichten und Quelllogik. EMC-Deaktivierung über die physische Fernbedienung mit anschließendem Tastentest, alle Wiedergabe-/Sprachkombinationen, Cover-Downloads, Archive/Paketinstallation/Skripte sowie echte Kopier-, Lösch- oder automatische Bereinigungsläufe wurden damit nicht vollständig getestet. Die Aufnahmedatei wurde nicht zur Demonstration verändert. Modellabhängige Decoderfähigkeiten bleiben außerhalb der Basisanleitung.
+
+### Website-Prüfungen
+
+- Acht neue Artikel je Sprache: Vergleich, MovieSelection, fünf EMC-Kapitel einschließlich der vollständigen Hauptsetup-Referenz und FileCommander.
+- Astro: 21 Dateien geprüft, keine Fehler, Warnungen oder Hinweise. Handbuch: 11 Node-Tests und 8 Python-Tests bestanden.
+- Produktionsbuild für GitHub Pages und Apache am Domain-Ursprung erfolgreich. Je 262 HTML-Dateien, lokale Links, Assets, Sprungmarken und Sprachgegenstücke geprüft; je 103 Suchprüfungen bestanden.
+- Gebaute Vergleichsseite, deutsches FileCommander-Kapitel und englische EMC-Optionsreferenz im Browser kontrolliert: Navigation, Tabellen, Originalbild mit Beschriftung und Sprachwechsel passen zum Inhalt. Breite Tabellen sind innerhalb des Inhalts horizontal scrollbar.
+- 130 Inhalte und 43 bebilderte Kapitel je Sprache. Insgesamt 224 Original-PNGs und 672 responsive WebP-Varianten. Der abschließende Pages-Build umfasst 1465 Dateien und rund 132,79 MB, etwa 13,28 Prozent des vorsichtigen 1-GB-Budgets.
+
+Die lokale Vorschau wurde abschließend wieder mit dem GitHub-Pages-Projektpfad `/enigma2-doku` gebaut. Änderungen werden lokal committed; kein Push.

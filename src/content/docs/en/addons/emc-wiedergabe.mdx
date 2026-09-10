@@ -1,0 +1,54 @@
+---
+title: EMC – playback, preview and languages
+description: Configure resume, end-of-movie behaviour, STOP and EXIT, playlists, MiniTV, audio tracks and subtitles in EMC.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Open **EMC → MENU → EMC Setup**. Playback behaviour is separate from list appearance. A progress indicator does not mean that every configuration starts playback at the same position.
+
+## Resume and the end of a movie
+
+<Capture id="emc-settings-playback" language="en" alt="EMC resume and growing-recording end settings" />
+
+| Option | Effect |
+| --- | --- |
+| No resume below 10 seconds | Ignores very early stored positions when resuming. |
+| Jump to first mark | Can use a first cut/start marker, for example to skip pre-recording padding. |
+| Rewind finished movies before playing | Movies classified as finished start from the beginning instead of near the credits. The finished percentage is in skin/progress settings. |
+| Always save last played progress as marker | Writes the last played position as a marker; this is not just a visual highlight. |
+| Zap to channel after record EOF | When reaching the current end of a recording still in progress, switches to its live service according to the selected message/no-message/disabled mode. This differs from the end of a completed file. |
+| Show real length of running records | Tries to reflect the growing recording more accurately; may require additional file access. |
+| Re-open list after STOP | Returns to the library when STOP ends playback. |
+| Re-open list after movie end | Separate behaviour at the natural end. |
+| Leave Movie with Exit | EXIT can end playback rather than only dismissing information overlays. |
+
+Use **MENU → Playlist Options** or **Add to current Playlist** to assemble multiple titles. **Play All** and **Shuffle All** differ from pressing OK on one recording. The playlist-added message confirms the selection; it does not start a recording. Check marked files before any multiple-item action.
+
+Cut-list downloads require the appropriate companion extension. A cut list contains positions; downloading it does not automatically rewrite the video into a physically cut file.
+
+## Preview and MiniTV
+
+<Capture id="emc-settings-preview" language="en" alt="EMC movie preview, delay and MiniTV options" caption="Preview remained disabled during capture. These are the plugin's real preview and MiniTV controls, not recreated interfaces." />
+
+**Show movie preview** starts the highlighted file after a delay. That delay uses **milliseconds**; the offset before the last position uses **seconds**. Preview can activate NAS connections, wake disks and replace the previous television picture. Leave it disabled for quiet browsing and test deliberately if required.
+
+**Hide MiniTV** can apply to live TV, live TV/timeshift, playback or everything. MiniTV can also be hidden when showing a cover. **Stop service** differs from **single pixel TV, muted**: an invisible, muted service can still consume resources. The skin must provide an appropriate MiniTV area.
+
+## Audio and subtitles
+
+Under **Language**, independent switches enable automatic audio and subtitle selection, each with **primary, secondary and tertiary preferred languages**. This is a fallback order: if the first language is missing, EMC tries another available track. It does not create new audio tracks or translations.
+
+**AC3-track first** affects audio selection. Audible output also depends on audio/downmix configuration and the connected equipment. Check these if playback is silent. Automatic subtitles may be enabled again on starting playback even if you manually disabled them during the previous session.
+
+EMC language preferences apply to EMC playback, separately from [Enigma2 interface language and operation](../../erste-schritte/bedienung/). Menu language, EPG language, audio tracks and subtitles are different settings.
+
+## Unexpected playback behaviour
+
+- If scrolling starts a movie, check **preview** first.
+- If STOP opens an unexpected list, compare **re-open after STOP** with the player actually being used.
+- If a nearly finished movie restarts from the beginning, check the **finished percentage** and **rewind finished movies**.
+- If resume positions disappear after a file transfer, check the `.cuts` sidecar before resetting markers.
+- A black picture may relate to the hiding method, unsupported media or inaccessible storage; not every cause lies in EMC.
+
+Sources: [EMC setup](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/EnhancedMovieCenter.py), [EMC player](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/EMCMediaCenter.py) and [preview/list actions](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/MovieSelection.py). [All main setup options](../emc-optionen/) are searchable separately.

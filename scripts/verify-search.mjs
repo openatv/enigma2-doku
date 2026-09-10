@@ -25,6 +25,20 @@ globalThis.fetch = async input => {
 };
 const pagefind = await import(pathToFileURL(path.join(root, 'pagefind/pagefind.js')));
 const checks = [
+  ['de', 'MovieSelection', '/de/aufnahmen/movieselection/'],
+  ['de', 'EMC', '/de/addons/emc/'],
+  ['de', 'config.EMC.movie_finished_clean', '/de/addons/emc-optionen/'],
+  ['de', 'config.EMC.movie_preview_delay', '/de/addons/emc-optionen/'],
+  ['de', 'FileCommander', '/de/addons/filecommander/'],
+  ['de', 'MiniTV', '/de/addons/emc-wiedergabe/'],
+  ['de', 'emc-noscan.cfg', '/de/addons/emc-papierkorb/'],
+  ['en', 'MovieSelection', '/en/aufnahmen/movieselection/'],
+  ['en', 'EMC', '/en/addons/emc/'],
+  ['en', 'config.EMC.movie_finished_clean', '/en/addons/emc-optionen/'],
+  ['en', 'config.EMC.movie_preview_delay', '/en/addons/emc-optionen/'],
+  ['en', 'FileCommander', '/en/addons/filecommander/'],
+  ['en', 'MiniTV', '/en/addons/emc-wiedergabe/'],
+  ['en', 'emc-noscan.cfg', '/en/addons/emc-papierkorb/'],
   ['de', 'Primetime', '/de/epg/ansichten/'],
   ['en', 'prime time', '/en/epg/ansichten/'],
   ['de', 'INFO lang', '/de/epg/tasten/'],

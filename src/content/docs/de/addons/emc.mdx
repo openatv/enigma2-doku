@@ -1,0 +1,64 @@
+---
+title: EnhancedMovieCenter (EMC)
+description: EMC installieren, deaktivieren, zur MovieSelection wechseln, Farbtasten und Langdruck sowie das Listenmenü verstehen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**EMC erweitert die Verwaltung und Wiedergabe von Aufnahmen und anderen Medien.** Es bringt eigene Listen, Sortierung, Fortschrittsanzeigen, Cover, Vorschau und Wiedergabelisten mit. Es ersetzt keinen Tuner, EPG-Import oder Aufnahmetimer. Den Vergleich findest du unter [MovieSelection, EMC oder Dateimanager?](../../aufnahmen/).
+
+## Installieren und den Einstieg wählen
+
+1. Öffne die [Plugin-Installation](../../plugins/installieren/) und installiere **EnhancedMovieCenter** aus dem Feed. Der Paketname lautet `enigma2-plugin-extensions-enhancedmoviecenter`.
+2. Starte die GUI neu und öffne **Erweiterungen → Enhanced Movie Center (Konfiguration)**.
+3. Prüfe **EMC deaktivieren = Nein** und **Starte EMC mit**. Üblich ist die Aufnahmetaste **VIDEO/PVR**; andere angebotene Einstiege belegen entsprechend andere Funktionen.
+4. Stelle **Movie Home: Stammverzeichnis** auf den vorhandenen Aufnahmeordner, beispielsweise `/media/hdd/movie`. Ein NAS muss vorher [eingehängt](../../netzwerk/freigaben/) sein.
+5. Speichere mit **Grün**. Bestätige einen angeforderten GUI-Neustart. Öffne danach die gewählte Taste.
+
+<Capture id="emc-settings-start" language="de" alt="EMC-Einstellungen mit Deaktivierung und Starttaste" caption="Die Bedienebene Experte macht auch die sonst ausgeblendete Deaktivierung sichtbar. Angezeigte Werte sind kein allgemeiner Einrichtungsvorschlag." />
+
+Für die Rückkehr zur normalen Aufnahmeliste **EMC deaktivieren = Ja**, speichern und GUI neu starten. Die EMC-Konfiguration bleibt unter Erweiterungen erreichbar. Die Schalter für **Konfiguration im Erweiterungsmenü**, **EMC im Hauptmenü** und **EMC im Erweiterungsmenü** betreffen unterschiedliche Einträge. Ein ausgeblendeter Menüeintrag deinstalliert das Plugin nicht.
+
+## Die Liste bedienen
+
+<Capture id="emc-library" language="de" alt="EMC-Aufnahmeliste mit Papierkorb, neuesten Aufnahmen und einer Das-Erste-Aufnahme" caption="EMC zeigt denselben Aufnahmeordner wie MovieSelection, mit eigener Darstellung. .Trash gehört hier zur nativen MovieSelection; der EMC-Papierkorb heißt trashcan." />
+
+**OK** öffnet einen Ordner oder spielt die Auswahl. **INFO** zeigt die Sendungsbeschreibung. **EXIT** verlässt die Liste; das Verhalten während einer Wiedergabe ist separat einstellbar. **0** führt zu Movie Home. „Neueste Aufnahmen“ ist eine Sammelansicht, keine zusätzliche Kopie der Filme.
+
+| Taste in EMC | Funktion im geprüften Stand |
+| --- | --- |
+| Rot / Rot lang | Getrennt belegbar; beispielsweise Löschen, Kopieren oder Coverumschaltung, soweit angeboten. |
+| Grün / Grün lang | In der normalen Sortierbelegung kurz Sortierart wechseln, lang Sortierrichtung umkehren. Eine freie Grün-Belegung ist im geprüften Hauptsetup auskommentiert. |
+| Gelb / Gelb lang, Blau / Blau lang | Jeweils getrennte Aktionen aus der angebotenen Auswahl, etwa Verschieben, Movie Home, Lesezeichen oder Playlist. |
+| INFO lang | Gewählten Filminformationsdienst öffnen; passende Erweiterung und gegebenenfalls Internet nötig. |
+| MENÜ | Kontextmenü der aktuellen Liste beziehungsweise Auswahl. |
+| MENÜ lang / AUDIO | Verfügbare Aufnahmelisten-Plugins für den Eintrag. |
+| VIDEO/PVR kurz / lang innerhalb der Liste | Eintrag zur Auswahl hinzufügen/entfernen beziehungsweise Auswahl zurücksetzen. |
+| TEXT | Mehrfachauswahl beginnen oder beenden. |
+| TV kurz / lang | Dateiliste neu laden beziehungsweise Timerliste öffnen. |
+| RADIO | Gesehen-/Ungesehen-Status umschalten. Das verändert den gespeicherten Fortschrittsstatus. |
+| Bouquet +/− | Je nach EMC-Einstellung Anfang/Ende, mehrere Zeilen springen oder Ordner wechseln. |
+
+Die tatsächliche Fernbedienung muss die entsprechenden Tastencodes liefern. **HELP** und die Fußzeile zeigen die im Kontext angebotenen Aktionen; EMC-Belegungen sind unabhängig von den Farben der [MovieSelection](../../aufnahmen/movieselection/).
+
+## MENÜ enthält mehr als Einstellungen
+
+Das Menü bietet abhängig von Auswahl und installierten Plugins:
+
+- **Ordner neu laden**, zuletzt gespielt, alles abspielen und Zufallswiedergabe; Playlist anlegen/ergänzen/verwalten.
+- **Kopieren, verschieben, umbenennen**, Ordner oder symbolische Verknüpfung anlegen; Auswahl und Ziel vor dem Bestätigen prüfen.
+- **E2- und EMC-Lesezeichen** getrennt hinzufügen, entfernen oder öffnen. Dauerhafte Sortierung kann für einen Ordner gelten und dessen normale Standardsortierung übersteuern.
+- **Cover suchen, Filminformationen herunterladen**, Tags oder Schnittlisten über vorhandene Erweiterungen bearbeiten.
+- **Marker zurücksetzen, Schnittdateien entfernen, verwaiste Dateien aufräumen**: Das sind schreibende Aktionen. Schnitt-/Fortsetzungsinformationen gehen dabei unter Umständen verloren.
+- **Löschen, endgültig löschen, Papierkorb leeren**: unterschiedliche Eingriffe, erklärt im [Papierkorb-Kapitel](../emc-papierkorb/).
+- **EMC-Einstellungen** und **EMC-Hilfe**.
+
+## Die vielen Einstellungen finden
+
+Im Setup mit **Auf/Ab** navigieren, mit **Links/Rechts** Werte ändern, **Grün** speichern und **Rot/EXIT** abbrechen. Die Bouquet-Tasten springen zwischen Abschnitten. Einige Optionen erscheinen erst bei **Fortgeschritten/Experte**, andere erst nach Aktivierung der zugehörigen Hauptoption. **Blau** bietet vorbereitete Einstellungsgruppen, **Blau lang** Standardwerte; das kann mehrere Werte ändern und ist kein reiner Ansichtswechsel.
+
+Weiter: [Bibliothek und Skin](../emc-bibliothek/), [Wiedergabe und Sprachen](../emc-wiedergabe/), [Papierkorb/NAS/Automatik](../emc-papierkorb/) und die [vollständige Hauptsetup-Referenz](../emc-optionen/).
+
+Geprüfter Plugin-Stand: `fc7fd6181e`, Paket `4.0.+git1790+fc7fd610+fc7fd6181e-r0`. Grundlage: [Startlogik](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/plugin.py), [Tasten und Liste](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/MovieSelection.py), [Kontextmenü](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/MovieSelectionMenu.py). Menübezeichnungen können je nach Übersetzung leicht abweichen.
+
+Im geprüften Plugin sind vereinzelt `DUMMY CONFIGSECTION` als Abschnittstrenner oder `HELP_…` anstelle übersetzter Hilfe sichtbar. Das sind Darstellungs-/Übersetzungsreste, keine zusätzlichen Einstellungen. Die Bilder wurden deshalb nicht nachträglich verändert.

@@ -1,0 +1,62 @@
+---
+title: MovieSelection – die eingebaute Aufnahmeliste
+description: Aufnahmen öffnen, Ordner wählen, sortieren, Tasten belegen, Wiedergabe und Papierkorb der nativen MovieSelection einstellen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+MovieSelection gehört zu Enigma2 und braucht kein zusätzliches Aufnahmelisten-Plugin. Öffne sie mit **PVR/VIDEO/Aufnahmen**. Falls EMC erscheint, folge [EMC deaktivieren und zur MovieSelection wechseln](../). Die genaue Tastenbeschriftung hängt von deiner Fernbedienung ab.
+
+<Capture id="movie-selection" language="de" alt="Native MovieSelection mit einer Aufnahme von Das Erste HD" caption="Die native Aufnahmeliste zeigt eine vorhandene Testaufnahme und ihre Programminformationen. Die Aufnahme wurde für das Bild nicht abgespielt." />
+
+## Aufnahme wählen, Ordner wechseln und Menü öffnen
+
+Mit **Auf/Ab** markieren, mit **OK** eine Aufnahme starten oder einen Ordner betreten. **INFO** zeigt die Sendungsdetails, soweit Begleitdaten vorhanden sind. Ein erneuter Druck auf die Aufnahmetaste öffnet in dieser Liste die Pfadauswahl. Ein Ordner-Lesezeichen ist ein schneller Einstieg; es legt weder eine NAS-Verbindung noch eine neue Aufnahmedatei an.
+
+Drücke **MENÜ innerhalb der Liste**. Das Kontextmenü hängt vom markierten Eintrag ab und bietet unter anderem Einstellungen, Sortierung, Ordner-/Dateiaktionen und installierte Aufnahmelisten-Erweiterungen. Dort lässt sich die **Konfiguration der MovieSelection** öffnen. Farbtasten und lange Farbtastendrücke sind belegbar; lies die Beschriftung am unteren Rand oder öffne HELP.
+
+Kopieren und Verschieben unterstützen Aufnahme-Begleitdateien. Prüfe Quelle, Ziel und freien Platz vor einer solchen Aktion. Eine laufende Aufnahme zuerst regulär beenden. Die Liste ersetzt nicht die [Timerplanung](../../timer/aufnahmen/): Ein anderer Startordner in der Liste ändert keinen bereits gespeicherten Timerpfad.
+
+## Liste und Dateinamen
+
+<Capture id="movie-settings-view" language="de" alt="MovieSelection-Einstellungen für Sortierung und Darstellung" />
+
+| Option | Wozu sie dient |
+| --- | --- |
+| Standardsortierung | Nach Datum, Namen oder einer angebotenen Kombination ordnen; umgekehrte Reihenfolge und Zufallsreihenfolge sind ebenfalls möglich. Ordnergruppierung und flache alphabetische Sortierung unterscheiden sich. |
+| Einstellungen pro Verzeichnis | Merkt Sortierung, Beschreibung und Filmende-Verhalten je Ordner. Ein Wechsel in einen anderen Ordner kann deshalb eine andere Ansicht zeigen. |
+| Schriftgröße und Einträge pro Seite | Lesbarkeit gegen Anzahl sichtbarer Aufnahmen abwägen. |
+| Schmale Ansicht, Zusatzinformationen, erweiterte Beschreibung | Andere Zeilen-/Detaildarstellung, etwa Sendername oder Picon. Das Ergebnis hängt vom Skin ab. |
+| Verzögerung der Ereignisinformation | Wartet beim schnellen Blättern, bevor Details nachgeladen werden; bei großen oder langsamen Verzeichnissen hilfreich. |
+| Dateiendungen ausblenden, Unterstriche als Leerzeichen anzeigen | Ändert die Anzeige, nicht die gespeicherten Dateinamen. |
+| Stammverzeichnis/Root | Begrenzt das Hochblättern innerhalb der Liste. Das ist keine Linux-Zugriffssperre für andere Programme. |
+
+## Wiedergabe und Tasten
+
+Die Optionen **Aktion am Filmende**, **Dienst beim Zurückkehren beenden**, **Live-TV in der Filmliste** und **Audio intern wiedergeben** steuern unterschiedliche Übergänge. Beispielsweise kann eine Audiodatei im Hintergrund laufen, während die Liste offen bleibt. Filmende und STOP sind nicht in jeder Einstellung identisch. Die Vorschau innerhalb der Liste hat eigene Wiedergabe-/Sprungaktionen.
+
+**Symbole für den Wiedergabestatus** sowie die Anzeige neuer/ungesehener Aufnahmen helfen bei der Orientierung. Fortsetzen benötigt eine gespeicherte Position; nicht jedes Dateiformat liefert dieselben Begleitinformationen. Die Liste enthält keinen allgemeinen Schalter, der aus einer unbekannten Datei ein abspielbares Format macht.
+
+<Capture id="movie-settings-buttons" language="de" alt="Belegbare Farbtasten der MovieSelection" />
+
+Im unteren Teil der Einstellungen stehen **Rot, Grün, Gelb und Blau jeweils kurz/lang**, zusätzlich **Radio, TV, Text und F1–F3**. Wähle aus den tatsächlich angebotenen Aktionen. Diese Belegungen gelten in MovieSelection und sind von [globalen Hotkeys](../../erste-schritte/farbtasten-langdruck/) sowie EMC-Tasten getrennt.
+
+## Papierkorb und Speicherfreigabe
+
+<Capture id="movie-settings-trash" language="de" alt="Papierkorb und Hintergrundlöschung der MovieSelection" />
+
+| Option | Bedeutung |
+| --- | --- |
+| Papierkorb verwenden | Normales Löschen verschiebt geeignete Aufnahmen in den Papierkorb. Ohne Papierkorb kann es endgültig löschen. |
+| Aufbewahrungstage | Steuert die automatische Bereinigung alter Papierkorbinhalte. Der Papierkorb ist kein dauerhaftes Archiv. |
+| Reserve in GB | Kann die Bereinigung beeinflussen, wenn freier Platz knapp wird. Eine Aufbewahrungsdauer ist deshalb keine Sicherungsgarantie. |
+| Papierkörbe auf Netzlaufwerken bereinigen | Bezieht entsprechende Netzspeicher ein; kann Zugriffe auf das NAS verursachen. |
+| Hintergrundlöschung: Geräte und Geschwindigkeit | Bestimmt, wo und mit welcher Belastung Dateien im Hintergrund entfernt werden. Das schafft keinen zusätzlichen Papierkorb. |
+
+Der Papierkorb heißt im geprüften Stand `.Trash` am passenden Speicherort. Öffne ihn in der Liste und verschiebe eine irrtümlich gelöschte Aufnahme zurück, solange sie noch vorhanden ist. **Papierkorb leeren** entfernt seinen Inhalt endgültig. EMC kann stattdessen einen eigenen Ordner `trashcan` nutzen; das Ändern eines Papierkorbs stellt den anderen nicht um.
+
+## Alle genauen Bezeichnungen finden
+
+Die [vollständige MovieSelection-Einstellungsreferenz](../../einstellungen/referenz/movieselection/) enthält die einzelnen Beschriftungen, Hilfen und `config.*`-Schlüssel. Suche beispielsweise nach `config.movielist.settings_per_directory` oder `config.movielist.btn_redlong`.
+
+Geprüft anhand der [nativen Implementierung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/MovieSelection.py) und [Setup-Definition](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml). Die Bilder zeigen Ansichten; keine Aufnahme wurde dafür verschoben, gelöscht oder als gesehen markiert.

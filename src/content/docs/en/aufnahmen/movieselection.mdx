@@ -1,0 +1,62 @@
+---
+title: MovieSelection – the built-in recording list
+description: Open recordings, choose folders, sort files, assign buttons and configure playback and trash in native MovieSelection.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+MovieSelection is part of Enigma2 and requires no additional recording-list plugin. Press **PVR/VIDEO/Recordings** to open it. If EMC appears, see [disable EMC and return to MovieSelection](../). The physical button label depends on your remote.
+
+<Capture id="movie-selection" language="en" alt="Native MovieSelection with a recording from Das Erste HD" caption="The built-in recording list displays an existing test recording and its programme information. Playback was not started for this image." />
+
+## Select a recording, change folders and open the menu
+
+Use **Up/Down** to highlight an item and **OK** to play a recording or enter a folder. **INFO** displays programme details when sidecar data is available. Press the recordings button again inside this list to open the path selector. A directory bookmark is a shortcut; it does not mount a NAS or create a recording.
+
+Press **MENU while the list is open**. The context menu depends on the selected item and includes settings, sorting, folder/file actions and installed movie-list extensions. Open **MovieSelection settings** here. Colour buttons and their long presses can be assigned: read the footer labels or use HELP.
+
+Copy and move operations support recording sidecar files. Check the source, destination and available space before proceeding. Stop an active recording normally first. This list does not replace [recording timers](../../timer/aufnahmen/): changing its starting folder does not change a stored timer's destination.
+
+## List appearance and filenames
+
+<Capture id="movie-settings-view" language="en" alt="MovieSelection sorting and appearance settings" />
+
+| Option | Purpose |
+| --- | --- |
+| Default sorting | Sort by date, name or an available combination; reverse and random orders are also offered. Grouped folders and flat alphabetical sorting behave differently. |
+| Settings per directory | Remembers sorting, description and end-of-movie behaviour for each folder. Entering another directory may therefore change the view. |
+| Font size and items per page | Balance readability against the number of visible recordings. |
+| Slim view, extra information and extended description | Change rows and details, such as service names or picons. Results depend on the skin. |
+| Event information delay | Waits before loading details during rapid scrolling; useful with large or slow directories. |
+| Hide extensions and show underscores as spaces | Affects display only; stored filenames remain unchanged. |
+| Root directory | Limits upward browsing within the list. It is not a Linux access restriction for other applications. |
+
+## Playback and buttons
+
+**Action at movie end**, **stop service on returning**, **live TV in the movie list** and **internal audio playback** control different transitions. Audio can, for example, continue while the list remains open. Reaching the end and pressing STOP do not behave identically in every configuration. List preview also has its own playback and seek actions.
+
+**Playback status icons** and indicators for new/unseen recordings help navigation. Resuming requires a stored position; file formats do not all supply the same metadata. A list setting cannot make an unsupported format playable.
+
+<Capture id="movie-settings-buttons" language="en" alt="Configurable colour buttons in MovieSelection" />
+
+The lower settings include **short/long Red, Green, Yellow and Blue**, plus **Radio, TV, Text and F1–F3**. Choose from the available actions. These assignments apply inside MovieSelection, separately from [global hotkeys](../../erste-schritte/farbtasten-langdruck/) and EMC buttons.
+
+## Trash and reclaiming space
+
+<Capture id="movie-settings-trash" language="en" alt="MovieSelection trash and background deletion settings" />
+
+| Option | Meaning |
+| --- | --- |
+| Use trash | Normal deletion moves suitable recordings to trash. Without it, deletion can be permanent. |
+| Retention days | Controls automatic cleanup of older trash contents. Trash is not permanent storage. |
+| Reserve in GB | May influence cleanup when free space is low. A retention interval is not a backup guarantee. |
+| Clean network trash | Includes appropriate network storage and can cause NAS access. |
+| Background deletion devices and speed | Controls where files are removed in the background and the load this creates. It does not provide another trash layer. |
+
+In the checked version the folder is called `.Trash` on the appropriate storage. Open it in the list and move an accidentally deleted recording back while it still exists. **Empty trash** permanently removes its contents. EMC may instead use its own `trashcan` directory; changing either trash configuration does not change the other.
+
+## Find every exact setting
+
+The [complete MovieSelection settings reference](../../einstellungen/referenz/movieselection/) lists individual labels, help and `config.*` keys. Try searching for `config.movielist.settings_per_directory` or `config.movielist.btn_redlong`.
+
+Checked against the [native implementation](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/MovieSelection.py) and [setup definition](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml). These captures show views only; no recording was moved, deleted or marked watched for them.

@@ -1,0 +1,57 @@
+---
+title: EMC – library, covers and skin
+description: Configure Movie home, folders, sorting, bookmarks, metadata, covers, picons and EMC appearance.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Open **EMC → MENU → EMC Setup**. These display options apply to EMC; they do not configure native MovieSelection. See the [EMC options reference](../emc-optionen/) for exact labels and searchable keys.
+
+## Movie home and folders
+
+<Capture id="emc-settings-library" language="en" alt="EMC starting directory, path limit and folder settings" />
+
+**Movie home** is the starting directory, for example `/media/hdd/movie`. **Movie home at start** selects returning home, remembering the previous folder or returning after standby. **EMC path access limit** restricts upward browsing; it does not restrict SSH, FTP or other plugins.
+
+Directories, symbolic links and bookmarks serve different purposes. A link points to another path; a bookmark stores a shortcut. **E2 bookmarks** can also appear in other Enigma2 selectors, while **EMC bookmarks** belong to EMC. Display E2, EMC, both or neither.
+
+| Group | Meaning |
+| --- | --- |
+| Show directories/links | Shows or hides entries without deleting them. |
+| Directories within the list, configured directories on top | Controls placement relative to movies. The additional top-directory list comes from `/etc/enigma2/emc-topdir.cfg`. |
+| Directory information and size | Displays count, size or both. Reading these can access HDD/NAS storage. Placeholder text/icons apply while values are unknown. |
+| Latest Recordings and limit | Aggregates newer recordings from the relevant directory tree; the limit reduces the displayed selection. |
+| Default sorting / permanent folder sorting | A global default versus a folder rule saved through MENU. Permanent rules are stored in `/etc/enigma2/emc-permsort.cfg`. |
+| Cursor move after selection | Controls where highlighting moves after marking an entry; useful when selecting a series. |
+
+`emc-hide.cfg` and `emc-noscan.cfg` provide additional hide/scan rules. They do not configure network mounts. See [EMC and network storage](../emc-papierkorb/#nas-cache-and-scan-rules) for slow or offline NAS systems.
+
+## Where do titles and descriptions come from?
+
+<Capture id="emc-settings-metadata" language="en" alt="EMC options for meta and eit sidecar information" />
+
+A recording often includes a movie and sidecars: `.ts` contains the stream, `.meta` metadata, `.eit` programme information, `.cuts` cut/resume information and `.ap`/`.sc` index data. Not all media types have every sidecar.
+
+**Load titles from .meta**, extra metadata and **load titles from .eit** enhance filename-only display. Additional reads can slow large lists. Special-character replacement, format/cut-number display and using paths as fallback descriptions affect presentation. Resolving real paths shows a link's destination; it does not move the movie.
+
+**Audio metadata** uses available tags in supported audio files. An ordinary EPG refresh cannot reliably reconstruct missing programme descriptions for existing recordings.
+
+## Covers and movie information
+
+Enable **Show Cover** to display available images. A display delay avoids unnecessary reads while scrolling; fallback cover and background settings control missing-image presentation. **Enabling covers does not automatically produce successful cover downloads.**
+
+Use **MENU → Cover search** or **Download Movie Information** for the respective tools. Their additional settings include language, provider, title matching/filtering, image resolution, multiple results and saving descriptions/covers. Movie information can include runtime, genre, production countries, release date and rating. Verify the movie and year before saving: identical titles or episode names can match the wrong production.
+
+Providers are external services. Availability, API access and installed companion plugins can change. This guide and its captures verify available controls; successful downloads from every offered provider have not been established. Local cover display is independent of that. Covers represent movies, whereas **picons** are channel logos.
+
+## Skin, progress and colours
+
+<Capture id="emc-settings-skin" language="en" alt="EMC skin, date, icon and progress settings" />
+
+**Use original EMC-skin** selects EMC's own template; when disabled, the active image skin can supply an EMC layout. Close and reopen EMC after changing it. The original skin offers information **on the left or at the bottom**, each with or without **MiniTV**. This does not change screen resolution; use the [MetrixHD resolution settings](../../skins/metrixhd/aufloesung/) for that.
+
+Further options control skinnable list rows, date format/alignment, movie icons/link arrows and service picons with position and custom path. The actual skin template determines which elements appear.
+
+**Show movie progress** and the partially/fully watched percentage thresholds determine status display. Colours distinguish unwatched, partially watched, finished, recording and highlighted entries; a star can mark new recordings. “Finished” is a calculated status. When automatic removal uses it, changing the percentage affects more than colour: see [trash and cleanup](../emc-papierkorb/).
+
+Sources: [EMC setup](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/EnhancedMovieCenter.py), [file list and metadata](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/MovieCenter.py), [cover and movie information dialogs](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/setup.xml).

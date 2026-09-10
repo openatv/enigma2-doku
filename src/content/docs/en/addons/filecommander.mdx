@@ -1,0 +1,100 @@
+---
+title: FileCommander – manage files
+description: Two-column file management, copying, moving, recording sidecars, text editing, archives, scripts and every FileCommander setting.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**FileCommander manages files and directories.** Unlike [MovieSelection or EMC](../../aufnahmen/), it is not primarily organized around programme titles, playback progress and a movie library. It also displays configuration files, recording sidecars, archives and scripts. Being able to open media does not make it another EMC interface.
+
+The menu entry is **File Commander**. If missing, look for **FileCommander** in [plugin installation](../../plugins/installieren/); the checked package is `enigma2-plugin-extensions-filecommander`. Open it in **Plugins**. Its settings can add main/extension menu entries.
+
+## Two columns: source and destination
+
+<Capture id="file-commander" language="en" alt="FileCommander showing the recording directory on the left and a temporary demonstration folder on the right" caption="The left column contains a real test recording and its sidecars. The right shows a dedicated example folder under /tmp; it is temporary and disappears after a reboot." />
+
+The **active column is the source**; the opposite column is the **destination** for copy/move. The left side is not always the source. Check the paths above the columns and the selection highlight. **OK** enters a directory or opens a file using its available handler. A mounted NAS appears as a path; FileCommander does not create an NFS/SMB connection by doing this.
+
+| Button | Action in the checked version |
+| --- | --- |
+| Red | Delete |
+| Green | Move to the destination directory |
+| Yellow | Copy to the destination directory |
+| Blue | Rename |
+| MENU | Context functions; press MENU again there or select “File Commander settings” for configuration. |
+| INFO | Task list in the main window; file status is in the context menu. |
+| TEXT | View/edit small files; the checked text editor limits files to under 1 MB. |
+| HELP | Available actions and actual key assignments. |
+
+**Use legacy navigation = Yes:** CH+/CH− changes columns and Left/Right pages through entries. **No:** Left/Right changes columns and CH+/CH− changes pages. Up/Down moves one row. **QuickSelect** uses number keys to search names; when disabled, they become action shortcuts. The context menu is therefore a useful starting point while learning.
+
+## Copy a file
+
+1. Open the source directory in one column and the destination in the other.
+2. Activate the source column and highlight the file. For multiple selection, check every marked entry.
+3. Press **Yellow – Copy**. If a recording group is recognized, choose **all related files** or **only the highlighted file** as appropriate.
+4. Check source, destination and any overwrite warning in the confirmation, then confirm.
+5. Follow the background job in the task list until it finishes. Check the destination's size/content before removing an original.
+
+The screenshots demonstrate views only; no recording was copied, moved or deleted for them. Practise with a disposable text file. Keep NAS or USB storage accessible while a job runs.
+
+## A recording consists of several files
+
+For suitable filenames, FileCommander recognizes related files such as `.ts`, `.eit`, `.ts.meta`, `.ts.cuts`, `.ts.ap` and `.ts.sc`; covers and text files can also belong to the group. **Copy, move and delete can explicitly ask whether to process the group or only the highlighted file.** This does not guarantee recognition of every external naming convention. Read the actual filenames in the prompt.
+
+Copying only `.ts` may transfer picture and sound but lose descriptions, markers or resume positions. Deleting `.cuts` can remove stored positions while leaving the video intact. FileCommander deletion does not automatically use EMC or MovieSelection trash.
+
+## Other context-menu functions
+
+- **Create directory or symbolic link**, manage bookmarks, refresh lists and toggle/select all in multiple-selection mode.
+- **File status** shows sizes, times and permissions; **change execute permissions** toggles 755/644 for files in this version. This is not a complete account/permission editor.
+- Calculate **hashes/checksums**, for example to compare a transferred file.
+- **MediaInfo and ffprobe** provide technical media information. Missing tools may trigger a package-installation offer; they are not required for ordinary copying.
+- **Text viewer/editor and image viewer/slideshow**. Save text only when the change is intended; normally edit Enigma2 settings through their dedicated interface.
+- **Archives, installation packages and scripts** have file-type-specific actions. Extraction writes files, installing packages changes software, and scripts execute commands with the receiver's permissions. Start only the action you intend.
+
+## Starting paths, sorting and filters
+
+<Capture id="file-settings-paths" language="en" alt="FileCommander starting column, paths and sorting settings" />
+
+| Setting | Purpose |
+| --- | --- |
+| Add to main menu / extension menu | Additional entry points. |
+| Default side | Activate left, right or the previously used column. |
+| Default left/right path | Fixed starting paths for each column. |
+| Save left/right path | Remember locations on exit; fixed defaults may then not be the next starting locations. |
+| Left/right directory sorting; left/right file sorting | Independent sort orders in both columns. |
+| Directories first | Group folders before files. |
+| Show current directory | Adds an entry for the current folder; reopen FileCommander after changing this. |
+| Use legacy navigation | Column/page switching as described above. |
+| Auto multi-selection | Yes exits multiple-selection mode after an operation. No keeps the mode active; check which entries are actually still marked before the next operation. |
+
+<Capture id="file-settings-filter" language="en" alt="FileCommander filters, custom extensions and viewer options" />
+
+| Setting | Meaning |
+| --- | --- |
+| Use QuickSelect | Number keys search names instead of triggering action shortcuts. |
+| Filter extension | Displays matching files only. `(*)` in the title indicates an active filter; hidden does not mean deleted. |
+| My extensions | For the custom filter, enter comma-separated extensions without leading dots, such as `txt,log`. |
+| Use viewer for unknown files | Open unknown files in the internal viewer or leave them unprocessed. |
+| Start edit at line end | Place the cursor at the end rather than the beginning when editing. |
+| Slide show delay / loop | Time between images and whether the sequence repeats. |
+
+## Jobs, messages and scripts
+
+<Capture id="file-settings-jobs" language="en" alt="FileCommander background task, script and notification settings" />
+
+| Setting | Meaning |
+| --- | --- |
+| Status message timeout | Short messages inside FileCommander. |
+| Show task messages | Completion notification when FileCommander is no longer open during a background job. |
+| Show script messages | Notifications on background-script completion, including captured output. |
+| Message pop up timeout | Duration of task/script completion popups. |
+| CPU priority for scripts | Nice value: higher means less priority. It is not a fixed CPU usage limit. |
+| I/O priority for scripts | Uses ionice to influence I/O priority where supported; not a guaranteed transfer rate. |
+| Saved lines in script messages | Limits captured standard-output/error lines. |
+| Split tasks | Splits a multi-file operation into separate jobs instead of one combined job. |
+
+These are **file/script jobs started now**, not recording timers or a [Cron schedule](../../timer/cron/). Closing the interface does not automatically mean a background job has finished or been cancelled.
+
+Sources: [FileCommander](https://github.com/openatv/enigma2/blob/c446c39a38/lib/python/Plugins/Extensions/FileCommander/plugin.py) and [all 30 setup entries](https://github.com/openatv/enigma2/blob/c446c39a38/lib/python/Plugins/Extensions/FileCommander/setup.xml), checked against installed package `8.0.2-devel+git35442+c446c390+c446c39a38-r1`. Continue with [network shares](../../netzwerk/freigaben/) and [SFTP/FTP remote access](../../netzwerk/fernzugriff/).

@@ -1,0 +1,56 @@
+---
+title: EMC – Papierkorb, NAS und Automatik
+description: Papierkorb und endgültiges Löschen unterscheiden, automatische Bereinigung prüfen und EMC für Netzspeicher und große Listen einstellen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+## Papierkorb bewusst einrichten
+
+EMC besitzt eine eigene Papierkorbkonfiguration unter **EMC → MENÜ → EMC-Einstellungen → Papierkorb**. Der übliche Pfad `/media/hdd/movie/trashcan` unterscheidet sich von `.Trash` der nativen MovieSelection. Prüfe den tatsächlichen Pfad deiner Einrichtung; der Papierkorb ist keine Datensicherung.
+
+<Capture id="emc-settings-trash" language="de" alt="EMC-Einstellung für tägliche Papierkorbleerung" caption="Automatische Reinigung und tägliche Aktionen wurden für die Aufnahmeserie vorübergehend ausgeschaltet und anschließend wiederhergestellt. Weitere Zeit-/Altersfelder erscheinen abhängig von der aktivierten Hauptoption." />
+
+1. **Papierkorb aktivieren** und einen passenden Pfad auf dem gewünschten Datenträger prüfen.
+2. **Papierkorb anzeigen** erleichtert das Wiederfinden gelöschter Einträge; Anzahl/Größe sind zusätzliche Anzeigeoptionen.
+3. **Löschen bestätigen** eingeschaltet lassen, wenn du versehentliche Tastendrücke abfangen möchtest.
+4. **Tägliche Leerung**, Uhrzeit und Aufbewahrungstage bewusst festlegen. Ein bereits aktivierter Automatismus kann Papierkorbinhalte ohne erneute Einzelabfrage entfernen.
+
+Normales **Löschen** kann in den aktivierten Papierkorb verschieben. **Endgültig löschen** beziehungsweise **Papierkorb leeren** entfernt Dateien dauerhaft. Zum Wiederherstellen einen noch vorhandenen Eintrag im Papierkorb markieren und über die Verschieben-Funktion in seinen Aufnahmeordner zurückbringen. Vorher eine laufende automatische Bereinigung berücksichtigen.
+
+Ein zentraler Papierkorb auf einem anderen Dateisystem kann statt eines schnellen Umbenennens einen Datentransfer erfordern. Auf einem NAS bestimmen zusätzlich Rechte, Verbindung und freier Platz, ob die Aktion gelingt. Papierkorbinhalte belegen weiterhin Speicher.
+
+## „Fertig gesehen“ automatisch entfernen
+
+**Fertige Filme in den Papierkorb verschieben** ist eine zusätzliche Expertenoption. Sie berücksichtigt als fertig eingestufte Filme in Movie Home und Unterverzeichnissen nach dem konfigurierten Alter; Links werden dabei nicht einfach als weitere Unterordner verfolgt. Die spätere Papierkorbleerung kann sie endgültig entfernen.
+
+Die Einstellung für **Alter fertiger Filme** ist getrennt von den **Tagen im Papierkorb**. Ebenso ist die **Prozentgrenze fertig gesehen** ein anderes Kriterium als das Alter. Wer nur Statusfarben möchte, muss dafür keine automatische Entfernung einschalten. Auch eine manuelle Gesehen-Markierung kann die Voraussetzung der Automatik verändern.
+
+Die Reinigung ist nicht ausschließlich an eine offene EMC-Liste gebunden. Der geprüfte Startcode plant sie auch beim Enigma2-Start ein und kann einen Bereinigungslauf kurz danach anstoßen. **EMC deaktivieren** entfernt deshalb nicht zuverlässig jede Hintergrundwirkung. Für einen dauerhaften Wechsel zur MovieSelection die Automatik separat prüfen und gegebenenfalls deaktivieren.
+
+## NAS, Cache und Scanregeln
+
+Die Datei **emc-noscan.cfg** enthält Regeln für ausgelassene Scanpfade; **emc-hide.cfg** betrifft das Ausblenden von Einträgen. Welche Regeln angewendet werden, hängt zusätzlich von den folgenden Schaltern ab.
+
+| Optionengruppe | Nutzen und Grenze |
+| --- | --- |
+| Cache für Dateien/Verzeichnisse | Verringert wiederholtes Einlesen. Änderungen durch eine andere Box können erst nach erneutem Laden sichtbar werden. |
+| Minimaler Cachewert | Anzahlenschwellwert: Verzeichnisse mit mehr Unterordnern oder Dateien werden gecacht. `0` berücksichtigt auch kleine nichtleere Listen; kein RAM-Limit in MB. |
+| Liste beim Öffnen immer neu laden | Aktuellere Daten, dafür mehr Zugriffe; bei langsamem NAS kann der Einstieg länger dauern. |
+| Ordnergrößen, Dateianzahlen, neueste Aufnahmen | Komfort kostet zusätzliche Zugriffe. Bei Verzögerungen diese Funktionen einzeln vergleichen. |
+| Keine Struktursuche in ausgewählten Verzeichnissen | Nutzt `/etc/enigma2/emc-noscan.cfg` für ausgewählte Pfade. Unterscheidet sich vom kompletten Ausblenden über `emc-hide.cfg`. |
+| DVD-/Blu-ray-/ISO-/Filmstrukturen und verlinkte Ordner prüfen | Erkennt Medienstrukturen, kann aber viele Verzeichnisse lesen. Die Erkennung garantiert keine Wiedergabe jedes Formats. |
+| Experimentelle Optionen | Erweiterte Scanbegrenzung, nur betroffene Ordner neu einlesen, Behandlung schlafender Laufwerke und Prüfung toter Links. Nur gezielt ändern; nicht pauschal alles aktivieren. |
+| Fremde Aufnahmen erkennen | Erkennt unter geeigneten Bedingungen laufende Aufnahmen einer anderen Box auf gemeinsamem Speicher. Legt keine Netzwerkverbindung und keinen Remote-Timer an. |
+
+Ein EMC-Cache repariert keinen unerreichbaren Server. Auch mit [autofs](../../netzwerk/autofs-fstab/) kann ein Zugriff auf ein verschwundenes NAS warten und einen Spinner auslösen. Erst Mount, Verbindung und Rechte prüfen; dann entscheiden, welche Vorschau-/Metadaten-/Scanfunktionen wirklich gebraucht werden. Für sehr große Bibliotheken kann ein Unterordner als Einstieg die erste Abfrage verkleinern.
+
+## Täglicher Autostart, Timerliste und Diagnose
+
+**Täglicher Autostart** ist hier eine Zeitaktion für **Standby, Deep-Standby, Reboot oder Enigma2-Neustart**. Es bedeutet nicht einfach „EMC morgens öffnen“. Beginn/Ende des Fensters und Standby nach Neustart gehören dazu. Diese Funktion ersetzt keinen Aufnahme- oder Aufwachtimer und sollte nicht unbedacht parallel zur [Enigma2-Aufgabenplanung](../../timer/aufgaben/) dieselbe Abschaltaktion auslösen.
+
+**Automatische Timerlistenbereinigung** betrifft erledigte Timer-Einträge, nicht das Löschen der aufgenommenen Videodateien. Falls die Timerhistorie für Fehlersuche wichtig ist, die Bereinigung entsprechend wählen.
+
+Unter **Debug** lassen sich EMC-Ausgaben aktivieren sowie Verzeichnis und Dateiname wählen. Ein beschreibbarer, ausreichend großer Pfad ist nötig; Protokollierung nach einer gezielten Fehlersuche wieder zurücknehmen. Allgemeine Enigma2-Protokolle erklärt [Logs und Diagnose](../../hilfe/logs-diagnose/).
+
+Quellen: [EMC-Start und Reinigungsplanung](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/EnhancedMovieCenter.py), [Lösch-/Bereinigungslogik](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/MovieSelection.py), [Zeitaktionen](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/EMCTasker.py). Automatische Löschung und Abschaltaktionen wurden für diese Anleitung nicht ausgeführt.

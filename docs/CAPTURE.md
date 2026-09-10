@@ -107,7 +107,7 @@ Die freigegebenen Dateien stehen in `data/captures-review.json`:
 ]
 ```
 
-Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme, einen gültigen Werkzeug-Commit und sein englisches Gegenstück. Die aktuelle Datei enthält 192 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
+Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme, einen gültigen Werkzeug-Commit und sein englisches Gegenstück. Die aktuelle Datei enthält 224 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
 
 Im Handbuchrepository importieren:
 
@@ -200,3 +200,19 @@ python tools/capture.py --host root@BOX --run-prefix epg-001 --profiles epg-view
 Die Auswahl bevorzugt ein vorhandenes Bouquet mit echtem Das-Erste-/ARD-EPG und ZDF. Im EPG werden keine Ereignisse erzeugt und keine Sender eingeschaltet. Die native MetrixHD-Anzeige bleibt einschließlich vorhandener Metadaten und kleiner Darstellungsartefakte unverändert. Das EPGRefresh-Formular zeigt eine ungespeicherte Das-Erste-/ZDF-Auswahl. Aufnahme- und Scheduler-Objekte werden nie an die laufenden Timerlisten übergeben. Automatische Plugin-Optionen werden nur mit abgetrennten Formularfeldern sichtbar gemacht; Speichern, Import, Quellenupdate, Geolokalisierung und Timerstart sind gesperrt.
 
 Die ursprüngliche Sprache wurde wiederhergestellt. Die Serie ist kein Nachweis eines erfolgreichen manuellen/automatischen Imports, einer Aufnahme, eines Cronjobs oder eines Hardware-Wecklaufs. Die genaue Abgrenzung und Quellstände stehen in [PRAXISTESTS.md](PRAXISTESTS.md). Frühere Rohserien wurden wegen unpassender Senderwahl, Darstellung oder eines abgebrochenen Dialogaufbaus nicht importiert.
+
+## Medienlisten und Dateimanager
+
+Die Profile `movie-libraries` (5), `emc-options` (7) und `file-commander` (4) ergänzen 16 Ansichten je Sprache. Der Katalog umfasst jetzt 22 Profile und 116 Szenen. Die 32 neuen Bilder wurden einzeln geprüft; es werden ausschließlich die sechs vollständigen `media-safe-…`-Läufe übernommen. Insgesamt sind 224 Bilder freigegeben. Werkzeugstand: `f7251392db31e5988b56a0938258bcae093b1b43`.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix media-demo --profiles movie-libraries emc-options file-commander --restart-languages --bootlogo --output .capture-private
+```
+
+Voraussetzung sind vorhandene Testmedien unter `/media/hdd/movie`, eine vorhandene native `.Trash` bei aktiviertem Papierkorb und das bewusst vorbereitete temporäre Beispielverzeichnis `/tmp/handbook-filemanager`. Die Artikel nennen diese Pfade als Beispiele. Der Aufnahmelauf erstellt keine Videodateien und startet keine Wiedergabe, Dateioperation, Cover-Suche oder Skriptausführung.
+
+Medienprofile verlangen `--restart-languages`, auch bei nur einer Sprache. Vor dem Start der GUI suspendiert `receiver_media.py` ausschließlich die vier EMC-Schlüssel `movie_trashcan_clean`, `movie_finished_clean`, `timer_autocln` und `restart`. Die ursprünglichen Werte werden bei gestopptem Enigma2 gelesen und zuerst lokal in `<run-prefix>-media-state.json` gesichert. Nach der Serie werden sie im `finally`-Ablauf wiederhergestellt. Bei hartem Abbruch oder Verbindungsverlust den privaten Snapshot für die Wiederherstellung mit `receiver_media.py restore` aufbewahren; Details stehen im Aufnahmeplugin-README. Direkte Szenenaufrufe mit aktiven Automatiken werden abgewiesen.
+
+Die ActionMaps sind während der Ansichten gesperrt. Temporäre Pfade, Listenkonfiguration und Modul-/Klassenattribute werden zurückgesetzt. Die Bildunterschriften müssen die deaktivierte Automatik erklären. Die Menüoption selbst zu zeigen gilt nicht als Test einer tatsächlichen Bereinigung. Weder Aufnahmeordner noch bestehende Mounts werden für ein aufgeräumtes Bild ersetzt.
+
+Die EMC-Liste zeigt im aufgenommenen Stand den Papierkorbeintrag markiert und die vorhandene Aufnahme darunter; daraus wird keine Behauptung über einen geöffneten Aufnahme-Detaildialog abgeleitet. FileCommander zeigt die markierte TS-Datei mit verfügbaren Farbtasten. `DUMMY CONFIGSECTION`, vereinzelte `HELP_…`-Texte und native Textkürzungen sind im Original vorhanden.

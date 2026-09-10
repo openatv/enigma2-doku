@@ -1342,5 +1342,229 @@
     "sha256": "29e2820ca755b1fd3beab26705dd4c6f92def700109203d985391d3825a0ea00",
     "run": "epg-e-en-timer-guides",
     "tool_commit": "e6487baa4a3fe0d1d2cde8590a173eb9890305e9"
+  },
+  {
+    "language": "de",
+    "id": "movie-selection",
+    "sha256": "54133400a4a1ab128f54ca0533b99ef5f0b21155d4235650d68168b90569baef",
+    "run": "media-safe-de-movie-libraries",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "movie-settings-trash",
+    "sha256": "b88345fae53503f1473b1d041e49fdda6d85c79a9f89fc6244a1914fbe7fd7c0",
+    "run": "media-safe-de-movie-libraries",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "movie-settings-view",
+    "sha256": "9ee7d2fa2f135aa9f3a05767557f333dccb44d5d59aec0aa806db441f49c83a6",
+    "run": "media-safe-de-movie-libraries",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "movie-settings-buttons",
+    "sha256": "fa4e92fa75aa75d058b7ab519316b61f5071cff8c790ed590aa7f46bda5e04d3",
+    "run": "media-safe-de-movie-libraries",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "emc-library",
+    "sha256": "c5880d98b59af37fd9cf952bc8b2072eab8886edd3e3b9616906fb22f2f041ae",
+    "run": "media-safe-de-movie-libraries",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "emc-settings-start",
+    "sha256": "4438ccefe0fcf0d5ccbeb213da692f65cad27463f0237d130730281d7b71c032",
+    "run": "media-safe-de-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "emc-settings-library",
+    "sha256": "8e5881282cd0589d474ac521379f1424764ad0804a3932825ab7e2712d9ad1d5",
+    "run": "media-safe-de-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "emc-settings-metadata",
+    "sha256": "cd5ad370c3001684bbc5de9d9b24332c7cbd74dac0a8b03f75bcf04e82b8ce85",
+    "run": "media-safe-de-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "emc-settings-playback",
+    "sha256": "2eddd3c3d41492527784292b9ab79855f54f23e0c5d974bb096b069a61446256",
+    "run": "media-safe-de-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "emc-settings-trash",
+    "sha256": "33a55f73491ea3a4e00d116289b17e221878c159f10a5bee9be8b23ae6d0f71a",
+    "run": "media-safe-de-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "emc-settings-skin",
+    "sha256": "f695591bb57c54ed64e9f14655e273184a784dcd3a9cd1fe2dc40e717876ce3b",
+    "run": "media-safe-de-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "emc-settings-preview",
+    "sha256": "079a601ed1267b5b5f803f4890a8000dcb8b3b6fedf225fe67ad4b36d84ace1a",
+    "run": "media-safe-de-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "file-commander",
+    "sha256": "88798f7847a33b777a3c3453e2e306ef87afee3ee30cc55f59f8fb4ea97d0941",
+    "run": "media-safe-de-file-commander",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "file-settings-paths",
+    "sha256": "e0c176a003f37aed2c36eea939e9282d738b213df64dd8d0da379aeebf596f9c",
+    "run": "media-safe-de-file-commander",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "file-settings-filter",
+    "sha256": "517add140020f18e05621a4fd565f69c29db11429fd9938d0594c317a10841b1",
+    "run": "media-safe-de-file-commander",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "file-settings-jobs",
+    "sha256": "40cb739a9b6a11fb10381324e672caf6f9e8df548fd428200937e537087b2f07",
+    "run": "media-safe-de-file-commander",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "movie-selection",
+    "sha256": "13b86164b9ea599d3441f895dc94e5bc2d915a3b4232e9e3741d4f0954463397",
+    "run": "media-safe-en-movie-libraries",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "movie-settings-trash",
+    "sha256": "12774a86bae29e93d38e8e8a4c24d51e593d7ea922b1cf87ce1ad2624e50d45a",
+    "run": "media-safe-en-movie-libraries",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "movie-settings-view",
+    "sha256": "e3ff18bf780db2428a732a09b2cee97bec87c21bf7262d6fb6a8c4eca7a393fb",
+    "run": "media-safe-en-movie-libraries",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "movie-settings-buttons",
+    "sha256": "c26aa7796eced296ad39fa83640b5ddfbdfb7323b61514dcfa93c697bac45774",
+    "run": "media-safe-en-movie-libraries",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "emc-library",
+    "sha256": "b4f4077bc1fc5cd4ddd9becf46273834cbf80b9c7a56fc273c373c690ed6ae46",
+    "run": "media-safe-en-movie-libraries",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "emc-settings-start",
+    "sha256": "a7ca0a7d28d92e5f6a719cd264d4841c346b4a5ade2d1c4e405f6944dd86af45",
+    "run": "media-safe-en-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "emc-settings-library",
+    "sha256": "0338ef6a48217c1d771d9686dc97ab8d87a8416f4836c1a090c60c6dcadd09b9",
+    "run": "media-safe-en-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "emc-settings-metadata",
+    "sha256": "ada99646942501d21730b5552e1c556b561a31b97b27446cfc7db5819a1eaddd",
+    "run": "media-safe-en-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "emc-settings-playback",
+    "sha256": "aaabeddc205e30f2ed70563fc566c059145676396b5078a56a6093272f9ea193",
+    "run": "media-safe-en-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "emc-settings-trash",
+    "sha256": "6b5d2f313c0ef4f97eedce70678ccdfcef6449ec30cf62c6c192a0fa44e6934d",
+    "run": "media-safe-en-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "emc-settings-skin",
+    "sha256": "e652176240043a34e1ae668fec840fb0fc8d8f0380107f268252e9c916404a6c",
+    "run": "media-safe-en-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "emc-settings-preview",
+    "sha256": "17ab695e7ea13590fd93ef634a0ef374f4d35d6c1dacf109c74028a36851eb3c",
+    "run": "media-safe-en-emc-options",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "file-commander",
+    "sha256": "d28fa8e590f8478ed8eee36bd8042a9078fed8555d152332c524528bd241c3a3",
+    "run": "media-safe-en-file-commander",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "file-settings-paths",
+    "sha256": "afb76d3fcdf251be974d58ecf9a460a3ee2203ac6513f292a28a75f35f8fa2c4",
+    "run": "media-safe-en-file-commander",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "file-settings-filter",
+    "sha256": "e046e1ec465ddab93bf9cbab0d45a1c6b2f3c3739c51d13bb35eaf6426ea7616",
+    "run": "media-safe-en-file-commander",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "en",
+    "id": "file-settings-jobs",
+    "sha256": "e41981abb019475d83bcd9533f3d9ded6fc0cfdf5b6b9d8b6b74a5911ce2cda7",
+    "run": "media-safe-en-file-commander",
+    "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
   }
 ]

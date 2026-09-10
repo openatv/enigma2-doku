@@ -56,6 +56,18 @@ export default defineConfig({
         { slug: 'timer/cron', label: 'Linux-Cron', translations: { en: 'Linux cron' } },
         { slug: 'system/zeit-aufwachen', label: 'Uhrzeit, NTP & Aufwachen', translations: { en: 'Time, NTP & wakeup' } },
       ] },
+      { label: 'Aufnahmen & Dateien', translations: { en: 'Recordings & files' }, items: [
+        { slug: 'aufnahmen', label: 'MovieSelection, EMC oder Dateimanager?', translations: { en: 'MovieSelection, EMC or file manager?' } },
+        { slug: 'aufnahmen/movieselection', label: 'MovieSelection & Optionen', translations: { en: 'MovieSelection & options' } },
+        { label: 'EnhancedMovieCenter (EMC)', collapsed: true, items: [
+          { slug: 'addons/emc', label: 'Start, Tasten & Menü', translations: { en: 'Getting started, buttons & menu' } },
+          { slug: 'addons/emc-bibliothek', label: 'Bibliothek, Cover & Skin', translations: { en: 'Library, covers & skin' } },
+          { slug: 'addons/emc-wiedergabe', label: 'Wiedergabe & Sprachen', translations: { en: 'Playback & languages' } },
+          { slug: 'addons/emc-papierkorb', label: 'Papierkorb, NAS & Automatik', translations: { en: 'Trash, NAS & automation' } },
+          { slug: 'addons/emc-optionen', label: 'Alle 135 Setup-Optionen', translations: { en: 'All 135 setup options' } },
+        ] },
+        { slug: 'addons/filecommander', label: 'FileCommander & Optionen', translations: { en: 'FileCommander & options' } },
+      ] },
       { label: 'Sichern & Warten', translations: { en: 'Backup & maintenance' }, items: [
         { slug: 'wartung/backup-restore', label: 'Backup & Wiederherstellung', translations: { en: 'Backup & restore' } },
         { slug: 'wartung/software-update', label: 'Softwareupdate oder neues Image?', translations: { en: 'Software update or new image?' } },
