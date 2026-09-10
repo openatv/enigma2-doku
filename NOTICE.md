@@ -63,3 +63,10 @@ EMC-Quellstand: [oe-mirrors/EnhancedMovieCenter, fc7fd6181e](https://github.com/
 FileCommander wurde mit dem installierten OpenATV-Enigma2-Stand [c446c39a38](https://github.com/openatv/enigma2/tree/c446c39a38/lib/python/Plugins/Extensions/FileCommander) einschließlich aller 30 Setup-Einträge abgeglichen. MovieSelection nutzt den oben genannten Enigma2-Referenzstand.
 
 Die Bildunterschriften kennzeichnen die während der geschützten Serie vorübergehend abgeschaltete EMC-Automatik. Native Abschnittsplatzhalter und fehlende englische Hilfetextübersetzungen wurden nicht retuschiert. Vorserien bleiben privat und sind nicht Bestandteil der Bildfreigabe.
+
+
+## AutoTimer
+
+18 Originalbilder der beiden `autotimer-a-…`-Läufe ergänzen den Bestand auf 242 Bilder, davon 216 mit Bootlogo. Werkzeugstand: `ac3ca3d61d67dd89331366a2caa916f8a370a53c`. Die Tagesschau-Regel ist ein ausdrücklich gekennzeichnetes, ungespeichertes Beispiel; die Senderreferenz stammt von Das Erste HD aus der Testbox. Es wurden weder Fernsehbilder noch erfundene EPG-Ereignisse erfasst. Die native Oberfläche einschließlich gekürzter Fenstertitel und ihrer Übersetzungen bleibt unverändert.
+
+Abgleich mit [oe-alliance-plugins/AutoTimer, 20859d7ae9](https://github.com/oe-alliance-plugins/AutoTimer/tree/20859d7ae9). Das Projekt nennt in `LICENSE.txt` CC BY-NC-SA 3.0 sowie eine alternative Bedingung für von Dream Multimedia lizenzierte Hardware; seine Lizenz wird durch dieses Handbuch nicht ersetzt. AutoTimer-Originalmodule und lange Originalhilfetexte werden nicht in das Handbuch kopiert. Die Artikel und 24 Optionsbeschreibungen sind eigenständig formuliert; deutsche Optionsnamen sind mit dem installierten Übersetzungskatalog abgeglichen.

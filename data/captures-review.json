@@ -1566,5 +1566,131 @@
     "sha256": "e41981abb019475d83bcd9533f3d9ded6fc0cfdf5b6b9d8b6b74a5911ce2cda7",
     "run": "media-safe-en-file-commander",
     "tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43"
+  },
+  {
+    "language": "de",
+    "id": "autotimer-overview",
+    "sha256": "2ff960bfcf3ccd08dfb50aa98c1d2a678eccab8991a899822155d27fb22b744f",
+    "run": "autotimer-a-de-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "de",
+    "id": "autotimer-editor",
+    "sha256": "75a76693255fdcfaee083e50689cc9fec7acc483615c72a8f68360b20374ab4b",
+    "run": "autotimer-a-de-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "de",
+    "id": "autotimer-limits",
+    "sha256": "37e297533de65d4ed19ce4402e3d355661965d3539a938449daaa5b1a1b76c2f",
+    "run": "autotimer-a-de-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "de",
+    "id": "autotimer-duplicates",
+    "sha256": "4ce5a46eed27c79011540d65db04cb423cfe8d0c7a577ee4ff1959f0eda1ca6a",
+    "run": "autotimer-a-de-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "de",
+    "id": "autotimer-filters",
+    "sha256": "03fd7e6898eec46e87cabaf5b48e171687bb6acb3ebd7f13a78ae9a2063d1f34",
+    "run": "autotimer-a-de-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "de",
+    "id": "autotimer-weekdays",
+    "sha256": "2b0f730e2b6ef1e12bcd1952868e57c9f83b5e3f1b002692dcb1670eaec5683f",
+    "run": "autotimer-a-de-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "de",
+    "id": "autotimer-services",
+    "sha256": "abc2a0ee5ed520511934ee927fd22ca79a795000fe2426cf1d4a052602b94595",
+    "run": "autotimer-a-de-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "de",
+    "id": "autotimer-polling",
+    "sha256": "43ed03f8058d2c7d7581fca738584f0b67ee7da459fb5aadadaa2a2ef48ed096",
+    "run": "autotimer-a-de-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "de",
+    "id": "autotimer-conflicts",
+    "sha256": "6e2c0cd3203963fa36c67279d26dbcf66ccbeabc2f2b8e27d55d78c3f787bfa6",
+    "run": "autotimer-a-de-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "en",
+    "id": "autotimer-overview",
+    "sha256": "b18ef89538528cb74ca06ed5228e0083da188496745389f1b07f80d7a57162ca",
+    "run": "autotimer-a-en-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "en",
+    "id": "autotimer-editor",
+    "sha256": "475d2e85bdd23303df5bcc67ee073a129dc2773a2b4b2173af5ac88801530f44",
+    "run": "autotimer-a-en-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "en",
+    "id": "autotimer-limits",
+    "sha256": "035bbbf5b95a811d51ca1169fc8389a605e5ccd1eaa6e15f341bcf99ccd24af8",
+    "run": "autotimer-a-en-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "en",
+    "id": "autotimer-duplicates",
+    "sha256": "d3c530466a178417ff1d29116fcfc8fab87a7ed7352d6d137383b902d5e71790",
+    "run": "autotimer-a-en-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "en",
+    "id": "autotimer-filters",
+    "sha256": "2c36d2f4d87f7779191dce80baeab97c1158a2a791106b302ca517570acec789",
+    "run": "autotimer-a-en-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "en",
+    "id": "autotimer-weekdays",
+    "sha256": "5b28baa7deb2386b1afa13556ff62c2b354102e113ccf4cd091cadfaea22dad8",
+    "run": "autotimer-a-en-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "en",
+    "id": "autotimer-services",
+    "sha256": "9be1e75430e003ab9747c1365e26ba5eacdaf3549295fd20d026502b4463d9b2",
+    "run": "autotimer-a-en-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "en",
+    "id": "autotimer-polling",
+    "sha256": "17b3b1eed7b416c3306db3d5173d1ce388b68d3262053580f2873f48b7ec0912",
+    "run": "autotimer-a-en-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "en",
+    "id": "autotimer-conflicts",
+    "sha256": "bf0238cddd5ccd237b32b4dae516cfab5fdfe470a3665573d97f0a077cfe3dc0",
+    "run": "autotimer-a-en-autotimer",
+    "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
   }
 ]

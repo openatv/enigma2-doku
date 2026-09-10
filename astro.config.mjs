@@ -52,6 +52,10 @@ export default defineConfig({
         { slug: 'epg/tasten', label: 'INFO, EPG & Langdruck', translations: { en: 'INFO, EPG & long presses' } },
         { slug: 'epg/fehlende-daten', label: 'Fehlender EPG & IPTV', translations: { en: 'Missing EPG & IPTV' } },
         { slug: 'timer/aufnahmen', label: 'Aufnahme- & Umschalttimer', translations: { en: 'Recording & zap timers' } },
+        { label: 'AutoTimer', collapsed: true, items: [
+          { slug: 'addons/autotimer', label: 'Suchregeln & Serien', translations: { en: 'Search rules & series' } },
+          { slug: 'addons/autotimer-optionen', label: 'Alle 24 Einstellungen', translations: { en: 'All 24 settings' } },
+        ] },
         { slug: 'timer/aufgaben', label: 'Aufgaben & Ausschalttimer', translations: { en: 'Tasks & sleep timers' } },
         { slug: 'timer/cron', label: 'Linux-Cron', translations: { en: 'Linux cron' } },
         { slug: 'system/zeit-aufwachen', label: 'Uhrzeit, NTP & Aufwachen', translations: { en: 'Time, NTP & wakeup' } },

@@ -1,0 +1,55 @@
+---
+title: AutoTimer – alle globalen Einstellungen
+description: Alle 24 AutoTimer-Einstellungen erklärt, mit Suchschlüsseln für Abfrageintervall, Konflikte, doppelte und bestehende Timer sowie deaktivierte Optionen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Diese **24 Einträge** gehören zu **AutoTimer-Übersicht → MENÜ → Einstellungen** und wirken auf alle Regeln. Suchtext, Sender, Wochentage, Vor-/Nachlauf und Wiederholungsfilter einer einzelnen Regel stehen in der [AutoTimer-Anleitung](../autotimer/).
+
+Die Referenz folgt dem tatsächlich verwendeten Dialog `AutoTimerSettings.py`. Die ebenfalls ausgelieferte `setup.xml` hat im geprüften Stand nur 23 Einträge und bildet die eigene Abfrageeinheit nicht vollständig ab. Darum können ältere Anleitungen bei den Einheiten abweichen.
+
+<Capture id="autotimer-polling" language="de" alt="AutoTimer-Einstellungen für automatische Suche, Abfrageeinheit und Intervall" caption="Während der Bildserie war die automatische Suche vorübergehend deaktiviert, damit keine echten Aufnahmetimer entstehen. Danach wurde der ursprüngliche Wert wiederhergestellt. 240 Minuten entsprechen vier Stunden; die Bildwerte sind keine allgemeine Empfehlung." />
+
+## Optionen und Suchschlüssel
+
+Die Schlüssel helfen, eine Option über die Website-Suche zu finden. Werte normalerweise über die Oberfläche ändern, nicht während des Betriebs in der settings-Datei.
+
+| Einstellung / Suchschlüssel | Erklärung |
+| --- | --- |
+| Automatisch suchen<br />`config.plugins.autotimer.autopoll` | Startet die regelmäßige Suche. Ausgeschaltet bleiben manuelle Aufrufe und Aufrufe durch EPGRefresh/EPGImport möglich. |
+| Abfrage nur im Standby<br />`config.plugins.autotimer.onlyinstandby` | Die regelmäßige Suche nur im normalen Standby ausführen. Deep-Standby ist kein laufendes Enigma2. |
+| Einschaltverzögerung (in Minuten)<br />`config.plugins.autotimer.delay` | Wartezeit in Minuten nach dem Start des Pollers, beispielsweise nach GUI-Neustart oder Rückkehr aus der Übersicht. Verhindert nicht, dass ein ausdrücklich gestarteter Suchlauf sofort arbeitet. |
+| Abfrageeinheit<br />`config.plugins.autotimer.unit` | Legt Minuten oder Stunden für das Abfrageintervall fest. Beim Umstellen den Zahlenwert mitprüfen; 240 Minuten und 240 Stunden sind sehr verschieden. |
+| Abfrageintervall (in Minuten/Stunden)<br />`config.plugins.autotimer.interval` | Abstand der wiederholten Abfragen in der gewählten Einheit. Das Bild zeigt 240 Minuten, also vier Stunden. Die Startverzögerung ist ein anderes Feld. |
+| Nur Timer für die nächsten x Tage hinzufügen<br />`config.plugins.autotimer.maxdaysinfuture` | Begrenzt, wie weit im Voraus Termine angelegt werden. 0 hebt diese Grenze auf; die vorhandene EPG-Reichweite bleibt die Obergrenze. |
+| Doppelte Timer für verschiedene Sender zulassen<br />`config.plugins.autotimer.enable_multiple_timer` | Ausnahmen für gleichzeitige Aufnahmen desselben Programms auf verschiedenen Diensten: nein, bei ausdrücklich gewählten Sendern, bei Bouquets oder bei beiden. Kann bewusst SD und HD parallel erlauben; keine zusätzlichen Tuner. |
+| Im Plugin Browser anzeigen<br />`config.plugins.autotimer.show_in_plugins` | Zeigt AutoTimer zusätzlich im Plugin-Browser. Der Timer-Menüeintrag bleibt ein eigener Einstieg. |
+| Im Erweiterungsmenü anzeigen<br />`config.plugins.autotimer.show_in_extensionsmenu` | Zeigt AutoTimer zusätzlich im Erweiterungsmenü. Das ist keine Aktivierung der Suchautomatik. |
+| Ändere bestehende Timer<br />`config.plugins.autotimer.refresh` | Keine, nur von AutoTimer zugeordnete Timer oder alle nicht wiederholten Timer ändern. Die Oberfläche bezeichnet die mittlere Wahl als in dieser Sitzung erzeugte AutoTimer; die Logik nutzt die AutoTimer-Markierung. Die weiteste Wahl kann auch manuelle Timerzeiten verändern. |
+| Bestimme bestehende Timer anhand Anfangs-/Endzeit<br />`config.plugins.autotimer.try_guessing` | Vorhandene Timer zusätzlich über eine zeitliche Übereinstimmung von mehr als 80 Prozent zuordnen, wenn die EPG-Kennung nicht reicht. Das ist eine Heuristik; keine garantierte Identifikation. |
+| Bei Konflikt alternativen Timer hinzufügen<br />`config.plugins.autotimer.addsimilar_on_conflict` | Bei einem echten Konflikt einen ähnlichen EPG-Termin suchen. Dieser kann außerhalb der ursprünglichen Zeitspanne liegen. Ergebnis und Sender prüfen. |
+| Timer bei Konflikt als deaktiviert hinzufügen<br />`config.plugins.autotimer.disabled_on_conflict` | Den nicht einplanbaren Treffer als deaktivierten Timer ablegen. Er ist sichtbar, nimmt aber erst nach sinnvoller Konfliktlösung und Aktivierung auf. |
+| "AutoTimer" als Tag hinzufügen<br />`config.plugins.autotimer.add_autotimer_to_tags` | Die Kennzeichnung AutoTimer zu erzeugten Timern/Aufnahmen hinzufügen. Ändert keine Suchregel. |
+| Name des AutoTimers als Tag hinzufügen<br />`config.plugins.autotimer.add_name_to_tags` | Den jeweiligen Regelnamen als zusätzliche Kennzeichnung verwenden. Hilft bei der Zuordnung in passenden Listen. |
+| Benachrichtigung bei Konflikten anzeigen<br />`config.plugins.autotimer.notifconflict` | Konflikte aus automatischen Suchläufen melden. Derselbe ungelöste Konflikt kann erneut gemeldet werden. |
+| Benachrichtigung über Alternativ-Timer anzeigen<br />`config.plugins.autotimer.notifsimilar` | Melden, wenn ein automatischer Suchlauf einen ähnlichen Ersatztermin anlegt. |
+| Standardeditor für neue AutoTimer<br />`config.plugins.autotimer.editor` | Standard für Blau/Hinzufügen: klassischer Editor, Assistent oder Import aus EPG. Über MENÜ lässt sich ein anderer Weg direkt wählen. |
+| "Fast Scan"-Unterstützung<br />`config.plugins.autotimer.fastscan` | Berücksichtigt Besonderheiten von Fast-Scan-Senderreferenzen. Für eine normale Sendersuche nicht pauschal einschalten. |
+| Überspringe Prüfung bei laufenden Aufnahmen<br />`config.plugins.autotimer.skip_during_records` | Regelmäßige Suche während laufender Aufnahmen überspringen. Schaltet keine vorhandene Aufnahme ab; die nächste Abfrage folgt wieder dem Intervall. |
+| Überspringe Prüfung bei laufendem EPG-Refresh<br />`config.plugins.autotimer.skip_during_epgrefresh` | Regelmäßige Suche überspringen, während das erkannte EPGRefresh läuft. Erst nach dem Datenlauf suchen; diese Option ist keine allgemeine Sperre aller EPG-Importwege. |
+| Fenster nach (x) Sekunden automatisch schließen<br />`config.plugins.autotimer.popup_timeout` | Einblenddauer der Ergebnis-/Konfliktmeldungen in Sekunden. 0 lässt das Fenster offen. |
+| Entferne nicht existierende Sendungen<br />`config.plugins.autotimer.check_eit_and_remove` | Sichtbare Option, deren zugehöriger Löschblock im geprüften Stand auskommentiert ist. Nicht auf eine automatische Entfernung verschwundener EPG-Ereignisse verlassen. |
+| Immer die Konfiguration schreiben<br />`config.plugins.autotimer.always_write_config` | Regelkonfiguration nach mit Speichern beendeten Änderungen schreiben. Kein Ersatz für eine Sicherung; die native Erweiterung besitzt weitere Schreibpunkte, etwa beim Beenden von Enigma2. |
+
+## Bestehende Timer und Konflikte bewusst behandeln
+
+<Capture id="autotimer-conflicts" language="de" alt="AutoTimer-Konfliktoptionen und Änderung vorhandener Timer" caption="Die markierte Option sucht bei einem Konflikt einen anderen Sendetermin. In dieser Bildserie wurde weder ein Konflikt ausgelöst noch ein Timer angelegt oder verändert. Der lange native Fenstertitel wird im Skin teilweise gekürzt." />
+
+Für eine neue Regel zuerst die Vorschau lesen und nach dem echten Suchlauf die normale Timerliste kontrollieren. Besonders **Ändere bestehende Timer** und **Doppelte Timer für verschiedene Sender zulassen** beeinflussen andere Termine beziehungsweise den Tunerbedarf. Tags helfen beim Wiederfinden, lösen aber keine Konflikte.
+
+**Entferne nicht existierende Sendungen** ist ein Beispiel dafür, dass eine sichtbare Option nicht zwingend eine aktive Funktion beweist. Im abgeglichenen Quellstand ist der Löschcode in `populateTimerdict` deaktiviert. Die Anleitung behauptet deshalb keinen erfolgreichen Bereinigungslauf.
+
+Die Originalbilder behalten die nativen Beschriftungen und Hilfetexte. Die Erklärungen dieser Tabelle sind redaktionell formuliert und auf den geprüften Stand bezogen. Bei einer neuen Version erneut prüfen, insbesondere Einheiten und Änderungen vorhandener Timer.
+
+Quellen: [24 Dialogdefinitionen](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoTimerSettings.py), [Auswahlwerte und Vorgaben](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/__init__.py), [Abfrageablauf](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoPoller.py), [Timerzuordnung und deaktivierter Löschblock](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoTimer.py).

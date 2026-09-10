@@ -35,3 +35,7 @@ Each extension can have a subdirectory with an introduction, setup guide and tro
 - [FileCommander: file management and every setting](./filecommander/)
 
 Built-in [MovieSelection](../aufnahmen/movieselection/) needs no such add-on. The [comparison of the three interfaces](../aufnahmen/) helps you choose.
+
+## AutoTimer
+
+[Set up AutoTimer](./autotimer/) covers search rules, service/day filters, series, preview and the recording timers it creates. All [24 global settings](./autotimer-optionen/) have individual explanations and are searchable.

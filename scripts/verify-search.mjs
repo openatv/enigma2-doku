@@ -25,6 +25,14 @@ globalThis.fetch = async input => {
 };
 const pagefind = await import(pathToFileURL(path.join(root, 'pagefind/pagefind.js')));
 const checks = [
+  ['de', 'AutoTimer', '/de/addons/autotimer/'],
+  ['de', 'autotimer.xml', '/de/addons/autotimer/'],
+  ['de', 'config.plugins.autotimer.unit', '/de/addons/autotimer-optionen/'],
+  ['de', 'config.plugins.autotimer.check_eit_and_remove', '/de/addons/autotimer-optionen/'],
+  ['en', 'AutoTimer', '/en/addons/autotimer/'],
+  ['en', 'autotimer.xml', '/en/addons/autotimer/'],
+  ['en', 'config.plugins.autotimer.unit', '/en/addons/autotimer-optionen/'],
+  ['en', 'config.plugins.autotimer.check_eit_and_remove', '/en/addons/autotimer-optionen/'],
   ['de', 'MovieSelection', '/de/aufnahmen/movieselection/'],
   ['de', 'EMC', '/de/addons/emc/'],
   ['de', 'config.EMC.movie_finished_clean', '/de/addons/emc-optionen/'],

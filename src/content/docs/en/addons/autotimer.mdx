@@ -1,0 +1,125 @@
+---
+title: AutoTimer – find programmes and schedule recordings
+description: Set up AutoTimer rules from the EPG, filter channels and weekdays, handle series and repeats, and check the recording timers it creates.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**AutoTimer searches the existing EPG using rules and creates ordinary Enigma2 recording timers.** A rule such as “tagesschau on Das Erste HD in the evening” can find new broadcasts without scheduling each one manually. AutoTimer does not fetch EPG data itself, and searching does not require a free reception tuner. Recording later requires a receivable service, suitable tuner resources and storage space.
+
+`EPG data → AutoTimer rule → individual recording timer → recording`
+
+A repeating time in a [normal recording timer](../../timer/aufnahmen/) follows its fixed schedule. AutoTimer searches programme data instead. [EPGRefresh](../epgrefresh/) and [EPGImport](../epgimport/) supply data; AutoTimer processes it. [EMC and MovieSelection](../../aufnahmen/) show the recorded files afterwards.
+
+## Install and open
+
+Install **AutoTimer** from the [plugin feed](../../plugins/installieren/) if missing. The checked package name is `enigma2-plugin-extensions-autotimer`. Open **MENU → Timers → AutoTimer/AutoTimers**. Entries in the plugin browser and extensions menu can be enabled separately, so a missing entry there does not necessarily mean the plugin is absent.
+
+<Capture id="autotimer-overview" language="en" alt="Native AutoTimer overview with an example tagesschau rule for Das Erste HD" caption="This is a detached, unsaved documentation rule. It was not added to the receiver’s existing AutoTimer list and created no recording timers." />
+
+| Overview button | Function |
+| --- | --- |
+| OK | Edit the selected rule. |
+| Blue | Add a rule using the selected classic editor, wizard or EPG import. |
+| Yellow | Remove a rule. The confirmation explicitly distinguishes keeping its generated timers from deleting them as well. |
+| MENU | Preview, setup, import from EPG/existing timer, defaults, cloning and direct editor selection. |
+| Green | Save and leave the overview; the normal plugin entry then starts EPG processing. |
+| Red/EXIT | Leave without that final search. Actions already performed, such as deleting generated timers, are not undone by leaving this way. |
+
+The colour buttons have **different functions inside the rule editor**: Yellow opens filters, Blue opens service/bouquet restrictions, and Green returns the edited rule to the overview. Follow the labels at the bottom.
+
+## First rule: start with a narrow example
+
+1. Check that the EPG for **Das Erste HD** contains upcoming programmes with the required title.
+2. Open the AutoTimer overview and **MENU → Import from EPG**. Alternatively, add a rule with **Blue** when the classic editor is selected as the default; MENU also offers a direct route to it. Check imported fields: a narrow time window derived from one event can exclude other editions.
+3. Enter a useful **Description**, such as “Tagesschau in the evening”. **Match title** is the actual search text: `tagesschau`. The rule’s display name is not searched.
+4. For this example choose **exact match** and **case-insensitive search**. A partial match also finds longer titles. The main search field is not a regular expression.
+5. Press **Blue**, enable the service restriction and add **Das Erste HD**. One channel is enough for the first test.
+6. Optionally restrict the daily timespan to **19:50–20:20**. It checks the **EPG event’s start**, not the entire recording duration. Without it, other editions with the same title can match.
+7. Accept the subdialogs and rule with Green. In the overview open **MENU → Preview** before leaving it with Green to save and run the search.
+8. Then check the timers actually created under **MENU → Timers → Recording timers**: dates, services, margins, enabled state and recording directory.
+
+<Capture id="autotimer-editor" language="en" alt="AutoTimer rule editor showing match text, search mode and timer type" caption="Unsaved example: the description names the rule; tagesschau is the search text. The broadcaster’s programme title remains German in the English interface." />
+
+**Preview shows matches, not guaranteed recordings.** In the checked version, simulation stops before subsequent checks for existing recordings, duplicate timers, counters and actual timer conflicts. More events may appear in preview than become new timers. The real search result and ordinary timer list show what was actually scheduled.
+
+## Services, bouquets and weekdays
+
+<Capture id="autotimer-services" language="en" alt="AutoTimer service restriction containing Das Erste HD" caption="The service reference comes from the existing channel list. This restriction belongs only to the detached example." />
+
+A service restriction prevents unwanted matches on regional variants, SD/HD duplicates or unrelated channels. A bouquet is useful for a deliberately maintained group. **When both explicit services and bouquets are configured, the checked version gives services priority and ignores the bouquets.** After replacing a channel list, verify stored service references. Identical displayed names do not guarantee identical references.
+
+<Capture id="autotimer-weekdays" language="en" alt="AutoTimer weekday filter including Monday to Friday" caption="Yellow in the rule editor opens filters. This example includes weekdays; the daily time window is a separate rule setting." />
+
+For days, use **Yellow → Enable filtering → on Weekday → Blue/New → Include**, then choose a day, weekdays or the weekend. Multiple included days are alternatives. Exclusions take priority. With a timespan crossing midnight, the day filter refers to the day the window starts: “Friday 23:00–02:00” includes early Saturday.
+
+## Include and exclude text filters
+
+<Capture id="autotimer-filters" language="en" alt="AutoTimer text filter excluding a title expression" caption="The additional expression (?i)extra demonstrates a case-insensitive exclusion. It is usually redundant with an exact tagesschau match, but becomes useful with broader partial matches." />
+
+Additional filters apply to **title, short description or description**. They use regular expressions, unlike the main search text. For example, `(?i)extra` ignores case; `(?i)(live|spezial)` expresses alternatives in one filter. Characters such as `.`, `+` and parentheses have special meanings and may need escaping when searching literally.
+
+**All text inclusion conditions must match.** Two inclusion rows mean AND, not OR. Use `|` inside one expression or separate rules for alternatives. Any matching exclusion rejects the event. Case handling for these filters is controlled by the expression; the main search strictness does not automatically apply to additional filters.
+
+If the broadcaster supplies no short description, a required inclusion in that field cannot match. When results are missing, relax extra filters first and reintroduce them one at a time.
+
+## Timespans, margins, destinations and other rule fields
+
+<Capture id="autotimer-limits" language="en" alt="AutoTimer time restriction and custom recording margins" caption="Example start window with a two-minute pre-recording margin and five-minute post-recording margin. These values were not saved and are not universal recommendations." />
+
+| Rule field | Purpose |
+| --- | --- |
+| Enabled | Enable/disable this search rule. Check already-created recording timers separately. |
+| Description / Match title | A readable rule name versus the text being searched. |
+| EPG encoding | Normally leave UTF-8; change only for demonstrated character encoding problems. |
+| Search type / strictness | Partial title, exact title, title prefix or description; case sensitivity is separate. |
+| Timer type | Record, zap, or zap and record. A zap timer with an end time can reserve the period against other recordings. |
+| Automatic selection of alternates | Use existing service alternatives. Does not create replacement services or solve every tuner conflict. |
+| Timespan / certain dates | A daily start-time window versus a range of calendar dates. Recording margins do not count towards the search window. |
+| Custom offset | Minutes before/after the EPG event. Otherwise the appropriate Enigma2 defaults apply. |
+| Maximum duration | Reject longer EPG events, excluding recording margins. Does not cut a recording to that length. |
+| After event | Standard, do nothing, standby, deep standby or auto; optionally limited to a timespan. Normal timer/shutdown logic still applies. |
+| Maximum recordings / amount left / reset | Counts scheduled recordings, not successfully completed files. 0 removes this limit; resets can be weekly or monthly, for example. |
+| Custom location | Select an existing destination. Does not create a NAS mount. Check availability and space under [NAS recordings](../../speicher/nas-aufnahmen/). |
+| Tags | Labels for timers and recordings, not search terms. |
+| VPS / Label series | Additional integration when VPS or SeriesPlugin is installed. Series labelling does not guarantee repeat detection. |
+
+The service, bouquet, day and other-filter status rows are edited through **Blue/Yellow**. Dependent fields appear when their parent option is enabled.
+
+## Series and duplicate recordings
+
+<Capture id="autotimer-duplicates" language="en" alt="AutoTimer description uniqueness and recording destination options" />
+
+**AutoTimer starts with EPG matching, rather than maintaining a complete series database.** For a series use a stable title fragment, suitable services and, where helpful, a weekday. A narrow time window can miss rescheduled episodes.
+
+“Require description to be unique” checks **the same service**, **any service**, or **any service and existing recordings**. Comparison depth is separate: title only, title and short description, or title and all descriptions. With a series whose title is identical across episodes, title-only comparison can mistake different episodes for duplicates. Missing or changing descriptions also limit repeat detection.
+
+In the checked version, recording comparison reads the selected destination directory; it does not recursively scan an entire archive. Moving an episode into a subfolder or losing access to a NAS therefore prevents it from being a dependable global “already recorded” database. Counters are not episode tracking either.
+
+## Automatic searches, conflicts and shutdown
+
+Global options are under **AutoTimer overview → MENU → Setup** and affect all rules. The [complete settings reference](../autotimer-optionen/) covers polling, interval units, existing-timer changes, conflicts and notifications.
+
+A useful sequence is **update EPG first, then process AutoTimer rules**. EPGRefresh and EPGImport both offer AutoTimer integration. Disabling AutoTimer’s own polling does not block an explicit search when leaving its overview with Green or a call from these integrations. Include those triggers when pausing all automatic processing.
+
+On conflicts, AutoTimer can seek a similar broadcast or add the unschedulable timer disabled. A disabled timer does not record. Read the notification and check the recording timer list; an alternative broadcast may be outside the original search timespan. AutoTimer does not add tuner resources.
+
+AutoTimer runs while Enigma2 is running, including ordinary standby. **Its polling interval does not itself wake a receiver from deep standby in this version.** Already-created recording timers can use Enigma2’s normal, hardware-dependent wakeup mechanism. Programmes appearing in the EPG later need a search before recording time. See [time and wakeup](../../system/zeit-aufwachen/) and [EPGRefresh](../epgrefresh/). Linux cron is not required for normal AutoTimer operation.
+
+## Back up rules and investigate problems
+
+Rules and defaults are in **`/etc/enigma2/autotimer.xml`**, global options in **`/etc/enigma2/settings`**, and generated recording timers in **`/etc/enigma2/timers.xml`**. These files serve different purposes. Check that the rule file is included in your [settings backup](../../wartung/backup-restore/). After restoring, verify the plugin, rules, destinations and service references. Prefer editing through the interface; a running plugin can overwrite manual XML edits.
+
+| Problem | Check first |
+| --- | --- |
+| No matches | Rule enabled? EPG present? Search type, spaces, service reference, timespan, days and text filters appropriate? |
+| Preview matches but no new timer | Already scheduled, repeat detection, exhausted counter, conflict or outside the global future limit? Read the real search result. |
+| A manual timer changed | Check “Modify existing timers” and EPG matching. The broadest setting can also affect manual non-repeating timers. |
+| Recording after disabling a rule | Its individual recording timer already exists. Disable/delete it separately in the normal timer list. Read the confirmation when deleting a rule. |
+| No regular searches | Check polling, unit/interval, startup delay, standby/recording conditions and EPG integrations. |
+
+Enable the [Enigma2 debug log](../../hilfe/logs-diagnose/) and look for **`[AutoTimer]`**. Generated timers also contain log entries. This version does not necessarily create a separate `autotimer.log`. When [reporting a problem](../../hilfe/fehler-melden/), include the plugin version, rule, specific EPG example and processing result; remove private paths and credentials before publication.
+
+**Checked scope:** Native DE/EN dialogs from package `V1.0-git1137+20859d70+20859d7ae9-r0`, source revision `20859d7ae9`. Captures use detached, unsaved examples with disabled actions and no parser/save callback. They do not demonstrate a timer actually being created, a completed recording or a wakeup test.
+
+Sources: [Plugin entry and saving](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/plugin.py), [editor and filters](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoTimerEditor.py), [rule matching](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoTimerComponent.py), [EPG processing and preview limits](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoTimer.py).

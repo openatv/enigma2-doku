@@ -1,0 +1,55 @@
+---
+title: AutoTimer – all global settings
+description: All 24 AutoTimer settings explained, with searchable keys for polling intervals, conflicts, duplicate and existing timers, and inactive options.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+These **24 entries** belong to **AutoTimer overview → MENU → Setup** and apply to every rule. Match text, services, weekdays, recording margins and per-rule duplicate filters are covered in the [AutoTimer guide](../autotimer/).
+
+This reference follows the actual `AutoTimerSettings.py` dialog. The shipped `setup.xml` has only 23 entries in this revision and does not fully represent the separate polling unit. Older instructions can therefore differ about units.
+
+<Capture id="autotimer-polling" language="en" alt="AutoTimer automatic polling, interval unit and interval settings" caption="Polling was temporarily disabled for the capture series to avoid creating real recording timers. The original value was restored afterwards. 240 minutes equals four hours; screenshot values are not universal recommendations." />
+
+## Options and searchable keys
+
+Use the keys to find settings through the website search. Normally change values through the interface, rather than editing settings while Enigma2 is running.
+
+| Setting / search key | Explanation |
+| --- | --- |
+| Poll automatically<br />`config.plugins.autotimer.autopoll` | Enables periodic searches. Manual calls and calls from EPGRefresh/EPGImport remain possible when disabled. |
+| Only poll while in standby<br />`config.plugins.autotimer.onlyinstandby` | Run periodic searches only in ordinary standby. Enigma2 is not running in deep standby. |
+| Startup delay (in min)<br />`config.plugins.autotimer.delay` | Minutes to wait when the poller starts, for example after a GUI restart or returning from the overview. Does not delay an explicitly requested search. |
+| Poll unit<br />`config.plugins.autotimer.unit` | Select minutes or hours for the polling interval. Check the numeric value when changing units: 240 minutes and 240 hours differ substantially. |
+| Poll Interval (in minutes/hours)<br />`config.plugins.autotimer.interval` | Time between periodic queries in the selected unit. The image shows 240 minutes, or four hours. Startup delay is a separate setting. |
+| Only add timer for next x days<br />`config.plugins.autotimer.maxdaysinfuture` | Limit how far ahead timers are created. 0 removes this limit; available EPG data still limits the horizon. |
+| Allow double timer for different services<br />`config.plugins.autotimer.enable_multiple_timer` | Exceptions allowing simultaneous recordings of the same programme on different services: none, explicit services, bouquets, or either. Can permit both SD and HD deliberately; adds no tuners. |
+| Show in plugin browser<br />`config.plugins.autotimer.show_in_plugins` | Also show AutoTimer in the plugin browser. Its Timers menu entry is a separate route. |
+| Show in extension menu<br />`config.plugins.autotimer.show_in_extensionsmenu` | Also show AutoTimer in the extensions menu. This does not enable polling. |
+| Modify existing timers<br />`config.plugins.autotimer.refresh` | Choose no updates, AutoTimer-associated timers, or all non-repeating timers. The middle choice is labelled as AutoTimers created during this session; the logic checks the AutoTimer marker. The broadest choice can also change manual timer times. |
+| Guess existing timer based on begin/end<br />`config.plugins.autotimer.try_guessing` | Also identify existing timers by a time similarity greater than 80 percent when the event ID does not suffice. This is a heuristic, not guaranteed identification. |
+| Add similar timer on conflict<br />`config.plugins.autotimer.addsimilar_on_conflict` | Look for a similar EPG event after a real conflict. It can be outside the original timespan. Check the resulting time and service. |
+| Add timer as disabled on conflict<br />`config.plugins.autotimer.disabled_on_conflict` | Keep an unschedulable match as a disabled timer. It is visible but will not record until the conflict is resolved and it is enabled. |
+| Include "AutoTimer" in tags<br />`config.plugins.autotimer.add_autotimer_to_tags` | Add the AutoTimer tag to generated timers/recordings. Does not change the rule. |
+| Include AutoTimer name in tags<br />`config.plugins.autotimer.add_name_to_tags` | Add the rule name as a tag, useful for identifying its recordings in supporting lists. |
+| Show notification on conflicts<br />`config.plugins.autotimer.notifconflict` | Notify about conflicts found by automatic polling. An unresolved conflict can be reported repeatedly. |
+| Show notification on similars<br />`config.plugins.autotimer.notifsimilar` | Notify when automatic polling schedules a similar alternative event. |
+| Editor for new AutoTimers<br />`config.plugins.autotimer.editor` | Default for Blue/Add: classic editor, wizard or EPG import. MENU also offers direct routes. |
+| Support "Fast Scan"?<br />`config.plugins.autotimer.fastscan` | Accommodates Fast Scan service-reference behaviour. Do not enable routinely for a conventional channel scan. |
+| Skip poll during records<br />`config.plugins.autotimer.skip_during_records` | Skip periodic searches during recordings. Does not stop a recording; the next query follows the interval. |
+| Skip poll during epg refresh<br />`config.plugins.autotimer.skip_during_epgrefresh` | Skip periodic searches while the detected EPGRefresh is running. Search after data collection; this is not a universal lock against all import paths. |
+| Popup timeout in seconds<br />`config.plugins.autotimer.popup_timeout` | Result/conflict notification duration in seconds. 0 leaves the popup open. |
+| Remove not existing events<br />`config.plugins.autotimer.check_eit_and_remove` | Visible option whose associated removal block is commented out in this revision. Do not rely on automatic removal when EPG events disappear. |
+| Always write config<br />`config.plugins.autotimer.always_write_config` | Write rule configuration after edits completed by saving. Not a backup; the native plugin has other write points, including Enigma2 shutdown. |
+
+## Handle existing timers and conflicts deliberately
+
+<Capture id="autotimer-conflicts" language="en" alt="AutoTimer conflict handling and existing-timer update settings" caption="The selected option seeks another broadcast when a conflict occurs. This capture did not trigger a conflict or create/change a timer. The long native window title can be shortened by the skin." />
+
+For a new rule, inspect preview first and the normal timer list after the real search. In particular, **Modify existing timers** and **Allow double timer for different services** affect other timers or tuner demand. Tags help identify entries but do not resolve conflicts.
+
+**Remove not existing events** illustrates that a visible option does not necessarily prove an active feature. In the checked revision, removal code in `populateTimerdict` is disabled. This guide therefore does not claim a successful cleanup run.
+
+Original images retain native labels and help text. This table uses editorial explanations tied to the checked revision. Recheck with new versions, particularly units and existing-timer updates.
+
+Sources: [24 dialog definitions](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoTimerSettings.py), [choices and defaults](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/__init__.py), [polling](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoPoller.py), [timer matching and disabled removal block](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoTimer.py).

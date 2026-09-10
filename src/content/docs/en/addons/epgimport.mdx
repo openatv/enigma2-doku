@@ -52,3 +52,5 @@ For zero imported events, check networking, DNS, clock, source selection, downlo
 **Verification:** Captured native settings, sources and days-profile dialogs in DE/EN. The capture series neither imported sources nor saved a new plugin schedule. External offerings may change independently of this guide.
 
 Sources: [EPGImport interface and operation, revision a32929f2d0](https://github.com/oe-alliance/XMLTV-Import/blob/a32929f2d0/src/EPGImport/plugin.py), [Source and channel mappings](https://github.com/oe-alliance/XMLTV-Import/blob/a32929f2d0/src/EPGImport/EPGConfig.py), [OE-Alliance sources package](https://github.com/oe-alliance/EPGImport-Sources).
+
+[Set up and check AutoTimer](../autotimer/): after filling the EPG, rules create ordinary recording timers. This plugin’s AutoTimer integration is a separate trigger; disabling AutoTimer polling does not automatically disable that call.

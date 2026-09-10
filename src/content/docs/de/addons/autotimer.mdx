@@ -1,0 +1,125 @@
+---
+title: AutoTimer – Sendungen automatisch finden und aufnehmen
+description: AutoTimer einrichten, Suchregeln aus dem EPG erstellen, Sender und Wochentage filtern, Serien und Wiederholungen unterscheiden und erzeugte Aufnahmetimer prüfen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**AutoTimer durchsucht den vorhandenen EPG nach Regeln und erzeugt daraus normale Enigma2-Aufnahmetimer.** Eine Regel wie „tagesschau auf Das Erste HD am Abend“ kann neue Sendetermine finden, ohne dass du jeden Termin einzeln programmierst. AutoTimer beschafft selbst keinen EPG und benötigt für seine Suche keinen freien Empfangstuner. Die spätere Aufnahme braucht einen empfangbaren Sender, passende Tunerressourcen und Speicherplatz.
+
+`EPG-Daten → AutoTimer-Suchregel → konkreter Aufnahmetimer → Aufnahme`
+
+Eine wiederholte Uhrzeit im [normalen Aufnahmetimer](../../timer/aufnahmen/) bleibt an ihren Zeitplan gebunden. AutoTimer sucht dagegen nach Sendungsdaten. [EPGRefresh](../epgrefresh/) und [EPGImport](../epgimport/) liefern die Daten; AutoTimer wertet sie aus. [EMC und MovieSelection](../../aufnahmen/) zeigen später die aufgenommenen Filme.
+
+## Installieren und öffnen
+
+Installiere **AutoTimer** aus dem [Plugin-Feed](../../plugins/installieren/), falls es fehlt. Der geprüfte Paketname lautet `enigma2-plugin-extensions-autotimer`. Öffne **MENÜ → Timer → AutoTimer/AutoTimers**. Einträge im Plugin-Browser und im Erweiterungsmenü lassen sich separat aktivieren; ein dort fehlender Eintrag bedeutet deshalb nicht automatisch, dass das Plugin fehlt.
+
+<Capture id="autotimer-overview" language="de" alt="Native AutoTimer-Übersicht mit einer Beispielregel für tagesschau auf Das Erste HD" caption="Die Übersicht zeigt eine eigens für die Dokumentation angelegte, ungespeicherte Regel. Sie wurde nicht in die vorhandene AutoTimer-Liste übernommen und hat keine Aufnahmetimer erzeugt." />
+
+| Taste in der Übersicht | Funktion |
+| --- | --- |
+| OK | Markierte Regel bearbeiten. |
+| Blau | Neue Regel anlegen; der gewählte Editor kann klassisch, ein Assistent oder der EPG-Import sein. |
+| Gelb | Regel entfernen. Die Rückfrage unterscheidet ausdrücklich, ob bereits erzeugte Timer ebenfalls gelöscht oder behalten werden sollen. |
+| MENÜ | Vorschau, Einstellungen, Import aus EPG/vorhandenem Timer, Standardwerte, Klonen und direkte Wahl des Editors. |
+| Grün | Übersicht speichern und verlassen; der normale Plugin-Aufruf startet anschließend die EPG-Auswertung. |
+| Rot/EXIT | Übersicht verlassen, ohne diesen abschließenden Suchlauf. Bereits ausgeführte Aktionen wie das Entfernen erzeugter Timer werden dadurch nicht rückgängig gemacht. |
+
+Die Farbtasten haben **im Regeleditor andere Aufgaben**: Gelb öffnet Filter, Blau die Sender-/Bouquetbeschränkung, Grün übernimmt die Regel zurück in die Übersicht. Die Beschriftung unten ist maßgeblich.
+
+## Erste Regel: zunächst klein anfangen
+
+1. Kontrolliere im EPG, dass **Das Erste HD** kommende Sendungen mit dem gesuchten Titel enthält.
+2. Öffne die AutoTimer-Übersicht und **MENÜ → Import aus EPG**. Alternativ mit **Blau** eine neue Regel anlegen, wenn der klassische Editor als Standard gewählt ist; über MENÜ lässt er sich auch direkt aufrufen. Beim Import die übernommenen Felder prüfen: Ein aus einer einzelnen Sendung abgeleitetes enges Zeitfenster kann andere Ausgaben ausschließen.
+3. Vergib eine verständliche **Beschreibung**, etwa „Tagesschau am Abend“. **Finde in Titel/Match title** ist der eigentliche Suchtext: `tagesschau`. Der Regelname selbst wird nicht gesucht.
+4. Wähle für dieses Beispiel **Suchmodus: gesamter Titel** und Suche ohne Beachtung der Groß-/Kleinschreibung. Ein Teiltreffer würde auch längere Titel finden. Das Suchfeld ist kein regulärer Ausdruck.
+5. Öffne mit **Blau** die Senderbeschränkung, aktiviere sie und füge **Das Erste HD** hinzu. Für den ersten Versuch reicht ein Sender.
+6. Optional das tägliche Zeitfenster auf **19:50–20:20** begrenzen. Gemeint ist der **Sendungsbeginn aus dem EPG**, nicht die gesamte Aufnahmedauer. Ohne diese Begrenzung können auch andere Ausgaben desselben Titels passen.
+7. Übernimm Unterdialoge und Regel mit Grün. Öffne in der Übersicht **MENÜ → Vorschau**, bevor du die Übersicht mit Grün speicherst und den Suchlauf auslöst.
+8. Prüfe anschließend unter **MENÜ → Timer → Aufnahmetimer** die tatsächlich angelegten Termine, Sender, Vor-/Nachlauf, Aktivierung und das Aufnahmeverzeichnis.
+
+<Capture id="autotimer-editor" language="de" alt="AutoTimer-Regeleditor mit Suchtext, Suchart und Timerart" caption="Ungespeichertes Beispiel: Der Regelname beschreibt die Aufgabe; der Suchtext ist tagesschau. Die Schreibweise des Sendungstitels bleibt auch in englischen Bildern unverändert." />
+
+**Die Vorschau ist eine Trefferliste, keine Aufnahmezusage.** Im geprüften Stand endet der Simulationspfad vor den späteren Prüfungen auf vorhandene Aufnahmen, doppelte Timer, Zähler und echte Timerkonflikte. Daher können mehr Vorschautreffer erscheinen als neue Timer entstehen. Erst die Ergebnisanzeige des Suchlaufs und die normale Timerliste zeigen, was tatsächlich übernommen wurde.
+
+## Sender, Bouquets und Wochentage
+
+<Capture id="autotimer-services" language="de" alt="AutoTimer-Senderfilter mit Das Erste HD" caption="Die Senderreferenz stammt aus der vorhandenen Kanalliste. Die Beschränkung gilt nur im ungespeicherten Beispiel." />
+
+Eine Senderbeschränkung verhindert ungewollte Treffer auf Regionalvarianten, SD-/HD-Doppelungen oder fremden Sendern. Ein Bouquet ist praktisch für eine bewusst gepflegte Gruppe. **Sind konkrete Sender und Bouquets eingetragen, haben im geprüften Stand die Sender Vorrang; die Bouquets werden dann nicht zusätzlich durchsucht.** Nach einem Senderlistenwechsel prüfen, ob die gespeicherten Servicereferenzen noch stimmen. Gleiche sichtbare Namen garantieren keine identische Referenz.
+
+<Capture id="autotimer-weekdays" language="de" alt="AutoTimer-Filter für Wochentage mit Montag bis Freitag" caption="Gelb im Regeleditor führt zu den Filtern. Hier zeigt das Beispiel eine Einschlussregel für Montag bis Freitag; die Uhrzeit wird separat im Regeleditor eingestellt." />
+
+Für Tage: **Gelb → Filter aktivieren → Wochentag → Blau/Neu → Einschließen** und einen Tag, **Wochentag** (Montag bis Freitag) oder Wochenende auswählen. Mehrere eingeschlossene Tage sind Alternativen. Ein Ausschluss hat Vorrang. Bei einem Zeitfenster über Mitternacht bezieht sich der Tagesfilter auf den Tag, an dem das Fenster beginnt: „Freitag 23:00–02:00“ umfasst auch den frühen Samstag.
+
+## Textfilter: Einschließen und Ausschließen
+
+<Capture id="autotimer-filters" language="de" alt="AutoTimer-Textfilter mit einem Ausschluss im Titel" caption="Der zusätzliche Ausdruck (?i)extra demonstriert einen Ausschluss ohne Beachtung der Groß-/Kleinschreibung. Bei einem bereits exakten Suchtext tagesschau ist er meist redundant; er wird bei breiteren Teiltreffern nützlich." />
+
+Zusatzfilter wirken auf **Titel, Kurzbeschreibung oder Beschreibung**. Sie sind reguläre Ausdrücke, anders als der normale Suchtext. Beispielsweise sucht `(?i)extra` unabhängig von der Groß-/Kleinschreibung; `(?i)(live|spezial)` erlaubt in einem Ausdruck zwei Alternativen. Sonderzeichen wie `.`, `+` und Klammern haben dabei eine Bedeutung und müssen für eine wörtliche Suche gegebenenfalls maskiert werden.
+
+**Alle eingetragenen Text-Einschlussbedingungen müssen passen.** Zwei Einschlusszeilen sind also UND, nicht ODER. Für ODER einen Ausdruck mit `|` oder getrennte Regeln verwenden. Bereits ein passender Ausschluss verwirft den Treffer. Die Groß-/Kleinschreibung der Zusatzfilter wird durch den Ausdruck gesteuert; die Suchgenauigkeit des Hauptsuchfelds gilt nicht automatisch für diese Filter.
+
+Fehlt die Kurzbeschreibung im Sender-EPG, kann eine dort verlangte Einschlussbedingung nie erfüllt werden. Bei „kein Treffer“ zuerst die Zusatzfilter lockern und danach einzeln wieder zuschalten.
+
+## Zeitfenster, Vorlauf, Ziel und weitere Regelfelder
+
+<Capture id="autotimer-limits" language="de" alt="AutoTimer-Zeitbegrenzung und eigener Aufnahmevorlauf" caption="Beispielwerte für das Startzeitfenster sowie zwei Minuten Vorlauf und fünf Minuten Nachlauf. Diese Werte wurden nicht gespeichert und sind keine allgemeine Vorgabe." />
+
+| Regelfeld | Bedeutung |
+| --- | --- |
+| Aktiviert | Schaltet diese Suchregel ein/aus. Bereits angelegte Aufnahmetimer separat kontrollieren. |
+| Beschreibung / Suchtext | Lesbarer Regelname gegenüber dem Text, nach dem gesucht wird. |
+| EPG-Zeichensatz | Zeichenkodierung; normalerweise UTF-8 lassen. Erst bei nachgewiesenen Problemen mit Sonderzeichen ändern. |
+| Suchart / Suchgenauigkeit | Teiltreffer, exakter Titel, Titelanfang oder Beschreibung; Groß-/Kleinschreibung getrennt festlegen. |
+| Timerart | Aufnehmen, nur umschalten oder umschalten und aufnehmen. Ein Umschalttimer mit Endzeit kann den Zeitraum für andere Aufnahmen belegen. |
+| Automatische Auswahl von Alternativen | Vorhandene Senderalternativen verwenden. Erzeugt keine Ersatzsender und löst nicht jeden Tunerkonflikt. |
+| Zeitspanne / bestimmte Daten | Tägliches Startzeitfenster gegenüber einer Begrenzung auf Kalendertage. Vor-/Nachlauf zählt nicht zum Suchfenster. |
+| Eigener Vor-/Nachlauf | Minuten vor und nach dem EPG-Termin. Ohne eigene Werte gelten die passenden Enigma2-Vorgaben. |
+| Maximale Dauer | Verwirft längere EPG-Sendungen, ohne Vor-/Nachlauf mitzuzählen. Kürzt keine Aufnahme auf diese Länge. |
+| Nach der Aufnahme | Standard, nichts tun, Standby, Deep-Standby oder Auto; optional auf ein Zeitfenster begrenzen. Die normale Timer-/Abschaltlogik bleibt beteiligt. |
+| Maximal x-mal aufnehmen / verbleibend / zurücksetzen | Zählt geplante Aufnahmen, nicht erfolgreich fertiggestellte Dateien. 0 bedeutet ohne diese Begrenzung; Rücksetzen ist beispielsweise wöchentlich oder monatlich möglich. |
+| Eigenes Verzeichnis | Ein vorhandenes Aufnahmeziel wählen. Das legt keinen NAS-Mount an. Erreichbarkeit und freien Platz unter [NAS-Aufnahmen](../../speicher/nas-aufnahmen/) prüfen. |
+| Tags | Kennzeichnungen für Timer und Aufnahmen; keine Suchbegriffe. |
+| VPS / Serienbeschriftung | Zusätzliche Integration bei installiertem VPS- beziehungsweise SeriesPlugin. Serienbeschriftung ist keine automatische Garantie, Wiederholungen zu erkennen. |
+
+Die Statuszeilen für Sender, Bouquets, Tage und weitere Filter werden über **Blau/Gelb** bearbeitet. Weitere Eingabefelder erscheinen erst, wenn ihre übergeordnete Option aktiviert ist.
+
+## Serien und doppelte Aufnahmen
+
+<Capture id="autotimer-duplicates" language="de" alt="AutoTimer-Regeloptionen zur Vermeidung gleicher Beschreibungen und zum Aufnahmeziel" />
+
+**AutoTimer ist zunächst eine EPG-Suche, keine vollständige Serien-Datenbank.** Für Serien einen stabilen Titelbestandteil, passende Sender und bei Bedarf einen Wochentag verwenden. Zu enge Uhrzeiten können verschobene Folgen verpassen.
+
+„Beschreibung muss eindeutig sein“ bietet Prüfung **auf demselben Sender**, **auf allen Sendern** oder **auf allen Sendern und vorhandenen Aufnahmen**. Die Vergleichstiefe ist separat wählbar: nur Titel, Titel und Kurzbeschreibung oder Titel und alle Beschreibungen. Bei einer Serie mit immer gleichem Titel kann „nur Titel“ verschiedene Folgen fälschlich als gleich behandeln. Umgekehrt verhindern abweichende oder fehlende Beschreibungen eine zuverlässige Wiederholungserkennung.
+
+Die Aufnahmeprüfung liest im geprüften Stand das jeweilige Zielverzeichnis und läuft nicht rekursiv durch das gesamte Archiv. Nach Verschieben einer Folge in einen Unterordner oder bei nicht erreichbarem NAS ist das keine verlässliche globale „schon aufgenommen“-Liste. Auch Zähler sind keine Episodenverwaltung.
+
+## Automatik, Konflikte und Abschalten
+
+Unter **AutoTimer-Übersicht → MENÜ → Einstellungen** liegen die globalen Optionen. Sie betreffen alle Regeln. Die [vollständige Optionsübersicht](../autotimer-optionen/) erklärt automatische Abfragen, Einheiten und Intervalle, Änderungen bestehender Timer, Konfliktbehandlung und Meldungen.
+
+Ein sinnvoller Ablauf ist **zuerst EPG aktualisieren, danach AutoTimer auswerten**. EPGRefresh und EPGImport bieten dafür jeweils eine AutoTimer-Integration. Die globale AutoTimer-Automatik abzuschalten verhindert nicht einen ausdrücklich ausgelösten Suchlauf beim grünen Verlassen der Übersicht oder durch diese Integrationen. Für eine vollständige Pause auch diese Aufrufe berücksichtigen.
+
+Bei Konflikten kann AutoTimer nach einem ähnlichen Termin suchen oder den nicht einplanbaren Timer deaktiviert anlegen. Ein deaktivierter Timer nimmt nicht auf. Prüfe die Meldung und die Aufnahmetimerliste; ein anderer Termin kann außerhalb des ursprünglichen Suchzeitfensters liegen. AutoTimer schafft keine zusätzliche Tunerressource.
+
+AutoTimer läuft nur bei laufendem Enigma2, auch im normalen Standby. **Sein Abfrageintervall weckt im geprüften Stand keine ausgeschaltete Box aus Deep-Standby.** Bereits angelegte Aufnahmetimer können über die normale, hardwareabhängige Weckfunktion starten. Für erst später im EPG auftauchende Sendungen muss vorher ein Suchlauf stattfinden. Dazu passen die Kapitel [Uhrzeit und Aufwachen](../../system/zeit-aufwachen/) sowie [EPGRefresh](../epgrefresh/). Linux-Cron ist für den normalen AutoTimer-Betrieb nicht erforderlich.
+
+## Regeln sichern und Fehler finden
+
+Regeln und Standardwerte liegen in **`/etc/enigma2/autotimer.xml`**, globale Optionen in **`/etc/enigma2/settings`**, erzeugte Aufnahmetimer in **`/etc/enigma2/timers.xml`**. Diese Dateien erfüllen unterschiedliche Aufgaben. Bei einer [Einstellungssicherung](../../wartung/backup-restore/) kontrollieren, ob die Regeldatei enthalten ist. Nach Restore das Plugin, Regeln, Aufnahmeziele und Senderreferenzen prüfen. Dateien bevorzugt über die Oberfläche bearbeiten; ein laufendes Plugin kann manuelle XML-Änderungen überschreiben.
+
+| Problem | Zuerst prüfen |
+| --- | --- |
+| Keine Treffer | Regel aktiv? EPG vorhanden? Suchart, Leerzeichen, Senderreferenz, Zeitspanne, Tage und Textfilter passend? |
+| Vorschautreffer, aber kein neuer Timer | Bereits vorhanden, Wiederholungsprüfung, Zähler verbraucht, Konflikt oder Termin außerhalb der globalen Zukunftsgrenze? Ergebnis des echten Suchlaufs lesen. |
+| Eigener Timer wurde verändert | Globale Option „Bestehende Timer ändern“ und EPG-Zuordnung prüfen. Die weiteste Einstellung kann auch manuelle, nicht wiederholte Timer betreffen. |
+| Aufnahme nach Deaktivieren der Regel | Der konkrete Aufnahmetimer existiert bereits. In der normalen Timerliste separat deaktivieren/löschen. Beim Löschen der Regel die Rückfrage genau lesen. |
+| Regel arbeitet nicht regelmäßig | Automatische Abfrage, Einheit/Intervall, Startverzögerung, Standby-/Aufnahmebedingungen und EPG-Integrationen kontrollieren. |
+
+Für Diagnose das [Enigma2-Debug-Log](../../hilfe/logs-diagnose/) aktivieren und nach **`[AutoTimer]`** suchen. Auch erzeugte Timer enthalten Protokolleinträge. Dieses Plugin richtet im geprüften Stand nicht zwingend eine eigene `autotimer.log` ein. Für eine [Fehlermeldung](../../hilfe/fehler-melden/) Plugin-Version, Regel, konkretes EPG-Beispiel und Suchlaufergebnis angeben; private Pfade und Zugangsdaten vor Veröffentlichung entfernen.
+
+**Prüfstand:** Native DE/EN-Dialoge des Pakets `V1.0-git1137+20859d70+20859d7ae9-r0`, Quellstand `20859d7ae9`. Die Bildserie zeigt lokale, ungespeicherte Beispiele mit gesperrten Aktionen und ohne Parser-/Speicherrückruf. Sie belegt keinen tatsächlich angelegten Timer, keine fertige Aufnahme und keinen Aufwachtest.
+
+Quellen: [AutoTimer-Einstieg und Speichern](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/plugin.py), [Editor und Filter](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoTimerEditor.py), [Regelprüfung](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoTimerComponent.py), [EPG-Auswertung und Vorschaugrenzen](https://github.com/oe-alliance-plugins/AutoTimer/blob/20859d7ae9/src/AutoTimer/AutoTimer.py).

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capture_tool": "https://github.com/openatv/enigma2-plugin-test",
-  "capture_tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43",
+  "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
   "captures": [
     {
       "id": "main-menu",
@@ -4704,6 +4704,384 @@
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
       "capture_tool_commit": "f7251392db31e5988b56a0938258bcae093b1b43",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-overview",
+      "language": "de",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-overview",
+      "captured_at": "2026-09-10T08:12:09.598267+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "2ff960bfcf3ccd08dfb50aa98c1d2a678eccab8991a899822155d27fb22b744f",
+      "file": "de/autotimer-overview.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-editor",
+      "language": "de",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-editor",
+      "captured_at": "2026-09-10T08:12:13.687337+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "75a76693255fdcfaee083e50689cc9fec7acc483615c72a8f68360b20374ab4b",
+      "file": "de/autotimer-editor.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-limits",
+      "language": "de",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-editor",
+      "captured_at": "2026-09-10T08:12:17.670419+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "37e297533de65d4ed19ce4402e3d355661965d3539a938449daaa5b1a1b76c2f",
+      "file": "de/autotimer-limits.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-duplicates",
+      "language": "de",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-editor",
+      "captured_at": "2026-09-10T08:12:21.655591+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "4ce5a46eed27c79011540d65db04cb423cfe8d0c7a577ee4ff1959f0eda1ca6a",
+      "file": "de/autotimer-duplicates.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-filters",
+      "language": "de",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-filters",
+      "captured_at": "2026-09-10T08:12:25.500290+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "03fd7e6898eec46e87cabaf5b48e171687bb6acb3ebd7f13a78ae9a2063d1f34",
+      "file": "de/autotimer-filters.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-weekdays",
+      "language": "de",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-weekdays",
+      "captured_at": "2026-09-10T08:12:29.350273+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "2b0f730e2b6ef1e12bcd1952868e57c9f83b5e3f1b002692dcb1670eaec5683f",
+      "file": "de/autotimer-weekdays.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-services",
+      "language": "de",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-services",
+      "captured_at": "2026-09-10T08:12:33.186136+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "abc2a0ee5ed520511934ee927fd22ca79a795000fe2426cf1d4a052602b94595",
+      "file": "de/autotimer-services.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-polling",
+      "language": "de",
+      "article": "addons/autotimer-optionen",
+      "screen_key": "autotimer-settings",
+      "captured_at": "2026-09-10T08:12:37.092313+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "43ed03f8058d2c7d7581fca738584f0b67ee7da459fb5aadadaa2a2ef48ed096",
+      "file": "de/autotimer-polling.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-conflicts",
+      "language": "de",
+      "article": "addons/autotimer-optionen",
+      "screen_key": "autotimer-settings",
+      "captured_at": "2026-09-10T08:12:40.945662+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "6e2c0cd3203963fa36c67279d26dbcf66ccbeabc2f2b8e27d55d78c3f787bfa6",
+      "file": "de/autotimer-conflicts.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-overview",
+      "language": "en",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-overview",
+      "captured_at": "2026-09-10T08:13:11.478177+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b18ef89538528cb74ca06ed5228e0083da188496745389f1b07f80d7a57162ca",
+      "file": "en/autotimer-overview.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-editor",
+      "language": "en",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-editor",
+      "captured_at": "2026-09-10T08:13:15.565221+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "475d2e85bdd23303df5bcc67ee073a129dc2773a2b4b2173af5ac88801530f44",
+      "file": "en/autotimer-editor.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-limits",
+      "language": "en",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-editor",
+      "captured_at": "2026-09-10T08:13:19.603327+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "035bbbf5b95a811d51ca1169fc8389a605e5ccd1eaa6e15f341bcf99ccd24af8",
+      "file": "en/autotimer-limits.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-duplicates",
+      "language": "en",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-editor",
+      "captured_at": "2026-09-10T08:13:23.631224+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "d3c530466a178417ff1d29116fcfc8fab87a7ed7352d6d137383b902d5e71790",
+      "file": "en/autotimer-duplicates.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-filters",
+      "language": "en",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-filters",
+      "captured_at": "2026-09-10T08:13:27.501080+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "2c36d2f4d87f7779191dce80baeab97c1158a2a791106b302ca517570acec789",
+      "file": "en/autotimer-filters.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-weekdays",
+      "language": "en",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-weekdays",
+      "captured_at": "2026-09-10T08:13:31.351424+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "5b28baa7deb2386b1afa13556ff62c2b354102e113ccf4cd091cadfaea22dad8",
+      "file": "en/autotimer-weekdays.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-services",
+      "language": "en",
+      "article": "addons/autotimer",
+      "screen_key": "autotimer-services",
+      "captured_at": "2026-09-10T08:13:35.211269+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "9be1e75430e003ab9747c1365e26ba5eacdaf3549295fd20d026502b4463d9b2",
+      "file": "en/autotimer-services.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-polling",
+      "language": "en",
+      "article": "addons/autotimer-optionen",
+      "screen_key": "autotimer-settings",
+      "captured_at": "2026-09-10T08:13:39.091117+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "17b3b1eed7b416c3306db3d5173d1ce388b68d3262053580f2873f48b7ec0912",
+      "file": "en/autotimer-polling.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autotimer-conflicts",
+      "language": "en",
+      "article": "addons/autotimer-optionen",
+      "screen_key": "autotimer-settings",
+      "captured_at": "2026-09-10T08:13:42.960451+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "bf0238cddd5ccd237b32b4dae516cfab5fdfe470a3665573d97f0a077cfe3dc0",
+      "file": "en/autotimer-conflicts.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     }

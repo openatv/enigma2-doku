@@ -35,3 +35,7 @@ Für jede Erweiterung kann hier ein eigener Unterordner mit Einführung, Einrich
 - [FileCommander: Dateiverwaltung und alle Optionen](./filecommander/)
 
 Die eingebaute [MovieSelection](../aufnahmen/movieselection/) benötigt kein solches Add-on. Der [Vergleich der drei Oberflächen](../aufnahmen/) hilft bei der Auswahl.
+
+## AutoTimer
+
+[AutoTimer einrichten](./autotimer/) erklärt Suchregeln, Sender-/Tagesfilter, Serien, Vorschau und die daraus entstehenden Aufnahmetimer. Die [24 globalen Einstellungen](./autotimer-optionen/) sind einzeln erklärt und durchsuchbar.

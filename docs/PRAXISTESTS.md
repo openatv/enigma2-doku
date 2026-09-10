@@ -293,3 +293,26 @@ Die Tests belegen native Ansichten und Quelllogik. EMC-Deaktivierung über die p
 - 130 Inhalte und 43 bebilderte Kapitel je Sprache. Insgesamt 224 Original-PNGs und 672 responsive WebP-Varianten. Der abschließende Pages-Build umfasst 1465 Dateien und rund 132,79 MB, etwa 13,28 Prozent des vorsichtigen 1-GB-Budgets.
 
 Die lokale Vorschau wurde abschließend wieder mit dem GitHub-Pages-Projektpfad `/enigma2-doku` gebaut. Änderungen werden lokal committed; kein Push.
+
+
+## AutoTimer – 10.09.2026
+
+- Installiertes Paket `V1.0-git1137+20859d70+20859d7ae9-r0`, Quellstand `20859d7ae9`, native Versionsanzeige 4.3.2. Der tatsächlich verwendete Einstellungsdialog enthält 24 Definitionen; `setup.xml` enthält nur 23 und lässt die eigene Abfrageeinheit aus.
+- Zwei vollständige Läufe mit je neun nativen Ansichten, insgesamt 18 DE/EN-Originalbilder. Alle einzeln auf Sprache, Inhalt und Lesbarkeit geprüft. Lange Titel sind im nativen Skin teilweise gekürzt; keine Retusche.
+- Aufnahmeplugin `ac3ca3d61d67dd89331366a2caa916f8a370a53c`: 33 Python-Tests bestanden. Abgetrennte Beispielobjekte, fehlende Parser-/Schreib-API der Übersicht und auf einen Schlüssel begrenzte Polling-Sicherung einschließlich Wiederherstellung fehlender Werte geprüft.
+- AutoTimer-Polling und vier EMC-Automatiken vor den GUI-Starts suspendiert, ihre ursprünglichen Werte anschließend wiederhergestellt. Deutsche GUI-Sprache wiederhergestellt. SHA-256 von `autotimer.xml`, `timers.xml`, `epgrefresh.xml`, `fstab` und `auto.network` stimmt mit dem Ausgangsstand überein.
+- `scheduler.xml` ist ausdrücklich nicht byteidentisch: Die Datei enthält fortgeschriebene Start-/Zustandsprotokolle einer bereits vorhandenen e2MDB-Aufgabe. Außerdem steht nach den Neustarts `config.plugins.autotimer.show_help=False` in der settings-Datei, zuvor fehlte diese Zeile auf Disk. Der ursprüngliche Live-Speicherwert war nicht separat erfasst; daraus wird keine Ursache oder vollständige Unverändertheit aller Einstellungen abgeleitet. Das Aufnahmeprofil registriert keine Scheduler-Aufgabe und unterdrückt die Erstaufrufhilfe seiner eigenen Übersicht.
+- Quellabgleich: Vorschaupfad endet vor Dubletten-/Zähler-/Aufnahmekonfliktprüfungen; Text-Einschlussfilter werden per UND verknüpft; explizite Sender haben Vorrang vor Bouquets; Archivprüfung durchsucht das Aufnahmeziel nicht rekursiv. Der Löschblock für `check_eit_and_remove` ist im geprüften Stand auskommentiert. Diese Grenzen sind in beiden Sprachfassungen erklärt.
+
+Es wurde keine AutoTimer-Regel gespeichert, kein Parserlauf ausgelöst und keine echte Aufnahme oder Konfliktauflösung getestet. Polling-Intervall, EPGRefresh-/EPGImport-Integration und Hardware-Aufwachen wurden anhand der jeweiligen Implementierung erklärt, nicht als vollständig praktisch getestete Kette dargestellt.
+
+
+### Website-Prüfungen
+
+- Zwei neue Kapitel je Sprache: AutoTimer-Anleitung und vollständige Referenz der 24 globalen Optionen. Navigation unter EPG, Timer & Zeit sowie Querverweise aus Add-ons, EPGRefresh, EPGImport und Aufnahmetimern ergänzt.
+- Astro: 21 Dateien geprüft, keine Fehler, Warnungen oder Hinweise. 11 Node-Tests und 8 Python-Tests des Handbuchs bestanden.
+- Pages- und Apache-Build erfolgreich: je 266 HTML-Dateien mit lokalen Links, Assets, Sprungmarken und Sprachgegenstücken geprüft; je 111 Suchprüfungen bestanden, neu unter anderem `autotimer.xml`, Abfrageeinheit und `check_eit_and_remove`.
+- Deutsche Anleitung und englische Optionsreferenz im gebauten lokalen Browser geprüft: neue Navigation, Bilder mit Originaldateilink, Beschriftungen und Tabellen. Der abschließende Build verwendet wieder `/enigma2-doku` für GitHub Pages.
+- 132 Inhalte und 45 bebilderte Kapitel je Sprache. Insgesamt 242 Original-PNGs (216 mit Bootlogo) und 726 responsive WebP-Varianten. Pages-Ausgabe rund 141,52 MB in 1545 Dateien, etwa 14,15 Prozent des 1-GB-Budgets.
+
+Nur lokale Commits; kein Push.

@@ -216,3 +216,16 @@ Medienprofile verlangen `--restart-languages`, auch bei nur einer Sprache. Vor d
 Die ActionMaps sind während der Ansichten gesperrt. Temporäre Pfade, Listenkonfiguration und Modul-/Klassenattribute werden zurückgesetzt. Die Bildunterschriften müssen die deaktivierte Automatik erklären. Die Menüoption selbst zu zeigen gilt nicht als Test einer tatsächlichen Bereinigung. Weder Aufnahmeordner noch bestehende Mounts werden für ein aufgeräumtes Bild ersetzt.
 
 Die EMC-Liste zeigt im aufgenommenen Stand den Papierkorbeintrag markiert und die vorhandene Aufnahme darunter; daraus wird keine Behauptung über einen geöffneten Aufnahme-Detaildialog abgeleitet. FileCommander zeigt die markierte TS-Datei mit verfügbaren Farbtasten. `DUMMY CONFIGSECTION`, vereinzelte `HELP_…`-Texte und native Textkürzungen sind im Original vorhanden.
+
+
+## AutoTimer
+
+`autotimer` ergänzt neun Ansichten je Sprache: Übersicht, Editor, Zeitgrenzen, Dubletten, Text-/Wochentagsfilter, Senderbeschränkung und zwei globale Einstellungsansichten. Der Gesamtkatalog umfasst 23 Profile und 125 Szenen; 242 Bilder sind freigegeben. Die 18 neuen Original-PNGs aus `autotimer-a-de-autotimer` und `autotimer-a-en-autotimer` wurden einzeln geprüft. Werkzeugstand: `ac3ca3d61d67dd89331366a2caa916f8a370a53c`.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix autotimer-demo --profiles autotimer --restart-languages --bootlogo --output .capture-private
+```
+
+Das Werkzeug suspendiert vor den Sprachneustarts AutoTimer-Polling und die vier EMC-Automatiken bei gestoppter GUI. Beide Wiederherstellungssnapshots bleiben privat; nach Abschluss werden die ursprünglichen Werte und die Sprache wiederhergestellt. Details einschließlich Wiederherstellung nach hartem Abbruch stehen im Aufnahmeplugin-README.
+
+Die Beispielregel und alle Filter sind abgetrennte Objekte. Das Übersichtsobjekt besitzt nur die benötigte Lesemethode; Parser, Speicherung und Aufnahmeverwaltung werden nicht aufgerufen. Die globale Polling-Ansicht muss als vorübergehend deaktivierte Automatik beschriftet werden. Ein Vorschaudialog mit simulierten Aufnahmeterminen wird nicht als tatsächlich getesteter Suchlauf ausgegeben.
