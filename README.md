@@ -24,6 +24,9 @@ Die gemeinsame, modellneutrale Grunddokumentation für OpenATV: Deutsch und Engl
 - MovieSelection und EMC: Einstieg, Unterschiede, Listen, Wiedergabe, Tasten, Papierkorb und NAS
 - Vollständige Referenz der 135 EMC-Hauptsetup-Optionen; Cover-/Playlist-Zusatzdialoge
 - FileCommander: zwei Spalten, Aufnahme-Begleitdateien, Dateiaktionen und alle 30 Setup-Einträge
+- Wiedergabe: MediaPlayer mit sieben Optionen, DVD/Blu-ray, nativer TS-Dienst und ServiceMP3/GStreamer
+- ServiceApp, gstplayer und exteplayer3; 4097/5001/5002, TV-/Radio-Felder und IPTV-Bouquet-Beispiele
+- Native Untertitel, SubsSupport, Teletext, Container/Codecs und Wiedergabe-Fehlersuche
 - Plugins und Settings/Senderlisten
 - EPG-Ansichten mit ARD/ZDF, Primetime, INFO-/EPG-Belegung und Langdruck
 - EPGRefresh, EPGImport, XMLTV-Quellen und fehlender IPTV-EPG mit Service-Reference-Zuordnung
@@ -35,7 +38,7 @@ Die gemeinsame, modellneutrale Grunddokumentation für OpenATV: Deutsch und Engl
 - Einstellungsreferenz mit vorhandenen Beschriftungen und Originalhilfetexten
 - Erweiterbare Bereiche für Skins, Add-ons und spätere Anhänge
 
-Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 45 Kapitel pro Sprache enthalten echte Bildschirmaufnahmen: insgesamt 242 ausgewählte Bilder mit OpenATV 8.0.2-devel und MetrixHD. Davon zeigen 216 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für die zusätzlichen Skin-Kapitel.
+Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 51 Kapitel pro Sprache enthalten echte Bildschirmaufnahmen: insgesamt 270 ausgewählte Bilder mit OpenATV 8.0.2-devel und MetrixHD. Davon zeigen 244 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für die zusätzlichen Skin-Kapitel.
 
 Die vorhandene NAS-Freigabe und die HDD wurden auf Schreib- und Lesezugriff geprüft. Ihre Einbindung sowie Tuner- und LAN-Konfiguration blieben erhalten. Für einheitliche Bilder wurde MetrixHD verwendet; nach den DE/EN-Läufen wurde die ursprüngliche Sprache wiederhergestellt. Einzelne Assistentenansichten sind bebildert, der vollständige Neuinstallationsablauf ist noch nicht durchgetestet. WLAN und FBC folgen auf passender Hardware. Der [Prüfstand](docs/PRAXISTESTS.md) trennt aufgenommene Ansichten von vollständig getesteten Bedienabläufen.
 
@@ -98,7 +101,7 @@ Nach einem Import den Diff prüfen, neue oder geänderte Optionen redaktionell b
 
 ## Platzbedarf und Apache2
 
-`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Für die 242 freigegebenen Aufnahmen enthält die Website das Original-PNG zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit 132 Inhalten je Sprache und zusätzlicher Sprachauswahl belegt rund 141,52 MB, etwa 14,15 Prozent des Budgets.
+`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Für die 270 freigegebenen Aufnahmen enthält die Website das Original-PNG zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit 141 Inhalten je Sprache und zusätzlicher Sprachauswahl belegt rund 156,50 MB, etwa 15,65 Prozent des Budgets.
 
 Bei einem Wechsel auf Apache2 wird dieselbe Website für die neue Adresse gebaut. Sie benötigt dort nur statische Dateiauslieferung. [Apache2-Bereitstellung](docs/APACHE2.md).
 

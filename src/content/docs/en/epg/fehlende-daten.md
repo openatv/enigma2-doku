@@ -83,3 +83,7 @@ Replace the URL with an accessible XMLTV source you may use, `demo.example` with
 A useful [bug report](../../hilfe/fehler-melden/) includes plugin version, affected source, time of failure, import log and a sanitised mapping example. Private stream URLs and credentials do not belong in a public forum.
 
 Sources: [Enigma2 EPG cache](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/dvb/epgcache.cpp), [EPGImport sources and channel IDs](https://github.com/oe-alliance/XMLTV-Import/blob/a32929f2d0/src/EPGImport/EPGConfig.py), [Filters and import operation](https://github.com/oe-alliance/XMLTV-Import/blob/a32929f2d0/src/EPGImport/plugin.py).
+
+## IPTV players and service references
+
+[TV/radio fields, 4097/5001/5002 and bouquet examples](../../wiedergabe/servicereferenzen/) explain the playback service and channel identifiers. [ServiceApp](../../wiedergabe/serviceapp/) configures the additional players.

@@ -316,3 +316,24 @@ Es wurde keine AutoTimer-Regel gespeichert, kein Parserlauf ausgelöst und keine
 - 132 Inhalte und 45 bebilderte Kapitel je Sprache. Insgesamt 242 Original-PNGs (216 mit Bootlogo) und 726 responsive WebP-Varianten. Pages-Ausgabe rund 141,52 MB in 1545 Dateien, etwa 14,15 Prozent des 1-GB-Budgets.
 
 Nur lokale Commits; kein Push.
+
+
+## Wiedergabe und Untertitel – 10. September 2026
+
+- Installierte Stände gelesen: MediaPlayer/DVDPlayer mit Enigma2 `c446c39a38`, ServiceApp `95e5a4f41d`, gstplayer2 0.2 (Laufzeitmeldung 10021), exteplayer3 `668859dd3c` (Laufzeitmeldung 181), Blu-ray Player `0962ee60f2`, SubsSupport 1.5.8 `7d583fe937`.
+- 28 echte DE/EN-Bilder des Profils `playback-guides`, jeweils vollständiges Manifest und SHA-256 geprüft. Alle Bilder mit gestoppter Wiedergabe und Bootlogo; jedes Original visuell geprüft.
+- Formularaktionen eingefroren. Keine neue Playlist, kein IPTV-Bouquet, kein Disc-Abspielen, keine Suche/Anmeldung bei Untertitelanbietern. Temporäre Auswahl für ServiceApp-4097 und Teletext-Expertenmodus restauriert; SubsSupport verwendet ungespeicherte abgetrennte Standardfelder.
+- Originalsprache Deutsch wiederhergestellt. Vergleich vor/nach der Serie: `autotimer.xml`, `timers.xml`, `epgrefresh.xml`, `fstab`, `auto.network`, `tuxtxt2.conf`, `playlist.e2pls` und `serviceapp_replaceservicemp3` unverändert (einschließlich vorher fehlender Dateien). Erfasste MediaPlayer-, ServiceApp-, SubsSupport-, Teletext-, Sprach- und geschützte Automatikwerte ebenfalls unverändert. Daraus wird keine Bytegleichheit sämtlicher Systemdateien abgeleitet.
+- Quellprüfung unterscheidet Dienst 1 von TV/Radio im dritten Feld, nativen ServiceMP3 von gstplayer2 sowie ServiceApp-Ersatz von expliziten 5001/5002-Referenzen. Der eigene SubsSupport-Parser unterstützt SRT/MicroDVD; native GStreamer-Untertitel haben einen anderen Funktionsumfang.
+- Ausstehend: Abspielen echter DVD/Blu-ray-Medien und Menüs, optische Laufwerke, Provider-Downloads, Film-Synchronisation, Formate auf verschiedenen Hardwaredecodern sowie HiSilicon-Anhang. Die neue Dokumentation verspricht keine modellübergreifende Codec- oder DRM-Kompatibilität.
+
+
+### Website-Prüfungen für Wiedergabe und Untertitel
+
+- Neun neue Kapitel je Sprache, sechs davon mit Originalbildern: Player-Übersicht, MediaPlayer, DVD/Blu-ray, ServiceApp, Servicereferenzen, Untertitel, SubsSupport, Teletext und Formate. Eigener Navigationsbereich, Einstieg auf der Startseite und Querverweise aus Aufnahme-/Add-on-Übersicht, Senderlisten und IPTV-EPG.
+- Astro-Check: 21 Dateien, keine Fehler, Warnungen oder Hinweise. 11 Node-Tests und 8 Python-Tests des Handbuchs bestanden; das Aufnahmeplugin hat 35 bestandene Tests.
+- Pages- und Apache-Build: jeweils 284 HTML-Dateien einschließlich Links, Assets, Sprungmarken und Sprachgegenstücken sowie 133 echte Suchprüfungen bestanden. Neue Suchfälle umfassen unter anderem 5002, ServiceApp, MediaPlayer, MicroDVD, SubsSupport und die Teletext-Auflösung.
+- Deutsche ServiceApp- und englische SubsSupport-Seite in der gebauten Browseransicht geprüft: Tabellen, Originalbilder, Beschriftungen, Sprachwechsel-Einstieg und Links zur Vergrößerung vorhanden. Abschließend wieder der GitHub-Pages-Pfad `/enigma2-doku`.
+- 141 Inhalte und 51 bebilderte Kapitel je Sprache; insgesamt 270 Original-PNGs und 810 responsive WebP-Varianten. Pages-Ausgabe rund 156,50 MB in 1695 Dateien, etwa 15,65 Prozent des konservativen 1-GB-Budgets.
+
+Nur lokale Commits; kein Push und keine Veröffentlichung.

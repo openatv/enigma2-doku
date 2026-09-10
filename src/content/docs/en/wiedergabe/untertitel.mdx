@@ -1,0 +1,90 @@
+---
+title: Subtitles – DVB, teletext and external files
+description: Select subtitles, choose languages automatically, distinguish SRT from embedded tracks and adjust position, delay and frame rate.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Subtitles must exist in the channel, recording or an additional file.** The subtitle button does not generate a translation. First identify the source and the player drawing them.
+
+| Type | Source and typical properties |
+| --- | --- |
+| DVB subtitles | Graphics carried as a separate track in the DVB transport stream. The broadcaster's graphics determine much of the appearance. |
+| Teletext subtitles | Broadcaster text pages displayed over the picture. Different from opening a full [teletext page](../teletext/). |
+| Embedded text subtitles | A track inside a file such as MKV; may carry SRT, ASS/SSA or other text. |
+| Embedded bitmap subtitles | DVD subpictures or Blu-ray PGS, for example; not freely reformatable text characters. |
+| External subtitles | Separate file, such as `Film.srt` next to `Film.mkv`; must match the movie and its edition. |
+| Burned-in subtitles | Part of the video pixels; Enigma2 cannot switch them off, move or replace them. |
+
+## Select a track and understand the buttons
+
+In live TV or a supported MoviePlayer, open **Subtitle selection**, usually with **SUBTITLE**. Only tracks reported by the service appear. Select a language/type and confirm; **Off/None** disables subtitles. Exact labels depend on the dialog.
+
+For an active track, the **subtitle quick menu** may offer settings for that playback. Check **Setup → Usage & GUI → Hotkeys** for short and long SUBTITLE actions. The keymap distinguishes `subtitle`/`subtitle_long` and `text`/`text_long`; this does not imply an identical long-press function on every receiver. In MediaPlayer, **TEXT** opens subtitle selection. See [button assignments](../../erste-schritte/farbtasten-langdruck/) and the [long-press directory](../../anhaenge/langtasten/).
+
+## Automatic language
+
+Open **MENU → Setup → Audio → Auto Language Settings**.
+
+<Capture id="subtitle-language" language="en" alt="Automatic subtitle language preferences" caption="Audio and subtitle languages have separate priorities. Saved channel selections can affect automatic selection." />
+
+| Option | Meaning |
+| --- | --- |
+| Subtitle language 1–4 | Preferred language order. Uses an available matching track; “None” does not supply a language. |
+| Allow / prefer hearing-impaired subtitles | Permits or prioritises tracks with sound and speaker descriptions. |
+| Prefer graphical DVB subtitles | Prefers DVB graphics over other matching subtitle types. |
+| Prefer saved channel subtitles | A remembered selection can take priority over a new automatic language decision. |
+| Subtitles with matching audio/subtitle language | Controls whether subtitles should appear despite a matching audio language. Check this for foreign-language audio and occasional translations. |
+
+Keys belong to `config.autolanguage.*`, including `subtitle_autoselect1` through `subtitle_autoselect4`. See the [language reference](../../einstellungen/referenz/autolanguage/) for full keys and original help. A different player plugin can apply its own language rules.
+
+## Appearance and timing
+
+Open **MENU → Setup → Audio → Subtitle Settings**. Some options require **Expert** settings mode.
+
+<Capture id="subtitle-appearance" language="en" alt="Subtitle position, alignment, font size and timing" caption="Position is measured from the bottom of the screen. Effects depend on subtitle type and renderer." />
+
+| Group | Purpose |
+| --- | --- |
+| Rewrap / horizontal alignment | Wrap lines and align left, centre or right where text rendering permits. |
+| Vertical position / font size | Adjust readability and distance from the edge. Bitmap tracks cannot be re-typeset as arbitrary text. |
+| Border width / transparency | Improve contrast against the picture. |
+| Delay when timing lacks | Compensates for incomplete timing information, such as in problematic recordings; not the first fix for every out-of-sync track. |
+| Teletext colour / original position | Retain broadcaster layout/colour or adjust where supported. |
+
+<Capture id="subtitle-dvb" language="en" alt="Graphical DVB subtitle options" caption="DVB colour, position, transparency and timing have separate options. Changing text font size does not redesign arbitrary broadcaster graphics." />
+
+DVB has separate **colour**, **original position**, **delay when timing is bad** and **background transparency** options. Start with the original appearance. Change only the subtitle group actually involved.
+
+## External subtitles – start with SRT
+
+A simple example for built-in ServiceMP3:
+
+```text
+/media/hdd/movie/Film.mkv
+/media/hdd/movie/Film.srt
+```
+
+Use the same base name, the same folder and a readable file. The reviewed ServiceMP3 code looks for a matching `.srt` next to the media file. This **does not guarantee** the same mechanism for the native DVB TS service. A name such as `Film.de.srt` may require a different selection path depending on the player. ServiceApp has its own SRT discovery; SubsSupport has its own file chooser.
+
+<Capture id="subtitle-external" language="en" alt="External subtitle delay, FPS and automatic activation" caption="Native external-subtitle settings do not automatically control SubsSupport's separate renderer." />
+
+| Option | Use |
+| --- | --- |
+| Colour / switch fonts / dialog colourisation | Adjust text appearance, style changes and differentiation of speakers. |
+| Delay – `config.subtitles.pango_subtitles_delay` | Correct a consistent time offset. Start with a small adjustment and check several points. |
+| Frame rate – `config.subtitles.pango_subtitles_fps` | Adjust for different timing/frame rates. Cannot fix missing or differently edited scenes. |
+| Hearing-impaired cleanup – `pango_subtitle_removehi` | Removes certain sound descriptions from text subtitles. Leave off when those descriptions are needed. |
+| Automatically turn on – `pango_autoturnon` | Enables recognised external subtitles when a movie starts. |
+
+**Same offset everywhere:** check delay. **Offset increases throughout the film:** check frame rate or movie edition. **Suddenly wrong after a scene:** a different cut, adverts or missing scenes may make one global offset insufficient.
+
+## Which formats does Enigma2 support?
+
+The reviewed native ServiceMP3 code contains handling for text, ASS/SSA, WebVTT and DVD, DVB and PGS bitmap subtitles. These are implemented paths, **not a blanket playback guarantee** for every file or HLS/DASH stream. Container reader, installed GStreamer plugins, external-file discovery and renderer must work together.
+
+SRT is a straightforward starting point for external files. ASS/SSA may contain fonts, positions and effects that are not reproduced fully everywhere. A `.sub` can be MicroDVD text or binary VobSub data; the extension alone is insufficient. [SubsSupport](../subssupport/) reads SRT and MicroDVD in its own parser, not automatically every native ServiceMP3 format.
+
+If a track is missing, check whether it exists in the actual stream. A channel name, EPG or M3U list does not add subtitles. For duplicate text, disable one active renderer. For broken characters, check text encoding. A report with player, file/track format and a short [diagnostic log](../../hilfe/logs-diagnose/) is more useful than “subtitles do not work”.
+
+Reference: [all native subtitle options](../../einstellungen/referenz/subtitle/), [ServiceMP3 code](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/service/servicemp3.cpp), [Enigma2 subtitle controls](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBarGenerics.py).

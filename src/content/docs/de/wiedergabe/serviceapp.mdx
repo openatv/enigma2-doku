@@ -1,0 +1,71 @@
+---
+title: ServiceApp – 4097, gstplayer und exteplayer3
+description: 5001 und 5002 nutzen, 4097 gezielt ersetzen und Puffer, HLS, Audio und Untertitel konfigurieren.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**ServiceApp verbindet Enigma2 mit zusätzlichen Wiedergabediensten.** Ein Plugin wie EMC entscheidet, welche Referenz es übergibt; ServiceApp stellt die Dienste bereit. Einstellungen gelten pro Dienstabschnitt und werden nicht automatisch zwischen 4097, 5001 und 5002 geteilt.
+
+## Installieren und einzeln testen
+
+Installiere `enigma2-plugin-systemplugins-serviceapp` aus dem [Feed](../../plugins/installieren/). Der geprüfte Feed zieht `gstplayer2` und `exteplayer3` als Abhängigkeiten nach. Öffne **MENÜ → Einstellungen → Wiedergabe, Aufnahmen & Timeshift → ServiceApp**. Vor dem Setup prüft das Plugin die Player-Versionen. „Nicht installiert“ kann auch eine fehlgeschlagene Erkennung bedeuten.
+
+Für die native Aufnahmeliste stellt das Plugin **Mit ServiceGstPlayer abspielen** und **Mit ServiceExtEplayer3 abspielen** bereit. Je nach Listen-/Tastenbelegung sind sie über Kontextmenü beziehungsweise Erweiterungsaktionen erreichbar. Damit lässt sich eine Datei vergleichen. In einem IPTV-Bouquet kannst du [nur die erste Zahl des betreffenden Eintrags ändern](../servicereferenzen/).
+
+## 4097 ersetzen oder 5001/5002 ausdrücklich wählen
+
+| Wahl | Wirkung |
+| --- | --- |
+| Enigma2-Wiedergabesystem **original** | 4097 bleibt eingebautes ServiceMP3/GStreamer. 5001 und 5002 stehen unabhängig davon bereit, wenn ServiceApp geladen ist. |
+| Wiedergabesystem **serviceapp**, Player **gstplayer** | ServiceApp übernimmt 4097 mit gstplayer. |
+| Wiedergabesystem **serviceapp**, Player **exteplayer3** | ServiceApp übernimmt 4097 mit exteplayer3. |
+| Referenz beginnt mit **5001** | Explizit gstplayer; Einstellungen unter ServiceGstPlayer (5001). |
+| Referenz beginnt mit **5002** | Explizit exteplayer3; Einstellungen unter ServiceExtEplayer3 (5002). |
+
+<Capture id="serviceapp-replacement" language="de" alt="ServiceApp mit Beispielauswahl exteplayer3 für ServiceMP3 4097" caption="Ungespeichertes Formularbeispiel: serviceapp und exteplayer3 blenden die 4097-Optionen ein. Die tatsächliche Registrierung von 4097 wurde nicht umgestellt." />
+
+Beim Wechsel des Wiedergabesystems **Grün/Speichern** und den angebotenen **Enigma2-Neustart** durchführen. Das betrifft Medien und Streams, deren Oberfläche 4097 verwendet. Der normale DVB-Dienst 1 wird nicht ersetzt. Zum Zurückstellen **original** wählen, speichern und die GUI neu starten. Neuflashen ist dafür nicht erforderlich.
+
+## gstplayer – Ausgabe und Puffer
+
+<Capture id="serviceapp-gst" language="de" alt="ServiceApp-Einstellungen für gstplayer 5001" caption="Eigener Abschnitt für 5001. Die Versionen wurden von den installierten Programmen gelesen." />
+
+| Option | Erklärung |
+| --- | --- |
+| Sink | Ausgabe-Baustein zum Decoder; Auswahl abhängig von installierten Sinks. „Experimental“ ist kein allgemeiner Qualitätsmodus. Zunächst Original verwenden. |
+| Eingebettete Untertitel | Unterstützt Untertitelspuren im Medium. Eine vorhandene Spur muss zusätzlich ausgewählt oder automatisch aktiviert werden. |
+| Puffergröße | Speicherpuffer in **Kilobyte**. Quellstandard 8192 KB, Bereich 1024–65536 KB. |
+| Pufferdauer | Wert in **Sekunden**, Bereich 0–100. Quellstandard ist 0. Mehr Puffer kann Start/Umschalten verlängern; er repariert keine dauerhaft zu langsame Verbindung. |
+
+Schlüsselgruppen: `config.plugins.serviceapp.gstplayer.servicegstplayer.*` für 5001 und `...gstplayer.servicemp3.*` für 4097-Ersatz. Schlüssel: `sink`, `subtitle_enabled`, `buffer_size`, `buffer_duration`.
+
+## exteplayer3 – Audio-Verarbeitung
+
+<Capture id="serviceapp-ext" language="de" alt="ServiceApp-Einstellungen für exteplayer3 5002 mit Audio-Decodierung" caption="Die Software-Decodierschalter betreffen die genannten Audioformate. Daraus folgt keine allgemeine Software-Videodecodierung." />
+
+| Option | Erklärung |
+| --- | --- |
+| AAC-Software-Decodierung | **Nein**, **nach AAC ADTS** oder **nach AAC LATM**: unterschiedliche AAC-Verarbeitungspfade, bei AAC-Tonproblemen einzeln vergleichen. |
+| EAC3 / AC3 / DTS / MP3 / WMA-Software-Decodierung | Eigene Schalter für die Software-Verarbeitung dieser Audioformate. Kann bei Problemen des direkten Hardwarepfads helfen; benötigt Rechenleistung. |
+| Stereo-Downmix | Bei Software-Decodierung Mehrkanalton auf zwei Kanäle mischen. Anders als unverändertes Passthrough zum AV-Receiver. |
+| LPCM-Injektion | PCM über den LPCM-Ausgabepfad statt WAV-PCM zuführen; Kompatibilitätsoption für die Treiberanbindung. |
+| RTMP-Protokollimplementierung | **auto**, **ffmpeg** oder **librtmp** für RTMP-Quellen; ändert nicht allgemein HTTP/HLS. |
+
+Schlüsselgruppen: `config.plugins.serviceapp.exteplayer3.serviceexteplayer3.*` für 5002 und `...exteplayer3.servicemp3.*` für 4097. Einzelne Schlüssel: `aac_swdecoding`, `eac3_swdecoding`, `ac3_swdecoding`, `dts_swdecoding`, `mp3_swdecoding`, `wma_swdecoding`, `downmix`, `lpcm_injecion` (Originalschreibweise) und `rtmp_protocol`.
+
+## Gemeinsame Optionen pro Dienst
+
+| Option | Wozu sie dient |
+| --- | --- |
+| Untertitel automatisch einschalten – `autoturnon_subtitles` | Verfügbare Untertitel aktivieren; ergänzt keine fehlende Spur. |
+| HLS Explorer – `hls_explorer` | Varianten einer HLS-Masterplaylist ermitteln und als Unterdienste/Subservices zur Qualitätsauswahl anbieten. Eine einfache Medienplaylist muss keine Varianten enthalten. |
+| Stream automatisch auswählen – `autoselect_stream` | Gefundene Variante anhand der Verbindungsgeschwindigkeit auswählen. |
+| Verbindungsgeschwindigkeit – `connection_speed_kb` | Richtwert in **kb/s (Kilobit pro Sekunde)** für die Auswahl; keine Messung und kein Router-Bandbreitenlimit. |
+| Debug – `config.plugins.serviceapp.debug` | Zusätzliche Diagnoseausgaben; für einen Fehler gezielt einschalten und danach wieder aus. Siehe [Logs](../../hilfe/logs-diagnose/). |
+
+Die vier dienstbezogenen Schlüssel liegen unter `config.plugins.serviceapp.options.servicemp3.*`, `...servicegstplayer.*` beziehungsweise `...serviceexteplayer3.*`. Geräteabhängige AC3+-Passthrough-Korrekturen samt Verzögerung erscheinen nur auf bestimmten Boxen; Details folgen im Hardware-Anhang.
+
+**Subservices sind hier alternative Streams/Qualitäten. [SubsSupport](../subssupport/) ist das Untertitel-Plugin.** Ein Playerwechsel kann Spurauswahl, Spulen, Untertitel, Start und EPG-Zuordnung beeinflussen. Vergleiche mit gleicher URL, Qualität und Audiospur und ändere jeweils nur einen Faktor.
+
+Quellstand: [ServiceApp-Setup und Anbindung](https://github.com/oe-mirrors/serviceapp/blob/95e5a4f41d455986a35b8cdd0f132ea4ba6d245f/src/plugin/plugin.py). Die Bilder zeigen Einstellungen, keinen vollständigen Kompatibilitätstest aller Player/Formate.

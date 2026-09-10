@@ -1,0 +1,57 @@
+---
+title: MediaPlayer – files, music and playlists
+description: Use MediaPlayer with HDD and NAS files, manage playlists and understand all seven setup options.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**MediaPlayer** is useful for music and several files in sequence. File list and playlist are separate areas; the pictured MetrixHD skin stacks them vertically. [MovieSelection and EMC](../../aufnahmen/) focus more on a recording library. A visible file extension does not guarantee support for every codec inside it.
+
+## Open the player and build a playlist
+
+Install `enigma2-plugin-extensions-mediaplayer` from the [feed](../../plugins/installieren/) if needed. Open **Plugins → MediaPlayer**. **Show in main menu** adds another entry point.
+
+<Capture id="mediaplayer-list" language="en" alt="MediaPlayer file list and playlist" caption="The real MediaPlayer interface with an existing test recording. Playback is stopped for this picture; no playlist was saved." />
+
+1. Open the HDD, USB drive or [mounted NAS path](../../netzwerk/freigaben/) in the file list.
+2. Press **OK** to enter a folder or add the selected file. In the playlist, OK starts the selected entry.
+3. Use **Bouquet/Channel +/−** to switch between lists. **Green/PLAY** starts, **Yellow/PAUSE** pauses and **STOP** stops.
+4. Press **MENU** to add files/folders or load/save a playlist. M3U, PLS and E2PLS contain references, not the movies themselves.
+5. Press **EXIT** to leave and read the confirmation.
+
+A NAS must already be mounted. MediaPlayer does not discover SMB shares or configure NFS mounts. Saved playlists work only while their paths remain available.
+
+## MENU and long presses
+
+| Function | Effect |
+| --- | --- |
+| Add directory/files to playlist | Extends the sequence; a folder may contain many files. |
+| Switch to file list / playlist | Changes the active list area. |
+| Delete entry / clear playlist | Removes references from the current playlist. |
+| **Delete file** | Deletes the actual file; separate from removing a playlist entry. |
+| Shuffle playlist | Randomises the sequence. |
+| Load / save / delete saved playlist | Manages playlist files; deleting a playlist does not delete its media. |
+| Hide player | Clears the interface for playback. |
+| Edit settings | Opens setup; increase the settings level if necessary. |
+
+In the reviewed standard keymap context, **long STOP** or **long TV** clears the playlist; **long RADIO** shuffles it. **TEXT** opens subtitle selection here. **2/8** jumps to the beginning/end of the list. A remote may use other labels or lack buttons. [HELP and the long-press directory](../../anhaenge/langtasten/) help identify the active context.
+
+## All seven setup options
+
+<Capture id="mediaplayer-settings" language="en" alt="MediaPlayer repeat and playlist settings" caption="The fixed starting directory appears only when remembering the last directory is disabled. This form was not saved." />
+
+All keys start with `config.mediaplayer.`.
+
+| Option / key | Purpose |
+| --- | --- |
+| Repeat – `repeat` | Starts again after the playlist ends. |
+| Save playlist on exit – `savePlaylistOnExit` | Stores the list in `/etc/enigma2/playlist.e2pls` for next time; does not copy media. |
+| Save directory on exit – `saveDirOnExit` | Opens the last-used folder next time. |
+| Start directory – `defaultDir` | Fixed starting folder when the previous option is off. An unavailable NAS folder can delay opening. |
+| Sort playlists – `sortPlaylists` | Sorts the saved-playlist chooser; different from shuffling the current track list. |
+| Always hide Infobar – `alwaysHideInfoBar` | Controls automatic hiding of the MediaPlayer Infobar; disabling it can keep the bar visible for audio. |
+| Show in main menu – `onMainMenu` | Adds a main-menu entry point. |
+
+See [subtitles](../untertitel/) for track selection and [ServiceApp](../serviceapp/) for other backends. MediaPlayer setup has no general “enable codec” switch.
+
+Checked against [MediaPlayer](https://github.com/openatv/enigma2/tree/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/Extensions/MediaPlayer) and the [keymap](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/keymap.xml).

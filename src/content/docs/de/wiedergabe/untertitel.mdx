@@ -1,0 +1,90 @@
+---
+title: Untertitel – DVB, Teletext und externe Dateien
+description: Untertitel auswählen, Sprache automatisch setzen, SRT und eingebettete Spuren unterscheiden sowie Position, Verzögerung und Bildrate einstellen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Untertitel müssen im Sender, in der Aufnahme oder als zusätzliche Datei vorhanden sein.** Die Untertiteltaste erzeugt keine Übersetzung. Zuerst unterscheiden, woher die Texte kommen und welcher Player sie zeichnet.
+
+| Art | Quelle und typische Eigenschaften |
+| --- | --- |
+| DVB-Untertitel | Grafische Untertitel als eigene Spur im DVB-Transportstrom. Die Sendergrafik bestimmt viel vom Aussehen. |
+| Teletext-/Videotext-Untertitel | Textseiten des Senders, als Untertitel über dem Bild darstellbar. Anders als das Öffnen der vollständigen [Teletext-Seite](../teletext/). |
+| Eingebettete Textuntertitel | Spur innerhalb etwa einer MKV-Datei; kann SRT-, ASS-/SSA- oder andere Textdaten enthalten. |
+| Eingebettete Bilduntertitel | Beispielsweise DVD-Subpictures oder Blu-ray-PGS; keine frei formatierbaren Textzeichen. |
+| Externe Untertitel | Separate Datei, zum Beispiel `Film.srt` neben `Film.mkv`; muss zum Film und seiner Fassung passen. |
+| Fest ins Video eingebrannt | Bereits Bestandteil der Bildpixel; über Enigma2 nicht abschaltbar, verschiebbar oder austauschbar. |
+
+## Spur auswählen und Tasten verstehen
+
+Im Live-TV beziehungsweise unterstützten MoviePlayer die Funktion **Untertitelauswahl** öffnen, üblicherweise mit **SUBTITLE**. Die Liste zeigt nur vom Dienst gemeldete Spuren. Sprache/Typ auswählen und bestätigen; **Aus/Keine** deaktiviert die Untertitel. Die konkrete Beschriftung hängt vom Dialog ab.
+
+Bei einer bereits aktiven Spur kann das **Untertitel-Schnellmenü** Einstellungen für diese Wiedergabe anbieten. Welche Funktion kurz oder lang auf SUBTITLE liegt, unter **Einstellungen → Bedienung & Oberfläche → Hotkeys** prüfen. Die Keymap unterscheidet `subtitle`/`subtitle_long` sowie `text`/`text_long`; daraus folgt keine auf allen Boxen identische Langdruck-Funktion. Im MediaPlayer ist **TEXT** beispielsweise Untertitelauswahl. Siehe [Tastenbelegung](../../erste-schritte/farbtasten-langdruck/) und [Langdruck-Verzeichnis](../../anhaenge/langtasten/).
+
+## Automatische Sprache
+
+Öffne **MENÜ → Einstellungen → Audio → Automatische Sprachauswahl**.
+
+<Capture id="subtitle-language" language="de" alt="Automatische Untertitelsprachen und Prioritäten" caption="Ton- und Untertitelsprache sind getrennte Prioritäten. Gespeicherte Senderauswahlen können die automatische Auswahl beeinflussen." />
+
+| Option | Bedeutung |
+| --- | --- |
+| Untertitelsprachauswahl 1–4 | Reihenfolge bevorzugter Sprachen. Erstes verfügbares passendes Angebot wählen; „Keine“ fügt keine Sprache hinzu. |
+| Untertitel für Hörgeschädigte erlauben / bevorzugen | Spuren mit zusätzlichen Geräusch- und Sprecherhinweisen zulassen beziehungsweise priorisieren. |
+| Grafische DVB-Untertitel bevorzugen | Bei mehreren passenden Angeboten DVB-Grafik gegenüber anderen Typen bevorzugen. |
+| Gespeicherte Untertitel des Senders bevorzugen | Vorherige Auswahl kann vor einer neuen automatischen Sprachentscheidung wirken. |
+| Untertitel bei gleicher Audio-/Untertitelsprache | Regelt, ob Untertitel trotz passender Audiosprache erscheinen sollen. Vor allem bei fremdsprachigem Ton und gelegentlichen Übersetzungen prüfen. |
+
+Die Optionen stehen unter `config.autolanguage.*`, etwa `subtitle_autoselect1` bis `subtitle_autoselect4`. Vollständige Schlüssel und Originalhilfe: [Sprachauswahl-Referenz](../../einstellungen/referenz/autolanguage/). Ein anderes Player-Plugin kann eigene Sprachregeln verwenden.
+
+## Aussehen und Timing einstellen
+
+Öffne **MENÜ → Einstellungen → Audio → Untertitel**. Einige Optionen erscheinen erst mit Bedienebene **Experte**.
+
+<Capture id="subtitle-appearance" language="de" alt="Untertitelposition, Ausrichtung, Schriftgröße und Timing" caption="Position wird vom unteren Bildrand gemessen. Die Wirkung hängt vom Untertiteltyp und dem verwendeten Renderer ab." />
+
+| Gruppe | Wozu sie dient |
+| --- | --- |
+| Neu formatieren / horizontale Ausrichtung | Zeilen umbrechen und links, mittig oder rechts ausrichten, soweit textbasierte Darstellung das erlaubt. |
+| Vertikale Position / Schriftgröße | Lesbarkeit und Abstand zum Bildrand anpassen. Grafische Spuren lassen sich nicht wie beliebiger Text neu setzen. |
+| Rahmenbreite / Transparenz | Kontrast zum Videobild verbessern. |
+| Verzögerung bei fehlendem Timing | Ersatz für unvollständige Zeitinformationen, etwa in problematischen Aufnahmen; kein erster Schritt bei jeder asynchronen Spur. |
+| Videotextfarbe / originale Position | Senderposition/-farbe übernehmen oder im erlaubten Umfang anpassen. |
+
+<Capture id="subtitle-dvb" language="de" alt="Optionen für grafische DVB-Untertitel" caption="DVB-Farbe, Position, Transparenz und Timing besitzen eigene Optionen. Die Einstellung der Textschriftgröße gestaltet keine beliebige Sendergrafik um." />
+
+Für DVB gibt es **Farbe**, **Originalposition**, **Verzögerung bei schlechtem Timing** und **Hintergrundtransparenz**. Zunächst Originaldarstellung testen. Nur die tatsächlich betroffene Untertitelgruppe ändern.
+
+## Externe Untertitel – erster Versuch mit SRT
+
+Für den eingebauten ServiceMP3-Dienst ist ein einfaches Beispiel:
+
+```text
+/media/hdd/movie/Film.mkv
+/media/hdd/movie/Film.srt
+```
+
+Gleicher Basisname, gleicher Ordner, lesbare Datei. Der geprüfte ServiceMP3-Code sucht eine gleichnamige `.srt` neben der Mediendatei. Das ist **keine Zusage**, dass derselbe Mechanismus auch beim nativen DVB-TS-Dienst gilt. Auch `Film.de.srt` kann je nach Player eine andere Auswahl erfordern. ServiceApp hat eine eigene SRT-Suche; SubsSupport einen eigenen Dateiauswahldialog.
+
+<Capture id="subtitle-external" language="de" alt="Externe Untertitel mit Verzögerung, FPS und automatischer Aktivierung" caption="Die nativen Optionen für externe Untertitel gelten nicht automatisch für den eigenen SubsSupport-Renderer." />
+
+| Option | Verwendung |
+| --- | --- |
+| Farbe / Schriftart wechseln / farbige Dialoge | Textdarstellung, Stilwechsel und Unterscheidung von Sprechern anpassen. |
+| Verzögerung – `config.subtitles.pango_subtitles_delay` | Gleichmäßigen zeitlichen Versatz korrigieren. Mit kleiner Änderung beginnen und an mehreren Stellen prüfen. |
+| Bildrate – `config.subtitles.pango_subtitles_fps` | An unterschiedliche Zeit-/Bildraten der Vorlage anpassen. Behebt keine fehlenden oder anders geschnittenen Szenen. |
+| Hörgeschädigten-Bereinigung – `pango_subtitle_removehi` | Entfernt bestimmte Geräuschhinweise aus Textuntertiteln. Auslassen, wenn diese Hinweise benötigt werden. |
+| Automatisch aktivieren – `pango_autoturnon` | Erkannte externe Untertitel beim Filmstart einschalten. |
+
+**Überall derselbe Versatz:** Verzögerung prüfen. **Abstand wächst während des Films:** andere Bildrate oder falsche Filmfassung prüfen. **Nach einer Szene plötzlich falsch:** anderer Schnitt, Werbung oder fehlende Szenen; ein globaler Offset reicht dann nicht.
+
+## Welche Formate unterstützt Enigma2?
+
+Der geprüfte native ServiceMP3-Code enthält Verarbeitung für Text, ASS/SSA, WebVTT sowie DVD-, DVB- und PGS-Bilduntertitel. Das beschreibt implementierte Wege, **keine allgemeine Abspielgarantie** für jede Datei oder jeden HLS-/DASH-Stream. Containerleser, installierte GStreamer-Plugins, externe Dateierkennung und Renderer müssen zusammenpassen.
+
+SRT ist der überschaubare Einstieg für externe Dateien. ASS/SSA enthalten oft Schriften, Positionen und Effekte, die nicht überall vollständig wiedergegeben werden. Eine `.sub` kann MicroDVD-Text oder binäre VobSub-Daten sein; die Endung allein reicht nicht. [SubsSupport](../subssupport/) liest in seinem eigenen Parser SRT und MicroDVD, nicht automatisch alle nativen ServiceMP3-Formate.
+
+Fehlt eine Spur, zuerst prüfen, ob sie im tatsächlichen Stream enthalten ist. Ein Sendername, EPG oder eine M3U-Liste fügt keine Untertitel hinzu. Bei Doppeltexten einen der aktiven Renderer ausschalten. Bei falschen Umlauten Textcodierung prüfen. Meldungen mit Player, Datei-/Spurformat und einem kurzen [Diagnoselog](../../hilfe/logs-diagnose/) helfen mehr als „Untertitel gehen nicht“.
+
+Referenz: [alle nativen Untertiteloptionen](../../einstellungen/referenz/subtitle/), [ServiceMP3-Code](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/service/servicemp3.cpp), [Enigma2-Untertitelbedienung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/InfoBarGenerics.py).

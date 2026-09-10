@@ -39,3 +39,7 @@ Die eingebaute [MovieSelection](../aufnahmen/movieselection/) benötigt kein sol
 ## AutoTimer
 
 [AutoTimer einrichten](./autotimer/) erklärt Suchregeln, Sender-/Tagesfilter, Serien, Vorschau und die daraus entstehenden Aufnahmetimer. Die [24 globalen Einstellungen](./autotimer-optionen/) sind einzeln erklärt und durchsuchbar.
+
+## Player und Untertitel
+
+[MediaPlayer](../wiedergabe/mediaplayer/), [DVD/Blu-ray](../wiedergabe/dvd-bluray/), [ServiceApp](../wiedergabe/serviceapp/) und [SubsSupport](../wiedergabe/subssupport/) haben einen eigenen Bereich mit Einrichtung, Optionen und Bildern. [Die Player-Übersicht](../wiedergabe/) erklärt das Zusammenspiel mit Aufnahmelisten und Hardware.

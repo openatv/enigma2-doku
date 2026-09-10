@@ -1,0 +1,57 @@
+---
+title: MediaPlayer – Dateien, Musik und Wiedergabelisten
+description: MediaPlayer bedienen, HDD und NAS öffnen, Playlists verwalten und alle sieben Einstellungen verstehen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Der **MediaPlayer** ist praktisch für Musik und mehrere Mediendateien nacheinander. Dateiliste und Wiedergabeliste sind getrennte Bereiche; im gezeigten MetrixHD-Skin stehen sie übereinander. [MovieSelection und EMC](../../aufnahmen/) sind stärker auf die Aufnahmebibliothek ausgerichtet. Sichtbare Dateiendungen sind keine Zusage für jeden darin enthaltenen Codec.
+
+## Öffnen und eine Liste zusammenstellen
+
+Installiere bei Bedarf `enigma2-plugin-extensions-mediaplayer` aus dem [Feed](../../plugins/installieren/). Öffne **Erweiterungen → MediaPlayer**. Die Option **Im Hauptmenü anzeigen** ergänzt einen weiteren Einstieg.
+
+<Capture id="mediaplayer-list" language="de" alt="MediaPlayer mit Dateiliste und Wiedergabeliste" caption="Echte MediaPlayer-Oberfläche mit vorhandener Testaufnahme. Für das Bild ist die Wiedergabe gestoppt; keine Playlist wurde gespeichert." />
+
+1. In der Dateiliste HDD, USB oder den [eingehängten NAS-Pfad](../../netzwerk/freigaben/) öffnen.
+2. Mit **OK** in Ordner wechseln oder die gewählte Datei zur Liste hinzufügen. In der Wiedergabeliste startet OK den markierten Eintrag.
+3. Mit **Bouquet/Kanal +/−** zwischen Datei- und Wiedergabeliste wechseln. **Grün/PLAY** startet, **Gelb/PAUSE** pausiert, **STOP** stoppt.
+4. Mit **MENÜ** weitere Dateien/Ordner hinzufügen, die Liste laden oder speichern. M3U, PLS und E2PLS enthalten Verweise, nicht die Filme selbst.
+5. Mit **EXIT** den Player verlassen und die Rückfrage beachten.
+
+Ein NAS muss vorher eingebunden sein. Der MediaPlayer sucht keine SMB-Freigaben und richtet keinen NFS-Mount ein. Gespeicherte Listen funktionieren nur, solange ihre Pfade erreichbar sind.
+
+## MENÜ und lange Tasten
+
+| Funktion | Wirkung |
+| --- | --- |
+| Verzeichnis/Dateien zur Liste hinzufügen | Erweitert die Abspielreihenfolge; ein ganzer Ordner kann viele Dateien enthalten. |
+| Zur Datei-/Wiedergabeliste wechseln | Ändert den aktiven Listenbereich. |
+| Eintrag löschen / Liste leeren | Entfernt Verweise aus der aktuellen Wiedergabeliste. |
+| **Datei löschen** | Löscht die echte Datei; eine andere Aktion als das Entfernen eines Listeneintrags. |
+| Liste mischen | Zufällige Reihenfolge. |
+| Liste laden / speichern / gespeicherte Liste löschen | Verwaltet Playlist-Dateien; das Löschen einer Playlist löscht nicht ihre Mediendateien. |
+| Player ausblenden | Gibt den Bildschirm für die Wiedergabe frei. |
+| Einstellungen bearbeiten | Öffnet das Setup; gegebenenfalls Bedienebene erhöhen. |
+
+Im geprüften Standard-Keymap-Kontext: **STOP lang** oder **TV lang** leert die Liste, **RADIO lang** mischt sie. **TEXT** öffnet hier die Untertitelauswahl. **2/8** springt an Listenanfang/-ende. Tasten können anders heißen oder fehlen. [HELP und das Langdruck-Verzeichnis](../../anhaenge/langtasten/) helfen beim tatsächlich aktiven Kontext.
+
+## Alle sieben Setup-Optionen
+
+<Capture id="mediaplayer-settings" language="de" alt="MediaPlayer-Einstellungen mit Wiederholung und Playlist-Optionen" caption="Der feste Startordner erscheint nur, wenn das Merken des zuletzt geöffneten Ordners ausgeschaltet ist. Das Formular wurde nicht gespeichert." />
+
+Alle Schlüssel beginnen mit `config.mediaplayer.`.
+
+| Option / Schlüssel | Wozu sie dient |
+| --- | --- |
+| Wiederholung – `repeat` | Nach dem Listenende erneut abspielen. |
+| Wiedergabeliste beim Verlassen speichern – `savePlaylistOnExit` | Merkt die Liste in `/etc/enigma2/playlist.e2pls` für den nächsten Start; kopiert keine Medien. |
+| Verzeichnis beim Verlassen speichern – `saveDirOnExit` | Beim nächsten Start den zuletzt verwendeten Ordner öffnen. |
+| Startverzeichnis – `defaultDir` | Fester Startordner, wenn die vorige Option aus ist. Ein nicht erreichbarer NAS-Ordner kann den Einstieg verzögern. |
+| Wiedergabelisten sortieren – `sortPlaylists` | Sortiert die Auswahl gespeicherter Playlists; nicht mit dem Mischen der aktuellen Titelliste verwechseln. |
+| Infobar immer ausblenden – `alwaysHideInfoBar` | Beeinflusst das automatische Ausblenden der MediaPlayer-Infobar; ausgeschaltet kann sie bei Audio sichtbar bleiben. |
+| Im Hauptmenü anzeigen – `onMainMenu` | Ergänzt einen Hauptmenü-Einstieg. |
+
+Für Spuren siehe [Untertitel](../untertitel/), für andere Backends [ServiceApp](../serviceapp/). Es gibt keinen allgemeinen „Codec einschalten“-Schalter im MediaPlayer-Setup.
+
+Geprüft gegen [MediaPlayer](https://github.com/openatv/enigma2/tree/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/Extensions/MediaPlayer) und [Keymap](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/keymap.xml).

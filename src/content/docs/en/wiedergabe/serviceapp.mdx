@@ -1,0 +1,71 @@
+---
+title: ServiceApp – 4097, gstplayer and exteplayer3
+description: Use 5001 and 5002, replace 4097 deliberately and understand buffers, HLS, audio and subtitles.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**ServiceApp connects Enigma2 to additional playback services.** An interface such as EMC chooses the reference; ServiceApp supplies the services. Settings belong to individual service sections and are not automatically shared between 4097, 5001 and 5002.
+
+## Install and test individually
+
+Install `enigma2-plugin-systemplugins-serviceapp` from the [feed](../../plugins/installieren/). The reviewed feed installs `gstplayer2` and `exteplayer3` as dependencies. Open **MENU → Setup → Playback, Recording & Time Shift → ServiceApp**. The plugin checks player versions before opening setup. “Not installed” can also mean detection failed.
+
+The plugin supplies **Play with ServiceGstPlayer** and **Play with ServiceExtEplayer3** actions for the native movie list. Access them through the context menu or extension actions, depending on list/button configuration. This lets you compare one file. In an IPTV bouquet, you can [change only the first number of the relevant entry](../servicereferenzen/).
+
+## Replace 4097 or select 5001/5002 explicitly
+
+| Choice | Effect |
+| --- | --- |
+| Enigma2 playback system **original** | 4097 remains built-in ServiceMP3/GStreamer. 5001 and 5002 remain independently available when ServiceApp is loaded. |
+| Playback system **serviceapp**, player **gstplayer** | ServiceApp takes over 4097 using gstplayer. |
+| Playback system **serviceapp**, player **exteplayer3** | ServiceApp takes over 4097 using exteplayer3. |
+| Reference starts with **5001** | Explicit gstplayer; uses the ServiceGstPlayer (5001) settings. |
+| Reference starts with **5002** | Explicit exteplayer3; uses the ServiceExtEplayer3 (5002) settings. |
+
+<Capture id="serviceapp-replacement" language="en" alt="ServiceApp form showing exteplayer3 as an example replacement for 4097" caption="Unsaved form example: serviceapp and exteplayer3 reveal the 4097 options. The actual registration of 4097 was not changed." />
+
+When changing the playback system, press **Green/Save** and accept the offered **Enigma2 restart**. This affects media and streams whose interfaces use 4097. Native DVB service 1 is not replaced. To revert, select **original**, save and restart the GUI. Reflashing is unnecessary.
+
+## gstplayer – output and buffering
+
+<Capture id="serviceapp-gst" language="en" alt="ServiceApp settings for gstplayer 5001" caption="Separate 5001 section. Version numbers were read from the installed executables." />
+
+| Option | Meaning |
+| --- | --- |
+| Sink | Output component connecting to the decoder; choices depend on installed sinks. “Experimental” is not a general quality mode. Start with Original. |
+| Embedded subtitles | Supports subtitle tracks inside the medium. An available track must also be selected or enabled automatically. |
+| Buffer size | Memory buffer in **kilobytes**. Source default 8192 KB, range 1024–65536 KB. |
+| Buffer duration | Value in **seconds**, range 0–100. The source default is 0. More buffering can delay starting/switching; it cannot fix a consistently slow connection. |
+
+Key groups: `config.plugins.serviceapp.gstplayer.servicegstplayer.*` for 5001 and `...gstplayer.servicemp3.*` for replacing 4097. Keys: `sink`, `subtitle_enabled`, `buffer_size`, `buffer_duration`.
+
+## exteplayer3 – audio processing
+
+<Capture id="serviceapp-ext" language="en" alt="ServiceApp exteplayer3 5002 audio decoding settings" caption="The software decoding switches apply to the listed audio formats. They do not imply general software video decoding." />
+
+| Option | Meaning |
+| --- | --- |
+| AAC software decoding | **No**, **To AAC ADTS** or **To AAC LATM**: different AAC processing paths to compare individually for AAC audio problems. |
+| EAC3 / AC3 / DTS / MP3 / WMA software decoding | Separate switches for software processing of each audio format. May help when direct hardware playback struggles; uses CPU resources. |
+| Stereo downmix | Mixes multichannel audio to two channels during software decoding. Different from unchanged passthrough to an AV receiver. |
+| LPCM injection | Sends PCM through the LPCM output path instead of WAV PCM; a driver compatibility option. |
+| RTMP protocol implementation | **auto**, **ffmpeg** or **librtmp** for RTMP sources; does not generally change HTTP/HLS. |
+
+Key groups: `config.plugins.serviceapp.exteplayer3.serviceexteplayer3.*` for 5002 and `...exteplayer3.servicemp3.*` for 4097. Keys: `aac_swdecoding`, `eac3_swdecoding`, `ac3_swdecoding`, `dts_swdecoding`, `mp3_swdecoding`, `wma_swdecoding`, `downmix`, `lpcm_injecion` (plugin spelling) and `rtmp_protocol`.
+
+## Shared options, separately configured per service
+
+| Option | Purpose |
+| --- | --- |
+| Auto turn on subtitles – `autoturnon_subtitles` | Activates available subtitles; does not supply a missing track. |
+| HLS Explorer – `hls_explorer` | Discovers variants in an HLS master playlist and exposes them as subservices for quality selection. A simple media playlist need not contain variants. |
+| Auto select stream – `autoselect_stream` | Selects a discovered variant using the connection speed. |
+| Connection speed – `connection_speed_kb` | Guidance in **kb/s (kilobits per second)**; neither a speed measurement nor a router bandwidth limit. |
+| Debug – `config.plugins.serviceapp.debug` | Extra diagnostic output; enable for a specific problem and turn off afterwards. See [logs](../../hilfe/logs-diagnose/). |
+
+The four per-service keys belong to `config.plugins.serviceapp.options.servicemp3.*`, `...servicegstplayer.*` or `...serviceexteplayer3.*`. Hardware-specific AC3+ passthrough fixes and delays appear only on certain receivers; details will follow in a hardware appendix.
+
+**Subservices here are alternative streams/qualities. [SubsSupport](../subssupport/) is the subtitle plugin.** A player change can affect track selection, seeking, subtitles, startup and EPG mapping. Compare the same URL, quality and audio track, changing one factor at a time.
+
+Source version: [ServiceApp setup and integration](https://github.com/oe-mirrors/serviceapp/blob/95e5a4f41d455986a35b8cdd0f132ea4ba6d245f/src/plugin/plugin.py). These pictures document settings, not a complete compatibility test of every player/format.

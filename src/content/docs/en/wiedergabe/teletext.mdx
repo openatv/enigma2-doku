@@ -1,0 +1,55 @@
+---
+title: Teletext – pages, subpages and settings
+description: Open teletext, select pages, distinguish subtitles and configure caching, fonts, resolution and expert options.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Teletext is carried by the broadcaster.** Normal DVB teletext does not require Internet access. HbbTV and online catch-up services are different systems. An IPTV stream may contain teletext, but need not; the player must also support it.
+
+## Open and read
+
+1. Tune to a channel carrying teletext and press **TEXT**, or the assigned teletext action.
+2. Enter a three-digit page number, such as **100** for the usual starting page. Follow the broadcaster's index.
+3. Colour buttons select links displayed at the bottom, where available. Use the dialog's controls to change pages/subpages; check HELP or its menu help.
+4. Press **EXIT** to return to TV.
+
+A page may contain several **subpages**. Data arrives cyclically, so a blank display just after changing channel may still be loading. News, programme and subtitle page numbers differ between broadcasters.
+
+For **teletext subtitles**, use [Enigma2 subtitle selection](../untertitel/) when the broadcaster exposes them there. This displays them over the TV picture. Opening an arbitrary text page does not automatically enable the correct subtitle track.
+
+## Cache, font and resolution
+
+Open **MENU → Setup → Usage & GUI → Customize System Settings**, then the **Teletext** section. The setup key is `Usage`. Some options require a higher settings level.
+
+<Capture id="teletext-settings" language="en" alt="Teletext caching, font and resolution settings" caption="The cache collects available pages of the received service for faster access. It cannot supply missing broadcaster data." />
+
+| Option | Use |
+| --- | --- |
+| Enable teletext caching – `config.usage.enable_tt_caching` | Retains received pages so frequently accessed pages appear faster. |
+| Font and resolution – `tuxtxt_font_and_res` | Chooses fixed-font/TrueType and display presets. Start with an offered preset. |
+| CleanAlgo – `tuxtxt_CleanAlgo` | Method for restoring resolution/framebuffer after leaving teletext. Compare only when investigating those display problems. |
+
+This resolution concerns teletext output. It neither turns a channel into HD nor adds an HDMI output mode.
+
+## Expert options
+
+<Capture id="teletext-expert" language="en" alt="Teletext expert mode with font and geometry settings" caption="Expert mode shown as an unsaved example. The existing teletext configuration file remained unchanged." />
+
+Select **Expert mode** under font/resolution to reveal more fields. All keys below belong to `config.usage.`.
+
+| Fields | Meaning |
+| --- | --- |
+| `tuxtxt_UseTTF`, `tuxtxt_TTFBold` | TrueType instead of fixed font; regular or bold appearance. |
+| `tuxtxt_TTFScreenResX` | Horizontal teletext resolution; skin and output must support it. |
+| `tuxtxt_StartX` / `EndX`, `StartY` / `EndY` | Text-area boundaries. For clipped edges, first check the preset and picture geometry. |
+| `tuxtxt_TTFShiftX` / `TTFShiftY` | Offset characters within the display. |
+| `tuxtxt_TTFWidthFactor16` / `TTFHeightFactor16` | TrueType character width/height factors. |
+
+Save applies changes; leaving without saving discards edits according to the setup dialog. The native implementation writes teletext values to `/etc/tuxtxt/tuxtxt2.conf`. Prefer the interface and avoid copying unknown defaults from another receiver.
+
+## When nothing appears
+
+Check that the **current service** carries teletext and that TEXT actually opens teletext in this context. In MediaPlayer it may select subtitles. Allow time for data after a channel change. With IPTV, also check stream content and player; channel descriptions or EPG data do not prove teletext is present.
+
+Basis: [UsageConfig and teletext configuration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py), [full system-settings reference](../../einstellungen/referenz/usage/). These pictures show setup screens, not newly captured broadcaster teletext pages.

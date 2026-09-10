@@ -1692,5 +1692,201 @@
     "sha256": "bf0238cddd5ccd237b32b4dae516cfab5fdfe470a3665573d97f0a077cfe3dc0",
     "run": "autotimer-a-en-autotimer",
     "tool_commit": "ac3ca3d61d67dd89331366a2caa916f8a370a53c"
+  },
+  {
+    "language": "de",
+    "id": "mediaplayer-list",
+    "sha256": "37330450cd64cb536737f3123c551d751d2d5c11c0a836dbb36142ee0fca49f9",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "mediaplayer-settings",
+    "sha256": "28e737f8316430bee57bc1b761519bbf7bf6f25cd391dd83e6ca97e8113297a4",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "bluray-browser",
+    "sha256": "94f44f02bde3608efae59f46edbfcffcf1cb2ccf808d710c4f4d49f4966a45f1",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "serviceapp-gst",
+    "sha256": "9bb2645bf28fdc4574cb80ce5bf87512f6bb5915ae83066407d1360a1fefa617",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "serviceapp-ext",
+    "sha256": "a951cc490deae64de38bc30cc35e8bcfc4fd6f8805ff54409c160378568fbfcf",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "serviceapp-replacement",
+    "sha256": "00f783ee1d32f198b12addd55224fc10ce3201fffb6e05e97bf6966e2a032a59",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "subtitle-appearance",
+    "sha256": "9062960e24a07b842039123f20354a01831d4c90f553063c0c57419e669c4bf5",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "subtitle-dvb",
+    "sha256": "ae727efd743faad6930b2c479ccbe9717c16e8639942367f6a464627d8c095cd",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "subtitle-external",
+    "sha256": "21b8f49b8d1d1cbcd6affcfab3781daa6e6ac74dda1b4f037853c4bad45b8f44",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "subtitle-language",
+    "sha256": "5a03f3cae4b8cfc0d4d6f5996f323820f8b1aeef538522d03159353598af3a2a",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "teletext-settings",
+    "sha256": "470c72121da874717311c3b697f68b13267528630d1719cf5f9c8d3bd5611fef",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "teletext-expert",
+    "sha256": "faafffe31f80f7a413b3781d704dfca91d372708716e2570c0064ccdbdac6f4d",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "subssupport-general",
+    "sha256": "0a54d8e5a9d8c7a16777816bf0a290cca806b12f05ac09d400d9825d54d9e7d3",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "de",
+    "id": "subssupport-external",
+    "sha256": "1d4367b161b6784710418df75d4f341424f80b19b40f1214ece4288e1a14abed",
+    "run": "playback-a-de-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "mediaplayer-list",
+    "sha256": "cd205ba3524820c4900f33a25ecae067f313ede05eaeaca91540632e8c78bced",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "mediaplayer-settings",
+    "sha256": "194b108cb90445b91516cc469a39c03be0bb445cd3ecbc3004dfddc433257704",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "bluray-browser",
+    "sha256": "4bd7ad63023193292b7f4d1c4347d26cd8d3a9f3d3165b52e1f8ae98192b01fa",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "serviceapp-gst",
+    "sha256": "9bc7552e699b3a17652b9136217fb35c962c1deb74dae06ddb6897ee73ad0674",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "serviceapp-ext",
+    "sha256": "bccadba589cd63c134b2ef31b6b2f7b582766d1b97f6138b5239ad519ecdbc80",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "serviceapp-replacement",
+    "sha256": "a4a539d4c6ce3d8ec91630cf6b02bfcb2c3de1aea85ac7010180f5e3797c5897",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "subtitle-appearance",
+    "sha256": "9a858392fab441e90fda60cd74a60170427996e21cfdaef30609c2729b8f1c89",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "subtitle-dvb",
+    "sha256": "161d858a707cc43708493f2b73791fa01d99b71c76edaef9622eaac7fe402bc3",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "subtitle-external",
+    "sha256": "5b29e5e1c2ca2a2125c19b9d55d24132570d5a074f902a9a9af6291d7feef36f",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "subtitle-language",
+    "sha256": "3ae0e6586da9e48e77599e50483e9966b5037fbffe9e537735034018ea3e2d82",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "teletext-settings",
+    "sha256": "fad8f855e2f716d3e3f440030ff75a84b46e2c7e163d375270d03b3b54cca797",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "teletext-expert",
+    "sha256": "01484af1a99b0824506ad7397182f218ff64b07217fe84e618e7428d440f6018",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "subssupport-general",
+    "sha256": "f8b1054481f309ea615edea6ed27ca0d2300cc1836c1fbd678b9f2c09fa48921",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
+  },
+  {
+    "language": "en",
+    "id": "subssupport-external",
+    "sha256": "16f6fc1af6e00e3f4cecafb4a46c92db7eab941e1cc2514f4dae77d5445652e9",
+    "run": "playback-a-en-playback-guides",
+    "tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27"
   }
 ]

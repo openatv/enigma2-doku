@@ -1,0 +1,55 @@
+---
+title: Teletext – Seiten, Unterseiten und Einstellungen
+description: Videotext öffnen, Seiten wählen, Untertitel unterscheiden und Cache, Schrift, Auflösung und Expertenoptionen einstellen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Teletext, auch Videotext, wird vom Sender mitgesendet.** Er benötigt für einen normalen DVB-Sender keine Internetverbindung. HbbTV und Internet-Mediatheken sind andere Dienste. Ein IPTV-Stream kann Teletext enthalten, muss es aber nicht; der Player muss die Daten außerdem unterstützen.
+
+## Öffnen und lesen
+
+1. Einen Sender mit Teletext einschalten und **TEXT** beziehungsweise die zugewiesene Teletext-Funktion drücken.
+2. Eine dreistellige Seitennummer eingeben, etwa **100** für den üblichen Einstieg. Die vom Sender angebotene Übersicht ist maßgeblich.
+3. Farbtasten wählen die unten eingeblendeten Verweise, sofern vorhanden. Seiten und Unterseiten wechseln mit den vom Teletext-Dialog angebotenen Tasten; HELP beziehungsweise seine Menühilfe beachten.
+4. Mit **EXIT** zurück zum Fernsehbild.
+
+Eine Seite kann mehrere **Unterseiten** enthalten. Neue Daten kommen zyklisch an; eine leere Anzeige unmittelbar nach dem Umschalten kann daher noch laden. Seitenzahlen für Nachrichten, Programm oder Untertitel unterscheiden sich zwischen Sendern.
+
+**Teletext-Untertitel** lieber über die [Enigma2-Untertitelauswahl](../untertitel/) einschalten, wenn der Sender sie dort anbietet. So erscheinen sie über dem Fernsehbild. Das Öffnen einer beliebigen Textseite aktiviert nicht automatisch die richtige Untertitelspur.
+
+## Cache, Schrift und Auflösung
+
+Unter **MENÜ → Einstellungen → Bedienung & Oberfläche → Systemeinstellungen** den Abschnitt **Videotext** öffnen. Originaltitel des Setups: *Customize System Settings*, Schlüssel `Usage`. Manche Optionen benötigen eine höhere Bedienebene.
+
+<Capture id="teletext-settings" language="de" alt="Videotext-Zwischenspeicher, Zeichensatz und Auflösung" caption="Der Cache sammelt verfügbare Seiten des empfangenen Dienstes für schnelleren Zugriff. Er ergänzt keine fehlenden Senderdaten." />
+
+| Option | Verwendung |
+| --- | --- |
+| Zwischenspeicher aktivieren – `config.usage.enable_tt_caching` | Empfangene Seiten vorhalten. Häufig aufgerufene Seiten erscheinen dadurch schneller. |
+| Zeichensatz/Auflösung – `tuxtxt_font_and_res` | Voreinstellung für feste Schrift oder TrueType und die Darstellung wählen. Zunächst eine angebotene Voreinstellung verwenden. |
+| CleanAlgo – `tuxtxt_CleanAlgo` | Verfahren zum Wiederherstellen von Auflösung/Framebuffer beim Verlassen von Teletext. Nur bei entsprechenden Darstellungsproblemen gezielt vergleichen. |
+
+Diese Auflösung betrifft die Teletext-Ausgabe. Sie stellt weder den Sender auf HD um noch ergänzt sie eine neue HDMI-Auflösung.
+
+## Expertenoptionen
+
+<Capture id="teletext-expert" language="de" alt="Videotext-Expertenmodus mit Schrift und Geometrie" caption="Expertenmodus als ungespeichertes Beispiel. Die vorhandene Teletext-Konfigurationsdatei blieb unverändert." />
+
+Wähle bei Zeichensatz/Auflösung **Expertenmodus**, um weitere Felder einzublenden. Alle folgenden Schlüssel stehen unter `config.usage.`.
+
+| Felder | Bedeutung |
+| --- | --- |
+| `tuxtxt_UseTTF`, `tuxtxt_TTFBold` | TrueType statt fester Schrift; normale oder fette Darstellung. |
+| `tuxtxt_TTFScreenResX` | Horizontale Teletext-Auflösung; Skin und Ausgabe müssen sie unterstützen. |
+| `tuxtxt_StartX` / `EndX`, `StartY` / `EndY` | Begrenzung des Textbereichs. Bei abgeschnittenen Rändern zuerst die Voreinstellung und Bildgeometrie prüfen. |
+| `tuxtxt_TTFShiftX` / `TTFShiftY` | Zeichen innerhalb der Darstellung versetzen. |
+| `tuxtxt_TTFWidthFactor16` / `TTFHeightFactor16` | Breiten-/Höhenfaktoren für TrueType-Zeichen. |
+
+Speichern übernimmt die Einstellungen; ohne Speichern verlassen verwirft die Bearbeitung entsprechend dem Setup-Dialog. Die native Umsetzung schreibt Teletext-Werte nach `/etc/tuxtxt/tuxtxt2.conf`. Bevorzugt die Oberfläche verwenden und keine unbekannten Standardwerte aus einer fremden Box kopieren.
+
+## Wenn nichts erscheint
+
+Prüfen, ob der **aktuelle Dienst** Teletext liefert und ob TEXT in diesem Kontext wirklich Teletext öffnet. Im MediaPlayer kann TEXT Untertitel auswählen. Nach einem Senderwechsel kurz auf Daten warten. Bei IPTV auch Streaminhalt und Player prüfen; eine vorhandene Senderbeschreibung oder EPG-Liste beweist keinen Teletext.
+
+Grundlage: [UsageConfig und Teletext-Konfiguration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py), [vollständige Systemeinstellungsreferenz](../../einstellungen/referenz/usage/). Die Bilder zeigen Setupansichten, keine neu aufgenommenen Teletext-Seiten eines Senders.

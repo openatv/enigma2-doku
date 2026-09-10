@@ -1,0 +1,79 @@
+---
+title: SubsSupport – externe Untertitel suchen und darstellen
+description: SubsSupport installieren, SRT und MicroDVD laden, Downloadquellen und Darstellung einstellen sowie Verzögerung und FPS korrigieren.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**SubsSupport ist das gemeinte Untertitel-Add-on.** Es ergänzt die Suche nach Untertiteldateien, deren Auswahl, eine eigene Textdarstellung und Synchronisationshilfen. Es ist nicht das Menü für Unterkanäle/Subservices. Diese sind alternative Programme oder, bei [ServiceApp](../serviceapp/), beispielsweise HLS-Qualitätsstufen.
+
+## Installieren und die drei Einstiege unterscheiden
+
+Paket: `enigma2-plugin-extensions-subssupport`, Installation über den [Feed](../../plugins/installieren/). In Erweiterungen beziehungsweise im Plugin-Browser erscheinen:
+
+| Einstieg | Aufgabe |
+| --- | --- |
+| SubsSupport-Einstellungen | Allgemeines Verhalten, externe/eingebettete Untertitel, Suche und DVB-Player konfigurieren. |
+| SubsSupport-Downloader | Untertitel bei eingebundenen Anbietern suchen und herunterladen. |
+| SubsSupport-DVB-Player | Externe Untertitel zur laufenden DVB-Sendung auswählen und zeitlich ausrichten. Er ersetzt nicht den DVB-Videodecoder. |
+
+**Die Installation übernimmt nicht automatisch jeden MoviePlayer, EMC oder MediaPlayer.** Eine Integration muss von der jeweiligen Wiedergabeoberfläche vorgesehen sein. Wenn dort kein SubsSupport-Menü vorhanden ist, bleiben die separaten Plugin-Einstiege und die [nativen Untertitelfunktionen](../untertitel/) unterschiedliche Wege.
+
+## Lokale Datei zuerst ausprobieren
+
+Für einen nachvollziehbaren Einstieg eine passende `Film.srt` verwenden. Im eigenen Parser dieses Quellstands unterstützt SubsSupport **SubRip/SRT** sowie **MicroDVD** mit Endung `.sub` oder `.txt`. MicroDVD enthält Bildnummern und benötigt eine passende Bildrate. Eine binäre VobSub-Datei gleichen Namens ist kein MicroDVD-Text. ASS/SSA, PGS oder WebVTT gehören nicht zu diesen beiden eigenen Parsern.
+
+1. Untertiteldatei auf einen lesbaren HDD-/NAS-Pfad übertragen.
+2. Im integrierten SubsSupport-Menü der Wiedergabe **Untertitel auswählen** und die Datei öffnen. Ohne Integration für eine laufende DVB-Sendung den separaten **SubsSupport-DVB-Player** öffnen.
+3. Dateiformat und Sprache kontrollieren. Bei Umlautproblemen die Codierung prüfen.
+4. Erst danach Darstellung und zeitlichen Versatz einstellen. Nicht gleichzeitig native Untertitel und SubsSupport überlagern lassen.
+
+Der DVB-Player bietet **Automatisch zur aktuellen Sendung synchronisieren** (`config.plugins.subsSupport.dvb.autoSync`). Dabei dienen Sendungsinformationen als zeitlicher Bezug; falsche EPG-Grenzen, Werbung oder eine andere Schnittfassung können weiterhin eine Korrektur erfordern.
+
+## Allgemeine Einstellungen und Darstellung
+
+<Capture id="subssupport-general" language="de" alt="SubsSupport mit Pause beim Untertitelmenü und Codierung" caption="Native SubsSupport-Ansicht mit ungespeicherten Standardfeldern. Die teilweise englische Codierungsbezeichnung stammt aus dem Plugin." />
+
+| Option | Erklärung |
+| --- | --- |
+| Video beim Öffnen des Untertitelmenüs anhalten | Hilft beim Auswählen und Synchronisieren, sofern die Wiedergabeintegration Pausieren unterstützt. |
+| Kodierung | Gruppe zusätzlicher Textcodierungen für den Dateileser. Falsche Auswahl zeigt etwa defekte Umlaute; sie übersetzt keine Sprache. |
+
+<Capture id="subssupport-external" language="de" alt="SubsSupport-Schrift, Farbe, Transparenz, Position und Schatten" caption="Eigener SubsSupport-Renderer mit eigenen Schrift-/Layoutoptionen. Die Felder wurden nicht gespeichert." />
+
+Unter **Externe Untertitel**:
+
+| Gruppe | Optionen und Wirkung |
+| --- | --- |
+| Normal, kursiv, fett | Jeweils Schriftart, Schriftfarbe und Transparenz. Die passende Schrift muss vorhanden sein. |
+| Schriftgröße und Position | Größe sowie vertikaler Ort; hier in Pixeln beziehungsweise Prozent. |
+| Schatten | Einschalten, Typ wählen; je nach Typ Größe oder X-/Y-Versatz sowie Farbe. |
+| Hintergrund | Einschalten, Typ wählen; bei dynamischer Form X-/Y-Abstände sowie Farbe und Transparenz. |
+
+Die globalen Einstellungen liegen überwiegend unter `config.plugins.subtitlesSupport.*`, zum Beispiel `external.font.size`. Ein integrierendes Plugin kann eine eigene Konfiguration verwenden. Native Einstellungen unter `config.subtitles.*` sind deshalb nicht automatisch zuständig. Beim Einstieg **Eingebettete Untertitel** verweist das Plugin auf Images mit dem passenden nativen Dialog gegebenenfalls zu den Enigma2-Untertiteleinstellungen; dieser Hinweis kann noch eine andere Image-Familie nennen.
+
+## Downloader und Suchoptionen
+
+1. In den Sucheinstellungen bevorzugte Sprachen 1–3 setzen.
+2. Anbieter für Filme und Serien auswählen und deren Status/Einstellungen prüfen. Ein vorhandener Anbieter-Eintrag beweist nicht, dass sein Internetdienst noch funktioniert; Anmeldung, Dienständerungen oder Zeitlimits können die Suche verhindern.
+3. Titel, Jahr beziehungsweise Staffel/Folge kontrollieren. Die aktuelle EPG-Sendung kann einen Suchvorschlag liefern, ist aber nicht automatisch der richtige Filmname.
+4. Eine zur Fassung passende Datei auswählen und Zielpfad/Namen prüfen.
+5. Nach dem Laden Synchronität prüfen; ein Treffer mit richtigem Titel kann zu einer anderen Schnittfassung gehören.
+
+| Suchoptionen | Zweck |
+| --- | --- |
+| Manuelle Suche / Suchparameter vor Suche prüfen | Suchbegriffe vor dem Abruf korrigieren. |
+| Anbieter-Zeitlimit / Ergebnis-Sortierung | Wartezeit begrenzen und Ergebnisse ordnen. |
+| Speichern als / Ersatzname / Sprache anhängen | Dateinamen erzeugen. Ein Sprachzusatz wie `.de.srt` passt nicht zu jeder automatischen Sidecar-Erkennung anderer Player. |
+| Speichern nach / Download- und Temporärpfad | Dauerhaften Zielordner und Arbeitsordner unterscheiden; Mount muss erreichbar und beschreibbar sein. |
+| Vor Überschreiben fragen | Bereits vorhandene Untertitel schützen. |
+| Nach Download laden | Im unterstützten Wiedergabekontext sofort verwenden. |
+| Downloadverlauf | Verlauf einschalten und Speicherort wählen; dessen Menü bietet Anzahl, Entfernen-Aktion und Rückfrage. |
+
+## Synchronisation
+
+Im SubsSupport-Statusdialog erhöhen/verringern **Hoch/Runter** den Versatz; **Links/Rechts** springen zum vorherigen/nächsten Untertitelbezug. **Blau** ändert die Untertitel-FPS, **Rot** setzt Versatz/FPS zurück. Diese Belegung gilt für diesen Dialog; beim separaten DVB-Controller dessen HELP beachten.
+
+Ein konstanter Versatz lässt sich mit Delay korrigieren. Zunehmende Abweichung spricht für Bildratenunterschiede; Sprünge nach einzelnen Szenen eher für eine andere Filmfassung. Keine Einstellung kann fehlende Übersetzungen erzeugen.
+
+Geprüft: installierter Stand **1.5.8**, Commit [7d583fe](https://github.com/oe-mirrors/subssupport/tree/7d583fe93736c860ee1d806f64fe5b4524acdef1), native DE/EN-Setupansichten. Anbieter-Logins, Downloads und die Synchronisation an einem vollständigen Film wurden nicht getestet.

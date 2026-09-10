@@ -39,3 +39,7 @@ Built-in [MovieSelection](../aufnahmen/movieselection/) needs no such add-on. Th
 ## AutoTimer
 
 [Set up AutoTimer](./autotimer/) covers search rules, service/day filters, series, preview and the recording timers it creates. All [24 global settings](./autotimer-optionen/) have individual explanations and are searchable.
+
+## Players and subtitles
+
+[MediaPlayer](../wiedergabe/mediaplayer/), [DVD/Blu-ray](../wiedergabe/dvd-bluray/), [ServiceApp](../wiedergabe/serviceapp/) and [SubsSupport](../wiedergabe/subssupport/) have a dedicated section with setup, options and screenshots. [The player overview](../wiedergabe/) explains how playback services relate to recording lists and hardware.

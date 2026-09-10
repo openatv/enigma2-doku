@@ -1,0 +1,79 @@
+---
+title: SubsSupport – find and display external subtitles
+description: Install SubsSupport, load SRT and MicroDVD, configure download sources and appearance, and correct delay and FPS.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**SubsSupport is the subtitle add-on discussed here.** It adds subtitle-file search, selection, separate text rendering and synchronisation tools. It is not the subservice menu: subservices are alternative programmes or, with [ServiceApp](../serviceapp/), HLS quality variants.
+
+## Install and distinguish the three entry points
+
+Package: `enigma2-plugin-extensions-subssupport`, installed through the [feed](../../plugins/installieren/). The plugin browser/extensions menu offers:
+
+| Entry point | Purpose |
+| --- | --- |
+| SubsSupport settings | Configure general behaviour, external/embedded subtitles, searching and the DVB player. |
+| SubsSupport downloader | Search integrated providers and download subtitles. |
+| SubsSupport DVB player | Select and synchronise external subtitles for the current DVB programme. It does not replace the DVB video decoder. |
+
+**Installing it does not automatically take over every MoviePlayer, EMC or MediaPlayer.** The playback interface must explicitly support integration. Without a SubsSupport menu there, the separate plugin entry points and [native subtitle functions](../untertitel/) remain different paths.
+
+## Start with a local file
+
+Use a matching `Film.srt` for an understandable first test. In this version, SubsSupport's own parser supports **SubRip/SRT** and **MicroDVD** with `.sub` or `.txt` extensions. MicroDVD uses frame numbers and needs the correct frame rate. A binary VobSub file with the same extension is not MicroDVD text. ASS/SSA, PGS and WebVTT are not handled by these two own parsers.
+
+1. Transfer the subtitle file to a readable HDD/NAS path.
+2. In an integrated SubsSupport playback menu, choose **Select subtitles** and open the file. Without integration, use the separate **SubsSupport DVB player** for a current DVB programme.
+3. Check format and language. Investigate encoding if characters look wrong.
+4. Then adjust appearance and timing. Avoid displaying native subtitles and SubsSupport simultaneously.
+
+The DVB player offers **Auto sync to current event** (`config.plugins.subsSupport.dvb.autoSync`). Programme information provides a time reference; incorrect EPG boundaries, adverts or a different edit can still require correction.
+
+## General settings and appearance
+
+<Capture id="subssupport-general" language="en" alt="SubsSupport pause-on-menu and encoding settings" caption="Native SubsSupport dialog with unsaved default fields." />
+
+| Option | Meaning |
+| --- | --- |
+| Pause video on opening subtitles menu | Helps with selection and synchronisation where the playback integration supports pausing. |
+| Encoding | Group of additional text encodings used by the file reader. A wrong choice can break characters; it does not translate a language. |
+
+<Capture id="subssupport-external" language="en" alt="SubsSupport font, colour, transparency, position and shadow options" caption="SubsSupport has its own renderer and font/layout options. These fields were not saved." />
+
+Under **External subtitles**:
+
+| Group | Options and effect |
+| --- | --- |
+| Regular, italic, bold | Separate font type, colour and transparency. The required font must be available. |
+| Font size and position | Size and vertical location, in pixels and percent respectively. |
+| Shadow | Enable and select type; depending on type, size or X/Y offset and colour. |
+| Background | Enable and select type; dynamic backgrounds expose X/Y offsets, plus colour and transparency. |
+
+Global settings mainly belong to `config.plugins.subtitlesSupport.*`, such as `external.font.size`. An integrating plugin can use its own configuration. Native `config.subtitles.*` settings therefore do not automatically control it. **Embedded subtitles settings** may direct you to Enigma2's native subtitle setup on images with the corresponding dialog; this message may still name another image family.
+
+## Downloader and search options
+
+1. Choose preferred subtitle languages 1–3 in search settings.
+2. Select movie and TV-show providers and check their status/settings. An installed provider entry does not prove that its online service still works; authentication, service changes or timeouts can prevent searching.
+3. Check title, year or season/episode. Current EPG information may suggest a search title but is not necessarily the correct movie name.
+4. Select a file matching your edition and check its destination/name.
+5. After loading, check synchronisation; a matching title may still refer to a different cut.
+
+| Search options | Purpose |
+| --- | --- |
+| Manual search / check parameters before searching | Correct search terms before requesting results. |
+| Provider timeout / result sorting | Limit waiting and order results. |
+| Save as / fallback name / append language | Generate filenames. A suffix such as `.de.srt` does not match every other player's automatic sidecar discovery. |
+| Save to / download and temporary paths | Separate permanent destination from working storage; the mount must be available and writable. |
+| Ask before overwriting | Protect existing subtitles. |
+| Load after download | Use immediately in a supported playback context. |
+| Download history | Enable history and choose its path; its menu offers entry limit, removal action and confirmation. |
+
+## Synchronisation
+
+In the SubsSupport status dialog, **Up/Down** increases/decreases delay; **Left/Right** moves to the previous/next subtitle reference. **Blue** changes subtitle FPS; **Red** resets delay/FPS. This applies to that dialog; check HELP for the separate DVB controller.
+
+Delay can correct a constant offset. Increasing drift suggests different frame rates; jumps after particular scenes suggest a different movie edition. No setting can create a missing translation.
+
+Checked: installed version **1.5.8**, commit [7d583fe](https://github.com/oe-mirrors/subssupport/tree/7d583fe93736c860ee1d806f64fe5b4524acdef1), native DE/EN setup screens. Provider logins, downloads and synchronisation over a complete movie were not tested.

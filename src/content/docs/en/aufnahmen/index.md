@@ -35,3 +35,7 @@ In the checked version, disabling EMC **does not disable all its background func
 - [Using FileCommander](../addons/filecommander/)
 
 Source checks: [MovieSelection](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/MovieSelection.py), [EMC entry points and session startup](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/plugin.py), [FileCommander](https://github.com/openatv/enigma2/blob/c446c39a38/lib/python/Plugins/Extensions/FileCommander/plugin.py).
+
+## Players and subtitles
+
+[MediaPlayer](../wiedergabe/mediaplayer/), [DVD/Blu-ray](../wiedergabe/dvd-bluray/), [ServiceApp](../wiedergabe/serviceapp/) and [SubsSupport](../wiedergabe/subssupport/) have a dedicated section with setup, options and screenshots. [The player overview](../wiedergabe/) explains how playback services relate to recording lists and hardware.

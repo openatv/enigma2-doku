@@ -35,3 +35,7 @@ EMC deaktivieren ist im geprüften Stand **kein vollständiges Abschalten seiner
 - [FileCommander als Dateimanager benutzen](../addons/filecommander/)
 
 Quellabgleich: [MovieSelection](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/MovieSelection.py), [EMC-Einstieg und Sessionstart](https://github.com/oe-mirrors/EnhancedMovieCenter/blob/fc7fd6181e/src/plugin.py), [FileCommander](https://github.com/openatv/enigma2/blob/c446c39a38/lib/python/Plugins/Extensions/FileCommander/plugin.py).
+
+## Player und Untertitel
+
+[MediaPlayer](../wiedergabe/mediaplayer/), [DVD/Blu-ray](../wiedergabe/dvd-bluray/), [ServiceApp](../wiedergabe/serviceapp/) und [SubsSupport](../wiedergabe/subssupport/) haben einen eigenen Bereich mit Einrichtung, Optionen und Bildern. [Die Player-Übersicht](../wiedergabe/) erklärt das Zusammenspiel mit Aufnahmelisten und Hardware.

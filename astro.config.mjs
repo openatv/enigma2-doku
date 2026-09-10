@@ -72,6 +72,17 @@ export default defineConfig({
         ] },
         { slug: 'addons/filecommander', label: 'FileCommander & Optionen', translations: { en: 'FileCommander & options' } },
       ] },
+      { label: 'Wiedergabe & Untertitel', translations: { en: 'Playback & subtitles' }, collapsed: true, items: [
+        { slug: 'wiedergabe', label: 'Welcher Player macht was?', translations: { en: 'Which player does what?' } },
+        { slug: 'wiedergabe/mediaplayer', label: 'MediaPlayer & Playlists', translations: { en: 'MediaPlayer & playlists' } },
+        { slug: 'wiedergabe/dvd-bluray', label: 'DVD & Blu-ray', translations: { en: 'DVD & Blu-ray' } },
+        { slug: 'wiedergabe/serviceapp', label: 'ServiceApp, gstplayer & exteplayer3', translations: { en: 'ServiceApp, gstplayer & exteplayer3' } },
+        { slug: 'wiedergabe/servicereferenzen', label: 'Servicereferenzen & IPTV', translations: { en: 'Service references & IPTV' } },
+        { slug: 'wiedergabe/untertitel', label: 'Untertitel & Sprachen', translations: { en: 'Subtitles & languages' } },
+        { slug: 'wiedergabe/subssupport', label: 'SubsSupport', translations: { en: 'SubsSupport' } },
+        { slug: 'wiedergabe/teletext', label: 'Teletext & Optionen', translations: { en: 'Teletext & options' } },
+        { slug: 'wiedergabe/formate', label: 'Formate, Codecs & Fehlersuche', translations: { en: 'Formats, codecs & troubleshooting' } },
+      ] },
       { label: 'Sichern & Warten', translations: { en: 'Backup & maintenance' }, items: [
         { slug: 'wartung/backup-restore', label: 'Backup & Wiederherstellung', translations: { en: 'Backup & restore' } },
         { slug: 'wartung/software-update', label: 'Softwareupdate oder neues Image?', translations: { en: 'Software update or new image?' } },

@@ -1,0 +1,57 @@
+---
+title: DVD Player and Blu-ray Player
+description: Open DVD and Blu-ray structures, distinguish disc menus from titles, select languages and understand ISO, drive and subtitle limits.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+An **ISO** is a disc image, not a video codec. A DVD structure typically contains `VIDEO_TS`; a Blu-ray structure contains `BDMV` with folders such as `STREAM` and `PLAYLIST`. Opening one VOB or M2TS file may omit title order, chapters or disc navigation.
+
+## DVD Player
+
+The feed package is `enigma2-plugin-extensions-dvdplayer`. The DVD service uses **4369**, independently of ServiceMP3 4097. This shared guide assumes no built-in disc drive: an optical drive must be recognised by the image and its disc must be readable.
+
+For a DVD stored on HDD/NAS, open the recognised ISO or DVD folder in [native MovieSelection](../../aufnahmen/movieselection/), which can hand it to DVD Player. With EMC active, its [ISO/playback options](../../addons/emc-wiedergabe/) apply. DVD Player is available in the extensions menu and, with a recognised disc, the main menu.
+
+| Control | Meaning |
+| --- | --- |
+| Arrows and OK in a DVD menu | Select and confirm disc menu entries. |
+| MENU / STOP | Opens the DVD menu in the reviewed standard keymap context; STOP does not simply exit the player here. |
+| PLAY/PAUSE, EXIT/TV | Play, pause or leave; read confirmations. |
+| Previous/Next, Channel +/−, Blue | Previous/next chapter, next/previous title or chapter entry by number. Chapters are sections of a title; titles can be the main film, extras or alternative versions. |
+| Short/long RADIO, TEXT | Next audio track / optional DVD audio menu, or next subtitle language. DVD buttons differ from live TV; check HELP. |
+| Angle | Works only where the DVD supplies multiple camera angles. |
+
+The disc determines the available choices. A forced subtitle track may translate selected scenes rather than every dialogue. Full DVD navigation requires the DVD playback path; switching the player for one VOB file does not reconstruct the complete disc.
+
+## Blu-ray Player
+
+Package: `enigma2-plugin-extensions-blurayplayer`. Open **Plugins → Blu-ray Player** and select the folder containing `BDMV/STREAM`, or an appropriate ISO. The plugin uses **libbluray** to read disc structures and offers title selection. An M2TS file working through a separate GStreamer/FFmpeg playback path does not prove full disc support.
+
+<Capture id="bluray-browser" language="en" alt="Native Blu-ray file browser in the MetrixHD skin" caption="The Blu-ray folder dialog uses a skin fallback titled DVD File Browser. This is the Blu-ray browser; no Blu-ray disc is present in the test folder, so the picture shows folder selection only." />
+
+1. Mount HDD/NAS and select the disc folder or ISO.
+2. Compare the titles found by the plugin by duration and content; do not assume title 1 is the main film.
+3. Start a title and check audio/subtitle tracks and chapters.
+4. Exit playback before unmounting the storage device. An ISO is mounted for playback.
+
+The title list is **not a complete interactive Blu-ray menu**. BD-J/Java menus and special disc functions are not generally guaranteed by this workflow. UHD/HDR, particular audio formats, protected discs and external drives also depend on software, disc and hardware.
+
+## Blu-ray settings
+
+In the title list, **Blue → Settings** opens setup. The reviewed version has four options:
+
+| Option | Purpose |
+| --- | --- |
+| Enable AACS support – `config.plugins.blurayplayer.enable_aacs` | Controls use of an existing user-provided key database for protected discs. Enabling it alone does not guarantee playback. |
+| Disc and menu language – `disc_language` | Preferred language for localised disc content; cannot add a language absent from the disc. |
+| Preferred audio language – `audio_language` | Selection at playback start; also check the available tracks. |
+| Blu-ray region – `region` | Region reported by the player; not a codec setting. |
+
+The last three keys also belong to `config.plugins.blurayplayer.`. Save applies the values. [Automatic language selection and subtitles](../untertitel/) may also affect the selected playback path.
+
+## When a disc does not play
+
+Check whether the complete structure is present and readable, the mount path is correct, and the plugin recognises titles. Is there sound without a picture, or a picture without sound? Use [container/codec information](../formate/) and a [log](../../hilfe/logs-diagnose/) to narrow down the error. Simply renaming files to `.ts` does not convert them.
+
+Installed packages, source code and the native Blu-ray file browser were checked. **Actual DVD/Blu-ray playback, disc menus, optical drives and subtitles from a real disc have not yet been tested.** Basis: [Enigma2 DVD](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/DVD.py), [Blu-ray plugin](https://github.com/oe-alliance-mirrors/enigma2-plugin-blurayplayer/tree/0962ee60f26acea8e6e50fc3a9603dfcd4fef428).

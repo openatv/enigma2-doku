@@ -83,3 +83,7 @@ Ersetze die URL durch eine zulässige, erreichbare XMLTV-Quelle, `demo.example` 
 Für einen [Fehlerbericht](../../hilfe/fehler-melden/) sind Plugin-Version, betroffene Quelle, Zeitpunkt, Importlog und ein bereinigtes Beispiel einer Zuordnung hilfreich. Private Stream-URLs und Zugangsdaten gehören nicht ins öffentliche Forum.
 
 Quellen: [Enigma2-EPG-Cache](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/dvb/epgcache.cpp), [EPGImport-Quellen und Kanal-IDs](https://github.com/oe-alliance/XMLTV-Import/blob/a32929f2d0/src/EPGImport/EPGConfig.py), [Filter und Importablauf](https://github.com/oe-alliance/XMLTV-Import/blob/a32929f2d0/src/EPGImport/plugin.py).
+
+## IPTV-Player und Servicereferenzen
+
+[TV/Radio-Felder, 4097/5001/5002 und fertige Bouquet-Beispiele](../../wiedergabe/servicereferenzen/) erklären, wie Wiedergabedienst und Senderkennung zusammenhängen. [ServiceApp](../../wiedergabe/serviceapp/) konfiguriert die zusätzlichen Player.

@@ -229,3 +229,16 @@ python tools/capture.py --host root@receiver.local --run-prefix autotimer-demo -
 Das Werkzeug suspendiert vor den Sprachneustarts AutoTimer-Polling und die vier EMC-Automatiken bei gestoppter GUI. Beide Wiederherstellungssnapshots bleiben privat; nach Abschluss werden die ursprünglichen Werte und die Sprache wiederhergestellt. Details einschließlich Wiederherstellung nach hartem Abbruch stehen im Aufnahmeplugin-README.
 
 Die Beispielregel und alle Filter sind abgetrennte Objekte. Das Übersichtsobjekt besitzt nur die benötigte Lesemethode; Parser, Speicherung und Aufnahmeverwaltung werden nicht aufgerufen. Die globale Polling-Ansicht muss als vorübergehend deaktivierte Automatik beschriftet werden. Ein Vorschaudialog mit simulierten Aufnahmeterminen wird nicht als tatsächlich getesteter Suchlauf ausgegeben.
+
+
+## Wiedergabe und Untertitel
+
+`playback-guides` ergänzt 14 Szenen je Sprache: MediaPlayer-Liste und -Setup, Blu-ray-Ordnerbrowser, drei ServiceApp-Formulare, vier native Untertitel-/Sprachansichten, zwei Teletext- und zwei SubsSupport-Setups. Der Gesamtkatalog umfasst 24 Profile und 139 Szenen; 270 Bilder sind freigegeben. Die 28 neuen Original-PNGs aus den beiden `playback-a-…`-Läufen wurden einzeln geprüft. Werkzeugstand: `19ede8572d6efae8b5969492a085fd9f1099af27`.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix playback-demo --profiles playback-guides --restart-languages --bootlogo --output .capture-private
+```
+
+Der Lauf setzt die vorhandenen EMC- und AutoTimer-Schutzmechanismen vor den Sprachneustarts ein. Nach Abschluss werden ursprüngliche Werte beziehungsweise fehlende Einträge und die GUI-Sprache wiederhergestellt. MediaPlayer speichert keine Playlist und startet keinen alten Dienst; sein Hotplug-Hook wird beim Schließen entfernt. ServiceApp-Versionen kommen aus den beiden erlaubten Programmen ohne Medienargument. Die 4097-Auswahl verändert ausschließlich das temporäre Formular, nicht die tatsächliche Dienstregistrierung. SubsSupport erhält eine getrennte Konfiguration ohne Such-/Downloadaufruf. Teletext-Expertenmodus zeigt das vorhandene Setup ohne Speichern.
+
+Die native Blu-ray-Ordnerauswahl hat im MetrixHD-Fallback einen DVD-Titel. Das wird in der Bildunterschrift erklärt, nicht im Bild umgeschrieben. Eine leere Disc-Auswahl ist kein bestandener Disc-Abspieltest.
