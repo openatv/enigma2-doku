@@ -1,0 +1,25 @@
+---
+title: "Umbra – Layout und Lesbarkeit"
+description: "OpenATV ab 8.0: Layout und Lesbarkeit. Vollständige Umbra-Anleitung mit Auswahlwerten und Beispielen."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+<Capture id="umbra-layout" language="de" alt="Umbra-Einstellungen für Layout und Schrift" caption="Neue native FHD-Aufnahme mit deutscher GUI. Beispielwerte; im Aufnahmedialog wurde nichts gespeichert." />
+
+Bereich Layout. Diese Einstellungen verändern bestehende Umbra-Elemente. Sie sind kein frei verschiebbarer Bildschirmeditor.
+
+<ManualFigure id="layout-comparison" language="de" alt="Berechnete Wirkungsbeispiele für Verlauf, Rundung und Textgröße mit aktuellen Umbra-Werten. Die Ausschnitte sind schematisch, keine neuen wählbaren Screen-Modi." caption="Berechnete Wirkungsbeispiele für Verlauf, Rundung und Textgröße mit aktuellen Umbra-Werten. Die Ausschnitte sind schematisch, keine neuen wählbaren Screen-Modi." />
+
+| Option und Auswahl | Sichtbare Wirkung |
+| --- | --- |
+| Farbverläufe<br />Ein · Einfarbig | Ein verwendet Farbverläufe. Einfarbig macht die entsprechenden Flächen flach; transparente Randübergänge bleiben erhalten. |
+| Rundung der Auswahl<br />Eckig · 4 px · 8 px | Verändert die unterstützte Auswahlrundung. Keine globale Abrundung jedes Dialogs oder Bildes. |
+| Textgröße<br />90 % · 95 % · 100 % · 105 % | Skaliert Regular-/Bold-Texte, auch in unterstützten Listentemplates. Symbole und der Radio-LCD-Font bleiben unabhängig. |
+| Menübreite<br />Standard · Breit | Verbreitert das normale Menü. Es macht nicht alle Plugin-Screens breiter. |
+| Uhr in Menüs<br />Ein · Aus | Blendet die Uhr in den entsprechenden Menüs ein oder aus. Die Infobar-Uhr bleibt davon unabhängig. |
+| Stärke der Fortschrittsanzeige<br />Schmal · Standard · Breit | Verändert unterstützte schmale Fortschritts-Widgets. Nicht jede pluginseitig erzeugte Fortschrittsgrafik folgt diesem Wert. |
+
+[Umbra-Übersicht](../) · [Alle 39 Stiloptionen](../optionen/)

@@ -365,3 +365,22 @@ Nur lokale Commits; kein Push und keine Veröffentlichung.
 Nur lokale Commits; kein Push und keine Veröffentlichung.
 
 Die Benutzeranleitung enthält auf Wunsch keine Hinweise auf die beobachteten JavaScript-Bugs. Am e2MDB-Plugin selbst wurde nichts geändert. Von den 24 abschließend geprüften TV-Bildern wurden 22 veröffentlicht; die beiden DB-Timeout-Bilder bleiben privat.
+
+## Umbra und e2MDB-Skinbeispiele – 10. September 2026
+
+- Die vollständige Umbra-Vorlage 0.4.10 umfasst 189 Inhaltsblöcke, 18 Fachkapitel, 15 Tabellen und 16 Abbildungen. Kapitelzuordnung, Quellhash und Aktualisierungen stehen in `data/umbra-manual-coverage.json`. Beide Sprachen enthalten alle 18 Themen, alle 16 Bildreferenzen und alle 39 Stiloptionen. Vier zusätzliche Seiten ergeben 22 Umbra-Kapitel pro Sprache; die allgemeine Feed-Installation ist ein weiteres Kapitel.
+- Lokaler Quellstand 0.4.23 mit `styles.py`, `theme.py` und `receiver/plugin.py` gegen die installierten Dateien geprüft: SHA-256 identisch. Die Paketdaten melden 0.4.17 und rund 5,8 MB Installed-Size; deshalb werden Paketbezeichnung und tatsächlicher Funktionsstand getrennt festgehalten. Es gibt keinen Größenvergleich mit allen anderen Skins.
+- Neue Funktionsabschnitte anhand der zugehörigen Umbra-Quellen ergänzt: Auflösungsdichte seit 0.4.17, horizontales Menü, zweite Infoleiste/ECM, InfoBarLite und Infoleisten-EPG. FHD wurde für die aktuellen Einstellungsbilder verwendet; kein Live-WQHD-Test auf der Testbox.
+- 14 neue native Bilder aus den beiden `umbra-a-…`-Läufen einzeln gesichtet, mit Manifest und SHA-256 geprüft und importiert. Die 16 Vorlagenabbildungen ebenfalls einzeln kontrolliert, vollständig kopiert und ihre Prüfsummen nochmals abgeglichen. Vier davon sind ausdrücklich berechnete Illustrationen.
+- Umbra/FHD vorübergehend für die Serie aktiviert; ursprünglichen Skin `MetrixHD/skin.xml`, deutsche GUI und geschützte EMC-/AutoTimer-Werte abschließend wiederhergestellt. Der Adapter verändert nur ungespeicherte Formularwerte und sperrt Speichern, Export und Rücksetzen. Die Hauptfelder können aus dem sichtbaren Ausschnitt scrollen; die frühere Beschreibung als dauerhaft sichtbare Zeilen wurde korrigiert.
+- Vergleich der erfassten Vorher-/Nachher-Zustände identisch: e2MDB-API-/Pfadwerte, Medien-/Automatikwerte, Sprache sowie Prüfsummen der erfassten Timer-, EPGRefresh-, Mount-, Teletext-, Playlist- und ServiceApp-Dateien. Dies belegt keine Bytegleichheit sämtlicher Enigma2-Einstellungen. HDD und NAS wurden für diese Serie nicht verändert.
+- Umbra ist bereits installiert: Feed-Installation anhand des Enigma2-Quellstands und der vorhandenen Feed-/Skinauswahlansichten erklärt, keine Neuinstallation durchgeführt. Wetterwerte sind ungespeicherte Hamburg-Beispiele. Kein Wetterabruf, Stilexport, vollständiger Wechseltest aller Optionen oder modellübergreifender Auflösungstest behauptet. Umbra- und e2MDB-Pluginquellen außerhalb des Aufnahmehelfers wurden nicht geändert.
+- e2MDB-Nachtrag: Alle vier ursprünglichen XML-Beispiele waren in DE/EN vorhanden. Direkte Verweise im Skinner-Einstieg ergänzt sowie ein fünftes Beispiel mit beiden Panel-Aufrufen. Die Umkehrung gilt für die vollständige Bedingung gemäß Skinparser. Die technischen Themen bleiben erhalten; nur die Umbra-Namenszuordnung entfällt.
+
+### Website-Prüfungen für Umbra
+
+- Astro-Check: 22 Dateien, keine Fehler, Warnungen oder Hinweise. 11 Node-Tests und 8 Python-Tests des Handbuchs bestanden; Aufnahmeplugin weiterhin 37 bestandene Tests.
+- Pages- und Apache-Build erfolgreich: jeweils 398 HTML-Dateien mit lokalen Links, Assets, Sprungmarken und Sprachgegenstücken sowie 177 echten Suchprüfungen. Neu sind Suchfälle für Umbra, Wetter, RGB, Stilpakete, HD/FHD/WQHD und die e2MDB-Panel-Beispiele.
+- Englisches Wetterkapitel mit neuem FHD-Bild, historischem CSS-Bildausschnitt, Originaldateilinks und Tabellen im Browser kontrolliert. Deutsche Optionsreferenz und englisches zusätzliches XML-Beispiel ebenfalls visuell geprüft. Ein fehlendes Leerzeichen in einer englischen Bildunterschrift wurde vor den abschließenden Builds korrigiert.
+- 198 Inhalte und 76 bebilderte Kapitel pro Sprache. Insgesamt 306 native Enigma2-PNGs, zusätzlich ein Web-Editor-PNG und 16 Umbra-Vorlagenabbildungen. Finale Pages-Ausgabe rund 186,06 MB in 2151 Dateien: etwa 18,61 Prozent des konservativen 1-GB-Budgets.
+- Abschließend wieder für `/enigma2-doku` gebaut. Nur lokale Commits; kein Push und keine Veröffentlichung.

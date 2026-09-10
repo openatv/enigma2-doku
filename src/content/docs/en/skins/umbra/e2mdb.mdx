@@ -1,0 +1,27 @@
+---
+title: "Umbra – Artwork with e2MDB"
+description: "OpenATV 8.0+: Artwork with e2MDB. Complete Umbra instructions with settings and examples."
+---
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+e2MDB supplies covers, panoramas and metadata. Umbra does not administer its database. Install and configure e2MDB through its own interface, then let it collect data. Some programmes have neither a match nor an image.
+
+| Option | Purpose |
+| --- | --- |
+| EPG artwork (EPG-Medien), Infobar section | Off / Cover / Panorama in supported EPG views. Separate from the Infobar layout. |
+| Artwork in the detail area (Medien im Detailbereich), Channel list section | Off / Cover / Panorama for the relevant detail area. Gallery uses its native image provider. |
+
+<ManualFigure id="epg-original" language="en" alt="Original Umbra 0.4.0 EPG with cover and metadata beside the programme list. Long descriptions remain scrollable." caption="Original Umbra 0.4.0 EPG with cover and metadata beside the programme list. Long descriptions remain scrollable." />
+
+## When the three media options are absent
+
+Umbra hides **Infobar layout**, **EPG artwork** and **Artwork in the detail area** unless both e2MDB and its **E2MDBEventInfo** converter are installed. Even when the plugin is installed, relevant metadata functions must be enabled.
+
+After e2MDB is uninstalled, saved appearance preferences remain, while the base view remains usable. A selected artwork layout alone is not a guarantee of data.
+
+If an option exists but no image appears, check the corresponding e2MDB integration, cached programme metadata and whether artwork exists for that title. Picons, e2MDB programme images and live TV are different data sources.
+
+Continue with the full [e2MDB handbook](../../../addons/e2mdb/), including its [skin XML examples](../../../addons/e2mdb/skinner-grundlagen/). This is optional integration between two separate components.
+
+[Umbra overview](../) · [All 39 style options](../optionen/)

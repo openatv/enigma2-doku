@@ -1,0 +1,33 @@
+---
+title: "Umbra – Custom RGB colours"
+description: "OpenATV 8.0+: Custom RGB colours. Complete Umbra instructions with settings and examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="umbra-rgb" language="en" alt="Custom RGB colours in Umbra" caption="New native FHD capture with English Enigma2. Umbra labels remain German in this plugin version; example values were not saved." />
+
+Open **Colours**. Enter six hexadecimal digits, for example **FFE59A** or **#FFE59A**. Leave a field empty to inherit its pack value. These are RGB colours without a custom alpha channel. An unreadable combination is not corrected automatically.
+
+| RGB field in the settings | Purpose |
+| --- | --- |
+| Hintergrund — Background | Large background areas. |
+| Flaechen — Surfaces | Surfaces, dialog elements and the basis of derived shading. |
+| Auswahl — Selection | Highlighted entries and their derived gradient colours. |
+| Haupttext — Main text | Primary labels and important text. |
+| Nebentext — Secondary text | Supporting text and additional information. |
+| Dezenter Text — Muted text | Subtle information and parts of gradients. |
+| Akzent — Accent | Custom accent colour; also overrides the selected progress colour. |
+| Aufnahme-Text — Recording text | Text indicating an active recording in the channel list. Default: light gold FFE59A. |
+| Rot — Red | Red colour role, including colour buttons and corresponding indications. |
+| Gruen — Green | Green colour role and associated buttons. |
+| Gelb — Yellow | Yellow colour role and associated buttons. |
+| Blau — Blue | Blue colour role and associated buttons. |
+
+## Check readability
+
+Check main and secondary text on an ordinary row and a selected row. Check active-recording marking separately. Recording text colour does not change the Infobar's red recording dot or every warning/error colour in other components.
+
+If a combination becomes hard to read, empty the relevant RGB field or restore pack values. Adjust one colour role at a time and also inspect any TV image showing through the background.
+
+[Umbra overview](../) · [All 39 style options](../optionen/)

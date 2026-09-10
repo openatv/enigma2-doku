@@ -1,0 +1,29 @@
+---
+title: "Umbra – Layout and readability"
+description: "OpenATV 8.0+: Layout and readability. Complete Umbra instructions with settings and examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+<Capture id="umbra-layout" language="en" alt="Umbra layout and text settings" caption="New native FHD capture with English Enigma2. Umbra labels remain German in this plugin version; example values were not saved." />
+
+Open **Layout**. These settings modify existing Umbra elements. They are not a screen editor for moving every widget freely.
+
+<ManualFigure id="layout-comparison" language="en" alt="Calculated examples of gradients, selection rounding and text size. These illustrate settings, not additional screen modes. The original German labels are translated below." caption="Calculated examples of gradients, selection rounding and text size. These illustrate settings, not additional screen modes. The original German labels are translated below." />
+
+The illustration compares, from top to bottom: standard gradient with 8-pixel rounding; solid fill in the same palette; square selection; and 105% text. It illustrates the effect of settings, not four extra screen modes.
+
+| Option | Choices and effect |
+| --- | --- |
+| Gradients (Farbverlaeufe) | On / Solid. On uses colour gradients. Solid makes the relevant surfaces flat; transparent edge transitions remain. |
+| Selection rounding | Square / 4 px / 8 px. Changes supported selection corners, not every dialog or image globally. |
+| Text size | 90 / 95 / 100 / 105%. Scales Regular/Bold text, including supported list templates. Symbols and the radio LCD font remain independent. |
+| Menu width | Standard / Wide. Widens the normal menu, not all plugin screens. |
+| Clock in menus | On / Off. Controls the clock in supported menus. The Infobar clock is independent. |
+| Progress indicator thickness | Narrow / Standard / Wide. Adjusts supported thin progress widgets; graphics generated inside a plugin may not follow it. |
+
+Larger text does not automatically create taller list rows. Check long channel and plugin names, help text and the last visible row after changing the font size. Higher OSD resolutions have their own density profiles, explained under [resolution](../aufloesung/).
+
+[Umbra overview](../) · [All 39 style options](../optionen/)

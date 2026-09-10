@@ -1,0 +1,26 @@
+---
+title: "Umbra – Infobar information and status"
+description: "OpenATV 8.0+: Infobar information and status. Complete Umbra instructions with settings and examples."
+---
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+| Option | Choices and effect |
+| --- | --- |
+| Extended programme description | On / Off. Shows the additional detailed programme text. Missing EPG descriptions cannot be supplied by the skin. |
+| Video and audio information | On / Off. Shows details such as video format and audio codec. Status icons are independent. |
+| Status icons | All, inactive dimmed / Active only / Off. Off hides the status strip; the recording indication is independent. |
+| Tuner and signal information | Off / Tuner, SNR, AGC, BER / Including transponder details. Values come from OpenATV and the tuner driver. |
+| Encryption information | Off / On. Shows encryption status and available CA details. OpenATV's own setting must also allow encryption information to be displayed. |
+
+<ManualFigure id="infobar-diagnostics" language="en" alt="Original detail extract: tuner allocation, SNR, AGC, BER, transponder, CA, video/audio and service status. Values are historical examples." caption="Original detail extract: tuner allocation, SNR, AGC, BER, transponder, CA, video/audio and service status. Values are historical examples." crop={[0, 0.8, 0, 0]} />
+
+## Interpret the values
+
+SNR describes signal quality, AGC is a driver-reported level value and BER is the reported bit-error rate. Missing or substituted values depend on the device. Umbra does not calculate these measurements. Free-to-air services have no active decryption details.
+
+HD/UHD, HbbTV, audio and other icons follow the current service information. Making an icon visible does not enable the underlying feature. Likewise, hiding a status symbol does not disable the service.
+
+The full Infobar's diagnostic row and the native second ECM page are separate views. Start with only the information you need and add diagnostic details when investigating a reception issue.
+
+[Umbra overview](../) · [All 39 style options](../optionen/)

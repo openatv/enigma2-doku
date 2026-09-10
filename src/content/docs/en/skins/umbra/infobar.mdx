@@ -1,0 +1,32 @@
+---
+title: "Umbra – Design the Infobar"
+description: "OpenATV 8.0+: Design the Infobar. Complete Umbra instructions with settings and examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+<Capture id="umbra-infobar" language="en" alt="Umbra Infobar settings" caption="New native FHD capture with English Enigma2. Umbra labels remain German in this plugin version; example values were not saved." />
+
+Open **Infobar**. Classic is the base layout. Additional layout choices appear when e2MDB and its EventInfo converter are installed. Visible images depend on enabled metadata functions and data for the programme.
+
+<ManualFigure id="infobar-classic" language="en" alt="Classic Infobar with picon and programme data, plus optional diagnostics. Original OSD extract from Umbra 0.4.5." caption="Classic Infobar with picon and programme data, plus optional diagnostics. Original OSD extract from Umbra 0.4.5." crop={[0, 0.47, 0, 0]} />
+
+<ManualFigure id="infobar-cover" language="en" alt="Cover layout with portrait artwork. Original extract from Umbra 0.4.5 with visible TV. Video image dimensions do not establish OSD resolution." caption="Cover layout with portrait artwork. Original extract from Umbra 0.4.5 with visible TV. Video image dimensions do not establish OSD resolution." crop={[0, 0.48, 0, 0]} />
+
+<ManualFigure id="infobar-panorama" language="en" alt="Panorama layout with wide artwork on the left. Original OSD extract from Umbra 0.4.5." caption="Panorama layout with wide artwork on the left. Original OSD extract from Umbra 0.4.5." crop={[0, 0.47, 0, 0]} />
+
+| Layout | Presentation |
+| --- | --- |
+| Classic | Channel picon and programme information; optional diagnostic rows can be added. |
+| Cover | Portrait programme artwork on the left. |
+| Panorama | Wide preview/backdrop on the left. |
+
+Without usable e2MDB data, the base presentation or intended fallback remains. Cover and Panorama are artwork, not a second live-TV window. A screenshot's video dimensions alone do not establish the OSD resolution.
+
+The layout of this full Infobar is separate from OpenATV's **Lite Infobar** and its **second INFO/ECM page**. Those controls, including MENU → MENU, are explained under [additional menus and Infobar views](../menues-infoleisten/). They do not require changing the Classic/Cover/Panorama preference.
+
+For artwork, first configure [e2MDB](../../../addons/e2mdb/). Changing a skin layout does not fill the database or turn on all metadata integration switches.
+
+[Umbra overview](../) · [All 39 style options](../optionen/)

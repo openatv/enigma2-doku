@@ -1,0 +1,25 @@
+---
+title: "Umbra – Channel rows and symbols"
+description: "OpenATV 8.0+: Channel rows and symbols. Complete Umbra instructions with settings and examples."
+---
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+<ManualFigure id="rows-comparison" language="en" alt="Calculated channel rows based on native OpenATV templates. Arrangement comes from the template parser; sample text and picon are illustrative." caption="Calculated channel rows based on native OpenATV templates. Arrangement comes from the template parser; sample text and picon are illustrative." />
+
+The original comparison uses **Kompakt / Standard / Erweitert** for Compact / Standard / Extended. Channel names, programme and primetime text are illustrative; row arrangement is based on the native templates.
+
+| Option | Choices and effect |
+| --- | --- |
+| Rows (Zeilen) | Standard shows channel and current programme. Compact takes less height. Extended adds information. Gallery/Columns belong to their matching views. |
+| Picons | On / Off. Shows available channel logos. Umbra does not download missing picons. |
+| Channel numbers | On / Off. Shows the channel number. |
+| Reception type | On / Off. Shows the native reception-type symbol. |
+| Encryption symbol | On / Off. Shows the native encryption indication; it does not decrypt a service. |
+| Picon aspect ratio | XPicon / ZZZPicon, ZZPicon, ZPicon. Matches the available space to the format of your picon set. Selecting a ratio does not download a set. |
+
+List height is restricted to whole rows. The number of visible channels depends on the view, row type and resolution. Increasing the font size does not automatically enlarge rows.
+
+Use a correctly installed picon set for channel identification. Programme artwork from e2MDB is a separate source and may show a film poster or episode image instead of a channel logo.
+
+[Umbra overview](../) · [All 39 style options](../optionen/)

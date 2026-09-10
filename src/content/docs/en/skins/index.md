@@ -22,6 +22,10 @@ Some skins provide their own configuration plugins. Their options belong to thos
 - **Picons:** Small channel logos; a separate topic that can be installed independently of a skin.
 - **Controls:** The foundation guides explain menu paths and actions by name.
 
+## Umbra for OpenATV from 8.0
+
+Start with [installing and activating skins from the feed](./installieren/). The [complete Umbra handbook](./umbra/) explains all 39 style options, five packs, seven palettes, HD/FHD/WQHD, channel lists, Infobar, weather, e2MDB and personal packs. The full German source manual has been translated into English, with figures and shared website search.
+
 ## MetrixHD and MyMetrixLite
 
 The [MetrixHD guide](./metrixhd/) explains HD/FHD/WQHD, weather, skinparts, fonts, colours and additional options. The [channel list gallery](../settings/kanalliste/) compares four classic views and 15 new combinations.

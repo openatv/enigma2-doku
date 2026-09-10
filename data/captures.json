@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capture_tool": "https://github.com/openatv/enigma2-plugin-test",
-  "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+  "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
   "captures": [
     {
       "id": "main-menu",
@@ -6132,6 +6132,300 @@
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
       "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-skin-selection",
+      "language": "de",
+      "article": "skins/installieren",
+      "screen_key": "umbra-skin-selection",
+      "captured_at": "2026-09-10T10:11:27.670788+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "58c64a73e5b4ff086dee82284f7ba8e8a8a9443bfe5f796ca7f1218336f8034e",
+      "file": "de/umbra-skin-selection.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-colors",
+      "language": "de",
+      "article": "skins/umbra/farben",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:11:31.275088+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "28dac6cacdfd4a75d8b93e622b4c5b241e5209ba96191c53f81d325dd7907797",
+      "file": "de/umbra-colors.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-rgb",
+      "language": "de",
+      "article": "skins/umbra/rgb",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:11:34.885149+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "77de4ba13f8fd57a1196591633196a79e172e391e07cde6d7ba571aea8aad850",
+      "file": "de/umbra-rgb.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-layout",
+      "language": "de",
+      "article": "skins/umbra/layout",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:11:38.487004+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "a7dfc448db33cf7c4b68d75f87da4c804231b3356c48a37f281336c7129619ba",
+      "file": "de/umbra-layout.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-infobar",
+      "language": "de",
+      "article": "skins/umbra/infobar",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:11:42.086959+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "9f35ced83c5bbe8163dc4244eefc7c44fd493f0b06c42ac08e16dd442749be4c",
+      "file": "de/umbra-infobar.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-weather",
+      "language": "de",
+      "article": "skins/umbra/wetter",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:11:45.697714+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "b8a616873d010c0b957ce66b7050c9c8b253de24c8fef5d86797dfb1baa3c43d",
+      "file": "de/umbra-weather.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-channels",
+      "language": "de",
+      "article": "skins/umbra/senderliste",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:11:49.297328+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "215d4df9b762beaf4c67960cbe3abd90c8b05ad7875c216d52ce2ff433333254",
+      "file": "de/umbra-channels.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-skin-selection",
+      "language": "en",
+      "article": "skins/installieren",
+      "screen_key": "umbra-skin-selection",
+      "captured_at": "2026-09-10T10:12:18.372772+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "c3be33b23987c946ab660523d9fd525df8c63cb87d5f5cfdf2e083638aa7d9d9",
+      "file": "en/umbra-skin-selection.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-colors",
+      "language": "en",
+      "article": "skins/umbra/farben",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:12:21.982391+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "f42ea6f0603854d416eab432989613c2d3852dad6370bd31dc3193ba0d71b71b",
+      "file": "en/umbra-colors.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-rgb",
+      "language": "en",
+      "article": "skins/umbra/rgb",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:12:25.597250+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "28ba6db0a034c661946c28aa0c013d0985492753ac9c9c9af07520e6426d2368",
+      "file": "en/umbra-rgb.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-layout",
+      "language": "en",
+      "article": "skins/umbra/layout",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:12:29.207914+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "b1dead5e3bb279603e37d3d50cfb123155ce485d1a2121d995a93e0a860fe57f",
+      "file": "en/umbra-layout.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-infobar",
+      "language": "en",
+      "article": "skins/umbra/infobar",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:12:32.813626+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "365f6f304dda987bf203874db1914672009d5bbc1ee835ab3884c7c051b67978",
+      "file": "en/umbra-infobar.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-weather",
+      "language": "en",
+      "article": "skins/umbra/wetter",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:12:36.431885+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "13cca21b7c16807f12268fb12ab95955d7df760d861cb5480a8aeeb5d0b6c5d1",
+      "file": "en/umbra-weather.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "umbra-channels",
+      "language": "en",
+      "article": "skins/umbra/senderliste",
+      "screen_key": "umbra-settings",
+      "captured_at": "2026-09-10T10:12:40.039888+00:00",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "66a2d1af492b85cfd8d9d2b8f7558d7a37de9b59a8d2638bfe46907ceaaa0986",
+      "file": "en/umbra-channels.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "Umbra/FHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     }

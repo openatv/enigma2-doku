@@ -1,0 +1,25 @@
+---
+title: "Umbra – Timers and recordings in lists"
+description: "OpenATV 8.0+: Timers and recordings in lists. Complete Umbra instructions with settings and examples."
+---
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+| Option | Choices and effect |
+| --- | --- |
+| Show timers (Timer anzeigen) | On / Off. Displays timer indicators supplied by the native channel-list model. Does not create or change timers. |
+| Recording marking (Aufnahme-Markierung) | Off: no corresponding mark. Icon: native recording symbol. Text colour: indicates an active recording using the dedicated text colour. |
+
+## Recognise active recordings
+
+For text marking, use **Colours → Recording text (RGB)**. Umbra's default is light gold. The setting applies to selected and unselected entries. Red buttons and error messages do not need to be recoloured.
+
+<ManualFigure id="recording-colors" language="en" alt="Calculated comparison using the default recording text colour FFE59A. No recording was started to produce this illustration." caption="Calculated comparison using the default recording text colour FFE59A. No recording was started to produce this illustration." />
+
+The three illustrated rows show: normal row; active recording in text colour; selected active recording. These are calculated colour examples using FFE59A, not evidence of a recording started for this guide and not additional list modes.
+
+## Displaying a timer is not recording control
+
+Starting a recording, editing a timer, series rules and resolving conflicts remain OpenATV or recording-plugin functions. The skin only controls how the information is displayed. See [recording and zap timers](../../../timer/aufnahmen/) and [AutoTimer](../../../addons/autotimer/).
+
+[Umbra overview](../) · [All 39 style options](../optionen/)

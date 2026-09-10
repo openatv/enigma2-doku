@@ -257,3 +257,17 @@ Die API-Felder werden nach dem Anhängen an die Enigma2-Konfiguration auf Platzh
 Nur die final geprüften `e2mdb-c-…`-Manifeste übernehmen. Die beiden DB-Status-Aufnahmen mit Zeitüberschreitung wurden für die Veröffentlichung aussortiert. Technische Beobachtungen bleiben im Praxisprotokoll; die Benutzeranleitung enthält keine JavaScript-Bugnotizen. Die Bilder sind keine Bestätigung eines fehlerfreien Bibliotheksscans.
 
 Der Web-Editor wurde separat im Browser erfasst und unter `src/assets/e2mdb-web/` mit eigenem Prüfeintrag gespeichert. Sein aktuelles Backend liefert noch kein englisches i18n-Wörterbuch. Deshalb dasselbe unveränderte Bild in beiden Sprachfassungen verwenden und diese Einschränkung sichtbar erklären.
+
+## Umbra
+
+`umbra-guides` ergänzt sieben Szenen pro Sprache: Skinauswahl, Farben, RGB, Layout, Infobar, Wetter und Kanalliste. Der Katalog umfasst 26 Profile und 158 Szenen; 306 native Bilder sind freigegeben. Die 14 neuen Bilder aus `umbra-a-de-umbra-guides` und `umbra-a-en-umbra-guides` wurden einzeln visuell geprüft. Werkzeugstand: `2b3281e0c8c00286cd128227f0942c1c3d075cc1`.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix umbra-demo --profiles umbra-guides --restart-languages --bootlogo --output .capture-private
+```
+
+Das Profil setzt eine vorhandene Umbra-Installation voraus. Für diese Serie wurde Umbra/FHD vorübergehend aktiviert und anschließend die ursprüngliche Skineinstellung wiederhergestellt. Der Profilaufruf selbst ersetzt keine separate Sicherung und Wiederherstellung eines zuvor manuell gewechselten Skins. Das Aufnahmeverfahren suspendiert EMC-/AutoTimer-Automatiken für die Sprachneustarts und stellt deren ursprüngliche Werte wieder her.
+
+Der Adapter zeigt ungespeicherte Beispielwerte und sperrt Speichern, Paketzurücksetzen, Export und den tatsächlichen Skinwechsel aus dem Auswahlbildschirm. Hamburg-Koordinaten sind ein Formularbeispiel. Keine Wetterabfrage wird als live geprüft behauptet. Die Skin-eigenen deutschen Beschriftungen bleiben auch in der englischen GUI unverändert. Die Bilder zeigen die erreichbaren Formulare, keinen vollständigen Installationstest und keine Prüfung aller Auflösungen.
+
+Die 16 Abbildungen des ursprünglichen Word-Handbuchs sind getrennt vom nativen Capture-Inventar erfasst: `data/umbra-figures.json`. Vollständige Originale bleiben unverändert, frühere Word-Ausschnitte werden als CSS-Ansicht wiedergegeben. Berechnete Vergleiche dürfen nicht als neue Receiver-Screenshots beschriftet werden.

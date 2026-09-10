@@ -1,0 +1,38 @@
+---
+title: "Umbra – Weather in the top left"
+description: "OpenATV 8.0+: Weather in the top left. Complete Umbra instructions with settings and examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+<Capture id="umbra-weather" language="en" alt="Umbra weather settings with Hamburg coordinates" caption="New native FHD capture with English Enigma2. Umbra labels remain German in this plugin version. Hamburg and its coordinates are an unsaved example." />
+
+<ManualFigure id="weather-original" language="en" alt="Original Umbra 0.4.6 weather extract for Hamburg with five upcoming days. Historical sample values; weekday headings run Wednesday through Sunday." caption="Original Umbra 0.4.6 weather extract for Hamburg with five upcoming days. Historical sample values; weekday headings run Wednesday through Sunday." crop={[0, 0, 0.24, 0.78]} />
+
+**Weather in the top left (Wetter oben links)** offers four modes:
+
+| Mode | Presentation |
+| --- | --- |
+| Off | No Umbra weather requests. |
+| Current | Weather icon and current temperature. |
+| With daily values | Additional values for today. |
+| With 5-day forecast | Upcoming days with weather symbols and minimum/maximum temperatures. |
+
+The weather overlay appears at the top left with the full Infobar. It stays hidden without a valid location or data. If only forecast data is missing, the compact current-weather display may still appear.
+
+| Local weather option | Input and effect |
+| --- | --- |
+| Weather location (Wetterort) | Location name, for example Hamburg. |
+| Weather coordinates | **Longitude,latitude**, using decimal points. Hamburg example: **9.99302,53.55073**. Do not reverse the order. |
+| Provider | Open-Meteo or MSN. Availability depends on the provider and the OEA interface. |
+| Temperature unit | Celsius or Fahrenheit. |
+
+These fields appear in the Infobar section when weather is enabled. If both location and coordinates are empty, Umbra reads an existing Metrix weather configuration when available. When entering a custom location, supply the matching coordinates as well.
+
+The package **enigma2-tools-weatherinfo** is an Umbra dependency. Location data is sent to the selected weather provider. Local weather values are excluded from exported style packs. Requests use a cache instead of running for every rendered frame.
+
+The historical picture shows Hamburg example data. The new settings capture also uses Hamburg as an unsaved example. Weather availability and future forecast values cannot be inferred from a historical screenshot. The Lite Infobar intentionally omits the full Infobar's weather overlay.
+
+[Umbra overview](../) · [All 39 style options](../optionen/)

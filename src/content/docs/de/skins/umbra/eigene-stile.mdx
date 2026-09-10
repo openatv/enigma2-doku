@@ -1,0 +1,26 @@
+---
+title: "Umbra – Eigene Stilpakete speichern"
+description: "OpenATV ab 8.0: Eigene Stilpakete speichern. Vollständige Umbra-Anleitung mit Auswahlwerten und Beispielen."
+---
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+Mit einem eigenen Paket kannst du eine bewährte Gestaltung wieder auswählen oder an eine andere passende Umbra-Installation weitergeben. Es enthält Gestaltungswerte, keine Plugins und keine Bilderdatenbank.
+
+1. Stelle ein mitgeliefertes Paket und deine gewünschten Einzelabweichungen ein.
+
+2. Drücke Blau „Stil speichern“ und gib einen verständlichen Namen ein.
+
+3. Bestätige den Export. Bei einem bereits vorhandenen gleichnamigen eigenen Paket fragt Umbra vor dem Ersetzen nach.
+
+4. Wähle das Paket in „Stilpaket“. Kontrolliere vorhandene eigene Abweichungen; sie haben weiterhin Vorrang. Grün wendet die Gestaltung an.
+
+<ManualFigure id="export-original" language="de" alt="Name eines eigenen Pakets eingeben. Ausschnitt der getesteten Exportfunktion aus Umbra 0.3.0." caption="Name eines eigenen Pakets eingeben. Ausschnitt der getesteten Exportfunktion aus Umbra 0.3.0." crop={[0.125, 0.22, 0.125, 0.22]} />
+
+## Übertragen und wiederfinden
+
+Eigene Pakete liegen auf der Box unter /etc/enigma2/umbra/styles als JSON-Dateien. Zum Übertragen wird die entsprechende Datei in denselben Ordner der Zielbox gelegt. Danach das Umbra-Plugin neu öffnen. Der sichtbare Paketname muss nicht dem technischen Dateinamen entsprechen.
+
+Exportiert werden alle wirksamen Stilwerte. OSD-Auflösung und lokale Wetterdaten fehlen absichtlich. Ein Export ist bereits eine gespeicherte Datei und wird durch anschließendes Rot/Exit nicht rückgängig gemacht. Eine eigene Import- oder Löschschaltfläche gibt es derzeit nicht.
+
+[Umbra-Übersicht](../) · [Alle 39 Stiloptionen](../optionen/)

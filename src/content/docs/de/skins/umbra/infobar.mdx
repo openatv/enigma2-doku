@@ -1,0 +1,24 @@
+---
+title: "Umbra – Die Infobar gestalten"
+description: "OpenATV ab 8.0: Die Infobar gestalten. Vollständige Umbra-Anleitung mit Auswahlwerten und Beispielen."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+<Capture id="umbra-infobar" language="de" alt="Umbra-Infobar-Einstellungen" caption="Neue native FHD-Aufnahme mit deutscher GUI. Beispielwerte; im Aufnahmedialog wurde nichts gespeichert." />
+
+Bereich Infobar. Klassisch ist die Basis. Die zusätzliche Layoutauswahl erscheint, wenn e2MDB und sein EventInfo-Converter vorhanden sind. Welche Bilder sichtbar werden, hängt von den aktivierten Metadaten und den Daten zur Sendung ab.
+
+<ManualFigure id="infobar-classic" language="de" alt="Klassisch: Picon und Sendungsdaten. Hier sind zusätzlich technische Diagnoseoptionen eingeschaltet. OSD-Ausschnitt aus Umbra 0.4.5." caption="Klassisch: Picon und Sendungsdaten. Hier sind zusätzlich technische Diagnoseoptionen eingeschaltet. OSD-Ausschnitt aus Umbra 0.4.5." crop={[0, 0.47, 0, 0]} />
+
+<ManualFigure id="infobar-cover" language="de" alt="Cover: hochkantiges Sendungsbild links. Aufnahme mit sichtbarem TV-Bild aus Umbra 0.4.5; HDMI-Bildgröße ist kein Nachweis einer FHD-Bedienoberfläche." caption="Cover: hochkantiges Sendungsbild links. Aufnahme mit sichtbarem TV-Bild aus Umbra 0.4.5; HDMI-Bildgröße ist kein Nachweis einer FHD-Bedienoberfläche." crop={[0, 0.48, 0, 0]} />
+
+<ManualFigure id="infobar-panorama" language="de" alt="Panorama: breites Vorschaubild links. OSD-Ausschnitt aus Umbra 0.4.5." caption="Panorama: breites Vorschaubild links. OSD-Ausschnitt aus Umbra 0.4.5." crop={[0, 0.47, 0, 0]} />
+
+Ohne nutzbare e2MDB-Daten bleibt die Basisdarstellung beziehungsweise der vorgesehene Fallback erhalten. Ein Cover oder Panorama ist kein zweites Live-TV-Fenster.
+
+[Umbra-Übersicht](../) · [Alle 39 Stiloptionen](../optionen/)
+
+Die vollständige Infobar mit Klassisch/Cover/Panorama ist unabhängig von der schmalen InfoBarLite und der zweiten INFO-/ECM-Seite. [Weitere Menüs und Infoleisten](../menues-infoleisten/) erklärt die Optionen einschließlich MENU → MENU.

@@ -1,0 +1,224 @@
+[
+  {
+    "id": "settings-original",
+    "file": "src/assets/umbra/settings-original.png",
+    "source_file": "build/receiver/h7-0410-settings.png",
+    "sha256": "458c7234645665c22610d3172d153f07d6c324264c9d56a48b8ef0832e777a34",
+    "crop": null,
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "Umbra öffnen: Hauptmenü > Erweiterungen > Umbra. Echte HD-Aufnahme der H7 mit Umbra Graphit.",
+    "caption_en": "Original Umbra 0.4.10 HD settings screen. German labels are explained in the English chapters.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "palettes",
+    "file": "src/assets/umbra/palettes.png",
+    "source_file": "docs/guide_assets/farbwelten.png",
+    "sha256": "2d43c19a54b98c3c42177d6e4b714920edb87a0997fa19cca2bad7de0b06b92e",
+    "crop": null,
+    "kind": "illustration",
+    "reviewed": true,
+    "source_caption": "Berechneter Farbvergleich aus den aktuellen Umbra-Farbwerten. Gleiche Beispielzeile in allen sieben Farbwelten; keine Receiver-Aufnahme.",
+    "caption_en": "Calculated comparison of all seven Umbra palettes with identical sample content; an illustration, not a receiver screenshot. The table below translates the German labels.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "layout-comparison",
+    "file": "src/assets/umbra/layout-comparison.png",
+    "source_file": "docs/guide_assets/layoutvergleich.png",
+    "sha256": "e46d2bb752c0945bbc85e6772a8cf3e4932d23e88f430e900c8546deda236ed3",
+    "crop": null,
+    "kind": "illustration",
+    "reviewed": true,
+    "source_caption": "Berechnete Wirkungsbeispiele für Verlauf, Rundung und Textgröße mit aktuellen Umbra-Werten. Die Ausschnitte sind schematisch, keine neuen wählbaren Screen-Modi.",
+    "caption_en": "Calculated examples of gradients, selection rounding and text size. These illustrate settings, not additional screen modes. The original German labels are translated below.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "channel-details",
+    "file": "src/assets/umbra/channel-details.png",
+    "source_file": "build/receiver/h7-0410-test-return.png",
+    "sha256": "02bc57c5e6c118e009bb024d2f069f15f4c77cd4b8001fedc125d687176e43d9",
+    "crop": null,
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "Ansicht Details auf der H7: Sender links, Sendungsinformationen rechts. Die Beispielbox hatte nicht für jeden Sender oder jede Sendung ein passendes Bild.",
+    "caption_en": "Original HD Details view from Umbra 0.4.10: channels on the left and programme information on the right. Artwork was not available for every programme.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "gallery",
+    "file": "src/assets/umbra/gallery.png",
+    "source_file": "build/receiver/gallery-five041.png",
+    "sha256": "0f1a48d95f63641d6b6f1aa1f766d80fff7c5484da22d26b30fc1065d5330040",
+    "crop": null,
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "Galerie in HD: fünf Spalten und drei Zeilen. Echte Testaufnahme aus Umbra 0.4.1; Bilder stammen aus den verfügbaren Sender- und Mediendaten.",
+    "caption_en": "Original Umbra 0.4.1 HD capture: five columns and three rows. Artwork comes from available channel and media data.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "columns",
+    "file": "src/assets/umbra/columns.png",
+    "source_file": "build/receiver/columns-bouquet041.png",
+    "sha256": "3c291c1aea4569ee9a386fb2e847d8c1383a14b1a2582976e37beb84cebde6fb",
+    "crop": null,
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "Spalten in HD: fünf hohe Senderspalten mit Beschreibung, Folgeereignissen und Primetime. Echte Testaufnahme aus Umbra 0.4.1.",
+    "caption_en": "Original Umbra 0.4.1 HD capture: five tall columns with description, following programmes and primetime.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "rows-comparison",
+    "file": "src/assets/umbra/rows-comparison.png",
+    "source_file": "docs/guide_assets/zeilenvergleich.png",
+    "sha256": "94d91fd7e0e04c587efb42952357a9181b797af3f2185412619ee55d51085d29",
+    "crop": null,
+    "kind": "illustration",
+    "reviewed": true,
+    "source_caption": "Berechnete Senderzeilen aus den aktuellen OpenATV-Templates mit identischen Beispieldaten. Höhe und Anordnung kommen aus dem nativen Template-Parser; Textdarstellung und Picon sind illustrative Beispiele.",
+    "caption_en": "Calculated channel rows based on native OpenATV templates. Arrangement comes from the template parser; sample text and picon are illustrative.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "recording-colors",
+    "file": "src/assets/umbra/recording-colors.png",
+    "source_file": "docs/guide_assets/aufnahmemarkierung.png",
+    "sha256": "4fec26365815a568ab3da8e0504aa1f15ce19d8649936d091dd11ebb7bda2495",
+    "crop": null,
+    "kind": "illustration",
+    "reviewed": true,
+    "source_caption": "Berechneter Farbvergleich mit der Umbra-Vorgabe FFE59A. Beispielzeilen zur Wirkung der Textfarbe, kein gestarteter Aufnahmetest und kein zusätzlicher Listenmodus.",
+    "caption_en": "Calculated comparison using the default recording text colour FFE59A. No recording was started to produce this illustration.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "infobar-classic",
+    "file": "src/assets/umbra/infobar-classic.png",
+    "source_file": "build/receiver/infobar045-classic-live-fixed.png",
+    "sha256": "b97a42937063a7d4f28052666103505be513c6e1610609ccf80f0d4aaacfb486",
+    "crop": [
+      0,
+      0.47,
+      0,
+      0
+    ],
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "Klassisch: Picon und Sendungsdaten. Hier sind zusätzlich technische Diagnoseoptionen eingeschaltet. OSD-Ausschnitt aus Umbra 0.4.5.",
+    "caption_en": "Classic Infobar with picon and programme data, plus optional diagnostics. Original OSD extract from Umbra 0.4.5.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "infobar-cover",
+    "file": "src/assets/umbra/infobar-cover.png",
+    "source_file": "build/receiver/infobar045-cover-final.png",
+    "sha256": "21a979cb1aad2ac558096df11027e18fac17d31a2713f0d133e7ed48d7fb45c0",
+    "crop": [
+      0,
+      0.48,
+      0,
+      0
+    ],
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "Cover: hochkantiges Sendungsbild links. Aufnahme mit sichtbarem TV-Bild aus Umbra 0.4.5; HDMI-Bildgröße ist kein Nachweis einer FHD-Bedienoberfläche.",
+    "caption_en": "Cover layout with portrait artwork. Original extract from Umbra 0.4.5 with visible TV. Video image dimensions do not establish OSD resolution.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "infobar-panorama",
+    "file": "src/assets/umbra/infobar-panorama.png",
+    "source_file": "build/receiver/infobar045-panorama-live.png",
+    "sha256": "67623b3e396d970806aba35c308a012ec8e2a9ac5fa2f26d03bd6cba8963b293",
+    "crop": [
+      0,
+      0.47,
+      0,
+      0
+    ],
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "Panorama: breites Vorschaubild links. OSD-Ausschnitt aus Umbra 0.4.5.",
+    "caption_en": "Panorama layout with wide artwork on the left. Original OSD extract from Umbra 0.4.5.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "infobar-diagnostics",
+    "file": "src/assets/umbra/infobar-diagnostics.png",
+    "source_file": "build/receiver/infobar045-classic-live-fixed.png",
+    "sha256": "b97a42937063a7d4f28052666103505be513c6e1610609ccf80f0d4aaacfb486",
+    "crop": [
+      0,
+      0.8,
+      0,
+      0
+    ],
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "Detailausschnitt: Tunerbelegung, SNR, AGC, BER, Transponder, CA-Informationen sowie Video-/Audio- und Statusangaben.",
+    "caption_en": "Original detail extract: tuner allocation, SNR, AGC, BER, transponder, CA, video/audio and service status. Values are historical examples.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "weather-original",
+    "file": "src/assets/umbra/weather-original.png",
+    "source_file": "build/receiver/weather046-forecast-live-final.png",
+    "sha256": "95df67194e463ca299a42509c948616f7a79611be9e705858ce7241a71f37ba0",
+    "crop": [
+      0,
+      0,
+      0.24,
+      0.78
+    ],
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "Wetter mit fünf kommenden Tagen für Hamburg. Ausschnitt einer echten Testaufnahme aus Umbra 0.4.6; die Werte sind historische Beispieldaten.",
+    "caption_en": "Original Umbra 0.4.6 weather extract for Hamburg with five upcoming days. Historical sample values; weekday headings run Wednesday through Sunday.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "epg-original",
+    "file": "src/assets/umbra/epg-original.png",
+    "source_file": "build/receiver/epg-cover040.png",
+    "sha256": "8b795c3f8655886179cac79dc6dca2cdad7258ab2fed5a46788034f40a6b7524",
+    "crop": null,
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "EPG mit Cover und Metadaten neben der Programmliste. Echte Testaufnahme aus Umbra 0.4.0. Ausführliche Beschreibungstexte bleiben scrollbar.",
+    "caption_en": "Original Umbra 0.4.0 EPG with cover and metadata beside the programme list. Long descriptions remain scrollable.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "tmdb-original",
+    "file": "src/assets/umbra/tmdb-original.png",
+    "source_file": "build/receiver/h7-0410-tmdb-movie-back.png",
+    "sha256": "7a6277dacf7df1f2ea4c5ae71dc86b428feb753d5f64e77ef654ed8bf41dbc66",
+    "crop": null,
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "TMDb-Detailseite in Umbra 0.4.10: Beschreibung, Cover und Metadaten. TMDb wird separat installiert und ist nicht die e2MDB-Datenbank.",
+    "caption_en": "Original Umbra 0.4.10 TMDb detail page. TMDb is installed separately and is not the e2MDB database.",
+    "reviewed_at": "2026-09-10"
+  },
+  {
+    "id": "export-original",
+    "file": "src/assets/umbra/export-original.png",
+    "source_file": "build/receiver/export-input030.png",
+    "sha256": "64db21a1fdb9782e02ede525148e8edccb674522d638c353a3e1f829d3e985ae",
+    "crop": [
+      0.125,
+      0.22,
+      0.125,
+      0.22
+    ],
+    "kind": "receiver",
+    "reviewed": true,
+    "source_caption": "Name eines eigenen Pakets eingeben. Ausschnitt der getesteten Exportfunktion aus Umbra 0.3.0.",
+    "caption_en": "Original extract of the style-pack name input, tested with Umbra 0.3.0. Name des Stilpakets means Style pack name.",
+    "reviewed_at": "2026-09-10"
+  }
+]

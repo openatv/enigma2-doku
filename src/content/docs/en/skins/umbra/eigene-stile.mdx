@@ -1,0 +1,27 @@
+---
+title: "Umbra – Save and transfer personal style packs"
+description: "OpenATV 8.0+: Save and transfer personal style packs. Complete Umbra instructions with settings and examples."
+---
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+A personal pack lets you recall an appearance or share it with another compatible Umbra installation. It contains style values, not plugins or an image database.
+
+1. Choose an included pack and your desired individual overrides.
+2. Press **Blue — Save style (Stil speichern)** and enter a meaningful name.
+3. Confirm the export. Umbra asks before replacing an existing personal pack with the same name.
+4. Select it under **Style pack**. Review existing overrides, which still take precedence, and press Green to apply.
+
+<ManualFigure id="export-original" language="en" alt="Original extract of the style-pack name input, tested with Umbra 0.3.0. Name des Stilpakets means Style pack name." caption="Original extract of the style-pack name input, tested with Umbra 0.3.0. Name des Stilpakets means Style pack name." crop={[0.125, 0.22, 0.125, 0.22]} />
+
+## Transfer and find a pack
+
+Personal packs are JSON files in **/etc/enigma2/umbra/styles**. To transfer one, copy the relevant file into the same directory on the target receiver, then reopen Umbra. The displayed name need not match the technical filename.
+
+All effective style values are exported. OSD resolution and local weather data are deliberately omitted. Export creates a saved file immediately: Red/EXIT afterwards does not undo it. There is currently no dedicated import or delete button.
+
+Use [SFTP or FTP](../../../netzwerk/fernzugriff/) to transfer the file. Keep an extra copy of a useful pack outside the receiver. Saving a style pack does not replace a full settings backup.
+
+A pack copied from another installation should use a format supported by the installed Umbra version. Reopen the plugin after placing the file so it can read the pack directory again.
+
+[Umbra overview](../) · [All 39 style options](../optionen/)

@@ -1,0 +1,21 @@
+---
+title: "Umbra – Bilder mit e2MDB"
+description: "OpenATV ab 8.0: Bilder mit e2MDB. Vollständige Umbra-Anleitung mit Auswahlwerten und Beispielen."
+---
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+e2MDB liefert Cover, Panoramabilder und Metadaten. Umbra verwaltet diese Datenbank nicht. Installiere und konfiguriere e2MDB über dessen eigene Oberfläche und lasse Daten erfassen. Nicht jede Sendung hat einen Treffer oder ein Bild.
+
+| Option und Auswahl | Sichtbare Wirkung |
+| --- | --- |
+| EPG-Medien<br />Aus · Cover · Panorama | Bereich Infobar: Aus, Cover oder Panorama in den unterstützten EPG-Ansichten. Es ist eine andere Option als das Infobar-Layout. |
+| Medien im Detailbereich<br />Aus · Cover · Panorama | Bereich Kanalliste: Aus, Cover oder Panorama für den dafür vorgesehenen Detailbereich. Die Galerie nutzt ihren nativen Bildprovider. |
+
+<ManualFigure id="epg-original" language="de" alt="EPG mit Cover und Metadaten neben der Programmliste. Echte Testaufnahme aus Umbra 0.4.0. Ausführliche Beschreibungstexte bleiben scrollbar." caption="EPG mit Cover und Metadaten neben der Programmliste. Echte Testaufnahme aus Umbra 0.4.0. Ausführliche Beschreibungstexte bleiben scrollbar." />
+
+## Wenn die drei Medienoptionen fehlen
+
+Umbra blendet Infobar-Layout, EPG-Medien und Medien im Detailbereich ohne installiertes e2MDB samt E2MDBEventInfo-Converter aus. Auch bei installiertem Plugin müssen die relevanten Metadatenfunktionen aktiv sein. Nach Deinstallation bleiben gespeicherte Wünsche erhalten, die Basisdarstellung wird aber weiter nutzbar.
+
+[Umbra-Übersicht](../) · [Alle 39 Stiloptionen](../optionen/)

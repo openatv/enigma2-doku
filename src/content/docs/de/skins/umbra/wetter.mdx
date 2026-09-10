@@ -1,0 +1,31 @@
+---
+title: "Umbra – Wetter oben links"
+description: "OpenATV ab 8.0: Wetter oben links. Vollständige Umbra-Anleitung mit Auswahlwerten und Beispielen."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+<Capture id="umbra-weather" language="de" alt="Umbra-Wettereinstellungen mit Hamburg-Koordinaten" caption="Neue native FHD-Aufnahme mit deutscher GUI. Beispielwerte; im Aufnahmedialog wurde nichts gespeichert. Hamburg und Koordinaten sind ein ungespeichertes Beispiel." />
+
+<ManualFigure id="weather-original" language="de" alt="Wetter mit fünf kommenden Tagen für Hamburg. Ausschnitt einer echten Testaufnahme aus Umbra 0.4.6; die Werte sind historische Beispieldaten." caption="Wetter mit fünf kommenden Tagen für Hamburg. Ausschnitt einer echten Testaufnahme aus Umbra 0.4.6; die Werte sind historische Beispieldaten." crop={[0, 0, 0.24, 0.78]} />
+
+| Option und Auswahl | Sichtbare Wirkung |
+| --- | --- |
+| Wetter oben links<br />Aus · Aktuell · Mit Tageswerten · Mit 5-Tage-Vorschau | Aus: kein Umbra-Wetterabruf. Aktuell: Symbol und Temperatur. Mit Tageswerten: zusätzliche Tagesangaben. Mit 5-Tage-Vorschau: kommende Tage mit Symbol und Min/Max. |
+
+Die Wetteranzeige erscheint oben links zusammen mit der Infobar. Ohne gültigen Ort oder Daten bleibt sie unsichtbar. Fehlen nur Vorhersagedaten, kann die kompakte aktuelle Anzeige erscheinen.
+
+| Lokale Wetteroption | Eingabe und Wirkung |
+| --- | --- |
+| Wetterort | Name des gewünschten Orts, zum Beispiel Hamburg. |
+| Wetterkoordinaten | Längengrad,Breitengrad mit Dezimalpunkt. Beispiel Hamburg: 9.99302,53.55073. Nicht die Reihenfolge vertauschen. |
+| Wetterdienst | Open-Meteo oder MSN; tatsächliche Verfügbarkeit hängt vom Dienst und der OEA-Schnittstelle ab. |
+| Temperatureinheit | Celsius oder Fahrenheit. |
+
+Diese Felder erscheinen bei eingeschalteter Wetteranzeige im Bereich Infobar. Sind Ort und Koordinaten gemeinsam leer, verwendet Umbra eine vorhandene Metrix-Wetterkonfiguration lesend, sofern sie verfügbar ist.
+
+Voraussetzung und Datenschutz: Das Paket enigma2-tools-weatherinfo ist eine Umbra-Abhängigkeit. Standortdaten gehen an den gewählten Wetterdienst. Sie werden nicht in eigene Stilpakete exportiert. Die Abfragen laufen mit Cache, nicht bei jedem gezeichneten Bild.
+
+[Umbra-Übersicht](../) · [Alle 39 Stiloptionen](../optionen/)

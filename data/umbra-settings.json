@@ -1,0 +1,930 @@
+{
+  "source_version": "0.4.23",
+  "installed_package_version": "0.4.17",
+  "source_files": {
+    "umbra/styles.py": "dc3f8283563a776a5817dd28bdf0875928470d37bc354a513303c1750aef8f89",
+    "receiver/plugin.py": "e8951b802ef53848ea8af9151e824402d2206640c52f2562fcd8c446bfc9d995",
+    "umbra/theme.py": "593aba616a0d69a5880790a29769f449ef7ab353631ef5dccd10b32288cbfa3e"
+  },
+  "options": [
+    {
+      "key": "palette",
+      "label_de": "Farbwelt",
+      "group": "colors",
+      "default": "graphite",
+      "choices": {
+        "graphite": "Graphit",
+        "midnight": "Mitternacht",
+        "carbon": "Carbon",
+        "emerald": "Smaragd",
+        "petrol": "Petrol",
+        "bordeaux": "Bordeaux",
+        "amber": "Bernstein"
+      },
+      "label_en": "Palette",
+      "chapter": "farben",
+      "explanation_en": "Change the coordinated base colours; individual RGB overrides take precedence.",
+      "explanation_de": "Ändert die zusammengehörigen Grundfarben. Eigene RGB-Werte können einzelne Rollen übersteuern.",
+      "choices_en": {
+        "graphite": "Graphite",
+        "midnight": "Midnight",
+        "carbon": "Carbon",
+        "emerald": "Emerald",
+        "petrol": "Petrol",
+        "bordeaux": "Bordeaux",
+        "amber": "Amber"
+      }
+    },
+    {
+      "key": "accent",
+      "label_de": "Fortschrittsfarbe",
+      "group": "colors",
+      "default": "theme",
+      "choices": {
+        "theme": "Skinfarbe",
+        "cyan": "Cyan",
+        "blue": "Blau",
+        "green": "Gruen",
+        "red": "Rot",
+        "gold": "Gold",
+        "white": "Weiss"
+      },
+      "label_en": "Progress colour",
+      "chapter": "farben",
+      "explanation_en": "Set supported progress and accent indicators. A custom Accent RGB value overrides this choice.",
+      "explanation_de": "Färbt die entsprechenden Fortschritts- und Akzentanzeigen. „Skinfarbe“ nutzt die Vorgabe der Farbwelt. Ein eigenes Akzent-RGB hat Vorrang.",
+      "choices_en": {
+        "theme": "Skin colour",
+        "cyan": "Cyan",
+        "blue": "Blue",
+        "green": "Green",
+        "red": "Red",
+        "gold": "Gold",
+        "white": "White"
+      }
+    },
+    {
+      "key": "tvVisibility",
+      "label_de": "TV-Bild hinter Details",
+      "group": "colors",
+      "default": "balanced",
+      "choices": {
+        "opaque": "Aus",
+        "soft": "Dezent",
+        "balanced": "Mittel",
+        "clear": "Deutlich"
+      },
+      "label_en": "TV image behind details",
+      "chapter": "senderliste",
+      "explanation_en": "Adjust TV visibility behind supported channel details, not the transparency of every screen.",
+      "explanation_de": "Bereich Farben: steuert die Durchsicht zum TV-Bild hinter dafür vorgesehenen Senderdetails. „Aus“ ist dort deckend. Es ist keine globale Transparenzeinstellung für jeden Screen.",
+      "choices_en": {
+        "opaque": "Off",
+        "soft": "Subtle",
+        "balanced": "Medium",
+        "clear": "Clear"
+      }
+    },
+    {
+      "key": "gradients",
+      "label_de": "Farbverlaeufe",
+      "group": "layout",
+      "default": "on",
+      "choices": {
+        "on": "Ein",
+        "off": "Einfarbig"
+      },
+      "label_en": "Gradients",
+      "chapter": "layout",
+      "explanation_en": "Use gradients or solid fills on supported surfaces. Transparent edge transitions remain.",
+      "explanation_de": "Ein verwendet Farbverläufe. Einfarbig macht die entsprechenden Flächen flach; transparente Randübergänge bleiben erhalten.",
+      "choices_en": {
+        "on": "On",
+        "off": "Solid"
+      }
+    },
+    {
+      "key": "corners",
+      "label_de": "Rundung der Auswahl",
+      "group": "layout",
+      "default": "8",
+      "choices": {
+        "0": "Eckig",
+        "4": "4 px",
+        "8": "8 px"
+      },
+      "label_en": "Selection rounding",
+      "chapter": "layout",
+      "explanation_en": "Change supported selection corners, not every dialog or image.",
+      "explanation_de": "Verändert die unterstützte Auswahlrundung. Keine globale Abrundung jedes Dialogs oder Bildes.",
+      "choices_en": {
+        "0": "Square",
+        "4": "4 px",
+        "8": "8 px"
+      }
+    },
+    {
+      "key": "fontScale",
+      "label_de": "Textgroesse",
+      "group": "layout",
+      "default": "100",
+      "choices": {
+        "90": "90 %",
+        "95": "95 %",
+        "100": "100 %",
+        "105": "105 %"
+      },
+      "label_en": "Text size",
+      "chapter": "layout",
+      "explanation_en": "Scale Regular/Bold text and supported templates; symbols and the radio LCD font remain independent.",
+      "explanation_de": "Skaliert Regular-/Bold-Texte, auch in unterstützten Listentemplates. Symbole und der Radio-LCD-Font bleiben unabhängig.",
+      "choices_en": {
+        "90": "90 %",
+        "95": "95 %",
+        "100": "100 %",
+        "105": "105 %"
+      }
+    },
+    {
+      "key": "menuWidth",
+      "label_de": "Menuebreite",
+      "group": "layout",
+      "default": "470",
+      "choices": {
+        "470": "Standard",
+        "560": "Breit"
+      },
+      "label_en": "Menu width",
+      "chapter": "layout",
+      "explanation_en": "Widen the normal menu without changing every plugin screen.",
+      "explanation_de": "Verbreitert das normale Menü. Es macht nicht alle Plugin-Screens breiter.",
+      "choices_en": {
+        "470": "Standard",
+        "560": "Wide"
+      }
+    },
+    {
+      "key": "showClock",
+      "label_de": "Uhr in Menues",
+      "group": "layout",
+      "default": "on",
+      "choices": {
+        "on": "Ein",
+        "off": "Aus"
+      },
+      "label_en": "Clock in menus",
+      "chapter": "layout",
+      "explanation_en": "Show the clock in supported menus; the Infobar clock is independent.",
+      "explanation_de": "Blendet die Uhr in den entsprechenden Menüs ein oder aus. Die Infobar-Uhr bleibt davon unabhängig.",
+      "choices_en": {
+        "on": "On",
+        "off": "Off"
+      }
+    },
+    {
+      "key": "progressHeight",
+      "label_de": "Staerke der Fortschrittsanzeige",
+      "group": "layout",
+      "default": "5",
+      "choices": {
+        "3": "Schmal",
+        "5": "Standard",
+        "7": "Breit"
+      },
+      "label_en": "Progress thickness",
+      "chapter": "layout",
+      "explanation_en": "Change supported thin progress widgets, not every plugin-generated progress graphic.",
+      "explanation_de": "Verändert unterstützte schmale Fortschritts-Widgets. Nicht jede pluginseitig erzeugte Fortschrittsgrafik folgt diesem Wert.",
+      "choices_en": {
+        "3": "Narrow",
+        "5": "Standard",
+        "7": "Wide"
+      }
+    },
+    {
+      "key": "eventDescription",
+      "label_de": "Ausfuehrlicher Sendungstext",
+      "group": "infobar",
+      "default": "on",
+      "choices": {
+        "on": "Ein",
+        "off": "Aus"
+      },
+      "label_en": "Extended programme description",
+      "chapter": "statussymbole",
+      "explanation_en": "Show detailed event text where provided by EPG.",
+      "explanation_de": "Zeigt den zusätzlichen ausführlichen Sendungstext. Fehlende EPG-Texte kann der Skin nicht ergänzen.",
+      "choices_en": {
+        "on": "On",
+        "off": "Off"
+      }
+    },
+    {
+      "key": "technicalInfo",
+      "label_de": "Video- und Audioinformationen",
+      "group": "infobar",
+      "default": "on",
+      "choices": {
+        "on": "Ein",
+        "off": "Aus"
+      },
+      "label_en": "Video and audio information",
+      "chapter": "statussymbole",
+      "explanation_en": "Show video format and audio-codec information independently of status icons.",
+      "explanation_de": "Zeigt Video-/Audioangaben wie Videoformat und Audiocodec. Die Statussymbole sind davon unabhängig.",
+      "choices_en": {
+        "on": "On",
+        "off": "Off"
+      }
+    },
+    {
+      "key": "tunerInfo",
+      "label_de": "Tuner- und Signalinfos",
+      "group": "infobar",
+      "default": "off",
+      "choices": {
+        "off": "Aus",
+        "signal": "Tuner / SNR / AGC / BER",
+        "details": "Mit Transponderdaten"
+      },
+      "label_en": "Tuner and signal information",
+      "chapter": "statussymbole",
+      "explanation_en": "Display native tuner allocation and driver-reported SNR/AGC/BER, optionally with transponder details.",
+      "explanation_de": "Aus, Tuner/SNR/AGC/BER oder zusätzlich Transponderdaten. Die Werte kommen von OpenATV und vom Tuner-Treiber.",
+      "choices_en": {
+        "off": "Off",
+        "signal": "Tuner / SNR / AGC / BER",
+        "details": "Including transponder details"
+      }
+    },
+    {
+      "key": "cryptoInfo",
+      "label_de": "Verschluesselungsinfos",
+      "group": "infobar",
+      "default": "off",
+      "choices": {
+        "off": "Aus",
+        "on": "Ein"
+      },
+      "label_en": "Encryption information",
+      "chapter": "statussymbole",
+      "explanation_en": "Show the first Infobar's CA diagnostics. OpenATV's global encryption-information permission still applies.",
+      "explanation_de": "Zeigt Verschlüsselungsstatus und verfügbare CA-Angaben. Für Details muss auch die entsprechende OpenATV-Einstellung zur Anzeige von Verschlüsselungsinfos erlauben, diese Daten anzuzeigen.",
+      "choices_en": {
+        "off": "Off",
+        "on": "On"
+      }
+    },
+    {
+      "key": "weatherInfo",
+      "label_de": "Wetter oben links",
+      "group": "infobar",
+      "default": "off",
+      "choices": {
+        "off": "Aus",
+        "current": "Aktuell",
+        "details": "Mit Tageswerten",
+        "forecast": "Mit 5-Tage-Vorschau"
+      },
+      "label_en": "Weather in the top left",
+      "chapter": "wetter",
+      "explanation_en": "Choose current weather, daily values or a five-day forecast. Off disables Umbra weather requests.",
+      "explanation_de": "Aus: kein Umbra-Wetterabruf. Aktuell: Symbol und Temperatur. Mit Tageswerten: zusätzliche Tagesangaben. Mit 5-Tage-Vorschau: kommende Tage mit Symbol und Min/Max.",
+      "choices_en": {
+        "off": "Off",
+        "current": "Current",
+        "details": "With daily values",
+        "forecast": "With 5-day forecast"
+      }
+    },
+    {
+      "key": "serviceIcons",
+      "label_de": "Statussymbole",
+      "group": "infobar",
+      "default": "all",
+      "choices": {
+        "all": "Alle, inaktive dezent",
+        "active": "Nur aktive",
+        "off": "Aus"
+      },
+      "label_en": "Status icons",
+      "chapter": "statussymbole",
+      "explanation_en": "Choose all icons with inactive ones dimmed, active icons only or no status strip. Recording indication is independent.",
+      "explanation_de": "Alle: inaktive Symbole erscheinen dezent. Nur aktive: nur die passenden Statusanzeigen. Aus: Statussymbolleiste aus; die Aufnahmeanzeige bleibt unabhängig.",
+      "choices_en": {
+        "all": "All, inactive dimmed",
+        "active": "Active only",
+        "off": "Off"
+      }
+    },
+    {
+      "key": "infobarLayout",
+      "label_de": "Infobar-Layout",
+      "group": "infobar",
+      "default": "classic",
+      "choices": {
+        "classic": "Klassisch",
+        "cover": "Cover",
+        "backdrop": "Panorama"
+      },
+      "label_en": "Infobar layout",
+      "chapter": "infobar",
+      "explanation_en": "Choose the full Infobar's picon, portrait-cover or panorama layout. Requires e2MDB for media choices.",
+      "explanation_de": "Klassische Infobar mit Picon, Cover im Hochformat oder breites Panorama. Medienvarianten benötigen e2MDB und passende Daten.",
+      "choices_en": {
+        "classic": "Classic",
+        "cover": "Cover",
+        "backdrop": "Panorama"
+      }
+    },
+    {
+      "key": "epgArtwork",
+      "label_de": "EPG-Medien",
+      "group": "infobar",
+      "default": "none",
+      "choices": {
+        "none": "Aus",
+        "cover": "Cover",
+        "backdrop": "Panorama"
+      },
+      "label_en": "EPG artwork",
+      "chapter": "e2mdb",
+      "explanation_en": "Choose artwork in supported EPG views independently of the full Infobar layout.",
+      "explanation_de": "Bereich Infobar: Aus, Cover oder Panorama in den unterstützten EPG-Ansichten. Es ist eine andere Option als das Infobar-Layout.",
+      "choices_en": {
+        "none": "Off",
+        "cover": "Cover",
+        "backdrop": "Panorama"
+      }
+    },
+    {
+      "key": "channelArtwork",
+      "label_de": "Medien im Detailbereich",
+      "group": "channels",
+      "default": "none",
+      "choices": {
+        "none": "Aus",
+        "cover": "Cover",
+        "backdrop": "Panorama"
+      },
+      "label_en": "Artwork in channel details",
+      "chapter": "e2mdb",
+      "explanation_en": "Choose artwork for the channel detail area. The gallery uses its native image provider.",
+      "explanation_de": "Bereich Kanalliste: Aus, Cover oder Panorama für den dafür vorgesehenen Detailbereich. Die Galerie nutzt ihren nativen Bildprovider.",
+      "choices_en": {
+        "none": "Off",
+        "cover": "Cover",
+        "backdrop": "Panorama"
+      }
+    },
+    {
+      "key": "channelScreen",
+      "label_de": "Ansicht",
+      "group": "channels",
+      "default": "ChannelSelectionDefault",
+      "choices": {
+        "ChannelSelectionDefault": "Details",
+        "ChannelSelectionPIG": "Live-TV-Fenster",
+        "ChannelSelectionFull": "Vollbild",
+        "ChannelSelectionGrid": "Galerie",
+        "ChannelSelectionColumns": "Spalten"
+      },
+      "label_en": "Channel-list view",
+      "chapter": "senderliste",
+      "explanation_en": "Choose Details, Live TV window, Full screen, Gallery or Columns.",
+      "explanation_de": "Details: Liste und Beschreibung. Live-TV-Fenster: Liste mit kleinem laufendem TV-Bild. Vollbild: mehr Breite für die Liste. Galerie: Kacheln. Spalten: hohe Senderspalten.",
+      "choices_en": {
+        "ChannelSelectionDefault": "Details",
+        "ChannelSelectionPIG": "Live TV window",
+        "ChannelSelectionFull": "Full screen",
+        "ChannelSelectionGrid": "Gallery",
+        "ChannelSelectionColumns": "Columns"
+      }
+    },
+    {
+      "key": "channelRows",
+      "label_de": "Zeilen",
+      "group": "channels",
+      "default": "Default",
+      "choices": {
+        "Default": "Standard",
+        "Compact": "Kompakt",
+        "Extended": "Erweitert",
+        "Gallery": "Galerie",
+        "Columns": "Spalten"
+      },
+      "label_en": "Channel rows",
+      "chapter": "senderzeilen",
+      "explanation_en": "Choose Standard, Compact, Extended, Gallery or Columns rows. Gallery/Columns are paired with their matching views.",
+      "explanation_de": "Standard zeigt Sender und aktuelle Sendung. Kompakt benötigt weniger Höhe. Erweitert bietet zusätzliche Angaben. Galerie/Spalten gehören zu den entsprechenden Ansichten.",
+      "choices_en": {
+        "Default": "Standard",
+        "Compact": "Compact",
+        "Extended": "Extended",
+        "Gallery": "Gallery",
+        "Columns": "Columns"
+      }
+    },
+    {
+      "key": "showPicon",
+      "label_de": "Picons",
+      "group": "channels",
+      "default": "on",
+      "choices": {
+        "on": "Ein",
+        "off": "Aus"
+      },
+      "label_en": "Picons",
+      "chapter": "senderzeilen",
+      "explanation_en": "Show installed channel logos; this does not download picons.",
+      "explanation_de": "Ein installierter und korrekt angebundener Picon-Satz; Beschaffung separat.",
+      "choices_en": {
+        "on": "On",
+        "off": "Off"
+      }
+    },
+    {
+      "key": "showNumber",
+      "label_de": "Kanalnummern",
+      "group": "channels",
+      "default": "on",
+      "choices": {
+        "on": "Ein",
+        "off": "Aus"
+      },
+      "label_en": "Channel numbers",
+      "chapter": "senderzeilen",
+      "explanation_en": "Show the channel number.",
+      "explanation_de": "Zeigt die Kanalnummer an.",
+      "choices_en": {
+        "on": "On",
+        "off": "Off"
+      }
+    },
+    {
+      "key": "showServiceTypeIcon",
+      "label_de": "Empfangsart",
+      "group": "channels",
+      "default": "on",
+      "choices": {
+        "on": "Ein",
+        "off": "Aus"
+      },
+      "label_en": "Reception-type icon",
+      "chapter": "senderzeilen",
+      "explanation_en": "Show the native reception-type symbol.",
+      "explanation_de": "Kennzeichnet die Empfangsart mit dem nativen Symbol.",
+      "choices_en": {
+        "on": "On",
+        "off": "Off"
+      }
+    },
+    {
+      "key": "showCryptoIcon",
+      "label_de": "Verschluesselung",
+      "group": "channels",
+      "default": "on",
+      "choices": {
+        "on": "Ein",
+        "off": "Aus"
+      },
+      "label_en": "Encryption icon",
+      "chapter": "senderzeilen",
+      "explanation_en": "Show the native encryption symbol; this does not decrypt a service.",
+      "explanation_de": "Zeigt das native Verschlüsselungssymbol. Dies ändert nicht die Entschlüsselung.",
+      "choices_en": {
+        "on": "On",
+        "off": "Off"
+      }
+    },
+    {
+      "key": "piconRatio",
+      "label_de": "Picon-Seitenverhaeltnis",
+      "group": "channels",
+      "default": "167",
+      "choices": {
+        "167": "XPicon / ZZZPicon",
+        "235": "ZZPicon",
+        "250": "ZPicon"
+      },
+      "label_en": "Picon aspect ratio",
+      "chapter": "senderzeilen",
+      "explanation_en": "Match the picon area to your installed set without downloading or changing that set.",
+      "explanation_de": "Passt den vorgesehenen Platz an das Format deines Picon-Satzes an. Die Auswahl lädt keinen neuen Satz.",
+      "choices_en": {
+        "167": "XPicon / ZZZPicon",
+        "235": "ZZPicon",
+        "250": "ZPicon"
+      }
+    },
+    {
+      "key": "showTimers",
+      "label_de": "Timer anzeigen",
+      "group": "channels",
+      "default": "off",
+      "choices": {
+        "on": "Ein",
+        "off": "Aus"
+      },
+      "label_en": "Show timers",
+      "chapter": "aufnahmen",
+      "explanation_en": "Show timer hints supplied by the native list model without creating timers.",
+      "explanation_de": "Blendet die vom nativen Senderlistenmodell gelieferten Timerhinweise ein. Es werden dadurch keine Timer erstellt oder verändert.",
+      "choices_en": {
+        "on": "On",
+        "off": "Off"
+      }
+    },
+    {
+      "key": "recordIndicatorMode",
+      "label_de": "Aufnahme-Markierung",
+      "group": "channels",
+      "default": "2",
+      "choices": {
+        "0": "Aus",
+        "1": "Symbol",
+        "2": "Textfarbe"
+      },
+      "label_en": "Recording marking",
+      "chapter": "aufnahmen",
+      "explanation_en": "Choose no marking, a native icon or dedicated text colour for an active recording.",
+      "explanation_de": "Aus: keine entsprechende Markierung. Symbol: natives Aufnahmesymbol. Textfarbe: laufende Aufnahme durch die dafür vorgesehene Textfarbe kennzeichnen.",
+      "choices_en": {
+        "0": "Off",
+        "1": "Icon",
+        "2": "Text colour"
+      }
+    },
+    {
+      "key": "color_background",
+      "label_de": "Hintergrund (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Background RGB",
+      "chapter": "rgb",
+      "explanation_en": "Large background areas.",
+      "explanation_de": "Große Hintergrundbereiche.",
+      "choices_en": null
+    },
+    {
+      "key": "color_surface",
+      "label_de": "Flaechen (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Surface RGB",
+      "chapter": "rgb",
+      "explanation_en": "Surfaces, dialog parts and the basis of derived shading.",
+      "explanation_de": "Flächen, Dialogteile und die Basis abgeleiteter Schatten.",
+      "choices_en": null
+    },
+    {
+      "key": "color_selection",
+      "label_de": "Auswahl (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Selection RGB",
+      "chapter": "rgb",
+      "explanation_en": "Highlighted entries and derived selection gradients.",
+      "explanation_de": "Markierte Einträge und ihre abgeleiteten Verlaufsfarben.",
+      "choices_en": null
+    },
+    {
+      "key": "color_foreground",
+      "label_de": "Haupttext (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Main text RGB",
+      "chapter": "rgb",
+      "explanation_en": "Primary labels and central text.",
+      "explanation_de": "Hauptbeschriftungen und zentrale Texte.",
+      "choices_en": null
+    },
+    {
+      "key": "color_secondary",
+      "label_de": "Nebentext (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Secondary text RGB",
+      "chapter": "rgb",
+      "explanation_en": "Supporting text and additional information.",
+      "explanation_de": "Begleittexte und zusätzliche Informationen.",
+      "choices_en": null
+    },
+    {
+      "key": "color_muted",
+      "label_de": "Dezenter Text (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Muted text RGB",
+      "chapter": "rgb",
+      "explanation_en": "Subtle information and parts of gradients.",
+      "explanation_de": "Zurückhaltende Angaben und Teile von Verläufen.",
+      "choices_en": null
+    },
+    {
+      "key": "color_accent",
+      "label_de": "Akzent (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Accent RGB",
+      "chapter": "rgb",
+      "explanation_en": "Custom accent colour; takes precedence over the progress-colour selection.",
+      "explanation_de": "Eigene Akzentfarbe; übersteuert auch die gewählte Fortschrittsfarbe.",
+      "choices_en": null
+    },
+    {
+      "key": "color_recording",
+      "label_de": "Aufnahme-Text (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Recording text RGB",
+      "chapter": "rgb",
+      "explanation_en": "Channel-list text for an active recording. Inherited theme colour: light gold FFE59A.",
+      "explanation_de": "Textmarkierung laufender Aufnahmen in der Senderliste. Standard: helles Gold FFE59A.",
+      "choices_en": null
+    },
+    {
+      "key": "color_red",
+      "label_de": "Rot (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Red RGB",
+      "chapter": "rgb",
+      "explanation_en": "Red role, including associated buttons and indications.",
+      "explanation_de": "Rote Farbrolle, unter anderem Farbtasten und entsprechende Hinweise.",
+      "choices_en": null
+    },
+    {
+      "key": "color_green",
+      "label_de": "Gruen (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Green RGB",
+      "chapter": "rgb",
+      "explanation_en": "Green role and corresponding buttons.",
+      "explanation_de": "Grüne Farbrolle und zugehörige Farbtasten.",
+      "choices_en": null
+    },
+    {
+      "key": "color_yellow",
+      "label_de": "Gelb (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Yellow RGB",
+      "chapter": "rgb",
+      "explanation_en": "Yellow role and corresponding buttons.",
+      "explanation_de": "Gelbe Farbrolle und zugehörige Farbtasten.",
+      "choices_en": null
+    },
+    {
+      "key": "color_blue",
+      "label_de": "Blau (RGB)",
+      "group": "colors",
+      "default": "",
+      "choices": null,
+      "label_en": "Blue RGB",
+      "chapter": "rgb",
+      "explanation_en": "Blue role and corresponding buttons.",
+      "explanation_de": "Blaue Farbrolle und zugehörige Farbtasten.",
+      "choices_en": null
+    }
+  ],
+  "packs": {
+    "graphite": {
+      "version": 1,
+      "name": "Umbra Graphit",
+      "options": {
+        "palette": "graphite",
+        "accent": "theme",
+        "tvVisibility": "balanced",
+        "gradients": "on",
+        "corners": "8",
+        "fontScale": "100",
+        "menuWidth": "470",
+        "showClock": "on",
+        "progressHeight": "5",
+        "eventDescription": "on",
+        "technicalInfo": "on",
+        "tunerInfo": "off",
+        "cryptoInfo": "off",
+        "weatherInfo": "off",
+        "serviceIcons": "all",
+        "infobarLayout": "classic",
+        "epgArtwork": "none",
+        "channelArtwork": "none",
+        "channelScreen": "ChannelSelectionDefault",
+        "channelRows": "Default",
+        "showPicon": "on",
+        "showNumber": "on",
+        "showServiceTypeIcon": "on",
+        "showCryptoIcon": "on",
+        "piconRatio": "167",
+        "showTimers": "off",
+        "recordIndicatorMode": "2",
+        "color_background": "",
+        "color_surface": "",
+        "color_selection": "",
+        "color_foreground": "",
+        "color_secondary": "",
+        "color_muted": "",
+        "color_accent": "",
+        "color_recording": "",
+        "color_red": "",
+        "color_green": "",
+        "color_yellow": "",
+        "color_blue": ""
+      }
+    },
+    "cinema": {
+      "version": 1,
+      "name": "Umbra Cinema",
+      "options": {
+        "palette": "carbon",
+        "accent": "theme",
+        "tvVisibility": "clear",
+        "gradients": "on",
+        "corners": "8",
+        "fontScale": "100",
+        "menuWidth": "470",
+        "showClock": "off",
+        "progressHeight": "5",
+        "eventDescription": "on",
+        "technicalInfo": "off",
+        "tunerInfo": "off",
+        "cryptoInfo": "off",
+        "weatherInfo": "off",
+        "serviceIcons": "all",
+        "infobarLayout": "classic",
+        "epgArtwork": "none",
+        "channelArtwork": "none",
+        "channelScreen": "ChannelSelectionDefault",
+        "channelRows": "Default",
+        "showPicon": "on",
+        "showNumber": "on",
+        "showServiceTypeIcon": "on",
+        "showCryptoIcon": "on",
+        "piconRatio": "167",
+        "showTimers": "off",
+        "recordIndicatorMode": "2",
+        "color_background": "",
+        "color_surface": "",
+        "color_selection": "",
+        "color_foreground": "",
+        "color_secondary": "",
+        "color_muted": "",
+        "color_accent": "",
+        "color_recording": "",
+        "color_red": "",
+        "color_green": "",
+        "color_yellow": "",
+        "color_blue": ""
+      }
+    },
+    "petrol": {
+      "version": 1,
+      "name": "Umbra Petrol",
+      "options": {
+        "palette": "petrol",
+        "accent": "cyan",
+        "tvVisibility": "balanced",
+        "gradients": "on",
+        "corners": "8",
+        "fontScale": "100",
+        "menuWidth": "470",
+        "showClock": "on",
+        "progressHeight": "5",
+        "eventDescription": "on",
+        "technicalInfo": "on",
+        "tunerInfo": "off",
+        "cryptoInfo": "off",
+        "weatherInfo": "off",
+        "serviceIcons": "all",
+        "infobarLayout": "classic",
+        "epgArtwork": "none",
+        "channelArtwork": "none",
+        "channelScreen": "ChannelSelectionDefault",
+        "channelRows": "Extended",
+        "showPicon": "on",
+        "showNumber": "on",
+        "showServiceTypeIcon": "on",
+        "showCryptoIcon": "on",
+        "piconRatio": "167",
+        "showTimers": "off",
+        "recordIndicatorMode": "2",
+        "color_background": "",
+        "color_surface": "",
+        "color_selection": "",
+        "color_foreground": "",
+        "color_secondary": "",
+        "color_muted": "",
+        "color_accent": "",
+        "color_recording": "",
+        "color_red": "",
+        "color_green": "",
+        "color_yellow": "",
+        "color_blue": ""
+      }
+    },
+    "clear": {
+      "version": 1,
+      "name": "Umbra Klar",
+      "options": {
+        "palette": "carbon",
+        "accent": "theme",
+        "tvVisibility": "opaque",
+        "gradients": "off",
+        "corners": "8",
+        "fontScale": "105",
+        "menuWidth": "560",
+        "showClock": "on",
+        "progressHeight": "7",
+        "eventDescription": "on",
+        "technicalInfo": "on",
+        "tunerInfo": "off",
+        "cryptoInfo": "off",
+        "weatherInfo": "off",
+        "serviceIcons": "all",
+        "infobarLayout": "classic",
+        "epgArtwork": "none",
+        "channelArtwork": "none",
+        "channelScreen": "ChannelSelectionDefault",
+        "channelRows": "Default",
+        "showPicon": "on",
+        "showNumber": "on",
+        "showServiceTypeIcon": "on",
+        "showCryptoIcon": "on",
+        "piconRatio": "167",
+        "showTimers": "off",
+        "recordIndicatorMode": "2",
+        "color_background": "",
+        "color_surface": "",
+        "color_selection": "",
+        "color_foreground": "",
+        "color_secondary": "",
+        "color_muted": "",
+        "color_accent": "",
+        "color_recording": "",
+        "color_red": "",
+        "color_green": "",
+        "color_yellow": "",
+        "color_blue": ""
+      }
+    },
+    "gallery": {
+      "version": 1,
+      "name": "Umbra Galerie",
+      "options": {
+        "palette": "petrol",
+        "accent": "theme",
+        "tvVisibility": "balanced",
+        "gradients": "on",
+        "corners": "8",
+        "fontScale": "100",
+        "menuWidth": "470",
+        "showClock": "on",
+        "progressHeight": "5",
+        "eventDescription": "on",
+        "technicalInfo": "on",
+        "tunerInfo": "off",
+        "cryptoInfo": "off",
+        "weatherInfo": "off",
+        "serviceIcons": "all",
+        "infobarLayout": "cover",
+        "epgArtwork": "cover",
+        "channelArtwork": "backdrop",
+        "channelScreen": "ChannelSelectionGrid",
+        "channelRows": "Gallery",
+        "showPicon": "on",
+        "showNumber": "on",
+        "showServiceTypeIcon": "on",
+        "showCryptoIcon": "on",
+        "piconRatio": "167",
+        "showTimers": "off",
+        "recordIndicatorMode": "2",
+        "color_background": "",
+        "color_surface": "",
+        "color_selection": "",
+        "color_foreground": "",
+        "color_secondary": "",
+        "color_muted": "",
+        "color_accent": "",
+        "color_recording": "",
+        "color_red": "",
+        "color_green": "",
+        "color_yellow": "",
+        "color_blue": ""
+      }
+    }
+  }
+}

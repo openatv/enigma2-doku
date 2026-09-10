@@ -1,0 +1,397 @@
+{
+  "source_document": "Umbra_Benutzerhandbuch_0.4.10.docx",
+  "source_sha256": "d385afd904c928f58b64b9cd9c389d95f04d59ab333e9ff31ae21c05e9e1e0b7",
+  "source_version": "0.4.10",
+  "source_blocks": 189,
+  "source_tables": 15,
+  "source_figures": 16,
+  "chapters": [
+    {
+      "slug": "bedienung",
+      "title": "Bedienen und speichern",
+      "blocks": [
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/bedienung.md",
+        "en": "src/content/docs/en/skins/umbra/bedienung.md"
+      }
+    },
+    {
+      "slug": "stilpakete",
+      "title": "Stilpakete und eigene Abweichungen",
+      "blocks": [
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/stilpakete.md",
+        "en": "src/content/docs/en/skins/umbra/stilpakete.md"
+      }
+    },
+    {
+      "slug": "farben",
+      "title": "Farbwelten vergleichen",
+      "blocks": [
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/farben.mdx",
+        "en": "src/content/docs/en/skins/umbra/farben.mdx"
+      }
+    },
+    {
+      "slug": "rgb",
+      "title": "Eigene RGB Farben",
+      "blocks": [
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/rgb.mdx",
+        "en": "src/content/docs/en/skins/umbra/rgb.mdx"
+      }
+    },
+    {
+      "slug": "layout",
+      "title": "Layout und Lesbarkeit",
+      "blocks": [
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/layout.mdx",
+        "en": "src/content/docs/en/skins/umbra/layout.mdx"
+      }
+    },
+    {
+      "slug": "senderliste",
+      "title": "Die Senderlistenansicht wählen",
+      "blocks": [
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/senderliste.mdx",
+        "en": "src/content/docs/en/skins/umbra/senderliste.mdx"
+      }
+    },
+    {
+      "slug": "galerie-spalten",
+      "title": "Galerie und Spalten",
+      "blocks": [
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/galerie-spalten.mdx",
+        "en": "src/content/docs/en/skins/umbra/galerie-spalten.mdx"
+      }
+    },
+    {
+      "slug": "senderzeilen",
+      "title": "Senderzeilen und Symbole",
+      "blocks": [
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/senderzeilen.mdx",
+        "en": "src/content/docs/en/skins/umbra/senderzeilen.mdx"
+      }
+    },
+    {
+      "slug": "aufnahmen",
+      "title": "Timer und Aufnahmen in Listen",
+      "blocks": [
+        76,
+        77,
+        78,
+        79,
+        80,
+        81,
+        82,
+        83,
+        84,
+        85
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/aufnahmen.mdx",
+        "en": "src/content/docs/en/skins/umbra/aufnahmen.mdx"
+      }
+    },
+    {
+      "slug": "infobar",
+      "title": "Die Infobar gestalten",
+      "blocks": [
+        86,
+        87,
+        88,
+        89,
+        90,
+        91,
+        92,
+        93,
+        94,
+        95
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/infobar.mdx",
+        "en": "src/content/docs/en/skins/umbra/infobar.mdx"
+      }
+    },
+    {
+      "slug": "statussymbole",
+      "title": "Infobar Informationen und Status",
+      "blocks": [
+        96,
+        97,
+        98,
+        99,
+        100,
+        101,
+        102,
+        103,
+        104
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/statussymbole.mdx",
+        "en": "src/content/docs/en/skins/umbra/statussymbole.mdx"
+      }
+    },
+    {
+      "slug": "wetter",
+      "title": "Wetter oben links",
+      "blocks": [
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/wetter.mdx",
+        "en": "src/content/docs/en/skins/umbra/wetter.mdx"
+      }
+    },
+    {
+      "slug": "e2mdb",
+      "title": "Bilder mit e2MDB",
+      "blocks": [
+        116,
+        117,
+        118,
+        119,
+        120,
+        121,
+        122,
+        123,
+        124
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/e2mdb.mdx",
+        "en": "src/content/docs/en/skins/umbra/e2mdb.mdx"
+      }
+    },
+    {
+      "slug": "plugins",
+      "title": "Andere Bildschirme und Plugins",
+      "blocks": [
+        125,
+        126,
+        127,
+        128,
+        129,
+        130,
+        131,
+        132,
+        133
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/plugins.mdx",
+        "en": "src/content/docs/en/skins/umbra/plugins.mdx"
+      }
+    },
+    {
+      "slug": "eigene-stile",
+      "title": "Eigene Stilpakete speichern",
+      "blocks": [
+        134,
+        135,
+        136,
+        137,
+        138,
+        139,
+        140,
+        141,
+        142,
+        143,
+        144,
+        145
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/eigene-stile.mdx",
+        "en": "src/content/docs/en/skins/umbra/eigene-stile.mdx"
+      }
+    },
+    {
+      "slug": "rezepte",
+      "title": "Zurücksetzen und praktische Rezepte",
+      "blocks": [
+        146,
+        147,
+        148,
+        149,
+        150,
+        151,
+        152,
+        153,
+        154,
+        155,
+        156,
+        157,
+        158,
+        159
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/rezepte.md",
+        "en": "src/content/docs/en/skins/umbra/rezepte.md"
+      }
+    },
+    {
+      "slug": "aufloesung",
+      "title": "Auflösung und Voraussetzungen",
+      "blocks": [
+        160,
+        161,
+        162,
+        163,
+        164,
+        165,
+        166,
+        167,
+        168,
+        169,
+        170
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/aufloesung.md",
+        "en": "src/content/docs/en/skins/umbra/aufloesung.md"
+      }
+    },
+    {
+      "slug": "hilfe",
+      "title": "Hilfe bei typischen Fragen",
+      "blocks": [
+        171,
+        172,
+        173,
+        174,
+        175,
+        176,
+        177,
+        178,
+        179,
+        180,
+        181,
+        182,
+        183,
+        184,
+        185,
+        186,
+        187,
+        188
+      ],
+      "targets": {
+        "de": "src/content/docs/de/skins/umbra/hilfe.md",
+        "en": "src/content/docs/en/skins/umbra/hilfe.md"
+      }
+    }
+  ],
+  "introduction_blocks": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "introduction_target": "skins/umbra/index.mdx",
+  "additional_chapters": [
+    "index",
+    "optionen",
+    "quellen",
+    "menues-infoleisten"
+  ],
+  "related_installation_chapter": "skins/installieren.mdx",
+  "reviewed_at": "2026-09-10",
+  "updates": [
+    "Resolution chapter updated with density profiles from 0.4.17.",
+    "Menu, InfoBarLite, SecondInfoBarECM and Infobar EPG additions through 0.4.23.",
+    "First three fields can scroll out of view; they are not pinned.",
+    "All original figures retained; original source crop is applied as a CSS viewport.",
+    "Receiver model names replaced by model-neutral explanations in reader text."
+  ]
+}

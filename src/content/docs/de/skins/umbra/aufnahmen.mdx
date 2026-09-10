@@ -1,0 +1,23 @@
+---
+title: "Umbra – Timer und Aufnahmen in Listen"
+description: "OpenATV ab 8.0: Timer und Aufnahmen in Listen. Vollständige Umbra-Anleitung mit Auswahlwerten und Beispielen."
+---
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+| Option und Auswahl | Sichtbare Wirkung |
+| --- | --- |
+| Timer anzeigen<br />Ein · Aus | Blendet die vom nativen Senderlistenmodell gelieferten Timerhinweise ein. Es werden dadurch keine Timer erstellt oder verändert. |
+| Aufnahme-Markierung<br />Aus · Symbol · Textfarbe | Aus: keine entsprechende Markierung. Symbol: natives Aufnahmesymbol. Textfarbe: laufende Aufnahme durch die dafür vorgesehene Textfarbe kennzeichnen. |
+
+## Laufende Aufnahmen gut erkennen
+
+Für Textfarbe ist „Farben > Aufnahme-Text (RGB)“ zuständig. Umbra verwendet standardmäßig helles Gold. Die Einstellung gilt für ausgewählte und nicht ausgewählte Einträge. Rote Farbtasten oder Fehlermeldungen müssen dafür nicht umgefärbt werden.
+
+## Was Timer anzeigen nicht bedeutet
+
+Die Anzeigeoptionen sind keine Aufnahmesteuerung. Aufnahme starten, Timer bearbeiten, Serienregeln und Konfliktbehandlung gehören weiterhin zu OpenATV beziehungsweise zum jeweiligen Aufnahmeplugin.
+
+<ManualFigure id="recording-colors" language="de" alt="Berechneter Farbvergleich mit der Umbra-Vorgabe FFE59A. Beispielzeilen zur Wirkung der Textfarbe, kein gestarteter Aufnahmetest und kein zusätzlicher Listenmodus." caption="Berechneter Farbvergleich mit der Umbra-Vorgabe FFE59A. Beispielzeilen zur Wirkung der Textfarbe, kein gestarteter Aufnahmetest und kein zusätzlicher Listenmodus." />
+
+[Umbra-Übersicht](../) · [Alle 39 Stiloptionen](../optionen/)

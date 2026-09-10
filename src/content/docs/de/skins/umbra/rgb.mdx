@@ -1,0 +1,31 @@
+---
+title: "Umbra – Eigene RGB Farben"
+description: "OpenATV ab 8.0: Eigene RGB Farben. Vollständige Umbra-Anleitung mit Auswahlwerten und Beispielen."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="umbra-rgb" language="de" alt="Eigene RGB-Farben in Umbra" caption="Neue native FHD-Aufnahme mit deutscher GUI. Beispielwerte; im Aufnahmedialog wurde nichts gespeichert." />
+
+Bereich Farben. Trage sechs Hexziffern ein, zum Beispiel FFE59A oder #FFE59A. Leer bedeutet „Vom Stilpaket“. Es sind RGB-Farben ohne eigenen Alphakanal. Eine unlesbare Farbkombination wird nicht automatisch korrigiert.
+
+| RGB Feld | Verwendung |
+| --- | --- |
+| Hintergrund (RGB) | Große Hintergrundbereiche. |
+| Flächen (RGB) | Flächen, Dialogteile und die Basis abgeleiteter Schatten. |
+| Auswahl (RGB) | Markierte Einträge und ihre abgeleiteten Verlaufsfarben. |
+| Haupttext (RGB) | Hauptbeschriftungen und zentrale Texte. |
+| Nebentext (RGB) | Begleittexte und zusätzliche Informationen. |
+| Dezenter Text (RGB) | Zurückhaltende Angaben und Teile von Verläufen. |
+| Akzent (RGB) | Eigene Akzentfarbe; übersteuert auch die gewählte Fortschrittsfarbe. |
+| Aufnahme-Text (RGB) | Textmarkierung laufender Aufnahmen in der Senderliste. Standard: helles Gold FFE59A. |
+| Rot (RGB) | Rote Farbrolle, unter anderem Farbtasten und entsprechende Hinweise. |
+| Grün (RGB) | Grüne Farbrolle und zugehörige Farbtasten. |
+| Gelb (RGB) | Gelbe Farbrolle und zugehörige Farbtasten. |
+| Blau (RGB) | Blaue Farbrolle und zugehörige Farbtasten. |
+
+## Lesbarkeit zuerst
+
+Prüfe Haupttext und Nebentext auf einer normalen sowie einer ausgewählten Zeile. Kontrolliere laufende Aufnahmen gesondert. „Aufnahme-Text“ ändert nicht den roten Aufnahmepunkt der Infobar und nicht alle Warn- oder Fehlerfarben anderer Komponenten.
+
+[Umbra-Übersicht](../) · [Alle 39 Stiloptionen](../optionen/)

@@ -1,0 +1,24 @@
+---
+title: "Umbra – Infobar Informationen und Status"
+description: "OpenATV ab 8.0: Infobar Informationen und Status. Vollständige Umbra-Anleitung mit Auswahlwerten und Beispielen."
+---
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+| Option und Auswahl | Sichtbare Wirkung |
+| --- | --- |
+| Ausführlicher Sendungstext<br />Ein · Aus | Zeigt den zusätzlichen ausführlichen Sendungstext. Fehlende EPG-Texte kann der Skin nicht ergänzen. |
+| Video- und Audioinformationen<br />Ein · Aus | Zeigt Video-/Audioangaben wie Videoformat und Audiocodec. Die Statussymbole sind davon unabhängig. |
+| Statussymbole<br />Alle, inaktive dezent · Nur aktive · Aus | Alle: inaktive Symbole erscheinen dezent. Nur aktive: nur die passenden Statusanzeigen. Aus: Statussymbolleiste aus; die Aufnahmeanzeige bleibt unabhängig. |
+| Tuner- und Signalinfos<br />Aus · Tuner / SNR / AGC / BER · Mit Transponderdaten | Aus, Tuner/SNR/AGC/BER oder zusätzlich Transponderdaten. Die Werte kommen von OpenATV und vom Tuner-Treiber. |
+| Verschlüsselungsinfos<br />Aus · Ein | Zeigt Verschlüsselungsstatus und verfügbare CA-Angaben. Für Details muss auch die entsprechende OpenATV-Einstellung zur Anzeige von Verschlüsselungsinfos erlauben, diese Daten anzuzeigen. |
+
+<ManualFigure id="infobar-diagnostics" language="de" alt="Detailausschnitt: Tunerbelegung, SNR, AGC, BER, Transponder, CA-Informationen sowie Video-/Audio- und Statusangaben." caption="Detailausschnitt: Tunerbelegung, SNR, AGC, BER, Transponder, CA-Informationen sowie Video-/Audio- und Statusangaben." crop={[0, 0.8, 0, 0]} />
+
+## Werte richtig einordnen
+
+SNR beschreibt die Signalqualität, AGC einen vom Treiber gelieferten Pegelwert und BER die gemeldete Bitfehlerrate. Fehlende oder ersetzte Werte sind geräteabhängig. Umbra berechnet sie nicht selbst. Bei frei empfangbaren Sendern stehen keine aktiven Entschlüsselungsdaten zur Verfügung.
+
+HD/UHD, HbbTV, Audio und weitere Symbole folgen den Informationen des laufenden Dienstes. Eine Anzeigeoption schaltet die technische Funktion selbst nicht ein.
+
+[Umbra-Übersicht](../) · [Alle 39 Stiloptionen](../optionen/)

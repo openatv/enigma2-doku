@@ -1,0 +1,53 @@
+---
+title: Skins vom Feed installieren und aktivieren
+description: Skin-Pakete in OpenATV herunterladen, Umbra auswählen, den Skin konfigurieren und zu einem bisherigen Skin zurückkehren.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Ein **Skin-Paket** installiert die Dateien für eine neue Oberfläche. Die **Skinauswahl** aktiviert sie. Ein mitgeliefertes **Konfigurationsplugin** stellt anschließend Farben und Ansichten ein. Umbra dient hier als Beispiel für einen kompakten HD/FHD/WQHD-Skin **ab OpenATV 8.0**.
+
+## Vom Feed herunterladen
+
+1. Prüfe Internetverbindung und freien Speicher im internen Flash. Ein freier NAS-Ordner ersetzt keinen freien Platz für ein Skin-Paket.
+2. Öffne **MENU → Erweiterungen** und im normalen Anzeigemodus **Grün → Plugins installieren**.
+3. Warte auf den Paketkatalog und öffne **Skins / Skin-Pakete**.
+4. Wähle das gewünschte Paket, hier **umbra**. Der technische Paketname lautet `enigma2-plugin-skins-umbra`.
+5. Markiere es mit der im Dialog angegebenen Auswahlaktion. Starte die Installation mit **Grün** und bestätige die angezeigte Paketliste.
+6. Warte auf die Abschlussmeldung. Paketabhängigkeiten kommen über die Paketverwaltung mit. Einen angeforderten GUI-Neustart durchführen.
+
+<Capture id="plugin-feed" language="de" alt="Plugin-Feed mit Paketkategorien einschließlich Skins" caption="Allgemeines Feed-Beispiel in MetrixHD. Die Kategorie Skins enthält zum Image passende Skin-Pakete; Namen und Angebot können sich ändern." />
+
+Ist Umbra bereits installiert, erscheint es möglicherweise nicht unter den noch installierbaren Paketen. Prüfe dann die Skinauswahl und den Eintrag **Umbra** in den Erweiterungen. Für die Bilder dieser Anleitung wurde die vorhandene Installation verwendet.
+
+Fehlt die Kategorie, prüfe die Filter der Plugin-Verwaltung. Fehlt nur ein Skin, prüfe Imageversion, Feed und Paketnamen. Keine Paketquellen eines anderen Images eintragen, um eine fehlende Abhängigkeit zu umgehen. [Plugin-Verwaltung](../../plugins/installieren/) erklärt Installation, Updates und Entfernen.
+
+## Den installierten Skin aktivieren
+
+Öffne **MENU → Einstellungen → Bedienung & Oberfläche → Skinauswahl**. Der übergeordnete Menüname kann mit der Übersetzung variieren; suche nach **Skinauswahl**.
+
+1. Markiere **Skin der Bedienoberfläche** und wähle **Umbra** mit Links/Rechts.
+2. Prüfe die Auswahl und drücke **Grün → Speichern**.
+3. Warte auf das Neuladen. Je nach Skin, Image und Einstellung wird ein GUI-Neustart verlangt.
+4. Öffne danach **MENU → Erweiterungen → Umbra** für die Umbra-Einstellungen.
+
+<Capture id="umbra-skin-selection" language="de" alt="OpenATV-Skinauswahl mit Umbra" caption="Native Skinauswahl im Umbra-FHD-Skin. Die Auswahlzeile wurde für das Bild markiert; der Dialog hat keinen Skinwechsel gespeichert." />
+
+**Schnelles Neuladen des Skins** gehört zur allgemeinen Skinauswahl. Umbra besitzt zusätzlich einen eigenen Ablauf zum Anwenden seiner Stilwerte. Ein Skinwechsel, das Anwenden eines Stilpakets und das Umschalten der OSD-Auflösung sind deshalb unterschiedliche Aktionen.
+
+## Umbra zum ersten Mal einstellen
+
+Beginne mit **Umbra Graphit** und einer unterstützten Auflösung. Im Umbra-Plugin wählst du **Stilpaket**, **Bereich** und **OSD-Auflösung**. Mit Grün wird die Gestaltung angewendet; ein Paketwechsel allein setzt vorhandene Einzelabweichungen nicht zurück. [Bedienung](../umbra/bedienung/) und [Stilpakete](../umbra/stilpakete/) erklären die Reihenfolge.
+
+Die HDMI-Ausgabe ist unabhängig von der Skin-Auflösung. WQHD nur auf einer dafür geeigneten Box verwenden. Die [Auflösungstabelle](../umbra/aufloesung/) erklärt HD, FHD und WQHD.
+
+## Zurückwechseln, aktualisieren oder entfernen
+
+- **Zurückwechseln:** In der Skinauswahl den bisherigen installierten Skin auswählen, speichern und gegebenenfalls die GUI neu starten.
+- **Aktualisieren:** Den zum Image gehörenden Feed und die Softwareverwaltung nutzen. Eigene Umbra-Stilpakete vorher außerhalb der Box sichern.
+- **Entfernen:** Zuerst einen anderen Skin aktivieren. Danach das nicht mehr benötigte Paket über die Plugin-Verwaltung entfernen und die angezeigten Abhängigkeiten beachten.
+- **GUI startet nach einem Skinwechsel nicht:** Die [SSH-Anleitung](../../netzwerk/fernzugriff/) erklärt Stoppen und Starten. Bei gestoppter GUI kann ein erfahrener Anwender `config.skin.primary_skin` in `/etc/enigma2/settings` auf einen tatsächlich vorhandenen, zuvor funktionierenden Skin zurücksetzen. Keine laufende settings-Datei blind überschreiben.
+
+Picons, Frontdisplay-Skins, e2MDB-Metadaten und Untertitel bleiben eigene Themen. Weiter zum [vollständigen Umbra-Handbuch](../umbra/) oder zu [MetrixHD](../metrixhd/).
+
+Quellen: [OpenATV-Paketverwaltung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/PluginBrowser.py), [Skinauswahl](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SkinSelection.py).

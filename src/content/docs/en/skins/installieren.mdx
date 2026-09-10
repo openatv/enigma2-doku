@@ -1,0 +1,53 @@
+---
+title: Install and activate skins from the feed
+description: Download OpenATV skin packages, activate Umbra, configure its appearance and return to a previous skin.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+A **skin package** installs the files for a new interface. **Skin Settings** activates it. A supplied **configuration plugin** then adjusts colours and views. Umbra is the example here: a compact HD/FHD/WQHD skin **for OpenATV from 8.0**.
+
+## Download from the feed
+
+1. Check internet access and free internal flash space. Free space on a NAS does not replace the space required to install a skin package.
+2. Open **MENU → Plugins** and, in normal display mode, **Green → Install Plugins**.
+3. Wait for the package catalogue and open **Skins / Skin Packages**.
+4. Choose the package, here **umbra**. Its technical name is `enigma2-plugin-skins-umbra`.
+5. Mark it using the selection action shown in the dialog. Press **Green** to install and confirm the displayed package list.
+6. Wait for completion. The package manager handles dependencies. Perform a GUI restart if requested.
+
+<Capture id="plugin-feed" language="en" alt="Plugin feed with package categories including skins" caption="General feed example in MetrixHD. Skin Packages contains skins for the installed image; package names and availability can change." />
+
+An already installed Umbra package may not appear in the list of packages available for installation. Check Skin Settings and the **Umbra** entry in Plugins instead. The pictures in this handbook use the existing installation.
+
+If the whole category is missing, check the plugin browser's category filters. If one skin is missing, check image version, feed and package name. Do not add a different image's package sources to work around a dependency. [Plugin management](../../plugins/installieren/) explains installation, updates and removal.
+
+## Activate the installed skin
+
+Open **MENU → Setup → User Interface → Skin Settings**. Parent menu wording can vary with the translation; search for **Skin Settings**.
+
+1. Select **GUI Skin** and choose **Umbra** with Left/Right.
+2. Check the selection and press **Green → Save**.
+3. Wait for reloading. A GUI restart may be requested depending on the skin, image and settings.
+4. Open **MENU → Plugins → Umbra** for its appearance settings.
+
+<Capture id="umbra-skin-selection" language="en" alt="OpenATV Skin Settings with Umbra selected" caption="Native Skin Settings in Umbra FHD. The row was selected for the screenshot; this dialog did not save a skin change." />
+
+**Fast Skin Reload** belongs to the general skin selector. Umbra also has its own process for applying style values. Switching skins, applying a style pack and changing OSD resolution are therefore separate actions.
+
+## Configure Umbra for the first time
+
+Start with **Umbra Graphit** and a supported resolution. The Umbra plugin offers **Style pack**, **Section** and **OSD resolution**. Green applies the appearance. Switching packs alone does not reset existing personal overrides. See [controls](../umbra/bedienung/) and [style packs](../umbra/stilpakete/).
+
+HDMI output is independent of skin resolution. Use WQHD only on a suitable receiver. The [resolution table](../umbra/aufloesung/) explains HD, FHD and WQHD.
+
+## Switch back, update or remove
+
+- **Switch back:** Choose the previously installed skin in Skin Settings, save and restart the GUI if requested.
+- **Update:** Use the feed belonging to your image and the software manager. Keep a copy of personal Umbra style packs outside the receiver first.
+- **Remove:** Activate a different skin first, then remove the unwanted package through plugin management and review any dependencies shown.
+- **GUI does not start after switching:** The [SSH guide](../../netzwerk/fernzugriff/) explains stopping and starting Enigma2. With the GUI stopped, an experienced user can reset `config.skin.primary_skin` in `/etc/enigma2/settings` to a genuinely installed, previously working skin. Do not blindly overwrite the settings file while Enigma2 runs.
+
+Picons, front-display skins, e2MDB metadata and subtitles are separate topics. Continue with the [complete Umbra handbook](../umbra/) or [MetrixHD](../metrixhd/).
+
+Sources: [OpenATV package management](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/PluginBrowser.py), [skin selection](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SkinSelection.py).

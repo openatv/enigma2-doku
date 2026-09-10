@@ -1,0 +1,30 @@
+---
+title: "Umbra – Choose a channel-list view"
+description: "OpenATV 8.0+: Choose a channel-list view. Complete Umbra instructions with settings and examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+import ManualFigure from '../../../../../components/ManualFigure.astro';
+
+<Capture id="umbra-channels" language="en" alt="Umbra channel list settings" caption="New native FHD capture with English Enigma2. Umbra labels remain German in this plugin version; example values were not saved." />
+
+Open **Channel list (Kanalliste) → View (Ansicht)**. Umbra uses OpenATV's native channel list and its settings. Press MENU inside the channel list for further OpenATV options; Umbra does not manage every one of them.
+
+<ManualFigure id="channel-details" language="en" alt="Original HD Details view from Umbra 0.4.10: channels on the left and programme information on the right. Artwork was not available for every programme." caption="Original HD Details view from Umbra 0.4.10: channels on the left and programme information on the right. Artwork was not available for every programme." />
+
+| View | What it shows |
+| --- | --- |
+| Details | List and programme description. |
+| Live TV window | List with a small live-TV picture. |
+| Full screen | More width for the list. |
+| Gallery | Programme/channel tiles. |
+| Columns | Tall channel columns. |
+
+The separate **TV image behind details** option is in Colours. Choices are Off, Subtle, Medium and Clear. It controls TV showing through supported channel-detail areas. Off makes that area opaque. It is not a universal transparency control for every screen.
+
+When an Umbra-managed value is changed in the native OpenATV channel-list menu, opening Umbra again adopts the change as a personal override. Other OpenATV settings stay independent. This explains why a manually selected native view can take precedence over the newly selected style pack.
+
+Artwork requires matching data. The example shows how a detail view remains useful when some channels or programmes have no suitable image.
+
+[Umbra overview](../) · [All 39 style options](../optionen/)
