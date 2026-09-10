@@ -1,0 +1,753 @@
+{
+  "date": "2026-09-10",
+  "source_commit": "fdc9347241245fd18fd0b8bc93727237189c916c",
+  "installed_source_commit": "c446c39a38957950de9989538e87c6278d2470cc",
+  "menu": "extended",
+  "entries": [
+    {
+      "key": "device_manager",
+      "label": "Device Manager",
+      "level": "0",
+      "requires": null,
+      "guide": "speicher/laufwerke"
+    },
+    {
+      "key": "swap_manager",
+      "label": "Swap Manager",
+      "level": "2",
+      "requires": null,
+      "guide": "system/swap"
+    },
+    {
+      "key": "flash_expander",
+      "label": "Flash Expander",
+      "level": "2",
+      "requires": null,
+      "guide": "system/flash-expander"
+    },
+    {
+      "key": "hdmicec",
+      "label": "HDMI-CEC Settings",
+      "level": "0",
+      "requires": "HDMICEC",
+      "guide": "bild-ton/hdmi-cec"
+    },
+    {
+      "key": "script_manager",
+      "label": "Script Manager",
+      "level": "1",
+      "requires": null,
+      "guide": "system/skripte"
+    },
+    {
+      "key": "time_setup",
+      "label": "Time Settings",
+      "level": "0",
+      "requires": null,
+      "guide": "system/zeit-aufwachen"
+    },
+    {
+      "key": "logs_setup",
+      "label": "Logs Settings",
+      "level": "0",
+      "requires": null,
+      "guide": "hilfe/logs-diagnose"
+    },
+    {
+      "key": "rfmod_setup",
+      "label": "RF Output Settings",
+      "level": "1",
+      "requires": "RfModulator",
+      "guide": "system/hf-ausgang"
+    },
+    {
+      "key": "factory_reset",
+      "label": "Factory Reset",
+      "level": "0",
+      "requires": null,
+      "guide": "system/werkseinstellungen"
+    }
+  ],
+  "setups": {
+    "HardDisk": {
+      "reference": "einstellungen/referenz/harddisk",
+      "fields": [
+        {
+          "label": "Hard disk Standby after",
+          "key": "config.usage.hdd_standby"
+        },
+        {
+          "label": "Hard disk Standby in receiver Standby after",
+          "key": "config.usage.hdd_standby_in_standby"
+        },
+        {
+          "label": "Use Harddisk Hardware Standby Timer",
+          "key": "config.usage.hdd_timer"
+        },
+        {
+          "label": "Show unknown devices",
+          "key": "config.usage.showUnknownDevices"
+        }
+      ]
+    },
+    "HDMICEC": {
+      "reference": "einstellungen/referenz/hdmicec",
+      "fields": [
+        {
+          "label": "Enabled",
+          "key": "config.hdmicec.enabled"
+        },
+        {
+          "label": "Advanced Settings",
+          "key": "config.hdmicec.advanced_settings"
+        },
+        {
+          "label": "Regard Deep Standby as Standby",
+          "key": "config.hdmicec.handle_deepstandby_events"
+        },
+        {
+          "label": "Wait for timesync at startup",
+          "key": "config.hdmicec.deepstandby_waitfortimesync"
+        },
+        {
+          "label": "Put TV in Standby",
+          "key": "config.hdmicec.control_tv_standby"
+        },
+        {
+          "label": "Even if TV has another input active?",
+          "key": "config.hdmicec.tv_standby_notinputactive"
+        },
+        {
+          "label": "Wake up TV from Standby",
+          "key": "config.hdmicec.control_tv_wakeup"
+        },
+        {
+          "label": "Even if a 'Zap' recording timer starting?",
+          "key": "config.hdmicec.tv_wakeup_zaptimer"
+        },
+        {
+          "label": "Even if a 'Zap and Record' recording timer starting?",
+          "key": "config.hdmicec.tv_wakeup_zapandrecordtimer"
+        },
+        {
+          "label": "Even if a 'Wakeup' scheduled task starting?",
+          "key": "config.hdmicec.tv_wakeup_wakeuppowertimer"
+        },
+        {
+          "label": "Switch TV to correct input",
+          "key": "config.hdmicec.report_active_source"
+        },
+        {
+          "label": "Switch off the TV to correct input",
+          "key": "config.hdmicec.workaround_activesource"
+        },
+        {
+          "label": "Handle wake up from TV",
+          "key": "config.hdmicec.handle_tv_wakeup"
+        },
+        {
+          "label": "Handle Standby from TV",
+          "key": "config.hdmicec.handle_tv_standby"
+        },
+        {
+          "label": "Process action from TV",
+          "key": "config.hdmicec.handle_tv_input"
+        },
+        {
+          "label": "Time delay until Standby or Deep Standby",
+          "key": "config.hdmicec.handle_tv_delaytime"
+        },
+        {
+          "label": "Use TV remote control",
+          "key": "config.hdmicec.report_active_menu"
+        },
+        {
+          "label": "Forward volume keys",
+          "key": "config.hdmicec.volume_forwarding"
+        },
+        {
+          "label": "Put your AV Receiver or Soundbar in Standby",
+          "key": "config.hdmicec.control_receiver_standby"
+        },
+        {
+          "label": "Wake up your AV Receiver or Soundbar from Standby",
+          "key": "config.hdmicec.control_receiver_wakeup"
+        },
+        {
+          "label": "Minimum send interval",
+          "key": "config.hdmicec.minimum_send_interval"
+        },
+        {
+          "label": "Repeat the sent standby and wake up commands",
+          "key": "config.hdmicec.messages_repeat"
+        },
+        {
+          "label": "Time delay for the repeated transmission",
+          "key": "config.hdmicec.messages_repeat_slowdown"
+        },
+        {
+          "label": "Repeat the standby commands",
+          "key": "config.hdmicec.messages_repeat_standby"
+        },
+        {
+          "label": "Check power and input state from TV",
+          "key": "config.hdmicec.check_tv_state"
+        },
+        {
+          "label": "Ignore unexpectedly wake up and stay in Standby",
+          "key": "config.hdmicec.workaround_turnbackon"
+        },
+        {
+          "label": "Use HDMI-preemphasis",
+          "key": "config.hdmicec.preemphasis"
+        },
+        {
+          "label": "Enable command line function",
+          "key": "config.hdmicec.commandline"
+        },
+        {
+          "label": "Enable debug log",
+          "key": "config.hdmicec.debug"
+        }
+      ]
+    },
+    "Time": {
+      "reference": "einstellungen/referenz/time",
+      "fields": [
+        {
+          "label": "Time zone area",
+          "key": "config.timezone.area"
+        },
+        {
+          "label": "Time zone",
+          "key": "config.timezone.val"
+        },
+        {
+          "label": "Sync time using",
+          "key": "config.misc.SyncTimeUsing"
+        },
+        {
+          "label": "NTP server",
+          "key": "config.misc.NTPserver"
+        },
+        {
+          "label": "Sync NTP every",
+          "key": "config.misc.useNTPminutes"
+        },
+        {
+          "label": "Date style",
+          "key": "config.usage.date.dayfull"
+        },
+        {
+          "label": "Time style",
+          "key": "config.usage.time.long"
+        }
+      ]
+    },
+    "Logs": {
+      "reference": "einstellungen/referenz/logs",
+      "fields": [
+        {
+          "label": "Logs location",
+          "key": "config.crash.debug_path"
+        },
+        {
+          "label": "Handle Python crashes",
+          "key": "config.crash.bsodpython"
+        },
+        {
+          "label": "Show crash info on screen and write crash log for x times",
+          "key": "config.crash.bsodhide"
+        },
+        {
+          "label": "Restart GUI after x crashes",
+          "key": "config.crash.bsodmax"
+        },
+        {
+          "label": "Enable debug log *",
+          "key": "config.crash.debugLevel"
+        },
+        {
+          "label": "Include international data *",
+          "key": "config.crash.debugInternational"
+        },
+        {
+          "label": "Include MultiBoot data *",
+          "key": "config.crash.debugMultiBoot"
+        },
+        {
+          "label": "Include keyboard data",
+          "key": "config.crash.debugKeyboards"
+        },
+        {
+          "label": "Include remote control data",
+          "key": "config.crash.debugRemoteControls"
+        },
+        {
+          "label": "Include action map data",
+          "key": "config.crash.debugActionMaps"
+        },
+        {
+          "label": "Include screen load data",
+          "key": "config.crash.debugScreens"
+        },
+        {
+          "label": "Include opkg output data",
+          "key": "config.crash.debugOpkg"
+        },
+        {
+          "label": "Include timer data",
+          "key": "config.crash.debugTimers"
+        },
+        {
+          "label": "Include seek data",
+          "key": "config.crash.debugSeek"
+        },
+        {
+          "label": "Include EPG data",
+          "key": "config.crash.debugEPG"
+        },
+        {
+          "label": "Include DAB+ data",
+          "key": "config.crash.debugDAB"
+        },
+        {
+          "label": "Include DVB scan data",
+          "key": "config.crash.debugDVBScan"
+        },
+        {
+          "label": "Include DVB timesync data",
+          "key": "config.crash.debugDVBTime"
+        },
+        {
+          "label": "Include DVB details",
+          "key": "config.crash.debugDVB"
+        },
+        {
+          "label": "Include teletext details",
+          "key": "config.crash.debugTeletext"
+        },
+        {
+          "label": "Include storage device data",
+          "key": "config.crash.debugStorage"
+        },
+        {
+          "label": "Include bouquet DB data",
+          "key": "config.crash.debugDVBDB"
+        },
+        {
+          "label": "Include text encoding data",
+          "key": "config.crash.debugTextEncoding"
+        },
+        {
+          "label": "Include network data",
+          "key": "config.crash.debugNetwork"
+        },
+        {
+          "label": "Include SEC/DiSEqC data",
+          "key": "config.crash.debugSec"
+        },
+        {
+          "label": "Limit debug log size (MB)",
+          "key": "config.crash.debugloglimit"
+        },
+        {
+          "label": "Show Log Manager in Extension Menu",
+          "key": "config.logmanager.showinextensions"
+        },
+        {
+          "label": "Maximum no of days",
+          "key": "config.crash.daysloglimit"
+        },
+        {
+          "label": "Maximum space used (MB)",
+          "key": "config.crash.sizeloglimit"
+        },
+        {
+          "label": "Crash at skin error for debug reasons",
+          "key": "config.crash.skin_error_crash"
+        },
+        {
+          "label": "Log python stack trace on spinner",
+          "key": "config.crash.pystackonspinner"
+        },
+        {
+          "label": "Debug log time format *",
+          "key": "config.crash.debugTimeFormat"
+        },
+        {
+          "label": "Enable GStreamer debug log *",
+          "key": "config.crash.gstdebug"
+        },
+        {
+          "label": "GStreamer debug log category *",
+          "key": "config.crash.gstdebugcategory"
+        },
+        {
+          "label": "GStreamer debug log level *",
+          "key": "config.crash.gstdebuglevel"
+        },
+        {
+          "label": "Enable GStreamer pipeline graphs *",
+          "key": "config.crash.gstdot"
+        },
+        {
+          "label": "Enable core dumps *",
+          "key": "config.crash.coredump"
+        }
+      ]
+    },
+    "RFModulator": {
+      "reference": "einstellungen/referenz/rfmodulator",
+      "fields": [
+        {
+          "label": "Modulator",
+          "key": "config.rfmod.enable"
+        },
+        {
+          "label": "Test mode",
+          "key": "config.rfmod.test"
+        },
+        {
+          "label": "Sound",
+          "key": "config.rfmod.sound"
+        },
+        {
+          "label": "Sound carrier",
+          "key": "config.rfmod.soundcarrier"
+        },
+        {
+          "label": "Channel",
+          "key": "config.rfmod.channel"
+        },
+        {
+          "label": "Fine-tune",
+          "key": "config.rfmod.finetune"
+        }
+      ]
+    },
+    "FactoryReset": {
+      "reference": "einstellungen/referenz/factoryreset",
+      "fields": [
+        {
+          "label": "Full factory reset",
+          "key": "config.factory.resetFull"
+        },
+        {
+          "label": "Reset network configuration",
+          "key": "config.factory.resetNetwork"
+        },
+        {
+          "label": "Remove all bouquet/tuning data",
+          "key": "config.factory.resetBouquets"
+        },
+        {
+          "label": "Remove all user interface data",
+          "key": "config.factory.resetUserInterfaces"
+        },
+        {
+          "label": "Remove all network mount data",
+          "key": "config.factory.resetMounts"
+        },
+        {
+          "label": "Remove all plugin setting data",
+          "key": "config.factory.resetPlugins"
+        },
+        {
+          "label": "Remove all resume point data",
+          "key": "config.factory.resetResumePoints"
+        },
+        {
+          "label": "Remove all settings data",
+          "key": "config.factory.resetSettings"
+        },
+        {
+          "label": "Remove all skin data",
+          "key": "config.factory.resetSkins"
+        },
+        {
+          "label": "Remove all timer data",
+          "key": "config.factory.resetTimers"
+        },
+        {
+          "label": "Remove all other data",
+          "key": "config.factory.resetOthers"
+        }
+      ]
+    },
+    "FlashExpander": {
+      "reference": "einstellungen/referenz/flashexpander",
+      "fields": [
+        {
+          "label": "Target location",
+          "key": "config.flashExpander.location"
+        }
+      ]
+    }
+  },
+  "sources": [
+    {
+      "path": "data/menu.xml",
+      "sha256": "0d8da7853ce8cc51e0073bb24b071a2662fe97f331afa7f41a46dc16d279fe0f",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/menu.xml"
+    },
+    {
+      "path": "data/setup.xml",
+      "sha256": "c725b62e0f57d4e418454a43d486368dd132fad54f250f5e47c294007215744c",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml"
+    },
+    {
+      "path": "data/startwizard.xml",
+      "sha256": "04cc1d571641194ec6a26439c6dd5841df20016b7f790ff2ad23079506979f7a",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/startwizard.xml"
+    },
+    {
+      "path": "data/videowizard.xml",
+      "sha256": "2f859817f2ff8781edbd3f3338dcd9e5e9cf13ee01c557e37289e4e71c84915f",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/videowizard.xml"
+    },
+    {
+      "path": "data/wizardlanguage.xml",
+      "sha256": "75f5118b67f67092dd76d49cce2047ccf576d8f7d1e8053a874b3bc0a8723b31",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/wizardlanguage.xml"
+    },
+    {
+      "path": "lib/python/StartEnigma.py",
+      "sha256": "ed113a67fb75c04c14afa7fb0bdff3649bc73d394bbb72686039a4338465c4fe",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/StartEnigma.py"
+    },
+    {
+      "path": "lib/python/Screens/Wizard.py",
+      "sha256": "e8dd3f705f22986a1234d26df8e961924ab24e038efef2bcf245b6615b4f90c4",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Wizard.py"
+    },
+    {
+      "path": "lib/python/Screens/WizardStart.py",
+      "sha256": "ea8f2997b097b94082f774d95e61025068c8c684e619d5e3dc2d1ee1cd6c8719",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/WizardStart.py"
+    },
+    {
+      "path": "lib/python/Screens/WizardVideo.py",
+      "sha256": "26db3d2c78c9a6565424bb09d56afc3c50158becd32d957b6f5220d92fb9cf1a",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/WizardVideo.py"
+    },
+    {
+      "path": "lib/python/Screens/WizardInstall.py",
+      "sha256": "12876c4c5d86684fa5aae22e069fe4f3f52026b57cde8e815c32edb76315e578",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/WizardInstall.py"
+    },
+    {
+      "path": "lib/python/Screens/FactoryReset.py",
+      "sha256": "f9c9a4d2e897912001163f38f1e9d8ff99036ca718d8a72495fade66aedd8c8b",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/FactoryReset.py"
+    },
+    {
+      "path": "lib/python/Screens/SwapManager.py",
+      "sha256": "ff6aed86a46f16eeab7ea17a990c7242858c43aadd15782b9684820ec7854ee8",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SwapManager.py"
+    },
+    {
+      "path": "lib/python/Screens/FlashExpander.py",
+      "sha256": "470c95c47cd07185d885a1804b5b2a0530a7b67373131b9adec4971004233120",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/FlashExpander.py"
+    },
+    {
+      "path": "lib/python/Screens/ScriptRunner.py",
+      "sha256": "fd2434b1722a7e80c9ccf7ab2e46a220dc1fddd8c8ef9ceddd24172311d1a89e",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ScriptRunner.py"
+    },
+    {
+      "path": "lib/python/Components/RFmod.py",
+      "sha256": "efae04a4519453f047a670aa11ecae06320987870366b9d7c638eb1a346a43bf",
+      "url": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/RFmod.py"
+    }
+  ],
+  "wizard_steps": {
+    "wizardlanguage.xml": [
+      {
+        "id": "start",
+        "conditional": false
+      },
+      {
+        "id": "end",
+        "conditional": false
+      }
+    ],
+    "videowizard.xml": [
+      {
+        "id": "inputselection",
+        "conditional": true
+      },
+      {
+        "id": "modesdetection",
+        "conditional": true
+      },
+      {
+        "id": "modedefault",
+        "conditional": true
+      },
+      {
+        "id": "modeauto",
+        "conditional": true
+      },
+      {
+        "id": "modeselection",
+        "conditional": false
+      },
+      {
+        "id": "rateselection",
+        "conditional": true
+      },
+      {
+        "id": "end",
+        "conditional": false
+      }
+    ],
+    "startwizard.xml": [
+      {
+        "id": "introduction",
+        "conditional": false
+      },
+      {
+        "id": "nwifaceselect",
+        "conditional": false
+      },
+      {
+        "id": "nwconfig",
+        "conditional": false
+      },
+      {
+        "id": "nwstatus",
+        "conditional": false
+      },
+      {
+        "id": "nwdns",
+        "conditional": false
+      },
+      {
+        "id": "flashexpander",
+        "conditional": true
+      },
+      {
+        "id": "swap",
+        "conditional": true
+      },
+      {
+        "id": "swapretry",
+        "conditional": true
+      },
+      {
+        "id": "devices",
+        "conditional": true
+      },
+      {
+        "id": "network",
+        "conditional": true
+      },
+      {
+        "id": "update",
+        "conditional": true
+      },
+      {
+        "id": "networkfailed",
+        "conditional": true
+      },
+      {
+        "id": "timezone",
+        "conditional": false
+      },
+      {
+        "id": "nima",
+        "conditional": true
+      },
+      {
+        "id": "nimb",
+        "conditional": true
+      },
+      {
+        "id": "nimc",
+        "conditional": true
+      },
+      {
+        "id": "nimd",
+        "conditional": true
+      },
+      {
+        "id": "nime",
+        "conditional": true
+      },
+      {
+        "id": "nimf",
+        "conditional": true
+      },
+      {
+        "id": "nimg",
+        "conditional": true
+      },
+      {
+        "id": "nimh",
+        "conditional": true
+      },
+      {
+        "id": "nimi",
+        "conditional": true
+      },
+      {
+        "id": "nimj",
+        "conditional": true
+      },
+      {
+        "id": "nimq",
+        "conditional": true
+      },
+      {
+        "id": "nimr",
+        "conditional": true
+      },
+      {
+        "id": "channels",
+        "conditional": true
+      },
+      {
+        "id": "scanquestion",
+        "conditional": true
+      },
+      {
+        "id": "scan",
+        "conditional": true
+      },
+      {
+        "id": "manualscan",
+        "conditional": true
+      },
+      {
+        "id": "nextscan",
+        "conditional": true
+      },
+      {
+        "id": "reboot",
+        "conditional": true
+      },
+      {
+        "id": "end",
+        "conditional": true
+      }
+    ]
+  },
+  "practical_scope": {
+    "languages": [
+      "de",
+      "en"
+    ],
+    "restart_method": "stop Enigma2; rename settings; start Enigma2",
+    "network": "Ethernet/DHCP",
+    "reception": "one connected Astra 19.2E satellite input",
+    "automatic_scan_executed": true,
+    "manual_scan_form_only": true,
+    "format_executed": false,
+    "factory_reset_executed": false,
+    "flash_expander_activated": false,
+    "swap_modified": false,
+    "new_image_flashed": false
+  }
+}

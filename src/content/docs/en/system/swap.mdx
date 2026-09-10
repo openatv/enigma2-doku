@@ -1,0 +1,48 @@
+---
+title: "Swap: relieving memory pressure"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → System → Storage Devices → Swap Manager** shows swap space and its activation. Swap can move less frequently used memory pages to storage when RAM becomes scarce. It is much slower than RAM and increases neither internal flash capacity nor recording space.
+
+<Capture id="sys-swap" language="en" alt="Swap Manager showing existing swap space" caption="Existing swap on the test receiver. No swap was created, disabled or deleted for this picture." />
+
+## Status and buttons
+
+| Display / button | Meaning |
+| --- | --- |
+| Active / inactive | Whether swap is available for use. Active does not mean heavy current usage. |
+| Path and size | Detected swap file or partition. Check the full Linux list when several areas exist. |
+| Red: Activate / Deactivate | Enable or disable detected swap. Disabling it requires enough RAM for the swapped-out data. |
+| Green: Create / Delete | Create or remove a swap file. These file-management actions are unavailable for a detected swap partition. |
+| Yellow: Autostart | Configure automatic activation at startup; the key is `config.usage.swapautostart`. |
+| EXIT / Back | Close the manager. |
+
+The status dialog partly combines information from multiple swap areas. It is not a complete inventory of all active partitions. For an accurate check over [SSH](../../netzwerk/fernzugriff/):
+
+```sh
+cat /proc/swaps
+free -h
+```
+
+`Size` is capacity and `Used` is current usage. `/proc/swaps` reports these figures in KiB.
+
+## Creating a swap file
+
+1. Permanently mount a suitable **local** drive using a Linux file system such as ext4.
+2. Check whether swap already exists and is active.
+3. If needed, choose **Green → Create** and verify the target device.
+4. Select a size. The reviewed dialog offers **32, 64, 128, 256, 512, 1024, 1536 or 2048 MB**. The appropriate size depends on RAM and plugin usage.
+5. Wait for creation, activate with **Red**, then enable **Yellow → Autostart** if required.
+6. After a normal restart, check the status and `/proc/swaps` again.
+
+The file is named `swapfile` in the selected directory. The drive must have enough free space. Some versions may also offer FAT media; device detection and the failure message are not fully consistent in the reviewed source. This guide therefore uses a local ext4 drive as its example. **NAS, NFS and CIFS mounts are unsuitable swap destinations.**
+
+## Removing swap and troubleshooting
+
+Before disconnecting a swap drive, finish active tasks, ensure enough free RAM, deactivate swap and disable its autostart. If deactivation fails because memory is scarce, leave the drive connected and reduce memory usage. Do not delete an active swap file using a file manager.
+
+Frequent swapping can cause delays and keep a hard disk awake. Increasing swap repeatedly does not resolve every memory problem. Check plugins, artwork caches and concurrent tasks too.
+
+The start wizard may offer a separate swap step on receivers with limited memory. This is a **conditional** step. See the [start wizard](../../erste-schritte/startassistent/) and how swap differs from [Flash Expander](../flash-expander/).

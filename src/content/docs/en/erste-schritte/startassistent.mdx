@@ -1,0 +1,155 @@
+---
+title: "Start wizard: the complete walkthrough"
+description: "Start OpenATV step by step: language, HDMI, networking, DNS, mount points, time, tuners, channel lists and scanning."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+This series records a **real repeat of first startup**: Enigma2 was stopped, its settings file renamed, and Enigma2 started again. The process was then completed in German and English. The example uses Ethernet, one connected satellite input for Astra 19.2°E, and previously configured drives. The guide is independent of the receiver model shown.
+
+To repeat first startup deliberately, follow [Restart the wizard](../assistent-neustarten/). After a fresh [image installation](../../wartung/usb-installation/), [AutoRestore](../../wartung/autorestore/) may restore the configuration instead, so the wizard might not appear.
+
+## 1. Select language and locale
+
+<Capture id="first-language" language="en" alt="Language and locale selection during actual first startup" caption="Select with Up/Down and confirm with OK or Green." />
+
+This selects the menu language and regional defaults. Choose the appropriate country/language variant. It does not automatically select your preferred audio track for every service; configure [audio and subtitle language preferences](../../bild-ton/tonspuren/) afterwards. Changing language may require a GUI restart before the wizard continues.
+
+## 2. Find the video output
+
+<Capture id="first-video-output" language="en" alt="Video output selection in the video wizard" caption="Select the output actually connected to the TV." />
+
+Select the correct input on the television first. Receivers with several outputs may offer **HDMI** and an analogue connection. This page can be skipped when there is only one output. In this version, the wizard moves to the next selection after ten seconds without confirmation. Press **OK** when the correct picture is visible.
+
+## 3. HDMI detection, resolution and refresh rate
+
+<Capture id="first-video-edid" language="en" alt="Automatic HDMI mode detection" caption="Detection considers the modes reported by the television." />
+
+**Automatic mode detection = Yes** uses the capabilities reported by the TV through EDID. **No** is a deliberate override for a custom configuration, for example when an intermediate device supplies incorrect information. You still select the output mode after enabling automatic detection.
+
+<Capture id="first-video-mode" language="en" alt="Video resolution selection with 1080p highlighted" caption="1080p is an example; select a mode supported by your own connection." />
+
+Available resolutions depend on receiver, driver, connection and TV. **1080p** is progressive Full HD; **1080i** uses interlaced output. UHD output is offered only when supported by the combination. This is the HDMI output resolution, not necessarily the skin's resolution. See [video output](../../bild-ton/video/) and [skin resolution](../../skins/metrixhd/).
+
+<Capture id="first-video-rate" language="en" alt="Refresh-rate selection with 50 Hz highlighted" caption="The example uses 1080p at 50 Hz." />
+
+The refresh rate must suit the TV. **50 Hz** suits much European broadcast content; `multi` allows rate switching within the offered modes. **24/25/30/60 Hz** are not quality levels. For later automatic switching, see [AutoResolution](../../bild-ton/autoresolution/). This selection can also advance automatically: check the picture and confirm promptly.
+
+## 4. Begin basic setup
+
+<Capture id="first-welcome" language="en" alt="Start wizard welcome after language and video setup" caption="Select Use the wizard to set up basic features." />
+
+**Up/Down** selects a row, **Left/Right** changes a value and **OK** continues. **EXIT/Back** returns to a previous wizard step; at the beginning it may ask whether to leave the wizard. A separately opened setup dialog uses its own colour buttons. Read the button labels along the bottom of each screen.
+
+**Exit the wizard** skips the remaining basic setup. You must then configure missing items through the regular menus; this does not automatically establish reception.
+
+## 5. Network adapter and Ethernet
+
+<Capture id="first-network" language="en" alt="Ethernet adapter selection during first setup" caption="Only available adapters appear in the list." />
+
+Choose the connected adapter. **Skip network setup** continues without configuring networking. Downloads, plugin feeds, Internet services and NTP will require a working connection later.
+
+<Capture id="first-lan" language="en" alt="Ethernet adapter configured for DHCP and automatic link speed" caption="The example retains the existing DHCP configuration." />
+
+| Field | Purpose and starting point |
+| --- | --- |
+| Enabled | The adapter must be enabled to connect. |
+| IP protocol | Use IPv4, IPv6 or both according to your network. |
+| Obtain an address automatically (DHCP) | The router assigns an address; usually the easiest starting point. |
+| Override DNS | Enable only when deliberately replacing the automatically supplied nameservers. |
+| Link speed | Normally Auto to negotiate with the router or switch. |
+
+Apply with **Green → Save**. [Manual addresses and all adapter options](../../netzwerk/manuelle-ip/) have a separate guide. A [Wi-Fi adapter](../../netzwerk/wlan/) adds wireless discovery, SSID and a network key. Only the Ethernet path was practically recorded on this test receiver.
+
+<Capture id="first-network-status" language="en" alt="Successful network connection with an assigned IP address" caption="An assigned IP confirms local connectivity; it does not by itself prove Internet access." />
+
+Depending on the path/version, this status screen appears or the wizard proceeds directly to DNS. Choose **Continue**, or configure another adapter if needed. If no address is assigned, check cabling, DHCP and adapter activation. See [network tests and restart](../../netzwerk/neustart-test/).
+
+## 6. Check DNS
+
+<Capture id="first-dns" language="en" alt="DNS and hostname configuration in the wizard" caption="These values belong to the example network. Use your own router and DNS information." />
+
+**DNS means Domain Name System**: it resolves a name such as a download server into IP addresses. [DNS configuration](../../netzwerk/dns/) explains hostname, domain, protocol preference, rotation and data source. Working automatically supplied values do not need replacing. `0.0.0.0` in an unused field is not an additional reachable DNS server.
+
+A small keyboard help window can appear while a text field is selected. Move between fields with Up/Down and continue to the next step with **OK**.
+
+## 7. Existing drives and mount points
+
+<Capture id="first-mounts" language="en" alt="Existing partitions and mount points in the start wizard" caption="The test inspected existing mount points and left this dialog with Cancel, preserving them." />
+
+This page appears when suitable partitions exist. A mount point is the directory through which a file system becomes accessible, such as `/media/hdd`. Selecting one is different from formatting. **None** means no corresponding fixed assignment in this selection.
+
+Correctly mounted drives do not need reformatting. **Green** saves changed assignments; in the reviewed flow, **Red → Cancel** leaves this dialog without changing them and the wizard continues. For new media, distinguish the [device, partition and mount point](../../speicher/laufwerke/). NAS connections are configured through [network shares](../../netzwerk/freigaben/).
+
+## 8. Time and time zone
+
+<Capture id="first-time" language="en" alt="Time zone, time source and display formats in the start wizard" caption="Select the region that matches your location." />
+
+**Time zone area and time zone** define local time, including regional daylight-saving rules. **Time synchronization** selects a source such as transponder time or NTP. The displayed default is not a recommendation for every use: IPTV and unreliable broadcast time particularly benefit from a working Internet time source. Date and time formats affect presentation.
+
+**Yellow → Use Geolocation** can preselect a time zone based on the Internet location. Correct it manually when a VPN or inaccurate location result is involved. See [time, NTP, DVB time and standby](../../system/zeit-aufwachen/) for timer and wake-up behaviour.
+
+## 9. Configure reception for the actual wiring
+
+<Capture id="first-tuner" language="en" alt="Single satellite connection configured for Astra 19.2 degrees east" caption="Example: Simple → Single → Astra 19.2°E, without a DiSEqC switch on this connection." />
+
+The receiver asks about its available tuners. The illustrated direct Astra cable uses **Simple**, **Single**, **Astra 19.2°E** and **Send DiSEqC = No**. Do not copy this onto a Unicable, motor or multiswitch installation. Use the [wiring diagrams](../../tuner/verkabelung/) and appropriate [reception guide](../../tuner/).
+
+<Capture id="first-unused-tuner" language="en" alt="An additional satellite tuner left unconfigured" caption="Leave an unconnected additional tuner unconfigured." />
+
+A single attached satellite cable does not automatically feed other independent inputs. A, B and C identify tuners provided by the receiver. Another model may expose a different number.
+
+<Capture id="first-hybrid" language="en" alt="Unconnected DVB-C and DVB-T2 reception modes on a hybrid tuner" caption="Additional reception modes appear only with the relevant hardware. Both remain unconnected in this test." />
+
+Hybrid reception modes are configured separately. This unconnected example is **not a DVB-C/DVB-T2 reception test**. FBC and other hardware variants have their own configuration rules; completing the general first-start process does not require covering all those cases.
+
+## 10. Ready-made channel list or scan
+
+<Capture id="first-channel-list" language="en" alt="Offer to install a ready-made satellite channel list" caption="The supplied default list and its label may change with the image." />
+
+A **ready-made list** avoids the initial scan and may include bouquets. It must suit your connection: listing a satellite does not make it receivable. In the reviewed code, the default list is extracted from the supplied `/etc/defaultsat.tar.gz` archive. See [installing channel lists](../../settings/senderlisten/) for additional settings packages from the feed.
+
+Select **None** to use the scanning path instead. Accepting the default list can skip the scan question.
+
+<Capture id="first-scan-choice" language="en" alt="Choice between scanning later, automatic scanning and manual scanning" caption="Scan now or return to scanning later through the reception menu." />
+
+## 11. Automatic scan
+
+<Capture id="first-auto-scan" language="en" alt="Automatic scan options inside the start wizard" caption="Review the default Clear before scan selection too." />
+
+**Network scan** refers to additional transponder information from the broadcast network, not Ethernet or Wi-Fi. Enable only connected tuners/reception paths. **Clear before scan** can remove existing channel data and affect lists or timers.
+
+<Capture id="first-scan-preserve" language="en" alt="Automatic scan with Clear before scan set to No" caption="The recorded run did not clear existing services beforehand." />
+
+Press **OK** to start scanning. See the [automatic scan guide](../../tuner/automatischer-suchlauf/) for further details.
+
+## 12. Alternative: manual scan
+
+<Capture id="first-manual-scan" language="en" alt="Manual scan in the start wizard with transponder fields" caption="This screen illustrates the available fields. Displayed defaults are not permanently valid channel frequencies." />
+
+Select a particular transponder or another offered scan scope. System, frequency, polarization, symbol rate and other parameters must match the signal. The [manual scan guide](../../tuner/manueller-suchlauf/) explains every field. After a manual scan the wizard may offer another one.
+
+This series opened and left the manual setup screen; the actual executed scan was the automatic Astra scan.
+
+## 13. Scan progress and completion
+
+<Capture id="first-scanning" language="en" alt="Astra scan in progress" caption="Wait for the scan; service counts depend on the network and scan scope." />
+
+<Capture id="first-scan-result" language="en" alt="Completed Astra scan with discovered services" caption="The actual test installation's result, not a target count for every receiver." />
+
+Close the completed results or select a service. The tested build then returned to the normal operating interface without an additional completion page. If your version shows a completion message or requests a restart, confirm with **OK** and let the restart finish.
+
+Check a free-to-air service afterwards, allow time for EPG data, and verify recording destination and time. Scanning does not automatically create a personally arranged favourites list. Continue with [bouquets and channel lists](../../settings/senderlisten/), [EPG](../../epg/grundlagen/) and [recording timers](../../timer/aufnahmen/).
+
+## Additional steps on other receivers
+
+| Condition | Possible additional step |
+| --- | --- |
+| Very small internal flash | [Flash Expander](../../system/flash-expander/) before further installation. |
+| Limited memory without existing swap | [Swap target selection](../../system/swap/), possibly offering formatting. Check existing data before accepting. |
+| SmallFlash/expander flow | Internet/package installation, retry options for connection failures and possibly a restart. |
+| Wi-Fi hardware | Select a wireless network, enter its key and establish the connection. |
+| Additional tuners or reception types | Further tuner/hybrid configuration. |
+| Plugins with their own wizard | Additional pages depending on image contents. |
+
+These branches are described from source; they were not tested as complete hardware scenarios on this receiver. [Sources and verification](../../system/quellen/) distinguish screenshots, executed steps and source descriptions.

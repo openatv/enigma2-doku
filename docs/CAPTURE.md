@@ -323,3 +323,22 @@ python tools/capture.py --host root@receiver.local --run-prefix usage-demo --pro
 Die freigegebenen Serien `ui-a-de-usage-gui` und `ui-a-en-usage-gui` enthalten 28 geprüfte Originalbilder. `usage_gui.py` trennt die im nativen Setup verwendeten Konfigurationspfade und die dynamischen Picon-/Eingabegerätebäume ab. Nicht benötigte native Handles bleiben unberührt. Speichern, Paketaktionen und Treiberänderungen sind gesperrt; die Sprachliste aktiviert keine Vorschau-Locale und entfernt ihren Paketcallback beim Schließen.
 
 Bildschirmschoner, Aufwach-Workaround, Mehrfachpfadmodus und aktivierte Gerätebearbeitung müssen als ungespeicherte Beispiele beschriftet bleiben. Der vorhandene HDD-Piconpfad ist ein Bestandsbeispiel. Verfügbare Displayfelder werden nicht um fremde Hardwarefunktionen ergänzt. AutoTimer-/EMC-Schutz und Sprachwiederherstellung gelten wie bei den anderen Profilen. 43 Helfertests bestanden, 424 native Bilder sind insgesamt freigegeben.
+
+
+## System und vollständiger Startassistent
+
+`system-guides` ergänzt sieben veröffentlichte Motive je Sprache: Systemmenü, Datenträgermenü, vorhandener Swap, Flash Expander, Skriptverwaltung sowie vollständige und teilweise Werkseinstellungen. Gesamtkatalog: 32 Profile und 224 Szenen. Werkzeugstand: `6c97fb5c8cbb56bf95a011c76c30a0c7e1533414`; 46 Helfertests bestanden.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix system-demo --profiles system-guides --restart-languages --bootlogo --output .capture-private
+```
+
+`system_guides.py` trennt die verwendeten Konfigurationsfelder von der laufenden Konfiguration. Speichern, Formatieren, Reset, Skriptausführung und Swap-Aktionen sind gesperrt. Die Swap-Ansicht übernimmt die native Erkennung, ohne deren alte Dienstmigration auszulösen. Die Skriptliste legt bei einer leeren Bestandsinstallation kein Verzeichnis an. Die nativen Reset-Gruppen bleiben vom vorhandenen Dateibestand abhängig.
+
+Die Serien `system-a-de-system-guides` und `system-a-en-system-guides` enthalten je acht Aufnahmen. Die redundante Ansicht `sys-reset-part-more` wurde bei der Sichtprüfung verworfen und aus dem zukünftigen Profil entfernt. Sie ist nicht veröffentlicht. Die übrigen 14 Motive wurden per SHA-256 freigegeben.
+
+Der wirkliche Erststart benötigt einen anderen Ablauf: Der opt-in `wizard_observer` beobachtet ausschließlich freigegebene native Wizardklassen; `tools/wizard_capture.py` prüft aktive Klasse, Sprache und frischen Zustand vor/nach `grab`. Das Werkzeug setzt nichts zurück und drückt keine Tasten. Vorbereitung und Wiederherstellung sind im Aufnahmeprojekt unter `docs/WIZARD.md` erläutert. Keinesfalls nur einzelne Plugin-Einstiegsdateien zum Deaktivieren entfernen: Enigma2 kann daraufhin den gesamten Pluginordner bereinigen.
+
+Für `wizard-real-de` und `wizard-real-en` wurde Enigma2 tatsächlich gestoppt, die Settings-Datei umbenannt und die Oberfläche neu gestartet. Je 22 Bilder dokumentieren Sprache, Video, LAN/DNS, vorhandene Mountpunkte, Zeit, Tuner und den Suchlauf. Die Bilder sind echte `grab`-Aufnahmen des erreichten Wizardzustands, kein nachgestelltes Einzelmenü und keine pauschale Bootlogo-Serie. Beide Manifeste enden vollständig an der InfoBar. Es wurde je ein automatischer Astra-Suchlauf mit 1120 gefundenen Diensten ohne vorheriges Löschen ausgeführt. Der manuelle Suchdialog wurde nur besichtigt; die angebotene Standardliste nicht installiert.
+
+Alle 58 neuen Bilder wurden einzeln visuell geprüft; zusammen 482 native PNGs. Rohzustände und Konfigurationssicherungen bleiben privat. Wiederherstellung, Abweichungen nach normalem GUI-Neustart und Website-Prüfungen stehen in `docs/PRAXISTESTS.md`. WLAN und FBC werden mit der nächsten Testbox ergänzt.

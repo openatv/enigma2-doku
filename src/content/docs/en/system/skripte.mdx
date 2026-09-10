@@ -1,0 +1,51 @@
+---
+title: "Script Manager: run your own tasks"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → System → Script Manager** runs shell scripts from `/usr/script`. Use it for tasks you have deliberately created, such as a simple system status check. It does not manage recording timers or create automatic schedules.
+
+<Capture id="sys-scripts" language="en" alt="Script Manager without installed user scripts" caption="An empty list is normal before you add your own scripts." />
+
+## Add a simple example
+
+Use [SSH or SFTP](../../netzwerk/fernzugriff/) to create `/usr/script` if necessary. Save a file named **`system-status.sh`** there containing:
+
+```sh
+#!/bin/sh
+printf 'System drive:\n'
+df -h /
+printf '\nMemory:\n'
+free -h
+```
+
+This example only reads storage and memory usage. Save files with Unix (**LF**) line endings. Use a clear filename without spaces; the reviewed manager splits filenames at spaces.
+
+```sh
+mkdir -p /usr/script
+chmod 755 /usr/script/system-status.sh
+```
+
+Inspect the content with a text editor or `cat /usr/script/system-status.sh` first. Scripts run with Enigma2's privileges, normally **root** on a receiver. Do not run an unfamiliar script based solely on its filename.
+
+## Buttons and execution
+
+1. Open Script Manager. It reads the directory and sorts detected `.sh` entries alphabetically.
+2. Select a script with **Up/Down**.
+3. Press **OK or Green → Run**, then confirm the prompt.
+4. Read the console output and errors. The console remains open after successful completion.
+5. Use **Red / Back** to leave the manager. Reopen it to discover newly transferred files if necessary.
+
+The reviewed implementation sources the script in a shell using `. /usr/script/FILE.sh`. Use **POSIX sh syntax** for this example. A Bash shebang alone does not change this invocation into Bash. Run more complex programs through an appropriate small launcher script.
+
+## Troubleshooting
+
+| Problem | Check |
+| --- | --- |
+| Empty list | Is the file really in `/usr/script`, and does its name contain `.sh`? Reopen the menu. |
+| `not found` or unexpected syntax errors | Use LF instead of Windows CRLF; check command availability and absolute file paths. |
+| Works over SSH but not from the menu | Working directory, environment and PATH may differ. Use absolute paths. |
+| A task never finishes | The script must terminate itself. Do not use an endless background loop as a menu action. |
+
+For one-off or recurring Enigma2 tasks, use the [scheduler](../../timer/aufgaben/); Linux commands can use [Cron](../../timer/cron/). Script Manager itself has no scheduling, repetition or wake-up settings.

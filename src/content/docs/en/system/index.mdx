@@ -1,0 +1,41 @@
+---
+title: "System: all menu sections"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → System** contains storage management, device control and basic system functions. This overview covers every fixed submenu in the reviewed OpenATV menu. Plugins may add entries; hardware capabilities and the setup level determine which ones your receiver displays.
+
+| Menu item | Purpose | Full guide and options |
+| --- | --- | --- |
+| Storage Devices → Device Manager | Detect, mount and unmount drives; manage mount points and file systems | [Drives](../speicher/laufwerke/), [Format and check](../speicher/formatieren-pruefen/), [File systems](../speicher/dateisysteme/); [hard disk options](../einstellungen/referenz/harddisk/) |
+| Storage Devices → Swap Manager | Provide swap space for memory pressure | [Swap: status, creation, activation and autostart](./swap/) |
+| Storage Devices → Flash Expander | Move the system's `/usr` directory onto a permanently attached drive | [Flash Expander](./flash-expander/); [target selection](../einstellungen/referenz/flashexpander/) |
+| HDMI-CEC Settings | Coordinate the TV, AVR and soundbar over HDMI | [HDMI-CEC including logging](../bild-ton/hdmi-cec/) |
+| Script Manager | Run your own shell scripts using the remote control | [Installing, running and checking scripts](./skripte/) |
+| Time Settings | Select time zone, time source and date/time formats | [Time and wake-up](./zeit-aufwachen/); [all time options](../einstellungen/referenz/time/) |
+| Logs Settings | Configure error logs and targeted debug output | [Enable and locate logs](../hilfe/logs-diagnose/); [all logging options](../einstellungen/referenz/logs/) |
+| RF Output Settings | Configure a built-in analogue RF modulator | [RF output and its six options](./hf-ausgang/); [reference](../einstellungen/referenz/rfmodulator/) |
+| Factory Reset | Reset all or selected configuration data | [Effects and reset selections](./werkseinstellungen/); [all eleven fields](../einstellungen/referenz/factoryreset/) |
+
+<Capture id="sys-menu" language="en" alt="OpenATV System menu" caption="The test receiver's System menu. RF output is absent because this receiver has no RF modulator." />
+
+## The three storage tools
+
+<Capture id="sys-storage-menu" language="en" alt="Storage Devices menu with Device Manager, Swap and Flash Expander" caption="Device Manager, Swap and Flash Expander serve different purposes." />
+
+**Device Manager** handles drives, mounts and file systems. **Swap** helps when RAM is under pressure. **Flash Expander** provides more space for part of the installed system. All three still require an appropriate [backup strategy](../wartung/backup-restore/).
+
+A [NAS recording destination](../speicher/nas-aufnahmen/) is connected through network shares. A network mount is unsuitable as a replacement for an always-available local system or swap drive.
+
+## Missing menu items
+
+If necessary, select **Expert** under **Usage & GUI → Customize → Setup mode**. The source menu assigns level 1 to Script Manager and level 2 to Swap and Flash Expander. HDMI-CEC and RF output also require device support. Check for [hidden menu entries](../erste-schritte/menue-anpassen/) too.
+
+**Customize** under Usage & GUI is a separate section. It includes startup behaviour, streaming and operating preferences; use its [existing guide](../bedienung/systemanpassen/) for these settings.
+
+## Starting again
+
+The **start wizard** guides you through language, video output, networking, time and reception. Follow the [complete illustrated walkthrough](../erste-schritte/startassistent/). To repeat it deliberately, use the separate [guide to renaming settings with Enigma2 stopped](../erste-schritte/assistent-neustarten/).
+
+[Sources and verification](./quellen/) identify the software basis and practical test coverage.

@@ -55,7 +55,7 @@ Avoid opposing plans such as shutting down at import time and restarting immedia
 
 ## Logs and saved tasks
 
-The current Scheduler stores entries in **`/etc/enigma2/scheduler.xml`**. Recording timers are separate in `timers.xml`; plugin schedules have their own settings. Use overview status/log functions and, if needed, the [debug log](../../hilfe/logs-diagnose/) with Scheduler messages. Deleting a cron line does not remove an Enigma2 timer.
+The current Scheduler stores entries in **`scheduler.xml`** under **`/etc/enigma2`** (full path: `/etc/enigma2/scheduler.xml`). Recording timers are separate in `timers.xml`; plugin schedules have their own settings. Use overview status/log functions and, if needed, the [debug log](../../hilfe/logs-diagnose/) with Scheduler messages. Deleting a cron line does not remove an Enigma2 timer.
 
 **Verification:** Captured the menu and an unsaved task editor; checked task types and shutdown logic in source. Automatic shutdown, restart and wakeup were not executed for this series.
 

@@ -1,0 +1,42 @@
+---
+title: "Flash Expander: Platz für das System"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → System → Datenträger → Flash Expander** kann das Verzeichnis `/usr` auf ein externes lokales Laufwerk auslagern. Dort liegen viele Programme, Bibliotheken, Plugins und Skindateien. Das ist vor allem für Geräte mit kleinem internem Flash interessant.
+
+<Capture id="sys-flash" language="de" alt="Flash Expander mit Auswahl des Zielgeräts" caption="Zielauswahl auf der Testbox. Die Auslagerung wurde für die Dokumentation nicht aktiviert." />
+
+Der Flash Expander erweitert **nicht den RAM** und erstellt **keinen MultiBoot-Slot**. Er verschiebt auch nicht automatisch sämtliche Konfigurationsdateien, Aufnahmen und Caches. Daten außerhalb von `/usr`, beispielsweise unter `/etc`, benötigen weiterhin Platz an ihrem bisherigen Ort.
+
+## Ziel, Status und Funktionen
+
+| Element | Erklärung |
+| --- | --- |
+| Zielort | Das lokale Zielgerät beziehungsweise dessen Partition auswählen. Der Dialog ermittelt geeignete Einträge aus den erkannten Laufwerken und UUIDs. |
+| Aktiv / inaktiv | Ob `/usr` momentan über den Flash Expander eingebunden ist. |
+| Aktiviert / deaktiviert | Ob die Einbindung für den Systemstart in `/etc/fstab` eingetragen ist. Diese Anzeige ist vom aktuellen Mountzustand zu unterscheiden. |
+| Grün | Je nach Zustand Ziel auswählen, Daten kopieren und aktivieren, deaktivieren oder einen vorhandenen inaktiven Expander löschen. Immer die aktuelle Tastenbeschriftung beachten. |
+| Gelb: Formatieren | Öffnet die Laufwerksformatierung. Das ist eine eigene, datenlöschende Aktion. |
+| Abbrechen | Dialog verlassen. |
+
+Die technische [Optionsreferenz](../../einstellungen/referenz/flashexpander/) enthält die Zielauswahl `config.flashExpander.location`. Die übrigen Aktionen erzeugt der Dialog dynamisch.
+
+## Ablauf einer Einrichtung
+
+1. Eine [Sicherung](../../wartung/backup-restore/) erstellen. Ein verlässliches Laufwerk wählen, das künftig dauerhaft an der Box bleibt.
+2. Gerät, Partition, freien Platz und Dateisystem kontrollieren. Für Unix-Rechte und symbolische Links ein geeignetes Linux-Dateisystem wie ext4 verwenden.
+3. Im Flash Expander den Zielort wählen. Nicht anhand eines wechselnden Namens wie `/dev/sdb` allein entscheiden.
+4. Die angebotene Erstellung/Aktivierung starten und den Kopiervorgang vollständig abwarten. Dabei wird der Inhalt von `/usr` einschließlich seiner Struktur kopiert.
+5. Den angeforderten Neustart durchführen und danach Status und freien Platz prüfen.
+
+Im geprüften Stand liegt die Kopie in `.FlashExpander` auf dem Zielgerät. Die Einträge in `/etc/fstab` binden das Gerät per UUID unter `/.FlashExpander` ein und dessen Unterverzeichnis `/.FlashExpander/.FlashExpander` über einen **Bind-Mount** auf `/usr`. Diese Pfade erklären das Verfahren; sie sind kein Auftrag, die Einträge manuell nachzubauen.
+
+## Deaktivieren, Löschen und Imagewechsel
+
+**Deaktivieren** entfernt die Expander-Einbindung und fordert einen Neustart an. **Löschen** entfernt die vorhandene inaktive Expander-Kopie. Vor beiden Aktionen prüfen, ob der interne Systemstand alle benötigten Programme enthält: nach der Auslagerung installierte oder aktualisierte Dateien sind nicht automatisch in den internen Flash zurückkopiert worden.
+
+Das Laufwerk im Betrieb nicht entfernen. Fällt es aus, fehlen der Box möglicherweise laufend benötigte Programme und Bibliotheken. Nach einem neuen Image keine alte `/usr`-Kopie unbesehen weiterverwenden; Kernel, Bibliotheken und Pakete können nicht mehr zusammenpassen. Den Expander für den neuen Imagezustand gezielt neu aufbauen.
+
+Ein Flash Expander auf dem NAS würde den Start und die Programmausführung von Netzwerk und Server abhängig machen. Verwende hierfür ein lokales Laufwerk. [Swap](../swap/) und [Aufnahmen auf dem NAS](../../speicher/nas-aufnahmen/) bleiben separate Themen.

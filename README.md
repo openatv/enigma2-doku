@@ -9,6 +9,8 @@ Ein gemeinsamer Linkblock am Seitenende führt in beiden Sprachen zu Forum, Enig
 ## Inhalt dieser ersten Ausgabe
 
 - Erste Einrichtung und grundlegende Bedienung
+- Vollständiger Startassistent in DE/EN nach echtem Settings-Neustart, einschließlich Videoauswahl, Netzwerk, DNS, Laufwerken, Zeit, Tunern und Astra-Suchlauf; kontrolliertes Wiederholen und Wiederherstellen der Settings
+- System: alle festen Unterpunkte, Swap-Verwaltung, Flash Expander, Skripte, sämtliche Rücksetzoptionen und hardwareabhängiger HF-Ausgang; vorhandene Laufwerks-, CEC-, Zeit- und Log-Referenzen eingebunden
 - Bedienung / Oberfläche: alle 13 Menüunterpunkte mit 225 vorhandenen Referenzeinträgen, zehn ergänzenden Kapiteln je Sprache und 28 neuen Bildern; Picons, Frontdisplay/LEDs, Eingabegeräte, Tastatur, Sprache und PiP
 - Bild und Ton: 17 Kapitel je Sprache zu Video, AutoResolution, HDR/EDID, OSD, Audioformaten, AVR/Soundbar, Passthrough, Tonspuren, Lautstärke, Lipsync und HDMI-CEC samt Logs
 - Infobar: Symbole, einfache Infoleiste, zweite INFO/ECM, Sendungsinformationen und OSD-Optionen

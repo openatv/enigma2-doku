@@ -25,6 +25,17 @@ globalThis.fetch = async input => {
 };
 const checks = [
   ...['de', 'en'].flatMap(lang => [
+    [lang, 'Flash Expander', `/${lang}/system/`],
+    [lang, 'swapautostart', `/${lang}/system/swap/`],
+    [lang, 'swapfile', `/${lang}/system/swap/`],
+    [lang, 'fstab', `/${lang}/system/flash-expander/`],
+    [lang, 'POSIX', `/${lang}/system/skripte/`],
+    [lang, 'resumepoints.pkl', `/${lang}/system/werkseinstellungen/`],
+    [lang, 'LOOP OUT', `/${lang}/system/hf-ausgang/`],
+    [lang, 'EDID', `/${lang}/erste-schritte/startassistent/`],
+    [lang, 'defaultsat.tar.gz', `/${lang}/erste-schritte/startassistent/`],
+    [lang, 'settings.before-wizard', `/${lang}/erste-schritte/assistent-neustarten/`],
+    [lang, 'wizardLanguageEnabled', `/${lang}/erste-schritte/assistent-neustarten/`],
     [lang, 'Picon search mode', `/${lang}/bedienung/`],
     [lang, '700 ms', `/${lang}/bedienung/eingabegeraete/`],
     [lang, 'QWERTZ', `/${lang}/bedienung/tastatur/`],

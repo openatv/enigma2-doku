@@ -1,0 +1,41 @@
+---
+title: "System: alle Menübereiche"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Unter **Menü → Einstellungen → System** verwaltest du Speicher, Geräteverbindungen und grundlegende Systemfunktionen. Die folgende Übersicht deckt alle festen Unterpunkte des geprüften OpenATV-Menüs ab. Plugins können weitere Einträge ergänzen; Hardwarebedingungen und der Einstellungsmodus bestimmen, was deine Box anzeigt.
+
+| Unterpunkt | Wozu er dient | Ausführliche Anleitung und Optionen |
+| --- | --- | --- |
+| Datenträger → Geräteverwaltung | Laufwerke erkennen, einhängen, aushängen, Mountpunkte und Dateisysteme verwalten | [Laufwerke](../speicher/laufwerke/), [Formatieren und Prüfen](../speicher/formatieren-pruefen/), [Dateisysteme](../speicher/dateisysteme/); [Festplattenoptionen](../einstellungen/referenz/harddisk/) |
+| Datenträger → Swap-Verwaltung | Auslagerungsspeicher für Arbeitsspeicher bereitstellen | [Swap: Status, Erstellen, Aktivieren, Autostart](./swap/) |
+| Datenträger → Flash Expander | Das Systemverzeichnis `/usr` auf ein dauerhaft angeschlossenes Laufwerk auslagern | [Flash Expander](./flash-expander/); [Zielauswahl](../einstellungen/referenz/flashexpander/) |
+| HDMI-CEC-Einstellungen | TV, AVR und Soundbar über HDMI gemeinsam steuern | [HDMI-CEC einschließlich Protokollierung](../bild-ton/hdmi-cec/) |
+| Skriptverwaltung | Eigene Shell-Skripte mit der Fernbedienung starten | [Skripte ablegen, ausführen und prüfen](./skripte/) |
+| Zeit | Zeitzone, Zeitquelle sowie Datums- und Uhrzeitformat | [Uhrzeit und Aufwachen](./zeit-aufwachen/); [alle Zeitoptionen](../einstellungen/referenz/time/) |
+| Logs | Fehlerprotokolle und gezielte Debug-Ausgaben konfigurieren | [Logs aktivieren und finden](../hilfe/logs-diagnose/); [alle Log-Optionen](../einstellungen/referenz/logs/) |
+| HF-Ausgangseinstellungen | Einen eingebauten analogen HF-Modulator konfigurieren | [HF-Ausgang und seine sechs Optionen](./hf-ausgang/); [Referenz](../einstellungen/referenz/rfmodulator/) |
+| Werkseinstellungen | Alle oder ausgewählte Konfigurationsdaten zurücksetzen | [Wirkung und Auswahl der Rücksetzoptionen](./werkseinstellungen/); [alle elf Felder](../einstellungen/referenz/factoryreset/) |
+
+<Capture id="sys-menu" language="de" alt="Systemmenü von OpenATV" caption="Das Systemmenü der Testbox. Ein nicht vorhandener HF-Modulator erzeugt hier keinen Menüeintrag." />
+
+## Datenträger: die drei Werkzeuge unterscheiden
+
+<Capture id="sys-storage-menu" language="de" alt="Datenträger mit Geräteverwaltung, Swap und Flash Expander" caption="Geräteverwaltung, Swap und Flash Expander haben unterschiedliche Aufgaben." />
+
+Die **Geräteverwaltung** bindet Datenträger ein und verwaltet deren Dateisystem. **Swap** entlastet bei Bedarf den RAM. **Flash Expander** erweitert den Platz für einen Teil des installierten Systems. Keines dieser Werkzeuge ersetzt eine [Sicherung](../wartung/backup-restore/).
+
+Ein [NAS als Aufnahmeziel](../speicher/nas-aufnahmen/) wird über die Netzwerkfreigaben verbunden. Eine Netzwerkfreigabe ist kein geeigneter Ersatz für ein dauerhaft verfügbares lokales System- oder Swap-Laufwerk.
+
+## Eine Funktion fehlt
+
+Unter **Bedienung / Oberfläche → Systemeinstellungen anpassen → Einstellungsmodus** gegebenenfalls **Experte** wählen. Die Skriptverwaltung hat im Quellmenü Stufe 1, Swap und Flash Expander Stufe 2. HDMI-CEC und HF-Ausgang hängen zusätzlich von der Geräteunterstützung ab. Auch [ausgeblendete Menüpunkte](../erste-schritte/menue-anpassen/) prüfen.
+
+**Systemeinstellungen anpassen** unter Bedienung / Oberfläche ist ein eigener Bereich. Dort findest du beispielsweise Verhalten beim Starten, Streaming und Bedienoptionen; die [vorhandene Erklärung](../bedienung/systemanpassen/) bleibt dafür die zentrale Anlaufstelle.
+
+## Neu beginnen
+
+Der **Startassistent** führt durch Sprache, Bildausgabe, Netzwerk, Uhrzeit und Empfang. Folge dem [vollständigen bebilderten Ablauf](../erste-schritte/startassistent/). Für einen kontrollierten erneuten Durchlauf gibt es eine separate [Anleitung zum Umbenennen der Settings bei gestopptem Enigma2](../erste-schritte/assistent-neustarten/).
+
+[Quellen und Prüfumfang](./quellen/) nennen den geprüften Softwarestand und die Grenzen der praktischen Tests.

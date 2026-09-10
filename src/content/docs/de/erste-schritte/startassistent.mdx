@@ -1,0 +1,155 @@
+---
+title: "Startassistent: der vollständige Ablauf"
+description: "OpenATV Schritt für Schritt starten: Sprache, HDMI, Netzwerk, DNS, Mountpunkte, Zeit, Tuner und Senderliste oder Suchlauf."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Diese Bildserie entstand bei einem **echten erneuten Erststart**: Enigma2 wurde gestoppt, die Settings-Datei umbenannt und Enigma2 neu gestartet. Anschließend wurden die Schritte auf Deutsch und Englisch durchlaufen. Das Beispiel verwendet LAN, einen verbundenen einzelnen Sat-Anschluss an Astra 19,2° Ost und bereits eingerichtete Laufwerke. Die Anleitung bleibt unabhängig vom abgebildeten Boxmodell.
+
+Die Vorbereitung für einen bewussten erneuten Durchlauf steht unter [Assistent neu starten](../assistent-neustarten/). Nach einer frischen [Imageinstallation](../../wartung/usb-installation/) kann [AutoRestore](../../wartung/autorestore/) die Einrichtung übernehmen; dann erscheint der Assistent möglicherweise nicht.
+
+## 1. Sprache und Region auswählen
+
+<Capture id="first-language" language="de" alt="Sprach- und Regionsauswahl beim tatsächlichen Erststart" caption="Mit Hoch/Runter auswählen, mit OK oder Grün bestätigen." />
+
+Die Auswahl bestimmt die Menüsprache und regionale Vorgaben. Wähle die passende Länder-/Sprachvariante. Sie bestimmt nicht automatisch die gewünschte Tonspur jedes Senders; dafür gibt es später die [Sprachauswahl für Ton und Untertitel](../../bild-ton/tonspuren/). Bei einer Sprachänderung kann ein GUI-Neustart folgen, bevor der Assistent weitergeht.
+
+## 2. Den Videoausgang finden
+
+<Capture id="first-video-output" language="de" alt="Auswahl des Videoausgangs im Videoassistenten" caption="Den tatsächlich mit dem TV verbundenen Ausgang auswählen." />
+
+Am Fernseher zuerst den richtigen Eingang wählen. Bei mehreren Ausgängen bietet die Box beispielsweise **HDMI** und einen analogen Anschluss an. Wird nur ein Ausgang angeboten, kann die Auswahlseite entfallen. Bei ausbleibender Bestätigung probiert der Videoassistent in diesem Stand nach zehn Sekunden die nächste Auswahl. Sobald das richtige Bild sichtbar ist, **OK** drücken.
+
+## 3. HDMI-Erkennung, Auflösung und Bildrate
+
+<Capture id="first-video-edid" language="de" alt="Automatische HDMI-Moduserkennung" caption="Die Erkennung berücksichtigt die vom TV gemeldeten Modi." />
+
+**Automatische Moduserkennung = Ja** berücksichtigt die vom Fernseher gemeldeten Fähigkeiten (EDID). **Nein** ist eine bewusste Abweichung für eine manuelle Konfiguration, etwa wenn ein Zwischengerät fehlerhafte Angaben weitergibt. Auch bei automatischer Erkennung folgt die Auswahl des verwendeten Modus.
+
+<Capture id="first-video-mode" language="de" alt="Videoauflösung mit ausgewähltem 1080p" caption="1080p ist hier ein Beispiel; nur einen von der eigenen Verbindung unterstützten Modus wählen." />
+
+Die verfügbaren Auflösungen hängen von Box, Treiber, Anschluss und TV ab. **1080p** bedeutet progressive Full-HD-Ausgabe; **1080i** Halbbildausgabe. UHD-Ausgabe wird nur angeboten, wenn die Kombination sie unterstützt. Das ist die HDMI-Ausgabeauflösung, nicht automatisch die Auflösung des Skins. [Videoausgabe](../../bild-ton/video/) und [Skinauflösung](../../skins/metrixhd/) erklären die Unterschiede.
+
+<Capture id="first-video-rate" language="de" alt="Auswahl der Bildwiederholrate mit 50 Hz" caption="Das Beispiel verwendet 1080p und 50 Hz." />
+
+Die Bildwiederholrate muss zum TV passen. Für viele europäische TV-Inhalte sind **50 Hz** passend; `multi` lässt die Bildratenumschaltung im Rahmen der angebotenen Modi zu. **24/25/30/60 Hz** sind keine Qualitätsstufen. Für spätere automatische Anpassungen siehe [AutoResolution](../../bild-ton/autoresolution/). Auch diese Auswahl kann zeitgesteuert weiterwechseln: Sichtbarkeit prüfen und rechtzeitig bestätigen.
+
+## 4. Grundeinrichtung mit dem Assistenten beginnen
+
+<Capture id="first-welcome" language="de" alt="Begrüßung des Startassistenten nach Sprache und Video" caption="Assistenten für die Grundeinstellung benutzen auswählen." />
+
+**Hoch/Runter** wählt die Zeile, **Links/Rechts** ändert Werte und **OK** führt weiter. **EXIT/Zurück** geht innerhalb des Assistenten zu einem vorherigen Schritt; am Anfang kann eine Rückfrage zum Verlassen erscheinen. Ein separat geöffneter Einstellungsdialog verwendet seine eigenen Farbtasten. Lies deshalb jeweils die Beschriftungen am unteren Rand.
+
+**Assistent beenden** überspringt die weitere Grundeinrichtung. Fehlende Einstellungen müssen anschließend in den normalen Menüs vorgenommen werden; dadurch wird das Empfangssignal nicht automatisch eingerichtet.
+
+## 5. Netzwerkadapter und LAN
+
+<Capture id="first-network" language="de" alt="LAN-Adapterauswahl beim Erststart" caption="Nur vorhandene Adapter erscheinen in der Liste." />
+
+Wähle den verbundenen Adapter. **Netzwerkeinrichtung überspringen** führt ohne diese Einrichtung weiter. Für Downloads, Plugin-Feeds, Internetdienste und NTP wird später eine funktionierende Verbindung benötigt.
+
+<Capture id="first-lan" language="de" alt="LAN-Adapter mit DHCP und automatischer Verbindungsgeschwindigkeit" caption="Im Beispiel bleibt die vorhandene DHCP-Konfiguration aktiv." />
+
+| Feld | Einstieg und Bedeutung |
+| --- | --- |
+| Aktiviert | Der Adapter muss für die Verbindung aktiv sein. |
+| IP-Protokoll | IPv4, IPv6 oder beide entsprechend dem eigenen Netzwerk verwenden. |
+| Adresse automatisch beziehen (DHCP) | Der Router vergibt die Adresse. Für den Einstieg meist der einfachste Weg. |
+| DNS überschreiben | Nur aktivieren, wenn bewusst andere Nameserver als die automatisch gelieferten verwendet werden sollen. |
+| Verbindungsgeschwindigkeit | Normalerweise Auto für die Aushandlung mit Router oder Switch. |
+
+Mit **Grün → Speichern** übernehmen. [Manuelle IP-Adressen und alle Adapteroptionen](../../netzwerk/manuelle-ip/) sind separat erläutert. Ein [WLAN-Adapter](../../netzwerk/wlan/) bringt zusätzliche Netzsuche, SSID und WLAN-Schlüssel mit. Auf dieser Testbox ist ausschließlich der LAN-Zweig praktisch erfasst.
+
+<Capture id="first-network-status" language="de" alt="Erfolgreicher Netzwerkaufbau mit zugewiesener IP-Adresse" caption="Eine zugewiesene IP bestätigt die lokale Verbindung; sie allein beweist noch keinen funktionierenden Internetzugriff." />
+
+Je nach Ablauf/Version erscheint diese Statusseite oder es geht direkt zu DNS. **Weiter** führt fort; ein weiterer Adapter lässt sich bei Bedarf erneut auswählen. Bei fehlender IP Kabel, DHCP und Adapteraktivierung prüfen. Details: [Netzwerktest und Neustart](../../netzwerk/neustart-test/).
+
+## 6. DNS prüfen
+
+<Capture id="first-dns" language="de" alt="DNS- und Hostnameneinstellungen im Assistenten" caption="Die Werte stammen aus dem Beispielnetz. Für die eigene Box die eigenen Router-/DNS-Daten verwenden." />
+
+**DNS bedeutet Domain Name System**: Es löst Namen wie einen Downloadserver in IP-Adressen auf. Hostname, Domain, Protokollbevorzugung, Rotation und Datenquelle sind unter [DNS konfigurieren](../../netzwerk/dns/) erklärt. Automatisch erhaltene, funktionierende Werte müssen nicht ersetzt werden. `0.0.0.0` in einem unbenutzten Feld ist kein zusätzlicher erreichbarer DNS-Server.
+
+Die kleine Tastaturhilfe kann bei markierten Textfeldern erscheinen. Mit Hoch/Runter wechselst du zu einem anderen Feld, mit **OK** zum nächsten Schritt.
+
+## 7. Vorhandene Laufwerke und Mountpunkte
+
+<Capture id="first-mounts" language="de" alt="Vorhandene Partitionen und Einhängepunkte im Startassistenten" caption="Im Test wurden die vorhandenen Mountpunkte geprüft und mit Abbrechen unverändert verlassen." />
+
+Diese Seite erscheint, wenn passende Partitionen vorhanden sind. Ein Mountpunkt legt fest, unter welchem Verzeichnis ein Dateisystem erreichbar wird, etwa `/media/hdd`. Er ist keine Formatierung. **None** bedeutet in dieser Auswahl keine entsprechende feste Zuordnung.
+
+Bereits korrekt eingebundene Datenträger müssen nicht neu formatiert werden. Mit **Grün** geänderte Zuordnungen speichern; mit **Rot → Abbrechen** kann dieser Dialog im geprüften Ablauf ohne Änderung verlassen werden, der Assistent geht weiter. Bei neuen Medien zuerst [Gerät, Partition und Mountpunkt](../../speicher/laufwerke/) auseinanderhalten. NAS-Freigaben werden über [Netzwerkfreigaben](../../netzwerk/freigaben/) eingerichtet.
+
+## 8. Uhrzeit und Zeitzone
+
+<Capture id="first-time" language="de" alt="Zeitzone, Zeitquelle und Anzeigeformate im Startassistenten" caption="Beispiel Europe/Berlin. Die tatsächlich passende Region auswählen." />
+
+**Zeitzonengebiet und Zeitzone** bestimmen die lokale Zeit einschließlich der regionalen Sommerzeitregeln. **Zeitsynchronisierung** wählt die Quelle, beispielsweise Transponderzeit oder NTP. Die sichtbare Voreinstellung ist keine Empfehlung für jede Nutzung: insbesondere bei IPTV oder unzuverlässiger Senderzeit ist eine funktionierende Internet-Zeitquelle wichtig. Datum und Zeitformat beeinflussen die Darstellung.
+
+**Gelb → Standortbestimmung** kann die Zeitzone anhand des Internetstandorts vorbelegen. Bei VPN oder unpassender Standorterkennung manuell korrigieren. Für Timer und Aufwachen siehe [Zeit, NTP, DVB-Zeit und Standby](../../system/zeit-aufwachen/).
+
+## 9. Empfang entsprechend der Verkabelung einrichten
+
+<Capture id="first-tuner" language="de" alt="Einzelner Satellitenanschluss mit Astra 19,2 Grad Ost" caption="Beispiel: Einfach → Einzeln → Astra 19,2° Ost; kein DiSEqC-Schalter am verbundenen Anschluss." />
+
+Die Box fragt die vorhandenen Tuner ab. Für das gezeigte direkte Astra-Kabel sind **Einfach**, **Einzeln**, **Astra 19,2° Ost** und **DiSEqC senden = Nein** eingestellt. Diese Werte nicht auf eine Unicable-, Motor- oder Multischalteranlage übertragen. Nutze die [Verkabelungsbilder](../../tuner/verkabelung/) und den passenden [Empfangsabschnitt](../../tuner/).
+
+<Capture id="first-unused-tuner" language="de" alt="Nicht konfigurierter zusätzlicher Satellitentuner" caption="Ein unverkabelter zusätzlicher Tuner bleibt nicht konfiguriert." />
+
+Ein einzelnes angeschlossenes Sat-Kabel versorgt nicht automatisch weitere unabhängige Eingänge. Die Namen A, B oder C identifizieren die vom Gerät bereitgestellten Tuner. Auf einer anderen Box können es mehr oder weniger sein.
+
+<Capture id="first-hybrid" language="de" alt="Unverbundene DVB-C- und DVB-T2-Empfangsarten eines Hybridtuners" caption="Zusätzliche Empfangsarten werden nur bei vorhandener Hardware angeboten. Im Test bleiben beide unverbunden." />
+
+Bei einem Hybridtuner werden die Empfangsarten getrennt eingerichtet. Das abgebildete unverbundene Beispiel ist **kein DVB-C-/DVB-T2-Empfangstest**. FBC- und weitere Hardwarevarianten folgen ihren eigenen Konfigurationsregeln; die allgemeine Erststart-Anleitung benötigt diese Sonderfälle nicht zum Abschluss.
+
+## 10. Fertige Senderliste oder Suchlauf
+
+<Capture id="first-channel-list" language="de" alt="Angebot einer vorgefertigten Satelliten-Senderliste" caption="Die angebotene Standardliste und ihre Beschriftung können sich mit dem Image ändern." />
+
+Eine **fertige Liste** spart die erste Suche und kann Bouquets mitbringen. Sie muss zum Anschluss passen; ein gelisteter Satellit wird dadurch nicht empfangbar. Im geprüften Code wird die Standardliste aus dem mitgelieferten Archiv `/etc/defaultsat.tar.gz` eingespielt. Weitere Settings-Pakete vom Feed sind unter [Senderlisten installieren](../../settings/senderlisten/) beschrieben.
+
+Wähle **Keine**, um stattdessen den Suchlaufzweig zu verwenden. Nach übernommener Standardliste kann die Suchlauffrage entfallen.
+
+<Capture id="first-scan-choice" language="de" alt="Auswahl zwischen späterem, automatischem und manuellem Suchlauf" caption="Ein Suchlauf kann jetzt erfolgen oder später über das Empfangsmenü gestartet werden." />
+
+## 11. Automatischer Suchlauf
+
+<Capture id="first-auto-scan" language="de" alt="Automatische Suchlaufoptionen im Assistenten" caption="Auch die Vorgabe zum Löschen vor dem Suchlauf bewusst prüfen." />
+
+**Netzwerksuchlauf** meint hier zusätzliche Transponderinformationen des Empfangsnetzes, nicht LAN oder WLAN. Wähle nur tatsächlich angeschlossene Tuner/Empfangswege aus. **Vor dem Suchlauf löschen** kann vorhandene Senderdaten entfernen und damit bestehende Listen oder Timer beeinflussen.
+
+<Capture id="first-scan-preserve" language="de" alt="Suchlauf mit Vor dem Suchlauf löschen auf Nein" caption="Für den dokumentierten Durchlauf wurde vorab nicht gelöscht." />
+
+Mit **OK** beginnt die Suche. Weitere Details stehen beim [automatischen Suchlauf](../../tuner/automatischer-suchlauf/).
+
+## 12. Alternativ: manueller Suchlauf
+
+<Capture id="first-manual-scan" language="de" alt="Manueller Suchlauf im Startassistenten mit Transponderfeldern" caption="Die Seite zeigt die angebotenen Felder. Angezeigte Vorgaben sind keine dauerhaft gültigen Senderfrequenzen." />
+
+Hier kannst du gezielt einen Transponder oder einen anderen angebotenen Suchumfang einstellen. System, Frequenz, Polarisation, Symbolrate und weitere Werte müssen zum gesuchten Signal passen. Das [Kapitel manueller Suchlauf](../../tuner/manueller-suchlauf/) erklärt sämtliche Felder. Nach einer manuellen Suche kann der Assistent eine weitere Suche anbieten.
+
+In dieser Bildserie wurde der manuelle Dialog geöffnet und wieder verlassen; praktisch ausgeführt wurde der automatische Astra-Suchlauf.
+
+## 13. Suchfortschritt und Abschluss
+
+<Capture id="first-scanning" language="de" alt="Laufender Astra-Suchlauf" caption="Während der Suche warten; die Anzahl hängt vom Netz und Suchumfang ab." />
+
+<Capture id="first-scan-result" language="de" alt="Abgeschlossener Astra-Suchlauf mit gefundenen Diensten" caption="Tatsächliches Suchergebnis der Testanlage. Die Zahl ist kein Sollwert für jede Installation." />
+
+Nach Abschluss die Ergebnisliste schließen oder einen Dienst auswählen. Der getestete Stand wechselte anschließend zur normalen Bedienoberfläche; eine zusätzliche Abschlussseite erschien nicht. Falls dein Stand eine Abschlussmeldung oder einen Neustart verlangt, mit **OK** bestätigen und den Neustart abwarten.
+
+Danach einen frei empfangbaren Sender prüfen, kurz auf EPG-Daten warten und Aufnahmeziel sowie Uhrzeit kontrollieren. Ein Suchlauf erzeugt nicht automatisch eine persönlich sortierte Favoritenliste. [Bouquets und Senderlisten](../../settings/senderlisten/), [EPG](../../epg/grundlagen/) und [Aufnahmetimer](../../timer/aufnahmen/) führen weiter.
+
+## Zusätzliche Schritte auf anderen Boxen
+
+| Bedingung | Möglicher zusätzlicher Schritt |
+| --- | --- |
+| Sehr kleiner interner Flash | [Flash Expander](../../system/flash-expander/) vor weiteren Installationen. |
+| Knapper Speicher ohne vorhandenen Swap | [Swap-Zielauswahl](../../system/swap/), gegebenenfalls mit Formatierungsangebot. Nicht ohne Prüfung der Daten bestätigen. |
+| SmallFlash-/Expander-Ablauf | Internet-/Paketinstallation, Wiederholungsangebot bei Verbindungsfehlern und eventuell Neustart. |
+| WLAN-Hardware | Funknetz auswählen, Schlüssel eingeben und Verbindung herstellen. |
+| Weitere Tuner oder Empfangsarten | Zusätzliche Tuner-/Hybridkonfiguration. |
+| Plugins mit eigenem Assistenten | Zusätzliche Seiten abhängig von der Imageausstattung. |
+
+Diese Zweige sind anhand des Quellcodes eingeordnet; sie wurden auf dieser Box nicht als vollständige Hardwarefälle getestet. [Quellen und Prüfumfang](../../system/quellen/) unterscheiden Aufnahmen, tatsächlich ausgeführte Schritte und Quellenbeschreibung.

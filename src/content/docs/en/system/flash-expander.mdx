@@ -1,0 +1,42 @@
+---
+title: "Flash Expander: space for the system"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → System → Storage Devices → Flash Expander** can relocate `/usr` to an external local drive. This directory contains many programs, libraries, plugins and skin files. It is particularly relevant to receivers with little internal flash space.
+
+<Capture id="sys-flash" language="en" alt="Flash Expander target selection" caption="Target selection on the test receiver. Relocation was not activated for the documentation." />
+
+Flash Expander **does not increase RAM** or create a **MultiBoot slot**. It also does not automatically move every configuration file, recording and cache. Files outside `/usr`, such as those in `/etc`, still need space in their original location.
+
+## Target, status and actions
+
+| Element | Meaning |
+| --- | --- |
+| Target location | Select a local device/partition. The dialog discovers candidates from detected drives and UUIDs. |
+| Active / inactive | Whether `/usr` is currently mounted through Flash Expander. |
+| Enabled / disabled | Whether `/etc/fstab` contains the startup mount. This is distinct from the current mount state. |
+| Green | Depending on the state: choose a target, copy and activate, deactivate, or delete an existing inactive expander. Read the current button label. |
+| Yellow: Format | Opens drive formatting, a separate action that erases data. |
+| Cancel | Leave the dialog. |
+
+The technical [option reference](../../einstellungen/referenz/flashexpander/) documents `config.flashExpander.location`. The screen builds the other actions dynamically.
+
+## Setting it up
+
+1. Make a [backup](../../wartung/backup-restore/). Choose a reliable drive that will remain connected permanently.
+2. Verify the device, partition, free space and file system. Use a suitable Linux file system such as ext4 to preserve Unix permissions and symbolic links.
+3. Select the target in Flash Expander. Do not identify a drive solely by a changeable name such as `/dev/sdb`.
+4. Start the offered creation/activation action and wait until copying finishes. It copies the contents and structure of `/usr`.
+5. Complete any requested restart, then check status and free space.
+
+In the reviewed version, the copy lives in `.FlashExpander` on the target. `/etc/fstab` mounts the device by UUID at `/.FlashExpander`, then **bind-mounts** `/.FlashExpander/.FlashExpander` over `/usr`. These paths explain the mechanism; do not reconstruct the entries manually from this description.
+
+## Deactivation, deletion and image changes
+
+**Deactivate** removes the expander mount configuration and requests a reboot. **Delete** removes the existing inactive expander copy. Before either action, check that the internal system has the programs you need: files installed or updated after relocation are not automatically copied back to internal flash.
+
+Keep the drive connected during operation. If it fails, programs and libraries needed by the running receiver may disappear. After installing another image, do not blindly reuse the previous `/usr` copy: kernel, libraries and packages may no longer match. Rebuild the expander for the new image state.
+
+Placing the expander on a NAS would make startup and program execution depend on the network and server. Use local storage for this purpose. [Swap](../swap/) and [NAS recordings](../../speicher/nas-aufnahmen/) remain separate topics.

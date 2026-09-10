@@ -1,0 +1,47 @@
+---
+title: "Factory Reset: selected data or the full configuration"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → System → Factory Reset** resets configuration data in the running image. It does not download or flash a new image. It does not generally uninstall plugin packages, although it can remove their configuration.
+
+<Capture id="sys-reset-full" language="en" alt="Factory Reset with the full-reset option" caption="The initial screen offers a full reset. No reset was executed to produce this picture." />
+
+## Before resetting
+
+Create a [settings backup](../../wartung/backup-restore/) and keep a copy outside the receiver. Otherwise channel lists, timers, credentials and custom skin settings may be lost. Finish recordings and other active tasks first.
+
+This dialog does not format the hard disk. Recording destinations can nevertheless become inaccessible when mount or path settings disappear. Configuration can also exist outside `/etc/enigma2`: a factory reset is **not a complete cleanup of every Linux system file**.
+
+## Every option and its effect
+
+**Full factory reset = Yes** removes the contents of the Enigma2 configuration directory and installs available image defaults. It also restores the shipped network configuration. The usual default enables Ethernet with DHCP, which can change the address used for SSH.
+
+For a **selective reset**, first set **Full factory reset = No**. Additional rows appear only when the dialog finds relevant files. In the reviewed version the individual reset options initially default to **Yes**: check every visible row and set unwanted deletions to **No**.
+
+| Selective option | Affected data |
+| --- | --- |
+| Reset network configuration | Restore the image's adapter defaults; additional interface configurations may disappear. |
+| Remove all bouquet/tuning data | `lamedb`, `lamedb5`, `bouquets.*` and `userbouquet.*`; existing timers may no longer resolve their channels. |
+| Remove all user interface data | Custom `keymap.xml`, `menu.xml` and `setup.xml` in the configuration directory. |
+| Remove all network mount data | Detected mount files such as `automounts.xml` and cache files; these may contain credentials. Review external fstab/autofs configuration separately. |
+| Remove all plugin setting data | Files classified as plugin data in the Enigma2 configuration directory; this is not a general package uninstaller. |
+| Remove all resume point data | Media resume data in `resumepoints.pkl`; this is distinct from removing every recording's `.cuts` file. |
+| Remove all settings data | The main `/etc/enigma2/settings` file; tuner, GUI and many plugin options revert to defaults, and the start wizard becomes active again. |
+| Remove all skin data | Detected user skin XML files and image/logo customizations stored there. |
+| Remove all timer data | Detected `timers.xml`, `autotimer.xml`, `scheduler.xml` and older `pm_timers.xml`. |
+| Remove all other data | Files/directories outside the other groups. Review your own data carefully before choosing this broad category. |
+
+<Capture id="sys-reset-part" language="en" alt="Selective factory reset options" caption="Selective reset: visible categories depend on existing files. Review the defaults before accepting them." />
+
+
+The dialog classifies files by names and extensions. It does not perform a complete analysis of every plugin's data. The [eleven reference fields including the full-reset selector](../../einstellungen/referenz/factoryreset/) provide original help and configuration keys.
+
+## Running the reset and checking the result
+
+**Green → Reset** opens a confirmation prompt. Only accepting that prompt performs the selected action; its default answer is No. Enigma2 then exits and is restarted by the normal startup mechanism. Removing settings enables the [start wizard](../../erste-schritte/startassistent/).
+
+Check the network address, tuners, channel list, mounts, recording destination and time afterwards. An apparently missing extension may only require reconfiguration. If a backup is restored automatically, the old configuration may immediately reappear; see [AutoRestore](../../wartung/autorestore/).
+
+To repeat the wizard on a test receiver, the reversible **stop Enigma2 → rename settings → start Enigma2** method is described [separately](../../erste-schritte/assistent-neustarten/).

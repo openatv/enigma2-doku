@@ -25,6 +25,8 @@ export default defineConfig({
       { label: 'Handbuch', translations: { en: 'Handbook' }, items: [
         { slug: '', label: 'Übersicht', translations: { en: 'Overview' } },
         { slug: 'erste-schritte/ersteinrichtung', label: 'Erste Einrichtung', translations: { en: 'First setup' } },
+        { slug: 'erste-schritte/startassistent', label: 'Startassistent Schritt für Schritt', translations: { en: 'Start wizard step by step' } },
+        { slug: 'erste-schritte/assistent-neustarten', label: 'Assistent erneut starten', translations: { en: 'Restart the wizard' } },
       ] },
       { label: 'Einrichten', translations: { en: 'Set up' }, items: [
         { slug: 'plugins/installieren', label: 'Plugins installieren', translations: { en: 'Install plugins' } },
@@ -194,6 +196,19 @@ export default defineConfig({
         { slug: 'addons/e2mdb/terminal', label: 'Terminal & Sicherung', translations: { en: 'Terminal & backup' } },
         { slug: 'addons/e2mdb/skinner-grundlagen', label: 'Skinner-Anhänge', translations: { en: 'Skinner appendices' } },
         { slug: 'addons/e2mdb/converter', label: 'Converter-Referenz', translations: { en: 'Converter reference' } },
+      ] },
+      { label: 'System', translations: { en: 'System' }, collapsed: true, items: [
+        { slug: 'system', label: 'Alle System-Unterpunkte', translations: { en: 'All System submenus' } },
+        { slug: 'speicher/laufwerke', label: 'Geräteverwaltung & Mountpunkte', translations: { en: 'Device Manager & mounts' } },
+        { slug: 'system/swap', label: 'Swap-Verwaltung', translations: { en: 'Swap Manager' } },
+        { slug: 'system/flash-expander', label: 'Flash Expander', translations: { en: 'Flash Expander' } },
+        { slug: 'bild-ton/hdmi-cec', label: 'HDMI-CEC', translations: { en: 'HDMI-CEC' } },
+        { slug: 'system/skripte', label: 'Skriptverwaltung', translations: { en: 'Script Manager' } },
+        { slug: 'system/zeit-aufwachen', label: 'Zeit & Aufwachen', translations: { en: 'Time & wake-up' } },
+        { slug: 'hilfe/logs-diagnose', label: 'Logs & Diagnose', translations: { en: 'Logs & diagnostics' } },
+        { slug: 'system/hf-ausgang', label: 'HF-Ausgang', translations: { en: 'RF output' } },
+        { slug: 'system/werkseinstellungen', label: 'Werkseinstellungen', translations: { en: 'Factory Reset' } },
+        { slug: 'system/quellen', label: 'Quellen & Prüfumfang', translations: { en: 'Sources & verification' } },
       ] },
       { label: 'Sichern & Warten', translations: { en: 'Backup & maintenance' }, items: [
         { slug: 'wartung/backup-restore', label: 'Backup & Wiederherstellung', translations: { en: 'Backup & restore' } },

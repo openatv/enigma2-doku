@@ -1,0 +1,47 @@
+---
+title: "Werkseinstellungen: gezielt oder vollständig zurücksetzen"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → System → Werkseinstellungen** setzt Konfigurationsdaten des laufenden Images zurück. Dabei wird kein neues Image heruntergeladen oder geflasht. Installierte Plugin-Pakete werden durch diesen Dialog nicht pauschal deinstalliert; ihre Konfiguration kann jedoch entfernt werden.
+
+<Capture id="sys-reset-full" language="de" alt="Werkseinstellungen mit vollständigem Zurücksetzen" caption="Die Werkseinstellungen öffnen zunächst die Auswahl für einen vollständigen Reset. Für die Aufnahme wurde kein Reset ausgeführt." />
+
+## Vor dem Zurücksetzen
+
+Eine [Einstellungssicherung](../../wartung/backup-restore/) anlegen und außerhalb der Box aufbewahren. Senderlisten, Timer, Zugangsdaten und individuelle Skineinstellungen können sonst verloren gehen. Laufende Aufnahmen und andere Aufgaben vorher beenden.
+
+Die Festplatte wird durch diesen Dialog nicht formatiert. Aufnahmeziele können danach trotzdem unerreichbar sein, weil Mount- oder Pfadeinstellungen fehlen. Die eigene Konfiguration kann außerdem außerhalb von `/etc/enigma2` liegen: Ein Werksreset ist **keine vollständige Bereinigung sämtlicher Dateien des Linux-Systems**.
+
+## Alle Optionen und ihre Wirkung
+
+**Vollständiges Zurücksetzen = Ja** entfernt den Inhalt des Enigma2-Konfigurationsverzeichnisses und spielt vorhandene Image-Vorgaben ein. Die Netzwerkkonfiguration wird ebenfalls auf die ausgelieferte Vorgabe zurückgesetzt. Bei der üblichen Vorgabe ist Ethernet aktiv und verwendet DHCP; die SSH-Adresse kann sich dadurch ändern.
+
+Für eine **gezielte Auswahl** zunächst **Vollständiges Zurücksetzen = Nein** wählen. Zusätzliche Zeilen erscheinen nur, wenn der Dialog entsprechende Dateien gefunden hat. Im geprüften Stand sind die Teiloptionen zunächst auf **Ja** voreingestellt: deshalb jede sichtbare Zeile prüfen und nicht gewünschte Löschungen auf **Nein** setzen.
+
+| Teiloption | Was betroffen ist |
+| --- | --- |
+| Netzwerkkonfiguration zurücksetzen | Adapterkonfiguration auf Image-Vorgabe zurücksetzen; zusätzliche Schnittstellenkonfigurationen können entfallen. |
+| Bouquet-/Empfangsdaten entfernen | `lamedb`, `lamedb5`, `bouquets.*` und `userbouquet.*`; Timer finden ihre Sender anschließend möglicherweise nicht mehr. |
+| Benutzeroberflächendaten entfernen | Eigene `keymap.xml`, `menu.xml`, `setup.xml` im Konfigurationsverzeichnis. |
+| Netzwerk-Mountdaten entfernen | Erkannte Mountdateien, etwa `automounts.xml` und Cachedateien; darin können Anmeldedaten stehen. Externe fstab-/autofs-Dateien gesondert betrachten. |
+| Plugin-Einstellungsdaten entfernen | Als Plugin-Daten eingeordnete Dateien im Enigma2-Konfigurationsverzeichnis; kein allgemeiner Paket-Uninstaller. |
+| Fortsetzungsdaten entfernen | `resumepoints.pkl` für Medienfortsetzung; dies ist nicht dasselbe wie das Löschen aller `.cuts`-Dateien bei Aufnahmen. |
+| Einstellungsdaten entfernen | Die zentrale Datei `/etc/enigma2/settings`; Tuner-, GUI- und viele Pluginwerte fallen auf Vorgaben zurück, der Startassistent wird wieder aktiv. |
+| Skindaten entfernen | Erkannte benutzerbezogene Skin-XMLs sowie dort gespeicherte Bild-/Logoanpassungen. |
+| Timerdaten entfernen | Erkannte `timers.xml`, `autotimer.xml`, `scheduler.xml` und ältere `pm_timers.xml`. |
+| Sonstige Daten entfernen | Dateien/Verzeichnisse, die nicht in die anderen Gruppen fallen. Vor dieser breiten Auswahl den eigenen Datenbestand besonders sorgfältig prüfen. |
+
+<Capture id="sys-reset-part" language="de" alt="Teiloptionen der Werkseinstellungen" caption="Teilweises Zurücksetzen: sichtbare Gruppen hängen von vorhandenen Dateien ab. Voreinstellungen nicht unbesehen übernehmen." />
+
+
+Der Dialog ordnet Dateien nach Namen und Endungen ein. Das ist keine vollständige Bestandsanalyse jedes Plugins. Die [elf Referenzfelder einschließlich der Vollreset-Auswahl](../../einstellungen/referenz/factoryreset/) enthalten Originalhilfe und technische Schlüssel.
+
+## Ausführen und danach
+
+Mit **Grün → Zurücksetzen** folgt eine Bestätigungsfrage. Erst die Zustimmung führt die gewählte Aktion aus; die Rückfrage ist standardmäßig auf Nein gesetzt. Enigma2 beendet sich anschließend und wird vom normalen Startmechanismus neu gestartet. Bei entfernten Settings folgt der [Startassistent](../../erste-schritte/startassistent/).
+
+Danach Netzwerkadresse, Tuner, Senderliste, Mounts, Aufnahmeziel und Uhrzeit prüfen. Nicht jede fehlende Erweiterung muss neu installiert werden: häufig fehlt lediglich ihre Konfiguration. Wird eine Sicherung automatisch zurückgespielt, kann der vorherige Zustand sofort wieder auftauchen; siehe [AutoRestore](../../wartung/autorestore/).
+
+Zum bloßen Wiederholen des Assistenten auf einer Testbox eignet sich die besser rückgängig zu machende Methode **Enigma2 stoppen → Settings umbenennen → Enigma2 starten**. Sie ist [separat erklärt](../../erste-schritte/assistent-neustarten/).

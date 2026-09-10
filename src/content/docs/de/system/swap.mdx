@@ -1,0 +1,48 @@
+---
+title: "Swap: Arbeitsspeicher entlasten"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → System → Datenträger → Swap-Verwaltung** zeigt Auslagerungsspeicher und dessen Aktivierung. Swap kann wenig benutzte Speicherseiten auf einen Datenträger auslagern, wenn RAM knapp wird. Er ist deutlich langsamer als RAM und vergrößert weder den Flash noch den Platz für Aufnahmen.
+
+<Capture id="sys-swap" language="de" alt="Swap-Verwaltung mit erkanntem Auslagerungsspeicher" caption="Vorhandener Swap auf der Testbox. Für diese Aufnahme wurde kein Swap angelegt, abgeschaltet oder gelöscht." />
+
+## Anzeigen und Tasten
+
+| Anzeige / Taste | Bedeutung |
+| --- | --- |
+| Aktuell aktiv / inaktiv | Ob Swap verwendet werden kann. Aktiv bedeutet nicht, dass gerade viel ausgelagert wird. |
+| Pfad und Größe | Erkannte Swap-Datei oder Partition. Bei mehreren Swap-Bereichen die vollständige Linux-Liste prüfen. |
+| Rot: Aktivieren / Deaktivieren | Den erkannten Swap einschalten oder ausschalten. Beim Ausschalten müssen ausgelagerte Daten wieder Platz im RAM finden. |
+| Grün: Erstellen / Löschen | Eine Swap-Datei anlegen oder entfernen. Bei einer erkannten Swap-Partition bietet die Oberfläche diese Dateiverwaltung nicht an. |
+| Gelb: Autostart | Automatische Aktivierung beim Starten konfigurieren; der Schlüssel ist `config.usage.swapautostart`. |
+| EXIT / Zurück | Verwaltung schließen. |
+
+Der Statusdialog fasst mehrere erkannte Swap-Bereiche teilweise zusammen. Er ist keine vollständige Auflistung aller aktiven Partitionen. Für eine genaue Bestandsaufnahme über [SSH](../../netzwerk/fernzugriff/):
+
+```sh
+cat /proc/swaps
+free -h
+```
+
+`Size` bezeichnet die Kapazität, `Used` den momentan belegten Anteil. In `/proc/swaps` sind diese Zahlen in KiB angegeben.
+
+## Eine Swap-Datei einrichten
+
+1. Ein geeignetes **lokales** Laufwerk dauerhaft einbinden; ein Linux-Dateisystem wie ext4 verwenden.
+2. Zunächst prüfen, ob bereits Swap vorhanden und aktiv ist.
+3. Falls erforderlich **Grün → Erstellen** wählen und das Zielgerät prüfen.
+4. Eine angebotene Größe wählen. Im geprüften Dialog sind es **32, 64, 128, 256, 512, 1024, 1536 oder 2048 MB**. Die passende Größe hängt vom RAM und den verwendeten Plugins ab.
+5. Die Erstellung abwarten, danach mit **Rot** aktivieren und bei gewünschter dauerhafter Nutzung **Gelb → Autostart** einschalten.
+6. Nach einem normalen Neustart erneut Status und `/proc/swaps` prüfen.
+
+Die Datei heißt im gewählten Verzeichnis `swapfile`. Vor dem Erstellen muss ausreichend freier Platz vorhanden sein. Die Oberfläche kann je nach Version auch FAT-Medien anbieten; ihre Erkennung und Fehlermeldung sind im geprüften Quellstand nicht vollständig konsistent. Für diese Anleitung ist deshalb ein lokales ext4-Laufwerk der nachvollziehbare Beispielweg. **NAS, NFS und CIFS sind kein Swap-Ziel.**
+
+## Entfernen oder Probleme beheben
+
+Vor dem Abziehen eines Swap-Laufwerks aktive Aufgaben beenden, genügend freien RAM sicherstellen, Swap deaktivieren und den Autostart ausschalten. Wenn das Abschalten wegen Speichermangels scheitert, das Laufwerk angeschlossen lassen und die RAM-Auslastung reduzieren. Eine aktive Swap-Datei nicht über einen Dateimanager löschen.
+
+Viele Auslagerungsvorgänge können Wartezeiten verursachen; eine Festplatte kann dadurch wach bleiben. Häufiger Speichermangel lässt sich nicht allein durch immer größere Swap-Dateien lösen. Auch Plugins, Bildcaches und parallel laufende Aufgaben prüfen.
+
+Der Startassistent kann bei knappem Speicher einen eigenen Swap-Schritt anbieten. Das erscheint **bedingt**, nicht auf jeder Box. Mehr zum [Startassistenten](../../erste-schritte/startassistent/) und zum Unterschied zum [Flash Expander](../flash-expander/).

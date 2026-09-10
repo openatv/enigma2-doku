@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capture_tool": "https://github.com/openatv/enigma2-plugin-test",
-  "capture_tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3",
+  "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
   "captures": [
     {
       "id": "main-menu",
@@ -8904,6 +8904,1180 @@
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
       "capture_tool_commit": "307d35705e87db4349f5f32eb8226637fe7da4d3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "first-language",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "LocaleWizard",
+      "captured_at": "2026-09-10T14:59:45.858111+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "d1ffb316cf4c6d2de8deda5568ce9d8a3ca4e44b164081d72acc1328d21d74d7",
+      "file": "de/first-language.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-video-output",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardVideo",
+      "captured_at": "2026-09-10T15:00:10.358237+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "964de59b28b165871420860844ea1b3117cce278c13f21f0e5e220cd7bcb23c8",
+      "file": "de/first-video-output.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-video-edid",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardVideo",
+      "captured_at": "2026-09-10T15:01:49.858195+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "2e90d77b462ebf8fe445572eb7dbe92368e090c370e1bdab63c366749f4f66fd",
+      "file": "de/first-video-edid.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-video-mode",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardVideo",
+      "captured_at": "2026-09-10T15:02:08.858596+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "a1adb552ddb8e6d775c00050aeb005cd49a98b6dec5900788a3ea193f38125be",
+      "file": "de/first-video-mode.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-video-rate",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardVideo",
+      "captured_at": "2026-09-10T15:02:27.858214+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "20437bb5876064c231fc3a1858fb2ddb9740c096a963065ea60e38226071b50c",
+      "file": "de/first-video-rate.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-welcome",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:02:47.858222+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "725356e61ac796d93b973b88266c39070dac22b770bcc4d3ffb16fa48c9b23ba",
+      "file": "de/first-welcome.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-network",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:02:53.858243+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "94e25425b788683608c9df8a7f4209fdbf33c0e4bed43d3895dc625bcba598bc",
+      "file": "de/first-network.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-lan",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "NetworkAdapterSetup",
+      "captured_at": "2026-09-10T15:03:10.858155+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7bcfa761908a18f1506d5250b35f395112820bc67ae189dcf4d3f9d3ea83f7dd",
+      "file": "de/first-lan.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-network-status",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:03:33.358506+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "d8fef59ce7495a3f617048e7eaaf9e52e056fce044f447b2e8bd878b5716cca9",
+      "file": "de/first-network-status.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-dns",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:03:35.858568+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "a611fb56102695b1af157affe5afabc75d4c4d7b274e72619cef0a017fc57550",
+      "file": "de/first-dns.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-mounts",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "DeviceManagerMountPoints",
+      "captured_at": "2026-09-10T15:04:12.358893+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "6f3ade81e309c4d55fb64c198e29220bfcef33108799390127571895430b7c3a",
+      "file": "de/first-mounts.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-time",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:04:14.858441+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b19bec759a5bd12399cac7748a424b3128ab6237b2194aa872569fac33929dd3",
+      "file": "de/first-time.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-tuner",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:05:41.858543+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "481305cd23bb38a057b8586f3d0c3a417064c9795adb1ebb806733bcd56118e1",
+      "file": "de/first-tuner.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-unused-tuner",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:06:24.859214+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "146f5a75240452cb66af65f59f736784db17eb9c0471724e52d5321dd85f3e48",
+      "file": "de/first-unused-tuner.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-hybrid",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:06:45.358776+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "a81cc2d94f3494f9a0d8d7ff1dcd23bf5c3a5ee6790ab729c1bff0904f73a98d",
+      "file": "de/first-hybrid.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-channel-list",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:06:47.858360+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c582ec1d004cd4dde7401ff12705a706b6d459eab4b4f4fc26afde56c75bf33a",
+      "file": "de/first-channel-list.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-scan-choice",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:07:12.858157+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "6c205894dda1df9e05f6c031764dcbb3f38d81af685a2a6364f8ddd3dac9b65f",
+      "file": "de/first-scan-choice.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-auto-scan",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:07:16.358530+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "98e39fe60dfbf5a343282203940d3cceb7b0a7285c0edfb537bd1ecb9f42617e",
+      "file": "de/first-auto-scan.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-manual-scan",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:07:58.858432+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7d7874c4eadf3930f9dcf17b8b87c8a09eea8758913968b7587e0a164997dec4",
+      "file": "de/first-manual-scan.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-scan-preserve",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart",
+      "captured_at": "2026-09-10T15:08:49.358459+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c270423115b7eae042ee6c9d493c1064a3de279128044e6b65fd05185a5715f5",
+      "file": "de/first-scan-preserve.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-scanning",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "ServiceScan",
+      "captured_at": "2026-09-10T15:10:20.358311+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "df13c3e4e32d4ca35e722e6ec164368b11d778422fd39b9b136a08d3ac22bd0f",
+      "file": "de/first-scanning.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-scan-result",
+      "language": "de",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "ServiceScan",
+      "captured_at": "2026-09-10T15:14:33.358167+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "614a9f85e80e5a96738b3fa1ed4a0f2d0b38c30c4fb678fa8d2ebae2b0cc4d82",
+      "file": "de/first-scan-result.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-language",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "LocaleWizard",
+      "captured_at": "2026-09-10T15:20:09.941834+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "0685de07a364cd4339155a82c0f3d32284bbb94907ffd48dc115f84e06ddf705",
+      "file": "en/first-language.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-video-output",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardVideo:inputselection",
+      "captured_at": "2026-09-10T15:20:12.442270+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "161c9eb3f0be0a3d2986067927c3cb204852ab05ac3bcbb0d7188faf7b607680",
+      "file": "en/first-video-output.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-video-edid",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardVideo:modesdetection",
+      "captured_at": "2026-09-10T15:20:15.441970+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "6c769515cc08ebcfee193443ccae6cbcf66833f07fc37ecd38e567b1897dfdce",
+      "file": "en/first-video-edid.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-video-mode",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardVideo:modeselection",
+      "captured_at": "2026-09-10T15:20:21.942670+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "2db6946abf13af23ea040626604042c06c325656014796cedbbd8c3592f3b64c",
+      "file": "en/first-video-mode.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-video-rate",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardVideo:rateselection",
+      "captured_at": "2026-09-10T15:20:26.441950+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "965563e86900c068b88f644e9ded55de0ab8f08b2d19ec49c8911673bd8e7a08",
+      "file": "en/first-video-rate.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-welcome",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:introduction",
+      "captured_at": "2026-09-10T15:20:29.442005+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "23974e348c670f942e0a617c8c02737cbfea004318ace83591de29227f5bb4db",
+      "file": "en/first-welcome.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-network",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:nwifaceselect",
+      "captured_at": "2026-09-10T15:21:23.441962+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "ffe06a44f0c24861b1f9aafcf08396c2511b7fd7e4feaa10d0e58d88d099d068",
+      "file": "en/first-network.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-lan",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "NetworkAdapterSetup",
+      "captured_at": "2026-09-10T15:21:25.942442+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "4b52f83dbd0f6729535c076a5fb8de14c90e016bead411026386c72706b6eaf4",
+      "file": "en/first-lan.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-network-status",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:nwstatus",
+      "captured_at": "2026-09-10T15:21:28.442036+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7c8de7f384628308c001e8ee14051f3161489e3d39052fd7e9b6ef7ffcfe93c1",
+      "file": "en/first-network-status.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-dns",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:nwdns",
+      "captured_at": "2026-09-10T15:21:30.442235+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "7f5f5a1c6a2432ff9d8bccbd41d084056686d1113c14c950f45feb81410c1da6",
+      "file": "en/first-dns.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-mounts",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "DeviceManagerMountPoints",
+      "captured_at": "2026-09-10T15:21:32.942216+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c8b031d8b8550f6a5d8fbb51024d880e4f103ef21f1d9c2ae92ebfb3a7846bad",
+      "file": "en/first-mounts.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-time",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:timezone",
+      "captured_at": "2026-09-10T15:21:35.442251+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f395bf3e715737d7d1427c2731d92ed70109df4872f43e972cf2ac7d10c6c6fc",
+      "file": "en/first-time.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-tuner",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:nima",
+      "captured_at": "2026-09-10T15:24:36.442143+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "112d63af2b4e2a5e964182439f89152d6a173fa2ea5e75d79eb7ddb756d9200a",
+      "file": "en/first-tuner.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-unused-tuner",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:nimb",
+      "captured_at": "2026-09-10T15:24:39.942302+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "906af4eceea4cce53da724f2b060ca9c10b9750873f47c972e6f29ff879f9acf",
+      "file": "en/first-unused-tuner.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-hybrid",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:nimc",
+      "captured_at": "2026-09-10T15:24:42.442048+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "2ebfaa1271548e2a8bca4e3a80511939180154e582341e8840c632175b36e8fa",
+      "file": "en/first-hybrid.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-channel-list",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:channels",
+      "captured_at": "2026-09-10T15:24:44.442393+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "bcc041bd9921cbf2e9e4ad7923da4d4c3fdad1f465d16b0e7453d3a9d9dde2a9",
+      "file": "en/first-channel-list.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-scan-choice",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:scanquestion",
+      "captured_at": "2026-09-10T15:24:47.942522+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "4356e74c9bd9ba9af3637f24252d74bf1a3b6ef6b38195a3ec37ed5801038d6b",
+      "file": "en/first-scan-choice.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-auto-scan",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:scan",
+      "captured_at": "2026-09-10T15:24:50.942816+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f1a11f31ab2046455dcf4eebebd40a02993d687220c703ebff2fb65507a53553",
+      "file": "en/first-auto-scan.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-manual-scan",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:manualscan",
+      "captured_at": "2026-09-10T15:24:56.442237+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "0a705db9b21279b47f9180d27116c777c794d873803e0ffdddd831784e732839",
+      "file": "en/first-manual-scan.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-scan-preserve",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "WizardStart:scan",
+      "captured_at": "2026-09-10T15:30:11.942813+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f66436c720b41f4c8ca616d5466e2d9095e01ddb96540c6cca7ce24286918f30",
+      "file": "en/first-scan-preserve.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-scanning",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "ServiceScan",
+      "captured_at": "2026-09-10T15:32:21.941884+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "761f72f02f1c2d1c9f20df57d65b191653b12fc59cd830cfa227e85ab0177b98",
+      "file": "en/first-scanning.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "first-scan-result",
+      "language": "en",
+      "article": "erste-schritte/startassistent",
+      "screen_key": "ServiceScan",
+      "captured_at": "2026-09-10T15:36:17.941913+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1e5413810176b9ce38bd84cf821d06bd61898a92b1ce6e99378f4b7cac291d8a",
+      "file": "en/first-scan-result.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab"
+    },
+    {
+      "id": "sys-menu",
+      "language": "de",
+      "article": "system",
+      "screen_key": "extended",
+      "captured_at": "2026-09-10T15:43:31.719815+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "403f24e24e6fe9e225889f3fba39fbeaf66876c733c80a6d5978210a2b68a5a5",
+      "file": "de/sys-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-storage-menu",
+      "language": "de",
+      "article": "system",
+      "screen_key": "harddisk",
+      "captured_at": "2026-09-10T15:43:35.546101+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "fa34e933f7b0a8c664c60e92c09eef13393271f7a6e4f4f255b637b53b6031b6",
+      "file": "de/sys-storage-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-swap",
+      "language": "de",
+      "article": "system/swap",
+      "screen_key": "sys-swap",
+      "captured_at": "2026-09-10T15:43:39.429864+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "5ca0994c3421d30e63feb59c19db866c6c5aa405a5619d08a9db913bc4b655d7",
+      "file": "de/sys-swap.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-flash",
+      "language": "de",
+      "article": "system/flash-expander",
+      "screen_key": "sys-flash",
+      "captured_at": "2026-09-10T15:43:43.265179+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "f7f947252a4983270d94b36b8fa2156410ecef8ce0c3c801e9d44285e5eaa8d5",
+      "file": "de/sys-flash.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-scripts",
+      "language": "de",
+      "article": "system/skripte",
+      "screen_key": "sys-scripts",
+      "captured_at": "2026-09-10T15:43:46.993780+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "556fa8c89716adb74439919f23a48c12e80fe67bc33a1b50fa8f7a1d20f44175",
+      "file": "de/sys-scripts.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-reset-full",
+      "language": "de",
+      "article": "system/werkseinstellungen",
+      "screen_key": "sys-reset-full",
+      "captured_at": "2026-09-10T15:43:50.714622+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "2860ce3b0b14b0f7578651a37e31a518f272f538cb913a2b42baca60b1b2dfd9",
+      "file": "de/sys-reset-full.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-reset-part",
+      "language": "de",
+      "article": "system/werkseinstellungen",
+      "screen_key": "sys-reset-part",
+      "captured_at": "2026-09-10T15:43:54.465092+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c67b51d39dfc102e12949e4bc32826fe7c86ee2ae8195c2c49fb2de42b3cd337",
+      "file": "de/sys-reset-part.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-menu",
+      "language": "en",
+      "article": "system",
+      "screen_key": "extended",
+      "captured_at": "2026-09-10T15:44:28.473450+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "3f0d5fdd671e98bcbee25a73224fa56a09ceaaa3cb970eeb5ef4bfff23ac03c2",
+      "file": "en/sys-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-storage-menu",
+      "language": "en",
+      "article": "system",
+      "screen_key": "harddisk",
+      "captured_at": "2026-09-10T15:44:32.302753+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "d78d01bfe5e54529b9ca4e776a08210f8599723f3ba9470f40f2769743460d0a",
+      "file": "en/sys-storage-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-swap",
+      "language": "en",
+      "article": "system/swap",
+      "screen_key": "sys-swap",
+      "captured_at": "2026-09-10T15:44:36.038727+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "27e666a8b60c1b18bd6382c0d152e54cf69eea9ac11ebfd59a5026ba105a50e9",
+      "file": "en/sys-swap.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-flash",
+      "language": "en",
+      "article": "system/flash-expander",
+      "screen_key": "sys-flash",
+      "captured_at": "2026-09-10T15:44:39.940052+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "ec34f0242582f6c75f55513c7877562030359ce10a805d8587f716ee7c1141f0",
+      "file": "en/sys-flash.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-scripts",
+      "language": "en",
+      "article": "system/skripte",
+      "screen_key": "sys-scripts",
+      "captured_at": "2026-09-10T15:44:43.651118+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "91d6d6647b1c0a02959c3116a7ba91257cff10842d9c5f5cd6d811267f7e4071",
+      "file": "en/sys-scripts.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-reset-full",
+      "language": "en",
+      "article": "system/werkseinstellungen",
+      "screen_key": "sys-reset-full",
+      "captured_at": "2026-09-10T15:44:47.375936+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "cc3a1be0d30b74241c621e3f45cb62a2d9e1cbaf6bc719327a510ae05cf236b8",
+      "file": "en/sys-reset-full.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "sys-reset-part",
+      "language": "en",
+      "article": "system/werkseinstellungen",
+      "screen_key": "sys-reset-part",
+      "captured_at": "2026-09-10T15:44:51.102030+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "d95eb9612fa1d2cda7be6ba222b9c351dd78f456d2320b31650f47240aa1dd59",
+      "file": "en/sys-reset-part.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "6c97fb5c8cbb56bf95a011c76c30a0c7e1533414",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     }

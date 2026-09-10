@@ -1,0 +1,51 @@
+---
+title: "Skriptverwaltung: eigene Aufgaben starten"
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → System → Skriptverwaltung** startet Shell-Skripte aus `/usr/script`. Das ist ein Werkzeug für bewusst selbst angelegte Aufgaben, etwa eine einfache Zustandsabfrage. Es verwaltet keine Aufnahmetimer und legt keinen automatischen Zeitplan an.
+
+<Capture id="sys-scripts" language="de" alt="Skriptverwaltung ohne installierte Benutzerskripte" caption="Eine leere Liste ist normal, wenn noch keine eigenen Skripte vorliegen." />
+
+## Ein einfaches Beispiel ablegen
+
+Über [SSH oder SFTP](../../netzwerk/fernzugriff/) das Verzeichnis `/usr/script` anlegen, sofern es noch fehlt. Eine Datei **`system-status.sh`** mit folgendem Inhalt darin speichern:
+
+```sh
+#!/bin/sh
+printf 'Systemlaufwerk:\n'
+df -h /
+printf '\nArbeitsspeicher:\n'
+free -h
+```
+
+Das Beispiel liest nur freien Speicher aus. Dateien mit Unix-Zeilenenden (**LF**) speichern. Ein klarer Dateiname ohne Leerzeichen erleichtert die Verwendung; der geprüfte Manager zerlegt Dateinamen an Leerzeichen.
+
+```sh
+mkdir -p /usr/script
+chmod 755 /usr/script/system-status.sh
+```
+
+Den Inhalt zuerst mit einem Texteditor oder `cat /usr/script/system-status.sh` prüfen. Skripte laufen mit den Rechten des Enigma2-Prozesses, auf der üblichen Box also als **root**. Deshalb keine unbekannten Skripte allein aufgrund ihres Dateinamens starten.
+
+## Bedienung und Ablauf
+
+1. Skriptverwaltung öffnen. Sie liest das Verzeichnis ein und sortiert die erkannten `.sh`-Einträge alphabetisch.
+2. Mit **Hoch/Runter** das Skript auswählen.
+3. Mit **OK oder Grün → Ausführen** starten; die anschließende Rückfrage bestätigen.
+4. Ausgabe und Fehlermeldungen in der Konsole lesen. Sie bleibt nach erfolgreichem Abschluss geöffnet.
+5. Mit **Rot / Zurück** die Verwaltung verlassen. Neu übertragene Dateien gegebenenfalls durch erneutes Öffnen einlesen.
+
+Im geprüften Code wird das Skript mit `. /usr/script/DATEI.sh` in einer Shell eingelesen. Verwende daher für dieses Beispiel **POSIX-sh-Syntax**. Ein Bash-Shebang allein schaltet diesen Aufruf nicht auf Bash um. Komplexere Programme besser über ein kleines passendes Startskript aufrufen.
+
+## Wenn etwas nicht funktioniert
+
+| Problem | Prüfen |
+| --- | --- |
+| Liste leer | Liegt die Datei wirklich unter `/usr/script` und enthält ihr Name `.sh`? Menü erneut öffnen. |
+| `not found` oder unerwartete Syntaxfehler | LF statt Windows-CRLF; vorhandene Befehle und absolute Dateipfade prüfen. |
+| Funktioniert in SSH, nicht im Menü | Arbeitsverzeichnis, Umgebung und PATH können anders sein. Absolute Pfade verwenden. |
+| Aufgabe läuft lange | Das Skript muss selbst ein Ende erreichen. Keine endlose Hintergrundschleife als Menüaktion anlegen. |
+
+Für eine einmalige oder wiederkehrende Enigma2-Aufgabe nutze die [Aufgabenplanung](../../timer/aufgaben/); Linux-Programme können über [Cron](../../timer/cron/) geplant werden. Die Skriptverwaltung selbst hat keine Termin-, Wiederholungs- oder Aufwachoptionen.
