@@ -1,0 +1,28 @@
+---
+title: "e2MDB – Scannen und Fortschritt verstehen"
+description: "OpenATV ab 8.0: Scannen und Fortschritt verstehen. Einrichtung, Bedeutung und praktische Hinweise zu e2MDB."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-main" language="de" alt="e2MDB: Scannen und Fortschritt verstehen" caption="Native Ansicht in MetrixHD. Testwerte sind Beispiele. API-Felder sind in der Aufnahme mit schwarzen Balken verdeckt; vorhandene Zugangsdaten wurden nicht geändert." />
+
+| Taste im Scanner | Funktion |
+| --- | --- |
+| OK | Aktuellen Pfad markieren oder abwählen. |
+| Rot | Alle Pfade auswählen oder alle abwählen. |
+| Grün | Gespeicherte Medienpfade bearbeiten. |
+| Blau | Scan starten; während eines aktiven Auftrags denselben Auftrag stoppen. |
+| MENU | e2MDB-Einstellungen öffnen. |
+| EXIT | Scanneranzeige schließen. Der Backend-Auftrag kann weiterarbeiten. |
+| Gelb | Cache-Werkzeuge. Keine normale Aktualisierung; Löschwirkung beachten. |
+
+Der Ablauf umfasst das Einsammeln der Dateien, deren Erfassung und die anschließende Metadatensuche. Die Anzahl importierter Dateien ist deshalb nicht die Anzahl fertiger Cover. Ein länger gleich bleibender Gesamtprozentsatz bedeutet nicht automatisch Stillstand: Phase, aktueller Titel und Einzelzähler mit ansehen.
+
+„Vorhandene Medieneinträge neu erfassen“ nur bewusst einschalten. Normalerweise sollen neue oder noch fehlende Daten ergänzt werden. Für eine gezielte Nachbearbeitung ist „Fehlende Medien-Metadaten/Bilder erneut suchen“ im Werkzeugmenü geeigneter als wiederholt den ganzen Cache zu löschen.
+
+Der Backend-Dienst arbeitet mit einem zentralen Worker. Ein großer Medienauftrag kann Live-/EPG-Arbeit verzögern. Providerlimits, langsame Freigaben und fehlende Treffer verlängern die Laufzeit. Einen zweiten Großauftrag nicht als vermeintliche Beschleunigung starten.
+
+Im geprüften Scanner ist **INFO nicht an den Scanbericht gebunden**, auch wenn eine Berichtsklasse im Plugin vorhanden ist. Für die Diagnose den Web-Bereich „Werkzeuge“ und den Backend-Status nutzen. Ältere Anleitungen können eine andere Tastenbelegung zeigen.
+
+[Zur e2MDB-Übersicht](../) · [Alle Einstellungen](../optionen/)

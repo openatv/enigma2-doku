@@ -1,0 +1,30 @@
+---
+title: "e2MDB \u2013 Select prefill channels"
+description: "OpenATV 8.0+: Select prefill channels. Detailed e2MDB instructions, purpose and practical examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-channels" language="en" alt="e2MDB: Select prefill channels" caption="Native MetrixHD view. Test values are examples. API fields are covered with black bars; real credentials were not changed." />
+
+The prefill channel list selects whose existing EPG events should receive extra metadata. It does not tune a receiver or download programme listings.
+
+## Select channels
+
+1. Open e2MDB, press **MENU**, then **Yellow/Prefill channels**.
+2. Press **OK** on a bouquet to open its services. The display shows selected and total counts.
+3. In the channel view, **OK** toggles an individual channel, **Yellow** deselects all and **Blue** selects all. At bouquet level, Yellow and Blue apply to the relevant bouquet.
+4. Press **Green/Save**. Concentrate on channels whose EPG is maintained.
+
+A partially selected bouquet is valid. A channel may appear in several bouquets, so the unique total is not necessarily the sum of all visible rows. Disable **Use zap history** if the selection must remain strictly manual.
+
+## EPG first, metadata second
+
+The same channels need programme data from DVB reception, EPGRefresh or a correctly mapped import source. Only then can e2MDB prefill upcoming events. Saving this selection does not automatically update EPGRefresh's separate selection.
+
+Under **Blue/More…**, **Run Live/EPG prefill now** requests work, while **Prefill status / diagnostics** shows its state. An active job or retry suppression after missing EPG may delay another attempt.
+
+Ignored title patterns, service-name patterns and folder-name patterns have different purposes. Their effect depends on the processing path. For a deliberately limited prefill run, explicit channel selection is more reliable than assuming a name pattern filters every background path.
+
+
+[Back to e2MDB](../) · [All settings](../optionen/)

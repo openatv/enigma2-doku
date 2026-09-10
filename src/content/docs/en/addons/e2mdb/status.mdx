@@ -1,0 +1,35 @@
+---
+title: "e2MDB \u2013 Read database and queue status"
+description: "OpenATV 8.0+: Read database and queue status. Detailed e2MDB instructions, purpose and practical examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-queue" language="en" alt="e2MDB: Read database and queue status" caption="Native MetrixHD view. Test values are examples. API fields are covered with black bars; real credentials were not changed." />
+
+Open e2MDB → **MENU → Blue/More… → DB status and maintenance**. **Green** refreshes the display. **Blue/Run cleanup** and **OK/DB maintenance** are actions that change data or start work.
+
+## Interpret database counters
+
+| Display | Meaning |
+| --- | --- |
+| Database size | Size of the SQLite database file. WAL files and artwork use additional space. |
+| Free in DB | Allocated database pages available for reuse, not free HDD space. |
+| Imported files | Files registered by the scanner; not a guarantee of completed provider data. |
+| Media records / browser ready | Built records versus entries ready for display in the Media Browser. |
+| Provider pending or missing | Records not fully enriched yet; expected during a scan. |
+| Artwork with/without images | Image availability, separate from title recognition. |
+| Live/EPG and queue | Active, expired and waiting events; counts can change after cleanup. |
+
+Under load, some queries may be incomplete temporarily. A dash or unknown value is not zero. Refresh again after the job before deciding on maintenance.
+
+## Worker queue
+
+Use **More… → Live/EPG worker queue** to inspect waiting, running, completed, failed or unmatched events. Reset, clear and retry buttons change state. They are not needed just to read the queue.
+
+A job can be technically complete and still contain individual errors or no-match outcomes. Read the summary, failures and missing-artwork counts in addition to the completion state. The scanner screenshots intentionally retain their real job summary rather than illustrating a guaranteed error-free library.
+
+“Prefill complete” may describe candidate collection while the provider worker is still busy. Conversely, imported files can be waiting for enrichment and therefore absent from browser-ready results. These are different stages of the same process.
+
+
+[Back to e2MDB](../) · [All settings](../optionen/)

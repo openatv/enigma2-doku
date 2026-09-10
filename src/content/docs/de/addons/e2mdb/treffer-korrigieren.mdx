@@ -1,0 +1,27 @@
+---
+title: "e2MDB – Treffer prüfen und korrigieren"
+description: "OpenATV ab 8.0: Treffer prüfen und korrigieren. Einrichtung, Bedeutung und praktische Hinweise zu e2MDB."
+---
+
+import { Image } from 'astro:assets';
+import editorImage from '../../../../../assets/e2mdb-web/editor.png';
+
+<figure>
+<a href={editorImage.src} target="_blank" rel="noopener">
+<Image src={editorImage} alt="e2MDB Web-Editor" widths={[640, 960, 1280]} format="webp" quality={90} loading="lazy" />
+</a>
+<figcaption>Echter Web-Editor: Film 21, Titel und Jahr, englischer Beschreibungstext sowie die getrennte Aktion „Datei umbenennen“. Die Weboberfläche dieses Plugin-Stands ist teilweise deutsch; das gilt unabhängig von der Enigma2-Menüsprache.</figcaption>
+</figure>
+
+
+1. Über OpenWebif den Eintrag e2MDB öffnen und zum „Editor“ wechseln. Den Titel im Datenbestand suchen; bei Bedarf nach Status und Typ filtern.
+2. Den Datensatz wählen und Titel, Jahr, Film oder Serie sowie bei Serien die Folge vergleichen. Ein ähnliches Cover allein ist kein Beleg für einen richtigen Treffer.
+3. Bei Bedarf einen präziseren Suchbegriff und den passenden Typ für den Einzel-Scan verwenden. Ein solcher Einzel-Scan löst neue Backend-Arbeit aus.
+4. Angebotene Alternativen vergleichen. „Alternative übernehmen“ ändert die Zuordnung; „Bilder übernehmen“ ist die gezielte Artwork-Aktion.
+5. Nach einer Korrektur den Datensatz und anschließend die betroffene Skin-Ansicht erneut öffnen.
+
+**Vorsicht beim Umbenennen:** „Datei umbenennen“ und „Beim Übernehmen passend umbenennen“ können echte Dateinamen ändern. Für eine reine Zuordnungskorrektur das automatische Umbenennen ausgeschaltet lassen. Vor größeren Änderungen die Medien samt Begleitdateien sichern.
+
+Ein korrekt gefundener Titel ohne Bild ist ein anderes Problem als eine falsche Zuordnung. Fehlendes Artwork kann am Anbieter, am Download oder an einem noch laufenden Auftrag liegen. Zuerst den Datensatz prüfen, dann gezielt nachbessern.
+
+[Zur e2MDB-Übersicht](../) · [Alle Einstellungen](../optionen/)

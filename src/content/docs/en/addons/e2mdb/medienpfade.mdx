@@ -1,0 +1,30 @@
+---
+title: "e2MDB \u2013 Media paths"
+description: "OpenATV 8.0+: Media paths. Detailed e2MDB instructions, purpose and practical examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-paths" language="en" alt="e2MDB: Media paths" caption="Native MetrixHD view. Test values are examples. API fields are covered with black bars; real credentials were not changed." />
+
+Open **Green/Paths** in the scanner. **Yellow/Add** adds a directory; **Blue/Remove** removes the configured path entry. Removing that entry does not delete its media files. Press **Green/Save** after editing.
+
+## Choose a content mode
+
+| Mode | Suitable content |
+| --- | --- |
+| Movie | A film folder. Title and release year are particularly useful. |
+| Series | Series with season and episode information. |
+| Movie/Series | Mixed folders such as the normal recording directory. The parser must infer the type. |
+| Anime Series / Anime Movie | Separate anime series or films with suitable providers enabled. |
+| Manga Series / Manga Movie | Special type hints offered by this plugin version. They do not promise a comic reader or support for arbitrary archive formats. |
+| Exclude | Directories that should not be scanned. |
+
+**Recursive = Yes** includes subfolders. This is usually useful for a series root. Avoid overlapping roots and duplicate paths. Use precise content modes instead of treating every folder as mixed content.
+
+The scan uses the **currently selected paths in the scanner**. A saved path and its current selection are different things. Test exclusions with a small folder structure before starting a large recursive library scan.
+
+Local recordings might be under `/media/hdd/movie/`, with films and series on separate NAS folders. These are examples; use your actual mount paths. Check that the share is available before scanning. **Ignored folder name patterns** affect title parsing and are not the same as the **Exclude** path mode.
+
+
+[Back to e2MDB](../) · [All settings](../optionen/)

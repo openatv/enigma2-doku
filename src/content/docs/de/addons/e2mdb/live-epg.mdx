@@ -1,0 +1,26 @@
+---
+title: "e2MDB – Live TV und EPG"
+description: "OpenATV ab 8.0: Live TV und EPG. Einrichtung, Bedeutung und praktische Hinweise zu e2MDB."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-live" language="de" alt="e2MDB: Live TV und EPG" caption="Native Ansicht in MetrixHD. Testwerte sind Beispiele. API-Felder sind in der Aufnahme mit schwarzen Balken verdeckt; vorhandene Zugangsdaten wurden nicht geändert." />
+
+Für Live-TV benötigt e2MDB den Ereignisbezug aus Enigma2: Sender, Sendung und Zeit. Die zusätzlichen Informationen werden zwischengespeichert und von unterstützten Ansichten genutzt. Sie ersetzen nicht die EPG-Beschaffung des Receivers.
+
+| Option | Wirkung |
+| --- | --- |
+| Live-/EPG-Metadaten-Cache | Aktiviert die ergänzende Live-/EPG-Metadatenverarbeitung. |
+| e2MDB-EventView für EPG | Erweiterte Informationen für EPG-Ereignisse in unterstützten Aufrufwegen. |
+| e2MDB-EventView für Medien | Erweiterte Medieninformationen in unterstützten Aufrufwegen. Fremde Movie-Player können eigene Informationsseiten verwenden. |
+| InfoBar-Metadaten | Metadaten für die Infoleiste bereitstellen. Der Skin muss entsprechende Elemente anzeigen. |
+| Metadaten in der Senderauswahl | Metadaten für die Senderauswahl und ihre unterstützten Vorlagen bereitstellen. |
+
+Bei „Vorschaubild der Serviceliste“ kann ein Hintergrundbild bevorzugt werden, ersatzweise ein Vorschau-/Standbild; alternativ umgekehrt oder nur ein Backdrop. Das wirkt auf die Bildauswahl, nicht auf die Geometrie der Liste.
+
+Die Aufbewahrungszeit begrenzt alte Live-/EPG-Daten. „No-match retention in hours“ bezeichnet in diesem Stand die Behandlung erfolgloser Suchen beziehungsweise deren erneuten Versuch. Ein No-match ist kein Beweis, dass die Sendung nie gefunden werden kann. Die genaue Beschriftung unterscheidet sich zwischen Versionen.
+
+**Versionsdetail zur No-match-Einstellung:** Die Setup-Hilfe spricht von Aufbewahrung nach Ereignisende. Der geprüfte Backend-Export übergibt den Wert als `no_match_retry_hours`. Er beeinflusst damit auch erneute Versuche. Er ist kein Schalter zum sofortigen Löschen aller erfolglosen Suchen.
+
+[Zur e2MDB-Übersicht](../) · [Alle Einstellungen](../optionen/)

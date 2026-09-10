@@ -1,0 +1,25 @@
+---
+title: "e2MDB – API Schlüssel eintragen"
+description: "OpenATV ab 8.0: API Schlüssel eintragen. Einrichtung, Bedeutung und praktische Hinweise zu e2MDB."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-providers" language="de" alt="e2MDB: API Schlüssel eintragen" caption="Native Ansicht in MetrixHD. Testwerte sind Beispiele. API-Felder sind in der Aufnahme mit schwarzen Balken verdeckt; vorhandene Zugangsdaten wurden nicht geändert." />
+
+API-Schlüssel gehören zum jeweiligen Anbieter und sollten aus dem eigenen Benutzerkonto stammen. Nur Anbieter einschalten, für die ein nutzbarer Zugang vorhanden ist. Ein leeres oder falsches Schlüsselfeld erzeugt keinen Zugang.
+
+## Die richtigen Zugangsdaten verwenden
+
+- TMDb: In den API-Einstellungen des TMDb-Kontos den API-Key für v3 verwenden. Der lange „API Read Access Token“ ist ein anderer Zugangstyp und gehört nicht unverändert in dieses Schlüsselfeld.
+- TVDb: Einen zum verwendeten TVDb-API-Zugang passenden Projekt-Key verwenden. Ein Subscriber-PIN ist kein API-Key. Die hier beschriebene e2MDB-Version bietet kein separates PIN-Feld. Ein Zugang, der zusätzlich einen PIN verlangt, ist damit nicht ohne Weiteres nutzbar.
+- OMDb: Den OMDb-API-Key nach der Registrierung beziehungsweise Freischaltung eintragen. OMDb liefert überwiegend englische Informationen.
+- FanArt.tv: Den vorgesehenen API-Key aus dem eigenen FanArt-Konto verwenden. Das Plugin bietet ein einzelnes Schlüsselfeld und die Wahl zwischen fehlendem Artwork ergänzen und FanArt bevorzugen.
+
+Schlüssel ohne führende oder nachfolgende Leerzeichen einfügen, den passenden Anbieter aktivieren und mit Grün speichern. Anschließend einen bekannten Titel prüfen. Bei Zugriffsfehlern zuerst Zugangstyp, Freischaltung und Anbieterlimit prüfen, nicht sofort die ganze Datenbank löschen.
+
+Offizielle Registrierungs- und API-Seiten stehen am Ende des Handbuchs. Nutzungsbedingungen und Kontingente legt der jeweilige Anbieter fest. Zugangsdaten niemals in Forenbildern, Supportanhängen oder öffentlichen Konfigurationsdateien veröffentlichen.
+
+[TMDb-Authentifizierung](https://developer.themoviedb.org/docs/authentication-application) und [TheTVDB-Zugangsmodelle](https://support.thetvdb.com/kb/faq.php?id=62) beschreiben die verschiedenen Zugangstypen. e2MDB verwendet im geprüften Stand bei TMDb `api_key` und sendet bei TVDb einen leeren PIN. Das erklärt die Einschränkung unabhängig von der Kontobezeichnung.
+
+[Zur e2MDB-Übersicht](../) · [Alle Einstellungen](../optionen/)

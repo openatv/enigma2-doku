@@ -1,0 +1,34 @@
+---
+title: "e2MDB – Erste Einrichtung"
+description: "OpenATV ab 8.0: Erste Einrichtung. Einrichtung, Bedeutung und praktische Hinweise zu e2MDB."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-basic" language="de" alt="e2MDB: Erste Einrichtung" caption="Native Ansicht in MetrixHD. Testwerte sind Beispiele. API-Felder sind in der Aufnahme mit schwarzen Balken verdeckt; vorhandene Zugangsdaten wurden nicht geändert." />
+
+Mit einer kleinen, gut benannten Testauswahl beginnen. So lassen sich Zugangsdaten, Pfade und Trefferqualität prüfen, bevor eine große Sammlung verarbeitet wird.
+
+1. HDD oder SSD einhängen und freien Platz sowie Schreibzugriff kontrollieren. NAS-Verzeichnisse öffnen und ihre Erreichbarkeit testen.
+2. e2MDB unter „Erweiterungen“ öffnen. Ist „Im Hauptmenü anzeigen“ aktiviert, gibt es zusätzlich einen direkten Menüeintrag.
+3. Im Scanner MENU drücken. „Mediendatenbank aktivieren“ einschalten, den Cache-Pfad festlegen und die Provider-Suchsprache auswählen.
+4. Nur die benötigten Anbieter aktivieren. Erforderliche API-Schlüssel eintragen. Für deutsche Beschreibungen Deutsch wählen und einen bewussten englischen Fallback festlegen.
+5. Mit Grün speichern. Im Scanner über Grün „Pfade“ einen Testordner hinzufügen, seinen Modus und „Rekursiv“ einstellen und speichern.
+6. Den Testpfad markieren und mit Blau „Scan starten“. Während eines laufenden Scans heißt dieselbe Taste „Scan stoppen“.
+7. Ergebnisse im Web-Editor kontrollieren. Erst danach weitere Medienordner und größere Bestände hinzufügen.
+8. Für Live-TV die EPG-Funktionen, Senderauswahl und Vorbefüllung einrichten. EPGRefresh und die Aufgabenplanung folgen in eigenen Kapiteln.
+
+## Die Einrichtung ist gelungen wenn
+
+- Der Backend-Status meldet einen laufenden Dienst und einen plausiblen Datenbankpfad.
+- Ein bekannter Testfilm wird mit passendem Titel und Jahr gefunden; ein Bild erscheint, sofern der Anbieter eines liefert.
+- In einer unterstützten Skin-Ansicht erscheinen Metadaten für eine Sendung mit vorhandenem EPG.
+- Die Box bleibt bedienbar. Ein großer Scan darf lange dauern; Fortschrittsphase und Zähler verändern sich weiter.
+
+## Speichern und Neustart
+
+Normale e2MDB-Einstellungen werden über Grün gespeichert und an das Backend weitergegeben. Nach einer erstmaligen Installation oder einem Plugin-Update kann ein GUI-Neustart nötig sein, damit neue Quellen, Menüeinträge und Timerfunktionen registriert werden. Nicht bei jeder Schlüssel- oder Pfadänderung neu starten.
+
+EXIT im Scanner schließt die Anzeige; ein Backend-Scan kann weiterlaufen. Vor Herunterfahren, Datenträgerwechsel oder Wartung den tatsächlichen Auftragsstatus kontrollieren.
+
+[Zur e2MDB-Übersicht](../) · [Alle Einstellungen](../optionen/)

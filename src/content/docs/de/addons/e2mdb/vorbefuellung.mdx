@@ -1,0 +1,28 @@
+---
+title: "e2MDB – Vorbefüllung einstellen"
+description: "OpenATV ab 8.0: Vorbefüllung einstellen. Einrichtung, Bedeutung und praktische Hinweise zu e2MDB."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-prefill" language="de" alt="e2MDB: Vorbefüllung einstellen" caption="Native Ansicht in MetrixHD. Testwerte sind Beispiele. API-Felder sind in der Aufnahme mit schwarzen Balken verdeckt; vorhandene Zugangsdaten wurden nicht geändert." />
+
+<Capture id="e2mdb-prefill-status" language="de" alt="e2MDB: Vorbefüllung einstellen" caption="Native Ansicht in MetrixHD. Testwerte sind Beispiele. API-Felder sind in der Aufnahme mit schwarzen Balken verdeckt; vorhandene Zugangsdaten wurden nicht geändert." />
+
+Vorbefüllung bereitet Metadaten für kommende Sendungen vor, bevor sie beim Umschalten gebraucht werden. Sie arbeitet nur mit Ereignissen, die bereits im Enigma2-EPG vorhanden sind.
+
+| Einstellung | Bedeutung und sinnvoller Einstieg |
+| --- | --- |
+| Vorbefüllung aktivieren | Grundschalter für die Hintergrundvorbereitung. |
+| Modus | Aus, Standby, Nachtfenster oder Leerlauf. Nicht mit einem fest terminierten Funktions-Timer verwechseln. |
+| Startstunde | Beginn des Nachtfensters. Standby und Hintergrundpriorisierung können zusätzlich eine Rolle spielen. |
+| Prefill-Tage | Wie weit in die Zukunft Ereignisse berücksichtigt werden. Mit 1 bis 2 Tagen beginnen. |
+| Maximale Ereignisse | Gesamtlimit eines Vorbefüllungslaufs. Mit überschaubarer Senderauswahl und moderatem Limit beginnen. |
+| Maximale Events pro Service | Begrenzt einzelne Sender, damit sie nicht den ganzen Lauf bestimmen. |
+| Zap-Verlauf und Top-Sender | Häufig genutzte Sender zusätzlich zu den manuell gewählten Sendern einbeziehen. |
+
+Für einen exakt geplanten Lauf die OpenATV-Aufgabenplanung verwenden. „Nachtfenster“ ist keine sekundengenaue Terminierung. Automatische Vorbefüllung und zusätzliche Timer bewusst abstimmen, statt mehrere gleichartige Läufe übereinander zu legen.
+
+„Vorbefüllung fertig“ kann bedeuten, dass Kandidaten gesammelt und eingereiht wurden. Die anschließenden Internetabfragen und Bilddownloads können noch laufen. Deshalb auch Worker-Warteschlange und Backend-Status prüfen.
+
+[Zur e2MDB-Übersicht](../) · [Alle Einstellungen](../optionen/)

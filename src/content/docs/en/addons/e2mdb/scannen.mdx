@@ -1,0 +1,37 @@
+---
+title: "e2MDB \u2013 Scanning and progress"
+description: "OpenATV 8.0+: Scanning and progress. Detailed e2MDB instructions, purpose and practical examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-main" language="en" alt="e2MDB: Scanning and progress" caption="Native MetrixHD view. Test values are examples. API fields are covered with black bars; real credentials were not changed." />
+
+The scanner displays selected media paths and the backend's progress. Its overall percentage and the progress of the current phase describe different things.
+
+## Scanner controls
+
+| Button | Action |
+| --- | --- |
+| OK | Select or deselect the current path. |
+| Red | Select or deselect all paths. |
+| Green | Edit saved media paths. |
+| Blue | Start a scan; when a job is active, stop that job. |
+| MENU | Open e2MDB settings. |
+| EXIT | Close the display. The backend may keep working. |
+| Yellow | Cache tools. These are not a normal refresh; check their deletion scope. |
+
+**INFO is not mapped to the scan report in the reviewed scanner.** The source contains a report screen, but its presence does not establish a working INFO shortcut. Use the web tools and backend status for diagnosis. Older manuals may show a different button mapping.
+
+## Understand the phases
+
+The backend collects file paths, imports file information and then performs online metadata lookup. The number of imported files is not the number of completed covers. An overall percentage staying unchanged for a while does not prove a freeze: also inspect the phase, current title and individual counters.
+
+**Re-scan existing media entries** is a deliberate reprocessing option. With it off, existing metadata/artwork is retained and new or changed files are considered. For targeted repair, **Retry missing media metadata/artwork** in the tools menu is often more suitable than deleting the entire cache.
+
+The backend has a central worker. A large media job can delay live/EPG processing. Provider limits, slow network folders and unmatched titles all increase runtime. Starting another large job will not accelerate the same worker.
+
+A job can finish successfully at the technical level while reporting individual errors or no matches. Read its summary and inspect representative records before considering the library complete.
+
+
+[Back to e2MDB](../) · [All settings](../optionen/)

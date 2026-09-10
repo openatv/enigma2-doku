@@ -27,6 +27,7 @@ Die gemeinsame, modellneutrale Grunddokumentation für OpenATV: Deutsch und Engl
 - Wiedergabe: MediaPlayer mit sieben Optionen, DVD/Blu-ray, nativer TS-Dienst und ServiceMP3/GStreamer
 - ServiceApp, gstplayer und exteplayer3; 4097/5001/5002, TV-/Radio-Felder und IPTV-Bouquet-Beispiele
 - Native Untertitel, SubsSupport, Teletext, Container/Codecs und Wiedergabe-Fehlersuche
+- e2MDB ab OpenATV 8.0: 34 Kapitel je Sprache, alle 47 Hauptsetup-Optionen, Medien-/EPG-Vorbefüllung, Web-Editor und acht technische Anhänge
 - Plugins und Settings/Senderlisten
 - EPG-Ansichten mit ARD/ZDF, Primetime, INFO-/EPG-Belegung und Langdruck
 - EPGRefresh, EPGImport, XMLTV-Quellen und fehlender IPTV-EPG mit Service-Reference-Zuordnung
@@ -38,7 +39,7 @@ Die gemeinsame, modellneutrale Grunddokumentation für OpenATV: Deutsch und Engl
 - Einstellungsreferenz mit vorhandenen Beschriftungen und Originalhilfetexten
 - Erweiterbare Bereiche für Skins, Add-ons und spätere Anhänge
 
-Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 51 Kapitel pro Sprache enthalten echte Bildschirmaufnahmen: insgesamt 270 ausgewählte Bilder mit OpenATV 8.0.2-devel und MetrixHD. Davon zeigen 244 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für die zusätzlichen Skin-Kapitel.
+Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 62 Kapitel pro Sprache enthalten echte Bildschirmaufnahmen: 292 ausgewählte Enigma2-Bilder und eine ergänzende Web-Editor-Aufnahme mit OpenATV 8.0.2-devel und MetrixHD. Von den Enigma2-Bildern zeigen 266 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für die zusätzlichen Skin-Kapitel.
 
 Die vorhandene NAS-Freigabe und die HDD wurden auf Schreib- und Lesezugriff geprüft. Ihre Einbindung sowie Tuner- und LAN-Konfiguration blieben erhalten. Für einheitliche Bilder wurde MetrixHD verwendet; nach den DE/EN-Läufen wurde die ursprüngliche Sprache wiederhergestellt. Einzelne Assistentenansichten sind bebildert, der vollständige Neuinstallationsablauf ist noch nicht durchgetestet. WLAN und FBC folgen auf passender Hardware. Der [Prüfstand](docs/PRAXISTESTS.md) trennt aufgenommene Ansichten von vollständig getesteten Bedienabläufen.
 
@@ -108,3 +109,9 @@ Bei einem Wechsel auf Apache2 wird dieselbe Website für die neue Adresse gebaut
 ## Quellen und Lizenzen
 
 Der Inhalt basiert auf dem [OpenATV-Enigma2-Projekt](https://github.com/openatv/enigma2). Herkunft der übernommenen Texte und Markenassets: [NOTICE.md](NOTICE.md). Dieses Repository verwendet GPL-2.0; siehe [LICENSE](LICENSE). Drittanbieterpakete behalten ihre jeweiligen Lizenzen. Die Bezeichnung und das Logo von OpenATV dienen der Zuordnung dieses Handbuchs und werden dadurch nicht zu einer neuen frei verwendbaren Marke.
+
+## e2MDB – ausführlicher Add-on-Bereich
+
+Die bereitgestellte deutsche Anleitung wurde in 34 Webkapitel je Sprache überführt und vollständig auf Englisch ausgearbeitet. Die Skinner-Anhänge verwenden allgemeine Panelnamen und enthalten keine Umbra-Zuordnung. `data/e2mdb-settings.json` dokumentiert die 47 Felder des geprüften Hauptsetups; beide Sprachfassungen enthalten jeden Schlüssel.
+
+22 neue native Bilder zeigen e2MDB in DE/EN. Alle vier API-Felder sind vor `grab` mit schwarzen Balken verdeckt. Eine zusätzliche Web-Editor-Aufnahme ist in beiden Fassungen mit dem tatsächlichen, teilweise deutschen Sprachstand der Plugin-Weboberfläche beschriftet. Technische Beobachtungen und Prüfumfang stehen im [Praxisprotokoll](docs/PRAXISTESTS.md).

@@ -1,0 +1,25 @@
+---
+title: "e2MDB – Medienpfade festlegen"
+description: "OpenATV ab 8.0: Medienpfade festlegen. Einrichtung, Bedeutung und praktische Hinweise zu e2MDB."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-paths" language="de" alt="e2MDB: Medienpfade festlegen" caption="Native Ansicht in MetrixHD. Testwerte sind Beispiele. API-Felder sind in der Aufnahme mit schwarzen Balken verdeckt; vorhandene Zugangsdaten wurden nicht geändert." />
+
+Im Scanner Grün „Pfade“ öffnen. Gelb fügt einen Ordner hinzu, Blau entfernt den konfigurierten Pfadeintrag. Das Entfernen eines Pfadeintrags löscht nicht die Mediendateien. Mit Grün speichern.
+
+| Modus | Geeigneter Inhalt |
+| --- | --- |
+| Film | Ein Ordner mit Filmen. Titel und Erscheinungsjahr sind besonders hilfreich. |
+| Serien | Serien mit Staffel- und Episodenangaben. |
+| Film/Serie | Gemischte Ablage, zum Beispiel der normale Aufnahmeordner. Die Erkennung muss den Typ ableiten. |
+| Anime Series / Anime Movie | Getrennte Anime-Serien oder Anime-Filme mit passenden aktivierten Anbietern. |
+| Manga Series / Manga Movie | Spezielle Typvorgaben der Plugin-Version. Daraus folgt keine Zusicherung für ein Comic-Leseprogramm oder beliebige Archivformate. |
+| Ausschließen | Verzeichnisse, die nicht in die Erfassung einbezogen werden sollen. |
+
+„Rekursiv = Ja“ bezieht Unterordner ein. Für einen Serienwurzelordner ist das meist sinnvoll. Doppelte und überlappende Wurzelpfade vermeiden. Die Typvorgabe möglichst präzise wählen, statt jede Bibliothek pauschal als Film/Serie zu behandeln.
+
+Der Scan arbeitet mit den markierten Pfaden. Gespeicherte Pfade und die aktuelle Markierung im Scanner sind nicht dasselbe. Ausschlüsse bei einer kleinen Teststruktur prüfen, bevor eine große rekursive Bibliothek gestartet wird.
+
+[Zur e2MDB-Übersicht](../) · [Alle Einstellungen](../optionen/)

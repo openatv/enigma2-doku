@@ -43,3 +43,7 @@ Built-in [MovieSelection](../aufnahmen/movieselection/) needs no such add-on. Th
 ## Players and subtitles
 
 [MediaPlayer](../wiedergabe/mediaplayer/), [DVD/Blu-ray](../wiedergabe/dvd-bluray/), [ServiceApp](../wiedergabe/serviceapp/) and [SubsSupport](../wiedergabe/subssupport/) have a dedicated section with setup, options and screenshots. [The player overview](../wiedergabe/) explains how playback services relate to recording lists and hardware.
+
+## e2MDB for OpenATV 8.0+
+
+[e2MDB – detailed handbook](./e2mdb/) covers setup, providers, 47 settings, media library, EPG prefill, web editor, maintenance and skin integration.

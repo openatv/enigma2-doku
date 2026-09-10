@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capture_tool": "https://github.com/openatv/enigma2-plugin-test",
-  "capture_tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27",
+  "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
   "captures": [
     {
       "id": "main-menu",
@@ -5670,6 +5670,468 @@
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
       "capture_tool_commit": "19ede8572d6efae8b5969492a085fd9f1099af27",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-basic",
+      "language": "de",
+      "article": "addons/e2mdb/einrichtung",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:36:54.157276+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "090fa7a1a081d82ab67fef996b0ff57d64e2951089809e1e362b0ce0a5e02c7e",
+      "file": "de/e2mdb-basic.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-providers",
+      "language": "de",
+      "article": "addons/e2mdb/api-schluessel",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:36:57.941905+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b551b897f88491fd747cfa6454e17bd0bc5d3df79d7781627b4aeea702442d79",
+      "file": "de/e2mdb-providers.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-artwork",
+      "language": "de",
+      "article": "addons/e2mdb/anbieter-sprache",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:37:01.718671+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "8337563a301fe745ef4d0aa3e87d41e0af5964e40d0d8121bc6e3626bb0db59e",
+      "file": "de/e2mdb-artwork.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-live",
+      "language": "de",
+      "article": "addons/e2mdb/live-epg",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:37:05.489965+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "6d7b3b73ad5497bb54b0d71811c60cec60d7a9b09a345dd3b50bb2eeed237bad",
+      "file": "de/e2mdb-live.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-prefill",
+      "language": "de",
+      "article": "addons/e2mdb/vorbefuellung",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:37:09.251421+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "074e9c106c3514eb1d4a517a0759430057f7454f4be8f9d945dad8019039b2c7",
+      "file": "de/e2mdb-prefill.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-expert",
+      "language": "de",
+      "article": "addons/e2mdb/optionen",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:37:13.068648+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "71de4e5d96de33dcb52f1927a4ff9875df3c29a19ccdb1147041a20c9c521339",
+      "file": "de/e2mdb-expert.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-main",
+      "language": "de",
+      "article": "addons/e2mdb/scannen",
+      "screen_key": "e2mdb-main",
+      "captured_at": "2026-09-10T09:37:16.795690+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b289ef5a337950a584b2a784c95029d7ac9ce528ee4f2b6d3344f064ecc936c4",
+      "file": "de/e2mdb-main.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-paths",
+      "language": "de",
+      "article": "addons/e2mdb/medienpfade",
+      "screen_key": "e2mdb-paths",
+      "captured_at": "2026-09-10T09:37:20.580276+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "8a322772aa57637d47b61914df511f7a0641c9109d0cb3bd3898560ba1be5c21",
+      "file": "de/e2mdb-paths.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-channels",
+      "language": "de",
+      "article": "addons/e2mdb/senderauswahl",
+      "screen_key": "e2mdb-channels",
+      "captured_at": "2026-09-10T09:37:24.581780+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "10e8909c52d4f7651350f69b6673d32b7709ce3ab26191468c547757eb5a8db4",
+      "file": "de/e2mdb-channels.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-prefill-status",
+      "language": "de",
+      "article": "addons/e2mdb/vorbefuellung",
+      "screen_key": "e2mdb-prefill-status",
+      "captured_at": "2026-09-10T09:37:28.381674+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "6258865c6f7a2981901ea4db3d5147d186f4715e72b4a701292f84a713596757",
+      "file": "de/e2mdb-prefill-status.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-queue",
+      "language": "de",
+      "article": "addons/e2mdb/status",
+      "screen_key": "e2mdb-queue",
+      "captured_at": "2026-09-10T09:37:32.113205+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "2de2e04bf486afc0ed23a3dae61b4ac1d5870cc60910f9651a8caecbc9f6266a",
+      "file": "de/e2mdb-queue.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-basic",
+      "language": "en",
+      "article": "addons/e2mdb/einrichtung",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:38:09.019095+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "0bf8477e89ce93a292711c8a84e1746592fb6f4b11ec999d9949dd8cc4a7b418",
+      "file": "en/e2mdb-basic.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-providers",
+      "language": "en",
+      "article": "addons/e2mdb/api-schluessel",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:38:12.803603+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "86636e9696bae64cd5bda5f2119e186e87c9d2cf19df363d52d9a4d259a9f117",
+      "file": "en/e2mdb-providers.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-artwork",
+      "language": "en",
+      "article": "addons/e2mdb/anbieter-sprache",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:38:16.572758+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "65a2ab7d3e3b9b780f388c39cea068aae4f4155c744f792421421552813e8661",
+      "file": "en/e2mdb-artwork.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-live",
+      "language": "en",
+      "article": "addons/e2mdb/live-epg",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:38:20.337583+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "e2d13db7941d99fb22dc570e2585431577837adb89b3f1ac679c213291ed4d4a",
+      "file": "en/e2mdb-live.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-prefill",
+      "language": "en",
+      "article": "addons/e2mdb/vorbefuellung",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:38:24.098296+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "295ac48fdb6284fdd89f66c296cdede64d0fb16b4ab5e134a9e417d3785bf6f5",
+      "file": "en/e2mdb-prefill.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-expert",
+      "language": "en",
+      "article": "addons/e2mdb/optionen",
+      "screen_key": "e2mdb-setup",
+      "captured_at": "2026-09-10T09:38:27.858751+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "3a98853c25c42e234b5b9ec73f2f5184f9e38e9280285c050eb696a7a4e1a453",
+      "file": "en/e2mdb-expert.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-main",
+      "language": "en",
+      "article": "addons/e2mdb/scannen",
+      "screen_key": "e2mdb-main",
+      "captured_at": "2026-09-10T09:38:31.583381+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "2402a1d6871495aa76d64eeff994544ebf9fc7bd6f7cce1eadb320fd26c7eeda",
+      "file": "en/e2mdb-main.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-paths",
+      "language": "en",
+      "article": "addons/e2mdb/medienpfade",
+      "screen_key": "e2mdb-paths",
+      "captured_at": "2026-09-10T09:38:35.361839+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "305916cff2f29d79ef9ca1696181fcd5df12170c3e176a27876179c99bba5f14",
+      "file": "en/e2mdb-paths.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-channels",
+      "language": "en",
+      "article": "addons/e2mdb/senderauswahl",
+      "screen_key": "e2mdb-channels",
+      "captured_at": "2026-09-10T09:38:39.358152+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "9e46b157e78d64d264344858ea5edf84215dc840b4cf0ad3e63b482f2d936bfb",
+      "file": "en/e2mdb-channels.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-prefill-status",
+      "language": "en",
+      "article": "addons/e2mdb/vorbefuellung",
+      "screen_key": "e2mdb-prefill-status",
+      "captured_at": "2026-09-10T09:38:43.151274+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "0ce83ebe6168a59ad8ff97dc8237645709237bc6894cd82d911a360b7562a818",
+      "file": "en/e2mdb-prefill-status.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "e2mdb-queue",
+      "language": "en",
+      "article": "addons/e2mdb/status",
+      "screen_key": "e2mdb-queue",
+      "captured_at": "2026-09-10T09:38:46.879697+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1738fffcb0091310417d1f7477e70a45e0b8bc78441689b3adfedbe342e99b6a",
+      "file": "en/e2mdb-queue.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "a1975fd067ba56fbe624151b5e789fb9862aed9f",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     }

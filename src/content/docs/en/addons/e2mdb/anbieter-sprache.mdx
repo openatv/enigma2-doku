@@ -1,0 +1,38 @@
+---
+title: "e2MDB \u2013 Providers and languages"
+description: "OpenATV 8.0+: Providers and languages. Detailed e2MDB instructions, purpose and practical examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-artwork" language="en" alt="e2MDB: Providers and languages" caption="Native MetrixHD view. Test values are examples. API fields are covered with black bars; real credentials were not changed." />
+
+Choose providers to suit the content. A small selection is easier to diagnose than every provider enabled at once. Additional providers can fill gaps but cannot guarantee a match or a particular picture.
+
+| Provider | Intended use | Access in this version |
+| --- | --- | --- |
+| TMDb | Films, series, descriptions and artwork | API key |
+| TheTVDB | Series, episodes and supplementary metadata | Compatible API key; observe the PIN limitation |
+| TVmaze | Additional series information | No key field |
+| Cinemeta | Film/series fallback, generally English text | No key field |
+| TVSpielfilm | German live-TV and EPG programmes | No key field |
+| fernsehserien.de | Image fallback for German live TV and EPG | No key field |
+| OMDb | Additional film information, mainly English | API key |
+| AniList and Kitsu | Anime/manga-related metadata | No key field |
+| Wikimedia/Wikipedia | Additional live-TV/EPG artwork | No key field |
+| FanArt.tv | Artwork after another provider has identified the film or series | API key |
+
+## Language and fallback
+
+**Provider search language** affects searches and the preferred language of returned metadata. It is separate from the receiver's menu language.
+
+**English metadata text fallback** retries metadata in English when the chosen language provides artwork but no usable text. **Translate English metadata fallback** can translate the returned overview and tagline into the selected language before storage. This is automatic translation, not an editorially checked description.
+
+**Google title translation fallback** is a separate option for a title search that found no result. Start with it disabled and enable it for a specific need. Translation services receive the search or description text needed for that operation.
+
+**FanArt.tv artwork mode** either fills missing artwork or prefers FanArt artwork over that of the matching metadata provider. It does not identify an otherwise unknown title by itself.
+
+An IMDb plugin and e2MDB are different extensions. Installing a separate TVSpielfilm plugin also does not automatically configure e2MDB. The provider switches inside e2MDB determine its behaviour.
+
+
+[Back to e2MDB](../) · [All settings](../optionen/)

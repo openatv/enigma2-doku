@@ -1,0 +1,35 @@
+---
+title: "e2MDB \u2013 Live TV and EPG"
+description: "OpenATV 8.0+: Live TV and EPG. Detailed e2MDB instructions, purpose and practical examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-live" language="en" alt="e2MDB: Live TV and EPG" caption="Native MetrixHD view. Test values are examples. API fields are covered with black bars; real credentials were not changed." />
+
+For live TV, e2MDB needs Enigma2's event context: channel, programme and time. It caches additional information for supported screens. It does not replace the receiver's EPG acquisition.
+
+## Separate integration switches
+
+| Setting | Purpose |
+| --- | --- |
+| Enable Live/EPG metadata cache | Enable supplementary metadata processing for live TV and EPG events. |
+| Show e2MDB EventView for EPG events | Use enhanced information on supported EPG entry points when metadata exists. |
+| Show e2MDB EventView for media events | Use enhanced media information on supported recording/media entry points. Other movie players may have their own information screen. |
+| Enable InfoBar metadata | Supply metadata to the live information bar. The skin must display suitable elements. |
+| Enable ChannelSelection metadata | Supply metadata to the channel selection and supported list templates. |
+
+**Service list preview image** determines whether a backdrop is preferred with a preview/still fallback, a preview is preferred with a backdrop fallback, or only a backdrop is used. It changes image selection, not list geometry.
+
+## Retention and failed searches
+
+**Live/EPG retention in days** limits how long matched event metadata is kept after the event ends.
+
+**No-match retention in hours** needs a version-specific explanation. The setup help describes retention after event end, while the reviewed backend export passes this value as `no_match_retry_hours`. It therefore also affects retry handling. It does not immediately delete every failed search, and a no-match result does not prove that a programme can never be identified.
+
+First check that the normal EPG contains the correct event. For IPTV, a plausible channel name alone is insufficient if the service reference is not mapped to the EPG source. See [missing EPG and IPTV](../../../epg/fehlende-daten/).
+
+Enabling metadata integration does not make every skin or third-party movie screen compatible. Check the [channel list](../senderliste/) and [media information](../medieninfo/) chapters separately.
+
+
+[Back to e2MDB](../) · [All settings](../optionen/)

@@ -1,0 +1,39 @@
+---
+title: "e2MDB \u2013 Prefill settings"
+description: "OpenATV 8.0+: Prefill settings. Detailed e2MDB instructions, purpose and practical examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-prefill" language="en" alt="e2MDB: Prefill settings" caption="Native MetrixHD view. Test values are examples. API fields are covered with black bars; real credentials were not changed." />
+
+<Capture id="e2mdb-prefill-status" language="en" alt="e2MDB: Prefill settings" caption="Native MetrixHD view. Test values are examples. API fields are covered with black bars; real credentials were not changed." />
+
+Prefill prepares metadata for upcoming programmes before you select them. It can only process future events that already exist in Enigma2's EPG.
+
+## Settings
+
+| Setting | Meaning and a useful starting point |
+| --- | --- |
+| Enable Live/EPG prefill | Main switch for preparing future metadata. |
+| Prefill mode | Off, standby, night window or idle modes, as offered by the version. This is separate from a scheduled function task. |
+| Night prefill start hour | Beginning of the night window; standby and background priorities can also matter. |
+| Live/EPG prefill days | How far ahead to inspect EPG. Begin with one or two days. |
+| Maximum prefill events | Total event limit for a run. Start with a modest channel selection and limit. |
+| Maximum events per prefill service | Prevent one channel from dominating a run. |
+| Use zap history / top channels | Include frequently used channels in addition to explicitly selected ones. |
+
+Use [OpenATV task scheduling](../aufgabenplanung/) for a run at a planned time. A night window is not a second-accurate appointment. Coordinate automatic prefill and additional scheduled runs instead of stacking duplicate triggers.
+
+## Completion and queue
+
+“Prefill finished” may mean that candidates have been collected and queued. Internet lookups and artwork downloads can still be running. Check the worker queue and backend status as well.
+
+Open **MENU → Blue/More… → Prefill status / diagnostics** to examine the current state. The status screen's **Yellow/Reset No-EPG** and **Blue/Clear queue** are state-changing operations, not refresh buttons. **Green/Refresh** updates the display.
+
+For an empty result, check existing EPG, selected channels, horizon, limits, an active job and no-EPG retry suppression. Correct the underlying issue before resetting state. A large media scan can delay the shared worker.
+
+High limits visible in test screenshots are not recommended defaults. Extend the horizon and channel list only after a complete small run succeeds.
+
+
+[Back to e2MDB](../) · [All settings](../optionen/)

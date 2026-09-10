@@ -1,0 +1,38 @@
+---
+title: "e2MDB \u2013 First setup"
+description: "OpenATV 8.0+: First setup. Detailed e2MDB instructions, purpose and practical examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-basic" language="en" alt="e2MDB: First setup" caption="Native MetrixHD view. Test values are examples. API fields are covered with black bars; real credentials were not changed." />
+
+Start with a small selection of clearly named files. This makes it possible to verify credentials, paths and match quality before processing a large collection.
+
+## Install and configure
+
+1. Install **e2MDB** from the OpenATV 8.0+ [plugin feed](../../../plugins/installieren/), if it is not installed already. Let the package manager install its dependencies.
+2. Mount your HDD or SSD and check free space and write access. Open any NAS folders to check connectivity.
+3. Open **e2MDB** in **Plugins**. **Show in main menu** adds another entry.
+4. Press **MENU** in the scanner. Enable **Enable Media Database**, choose the **Cache path** and **Provider search language**.
+5. Enable only the providers you intend to use. Enter the required [API keys](../api-schluessel/). Select your preferred metadata language and choose whether English fallback is acceptable.
+6. Press **Green/Save**. Back in the scanner, open **Green/Paths**, add a small test folder, set its content mode and **Recursive**, and save.
+7. Select that path and press **Blue/Start scan**. During an active job the same button becomes **Stop scan**.
+8. Check the result in the [web editor](../treffer-korrigieren/). Then add more folders.
+9. For live TV, configure EPG integration, channel selection and prefill. EPGRefresh and scheduled tasks are separate steps.
+
+## How to recognise a successful setup
+
+- The backend reports that its daemon is running and uses the expected database location.
+- A known film has the correct title and year, and artwork if the provider supplies it.
+- A supported skin view displays metadata for a programme with an existing EPG event.
+- The receiver remains usable. A large scan may take time, but its phase, current title or counters should progress.
+
+## Save and restart
+
+**Green/Save** sends normal configuration changes to the backend. After first installation or a plugin update, a GUI restart may be necessary to register sources, menu entries and scheduler functions. A restart is not required for every key or path change.
+
+**EXIT** closes the scanner display; its backend job may continue. Check the real job status before shutdown, storage changes or maintenance.
+
+
+[Back to e2MDB](../) · [All settings](../optionen/)

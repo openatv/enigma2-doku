@@ -1,0 +1,25 @@
+---
+title: "e2MDB – Sender für die Vorbefüllung"
+description: "OpenATV ab 8.0: Sender für die Vorbefüllung. Einrichtung, Bedeutung und praktische Hinweise zu e2MDB."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-channels" language="de" alt="e2MDB: Sender für die Vorbefüllung" caption="Native Ansicht in MetrixHD. Testwerte sind Beispiele. API-Felder sind in der Aufnahme mit schwarzen Balken verdeckt; vorhandene Zugangsdaten wurden nicht geändert." />
+
+1. e2MDB öffnen, MENU und anschließend Gelb „Vorbefüllungs-Sender“ wählen.
+2. In der Bouquetübersicht mit OK die Sender eines Bouquets öffnen. Die Anzeige zeigt ausgewählte und insgesamt vorhandene Sender.
+3. In der Senderansicht mit OK einzelne Sender umschalten. Gelb wählt alle ab, Blau alle aus. In der Bouquetübersicht gelten Gelb und Blau für das betreffende Bouquet.
+4. Mit Grün speichern. Die Auswahl gezielt auf Sender begrenzen, deren EPG tatsächlich gepflegt wird.
+
+Ein teilweise markiertes Bouquet ist kein Fehler. Sender können in mehreren Bouquets vorkommen; die Gesamtzahl zählt nicht einfach jede sichtbare Zeile mehrfach. Für eine exakt manuell begrenzte Auswahl „Zap-Verlauf verwenden“ ausschalten, sonst kommen bevorzugte Sender hinzu.
+
+## EPG vor Metadaten
+
+Die Senderauswahl hier programmiert keinen Tuner und lädt keinen EPG. Dieselben relevanten Sender müssen über Empfang, EPGRefresh oder eine passende EPG-Importquelle Programmdaten erhalten. Nur dann kann e2MDB kommende Ereignisse vorbefüllen.
+
+Unter Blau „Mehr …“ stehen „Live-/EPG-Vorbefüllung jetzt starten“ sowie „Vorbefüllungsstatus / Diagnose“. Bei leerem Ergebnis zuerst Sender, vorhandene EPG-Tage und Limits prüfen. Eine Sperre nach fehlendem EPG oder ein laufender Auftrag kann einen erneuten Versuch verzögern.
+
+Ignorierlisten für Titel, Sendernamen und Ordnernamen sind getrennte Werkzeuge. Ihre Wirkung hängt vom Verarbeitungspfad ab. Für die gezielte Vorbefüllung ist die explizite Senderauswahl verlässlicher als die Annahme, ein Namensmuster filtere automatisch jeden Hintergrundpfad.
+
+[Zur e2MDB-Übersicht](../) · [Alle Einstellungen](../optionen/)

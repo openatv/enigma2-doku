@@ -337,3 +337,31 @@ Nur lokale Commits; kein Push.
 - 141 Inhalte und 51 bebilderte Kapitel je Sprache; insgesamt 270 Original-PNGs und 810 responsive WebP-Varianten. Pages-Ausgabe rund 156,50 MB in 1695 Dateien, etwa 15,65 Prozent des konservativen 1-GB-Budgets.
 
 Nur lokale Commits; kein Push und keine Veröffentlichung.
+
+
+## e2MDB – 10. September 2026
+
+- Umfang: 34 Kapitel pro Sprache, vollständige englische Fassung, acht technische Anhänge, 47 einzeln beschriebene Hauptsetup-Optionen. Ursprüngliche deutsche Word-/JSON-Anleitung als Grundlage; keine Umbra-Bezüge in den veröffentlichten e2MDB-Inhalten.
+- Plugin v1.0 auf OpenATV 8.0.2-devel/MetrixHD. SHA-256 von installiertem `plugin.py` und `setup.xml` stimmt mit e2MDB-Commit `7442e3d04aac25c741fa96b370c22994131928e2` überein.
+- 24 endgültige native DE/EN-Aufnahmen einzeln visuell geprüft; API-Balken decken TMDb, TVDb, OMDb und FanArt ab. Erste Probeaufnahmen wurden verworfen, weil Enigma2 beim Anhängen abgetrennter Felder gespeicherte Werte nachlädt. Die korrigierte Reihenfolge und ein Abbruch bei fehlgeschlagener Verdeckung sind durch Regressionstests abgesichert. Aufnahmeplugin: 37 Tests bestanden.
+- Alle Dialogaktionen deaktiviert, kein Scan, kein Cleanup, keine Dateiumbenennung und kein Speichern der e2MDB-Formulare ausgelöst. Bereits vorhandene Backend-Automatik durfte weiterarbeiten; deshalb verändern sich Laufzeit-/Queue-Zähler. Die GUI-Sprache wurde wieder auf Deutsch gesetzt.
+- Vorher-/Nachher-Vergleich: `e2mdb/api_keys.json`, `e2mdb/paths.json`, `autotimer.xml`, `timers.xml`, `epgrefresh.xml`, `fstab`, `auto.network`, `tuxtxt2.conf`, `playlist.e2pls`, `serviceapp_replaceservicemp3` sowie erfasste e2MDB-/Player-/Automatik-/Sprachwerte unverändert. Öffentliche Textdateien gegen die vier privaten Schlüsselwerte geprüft: keine Treffer. Keine Behauptung über Bytegleichheit sämtlicher Laufzeitdateien.
+- Native DB-Statusseite: Abfrage läuft in ein Timeout und zeigt als Ersatz „nicht vorhanden / 0 B“. Die vorhandene Datenbank und Editor-Datensätze beweisen, dass diese Fehleranzeige keine gültige Größenangabe ist. Diese beiden Aufnahmen wurden nach der Prüfung aussortiert und nicht in die Benutzeranleitung übernommen.
+- Scannerbericht zeigt reale Einzelprobleme des vorherigen automatischen Workers. INFO ist im aktuellen Scanner nicht an die Berichtsklasse gebunden; die abweichende Angabe der Vorlage korrigiert.
+- Web-Editor: vorhandenen Datensatz „21“ geöffnet, Cover, Jahr, Beschreibung und getrennte Umbenennfunktion geprüft und ein Bild gespeichert. Keine Wiedergabe und keine Datenänderung. Native Weboberfläche teilweise deutsch: Backend-Aktion `i18n` gibt ein leeres Wörterbuch zurück. Im Media Browser trat `a.localeCompare is not a function` bei Darstellerdaten auf; außerdem wurde ein Fehler bei einer `.length`-Abfrage auf `null` protokolliert. Diese Plugin-Probleme wurden dokumentiert, die Plugin-Websoftware selbst nicht geändert.
+- Nicht als praktisch vollständig getestet: großer Bibliotheksscan, Provideranmeldung/-quoten, manuelle Alternativenübernahme, Umbenennen, nächtliche Gesamtkette, Datenbankwiederherstellung und komplette Web-Bibliotheksdarstellung. Technische Abläufe und Sicherheitsfolgen wurden mit dem Quellstand abgeglichen.
+
+
+### Website-Prüfungen für e2MDB
+
+- Beide Sprachfassungen enthalten genau 34 e2MDB-Kapitel und 47/47 dokumentierte Setup-Schlüssel. Je Sprache insgesamt 175 Inhalte und 62 bebilderte Kapitel.
+- Astro-Check: 21 Dateien, keine Fehler, Warnungen oder Hinweise. 11 Node-Tests und 8 Python-Tests des Handbuchs bestanden. Aufnahmeplugin: 37 Tests bestanden.
+- Pages- und Apache-Build: jeweils 352 HTML-Dateien mit lokalen Links, Assets, Sprungmarken und Sprachgegenstücken geprüft. Je 153 echte Suchprüfungen bestanden, davon 20 neue Fälle für e2MDB, API-Felder, Prefill-Limits, No-match-Retry, Converter, Dateinamen, Datenbank und Webport.
+- 292 Original-Enigma2-PNGs, davon 266 mit Bootlogo; zusätzlich ein Web-Editor-PNG. Zusammen 879 responsive WebP-Varianten für diese Dokumentationsbilder. Die finale Pages-Ausgabe umfasst rund 173,16 MB in 1925 Dateien, etwa 17,32 Prozent des konservativen 1-GB-Budgets.
+- Gebaute deutsche API-Anleitung und englisches Kapitel zur Trefferkorrektur im Browser visuell geprüft: schwarze API-Balken, eingebettete Originalbilder, lesbare Beschriftungen und übersetzte Navigation vorhanden.
+- Zeichensatzfehler in beiden Optionsreferenzen bei der Browserprüfung gefunden und korrigiert. Anschließend Pages- und Apache-Build samt Link- und Suchprüfungen erneut erfolgreich; Umlaute und Sonderzeichen in der gebauten DE/EN-Referenz kontrolliert.
+- Abschließender Build wieder unter `/enigma2-doku` für GitHub Pages. Keine zusätzlichen Serverlaufzeiten, Datenbank oder Verbindung zur Testbox beim Lesen des Handbuchs erforderlich.
+
+Nur lokale Commits; kein Push und keine Veröffentlichung.
+
+Die Benutzeranleitung enthält auf Wunsch keine Hinweise auf die beobachteten JavaScript-Bugs. Am e2MDB-Plugin selbst wurde nichts geändert. Von den 24 abschließend geprüften TV-Bildern wurden 22 veröffentlicht; die beiden DB-Timeout-Bilder bleiben privat.

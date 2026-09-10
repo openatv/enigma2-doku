@@ -1,0 +1,13 @@
+{
+  "source": "installed e2MDB web editor",
+  "reviewed": true,
+  "language": "de (native web UI; English metadata)",
+  "used_in": [
+    "de",
+    "en"
+  ],
+  "file": "src/assets/e2mdb-web/editor.png",
+  "sha256": "b34b4b214dcabf8720ba1803aae0963db04c0763dc7880df440ed1ae36167de0",
+  "captured_at": "2026-09-10",
+  "notes": "Read-only selection of existing 21 test clip; no playback, rename or metadata mutation. No credential fields visible. Backend i18n is not implemented in this version."
+}

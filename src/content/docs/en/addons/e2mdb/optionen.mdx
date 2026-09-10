@@ -1,0 +1,496 @@
+---
+title: e2MDB – all 47 settings
+description: Every e2MDB main setup option with purpose, defaults, choices and configuration keys.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+Open **Plugins → e2MDB → MENU** and save with **Green**. This reference covers all 47 actual setup fields in the reviewed source. Section headings are not counted as settings. Website search also finds the `config.plugins.e2mdb.…` keys. Paths, channel selection and tool actions have their own chapters.
+
+Defaults are source-code values, not recommendations for every library. Some fields require their parent function or a higher setup level. Menu language and provider metadata language are separate.
+
+<Capture id="e2mdb-expert" language="en" alt="e2MDB expert options" caption="Native diagnostics, text fallback and SQLite options. API keys are covered by black bars." />
+
+## Basic settings
+
+### Enable Media Database
+
+Enable e2MDB database/cache integration. Provider and scan work runs in the backend daemon, not in the Enigma2 GUI process.
+
+`config.plugins.e2mdb.enableDatabase`
+
+Default: Yes.
+
+### Show in main menu
+
+Add e2MDB to the Enigma2 main menu. The plugin remains available in the plugin browser when this is disabled.
+
+`config.plugins.e2mdb.showInMainMenu`
+
+Default: No.
+
+### Re-scan existing media entries
+
+Off keeps existing DB metadata/artwork and only scans new or changed files. On reprocesses existing entries and may download metadata/artwork again.
+
+`config.plugins.e2mdb.scannerRescanExisting`
+
+Default: No.
+
+Setup level: Intermediate.
+
+### Cache path
+
+Base path for e2MDB cache files, provider artwork, database and generated metadata.
+
+`config.plugins.e2mdb.cachePath`
+
+Default: /media/hdd/.
+
+### Web interface port
+
+TCP port used by the e2MDB backend web interface. Default is 6066.
+
+`config.plugins.e2mdb.webPort`
+
+Default: 6066.
+
+Range: 1–65535.
+
+Setup level: Intermediate.
+
+### Provider search language
+
+Language used for provider searches and provider API requests.
+
+`config.plugins.e2mdb.lang`
+
+Default: Menu language at initialisation.
+
+## Providers and artwork
+
+### Search in TMDb
+
+Use TMDb for movie and series metadata. Recommended as the primary provider.
+
+`config.plugins.e2mdb.tmdbactive`
+
+Default: Yes.
+
+### TMDb API key
+
+Enter your personal API key for TMDb.
+
+`config.plugins.e2mdb.tmdbapikey`
+
+Default: empty.
+
+Visible when: `config.plugins.e2mdb.tmdbactive.value`.
+
+### Search in TVDb
+
+Use TVDb for series metadata and episode/season artwork.
+
+`config.plugins.e2mdb.tvdbactive`
+
+Default: Yes.
+
+### TVDb API key
+
+Enter your personal API key for TVDb.
+
+`config.plugins.e2mdb.tvdbapikey`
+
+Default: empty.
+
+Visible when: `config.plugins.e2mdb.tvdbactive.value`.
+
+### Search in TVmaze
+
+Use TVmaze as a free series fallback provider without API key.
+
+`config.plugins.e2mdb.tvmazeactive`
+
+Default: No.
+
+### Search in Cinemeta
+
+Use Cinemeta (Stremio addon) as a free movie and series fallback provider without API key. English metadata only.
+
+`config.plugins.e2mdb.cinemetaactive`
+
+Default: No.
+
+### Search in TVSpielfilm for German Live/EPG
+
+Use TVSpielfilm as preferred provider for German Live/EPG metadata.
+
+`config.plugins.e2mdb.tvspielfilmactive`
+
+Default: Yes.
+
+### Use fernsehserien.de image fallback for German Live/EPG
+
+Use fernsehserien.de as German Live/EPG image fallback.
+
+`config.plugins.e2mdb.fernsehserienactive`
+
+Default: Yes.
+
+### Search in OMDb
+
+Optional fallback provider. OMDb requires an API key and is not localized.
+
+`config.plugins.e2mdb.omdbactive`
+
+Default: No.
+
+### OMDb API key
+
+Enter your personal API key for OMDb.
+
+`config.plugins.e2mdb.omdbapikey`
+
+Default: empty.
+
+Visible when: `config.plugins.e2mdb.omdbactive.value`.
+
+### Search in AniList Anime/Manga
+
+Use AniList for Anime/Manga path modes.
+
+`config.plugins.e2mdb.animeactive`
+
+Default: No.
+
+### Search in Kitsu Anime/Manga
+
+Use Kitsu for Anime/Manga path modes.
+
+`config.plugins.e2mdb.kitsuactive`
+
+Default: No.
+
+### Use Wikimedia/Wikipedia image fallback for Live/EPG
+
+Use Wikimedia/Wikipedia as Live/EPG fallback artwork provider.
+
+`config.plugins.e2mdb.wikimediaactive`
+
+Default: No.
+
+### Use FanArt.tv artwork fallback
+
+Use FanArt.tv after another provider matched a movie or series.
+
+`config.plugins.e2mdb.fanartactive`
+
+Default: No.
+
+### FanArt.tv API key
+
+Enter your personal FanArt.tv API key.
+
+`config.plugins.e2mdb.fanartapikey`
+
+Default: empty.
+
+Visible when: `config.plugins.e2mdb.fanartactive.value`.
+
+### FanArt.tv artwork mode
+
+Fill only missing artwork, or prefer FanArt.tv artwork over artwork from the metadata provider.
+
+`config.plugins.e2mdb.fanartmode`
+
+Default: missing.
+
+Choices: Fill missing artwork only (`missing`); Prefer FanArt artwork (`prefer`).
+
+Visible when: `config.plugins.e2mdb.fanartactive.value`.
+
+## Live TV and views
+
+### Enable Live/EPG metadata cache
+
+Enable short-lived metadata caching for Live TV and EPG events.
+
+`config.plugins.e2mdb.epgMetaEnabled`
+
+Default: Yes.
+
+### Show e2MDB EventView for EPG events
+
+Open the e2MDB EventView for EPG events when metadata exists.
+
+`config.plugins.e2mdb.epgEventViewUseE2MDB`
+
+Default: Yes.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value`.
+
+### Show e2MDB EventView for media events
+
+Open the e2MDB media EventView for recordings/media when metadata exists.
+
+`config.plugins.e2mdb.mediaEventViewUseE2MDB`
+
+Default: Yes.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value`.
+
+### Enable InfoBar metadata
+
+Attach e2MDB metadata sources to live TV InfoBar and queue missing entries for the backend daemon.
+
+`config.plugins.e2mdb.epgInfoBarEnabled`
+
+Default: Yes.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value`.
+
+### Enable ChannelSelection metadata
+
+Attach e2MDB metadata sources to ChannelSelection and queue missing entries for the backend daemon.
+
+`config.plugins.e2mdb.epgChannelSelectionEnabled`
+
+Default: Yes.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value`.
+
+### Service list preview image
+
+Select which image type should be preferred for service-list previews.
+
+`config.plugins.e2mdb.epgServiceListPreviewMode`
+
+Default: backdrop_preview.
+
+Choices: Backdrop, fallback preview/still (`backdrop_preview`); Preview/still, fallback backdrop (`preview`); Backdrop only (`backdrop`).
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value`.
+
+### Live/EPG retention in days
+
+Keep matched Live/EPG metadata for this number of days after the event ended.
+
+`config.plugins.e2mdb.epgRetentionDays`
+
+Default: 3.
+
+Range: 1–30.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value`.
+
+### No-match retention in hours
+
+Handling of unsuccessful Live/EPG searches. Setup help describes retention after event end; the backend exports this as `no_match_retry_hours` for retries. This does not immediately clear the queue.
+
+`config.plugins.e2mdb.epgNoMatchRetentionHours`
+
+Default: 1.
+
+Range: 1–72.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value`.
+
+## Prefill
+
+### Enable Live/EPG prefill
+
+Queue future EPG events for selected/preferred channels so the backend can process them overnight.
+
+`config.plugins.e2mdb.epgPrefillEnabled`
+
+Default: Yes.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value`.
+
+### Prefill mode
+
+Night window is recommended for backend-only processing.
+
+`config.plugins.e2mdb.epgPrefillMode`
+
+Default: night.
+
+Choices: Off (`off`); Standby only (`standby`); Night window (`night`); Idle time (`idle`).
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value` and `config.plugins.e2mdb.epgPrefillEnabled.value`.
+
+### Night prefill start hour
+
+Hour of day used for night prefill checks.
+
+`config.plugins.e2mdb.epgPrefillStartHour`
+
+Default: 4.
+
+Range: 0–23.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value` and `config.plugins.e2mdb.epgPrefillEnabled.value`.
+
+### Live/EPG prefill days
+
+Number of future EPG days to inspect for preferred channels.
+
+`config.plugins.e2mdb.epgPrefillHorizonDays`
+
+Default: 2.
+
+Range: 1–7.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value` and `config.plugins.e2mdb.epgPrefillEnabled.value`.
+
+### Maximum prefill events
+
+Maximum number of EPG events to queue per prefill run across all channels.
+
+`config.plugins.e2mdb.epgPrefillMaxEvents`
+
+Default: 1500.
+
+Range: 10–5000.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value` and `config.plugins.e2mdb.epgPrefillEnabled.value`.
+
+### Maximum events per prefill service
+
+Maximum number of future EPG events inspected per service.
+
+`config.plugins.e2mdb.epgPrefillMaxEventsPerService`
+
+Default: 120.
+
+Range: 1–500.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value` and `config.plugins.e2mdb.epgPrefillEnabled.value`.
+
+### Use zap history
+
+Use preferred channels from zap/watch history for prefill decisions.
+
+`config.plugins.e2mdb.epgUseZapHistory`
+
+Default: Yes.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value` and `config.plugins.e2mdb.epgPrefillEnabled.value`.
+
+### Zap history top channels
+
+Maximum number of preferred channels selected from zap/watch history.
+
+`config.plugins.e2mdb.epgZapHistoryTopN`
+
+Default: 25.
+
+Range: 1–50.
+
+Visible when: `config.plugins.e2mdb.epgMetaEnabled.value` and `config.plugins.e2mdb.epgPrefillEnabled.value` and `config.plugins.e2mdb.epgUseZapHistory.value`.
+
+## Diagnostics and expert settings
+
+### Log mode
+
+Off writes nothing. On writes real errors only. Verbose writes the full diagnostic log.
+
+`config.plugins.e2mdb.debugLog`
+
+Default: 1.
+
+Choices: Off (`0`); On (`1`); Verbose (`2`).
+
+### Log output
+
+Choose whether e2MDB log lines are written to e2MDB.log, the Enigma2 debug log, or both.
+
+`config.plugins.e2mdb.logTarget`
+
+Default: file.
+
+Choices: e2MDB.log (`file`); Enigma2 debug log (`debuglog`); Both (`both`).
+
+Setup level: Intermediate.
+
+Visible when: `config.plugins.e2mdb.debugLog.value != 0`.
+
+### e2MDB.log max size (MB)
+
+Rotate e2MDB.log when this size is reached.
+
+`config.plugins.e2mdb.logRotateSizeMb`
+
+Default: 5.
+
+Range: 1–100.
+
+Setup level: Intermediate.
+
+Visible when: `config.plugins.e2mdb.debugLog.value != 0` and `config.plugins.e2mdb.logTarget.value != 'debuglog'`.
+
+### Google title translation fallback
+
+Translate only the title when normal provider search finds no result.
+
+`config.plugins.e2mdb.translateTitleSearch`
+
+Default: No.
+
+Setup level: Expert.
+
+### Google title translation target language
+
+Target language for fallback search titles.
+
+`config.plugins.e2mdb.translateTitleSearchLanguage`
+
+Default: Menu language at initialisation.
+
+Setup level: Expert.
+
+Visible when: `config.plugins.e2mdb.translateTitleSearch.value`.
+
+### English metadata text fallback
+
+If the selected provider language returns artwork but no usable text, retry provider metadata once in English.
+
+`config.plugins.e2mdb.providerEnglishTextFallback`
+
+Default: Yes.
+
+Setup level: Expert.
+
+### Translate English metadata fallback
+
+Translate overview and tagline from the English fallback into the selected provider language before storing them.
+
+`config.plugins.e2mdb.translateMetadataFallback`
+
+Default: No.
+
+Setup level: Expert.
+
+Visible when: `config.plugins.e2mdb.providerEnglishTextFallback.value`.
+
+### SQLite VACUUM
+
+Shrink e2MDB SQLite database files during backend maintenance.
+
+`config.plugins.e2mdb.epgCleanupSqliteVacuum`
+
+Default: Yes.
+
+Setup level: Expert.
+
+### SQLite REINDEX
+
+Rebuild SQLite indexes during backend maintenance. Usually not needed.
+
+`config.plugins.e2mdb.epgCleanupSqliteReindex`
+
+Default: No.
+
+Setup level: Expert.
+
+[e2MDB overview](../) · [Reviewed source](../quellen/)

@@ -242,3 +242,18 @@ python tools/capture.py --host root@receiver.local --run-prefix playback-demo --
 Der Lauf setzt die vorhandenen EMC- und AutoTimer-Schutzmechanismen vor den Sprachneustarts ein. Nach Abschluss werden ursprüngliche Werte beziehungsweise fehlende Einträge und die GUI-Sprache wiederhergestellt. MediaPlayer speichert keine Playlist und startet keinen alten Dienst; sein Hotplug-Hook wird beim Schließen entfernt. ServiceApp-Versionen kommen aus den beiden erlaubten Programmen ohne Medienargument. Die 4097-Auswahl verändert ausschließlich das temporäre Formular, nicht die tatsächliche Dienstregistrierung. SubsSupport erhält eine getrennte Konfiguration ohne Such-/Downloadaufruf. Teletext-Expertenmodus zeigt das vorhandene Setup ohne Speichern.
 
 Die native Blu-ray-Ordnerauswahl hat im MetrixHD-Fallback einen DVD-Titel. Das wird in der Bildunterschrift erklärt, nicht im Bild umgeschrieben. Eine leere Disc-Auswahl ist kein bestandener Disc-Abspieltest.
+
+
+## e2MDB
+
+`e2mdb-guides` ergänzt 12 Szenen je Sprache: sechs Einstellungsabschnitte, Scanner, Pfade, Vorbefüllungs-Sender, Vorbefüllungsstatus, Worker-Warteschlange und DB-Status. Insgesamt 25 Profile und 151 Szenen; 292 Enigma2-Bilder sind freigegeben. Werkzeugstand: `a1975fd067ba56fbe624151b5e789fb9862aed9f`.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix e2mdb-demo --profiles e2mdb-guides --restart-languages --bootlogo --output .capture-private
+```
+
+Die API-Felder werden nach dem Anhängen an die Enigma2-Konfiguration auf Platzhalter gesetzt: Das Anhängen selbst lädt gespeicherte Werte nach. Der Adapter prüft die Platzhalter nach dem Aufbau und erneut vor der Aufnahme. Native schwarze Flächen überdecken die sichtbaren API-Werte. Keine nachträgliche Pixelretusche, kein Speichern der Formularwerte. Der zusätzliche GUI-Kommandotimer des Scanners wird im Aufnahmedialog gestoppt. AutoTimer-/EMC-Schutz und Sprachwiederherstellung entsprechen den anderen Medienprofilen.
+
+Nur die final geprüften `e2mdb-c-…`-Manifeste übernehmen. Die beiden DB-Status-Aufnahmen mit Zeitüberschreitung wurden für die Veröffentlichung aussortiert. Technische Beobachtungen bleiben im Praxisprotokoll; die Benutzeranleitung enthält keine JavaScript-Bugnotizen. Die Bilder sind keine Bestätigung eines fehlerfreien Bibliotheksscans.
+
+Der Web-Editor wurde separat im Browser erfasst und unter `src/assets/e2mdb-web/` mit eigenem Prüfeintrag gespeichert. Sein aktuelles Backend liefert noch kein englisches i18n-Wörterbuch. Deshalb dasselbe unveränderte Bild in beiden Sprachfassungen verwenden und diese Einschränkung sichtbar erklären.

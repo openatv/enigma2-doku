@@ -1,0 +1,33 @@
+---
+title: "e2MDB – Anbieter und Sprache"
+description: "OpenATV ab 8.0: Anbieter und Sprache. Einrichtung, Bedeutung und praktische Hinweise zu e2MDB."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-artwork" language="de" alt="e2MDB: Anbieter und Sprache" caption="Native Ansicht in MetrixHD. Testwerte sind Beispiele. API-Felder sind in der Aufnahme mit schwarzen Balken verdeckt; vorhandene Zugangsdaten wurden nicht geändert." />
+
+Nicht jeder Anbieter eignet sich für jeden Inhalt. Eine kleine, passende Auswahl ist leichter zu prüfen als alle Quellen gleichzeitig. Zusätzliche Anbieter können Lücken schließen, garantieren aber weder einen Treffer noch ein bestimmtes Bild.
+
+| Anbieter | Wofür er gedacht ist | Zugang |
+| --- | --- | --- |
+| TMDb | Filme, Serien, Beschreibungen und Artwork | API-Key |
+| TVDb | Serien und Episoden; ergänzende Metadaten | Kompatibler API-Key; PIN-Einschränkung beachten |
+| TVmaze | Ergänzende Serieninformationen | Kein Schlüsselfeld |
+| Cinemeta | Zusätzlicher Film- und Serien-Fallback; Texte meist Englisch | Kein Schlüsselfeld |
+| TVSpielfilm | Deutsche Live-TV- und EPG-Sendungen | Kein Schlüsselfeld |
+| fernsehserien.de | Bildfallback für deutsches Live-TV und EPG | Kein Schlüsselfeld |
+| OMDb | Ergänzende Filmdaten, überwiegend Englisch | API-Key |
+| AniList und Kitsu | Anime- und Manga-bezogene Metadaten | Kein Schlüsselfeld |
+| Wikimedia | Ergänzende Bilder für Live-TV und EPG | Kein Schlüsselfeld |
+| FanArt.tv | Zusätzliches Artwork für bereits zugeordnete Inhalte | API-Key |
+
+## Sprache und Fallback bewusst wählen
+
+„Provider-Suchsprache“ beeinflusst die Anfragen und die bevorzugte Sprache der Ergebnisse. Fehlt ein deutscher Text, kann „Englischer Metadaten-Text-Fallback“ einen englischen Text zulassen. Mit der zusätzlichen Übersetzungsoption kann dieser Fallback übersetzt werden. Automatische Übersetzung ist keine redaktionell geprüfte Beschreibung.
+
+„Google-Titelübersetzung als Rückfall“ ist eine gesonderte Hilfe für erfolglose Titelsuchen. Für den Einstieg ausgeschaltet lassen und erst bei konkretem Bedarf verwenden. Übersetzungsdienste erhalten dabei die benötigten Such- oder Beschreibungstexte.
+
+Ein IMDb-Plugin auf der Box und e2MDB sind unterschiedliche Erweiterungen. Ebenso liefert die Installation eines TVSpielfilm-Plugins nicht automatisch eine vollständige e2MDB-Konfiguration. Maßgeblich sind die Anbieteroptionen innerhalb von e2MDB.
+
+[Zur e2MDB-Übersicht](../) · [Alle Einstellungen](../optionen/)

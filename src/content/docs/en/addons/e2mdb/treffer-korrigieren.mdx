@@ -1,0 +1,41 @@
+---
+title: "e2MDB \u2013 Check and correct matches"
+description: "OpenATV 8.0+: Check and correct matches. Detailed e2MDB instructions, purpose and practical examples."
+---
+
+import { Image } from 'astro:assets';
+import editorImage from '../../../../../assets/e2mdb-web/editor.png';
+
+<figure>
+<a href={editorImage.src} target="_blank" rel="noopener">
+<Image src={editorImage} alt="e2MDB Web-Editor" widths={[640, 960, 1280]} format="webp" quality={90} loading="lazy" />
+</a>
+<figcaption>Real web editor: film 21, title/year, English description and the separate Rename file action. This plugin version’s web interface is partly German independently of the Enigma2 menu language; the English handbook explains the same controls.</figcaption>
+</figure>
+
+
+Use the web editor to check what e2MDB actually identified. Similar artwork alone is not sufficient evidence of a correct match.
+
+## Correct a single record
+
+1. Open e2MDB through OpenWebif or its configured web port and select **Editor**.
+2. Search for the title, using status/type filters if needed.
+3. Compare title, year and movie/series type. For a series, also compare season and episode.
+4. If necessary, enter a more precise search term and the appropriate type for a single-item scan. This starts new backend work.
+5. Compare alternatives. **Apply alternative** changes the match; **Apply images** selects artwork.
+6. Reopen the record and the affected skin view to check the result.
+
+## Renaming changes real files
+
+**Rename file** and **Rename accordingly when applying** can change actual file names. Leave automatic renaming disabled when you only want to correct metadata. Before larger changes, back up media and sidecar files and check that related recording files remain associated.
+
+The editor is not merely a visual skin preference: applying a match changes saved metadata. Work on one known item first and confirm the title and episode before repeating the operation.
+
+## Correct title, missing image
+
+A correctly identified title without artwork is a different problem from a wrong match. The provider may lack the image, a download may have failed, or processing may still be queued. Inspect the record and backend status before forcing a new title match or clearing caches.
+
+A broad series poster, episode still and landscape backdrop serve different purposes. An image changing between views may be intentional rather than a mismatch.
+
+
+[Back to e2MDB](../) · [All settings](../optionen/)

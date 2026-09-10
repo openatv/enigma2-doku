@@ -43,3 +43,7 @@ Die eingebaute [MovieSelection](../aufnahmen/movieselection/) benötigt kein sol
 ## Player und Untertitel
 
 [MediaPlayer](../wiedergabe/mediaplayer/), [DVD/Blu-ray](../wiedergabe/dvd-bluray/), [ServiceApp](../wiedergabe/serviceapp/) und [SubsSupport](../wiedergabe/subssupport/) haben einen eigenen Bereich mit Einrichtung, Optionen und Bildern. [Die Player-Übersicht](../wiedergabe/) erklärt das Zusammenspiel mit Aufnahmelisten und Hardware.
+
+## e2MDB ab OpenATV 8.0
+
+[e2MDB – ausführliches Handbuch](./e2mdb/) erklärt Einrichtung, Anbieter, 47 Optionen, Medienbibliothek, EPG-Vorbefüllung, Web-Editor, Wartung und Skin-Integration.

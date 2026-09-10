@@ -1,0 +1,637 @@
+{
+  "source": "https://github.com/openatv/e2MDB",
+  "commit": "7442e3d04aac25c741fa96b370c22994131928e2",
+  "settings": [
+    {
+      "key": "config.plugins.e2mdb.enableDatabase",
+      "name": "enableDatabase",
+      "label": "Enable Media Database",
+      "description": "Enable e2MDB database/cache integration. Provider and scan work runs in the backend daemon, not in the Enigma2 GUI process.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.showInMainMenu",
+      "name": "showInMainMenu",
+      "label": "Show in main menu",
+      "description": "Add e2MDB to the Enigma2 main menu. The plugin remains available in the plugin browser when this is disabled.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.scannerRescanExisting",
+      "name": "scannerRescanExisting",
+      "label": "Re-scan existing media entries",
+      "description": "Off keeps existing DB metadata/artwork and only scans new or changed files. On reprocesses existing entries and may download metadata/artwork again.",
+      "level": 1,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.cachePath",
+      "name": "cachePath",
+      "label": "Cache path",
+      "description": "Base path for e2MDB cache files, provider artwork, database and generated metadata.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigText",
+      "default": "/media/hdd/"
+    },
+    {
+      "key": "config.plugins.e2mdb.webPort",
+      "name": "webPort",
+      "label": "Web interface port",
+      "description": "TCP port used by the e2MDB backend web interface. Default is 6066.",
+      "level": 1,
+      "conditions": [],
+      "type": "ConfigInteger",
+      "default": 6066,
+      "limits": [
+        1,
+        65535
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.lang",
+      "name": "lang",
+      "label": "Provider search language",
+      "description": "Language used for provider searches and provider API requests.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigSelection",
+      "default": "system-language",
+      "choices": "language-list"
+    },
+    {
+      "key": "config.plugins.e2mdb.tmdbactive",
+      "name": "tmdbactive",
+      "label": "Search in TMDb",
+      "description": "Use TMDb for movie and series metadata. Recommended as the primary provider.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.tmdbapikey",
+      "name": "tmdbapikey",
+      "label": "TMDb API key",
+      "description": "Enter your personal API key for TMDb.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.tmdbactive.value"
+      ],
+      "type": "ConfigText"
+    },
+    {
+      "key": "config.plugins.e2mdb.tvdbactive",
+      "name": "tvdbactive",
+      "label": "Search in TVDb",
+      "description": "Use TVDb for series metadata and episode/season artwork.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.tvdbapikey",
+      "name": "tvdbapikey",
+      "label": "TVDb API key",
+      "description": "Enter your personal API key for TVDb.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.tvdbactive.value"
+      ],
+      "type": "ConfigText"
+    },
+    {
+      "key": "config.plugins.e2mdb.tvmazeactive",
+      "name": "tvmazeactive",
+      "label": "Search in TVmaze",
+      "description": "Use TVmaze as a free series fallback provider without API key.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.cinemetaactive",
+      "name": "cinemetaactive",
+      "label": "Search in Cinemeta",
+      "description": "Use Cinemeta (Stremio addon) as a free movie and series fallback provider without API key. English metadata only.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.tvspielfilmactive",
+      "name": "tvspielfilmactive",
+      "label": "Search in TVSpielfilm for German Live/EPG",
+      "description": "Use TVSpielfilm as preferred provider for German Live/EPG metadata.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.fernsehserienactive",
+      "name": "fernsehserienactive",
+      "label": "Use fernsehserien.de image fallback for German Live/EPG",
+      "description": "Use fernsehserien.de as German Live/EPG image fallback.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.omdbactive",
+      "name": "omdbactive",
+      "label": "Search in OMDb",
+      "description": "Optional fallback provider. OMDb requires an API key and is not localized.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.omdbapikey",
+      "name": "omdbapikey",
+      "label": "OMDb API key",
+      "description": "Enter your personal API key for OMDb.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.omdbactive.value"
+      ],
+      "type": "ConfigText"
+    },
+    {
+      "key": "config.plugins.e2mdb.animeactive",
+      "name": "animeactive",
+      "label": "Search in AniList Anime/Manga",
+      "description": "Use AniList for Anime/Manga path modes.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.kitsuactive",
+      "name": "kitsuactive",
+      "label": "Search in Kitsu Anime/Manga",
+      "description": "Use Kitsu for Anime/Manga path modes.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.wikimediaactive",
+      "name": "wikimediaactive",
+      "label": "Use Wikimedia/Wikipedia image fallback for Live/EPG",
+      "description": "Use Wikimedia/Wikipedia as Live/EPG fallback artwork provider.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.fanartactive",
+      "name": "fanartactive",
+      "label": "Use FanArt.tv artwork fallback",
+      "description": "Use FanArt.tv after another provider matched a movie or series.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.fanartapikey",
+      "name": "fanartapikey",
+      "label": "FanArt.tv API key",
+      "description": "Enter your personal FanArt.tv API key.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.fanartactive.value"
+      ],
+      "type": "ConfigText"
+    },
+    {
+      "key": "config.plugins.e2mdb.fanartmode",
+      "name": "fanartmode",
+      "label": "FanArt.tv artwork mode",
+      "description": "Fill only missing artwork, or prefer FanArt.tv artwork over artwork from the metadata provider.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.fanartactive.value"
+      ],
+      "type": "ConfigSelection",
+      "default": "missing",
+      "choices": [
+        [
+          "missing",
+          "Fill missing artwork only"
+        ],
+        [
+          "prefer",
+          "Prefer FanArt artwork"
+        ]
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.epgMetaEnabled",
+      "name": "epgMetaEnabled",
+      "label": "Enable Live/EPG metadata cache",
+      "description": "Enable short-lived metadata caching for Live TV and EPG events.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.epgEventViewUseE2MDB",
+      "name": "epgEventViewUseE2MDB",
+      "label": "Show e2MDB EventView for EPG events",
+      "description": "Open the e2MDB EventView for EPG events when metadata exists.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value"
+      ],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.mediaEventViewUseE2MDB",
+      "name": "mediaEventViewUseE2MDB",
+      "label": "Show e2MDB EventView for media events",
+      "description": "Open the e2MDB media EventView for recordings/media when metadata exists.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value"
+      ],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.epgInfoBarEnabled",
+      "name": "epgInfoBarEnabled",
+      "label": "Enable InfoBar metadata",
+      "description": "Attach e2MDB metadata sources to live TV InfoBar and queue missing entries for the backend daemon.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value"
+      ],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.epgChannelSelectionEnabled",
+      "name": "epgChannelSelectionEnabled",
+      "label": "Enable ChannelSelection metadata",
+      "description": "Attach e2MDB metadata sources to ChannelSelection and queue missing entries for the backend daemon.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value"
+      ],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.epgServiceListPreviewMode",
+      "name": "epgServiceListPreviewMode",
+      "label": "Service list preview image",
+      "description": "Select which image type should be preferred for service-list previews.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value"
+      ],
+      "type": "ConfigSelection",
+      "default": "backdrop_preview",
+      "choices": [
+        [
+          "backdrop_preview",
+          "Backdrop, fallback preview/still"
+        ],
+        [
+          "preview",
+          "Preview/still, fallback backdrop"
+        ],
+        [
+          "backdrop",
+          "Backdrop only"
+        ]
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.epgRetentionDays",
+      "name": "epgRetentionDays",
+      "label": "Live/EPG retention in days",
+      "description": "Keep matched Live/EPG metadata for this number of days after the event ended.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value"
+      ],
+      "type": "ConfigInteger",
+      "default": 3,
+      "limits": [
+        1,
+        30
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.epgNoMatchRetentionHours",
+      "name": "epgNoMatchRetentionHours",
+      "label": "No-match retention in hours",
+      "description": "Keep no-match Live/EPG entries for this number of hours after the event ended.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value"
+      ],
+      "type": "ConfigInteger",
+      "default": 1,
+      "limits": [
+        1,
+        72
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.epgPrefillEnabled",
+      "name": "epgPrefillEnabled",
+      "label": "Enable Live/EPG prefill",
+      "description": "Queue future EPG events for selected/preferred channels so the backend can process them overnight.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value"
+      ],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.epgPrefillMode",
+      "name": "epgPrefillMode",
+      "label": "Prefill mode",
+      "description": "Night window is recommended for backend-only processing.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value",
+        "config.plugins.e2mdb.epgPrefillEnabled.value"
+      ],
+      "type": "ConfigSelection",
+      "default": "night",
+      "choices": [
+        [
+          "off",
+          "Off"
+        ],
+        [
+          "standby",
+          "Standby only"
+        ],
+        [
+          "night",
+          "Night window"
+        ],
+        [
+          "idle",
+          "Idle time"
+        ]
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.epgPrefillStartHour",
+      "name": "epgPrefillStartHour",
+      "label": "Night prefill start hour",
+      "description": "Hour of day used for night prefill checks.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value",
+        "config.plugins.e2mdb.epgPrefillEnabled.value"
+      ],
+      "type": "ConfigInteger",
+      "default": 4,
+      "limits": [
+        0,
+        23
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.epgPrefillHorizonDays",
+      "name": "epgPrefillHorizonDays",
+      "label": "Live/EPG prefill days",
+      "description": "Number of future EPG days to inspect for preferred channels.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value",
+        "config.plugins.e2mdb.epgPrefillEnabled.value"
+      ],
+      "type": "ConfigInteger",
+      "default": 2,
+      "limits": [
+        1,
+        7
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.epgPrefillMaxEvents",
+      "name": "epgPrefillMaxEvents",
+      "label": "Maximum prefill events",
+      "description": "Maximum number of EPG events to queue per prefill run across all channels.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value",
+        "config.plugins.e2mdb.epgPrefillEnabled.value"
+      ],
+      "type": "ConfigInteger",
+      "default": 1500,
+      "limits": [
+        10,
+        5000
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.epgPrefillMaxEventsPerService",
+      "name": "epgPrefillMaxEventsPerService",
+      "label": "Maximum events per prefill service",
+      "description": "Maximum number of future EPG events inspected per service.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value",
+        "config.plugins.e2mdb.epgPrefillEnabled.value"
+      ],
+      "type": "ConfigInteger",
+      "default": 120,
+      "limits": [
+        1,
+        500
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.epgUseZapHistory",
+      "name": "epgUseZapHistory",
+      "label": "Use zap history",
+      "description": "Use preferred channels from zap/watch history for prefill decisions.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value",
+        "config.plugins.e2mdb.epgPrefillEnabled.value"
+      ],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.epgZapHistoryTopN",
+      "name": "epgZapHistoryTopN",
+      "label": "Zap history top channels",
+      "description": "Maximum number of preferred channels selected from zap/watch history.",
+      "level": 0,
+      "conditions": [
+        "config.plugins.e2mdb.epgMetaEnabled.value",
+        "config.plugins.e2mdb.epgPrefillEnabled.value",
+        "config.plugins.e2mdb.epgUseZapHistory.value"
+      ],
+      "type": "ConfigInteger",
+      "default": 25,
+      "limits": [
+        1,
+        50
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.debugLog",
+      "name": "debugLog",
+      "label": "Log mode",
+      "description": "Off writes nothing. On writes real errors only. Verbose writes the full diagnostic log.",
+      "level": 0,
+      "conditions": [],
+      "type": "ConfigSelection",
+      "default": 1,
+      "choices": [
+        [
+          0,
+          "Off"
+        ],
+        [
+          1,
+          "On"
+        ],
+        [
+          2,
+          "Verbose"
+        ]
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.logTarget",
+      "name": "logTarget",
+      "label": "Log output",
+      "description": "Choose whether e2MDB log lines are written to e2MDB.log, the Enigma2 debug log, or both.",
+      "level": 1,
+      "conditions": [
+        "config.plugins.e2mdb.debugLog.value != 0"
+      ],
+      "type": "ConfigSelection",
+      "default": "file",
+      "choices": [
+        [
+          "file",
+          "e2MDB.log"
+        ],
+        [
+          "debuglog",
+          "Enigma2 debug log"
+        ],
+        [
+          "both",
+          "Both"
+        ]
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.logRotateSizeMb",
+      "name": "logRotateSizeMb",
+      "label": "e2MDB.log max size (MB)",
+      "description": "Rotate e2MDB.log when this size is reached.",
+      "level": 1,
+      "conditions": [
+        "config.plugins.e2mdb.debugLog.value != 0",
+        "config.plugins.e2mdb.logTarget.value != 'debuglog'"
+      ],
+      "type": "ConfigInteger",
+      "default": 5,
+      "limits": [
+        1,
+        100
+      ]
+    },
+    {
+      "key": "config.plugins.e2mdb.translateTitleSearch",
+      "name": "translateTitleSearch",
+      "label": "Google title translation fallback",
+      "description": "Translate only the title when normal provider search finds no result.",
+      "level": 2,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.translateTitleSearchLanguage",
+      "name": "translateTitleSearchLanguage",
+      "label": "Google title translation target language",
+      "description": "Target language for fallback search titles.",
+      "level": 2,
+      "conditions": [
+        "config.plugins.e2mdb.translateTitleSearch.value"
+      ],
+      "type": "ConfigSelection",
+      "default": "system-language",
+      "choices": "language-list"
+    },
+    {
+      "key": "config.plugins.e2mdb.providerEnglishTextFallback",
+      "name": "providerEnglishTextFallback",
+      "label": "English metadata text fallback",
+      "description": "If the selected provider language returns artwork but no usable text, retry provider metadata once in English.",
+      "level": 2,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.translateMetadataFallback",
+      "name": "translateMetadataFallback",
+      "label": "Translate English metadata fallback",
+      "description": "Translate overview and tagline from the English fallback into the selected provider language before storing them.",
+      "level": 2,
+      "conditions": [
+        "config.plugins.e2mdb.providerEnglishTextFallback.value"
+      ],
+      "type": "ConfigYesNo",
+      "default": false
+    },
+    {
+      "key": "config.plugins.e2mdb.epgCleanupSqliteVacuum",
+      "name": "epgCleanupSqliteVacuum",
+      "label": "SQLite VACUUM",
+      "description": "Shrink e2MDB SQLite database files during backend maintenance.",
+      "level": 2,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": true
+    },
+    {
+      "key": "config.plugins.e2mdb.epgCleanupSqliteReindex",
+      "name": "epgCleanupSqliteReindex",
+      "label": "SQLite REINDEX",
+      "description": "Rebuild SQLite indexes during backend maintenance. Usually not needed.",
+      "level": 2,
+      "conditions": [],
+      "type": "ConfigYesNo",
+      "default": false
+    }
+  ]
+}

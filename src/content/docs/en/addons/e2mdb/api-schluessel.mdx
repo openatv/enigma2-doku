@@ -1,0 +1,37 @@
+---
+title: "e2MDB \u2013 API keys"
+description: "OpenATV 8.0+: API keys. Detailed e2MDB instructions, purpose and practical examples."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-providers" language="en" alt="e2MDB: API keys" caption="Native MetrixHD view. Test values are examples. API fields are covered with black bars; real credentials were not changed." />
+
+API keys belong to individual providers. Obtain credentials intended for your account or project and enable only providers for which you have usable access. An empty or incorrect field does not create an account.
+
+## Use the correct credential type
+
+| Provider | What to enter |
+| --- | --- |
+| TMDb | The **v3 API key** from your account's API settings. The long **API Read Access Token** is a different credential type and cannot simply be pasted into this field. |
+| TheTVDB | A compatible project API key. A subscriber PIN is not an API key. This e2MDB version has no separate PIN field and sends an empty PIN, so access requiring a subscriber PIN is not directly supported. |
+| OMDb | Your OMDb API key after registration and any required activation. Metadata is mainly English. |
+| FanArt.tv | The intended API key from your FanArt account. e2MDB provides one key field and a choice between filling missing artwork and preferring FanArt artwork. |
+
+The plugin's TMDb adapter sends an `api_key` query parameter. The provider also supports other authentication mechanisms, but the form must match this adapter. See [TMDb application authentication](https://developer.themoviedb.org/docs/authentication-application) and [TheTVDB access models](https://support.thetvdb.com/kb/faq.php?id=62).
+
+## Enter and verify a key
+
+1. Open e2MDB → **MENU** and enable the appropriate provider.
+2. Paste or type the key without leading/trailing spaces.
+3. Press **Green/Save**.
+4. Test one known title and check the backend result.
+
+For access errors, check key type, account activation and provider limits first. Deleting the database does not fix authentication.
+
+You can also enter keys using [OpenWebif settings](../weboberflaeche/) on a computer. The search box in the media editor is not a credential field. Avoid saving an older TV setup form after changing values in the browser.
+
+[Official provider links](../quellen/) lead to registration and API information. Providers set their own terms and quotas. Never publish keys in forum screenshots, exported configuration or support attachments. The handbook screenshots use detached placeholder fields; they do not show the real keys.
+
+
+[Back to e2MDB](../) · [All settings](../optionen/)

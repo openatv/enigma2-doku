@@ -1,0 +1,26 @@
+---
+title: "e2MDB – Datenbankstatus lesen"
+description: "OpenATV ab 8.0: Datenbankstatus lesen. Einrichtung, Bedeutung und praktische Hinweise zu e2MDB."
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+<Capture id="e2mdb-queue" language="de" alt="e2MDB: Datenbankstatus lesen" caption="Native Ansicht in MetrixHD. Testwerte sind Beispiele. API-Felder sind in der Aufnahme mit schwarzen Balken verdeckt; vorhandene Zugangsdaten wurden nicht geändert." />
+
+In e2MDB MENU, Blau „Mehr …“ und „DB-Status und Wartung“ öffnen. Grün aktualisiert die Anzeige. Auf dieser Seite sind Blau „Bereinigung ausführen“ und OK für die Datenbankwartung keine bloßen Informationsaufrufe.
+
+| Anzeige | So ist sie zu lesen |
+| --- | --- |
+| Datenbankgröße | Größe der SQLite-Datei. Zusätzliche WAL-Dateien und Artwork belegen weiteren Platz. |
+| Frei in DB | Bereits reservierter, innerhalb der Datenbank wiederverwendbarer Platz. Nicht der freie Platz auf der HDD. |
+| Importierte Dateien | Erfasste Dateien; noch keine Garantie für fertige Anbieterinformationen. |
+| Medieneinträge und browserbereit | Aufgebaute Datensätze beziehungsweise für den Medienbrowser verfügbare Einträge. |
+| Provider offen oder fehlend | Noch nicht vollständig angereicherte Daten. Während eines Scans erwartbar. |
+| Artwork mit oder ohne Bild | Vorhandene Bilddaten getrennt von der reinen Titelerkennung. |
+| Live-/EPG und Queue | Aktive, abgelaufene und wartende Ereignisse. Zähler können sich nach Cleanup ändern. |
+
+Unter hoher Last können einzelne Abfragen vorübergehend unvollständig sein. Ein Strich oder unbekannter Wert ist nicht gleich null. Nach dem Auftrag erneut aktualisieren, bevor Maßnahmen abgeleitet werden.
+
+Ein Job kann technisch beendet sein und trotzdem einzelne Fehler oder No-match-Ergebnisse enthalten. Deshalb neben „fertig“ auch Zusammenfassung, Einzelfehler und fehlende Bilder ansehen.
+
+[Zur e2MDB-Übersicht](../) · [Alle Einstellungen](../optionen/)
