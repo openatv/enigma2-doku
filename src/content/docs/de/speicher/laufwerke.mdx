@@ -1,0 +1,65 @@
+---
+title: Laufwerke einhängen und aushängen
+description: Geräteverwaltung, HDD und USB unterscheiden, Mountpunkte zuweisen, temporär einhängen und Festplatten-Standby einstellen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Ein Datenträger wird erst über einen **Einhängepunkt** für Aufnahmen, Timeshift, Sicherungen oder Plugins erreichbar. **Einhängen / Mounten** verbindet sein Dateisystem mit einem Ordner. **Aushängen / Unmounten** löst diese Verbindung, ohne die Dateien zu löschen.
+
+## Geräteverwaltung öffnen
+
+Der Weg lautet **Menü → Einstellungen → System → Speichergeräte → Geräteverwaltung**. Im Schnellstartmenü findest du ebenfalls Zugänge zu Laufwerken und Mounts. Netzwerkfreigaben werden gesondert unter [NAS & Netzwerkfreigaben](../../netzwerk/freigaben/) eingerichtet.
+
+<Capture id="storage-devices" language="de" alt="Geräteverwaltung mit eingebundener HDD und separat markierter USB-Datenpartition OPENATV_DEMO" caption="Im Beispiel ist sda die HDD und sdb der USB-Stick. Diese Buchstaben sind keine feste Regel. Die markierte USB-Partition ist bereits unter /media/OPENATV_DEMO eingehängt." />
+
+## Datenträger, Partition und Mountpunkt unterscheiden
+
+| Begriff | Im Beispiel | Bedeutung |
+| --- | --- | --- |
+| Ganzes Gerät | `sdb` | Der komplette USB-Stick einschließlich seiner Partitionstabelle. |
+| Partition | `sdb2` | Ein Teil des Geräts mit eigenem Dateisystem. Die Einrückung zeigt die Zugehörigkeit. |
+| Dateisystem | `ext4` | Organisiert Dateien und Ordner auf der Partition. |
+| Beschriftung / Label | `OPENATV_DEMO` | Lesbarer Name des Dateisystems. |
+| Mountpunkt | `/media/OPENATV_DEMO` | Ordner, über den die eingehängten Dateien erreichbar sind. |
+| R/W | Lesend und schreibend | Zugriff ist grundsätzlich möglich; freier Platz und Rechte müssen ebenfalls passen. |
+
+Identifiziere ein Gerät anhand von **Typ, Größe, Modell und Anschluss**. Die Namen `sda` und `sdb` können sich bei anderer Anschlussreihenfolge ändern. Die im Bild sichtbare Swap-Partition ist Auslagerungsspeicher; sie ist kein Aufnahmelaufwerk.
+
+## Temporär einhängen oder aushängen
+
+Markiere die **Datenpartition**, nicht die übergeordnete Gerätezeile. **Blau** zeigt je nach Zustand **Einhängen** oder **Aushängen**. Lies einen angebotenen Zielpfad oder eine Rückfrage und kontrolliere anschließend den angezeigten Zustand.
+
+Vor dem Aushängen müssen Aufnahmen, Timeshift, Wiedergabe, Sicherungen und andere Zugriffe auf dieses Laufwerk beendet sein. Wenn Aushängen wegen laufender Nutzung scheitert, beende den betreffenden Zugriff. Ziehe das Kabel nicht als Ersatz für das Aushängen ab. Erst nach erfolgreichem Aushängen darf ein USB-Laufwerk entfernt werden.
+
+Eine temporäre Einbindung legt nicht automatisch einen dauerhaften Start-Eintrag an. Blau ist für Partitionen ohne dauerhafte Zuordnung vorgesehen; bei fest zugeordneten Laufwerken nutzt du die Mountpunkt-Konfiguration. Ein dauerhaft ignoriertes Gerät muss zuerst wieder aktiviert werden.
+
+## Einen dauerhaften Einhängepunkt zuweisen
+
+1. Markiere die Datenpartition und drücke **OK** für deren Mountpunkt. **Gelb – Einhängepunkt** öffnet die Übersicht mehrerer Partitionen.
+2. Wähle den vorgesehenen Pfad. `/media/hdd` wird häufig für das Haupt-Aufnahmelaufwerk verwendet. Ein zusätzlicher Stick bekommt einen anderen, freien Pfad.
+3. **Einfach** genügt für die Pfadauswahl. **Erweitert** zeigt zusätzlich Dateisystem und Mount-Optionen. Ändere diese nur bei einem konkreten Bedarf.
+4. Speichere mit **Grün** und beachte einen eventuell angeforderten Neustart.
+5. Öffne die Geräteverwaltung erneut und kontrolliere den tatsächlichen Mountpunkt.
+
+<Capture id="storage-mount" language="de" alt="Mountpunkt-Konfiguration der USB-Partition mit Modus Einfach und noch keinem dauerhaften Ziel" caption="None bedeutet hier: kein dauerhafter Mountpunkt eingetragen. Die Partition kann trotzdem gerade temporär eingehängt sein, wie in der Geräteübersicht." />
+
+Ein bereits von der HDD belegtes `/media/hdd` darf nicht gleichzeitig dem USB-Stick zugeordnet werden. Dauerhafte Einträge verwenden nach Möglichkeit die Dateisystem-UUID, damit eine veränderte `sdX`-Reihenfolge nicht das falsche Laufwerk auswählt. Nach einer Formatierung ändert sich die UUID; kontrolliere dann die Zuordnung erneut.
+
+## Aufnahme- und Timeshift-Pfade
+
+Ein Mountpunkt allein stellt nicht automatisch alle Speicherziele um. Prüfe danach die **Aufnahmepfade**, den **Timeshift-Pfad**, den Sicherungsort und gegebenenfalls den EPG-Speicherort. Über [Einstellung finden](../../einstellungen/) kannst du direkt nach diesen Begriffen suchen.
+
+Fehlt das Laufwerk, kann der gleichnamige Ordner trotzdem existieren. Er ist dann kein Beleg für eingebundenen Speicher. Kontrolliere die Geräteübersicht, bevor du große Datenmengen dorthin schreibst.
+
+## Versteckte Festplatteneinstellungen: MENU
+
+Drücke **in der Geräteverwaltung MENU**, um die **Festplatteneinstellungen** zu öffnen.
+
+<Capture id="storage-settings" language="de" alt="Festplatteneinstellungen mit Standbyzeiten, Hardwaretimer und Anzeige unbekannter Geräte" caption="Die Menü-Taste öffnet hier eine weitere Einstellungsseite. Sie formatiert kein Laufwerk." />
+
+**Festplatten-Standby nach** legt die Leerlaufzeit fest. Die zweite Zeit steuert das Verhalten bei einer Box im Standby. **Interner Standbytimer** überlässt die Abschaltung einer unterstützten Festplattenfunktion. Ein mechanisches Laufwerk muss beim nächsten Zugriff wieder anlaufen; bei Flash-Speicher gibt es keinen rotierenden Motor. Netzwerk- oder Plugin-Zugriffe können ein Laufwerk wieder wecken. **Unbekannte Geräte anzeigen** erweitert die Übersicht um nicht eindeutig zugeordnete Geräte.
+
+Weiter: [Formatieren und Dateisystem prüfen](../formatieren-pruefen/), [Backup](../../wartung/backup-restore/).
+
+Quelle: [Geräteverwaltung und Mountpunkt-Konfiguration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/DeviceManager.py).

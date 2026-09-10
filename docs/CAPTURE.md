@@ -132,6 +132,27 @@ Der Dateiname endet auf `.mdx`. Der englische Artikel verwendet dieselbe Kennung
 
 Astro liefert WebP-Bilder in passenden Größen; ein Link öffnet das unveränderte Original-PNG. Beide Varianten sind normale statische Dateien und funktionieren auf GitHub Pages und Apache2.
 
+## Tasten- und Wartungsserie
+
+Die Profile `buttons` (3), `backups` (4), `firmware` (2) und `storage` (4) erzeugen 13 Bilder je Sprache. Die 26 freigegebenen Aufnahmen aus `maintenance-a-*` verwenden `grab-logo` und den Aufnahmeplugin-Commit `60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3`. Alle Bilder wurden einzeln auf Sprache, Lesbarkeit und Inhalt geprüft. Die Bibliothek umfasst damit 140 Original-PNGs; die ersten 114 behalten ihre früheren Herkunftsangaben.
+
+```sh
+python tools/capture.py --host root@BOX --run-prefix maintenance-001 \
+  --profiles buttons backups firmware storage --restart-languages --bootlogo
+```
+
+Die Wartungsprofile starten keine Sicherung, Wiederherstellung, Formatierung oder Installation und ändern keinen Bootslot. Die Geräteansichten erfordern genau einen entfernbaren USB-Datenträger mit vorhandener Datenpartition; der Adapter wählt deren größte Nicht-Swap-Partition anhand der Geräteübersicht und sysfs. Die Konfiguration der Box wird dadurch nicht auf diese Beispielwerte gesetzt. Der Flash-Manager wartet auf die echte Image-Liste, Imagesicherung und MultiBoot auf die gelesenen Slots.
+
+Die eigentliche USB-Formatierung wurde getrennt von der Screenshot-Tour ausdrücklich autorisiert und protokolliert. Es gibt dafür keinen ausführbaren Formatierbefehl im öffentlichen Handbuch oder im Aufnahmeauftrag. Private `boot-slots.json`-Dateien dienen der Kontrolle des aktuellen Slots und werden nicht importiert. Eine nachfolgende Schutzkorrektur im Plugin blockiert zusätzlich nummerierte Schnellstart-Aktionen und den Einstieg zur Slot-Erstellung; sie verändert die veröffentlichten Bildinhalte nicht.
+
+## Langdruck-Verzeichnis aktualisieren
+
+```sh
+python scripts/import-keymap.py ../enigma2
+```
+
+Im Handbuch-Repository ausführen. Der Import liest XML-Daten, führt keinen Enigma2-Code aus und hält Commit und SHA-256 fest. Er übernimmt ausschließlich aktive Einträge mit Flag `l`, einschließlich Kontext und eingeschränkter Gerätezuordnungen. `LongKeys.astro` rendert die mit beiden Sprachen durchsuchbare Referenz. Bei Änderungen auch die redaktionellen Beispiele und Mengenangaben prüfen.
+
 ## Nächste Profile
 
 Der [Prüfstand](PRAXISTESTS.md) hält die bisherige Abdeckung fest. Als nächste Abläufe bieten sich vollständige Ersteinrichtung, Settings-Auswahl oder Sat-Suchlauf, Aufnahmeziele und weitere EPG-Ansichten an. Für WLAN und FBC folgen getrennte Tests mit geeigneter Hardware. Neue Profile benötigen erkennbare Start- und Endzustände sowie einen definierten Abbruch; zusätzliche Bildschirmklassen müssen vorab auf Seiteneffekte geprüft werden.

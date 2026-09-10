@@ -1,0 +1,51 @@
+---
+title: Flash Online – install an image
+description: Online and local images, downloads, backup options and choosing another MultiBoot slot to keep the current image.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Flash Online** installs a complete image. **Software Update** updates packages in the running image. For an image change or fresh installation, open **Menu → Setup → Software Management → Flash Online**.
+
+## Prepare
+
+Create a [backup](../backup-restore/), check the network connection and provide space for downloading and extracting the image. The backup or download drive and the **target slot** are different: the drive stores the file; the slot receives the installed image.
+
+To keep your current image, first open [MultiBoot Manager](../multiboot/) and note the slot marked **Active**. You need a **different** suitable slot whose contents may be overwritten. **Cancel the flash process if you cannot identify a separate target slot unambiguously.**
+
+## Select an image
+
+<Capture id="flash-online" language="en" alt="Flash Manager with downloaded images and available OpenATV versions from the feed" caption="The list comes from the image feed and existing local files. Versions and dates are a snapshot; the model name belongs only to the example receiver." />
+
+1. Press **OK** to expand the required version group.
+2. Highlight a suitable image. The receiver requests its model's list; local files must also be intended for that model.
+3. **OK / Green** on an image file proceeds towards installation or slot selection. On a group, it only expands or collapses that group.
+4. **Blue** on an online image can download it without flashing. On a local file, the same colour can mean **Delete**. Read the label.
+
+**Distribution** changes the image source. Stay with OpenATV for this guide. Alpha and beta labels indicate development builds; the newest date alone does not establish which version suits your purpose.
+
+## Keep the current image: choose the target deliberately
+
+The slot selection marks the current image. The default selection may nevertheless be the running slot. **Never accept the suggested entry without checking it.**
+
+Choose the different slot you checked beforehand. Flashing replaces any image already installed there. An empty slot is suitable only if the receiver offers it as a flash target. Slot numbers are not universal recommendations: an example's “Slot 4” may not exist on your receiver.
+
+## Backup and settings after flashing
+
+The wizard may offer a settings backup before flashing and choices for restoring settings afterwards. Decide whether to start with your previous settings or a fresh configuration. Depending on your choices, plugins can also be reinstalled.
+
+Before the final confirmation, check **image file, target slot and restore options** again. Wait for the download, extraction and flash to finish. Do not interrupt power while the image is being written. Only then follow the offered start or restart action.
+
+## Check afterwards
+
+In the newly started image, check its version, tuners, network, mounts and channel list. Each image has its own settings. An existing HDD or NAS share is not automatically formatted, but its mount configuration must be correct in the new image.
+
+Use MultiBoot to return to the retained previous image. A GUI restart alone does not change slots. If the new image fails to boot, selecting another image during startup depends on the boot system; those device-specific steps belong in later appendices.
+
+## Local images and image backups
+
+Compatible ZIP files on reachable media, including an **`images`** folder, can appear as local or backup images. Keep the archive format expected by Flash Manager. A settings archive named `enigma2settingsbackup.tar.gz` is not a flashable complete image.
+
+**Verification status:** The feed and local image list were loaded on the test receiver, and the slot configuration was read. No image was flashed for these captures; the running image was retained.
+
+Source: [Flash Manager, including slot selection and restore options](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/FlashManager.py).

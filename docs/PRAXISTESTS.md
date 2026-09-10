@@ -120,3 +120,41 @@ Die veröffentlichten Ergänzungen stammen aus `infobar-01-de-infobars`, `infoba
 - Rund 69,93 MB veröffentlichte Dateien; knapp 7 Prozent des konservativen 1-GB-Budgets.
 
 Die Änderungen werden ausschließlich lokal committed. Die Website benötigt zur Veröffentlichung nur ihre eigenen eingecheckten Bilder und keinen Zugriff auf die Testbox.
+
+## Ergänzung: Farbtasten, Langdruck, Sicherung, Flash, MultiBoot und Speicher
+
+Am 10. September 2026 wurden sieben Kapitel je Sprache ergänzt: sechs bebilderte Anleitungen und ein aus der Standard-Keymap erzeugtes Langdruck-Verzeichnis. Die Standard-Keymap enthält 150 aktive Langdruck-Zuordnungen für 77 Tastencodes. Kontext und gerätespezifische Einschränkungen bleiben erhalten; das Verzeichnis verspricht nicht die Verfügbarkeit jeder Aktion in jedem Bildschirm.
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| Native Aufnahmeprofile | `buttons` 3, `backups` 4, `firmware` 2, `storage` 4 Bilder je Sprache |
+| Bildserie | `maintenance-a-*`: alle 26 Aufnahmen vollständig, einzeln gesichtet und über Prüfsummen in DE/EN-Paaren importiert |
+| Hintergrund | `grab-logo`, Wiedergabe während der Aufnahmen gestoppt; keine laufenden Fernsehbilder |
+| Menüs | Hotkeys, Grundbelegung, Schnellstartmenü, Softwareverwaltung, Standard-Backup-Dateien, Imagesicherung, Flash-Liste, MultiBoot, USB- und Standby-Dialoge |
+| Flash Online | Echte Feed-/lokale Image-Liste geladen. Kein Downloadauftrag, kein Flash und keine Änderung der Bootauswahl durch die Tour |
+| MultiBoot | Slot 2 aktiv, Slot 4 leer; Belegung und Bootparameter privat geprüft. Die gleiche Root-Partition kann mehrere Slot-Verzeichnisse enthalten |
+| Schutz des laufenden Images | Slot 2, `linuxrootfs2`, Kernel `mmcblk0p4` und laufendes Root-Dateisystem `mmcblk0p8` nach Abschluss unverändert |
+| Backup/Restore | Native Auswahl- und Informationsdialoge geprüft. Kein vollständiges Backup und kein Restore ausgeführt |
+| USB-Identifikation | Entfernbarer JetFlash/Transcend-2-GB-Stick am USB-Bus, Größe und sysfs-Elternpfad unmittelbar vor dem Eingriff geprüft |
+| Autorisierte USB-Demo | Ausschließlich `/dev/sdb2`, vorhandene große Datenpartition, als ext4 mit Label `OPENATV_DEMO` formatiert. Die erste USB-Partition blieb erhalten |
+| USB-Funktionsprüfung | Einhängen unter `/media/OPENATV_DEMO`, Schreiben/Lesen, Aushängen, `e2fsck -f -n` mit Exitcode 0, erneutes Einhängen erfolgreich |
+| Durchführung der USB-Demo | Separate SSH-Wartungsaktion mit Geräte- und Schutzprüfungen, kein automatischer Speicherjob des Aufnahmeplugins. Die GUI-Bestätigungskette wurde nicht Ende zu Ende ausgeführt |
+| HDD und NAS | HDD `/dev/sda2` weiterhin unter `/media/hdd`, HDD-Swap unverändert aktiv, vorhandenes NAS-autofs weiter verfügbar |
+| Dauerhafte Mounts | SHA-256 von `/etc/fstab` vor/nach identisch. USB-Mount bleibt temporär; keine Start-Einbindung hinzugefügt |
+| Übergabe | GUI wieder `de_DE`, Aufnahmedienst bereit, USB-Demo eingehängt, aktives Image erhalten |
+
+Bildprovenienz: Aufnahmeplugin `60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3`. Die vorhandenen 114 Bilder behalten ihre vorherigen Werkzeugstände. Anschließend ergänzt `a9d148ff7c9592f43ad8dae8369e2540f83bd814` die Sperren für nummerierte QuickMenu-Aktionen und Slot-Erstellung. Die kurze rein betrachtende Kontrollserie `maintenance-guard-de-*` lief mit diesem Endstand erfolgreich; ihre fünf Bilder gehören nicht zur öffentlichen Bildauswahl. Rohdiagnosen, Geräteprüfungen und USB-Testprotokolle bleiben im ignorierten privaten Arbeitsverzeichnis.
+
+### Website-Prüfung dieser Ergänzung
+
+- 200 HTML-Seiten, 99 Inhalte je Sprache zuzüglich Einstieg/404; 23 bebilderte Kapitel je Sprache.
+- 140 geprüfte Original-PNGs und 420 responsive WebP-Dateien; Herkunft und Sprachpaare geprüft.
+- Astro: 16 Dateien geprüft, keine Fehler, Warnungen oder Hinweise.
+- Handbuch: 6 Node-Tests und 8 Python-Tests bestanden. Der neue XML-Test unterscheidet Langdruck von Wiederholung/Loslassen und erhält Kontext/Gerätescope.
+- Aufnahmeplugin: 21 Python-Tests bestanden, einschließlich gesperrtem Startaufruf und Warten auf echte Image-Slots.
+- GitHub-Pages-Build erfolgreich, alle internen Links, Medien, Sprungmarken und DE/EN-Gegenstücke geprüft.
+- 35 Suchprüfungen gegen den erzeugten Pagefind-Index erfolgreich, einschließlich Tasten, technischer Langdruck-Aktionen, Sicherung, Zielslot, MultiBoot und Dateisystemprüfung.
+- Lokaler Vorschauabruf des neuen Farbtasten-Kapitels: HTTP 200. Kein zusätzlicher Website-Browsertest.
+- Rund 83,10 MB in 997 veröffentlichten Dateien; 8,31 Prozent des konservativen 1-GB-Budgets.
+
+Es wurde ausschließlich lokal committed. Die Website bleibt ohne Boxzugriff baubar; alle erzeugten privaten Dateien und Sicherungsarchive sind von der Veröffentlichung ausgeschlossen.

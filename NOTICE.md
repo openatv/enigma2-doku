@@ -4,10 +4,12 @@
 
 - Repository: https://github.com/openatv/enigma2
 - Importierter Stand: `fdc9347241245fd18fd0b8bc93727237189c916c`
-- Quellen: `data/setup.xml`, `data/menu.xml`, `po/de.po`, `lib/python/Screens/` und die in Artikeln genannten Dateien.
+- Quellen: `data/setup.xml`, `data/menu.xml`, `data/keymap.xml`, `po/de.po`, `lib/python/Screens/` und die in Artikeln genannten Dateien.
 - Ursprüngliche Lizenz: GNU General Public License, Version 2; Originaltext in `LICENSE`.
 
 Die generierten Referenzseiten enthalten Hilfetexte und Beschriftungen der ursprünglichen Autoren und Übersetzer. Die jeweiligen Referenzseiten verlinken auf den festgehaltenen Quellstand. Redaktionelle Anleitungen und Werkzeuge werden im Rahmen dieses Dokumentationsprojekts ergänzt.
+
+`data/keymap-long.json` übernimmt die aktiven Langdruck-Tastencodes, Aktionsnamen, Kontexte und Gerätezuordnungen aus `data/keymap.xml` desselben Quellstands. Das daraus gerenderte Verzeichnis enthält keine ausgelesenen persönlichen Hotkey-Einstellungen einer Box.
 
 ## OpenATV-Branding
 
@@ -21,6 +23,8 @@ Die Dateien stammen aus demselben oben genannten Commit. Markenbezeichnungen und
 Die Dateien unter `src/assets/captures/` sind unveränderte PNG-Aufnahmen einer bereitgestellten OpenATV-Testbox mit MetrixHD. Die bisherigen 88 Aufnahmen zeigen das echte OSD zusammen mit dem Bootlogo bei gestoppter Wiedergabe. Die 26 ergänzenden Infobar-/Menüaufnahmen zeigen den vom Betreiber gewählten Sender KiKA HD während „Sendeschluss“ mit seinen EPG-Daten. Die Auswahl und Prüfsummen stehen in `data/captures-review.json`; Aufnahmezeit, Image, Skin, Hintergrund und Werkzeugstand je Bild in `data/captures.json`. Die Website erzeugt daraus zusätzlich verkleinerte WebP-Dateien. Es wurden keine Bildschirme künstlich nachgebaut und keine Bedienoberflächen nachträglich in die Aufnahmen montiert.
 
 Die Aufnahmen zeigen die Benutzeroberfläche von Enigma2, MetrixHD und den sichtbaren Erweiterungen. Deren Urheber- und Markenrechte verbleiben bei den jeweiligen Inhabern. Die dargestellte Fernbedienung stammt aus der laufenden Oberfläche und ist kein unterstütztes Modellprofil des Handbuchs.
+
+Weitere 26 Aufnahmen aus der Tasten-/Wartungsserie ergänzen diesen Bestand auf 140. Sie verwenden wieder das Bootlogo bei gestoppter Wiedergabe. Der für diese Serie verwendete Aufnahmeplugin-Commit ist `60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3`. Die bestehenden Bilder behalten ihre ursprünglichen Werkzeugstände. Die USB-Beispielpartition und Mountpunkte sind reale Testzustände; keine Backup-Archive, Zugangsdaten, vollständigen Aufträge oder privaten Bootslot-Diagnosen werden mit veröffentlicht.
 
 Das separate Aufnahmeplugin basiert auf [openatv/enigma2-plugin-test](https://github.com/openatv/enigma2-plugin-test), GPL-3.0. Sein Quellcode wird nicht in dieses GPL-2.0-Dokumentationsrepository kopiert. Die Commitangabe im Bildinventar bezeichnet den lokalen Werkzeugstand; er muss separat hochgeladen werden, bevor er auf GitHub abrufbar ist.
 

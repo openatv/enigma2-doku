@@ -18,3 +18,7 @@ Die erste Ausgabe bezieht sich auf den OpenATV-8.0-Quellstand vom 9. September 2
 Solche Inhalte erhalten eigene Unterseiten in diesem Bereich. Sie werden wie die Grundanleitungen, Skins und Add-ons von der Suche erfasst.
 
 Zurück zur [Ersteinrichtung](../erste-schritte/ersteinrichtung/) oder zum [Einstellungsverzeichnis](../einstellungen/).
+
+## Tasten nachschlagen
+
+Das [Langdruck-Verzeichnis](./langtasten/) enthält alle aktiven Langdruck-Zuordnungen aus der Standard-Keymap. Die Einträge sind auch über die gemeinsame Suche erreichbar.

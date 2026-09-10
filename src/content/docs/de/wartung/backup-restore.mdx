@@ -1,0 +1,75 @@
+---
+title: Backup und Wiederherstellung
+description: Systemeinstellungen sichern, Sicherungsumfang wählen, Imagesicherung erstellen und Backups in OpenATV wiederherstellen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Eine Sicherung hilft vor größeren Änderungen und vor einem Imagewechsel. Wähle zuerst, **was** du zurückholen können möchtest.
+
+| Sicherung | Enthält | Wofür sie gedacht ist |
+| --- | --- | --- |
+| Systemeinstellungen | Konfiguration, Senderlisten und weitere ausgewählte Dateien; außerdem Informationen für die Plugin-Wiederherstellung. | Ein frisch installiertes, passendes Image wieder einrichten. |
+| Imagesicherung | Das gewählte installierte Image mit seiner Software und Konfiguration, im vom Gerät unterstützten Sicherungsformat. | Zu einem bekannten Imagezustand zurückkehren. |
+| Aufnahmen und eigene Medien | Separat kopierte Film-, Musik- und andere Nutzdateien. | Verlust oder Ausfall des Aufnahmelaufwerks absichern. |
+
+Eine Imagesicherung ist **keine automatische Kopie deiner HDD oder NAS-Aufnahmen**. Eine Einstellungssicherung enthält normalerweise ebenfalls keine Filme. Backup-Archive können Netzwerkzugänge und andere Zugangsdaten enthalten; bewahre sie privat auf.
+
+## Wo die Funktionen liegen
+
+Öffne **Menü → Einstellungen → Softwareverwaltung**. Alternativ führt **Blau kurz → Softwareverwaltung** im Schnellstartmenü zu den wichtigsten Funktionen.
+
+<Capture id="software-menu" language="de" alt="Softwareverwaltung mit Imagesicherung, MultiBoot, Systemeinstellungen sichern und wiederherstellen" caption="Systemeinstellungen und komplettes Image haben getrennte Sicherungsfunktionen." />
+
+## Systemeinstellungen sichern
+
+1. Hänge das gewünschte Sicherungslaufwerk ein und prüfe, dass es erreichbar und beschreibbar ist. Ein Ordnername allein beweist noch keine aktive Einbindung.
+2. Öffne **Systemeinstellungen sichern**.
+3. Falls eine Zielauswahl erscheint, wähle den vorgesehenen Datenträger. Bei nur einem geeigneten Ziel kann die Auswahl entfallen.
+4. Warte auf die Erfolgsmeldung. Brich die Sicherung nicht durch einen GUI-Neustart ab.
+5. Kontrolliere anschließend das Archiv auf dem gewählten Laufwerk und kopiere es zusätzlich auf einen PC oder ein anderes unabhängiges Ziel.
+
+Die aktuelle Einstellungssicherung heißt **`enigma2settingsbackup.tar.gz`**. Sie liegt unterhalb des gewählten Ziels in einem Ordner nach dem Muster `backup_<Image>_<Gerät>`. Frühere Sicherungen können Datumsnamen tragen. Die konkreten Ordnernamen unterscheiden sich zwischen Geräten; kopiere keine Beispielnamen blind.
+
+## Welche Dateien werden gesichert?
+
+Unter **Softwareverwaltung → Erweiterte Optionen** findest du drei unterschiedliche Listen:
+
+| Eintrag | Bedeutung |
+| --- | --- |
+| Standardliste gesicherter Dateien | Zeigt die vom Image vorgesehenen Dateien. Die Liste lässt sich hier betrachten, aber nicht verändern. |
+| Zusätzlich zu sichernde Dateien | Eigene Ergänzungen, beispielsweise eine selbst angelegte Konfigurationsdatei. |
+| Nicht zu sichernde Dateien | Ausnahmen, die aus der Sicherung ausgeschlossen werden sollen. |
+
+<Capture id="backup-advanced" language="de" alt="Erweiterte Softwareoptionen mit Wiederherstellung und den drei Sicherungslisten" caption="Die erweiterte Wiederherstellung dient zur Auswahl älterer Sicherungen nach Datum." />
+
+<Capture id="backup-files" language="de" alt="Dateiauswahl der Standardsicherung im Nur-Lesen-Modus mit gelber Informationstaste" caption="Ordner lassen sich öffnen. Ein nicht markierter übergeordneter Ordner kann dennoch einzelne gesicherte Dateien enthalten. Gelb zeigt Informationen zur Auswahl." />
+
+Zur Standardauswahl gehören vorhandene Konfigurationsdateien etwa aus `/etc/enigma2`, Netzwerkeinstellungen und Mount-Einträge. Die tatsächliche Liste hängt von installierten Komponenten und vorhandenen Dateien ab. Die Plugin-Liste ersetzt keine dauerhafte Kopie aller Installationspakete: Die spätere Nachinstallation benötigt verfügbare Pakete beziehungsweise Feeds.
+
+## Einstellungen wiederherstellen
+
+1. Stelle das Sicherungslaufwerk wieder unter dem vorgesehenen Pfad bereit.
+2. Wähle **Systemeinstellungen wiederherstellen** für die aktuelle Sicherung. Für einen älteren Stand nutze **Erweiterte Optionen → Erweiterte Wiederherstellung** und wähle das Archiv nach Datum.
+3. Prüfe die Auswahl und bestätige die Wiederherstellung. Vorhandene Einstellungen werden ersetzt; anschließend startet die Box beziehungsweise Oberfläche neu.
+4. Prüfe danach Tuner, Netzwerk, Mounts, Senderlisten, Timer und Plugins. Die Netzwerkeinstellungen aus dem Backup können auch die IP-Adresse ändern.
+
+Beim Erststart nach einem Flash kann der Einrichtungsassistent ebenfalls eine gefundene Sicherung anbieten. Eine alte problematische Einstellung kann mit zurückkommen. Bei der Fehlersuche kann es deshalb sinnvoll sein, zunächst frisch einzurichten und nur benötigte Daten zu übernehmen.
+
+## Vollständige Imagesicherung
+
+Öffne **Softwareverwaltung → Imagesicherung**. Bei MultiBoot wählst du zuerst das zu sichernde Image. **Grün / Start** führt zur Zielauswahl; danach beginnt die Sicherung.
+
+<Capture id="image-backup" language="de" alt="Imagesicherung mit installierten Slots und Markierung des aktuellen Images" caption="Hier wird ausgewählt, welches Image gesichert wird. Die Markierung ist noch keine fertige Sicherung." />
+
+Verwende einen Datenträger mit ausreichend freiem Platz. Das Ergebnis wird im Unterordner **`images`** des gewählten Ziels abgelegt. Größe und Sicherungsformat hängen vom Image und der Geräteunterstützung ab. Warte auf den Abschluss und kopiere das Ergebnis zusätzlich außerhalb der Box.
+
+Zum Zurückspielen eines passenden Image-Backups dient unter anderem [Flashen online/lokal](../flash-online/). Eine vollständige Imagesicherung ist nicht automatisch auf andere Boxmodelle übertragbar. Bei [MultiBoot](../multiboot/) kannst du einen anderen geeigneten Slot verwenden und das funktionierende Image erhalten.
+
+## Wenn keine Sicherung gefunden wird
+
+Prüfe zuerst das eingehängte Laufwerk, das gewählte Sicherungsziel und die Ordnerstruktur. Kontrolliere dann Datum und Dateigröße des Archivs. Eine leere Liste bedeutet nicht zwingend, dass die Datei gelöscht wurde; häufig ist das ursprüngliche Laufwerk gerade nicht erreichbar.
+
+**Prüfstand:** Die abgebildeten Dialoge wurden auf der Testbox geöffnet. Ein vollständiger Backup-/Restore-Durchlauf wurde für dieses Kapitel nicht ausgeführt.
+
+Quellen: [Einstellungssicherung und Restore](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/SoftwareManager/BackupRestore.py), [Imagesicherung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ImageBackup.py).

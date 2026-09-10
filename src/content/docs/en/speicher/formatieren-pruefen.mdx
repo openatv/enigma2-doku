@@ -1,0 +1,54 @@
+---
+title: Format and check filesystems
+description: USB demonstration, ext4, partitions, initialisation, filesystem checks and HDD maintenance in OpenATV Device Manager.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Formatting deletes the files on the selected target.** It is not needed just to mount a usable existing drive. Learn with an empty USB stick or one whose contents may explicitly be discarded.
+
+## Which target is selected?
+
+Open [Device Manager](../laufwerke/) and distinguish the whole-device row from its indented partition. **Green – Action** applies to that precise selection.
+
+| Action | Purpose and effect |
+| --- | --- |
+| Format a data partition | Recreates that partition's filesystem and deletes its previous files. |
+| Format / initialise a whole storage device | Recreates the partition table and partitions of the entire device. Its other partitions are also lost. |
+| Wipe storage device | Removes the existing storage structure. This is not routine maintenance for a working drive. |
+| File System Check | Checks a supported filesystem's structure and can repair errors. It is not a complete hardware test. |
+| Trim File System | Reports unused areas to supported storage. Not every device supports it. |
+| Convert ext3 to ext4 | A specialised conversion for an existing ext3 filesystem. The offered change cannot simply be reversed. |
+
+## Example: format one USB data partition as ext4
+
+1. Check device type, capacity and connection. Ensure that no needed files remain on the target.
+2. Finish accesses to the stick and unmount the data partition.
+3. Select that partition and choose **Green → Format Storage Device**.
+4. Choose a filesystem and a readable label, such as `OPENATV_DEMO`.
+5. Check the target details again. **Green – Start** proceeds to confirmation. Formatting may start only after that confirmation.
+6. Wait for successful completion. Mount the partition afterwards and check filesystem, free space and mount point.
+
+<Capture id="storage-format" language="en" alt="USB partition format dialog with ext4 and the suggested label DISK_1" caption="The dialog shows the selected partition and formatting options. DISK_1 is the proposed label here; the performed USB demonstration used OPENATV_DEMO." />
+
+Selecting the **whole-device row** instead exposes partitioning options. Advanced mode can configure several partitions, size percentages and labels. This is unnecessary when a suitable data partition already exists.
+
+## Which filesystem?
+
+**ext4** suits Linux recording and backup drives and supports large files. **FAT/FAT32**, **exFAT** or **NTFS** may be useful for exchanging files with other operating systems, where the image provides the required tools. FAT32 limits individual files to just under 4 GiB; longer recordings can exceed this. Available choices also depend on size and installed filesystem tools. A working HDD does not need reformatting just because you are following this guide.
+
+## Check a filesystem
+
+Select the data partition and open **Green → File System Check**. Finish recordings, timeshift and other access first. Confirm the check and wait for the result. Afterwards, verify that the drive is mounted correctly again.
+
+A check can help after unsafe removal or filesystem errors. Repeated I/O errors may also come from cables, power or faulty storage. Back up important data before attempting repairs. Repeated formatting does not replace this.
+
+## What was actually done on the test receiver
+
+Only the explicitly authorised large USB partition **`/dev/sdb2`** on a 2-GB stick was used. It was formatted as **ext4**, labelled **`OPENATV_DEMO`** and mounted at **`/media/OPENATV_DEMO`**. A write/read test, unmount, filesystem check and remount all succeeded. The small first USB partition was retained.
+
+These operations were carried out through the receiver's maintenance interface; the screenshots show the corresponding native Enigma2 dialogs. The entire GUI confirmation sequence was not tested end to end. HDD and NAS were preserved, and permanent mount entries were unchanged. The USB mount is temporary and therefore is not automatically restored on every system boot.
+
+The example device name is **not an instruction to format `/dev/sdb2` on a different receiver**. Always verify the actual device identity again.
+
+Sources: [Device Manager storage actions](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/DeviceManager.py), [format and check jobs](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/Storage.py).

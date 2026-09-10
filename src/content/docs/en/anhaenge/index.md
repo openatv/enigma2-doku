@@ -18,3 +18,7 @@ The first edition follows the OpenATV 8.0 source snapshot from 9 September 2026.
 These topics can be added as subpages here. They will be searchable alongside the foundation guides, skins and add-ons.
 
 Return to [first setup](../erste-schritte/ersteinrichtung/) or the [settings directory](../einstellungen/).
+
+## Look up buttons
+
+The [long-press directory](./langtasten/) contains all active long-press bindings from the default keymap. Its entries are included in the shared site search.

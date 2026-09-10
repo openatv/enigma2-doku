@@ -1,0 +1,65 @@
+---
+title: Mount and unmount drives
+description: Device Manager, HDD and USB identification, permanent mount points, temporary mounts and hard disk standby settings.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+A drive becomes accessible for recordings, timeshift, backups and plugins through a **mount point**. **Mounting** connects its filesystem to a directory. **Unmounting** removes that connection without deleting the files.
+
+## Open Device Manager
+
+Use **Menu → Setup → System → Storage Devices → Device Manager**. QuickMenu also provides access to drives and mounts. Network shares are configured separately under [NAS & network shares](../../netzwerk/freigaben/).
+
+<Capture id="storage-devices" language="en" alt="Device Manager with the mounted HDD and separately selected OPENATV_DEMO USB data partition" caption="In this example, sda is the HDD and sdb the USB stick. Those letters are not fixed roles. The selected USB partition is already mounted at /media/OPENATV_DEMO." />
+
+## Device, partition and mount point
+
+| Term | Example | Meaning |
+| --- | --- | --- |
+| Whole device | `sdb` | The entire USB stick, including its partition table. |
+| Partition | `sdb2` | Part of the device with its own filesystem. Indentation shows its parent device. |
+| Filesystem | `ext4` | Organises files and folders on the partition. |
+| Label | `OPENATV_DEMO` | A readable filesystem name. |
+| Mount point | `/media/OPENATV_DEMO` | Directory through which the mounted files are accessed. |
+| R/W | Read and write | Access is generally possible; space and permissions must also be suitable. |
+
+Identify a device by **type, capacity, model and connection**. Names such as `sda` and `sdb` may change with connection order. The swap partition visible in the example is virtual-memory backing, not a recording drive.
+
+## Temporary mount and unmount
+
+Select the **data partition**, rather than its parent device row. **Blue** shows **Mount** or **Unmount** according to state. Read any destination choice or prompt and check the resulting state in the list.
+
+Before unmounting, finish recordings, timeshift, playback, backups and other accesses to that drive. If it is busy, stop the process using it. Pulling the cable is not a substitute for unmounting. Remove a USB drive only after it has been unmounted successfully.
+
+A temporary mount does not automatically create a persistent startup entry. Blue is intended for partitions without a permanent mount assignment; with a permanent assignment, use the mount-point configuration instead. A permanently ignored device must be activated again before it can be used.
+
+## Assign a permanent mount point
+
+1. Select the data partition and press **OK** for its mount point. **Yellow – Mount point** opens the multi-partition overview.
+2. Choose the intended path. `/media/hdd` is commonly used for the main recording drive. Give an additional USB stick a different, unused path.
+3. **Simple** is enough to select a path. **Advanced** also shows filesystem and mount options; change them only for a specific reason.
+4. Save with **Green** and follow any reboot request.
+5. Reopen Device Manager and verify the actual mount point.
+
+<Capture id="storage-mount" language="en" alt="USB mount configuration in Simple mode with no permanent target assigned" caption="None means no permanent mount point is configured here. The partition can still be mounted temporarily, as shown in the device overview." />
+
+Do not also assign `/media/hdd` to a USB stick when it already belongs to the HDD. Permanent entries use the filesystem UUID where possible, avoiding confusion when `sdX` names change. Formatting changes the UUID; check the assignment again afterwards.
+
+## Recording and timeshift paths
+
+A mount point does not automatically update every storage destination. Check **recording paths**, the **timeshift path**, backup destination and, if applicable, EPG storage. Use [Find a setting](../../einstellungen/) to search for these terms directly.
+
+The directory can still exist when the drive is missing. That does not prove the storage is mounted. Check the device overview before writing large amounts of data there.
+
+## Hidden hard disk settings: MENU
+
+Press **MENU inside Device Manager** to open **Harddisk Settings**.
+
+<Capture id="storage-settings" language="en" alt="Harddisk Settings with standby times, hardware timer and display of unknown devices" caption="MENU opens another settings page here. It does not format a drive." />
+
+**Hard disk standby after** sets the idle timeout. The second timeout controls behaviour while the receiver is in standby. **Hardware standby timer** delegates this to a supported drive function. A mechanical drive needs to spin up on the next access; flash storage has no rotating motor. Network and plugin accesses can wake the drive. **Show unknown devices** includes devices that could not be clearly assigned.
+
+Continue with [formatting and filesystem checks](../formatieren-pruefen/) and [backup](../../wartung/backup-restore/).
+
+Source: [Device Manager and mount-point configuration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/DeviceManager.py).

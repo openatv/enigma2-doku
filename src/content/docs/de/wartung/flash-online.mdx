@@ -1,0 +1,51 @@
+---
+title: Flash Online – ein Image installieren
+description: Flashen online/lokal, Imageauswahl, Download, Sicherung und einen anderen MultiBoot-Slot wählen, um das aktuelle Image zu behalten.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Flash Online** installiert ein vollständiges Image. **Software aktualisieren** aktualisiert dagegen Pakete im laufenden Image. Für einen Imagewechsel oder eine frische Installation verwendest du **Menü → Einstellungen → Softwareverwaltung → Flashen online/lokal**.
+
+## Vorbereiten
+
+Erstelle eine [Sicherung](../backup-restore/), prüfe die Netzwerkverbindung und halte Platz zum Herunterladen und Entpacken bereit. Das Sicherungs- oder Downloadlaufwerk und der **Zielslot** sind unterschiedliche Dinge: Der Datenträger speichert die Datei, der Slot bekommt das installierte Image.
+
+Wenn du dein aktuelles Image behalten willst, öffne zuerst die [MultiBoot-Verwaltung](../multiboot/) und notiere den als **Aktiv** markierten Slot. Du brauchst einen **anderen** geeigneten Slot, dessen Inhalt überschrieben werden darf. **Ohne eindeutigen anderen Zielslot brichst du den Flash-Vorgang ab.**
+
+## Image auswählen
+
+<Capture id="flash-online" language="de" alt="Flash-Manager mit heruntergeladenen Images und verfügbaren OpenATV-Versionen vom Feed" caption="Die Liste stammt vom Image-Feed und den vorhandenen lokalen Dateien. Versionsnamen und Datum sind eine Momentaufnahme; der sichtbare Modellname gehört nur zur Beispielbox." />
+
+1. Öffne mit **OK** die gewünschte Versionsgruppe.
+2. Markiere das passende Image. Die Box lädt die Liste für ihr Modell; verwende bei lokalen Dateien ebenfalls ausschließlich ein dafür vorgesehenes Image.
+3. **OK / Grün** auf einer Image-Datei führt zur Installation beziehungsweise Slot-Auswahl. Auf einer Gruppe wird damit nur die Gruppe geöffnet oder geschlossen.
+4. **Blau** kann bei einer Online-Datei nur den Download auslösen. Bei einer bereits lokalen Datei kann dieselbe Farbe **Löschen** bedeuten. Lies die Beschriftung.
+
+**Distribution** wechselt die Imagequelle. Für diese Anleitung bleibst du bei OpenATV. Alpha- und Beta-Bezeichnungen kennzeichnen Entwicklungsstände; das neueste Datum allein sagt nichts darüber aus, welcher Stand zu deinem Vorhaben passt.
+
+## Aktuelles Image behalten: Zielslot bewusst wählen
+
+In der Slot-Auswahl ist das aktuelle Image gekennzeichnet. Eine Vorauswahl kann trotzdem auf dem laufenden Slot stehen. **Bestätige deshalb niemals ungeprüft den vorgeschlagenen Eintrag.**
+
+Wähle den vorher geprüften anderen Slot. Ist dort bereits ein Image installiert, ersetzt das Flashen dessen Inhalt. Ein leerer Slot ist nur dann geeignet, wenn er von der Box als Flash-Ziel angeboten wird. Slotnummern sind keine allgemeine Empfehlung: „Slot 4“ aus einem Beispiel muss auf deiner Box nicht existieren.
+
+## Sicherung und Einstellungen nach dem Flash
+
+Der Assistent kann vor dem Flash eine Einstellungssicherung und Optionen für die anschließende Wiederherstellung anbieten. Entscheide bewusst, ob du mit deinen bisherigen Einstellungen oder mit einer frischen Konfiguration starten willst. Je nach Auswahl können auch Plugins nachinstalliert werden.
+
+Prüfe vor der endgültigen Bestätigung nochmals **Image-Datei, Zielslot und Wiederherstellungsoptionen**. Warte danach auf Download, Entpacken und Flash-Abschluss. Während des Schreibens darf die Stromversorgung nicht unterbrochen werden. Folge erst anschließend der angebotenen Start- beziehungsweise Neustartaktion.
+
+## Danach kontrollieren
+
+Prüfe im gestarteten Image Version, Tuner, Netzwerk, Mounts und Senderliste. Das neue Image hat seine eigenen Einstellungen. Eine vorhandene HDD oder NAS-Freigabe wird dadurch nicht automatisch formatiert; ihre Einbindung muss aber im neuen Image passen.
+
+Über MultiBoot kannst du zum erhaltenen bisherigen Image zurückkehren. Ein GUI-Neustart allein wechselt keinen Slot. Falls das neue Image nicht startet, hängt die Auswahl eines anderen Images beim Einschalten vom Bootsystem ab; diese gerätespezifischen Schritte gehören in die späteren Anhänge.
+
+## Lokale Images und Image-Backups
+
+Passende ZIP-Dateien auf erreichbaren Medien, unter anderem in einem Ordner **`images`**, können als lokale oder Backup-Images erscheinen. Behalte für den Flash-Manager das vorgesehene Archivformat bei. Eine Einstellungssicherung `enigma2settingsbackup.tar.gz` ist kein flashbares Komplettimage.
+
+**Prüfstand:** Feed und lokale Imageauswahl wurden auf der Testbox geladen, die Slotbelegung wurde gelesen. Ein Image wurde für diese Aufnahmen nicht geflasht; das laufende Image blieb erhalten.
+
+Quelle: [Flash-Manager einschließlich Slot-Auswahl und Wiederherstellungsoptionen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/FlashManager.py).

@@ -1,0 +1,59 @@
+---
+title: MultiBoot – mehrere Images verwenden
+description: Slots verstehen, das aktive Image erkennen, zwischen Images wechseln und Löschen von Schreddern unterscheiden.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**MultiBoot** erlaubt mehrere getrennte Image-Installationen, von denen jeweils eine läuft. Ein **Slot** ist ein Installationsplatz. Nicht jede Box bietet MultiBoot; die Anzahl der Slots und Zusatzfunktionen hängen vom Bootsystem ab.
+
+## Slots und aktives Image anzeigen
+
+Öffne **Menü → Einstellungen → Softwareverwaltung → MultiBoot-Verwaltung** und warte, bis die Liste geladen ist.
+
+<Capture id="multiboot-slots" language="de" alt="MultiBoot-Verwaltung mit belegten und leeren Slots sowie dem als Aktiv markierten Image" caption="Die Beispielbox zeigt Slot 2 als aktiv und Slot 4 als leer. Mehrere Modus-Gruppen können dieselben Slots wiederholen; das sind nicht automatisch weitere Installationen." />
+
+| Anzeige | Bedeutung |
+| --- | --- |
+| Slotnummer | Kennung des Installationsplatzes auf dieser Box. |
+| Imagename, Version und Datum | Welcher Stand in diesem Slot gefunden wurde. |
+| Aktiv / aktuelles Image | Daraus läuft die Box gerade. Diese Kennzeichnung entscheidet, welches Image du erhalten musst. |
+| Leer | In diesem Slot wurde kein nutzbares Image gefunden. |
+| Modus | Eine alternative Startvariante desselben Images, falls die Hardware dies anbietet. |
+
+Die im Bild genannten Modi und Hardwarefunktionen sind Eigenschaften der Beispielbox. Für die Grundbedienung musst du sie nicht umstellen. Verschiedene Slots müssen auch nicht jeweils eine eigene physische Partition besitzen. **Formatiere deshalb keine Systempartition, um vermeintlich nur einen Slot zu leeren.**
+
+## Zu einem anderen Image wechseln
+
+1. Beende laufende Aufnahmen und plane den Neustart außerhalb anstehender Timer.
+2. Markiere einen belegten, startfähigen Slot.
+3. **OK / Grün – Neu starten** wählt dieses Image zum Starten aus. Bestätige eine eventuell folgende Nachfrage.
+4. Prüfe nach dem vollständigen Neustart die Imageversion und die aktive Slotmarkierung.
+
+Zum Zurückwechseln öffnest du im anderen Image dessen MultiBoot-Funktion und wählst den ursprünglichen Slot. Die Menünamen können bei anderen Images abweichen. Ein leerer Slot lässt sich erst nach der Installation eines Images nutzen.
+
+## Ein weiteres Image installieren
+
+Nutze [Flash Online](../flash-online/) und wähle dort ausdrücklich einen anderen geeigneten Zielslot. MultiBoot-Verwaltung zeigt und verwaltet Installationen; sie ersetzt nicht die Imageauswahl des Flash-Managers.
+
+Das bereits funktionierende Image sollte als Rückweg erhalten bleiben. Eine [zusätzliche Sicherung](../backup-restore/) auf einem unabhängigen Datenträger bleibt sinnvoll, denn mehrere Slots auf derselben Box ersetzen kein Backup gegen einen Speicherdefekt.
+
+## Löschen, Wiederherstellen und Schreddern
+
+Die Farbtasten wechseln mit der Auswahl und der Unterstützung des Bootsystems:
+
+| Funktion | Wirkung |
+| --- | --- |
+| Gelb – Löschen / Leeren | Entfernt beziehungsweise deaktiviert den gewählten Slotinhalt nach den Möglichkeiten des Bootsystems. |
+| Blau – Wiederherstellen | Kann einen nur deaktivierten beziehungsweise als gelöscht markierten Slot wieder verfügbar machen. Das ist keine Wiederherstellung aus einer Sicherungsdatei. |
+| Schreddern / Wipe | Entfernt den Inhalt endgültig. Die einfache Wiederherstellung mit Blau hilft danach nicht. |
+
+Prüfe die genaue Bestätigung und die gewählte Slotnummer. Nicht jede Box bietet dieselben Aktionen. Das aktive oder als Rückweg benötigte Image wird für diese Grundanleitung weder gelöscht noch überschrieben. Funktionen zum Anlegen zusätzlicher Slots oder Umbau des Bootsystems behandeln spätere Geräteanhänge.
+
+## Einstellungen und gemeinsame Aufnahmen
+
+Jedes Image hat eigene Tuner-, Netzwerk-, Plugin- und Mount-Einstellungen. Ein Senderlisten- oder Skinwechsel in einem Slot überträgt sich nicht automatisch auf die anderen Slots. Eine gemeinsam verwendete HDD oder ein NAS enthält dagegen dieselben Dateien: Löschst du dort eine Aufnahme, ist sie auch für die anderen Images weg.
+
+**Prüfstand:** Die Slotliste wurde auf der Testbox geöffnet und das aktive Image geprüft. Ein Slotwechsel, Löschen oder Flashen wurde für dieses Kapitel nicht ausgeführt.
+
+Quelle: [MultiBoot-Verwaltung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/MultiBootManager.py).

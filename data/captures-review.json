@@ -796,5 +796,187 @@
     "sha256": "1646d6b2b79a506298b44a4add13d4e859d40191967ad7c7e825dda22858bde2",
     "run": "infobar-01-en-menu-options",
     "tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8"
+  },
+  {
+    "language": "de",
+    "id": "software-menu",
+    "sha256": "1323da2871d8a19adedb956947a623403abdd8f264b2805eb602495f337fcb11",
+    "run": "maintenance-a-de-backups",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "backup-advanced",
+    "sha256": "abbf8b5310a436b43b01c40271d7b5347c4b39ee52946e408e5161ea8b9f019c",
+    "run": "maintenance-a-de-backups",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "backup-files",
+    "sha256": "2c35ba7c94bbd218e1739a3d794a4021c0f24ed6e0b7394fc60b86df71eece40",
+    "run": "maintenance-a-de-backups",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "image-backup",
+    "sha256": "a807c6bc3e352a195bde61c21d5f26989a77436646c1df6a016e32b442764de9",
+    "run": "maintenance-a-de-backups",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "hotkey-settings",
+    "sha256": "92fd3abed4d2324e05a8e7d2dcc4744dbb928e7620c9d7b5a3c2e35a304511d1",
+    "run": "maintenance-a-de-buttons",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "quick-menu",
+    "sha256": "326aa56b1519681235c4a660f690db44b43f09dae12a7a0ea87e124bab74a55d",
+    "run": "maintenance-a-de-buttons",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "remote-buttons",
+    "sha256": "e6dc340c5e7a037d513d3062307a0cda306435e317d2f94be142eeaa50bb9b71",
+    "run": "maintenance-a-de-buttons",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "flash-online",
+    "sha256": "58ec443a95fe5edab79f11818089f69c12327c7c21b31f8570d7d84f039c60aa",
+    "run": "maintenance-a-de-firmware",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "multiboot-slots",
+    "sha256": "ec4a8cd980ea4a9c699f1f286e21c541a29e10fc650717111108f3271e3791c7",
+    "run": "maintenance-a-de-firmware",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "storage-devices",
+    "sha256": "5768108b2af8269bfe6ebfc7b6332e67d584af091e7bb9874072792eaf0a8261",
+    "run": "maintenance-a-de-storage",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "storage-mount",
+    "sha256": "c81ad6c0802ee3a8185f22b17caf14559886d5eb1f4867bad30dd04ce63cb2f6",
+    "run": "maintenance-a-de-storage",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "storage-format",
+    "sha256": "308f219f1114e015a0e0459ef16a975887c93939a84ae05c67d032170938ea36",
+    "run": "maintenance-a-de-storage",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "storage-settings",
+    "sha256": "94869a40e7fae941c7e1a41d18f18c3f2dee56e3a3974e9555db003b14c51313",
+    "run": "maintenance-a-de-storage",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "software-menu",
+    "sha256": "012d901985160d50b2f2e985650713257fb741199e29403db0e9cc333b2a3908",
+    "run": "maintenance-a-en-backups",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "backup-advanced",
+    "sha256": "fc0fe6621e99a0795401f1773a6972695f440438021b6b45c284a07bc35cb59a",
+    "run": "maintenance-a-en-backups",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "backup-files",
+    "sha256": "45246d5593f61d00e879251ba8eb1f3ab2e0c61073e6ef2eccad94fbe034b431",
+    "run": "maintenance-a-en-backups",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "image-backup",
+    "sha256": "b8f22a3622889f4178c8c5699524f6c8b3e16cdd5def60158de41a88da11bcd2",
+    "run": "maintenance-a-en-backups",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "hotkey-settings",
+    "sha256": "59f1b9201bf04322ff625ecf843ebef8f3069c6299396a727428da22e09e7c30",
+    "run": "maintenance-a-en-buttons",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "quick-menu",
+    "sha256": "3a98c9aa1e7bc77c5fc2c3fe995843c2b4286f06a789e542dc52c7ad192d8f4a",
+    "run": "maintenance-a-en-buttons",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "remote-buttons",
+    "sha256": "9be77797a81dc041978c0885f3aa7d70f41122134c2fe7a89e04eeb04290bb0d",
+    "run": "maintenance-a-en-buttons",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "flash-online",
+    "sha256": "502d5525e6efbeb7993013ddc91b545684b4898fce0f8dd788c1bf81e7ccb3df",
+    "run": "maintenance-a-en-firmware",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "multiboot-slots",
+    "sha256": "bd876bbde198be3c63852cda2759b0561ac0c105eebe2b666e69df3f5cdf3d34",
+    "run": "maintenance-a-en-firmware",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "storage-devices",
+    "sha256": "d9c666eb52606f18b3045715b2b23dc68d50ff707fe8ab1b9778e63e876e152e",
+    "run": "maintenance-a-en-storage",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "storage-mount",
+    "sha256": "38dc3276807d0309250cf89a1750d83637c259474221facf774917503cb9ef4f",
+    "run": "maintenance-a-en-storage",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "storage-format",
+    "sha256": "72d24420800e9664388e2ab01e4d8bc1521b486bd8e138e3a72eaaad5b5292ff",
+    "run": "maintenance-a-en-storage",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "en",
+    "id": "storage-settings",
+    "sha256": "b26af81e6cd408b2ddbfa1c2e96839ae0e4bdf3d4000a2c1ed795d7d74e21f77",
+    "run": "maintenance-a-en-storage",
+    "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
   }
 ]

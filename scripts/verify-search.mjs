@@ -25,6 +25,20 @@ globalThis.fetch = async input => {
 };
 const pagefind = await import(pathToFileURL(path.join(root, 'pagefind/pagefind.js')));
 const checks = [
+  ['de', 'Blau lang', '/de/erste-schritte/farbtasten-langdruck/'],
+  ['en', 'long Blue', '/en/erste-schritte/farbtasten-langdruck/'],
+  ['de', 'displayHelpLong', '/de/anhaenge/langtasten/'],
+  ['en', 'power_long', '/en/anhaenge/langtasten/'],
+  ['de', 'Wiederherstellung', '/de/wartung/backup-restore/'],
+  ['en', 'settings backup', '/en/wartung/backup-restore/'],
+  ['de', 'Zielslot', '/de/wartung/flash-online/'],
+  ['en', 'target slot', '/en/wartung/flash-online/'],
+  ['de', 'MultiBoot', '/de/wartung/multiboot/'],
+  ['en', 'MultiBoot', '/en/wartung/multiboot/'],
+  ['de', 'Einhängepunkt', '/de/speicher/laufwerke/'],
+  ['en', 'mount point', '/en/speicher/laufwerke/'],
+  ['de', 'Dateisystem prüfen', '/de/speicher/formatieren-pruefen/'],
+  ['en', 'filesystem check', '/en/speicher/formatieren-pruefen/'],
   ['de', 'NAS', '/de/netzwerk/freigaben/'],
   ['de', 'mounten', '/de/netzwerk/freigaben/'],
   ['de', 'config.epg.saveepg', '/de/einstellungen/referenz/epg/'],

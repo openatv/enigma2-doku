@@ -1,0 +1,1057 @@
+{
+  "source": "https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/keymap.xml",
+  "commit": "fdc9347241245fd18fd0b8bc93727237189c916c",
+  "sha256": "f0d687f18ee1480dfa61f2b40b7174fa7445fd6b8bba10685a6829343f6fae08",
+  "bindings": [
+    {
+      "key": "KEY_AB",
+      "context": "ButtonSetupActions",
+      "action": "prov_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ARCHIVE",
+      "context": "ButtonSetupActions",
+      "action": "archive_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_AUDIO",
+      "context": "ButtonSetupActions",
+      "action": "audio_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_AUDIO",
+      "context": "InfobarAudioSelectionActions",
+      "action": "audioSelectionLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_AUX",
+      "context": "ButtonSetupActions",
+      "action": "HDMIin_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_AUX",
+      "context": "InfobarHDMIActions",
+      "action": "HDMIinLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_BACK",
+      "context": "ButtonSetupActions",
+      "action": "back_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_BLUE",
+      "context": "ButtonSetupActions",
+      "action": "blue_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_BLUE",
+      "context": "ColorActions",
+      "action": "bluelong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_BLUE",
+      "context": "MediaPlayerSeekActions",
+      "action": "seekFwdManual",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_BOOKMARKS",
+      "context": "ButtonSetupActions",
+      "action": "mark_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_CHANNELDOWN",
+      "context": "InfobarChannelSelection",
+      "action": "ChannelMinusPressedLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_CHANNELUP",
+      "context": "InfobarChannelSelection",
+      "action": "ChannelPlusPressedLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_CONTEXT_MENU",
+      "context": "ButtonSetupActions",
+      "action": "context_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_CONTEXT_MENU",
+      "context": "InfobarHDMIActions",
+      "action": "HDMIinLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_DIRECTORY",
+      "context": "ButtonSetupActions",
+      "action": "directory_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_EJECTCD",
+      "context": "ButtonSetupActions",
+      "action": "ejectcd_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ENTER",
+      "context": "OkActions",
+      "action": "OKLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ENTER",
+      "context": "OkCancelActions",
+      "action": "OKLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ENTER",
+      "context": "OkSaveActions",
+      "action": "OKLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ENTER",
+      "context": "SelectCancelActions",
+      "action": "SELECTLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_EPG",
+      "context": "ButtonSetupActions",
+      "action": "epg_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_EPG",
+      "context": "InfobarEPGActions",
+      "action": "showEventInfoPlugin",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ESC",
+      "context": "CancelActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ESC",
+      "context": "CancelSaveActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ESC",
+      "context": "ConfigListActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ESC",
+      "context": "OkCancelActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ESC",
+      "context": "SelectCancelActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_EXIT",
+      "context": "CancelActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_EXIT",
+      "context": "CancelSaveActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_EXIT",
+      "context": "ConfigListActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_EXIT",
+      "context": "LocaleSelectionActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_EXIT",
+      "context": "OkCancelActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_EXIT",
+      "context": "SelectCancelActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_EXIT",
+      "context": "TimerActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F1",
+      "context": "ButtonSetupActions",
+      "action": "f1_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F1",
+      "context": "HelpActions",
+      "action": "displayHelpLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F10",
+      "context": "ButtonSetupActions",
+      "action": "f10_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F2",
+      "context": "ButtonSetupActions",
+      "action": "f2_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F3",
+      "context": "ButtonSetupActions",
+      "action": "f3_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F4",
+      "context": "ButtonSetupActions",
+      "action": "f4_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F5",
+      "context": "ColorActions",
+      "action": "redlong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F5",
+      "context": "SelectCancelActions",
+      "action": "SELECTLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F6",
+      "context": "ButtonSetupActions",
+      "action": "f6_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F6",
+      "context": "ColorActions",
+      "action": "greenlong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F6",
+      "context": "SelectCancelActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F7",
+      "context": "ColorActions",
+      "action": "yellowlong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_F8",
+      "context": "ColorActions",
+      "action": "bluelong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_FASTFORWARD",
+      "context": "InfobarSeekActions",
+      "action": "SeekbarFwd",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_FASTFORWARD",
+      "context": "MediaPlayerSeekActions",
+      "action": "seekFwdManual",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_FASTFORWARD",
+      "context": "MovielistSeekActions",
+      "action": "SeekbarFwd",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_FAVORITES",
+      "context": "ButtonSetupActions",
+      "action": "favorites_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_FILE",
+      "context": "ButtonSetupActions",
+      "action": "file_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_GREEN",
+      "context": "ButtonSetupActions",
+      "action": "green_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_GREEN",
+      "context": "ColorActions",
+      "action": "greenlong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_GREEN",
+      "context": "InfobarAspectSelectionActions",
+      "action": "aspectSelection",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_GREEN",
+      "context": "SelectCancelActions",
+      "action": "SELECTLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_HELP",
+      "context": "ButtonSetupActions",
+      "action": "displayHelp_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_HELP",
+      "context": "HelpActions",
+      "action": "displayHelpLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_HOME",
+      "context": "ButtonSetupActions",
+      "action": "home_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_HOMEPAGE",
+      "context": "ButtonSetupActions",
+      "action": "homep_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_INFO",
+      "context": "ButtonSetupActions",
+      "action": "info_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_INFO",
+      "context": "EPGSelectActions",
+      "action": "infolong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_INFO",
+      "context": "InfobarEPGActions",
+      "action": "showEventInfoPlugin",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_KEYBOARD",
+      "context": "ButtonSetupActions",
+      "action": "keyboard_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_KPASTERISK",
+      "context": "GlobalActions",
+      "action": "volumeMuteLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_LAN",
+      "context": "ButtonSetupActions",
+      "action": "lan_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_LEFT",
+      "context": "ButtonSetupActions",
+      "action": "cross_left_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_LEFT",
+      "context": "InfobarSeekActions",
+      "action": "seekBackManual",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_LEFT",
+      "context": "MediaPlayerSeekActions",
+      "action": "seekBackManual",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_LIST",
+      "context": "ButtonSetupActions",
+      "action": "playlist_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_MEDIA",
+      "context": "ButtonSetupActions",
+      "action": "media_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_MENU",
+      "context": "MenuActions",
+      "action": "menuLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_MODE",
+      "context": "ButtonSetupActions",
+      "action": "mode_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_MODE",
+      "context": "InfobarAspectSelectionActions",
+      "action": "aspectSelection",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_MOUSE",
+      "context": "ButtonSetupActions",
+      "action": "mouse_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_MP3",
+      "context": "ButtonSetupActions",
+      "action": "youtube_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_MUTE",
+      "context": "GlobalActions",
+      "action": "volumeMuteLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_NEXTSONG",
+      "context": "ButtonSetupActions",
+      "action": "nextsong_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_NEXTSONG",
+      "context": "InfobarSeekActions",
+      "action": "SeekbarFwd",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_NEXTSONG",
+      "context": "MediaPlayerSeekActions",
+      "action": "seekFwdManual",
+      "flags": "l",
+      "device": "dreambox advanced remote control (native)"
+    },
+    {
+      "key": "KEY_NEXTSONG",
+      "context": "MovielistSeekActions",
+      "action": "SeekbarFwd",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_OK",
+      "context": "ButtonSetupActions",
+      "action": "ok_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_OK",
+      "context": "InfobarShowHideActions",
+      "action": "LongOKPressed",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_OK",
+      "context": "OkActions",
+      "action": "OKLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_OK",
+      "context": "OkCancelActions",
+      "action": "OKLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_OK",
+      "context": "OkSaveActions",
+      "action": "OKLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_OK",
+      "context": "SelectCancelActions",
+      "action": "SELECTLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_OPEN",
+      "context": "ButtonSetupActions",
+      "action": "open_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_OPTION",
+      "context": "ButtonSetupActions",
+      "action": "option_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PAGEDOWN",
+      "context": "ButtonSetupActions",
+      "action": "pagedown_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PAGEUP",
+      "context": "ButtonSetupActions",
+      "action": "pageup_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PC",
+      "context": "ButtonSetupActions",
+      "action": "pc_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PLAYER",
+      "context": "ButtonSetupActions",
+      "action": "kodi_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_POWER",
+      "context": "ButtonSetupActions",
+      "action": "power_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_POWER",
+      "context": "GlobalActions",
+      "action": "power_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_POWER",
+      "context": "GlobalActions",
+      "action": "deepstandby",
+      "flags": "l",
+      "device": "dreambox front panel"
+    },
+    {
+      "key": "KEY_POWER",
+      "context": "StandbyActions",
+      "action": "power_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PREVIOUSSONG",
+      "context": "ButtonSetupActions",
+      "action": "prevsong_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PREVIOUSSONG",
+      "context": "InfobarSeekActions",
+      "action": "SeekbarBack",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PREVIOUSSONG",
+      "context": "MediaPlayerSeekActions",
+      "action": "seekBackManual",
+      "flags": "l",
+      "device": "dreambox advanced remote control (native)"
+    },
+    {
+      "key": "KEY_PREVIOUSSONG",
+      "context": "MovielistSeekActions",
+      "action": "SeekbarBack",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PROGRAM",
+      "context": "ButtonSetupActions",
+      "action": "prog_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PROGRAM",
+      "context": "InfobarActions",
+      "action": "openAutoTimerList",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PVR",
+      "context": "ButtonSetupActions",
+      "action": "pvr_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_PVR",
+      "context": "InfobarActions",
+      "action": "showMediaPlayer",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RADIO",
+      "context": "ButtonSetupActions",
+      "action": "radio_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RADIO",
+      "context": "DVDPlayerActions",
+      "action": "dvdAudioMenu",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RADIO",
+      "context": "InfobarActions",
+      "action": "openBouquetList",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RADIO",
+      "context": "MediaPlayerActions",
+      "action": "shift_record",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RECORD",
+      "context": "ButtonSetupActions",
+      "action": "rec_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RECORD",
+      "context": "InfobarInstantRecord",
+      "action": "LongRecord",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RECORD",
+      "context": "MediaPlayerActions",
+      "action": "shift_record",
+      "flags": "l",
+      "device": "dreambox advanced remote control (native)"
+    },
+    {
+      "key": "KEY_RECORD",
+      "context": "MediaPlayerActions",
+      "action": "shift_record",
+      "flags": "l",
+      "device": "dreambox ir keyboard"
+    },
+    {
+      "key": "KEY_RED",
+      "context": "ButtonSetupActions",
+      "action": "red_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RED",
+      "context": "ColorActions",
+      "action": "redlong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RED",
+      "context": "MediaPlayerSeekActions",
+      "action": "seekBackManual",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RED",
+      "context": "SelectCancelActions",
+      "action": "close",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_REWIND",
+      "context": "InfobarSeekActions",
+      "action": "SeekbarBack",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_REWIND",
+      "context": "MediaPlayerSeekActions",
+      "action": "seekBackManual",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_REWIND",
+      "context": "MovielistSeekActions",
+      "action": "SeekbarBack",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RIGHT",
+      "context": "ButtonSetupActions",
+      "action": "cross_right_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RIGHT",
+      "context": "InfobarSeekActions",
+      "action": "seekFwdManual",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_RIGHT",
+      "context": "MediaPlayerSeekActions",
+      "action": "seekFwdManual",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_SAT",
+      "context": "ButtonSetupActions",
+      "action": "sat_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_SEARCH",
+      "context": "ButtonSetupActions",
+      "action": "search_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_SEARCH",
+      "context": "InfobarActions",
+      "action": "openIMDB",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_SLEEP",
+      "context": "ButtonSetupActions",
+      "action": "sleep_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_SLEEP",
+      "context": "InfobarActions",
+      "action": "openSchedulerList",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_SPACE",
+      "context": "MenuActions",
+      "action": "menuLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_STOP",
+      "context": "InfobarTimeshiftActions",
+      "action": "instantRecord",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_STOP",
+      "context": "MediaPlayerActions",
+      "action": "shift_stop",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_SUBTITLE",
+      "context": "ButtonSetupActions",
+      "action": "subtitle_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_TEXT",
+      "context": "ButtonSetupActions",
+      "action": "text_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_TEXT",
+      "context": "TextActions",
+      "action": "textlong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_TIME",
+      "context": "ButtonSetupActions",
+      "action": "time_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_TV",
+      "context": "EPGSelectActions",
+      "action": "tvlong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_TV",
+      "context": "InfobarActions",
+      "action": "openBouquetList",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_TV",
+      "context": "MediaPlayerActions",
+      "action": "shift_stop",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_VIDEO",
+      "context": "ButtonSetupActions",
+      "action": "list_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_VIDEO",
+      "context": "InfobarActions",
+      "action": "showMediaPlayer",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_VOD",
+      "context": "ButtonSetupActions",
+      "action": "vod_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_VOLUMEDOWN",
+      "context": "GlobalActions",
+      "action": "volumeDownLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_VOLUMEUP",
+      "context": "GlobalActions",
+      "action": "volumeUpLong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_WWW",
+      "context": "ButtonSetupActions",
+      "action": "www_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_YELLOW",
+      "context": "ButtonSetupActions",
+      "action": "yellow_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_YELLOW",
+      "context": "ColorActions",
+      "action": "yellowlong",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_YELLOW",
+      "context": "InfobarAudioSelectionActions",
+      "action": "yellow_key",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ZOOM",
+      "context": "ButtonSetupActions",
+      "action": "zoom_long",
+      "flags": "l",
+      "device": null
+    },
+    {
+      "key": "KEY_ZOOM",
+      "context": "InfobarActions",
+      "action": "ZoomOff",
+      "flags": "l",
+      "device": null
+    }
+  ]
+}

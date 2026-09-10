@@ -1,0 +1,59 @@
+---
+title: MultiBoot – use several images
+description: Understand slots, identify the active image, switch images and distinguish deleting from wiping.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**MultiBoot** supports several separate image installations, one of which runs at a time. A **slot** is an installation location. Not every receiver supports MultiBoot; the boot system determines slot count and additional features.
+
+## Show slots and the active image
+
+Open **Menu → Setup → Software Management → MultiBoot Manager** and wait for the list to load.
+
+<Capture id="multiboot-slots" language="en" alt="MultiBoot Manager showing occupied and empty slots with the running image marked Active" caption="The example shows Slot 2 as active and Slot 4 as empty. Mode groups can repeat the same slots; these are not automatically additional installations." />
+
+| Display | Meaning |
+| --- | --- |
+| Slot number | Identifies an installation location on this receiver. |
+| Image name, version and date | The image found in that slot. |
+| Active / current image | The image currently running. This identifies the image to preserve. |
+| Empty | No usable image was found in this slot. |
+| Mode | An alternative way of starting the same image, if supported. |
+
+The modes and hardware features shown in the example belong to that receiver. Basic operation does not require changing them. Different slots do not necessarily have separate physical partitions. **Do not format a system partition in an attempt to empty only one slot.**
+
+## Switch to another image
+
+1. Finish recordings and schedule the reboot away from upcoming timers.
+2. Highlight an occupied, bootable slot.
+3. **OK / Green – Reboot** selects that image for startup. Confirm any additional prompt.
+4. After the full reboot, check the image version and active-slot marker.
+
+To return, open the other image's MultiBoot function and select the original slot. Other images may use different menu names. An empty slot becomes usable after an image has been installed in it.
+
+## Install another image
+
+Use [Flash Online](../flash-online/) and explicitly choose another suitable target slot. MultiBoot Manager shows and manages installations; it does not replace Flash Manager's image selection.
+
+Keep a working image as your return path. An [additional backup](../backup-restore/) on an independent drive is still useful: several slots on the same receiver do not protect against storage failure.
+
+## Delete, restore and wipe
+
+The colour buttons change according to the selection and boot-system support:
+
+| Function | Effect |
+| --- | --- |
+| Yellow – Delete / Empty | Removes or disables the selected slot's contents according to the boot system's capabilities. |
+| Blue – Restore | Can make a disabled or deletion-marked slot available again. This is not restoration from a backup archive. |
+| Wipe | Permanently removes the contents. The simple Blue restore function cannot undo this. |
+
+Check the exact confirmation and selected slot number. Not every receiver offers all actions. This basic guide neither deletes nor overwrites the active image or your return image. Adding slots or changing the boot system belongs in later device appendices.
+
+## Settings and shared recordings
+
+Each image has its own tuner, network, plugin and mount settings. Channel-list and skin changes in one slot do not automatically transfer to other slots. A shared HDD or NAS contains the same files, however: deleting a recording there removes it for the other images as well.
+
+**Verification status:** The native slot list was opened and the active image checked. No slot switch, deletion or flash was performed for this chapter.
+
+Source: [MultiBoot Manager](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/MultiBootManager.py).

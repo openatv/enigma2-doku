@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capture_tool": "https://github.com/openatv/enigma2-plugin-test",
-  "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
+  "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
   "captures": [
     {
       "id": "main-menu",
@@ -2396,6 +2396,552 @@
       "capture_tool_commit": "c6a9fbdb68dcef6a8323ee337feecf0556dda6f8",
       "backend": "grab-service",
       "background": "operator-selected service; playback preserved"
+    },
+    {
+      "id": "software-menu",
+      "language": "de",
+      "article": "wartung/backup-restore",
+      "screen_key": "software_manager",
+      "captured_at": "2026-09-10T03:51:22.555276+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1323da2871d8a19adedb956947a623403abdd8f264b2805eb602495f337fcb11",
+      "file": "de/software-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "backup-advanced",
+      "language": "de",
+      "article": "wartung/backup-restore",
+      "screen_key": "advanced_software",
+      "captured_at": "2026-09-10T03:51:26.317698+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "abbf8b5310a436b43b01c40271d7b5347c4b39ee52946e408e5161ea8b9f019c",
+      "file": "de/backup-advanced.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "backup-files",
+      "language": "de",
+      "article": "wartung/backup-restore",
+      "screen_key": "backup-files",
+      "captured_at": "2026-09-10T03:51:30.134589+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "2c35ba7c94bbd218e1739a3d794a4021c0f24ed6e0b7394fc60b86df71eece40",
+      "file": "de/backup-files.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "image-backup",
+      "language": "de",
+      "article": "wartung/backup-restore",
+      "screen_key": "image-backup",
+      "captured_at": "2026-09-10T03:51:33.850511+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "a807c6bc3e352a195bde61c21d5f26989a77436646c1df6a016e32b442764de9",
+      "file": "de/image-backup.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "hotkey-settings",
+      "language": "de",
+      "article": "erste-schritte/farbtasten-langdruck",
+      "screen_key": "hotkeys",
+      "captured_at": "2026-09-10T03:51:09.275132+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "92fd3abed4d2324e05a8e7d2dcc4744dbb928e7620c9d7b5a3c2e35a304511d1",
+      "file": "de/hotkey-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "quick-menu",
+      "language": "de",
+      "article": "erste-schritte/farbtasten-langdruck",
+      "screen_key": "quick-menu",
+      "captured_at": "2026-09-10T03:51:13.025753+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "326aa56b1519681235c4a660f690db44b43f09dae12a7a0ea87e124bab74a55d",
+      "file": "de/quick-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "remote-buttons",
+      "language": "de",
+      "article": "erste-schritte/farbtasten-langdruck",
+      "screen_key": "RemoteButton",
+      "captured_at": "2026-09-10T03:51:16.784332+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "e6dc340c5e7a037d513d3062307a0cda306435e317d2f94be142eeaa50bb9b71",
+      "file": "de/remote-buttons.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "flash-online",
+      "language": "de",
+      "article": "wartung/flash-online",
+      "screen_key": "flash-online",
+      "captured_at": "2026-09-10T03:51:40.014992+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "58ec443a95fe5edab79f11818089f69c12327c7c21b31f8570d7d84f039c60aa",
+      "file": "de/flash-online.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "multiboot-slots",
+      "language": "de",
+      "article": "wartung/multiboot",
+      "screen_key": "multiboot",
+      "captured_at": "2026-09-10T03:51:43.832398+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "ec4a8cd980ea4a9c699f1f286e21c541a29e10fc650717111108f3271e3791c7",
+      "file": "de/multiboot-slots.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "storage-devices",
+      "language": "de",
+      "article": "speicher/laufwerke",
+      "screen_key": "storage-devices",
+      "captured_at": "2026-09-10T03:51:50.634414+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "5768108b2af8269bfe6ebfc7b6332e67d584af091e7bb9874072792eaf0a8261",
+      "file": "de/storage-devices.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "storage-mount",
+      "language": "de",
+      "article": "speicher/laufwerke",
+      "screen_key": "storage-mount",
+      "captured_at": "2026-09-10T03:51:54.382170+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "c81ad6c0802ee3a8185f22b17caf14559886d5eb1f4867bad30dd04ce63cb2f6",
+      "file": "de/storage-mount.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "storage-format",
+      "language": "de",
+      "article": "speicher/formatieren-pruefen",
+      "screen_key": "storage-format",
+      "captured_at": "2026-09-10T03:51:58.110786+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "308f219f1114e015a0e0459ef16a975887c93939a84ae05c67d032170938ea36",
+      "file": "de/storage-format.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "storage-settings",
+      "language": "de",
+      "article": "speicher/laufwerke",
+      "screen_key": "storage-settings",
+      "captured_at": "2026-09-10T03:52:01.821208+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "94869a40e7fae941c7e1a41d18f18c3f2dee56e3a3974e9555db003b14c51313",
+      "file": "de/storage-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "software-menu",
+      "language": "en",
+      "article": "wartung/backup-restore",
+      "screen_key": "software_manager",
+      "captured_at": "2026-09-10T03:52:45.401412+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "012d901985160d50b2f2e985650713257fb741199e29403db0e9cc333b2a3908",
+      "file": "en/software-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "backup-advanced",
+      "language": "en",
+      "article": "wartung/backup-restore",
+      "screen_key": "advanced_software",
+      "captured_at": "2026-09-10T03:52:49.118364+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "fc0fe6621e99a0795401f1773a6972695f440438021b6b45c284a07bc35cb59a",
+      "file": "en/backup-advanced.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "backup-files",
+      "language": "en",
+      "article": "wartung/backup-restore",
+      "screen_key": "backup-files",
+      "captured_at": "2026-09-10T03:52:52.904863+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "45246d5593f61d00e879251ba8eb1f3ab2e0c61073e6ef2eccad94fbe034b431",
+      "file": "en/backup-files.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "image-backup",
+      "language": "en",
+      "article": "wartung/backup-restore",
+      "screen_key": "image-backup",
+      "captured_at": "2026-09-10T03:52:56.613265+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b8f22a3622889f4178c8c5699524f6c8b3e16cdd5def60158de41a88da11bcd2",
+      "file": "en/image-backup.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "hotkey-settings",
+      "language": "en",
+      "article": "erste-schritte/farbtasten-langdruck",
+      "screen_key": "hotkeys",
+      "captured_at": "2026-09-10T03:52:30.448130+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "59f1b9201bf04322ff625ecf843ebef8f3069c6299396a727428da22e09e7c30",
+      "file": "en/hotkey-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "quick-menu",
+      "language": "en",
+      "article": "erste-schritte/farbtasten-langdruck",
+      "screen_key": "quick-menu",
+      "captured_at": "2026-09-10T03:52:34.189208+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "3a98c9aa1e7bc77c5fc2c3fe995843c2b4286f06a789e542dc52c7ad192d8f4a",
+      "file": "en/quick-menu.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "remote-buttons",
+      "language": "en",
+      "article": "erste-schritte/farbtasten-langdruck",
+      "screen_key": "RemoteButton",
+      "captured_at": "2026-09-10T03:52:37.944105+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "9be77797a81dc041978c0885f3aa7d70f41122134c2fe7a89e04eeb04290bb0d",
+      "file": "en/remote-buttons.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "flash-online",
+      "language": "en",
+      "article": "wartung/flash-online",
+      "screen_key": "flash-online",
+      "captured_at": "2026-09-10T03:53:02.721700+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "502d5525e6efbeb7993013ddc91b545684b4898fce0f8dd788c1bf81e7ccb3df",
+      "file": "en/flash-online.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "multiboot-slots",
+      "language": "en",
+      "article": "wartung/multiboot",
+      "screen_key": "multiboot",
+      "captured_at": "2026-09-10T03:53:06.432713+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "bd876bbde198be3c63852cda2759b0561ac0c105eebe2b666e69df3f5cdf3d34",
+      "file": "en/multiboot-slots.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "storage-devices",
+      "language": "en",
+      "article": "speicher/laufwerke",
+      "screen_key": "storage-devices",
+      "captured_at": "2026-09-10T03:53:12.476232+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "d9c666eb52606f18b3045715b2b23dc68d50ff707fe8ab1b9778e63e876e152e",
+      "file": "en/storage-devices.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "storage-mount",
+      "language": "en",
+      "article": "speicher/laufwerke",
+      "screen_key": "storage-mount",
+      "captured_at": "2026-09-10T03:53:16.213888+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "38dc3276807d0309250cf89a1750d83637c259474221facf774917503cb9ef4f",
+      "file": "en/storage-mount.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "storage-format",
+      "language": "en",
+      "article": "speicher/formatieren-pruefen",
+      "screen_key": "storage-format",
+      "captured_at": "2026-09-10T03:53:19.944753+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "72d24420800e9664388e2ab01e4d8bc1521b486bd8e138e3a72eaaad5b5292ff",
+      "file": "en/storage-format.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "storage-settings",
+      "language": "en",
+      "article": "speicher/laufwerke",
+      "screen_key": "storage-settings",
+      "captured_at": "2026-09-10T03:53:23.651752+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "b26af81e6cd408b2ddbfa1c2e96839ae0e4bdf3d4000a2c1ed795d7d74e21f77",
+      "file": "en/storage-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
     }
   ]
 }

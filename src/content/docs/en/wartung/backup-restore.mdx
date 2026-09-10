@@ -1,0 +1,75 @@
+---
+title: Backup and restore
+description: Back up system settings, choose backup files, create an image backup and restore OpenATV backups.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+A backup helps before major changes or installing another image. First decide **what you want to be able to recover**.
+
+| Backup | Contents | Purpose |
+| --- | --- | --- |
+| System settings | Configuration, channel lists and other selected files, plus information for restoring plugins. | Configure a freshly installed, compatible image again. |
+| Image backup | The selected installed image, including its software and configuration, in the format supported by the receiver. | Return to a known image state. |
+| Recordings and personal media | Separately copied movies, music and other personal files. | Protect against loss or failure of the recording drive. |
+
+An image backup **does not automatically copy your HDD or NAS recordings**. A settings backup normally excludes movies as well. Backup archives may contain network credentials and other login data; keep them private.
+
+## Finding the functions
+
+Open **Menu → Setup → Software Management**. Alternatively, use **short Blue → Software Manager** in QuickMenu.
+
+<Capture id="software-menu" language="en" alt="Software Management with Image Backup, MultiBoot, Backup System Settings and Restore System Settings" caption="System settings and the complete image have separate backup functions." />
+
+## Back up system settings
+
+1. Mount the intended backup drive and check that it is reachable and writable. A directory name alone does not prove it is mounted.
+2. Open **Backup System Settings**.
+3. If prompted for a destination, select the intended drive. With only one suitable destination, this selection may be skipped.
+4. Wait for the success message. Do not interrupt the backup with a GUI restart.
+5. Check the archive on the chosen drive and also copy it to a PC or another independent destination.
+
+The current settings archive is named **`enigma2settingsbackup.tar.gz`**. It is stored below the selected destination in a folder following the pattern `backup_<image>_<device>`. Earlier backups may have dated names. Exact directory names vary by receiver; do not blindly copy an example name.
+
+## What gets backed up?
+
+Under **Software Management → Advanced Options**, three lists serve different purposes:
+
+| Entry | Meaning |
+| --- | --- |
+| Show Default Backup Files | View the files selected by the image. This list is read-only here. |
+| Select Additional Backup Files | Add your own files, such as a configuration file you created. |
+| Select Excluded Backup Files | Choose exceptions to leave out of the backup. |
+
+<Capture id="backup-advanced" language="en" alt="Advanced software options with restore and the three backup file lists" caption="Advanced Restore lets you choose older backups by date." />
+
+<Capture id="backup-files" language="en" alt="Default backup file browser in read-only mode with Yellow information button" caption="You can open folders. An unselected parent folder can still contain individual files included in the backup. Yellow displays selection information." />
+
+The defaults include existing configuration files such as `/etc/enigma2`, network settings and mount entries. The actual list depends on installed components and files present. The plugin list is not a permanent copy of every installation package: reinstalling plugins requires available packages or feeds.
+
+## Restore settings
+
+1. Make the backup drive available at the expected path again.
+2. Use **Restore System Settings** for the current backup. For an earlier version, open **Advanced Options → Advanced Restore** and select the archive by date.
+3. Check your selection and confirm. Existing settings are replaced; the receiver or interface restarts afterwards.
+4. Check tuners, network, mounts, channel lists, timers and plugins. Restored network settings can also change the receiver's IP address.
+
+After flashing, the first-start wizard may offer to restore a backup it finds. A problematic old setting can come back with it. When troubleshooting, a fresh setup followed by selective data migration can therefore be useful.
+
+## Complete image backup
+
+Open **Software Management → Image Backup**. With MultiBoot, first select the image to back up. **Green / Start** opens the destination selection, after which the backup begins.
+
+<Capture id="image-backup" language="en" alt="Image Backup with installed slots and the current image marked" caption="This selects the image to back up. Highlighting an entry does not create a finished backup." />
+
+Use a destination with enough free space. The result is stored in its **`images`** subfolder. Size and format depend on the image and device support. Wait for completion and keep an additional copy outside the receiver.
+
+A compatible image backup can be installed through [Flash Online](../flash-online/). A complete image backup is not automatically portable to another receiver model. With [MultiBoot](../multiboot/), you can use another suitable slot and retain the working image.
+
+## When no backup is found
+
+Check the mounted drive, selected backup destination and directory structure first. Then check the archive's date and file size. An empty list does not necessarily mean the archive was deleted; its original drive may simply be unavailable.
+
+**Verification status:** These native dialogs were opened on the test receiver. A complete backup/restore cycle was not performed for this chapter.
+
+Sources: [settings backup and restore](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/SoftwareManager/BackupRestore.py), [image backup](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ImageBackup.py).

@@ -23,6 +23,7 @@ export default defineConfig({
         { slug: 'erste-schritte/bedienung', label: 'Bedienung & Menüs', translations: { en: 'Controls & menus' } },
         { slug: 'erste-schritte/menue-anpassen', label: 'Menüoptionen & OSD', translations: { en: 'Menu options & OSD' } },
         { slug: 'erste-schritte/infobar', label: 'Infobar verstehen', translations: { en: 'Understand the Infobar' } },
+        { slug: 'erste-schritte/farbtasten-langdruck', label: 'Farbtasten & Langdruck', translations: { en: 'Colour buttons & long presses' } },
       ] },
       { label: 'Einrichten', translations: { en: 'Set up' }, items: [
         { slug: 'tuner/konfiguration', label: 'Tuner & Sendersuche', translations: { en: 'Tuners & channel scan' } },
@@ -34,8 +35,16 @@ export default defineConfig({
         { slug: 'settings/kanalliste', label: 'Kanalliste & Stile', translations: { en: 'Channel list & styles' } },
         { slug: 'epg/grundlagen', label: 'EPG einrichten', translations: { en: 'Set up EPG' } },
       ] },
+      { label: 'Sichern & Warten', translations: { en: 'Backup & maintenance' }, items: [
+        { slug: 'wartung/backup-restore', label: 'Backup & Wiederherstellung', translations: { en: 'Backup & restore' } },
+        { slug: 'wartung/flash-online', label: 'Flash Online', translations: { en: 'Flash Online' } },
+        { slug: 'wartung/multiboot', label: 'MultiBoot', translations: { en: 'MultiBoot' } },
+        { slug: 'speicher/laufwerke', label: 'Laufwerke & Mountpunkte', translations: { en: 'Drives & mount points' } },
+        { slug: 'speicher/formatieren-pruefen', label: 'Formatieren & Prüfen', translations: { en: 'Format & check' } },
+      ] },
       { label: 'Nachschlagen', translations: { en: 'Reference' }, items: [
         { slug: 'einstellungen', label: 'Einstellung finden', translations: { en: 'Find a setting' } },
+        { slug: 'anhaenge/langtasten', label: 'Langdruck-Verzeichnis', translations: { en: 'Long-press directory' } },
         { slug: 'hilfe/probleme', label: 'Häufige Fragen', translations: { en: 'Common questions' } },
       ] },
       { label: 'Erweitern', translations: { en: 'Extend' }, items: [

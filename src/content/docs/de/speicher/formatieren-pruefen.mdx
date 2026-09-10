@@ -1,0 +1,54 @@
+---
+title: Formatieren und Dateisystem prüfen
+description: USB-Demo, ext4, Partitionen, Initialisieren, Dateisystemprüfung und HDD-Wartung in der OpenATV-Geräteverwaltung.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Formatieren löscht die Dateien auf dem gewählten Ziel.** Zum normalen Einhängen eines bereits verwendbaren Laufwerks ist es nicht erforderlich. Nutze zum Kennenlernen einen leeren beziehungsweise ausdrücklich entbehrlichen USB-Stick.
+
+## Welches Ziel ist markiert?
+
+Öffne die [Geräteverwaltung](../laufwerke/) und unterscheide die ganze Gerätezeile von der eingerückten Partition. **Grün – Aktion** bezieht sich auf genau diese Auswahl.
+
+| Aktion | Zweck und Wirkung |
+| --- | --- |
+| Datenpartition formatieren | Legt das Dateisystem dieser Partition neu an und löscht deren bisherige Dateien. |
+| Ganzes Speichergerät formatieren / initialisieren | Richtet Partitionstabelle und Partitionen des gesamten Geräts neu ein. Dabei gehen auch andere Partitionen dieses Geräts verloren. |
+| Speichergerät schreddern / Wipe | Entfernt die bestehende Speicherstruktur. Das ist keine Wartungsmaßnahme für ein normal funktionierendes Laufwerk. |
+| Dateisystem prüfen | Prüft die Struktur eines unterstützten Dateisystems und kann Fehler beheben. Es ist kein vollständiger Hardwaretest. |
+| Dateisystem trimmen | Meldet bei unterstütztem Speicher ungenutzte Bereiche an das Gerät. Die Funktion ist nicht für jedes Gerät verfügbar. |
+| ext3 nach ext4 konvertieren | Spezialfunktion für bestehende ext3-Dateisysteme. Die angebotene Umstellung ist nicht einfach rückgängig zu machen. |
+
+## Beispiel: eine USB-Datenpartition als ext4 formatieren
+
+1. Prüfe Gerätetyp, Kapazität und Anschluss. Vergewissere dich, dass das Ziel keine benötigten Dateien enthält.
+2. Beende Zugriffe auf den Stick und hänge die Datenpartition aus.
+3. Markiere diese Partition und wähle **Grün → Speichergerät formatieren**.
+4. Wähle das Dateisystem und eine verständliche Beschriftung, beispielsweise `OPENATV_DEMO`.
+5. Lies die Zielangaben erneut. Mit **Grün – Start** gelangst du zur Bestätigung. Erst deren Bestätigung darf das Formatieren auslösen.
+6. Warte auf den erfolgreichen Abschluss. Hänge die Partition anschließend ein und kontrolliere Dateisystem, freien Platz und Mountpunkt.
+
+<Capture id="storage-format" language="de" alt="Formatierungsdialog einer USB-Datenpartition mit ext4 und dem vorgeschlagenen Label DISK_1" caption="Der Dialog zeigt die gewählte Partition und die Formatierungsoptionen. DISK_1 ist hier der Vorschlag für die Beschriftung; für die durchgeführte USB-Demo wurde OPENATV_DEMO verwendet." />
+
+Wenn du stattdessen die **ganze Gerätezeile** gewählt hast, erscheinen Optionen für die Partitionierung. Im erweiterten Modus können mehrere Partitionen, Größenanteile und Beschriftungen festgelegt werden. Das brauchst du für eine bereits vorhandene, passende Datenpartition nicht.
+
+## Welches Dateisystem?
+
+**ext4** ist für die Nutzung als Linux-Aufnahme- und Sicherungslaufwerk geeignet und unterstützt große Dateien. Für den Austausch mit anderen Betriebssystemen können **FAT/FAT32**, **exFAT** oder **NTFS** interessant sein, soweit die entsprechenden Werkzeuge im Image vorhanden sind. FAT32 begrenzt einzelne Dateien auf knapp 4 GiB; längere Aufnahmen können größer werden. Die angebotene Auswahl hängt auch von Größe und installierten Dateisystemwerkzeugen ab. Eine vorhandene, funktionierende HDD muss nicht allein wegen dieser Anleitung neu formatiert werden.
+
+## Dateisystem prüfen
+
+Markiere die Datenpartition und öffne **Grün → Dateisystem prüfen**. Beende vorher Aufnahmen, Timeshift und andere Zugriffe. Bestätige die Prüfung und warte auf das Ergebnis. Prüfe anschließend, ob das Laufwerk wieder korrekt eingehängt ist.
+
+Eine Prüfung ist sinnvoll nach einem unsauberen Entfernen oder bei Dateisystemfehlern. Wiederholte Ein-/Ausgabefehler können auch Kabel, Stromversorgung oder defekten Speicher betreffen. Vor Reparaturversuchen an wichtigen Daten steht deren Sicherung. Wiederholtes Formatieren ist dafür kein Ersatz.
+
+## Was an der Testbox tatsächlich durchgeführt wurde
+
+Für diese Anleitung wurde ausschließlich die freigegebene große USB-Partition **`/dev/sdb2`** eines 2-GB-Sticks verwendet. Sie wurde als **ext4** mit Label **`OPENATV_DEMO`** neu formatiert und unter **`/media/OPENATV_DEMO`** eingehängt. Ein Schreib-/Lesetest, Aushängen, eine anschließende Dateisystemprüfung und erneutes Einhängen waren erfolgreich. Die kleine erste USB-Partition blieb bestehen.
+
+Die Vorgänge wurden über die Wartungsschnittstelle der Testbox ausgeführt; die Bilder zeigen die dazugehörigen nativen Enigma2-Dialoge. Die GUI-Bestätigungskette wurde dabei nicht als kompletter Durchlauf getestet. HDD und NAS blieben erhalten; die dauerhaften Mount-Einträge wurden nicht verändert. Der USB-Mount ist vorläufig und wird damit nicht automatisch bei jedem Systemstart wiederhergestellt.
+
+Die Gerätebezeichnung aus dem Beispiel ist **keine Aufforderung, auf einer anderen Box `/dev/sdb2` zu formatieren**. Entscheidend ist immer die neu geprüfte Geräteidentität.
+
+Quellen: [Speicheraktionen in der Geräteverwaltung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/DeviceManager.py), [Formatierungs- und Prüfaufträge](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/Storage.py).

@@ -1,0 +1,20 @@
+---
+title: Langdruck-Verzeichnis aus der keymap.xml
+description: Alle aktiven Langdruck-Zuordnungen der Standard-Keymap mit Taste, Bildschirmkontext und Aktion; durchsuchbar von Blau lang bis KEY_POWER.
+---
+
+import LongKeys from '../../../../components/LongKeys.astro';
+
+Dieses Verzeichnis ergänzt die [Anleitung zu Farbtasten und Langdruck](../../erste-schritte/farbtasten-langdruck/). Es wird aus der Standarddatei `keymap.xml` erzeugt. Kommentare und reine Wiederholungs- oder Loslass-Ereignisse sind ausgeschlossen.
+
+## So liest du die Einträge
+
+**Kontext** bezeichnet eine Gruppe von Aktionen, die ein Bildschirm aktiviert. `ButtonSetupActions` gehört zur eigenen Tastenbelegung, `ColorActions` zu allgemeinen Farbtasten. Eine Zuordnung allein genügt nicht: Der geöffnete Bildschirm muss die Aktion auch implementieren und aktivieren.
+
+**Aktion im Quellcode** ist der technische Name, kein einzugebender Befehl. **Allgemeine Zuordnung** bedeutet, dass der Eintrag in der Keymap nicht auf einen bestimmten Gerätetreiber eingeschränkt ist. Es bedeutet nicht, dass er auf allen Bildschirmen wirkt. Spezielle Gerätezuordnungen bleiben als solche sichtbar; ihre Einzelheiten gehören nicht zur Grundanleitung.
+
+Die Kennzeichnung `l` steht für Langdruck; `m` für Drücken, `b` für Loslassen, `r` für Wiederholung und `s` für das Ende nach einem Langdruck. Alternative Keymaps, Plugins und eigene Hotkeys können das Verhalten ändern.
+
+Suche oben auf der Website beispielsweise nach **Blau lang**, **KEY_VIDEO**, **displayHelpLong** oder **power_long**. Für die tatsächlich aktive Belegung deiner Box nutze außerdem **HELP** im jeweiligen Bildschirm.
+
+<LongKeys language="de" />

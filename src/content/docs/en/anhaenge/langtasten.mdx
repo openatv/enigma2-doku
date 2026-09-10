@@ -1,0 +1,20 @@
+---
+title: Long-press directory from keymap.xml
+description: Every active long-press binding in the default keymap, with key, screen context and action; searchable from long Blue to KEY_POWER.
+---
+
+import LongKeys from '../../../../components/LongKeys.astro';
+
+This directory complements the [colour buttons and long-press guide](../../erste-schritte/farbtasten-langdruck/). It is generated from the default `keymap.xml`. Comments and events that only repeat or release a key are excluded.
+
+## Reading the entries
+
+**Context** identifies a group of actions enabled by a screen. `ButtonSetupActions` belongs to custom button assignments; `ColorActions` contains general colour actions. A binding alone is not enough: the current screen must implement and enable its action.
+
+**Source action** is a technical name, not a command to enter. **General binding** means the keymap entry is not restricted to a particular device driver. It does not mean that it works on every screen. Device-specific bindings remain identifiable; their details are outside the basic guide.
+
+The `l` flag means long press; `m` means press, `b` release, `r` repeat and `s` the end after a long press. Alternative keymaps, plugins and custom hotkeys can change behaviour.
+
+Use the site search for **long Blue**, **KEY_VIDEO**, **displayHelpLong** or **power_long**, for example. Also use **HELP** in the relevant screen to see the functions active on your receiver.
+
+<LongKeys language="en" />

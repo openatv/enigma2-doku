@@ -1,0 +1,25 @@
+---
+import catalog from '../../data/keymap-long.json';
+interface Props { language: 'de' | 'en'; }
+const { language } = Astro.props;
+const de = language === 'de';
+const names: Record<string, [string, string]> = {
+  KEY_RED: ['Rot', 'Red'], KEY_GREEN: ['Grün', 'Green'], KEY_YELLOW: ['Gelb', 'Yellow'], KEY_BLUE: ['Blau', 'Blue'],
+  KEY_INFO: ['INFO / Sendungsinformation', 'INFO / programme information'], KEY_EPG: ['EPG / GUIDE', 'EPG / GUIDE'],
+  KEY_MENU: ['MENU / Menü', 'MENU / menu'], KEY_HELP: ['HELP / Hilfe', 'HELP / help'], KEY_OK: ['OK', 'OK'],
+  KEY_EXIT: ['EXIT / Zurück', 'EXIT / back'], KEY_POWER: ['POWER / Ein-Aus', 'POWER / power'],
+  KEY_VIDEO: ['VIDEO / Aufnahmen', 'VIDEO / recordings'], KEY_PVR: ['PVR / Aufnahmen', 'PVR / recordings'],
+  KEY_RADIO: ['RADIO', 'RADIO'], KEY_VOLUMEUP: ['Lautstärke +', 'Volume +'], KEY_VOLUMEDOWN: ['Lautstärke −', 'Volume −'],
+  KEY_MUTE: ['Stummschaltung', 'Mute'], KEY_TEXT: ['TEXT / Teletext', 'TEXT / teletext'], KEY_RECORD: ['REC / Aufnahme', 'REC / record'],
+};
+const keys = [...new Set(catalog.bindings.map(row => row.key))];
+---
+<p>{de ? `${catalog.bindings.length} aktive Langdruck-Zuordnungen für ${keys.length} Tastencodes.` : `${catalog.bindings.length} active long-press bindings for ${keys.length} key codes.`} <a href={catalog.source}>{de ? 'Quellstand der keymap.xml' : 'Source version of keymap.xml'}</a></p>
+{keys.map(key => <section>
+  <h3 id={key.toLowerCase().replaceAll('_', '-')}>{names[key]?.[de ? 0 : 1] || key.replace('KEY_', '')} <small>({key})</small></h3>
+  <table>
+    <thead><tr><th>{de ? 'Kontext' : 'Context'}</th><th>{de ? 'Aktion im Quellcode' : 'Source action'}</th><th>{de ? 'Gültigkeitsbereich' : 'Scope'}</th></tr></thead>
+    <tbody>{catalog.bindings.filter(row => row.key === key).map(row => <tr><td>{row.context}</td><td><code>{row.action}</code></td><td>{row.device || (de ? 'Allgemeine Zuordnung' : 'General binding')}</td></tr>)}</tbody>
+  </table>
+</section>)}
+<style>small { font-size: 0.72em; font-weight: normal; } td { overflow-wrap: anywhere; }</style>

@@ -1,0 +1,77 @@
+---
+title: Colour buttons and long presses
+description: Red, Green, Yellow, Blue, HELP, Hotkey Settings and hidden long-press functions on the OpenATV remote control.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+A button can have several jobs. Its effect depends on **the screen currently open**, **a short or long press**, and **your own button assignments**. The coloured labels on screen show the functions available there.
+
+## Understanding Red, Green, Yellow and Blue
+
+| Button | In many settings screens | In Device Manager |
+| --- | --- | --- |
+| Red | Cancel or exit without saving changes. | Close Device Manager. |
+| Green | Save. Other screens may use it for Start or Select. | Open actions for the selected device. |
+| Yellow | An extra function, such as information or management. | Edit mount points. |
+| Blue | An extra function specific to the screen. | Mount or unmount the selected partition; the label changes. |
+
+In the **channel list**, the same colours can open all services, satellites, providers and favourites. In **MultiBoot**, Yellow can delete an image. Always read the current label: the colour alone does not tell you how an action affects your data.
+
+While watching TV, the default **short Blue press** opens **QuickMenu**; **long Blue** opens **Extensions**. Green also depends on **Subservice mode (GREEN button)**: subservices or, depending on the setting and availability, the Plugin Browser. Installed extensions and custom hotkeys can provide functions for Red and Yellow; neither has one universal TV function.
+
+<Capture id="quick-menu" language="en" alt="Quick Launch Menu with software management, system, mounts, network, tuner, plugins and hard disk" caption="A short Blue press normally opens QuickMenu. The colours already mean something different here: Green shows system information and Yellow shows devices." />
+
+## Short press, long press or two separate presses?
+
+- **Short:** press the button and release it.
+- **Long:** hold the button until the second action is triggered, then release it. Remote controls do not all transmit this in the same way.
+- **Two successive presses:** press, wait for the new screen, then press again there. **MENU → MENU** for OSD options and **OK → OK** for the second Infobar are sequences of this kind. They are not long presses.
+
+Holding an arrow button may simply repeat normal movement. **Key repeat and a separate long-press action are different.**
+
+## Useful long-press examples
+
+| Button | Possible function and where to check it |
+| --- | --- |
+| Long Blue | Extensions while watching TV; can be swapped with short Blue. |
+| Long INFO | By default, the selection of event-information functions. Entries depend on installed extensions. |
+| Long EPG / GUIDE | By default, the selection of EPG functions. |
+| Long OK | Can open the graphical Infobar EPG. Check **QuickEPG mode** in Remote Control Button Settings. |
+| Long POWER | Configured through **Action on long POWER button press**. The example opens the shutdown menu. |
+| Long Red, Green, Yellow, Blue | Available as separate custom hotkeys. Their actual effect depends on the assignment and screen. |
+| MENU, HELP, EXIT, VIDEO/PVR and others | Have long-press bindings in particular contexts. The complete directory shows where each action is defined. |
+
+The [long-press directory](../../anhaenge/langtasten/) contains **150 bindings for 77 key codes** from the default keymap. This does not promise 77 working functions on every remote.
+
+## Remote Control Button Settings: basic behaviour
+
+Open **Menu → Setup → Usage & GUI → Remote Control Button Settings**. This includes OK, INFO, EPG, TV, arrow and POWER behaviour.
+
+<Capture id="remote-buttons" language="en" alt="Remote Control Button Settings with OK, EPG, INFO, power actions and the short/long Blue switch" caption="BLUE switch exchanges QuickMenu and Extensions. Long-press emulation is directly below it." />
+
+**Long press emulation with button** lets you choose a prefix button. Press that button first, then the required function button. OpenATV treats the second button as a long press. The emulation button loses its previous normal action. Select **None** to disable emulation again.
+
+## Assigning your own hotkeys
+
+Open **Menu → Setup → Usage & GUI → Hotkey Settings**. If the entry is missing, raise the [setup level](../../einstellungen/) to **Expert**.
+
+<Capture id="hotkey-settings" language="en" alt="Hotkey Settings showing separate entries for the four colours and their long presses" caption="Blue and Blue long are separate entries. An empty assignment means no custom hotkey is stored here; the normal screen action may still apply." />
+
+1. In Hotkey Settings, press the remote button you want to change. Hold it to configure its long press.
+2. Open a category in the function selection and highlight the function you want.
+3. Press **OK** to assign it. **CH+/−** switches between available and assigned lists. **OK** on an assigned function removes that assignment.
+4. **Green** saves; **Red** discards the edit.
+5. Close the menus and test the button while watching TV.
+
+You can assign multiple functions and use the dialog's NEXT/PREVIOUS buttons to change their order. Start with one function while learning. Remove your own assignment when you want the ordinary screen action again; INFO and EPG already have custom default assignments.
+
+## Finding the actions available now
+
+**HELP** opens contextual help in many screens. It also lists supported long actions when that screen registers help for them. In Hotkey Settings, HELP itself is assignable and therefore does not open ordinary help.
+
+If a button behaves unexpectedly, close the current dialog first. Then check Remote Control Button Settings, your hotkey assignment and any selected alternative keymap. You do not need to edit XML files for these basic settings.
+
+Continue with [menu options](../menue-anpassen/), [Infobar](../infobar/), [channel list](../../settings/kanalliste/) and [Device Manager](../../speicher/laufwerke/).
+
+Sources: [default keymap](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/keymap.xml), [hotkey implementation](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ButtonSetup.py) and [button settings](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml).

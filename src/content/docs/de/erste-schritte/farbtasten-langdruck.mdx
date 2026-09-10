@@ -1,0 +1,77 @@
+---
+title: Farbtasten und langer Tastendruck
+description: Rot, Grün, Gelb, Blau, HELP, Hotkey Setup und versteckte Langdruck-Funktionen der Fernbedienung in OpenATV.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Eine Taste kann mehrere Aufgaben haben. Entscheidend sind **der gerade geöffnete Bildschirm**, **kurzer oder langer Tastendruck** und **deine eigene Tastenbelegung**. Die farbigen Beschriftungen am Bildschirm zeigen die dort gültige Funktion.
+
+## Rot, Grün, Gelb und Blau verstehen
+
+| Taste | In vielen Einstellungsdialogen | In der Geräteverwaltung |
+| --- | --- | --- |
+| Rot | Abbrechen oder beenden; Änderungen werden nicht gespeichert. | Geräteverwaltung schließen. |
+| Grün | Speichern. In anderen Dialogen auch Start oder Auswählen. | Aktionen für das markierte Gerät öffnen. |
+| Gelb | Zusatzfunktion, zum Beispiel Informationen oder Verwaltung. | Einhängepunkte bearbeiten. |
+| Blau | Zusatzfunktion des jeweiligen Bildschirms. | Markierte Partition ein- oder aushängen; die Beschriftung wechselt. |
+
+In der **Kanalliste** können dieselben Farben beispielsweise alle Sender, Satelliten, Anbieter und Favoriten öffnen. Im **MultiBoot-Menü** kann Gelb dagegen ein Image löschen. Lies deshalb immer die aktuelle Beschriftung. Die Farbe allein ist keine Zusicherung, dass eine Aktion harmlos ist.
+
+Beim Fernsehen öffnet **Blau kurz** in der Standardbelegung das **Schnellstartmenü**, **Blau lang** die **Erweiterungen**. Grün hängt unter anderem von **Taste GRÜN – Unterkanalmodus** ab: Unterkanäle oder, abhängig von der Auswahl und Verfügbarkeit, der Plugin-Manager. Für Rot und Gelb können installierte Erweiterungen und eigene Hotkeys weitere Funktionen bereitstellen; eine überall geltende Fernsehfunktion gibt es dafür nicht.
+
+<Capture id="quick-menu" language="de" alt="Schnellstartmenü mit Softwareverwaltung, System, Mounts, Netzwerk, Tuner, Erweiterungen und Festplatte" caption="Blau kurz führt normalerweise ins Schnellstartmenü. Hier ändern sich die Farbtasten bereits: Grün zeigt Systeminformationen, Gelb Geräteinformationen." />
+
+## Kurz drücken, gedrückt halten oder zweimal drücken?
+
+- **Kurz:** Taste drücken und loslassen.
+- **Lang:** Taste gedrückt halten, bis die zweite Funktion ausgelöst wird, dann loslassen. Nicht alle Fernbedienungen übertragen das gleich.
+- **Zweimal nacheinander:** Taste drücken, den neuen Bildschirm abwarten und dort erneut drücken. **MENU → MENU** für die OSD-Optionen und **OK → OK** für die zweite Infobar sind solche Folgen. Das ist kein Langdruck.
+
+Auch langes Drücken einer Pfeiltaste kann nur die normale Bewegung wiederholen. **Tastenwiederholung und eine eigene Langdruck-Aktion sind verschieden.**
+
+## Wichtige Langdruck-Beispiele
+
+| Taste | Mögliche Funktion und wo du sie prüfst |
+| --- | --- |
+| Blau lang | Erweiterungen beim Fernsehen; mit Blau kurz tauschbar. |
+| INFO lang | Standardmäßig Auswahl der Funktionen für Sendungsinformationen. Welche Einträge erscheinen, hängt von den installierten Erweiterungen ab. |
+| EPG / GUIDE lang | Standardmäßig Auswahl der EPG-Funktionen. |
+| OK lang | Kann den grafischen Infoleisten-EPG öffnen. Prüfe **Grafischen Infoleisten-EPG aufrufen** in den Fernbedienungseinstellungen. |
+| POWER lang | Über **Ausschalttaste länger gedrückt** einstellbar; im Beispiel wird das Ausschaltmenü geöffnet. |
+| Rot, Grün, Gelb, Blau lang | Als eigene Hotkeys vorgesehen. Die tatsächliche Aktion hängt von der Belegung und dem Bildschirm ab. |
+| MENU, HELP, EXIT, VIDEO/PVR und weitere | Enthalten Langdruck-Zuordnungen in bestimmten Kontexten. Das vollständige Verzeichnis zeigt, welche Aktion wo definiert ist. |
+
+Das [Langdruck-Verzeichnis](../../anhaenge/langtasten/) enthält **150 Zuordnungen für 77 Tastencodes** aus der Standard-Keymap. Das sind keine 77 versprochenen Funktionen auf jeder Fernbedienung.
+
+## Fernbedienungseinstellungen: die Grundfunktionen
+
+Öffne **Menü → Einstellungen → Bedienung / Oberfläche → Fernbedienungseinstellungen**. Hier legst du beispielsweise das Verhalten von OK, INFO, EPG, TV, Pfeiltasten und POWER fest.
+
+<Capture id="remote-buttons" language="de" alt="Fernbedienungseinstellungen mit OK-, EPG-, INFO- und Ein-Aus-Funktionen sowie dem Tausch von Blau kurz und lang" caption="Taste BLAU kurz/lang tauscht Schnellstartmenü und Erweiterungen. Darunter befindet sich die Langdruck-Emulation." />
+
+Mit **Emulation 'Langer-Druck' mit Taste** kannst du eine vorgeschaltete Taste wählen: Erst diese drücken, danach die gewünschte Funktionstaste. OpenATV behandelt die zweite Taste wie einen langen Tastendruck. Die gewählte Emulationstaste verliert dadurch ihre bisherige normale Aufgabe. Mit **Keine** schaltest du die Emulation wieder aus.
+
+## Hotkey Setup: eigene Funktionen zuweisen
+
+Öffne **Menü → Einstellungen → Bedienung / Oberfläche → Hotkey Setup**. Falls der Eintrag fehlt, erhöhe den [Einstellungsmodus](../../einstellungen/) auf **Experte**.
+
+<Capture id="hotkey-settings" language="de" alt="Hotkey Setup mit getrennten Zeilen für Rot, Grün, Gelb, Blau und deren Langdruck-Belegung" caption="Blau und Blau lang sind getrennte Einträge. Eine leere Zuordnung bedeutet hier, dass kein eigener Hotkey hinterlegt ist; die normale Bildschirmfunktion kann trotzdem greifen." />
+
+1. Drücke im Hotkey Setup die Taste, die du ändern möchtest. Halte sie für die Langdruck-Belegung gedrückt.
+2. Öffne in der Funktionsauswahl eine Kategorie und markiere die gewünschte Funktion.
+3. Mit **OK** ordnest du sie zu. Mit **CH+/−** wechselst du zwischen verfügbarer und zugeordneter Liste. **OK** auf einer zugeordneten Funktion entfernt diese wieder.
+4. Speichere mit **Grün**. **Rot** verwirft die Bearbeitung.
+5. Schließe die Menüs und prüfe die Taste beim Fernsehen.
+
+Du kannst mehrere Funktionen zuordnen. Die Reihenfolge lässt sich mit den im Dialog genannten NEXT/PREVIOUS-Tasten ändern. Beginne zum Kennenlernen mit einer einzelnen Funktion. Lösche nur deine eigene Zuordnung, wenn wieder die normale Bildschirmfunktion gelten soll; INFO und EPG besitzen bereits eigene Standardzuordnungen.
+
+## Herausfinden, was gerade möglich ist
+
+**HELP** öffnet in vielen Bildschirmen die kontextbezogene Hilfe. Dort findest du auch unterstützte Langdruck-Aktionen, soweit der Bildschirm sie mit Hilfetext registriert. Im Hotkey Setup ist HELP selbst belegbar und öffnet deshalb dort keine normale Hilfe.
+
+Reagiert eine Taste anders als erwartet, schließe zuerst den geöffneten Dialog. Prüfe dann die Fernbedienungseinstellungen, die eigene Hotkey-Zuordnung und eine eventuell gewählte alternative Keymap. Für diese Grundlagen musst du keine XML-Datei bearbeiten.
+
+Weiterlesen: [Menüoptionen](../menue-anpassen/), [Infobar](../infobar/), [Kanalliste](../../settings/kanalliste/), [Geräteverwaltung](../../speicher/laufwerke/).
+
+Quellen: [Standard-Keymap](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/keymap.xml), [Hotkey-Implementierung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ButtonSetup.py) und [Fernbedienungseinstellungen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml).
