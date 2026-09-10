@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { languageUrl, localePath, requestedLanguage, resetCookies, isTranslationLanguage } from '../src/lib/translation.mjs';
 
 test('extra languages always open the matching English chapter under either hosting base', () => {
-  for (const base of ['/', '/enimga2-doku', '/handbook/']) {
+  for (const base of ['/', '/enigma2-doku', '/handbook/']) {
     const prefix = base.replace(/\/$/, '');
     const url = languageUrl(`https://docs.example.org${prefix}/de/skins/metrixhd/?q=FHD#auflösung`, 'en', base, 'fr');
     assert.equal(url.pathname, `${prefix}/en/skins/metrixhd/`);
@@ -13,17 +13,17 @@ test('extra languages always open the matching English chapter under either host
 });
 
 test('native return removes machine selection while preserving English section links', () => {
-  const current = 'https://openatv.github.io/enimga2-doku/en/epg/grundlagen/?translate=fr#save-epg';
-  assert.equal(languageUrl(current, 'en', '/enimga2-doku').href,
-    'https://openatv.github.io/enimga2-doku/en/epg/grundlagen/#save-epg');
-  const de = languageUrl(current, 'de', '/enimga2-doku', 'fr');
-  assert.equal(de.pathname, '/enimga2-doku/de/epg/grundlagen/');
+  const current = 'https://openatv.github.io/enigma2-doku/en/epg/grundlagen/?translate=fr#save-epg';
+  assert.equal(languageUrl(current, 'en', '/enigma2-doku').href,
+    'https://openatv.github.io/enigma2-doku/en/epg/grundlagen/#save-epg');
+  const de = languageUrl(current, 'de', '/enigma2-doku', 'fr');
+  assert.equal(de.pathname, '/enigma2-doku/de/epg/grundlagen/');
   assert.equal(de.search + de.hash, '');
 });
 
 test('unrelated paths cannot be mistaken for chapters with the same prefix', () => {
-  for (const path of ['/enimga2-doku-old/de/chapter/', '/outside/en/chapter/', '/enimga2-doku/_astro/image.png']) {
-    assert.equal(localePath(path, 'en', '/enimga2-doku'), '/enimga2-doku/en/');
+  for (const path of ['/enigma2-doku-old/de/chapter/', '/outside/en/chapter/', '/enigma2-doku/_astro/image.png']) {
+    assert.equal(localePath(path, 'en', '/enigma2-doku'), '/enigma2-doku/en/');
   }
 });
 
@@ -42,10 +42,10 @@ test('explicit native or invalid selections override remembered translation', ()
 
 test('reset works on Pages, custom hosts and root deployments without forum-specific domains', () => {
   for (const host of ['openatv.github.io', 'docs.example.org', '127.0.0.1']) {
-    const cookies = resetCookies(host, '/enimga2-doku/');
+    const cookies = resetCookies(host, '/enigma2-doku/');
     assert.ok(cookies.some(cookie => cookie === 'googtrans=; Max-Age=0; Path=/; SameSite=Lax'));
-    assert.ok(cookies.some(cookie => cookie.includes('Path=/enimga2-doku;')));
-    assert.ok(cookies.some(cookie => cookie.includes('Path=/enimga2-doku/;')));
+    assert.ok(cookies.some(cookie => cookie.includes('Path=/enigma2-doku;')));
+    assert.ok(cookies.some(cookie => cookie.includes('Path=/enigma2-doku/;')));
     assert.ok(cookies.every(cookie => cookie.startsWith('googtrans=; Max-Age=0;')));
     assert.ok(cookies.every(cookie => !cookie.includes('Domain=') || cookie.endsWith(`Domain=${host}`) || cookie.endsWith(`Domain=.${host}`)));
   }

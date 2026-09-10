@@ -1,0 +1,74 @@
+---
+title: AutoRestore – recover settings and plugins
+description: Understand FastRestore, Turbo and slow restoration; recover settings, feeds and add-ons after Flash Online or a new installation.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**AutoRestore** sets up a new image using an existing settings backup. **FastRestore** is the early restoration process during system startup. You choose **what** to recover separately from **how** restoration runs.
+
+## What should be restored after flashing?
+
+For a matching OpenATV image, [Flash Online/local](../flash-online/) offers these choices:
+
+| Choice | Result |
+| --- | --- |
+| Upgrade (Flash & restore all) | Restore settings and reinstall the plugins selected for package restoration. |
+| Clean (Just flash and start clean) | Start the setup wizard with fresh settings. |
+| Flash and restore settings and no plugins | Recover settings without reinstalling additional plugin packages. Plugins included in the new image are still present. |
+| Flash and restore settings and selected plugins (Ask user) | Recover settings and offer a selection of plugins to reinstall in the user interface. |
+
+“All” means **the backed-up data and package restoration**, not a complete copy of every file and recording. See [Backup and restore](../backup-restore/) for the actual scope of the backup.
+
+## Turbo, Fast and Slow
+
+Open **Menu → Setup → Software Management → Advanced Options → Software Manager Settings → Mode for autorestore**. This option requires the Expert setup level.
+
+<Capture id="autorestore-mode" language="en" alt="Software Manager Settings showing Mode for autorestore and the explanation of Turbo, Fast and Slow" caption="This setting controls the process. The flash wizard separately controls which settings and plugins return." />
+
+| Mode | Intended process |
+| --- | --- |
+| Turbo | Restore during the first system start after flashing, then continue to the interface without the extra restore reboot. |
+| Fast | Restore early during startup, followed by another reboot. |
+| Slow | Restore through the Enigma2 interface, followed by a restart. |
+
+Asking the user to select plugins requires the interface; it is not a fully unattended FastRestore. Whether the early process can run also depends on the restoration choice, backup and image support. Selecting a mode alone does not trigger a restore or guarantee a fixed completion time.
+
+## Prepare a reliable restore
+
+1. Make a **fresh settings backup**, especially after adding plugins, feeds or mounts. Keep a separate copy on the PC.
+2. Prefer **locally attached media available during boot**, such as USB or HDD. A NAS share configured only after startup may become available too late.
+3. Preserve the backup tool's structure: `backup_<Image>_<Device>/enigma2settingsbackup.tar.gz` on the backup medium. The search takes the device into account; do not rename the archive arbitrarily.
+4. Choose settings only, all intended plugins or a plugin selection in the flash wizard. Check the destination slot at the same time.
+5. Leave the backup medium connected during the first boot and provide working internet access for feed packages.
+6. Wait for restoration and the expected restarts. Then check tuners, channel lists, network, mounts, timers and extensions.
+
+The flash manager records the choice in small marker files under **`images/config/`** on the selected medium. For example, `settings`, `plugins` and `noplugins` describe the scope; `turbo`, `fast` and `slow` describe the process. These files do not contain your saved settings. You need the **archive, matching directories and appropriate selection**.
+
+With a USB installation, automatic detection therefore depends on preparation. The initial wizard may also offer a detected backup. If automatic preparation is unavailable, configure the network and backup drive, then use [manual restoration](../backup-restore/#restore-settings).
+
+## How do add-ons and skins return?
+
+The backup includes information for restoring packages, rather than a frozen copy of all plugin programs. AutoRestore compares packages and installs those needed and available. These may include extensions and skins. Their configuration returns only where the relevant files were included in the backup.
+
+- **Feed packages:** The feed must be reachable and provide a version compatible with the new image. Removed, renamed or incompatible packages cannot simply reappear.
+- **Additional feeds:** Their setup or feed packages must also be available. Restoration handles feed packages before the remaining packages; access and availability are still required.
+- **Local IPK files:** Supported local-package locations include **`/media/hdd/images/ipk/`** and **`/media/usb/images/ipk/`**. Use only trusted packages matching the new image and architecture. Choosing “no plugins” does not request reinstallation of these add-ons.
+- **Manually copied add-ons:** Unpackaged files outside the backup selection are not recovered through the package list. Include the necessary files deliberately or reinstall the add-on using its own instructions.
+- **Custom restore scripts:** An existing `images/config/myrestore.sh` may also be executed. This is an advanced extension point that can make further changes; ordinary restoration does not require a custom script.
+
+A newer package may have different settings or dependencies. “All plugins” does not guarantee that old extensions work with a new image generation. For troubleshooting, consider starting clean and adding plugins individually.
+
+## Password and network details may change
+
+A settings backup can include account information, including the root password hash. After restoration, the **password from the backup** may apply again. The IP address, hostname and network shares may also return to their saved state. If connections fail, check the receiver's current address and the correct password first.
+
+## If restoration is incomplete
+
+First check whether the archive and drive were found. Then check internet access, DNS, clock settings and the availability of missing packages. The early restoration log is **`/home/root/FastRestore.log`**, **outside** the ordinary `/home/root/logs/` directory. The inspected version can also retain `FastRestore.log.1` after rotation.
+
+A log file does not itself prove successful restoration: it may record an early exit or startup without a suitable backup. Report the exact error and missing package as explained in [Reporting a bug](../../hilfe/fehler-melden/). Repeatedly flashing again will not fix an unavailable feed or an unmounted backup drive.
+
+**Verification:** The menu, backup/plugin code and the test receiver's `/etc/init.d/settings-restore` script were inspected. No image was flashed and no complete AutoRestore was performed for this chapter.
+
+Sources: [Flash choices](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/FlashManager.py), [backup and plugin restore](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/SoftwareManager/BackupRestore.py), [account and package information](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/SoftwareManager/ShellCompatibleFunctions.py).

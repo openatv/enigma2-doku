@@ -10,7 +10,7 @@ export async function walk(directory) {
   return groups.flat().sort();
 }
 
-export function normaliseBase(base = '/enimga2-doku') {
+export function normaliseBase(base = '/enigma2-doku') {
   const result = '/' + base.replace(/^\/+|\/+$/g, '');
   return result === '/' ? '' : result;
 }

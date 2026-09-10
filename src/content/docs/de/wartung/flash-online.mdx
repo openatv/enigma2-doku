@@ -9,6 +9,8 @@ import Capture from '../../../../components/Capture.astro';
 
 ## Vorbereiten
 
+Die Entscheidung zwischen Paketupdate und neuem Image erklärt [Softwareupdate oder Flash Online?](../software-update/). Für die Installation über den Boot-/Recovery-Weg lies [USB-Stick vorbereiten](../usb-installation/) und die dort verlinkte Anleitung für dein Modell.
+
 Erstelle eine [Sicherung](../backup-restore/), prüfe die Netzwerkverbindung und halte Platz zum Herunterladen und Entpacken bereit. Das Sicherungs- oder Downloadlaufwerk und der **Zielslot** sind unterschiedliche Dinge: Der Datenträger speichert die Datei, der Slot bekommt das installierte Image.
 
 Wenn du dein aktuelles Image behalten willst, öffne zuerst die [MultiBoot-Verwaltung](../multiboot/) und notiere den als **Aktiv** markierten Slot. Du brauchst einen **anderen** geeigneten Slot, dessen Inhalt überschrieben werden darf. **Ohne eindeutigen anderen Zielslot brichst du den Flash-Vorgang ab.**
@@ -31,6 +33,8 @@ In der Slot-Auswahl ist das aktuelle Image gekennzeichnet. Eine Vorauswahl kann 
 Wähle den vorher geprüften anderen Slot. Ist dort bereits ein Image installiert, ersetzt das Flashen dessen Inhalt. Ein leerer Slot ist nur dann geeignet, wenn er von der Box als Flash-Ziel angeboten wird. Slotnummern sind keine allgemeine Empfehlung: „Slot 4“ aus einem Beispiel muss auf deiner Box nicht existieren.
 
 ## Sicherung und Einstellungen nach dem Flash
+
+[AutoRestore und Add-ons](../autorestore/) erklärt die vier Wiederherstellungsvarianten, Turbo/Fast/Slow, das Sicherungsmedium und die Nachinstallation von Plugins. Dort findest du auch den Ort des Restore-Protokolls.
 
 Der Assistent kann vor dem Flash eine Einstellungssicherung und Optionen für die anschließende Wiederherstellung anbieten. Entscheide bewusst, ob du mit deinen bisherigen Einstellungen oder mit einer frischen Konfiguration starten willst. Je nach Auswahl können auch Plugins nachinstalliert werden.
 

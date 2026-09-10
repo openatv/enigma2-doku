@@ -49,6 +49,11 @@ Die SSH-Hostkennung muss bereits bekannt sein. Eine getrennte bekannte Hostdatei
 | `channel-styles` | 19 | Vier klassische MetrixHD-Varianten und drei neue Bildschirme mit je fünf Listenstilen |
 | `infobars` | 8 | Normale Infobar, Lite, zweite INFO/ECM, Sendungsinformationen und drei OSD-Gruppen |
 | `menu-options` | 5 | Vertikales/horizontales Menü, Bearbeitungsmodus, Menü- und Hilfeoptionen |
+| `buttons` | 3 | Hotkeys, Grundbelegung und Schnellstartmenü |
+| `backups` | 4 | Softwareverwaltung, Sicherungslisten und Imagesicherung |
+| `firmware` | 2 | Flash-Manager und MultiBoot |
+| `storage` | 4 | USB-/Dateisystem- und Laufwerksoptionen |
+| `diagnostics` | 3 | Log-Einstellungen, AutoRestore-Modus und Netzwerkmenü mit Passwort-Eintrag |
 
 Die oben gezeigte Bootlogo-Serie mit den bisherigen acht Profilen erzeugt 96 Bilder in Deutsch und Englisch. Die zwei neuen Profile ergänzen 26 Bilder mit Senderhintergrund. Enigma2 wird für jede Sprache neu gestartet, weil bereits angelegte Auswahlwerte sonst in der vorherigen Sprache bleiben können. Das Werkzeug stellt die vier ursprünglichen Spracheinstellungen anschließend wieder her. Die Details zu Abbruch und Wiederherstellung stehen in der README des Pluginrepositories.
 
@@ -101,14 +106,14 @@ Die freigegebenen Dateien stehen in `data/captures-review.json`:
 ]
 ```
 
-Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme, einen gültigen Werkzeug-Commit und sein englisches Gegenstück. Die aktuelle Datei enthält 114 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
+Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme, einen gültigen Werkzeug-Commit und sein englisches Gegenstück. Die aktuelle Datei enthält 146 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
 
 Im Handbuchrepository importieren:
 
 ```sh
 python scripts/import-captures.py --source .capture-private \
   --review data/captures-review.json \
-  --tool-commit c6a9fbdb68dcef6a8323ee337feecf0556dda6f8
+  --tool-commit befcd21743810dcb4d603471649e3e64d1c3eef1
 ```
 
 Bei einer neuen Pluginversion ihren tatsächlichen Commit verwenden. `tool_commit` je Prüfeintrag bewahrt den Werkzeugstand älterer Bilder; fehlt es, gilt der Wert von `--tool-commit`. Das öffentliche Inventar nennt den tatsächlichen Stand je Bild als `capture_tool_commit`; der gleichnamige Wert auf oberster Ebene ist die Importvorgabe. Der Importer prüft erfolgreiche Läufe, Bildpfade, Prüfsummen und vollständige Sprachpaare, bevor er Dateien kopiert. Bereits veröffentlichte Bilder, die aus der Auswahl entfernt werden, müssen bewusst aus dem Assetordner gelöscht werden; der Importer meldet solche Reste. Er exportiert keine vollständigen Rohmanifeste und keine Verbindungsdaten.
@@ -144,6 +149,18 @@ python tools/capture.py --host root@BOX --run-prefix maintenance-001 \
 Die Wartungsprofile starten keine Sicherung, Wiederherstellung, Formatierung oder Installation und ändern keinen Bootslot. Die Geräteansichten erfordern genau einen entfernbaren USB-Datenträger mit vorhandener Datenpartition; der Adapter wählt deren größte Nicht-Swap-Partition anhand der Geräteübersicht und sysfs. Die Konfiguration der Box wird dadurch nicht auf diese Beispielwerte gesetzt. Der Flash-Manager wartet auf die echte Image-Liste, Imagesicherung und MultiBoot auf die gelesenen Slots.
 
 Die eigentliche USB-Formatierung wurde getrennt von der Screenshot-Tour ausdrücklich autorisiert und protokolliert. Es gibt dafür keinen ausführbaren Formatierbefehl im öffentlichen Handbuch oder im Aufnahmeauftrag. Private `boot-slots.json`-Dateien dienen der Kontrolle des aktuellen Slots und werden nicht importiert. Eine nachfolgende Schutzkorrektur im Plugin blockiert zusätzlich nummerierte Schnellstart-Aktionen und den Einstieg zur Slot-Erstellung; sie verändert die veröffentlichten Bildinhalte nicht.
+
+## Diagnose- und AutoRestore-Serie
+
+`diagnostics` ergänzt drei native Ansichten je Sprache. Die sechs Bilder aus `diagnostics-a-de-diagnostics` und `diagnostics-a-en-diagnostics` wurden einzeln gesichtet und mit dem Aufnahmeplugin-Commit `befcd21743810dcb4d603471649e3e64d1c3eef1` importiert. Der Bestand umfasst damit 146 Originalbilder; alle früheren Bilder behalten ihre jeweiligen Werkzeugstände.
+
+```sh
+python tools/capture.py --host root@BOX --run-prefix diagnostics-001 --profiles diagnostics --restart-languages --bootlogo
+```
+
+Die Tour zeigt die bereits eingestellte Log-Stufe und den Restore-Modus, speichert jedoch keine Änderung. Im geschützten Netzwerkmenü wird „Passwort einrichten“ nur markiert; ein Passwortdialog wird nicht ausgefüllt und kein Netzwerkdienst verändert. Der Hintergrund ist das Bootlogo bei gestoppter Wiedergabe. Die ursprüngliche Sprache wird nach den Aufnahmen wiederhergestellt.
+
+Die Bilder belegen die Menüs, keinen ausgeführten Flash, Restore oder Passwortwechsel. Eine im Original fehlende Übersetzung einzelner Zusatzbeschriftungen wird nicht in die Bildpixel hineinkorrigiert.
 
 ## Langdruck-Verzeichnis aktualisieren
 

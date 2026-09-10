@@ -1,0 +1,91 @@
+---
+title: Enable, find and read logs
+description: Locate OpenATV debug logs, crash logs and FastRestore.log on the receiver, enable logging and collect useful evidence for a bug report.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+A **debug log** records events before and during a fault. A **crash log** is written when Enigma2 handles a crash and often contains the Python traceback. A freeze without a crash may produce no crash log. Note the time and your exact actions so you can identify the relevant recording.
+
+## Enable debug logging
+
+1. Finish recordings and timeshift before restarting the interface. A GUI restart interrupts functions managed by Enigma2.
+2. Open **Menu → Setup → System → Logs Settings**. If the options are missing, enable [Expert mode](../../erste-schritte/bedienung/).
+3. Set **Enable debug log \*** to the normal enabled level first. Choose **Verbose** when additional detail is needed. **Disabled** turns off normal debug recording.
+4. Check **Logs location** and free space. An external destination must be available and writable.
+5. Save and restart the **GUI**. The asterisk identifies options requiring a restart.
+6. Reproduce the problem with a short sequence of actions and note the time. Copy the matching log to your computer.
+7. Restore the previous logging level and restart the GUI again once diagnosis is finished.
+
+<Capture id="logging-settings" language="en" alt="Log settings showing debug level, location, size limits and additional diagnostics" caption="Verbose logging was already enabled on the example receiver. Capturing this screen did not change its logging configuration." />
+
+Enable extra EPG, network, package-management or multimedia logging only for the issue being investigated. Enabling every diagnostic makes logs larger and harder to read. Core dumps are a separate diagnostic tool and are not required for an ordinary bug report.
+
+## Where are the logs on the receiver?
+
+These are paths in the **receiver's filesystem**, not on your computer. Open them using [SFTP](../../netzwerk/fernzugriff/#transfer-files-with-sftp-or-ftp), for example.
+
+| File or directory | Purpose |
+| --- | --- |
+| **`/home/root/logs/`** | Default directory for Enigma2 debug and crash logs. |
+| `YYYYMMDD-HHMMSS-enigma2-debug.log` | Debug recording in the selected log directory, for example `20260910-065659-enigma2-debug.log`. The timestamp uses the receiver's clock. |
+| `YYYYMMDD-HHMMSS-enigma2-crash.log` | Crash log in the selected directory. Match its time to the incident. |
+| **`/media/hdd/logs/`** | Example HDD destination, **only when selected and the drive is mounted there**. Other selected mounts use `<mount point>/logs/`. |
+| `/home/root/logs/enigma2_crash.log` | Fallback when the regular crash log cannot be created. |
+| `/tmp/enigma2_crash.log` | Further crash-log fallback. `/tmp` is temporary: copy the file before a full reboot. |
+| **`/home/root/FastRestore.log`** | Early automatic restore log, outside the `logs/` directory. A rotated file may be named `FastRestore.log.1`. See [AutoRestore](../../wartung/autorestore/). |
+| `YYYYMMDD-HHMMSS-gstreamer-debug.log` | Additional multimedia log in the log directory when that diagnostic is enabled. |
+
+**Directory display detail:** The checked menu labels the default destination **`/home/root/`**, although the actual configuration value is **`/home/root/logs/`**. Selected drives likewise use a `logs` subdirectory below the displayed mount point. Look inside that subdirectory.
+
+The startup wrapper uses a custom debug directory only if it exists; otherwise it falls back to the default. Check both locations if files are missing. No crash log does not mean no fault occurred: a power failure, freeze or unwritable filesystem can prevent output.
+
+## Read files and copy them to your computer
+
+In an SFTP client, open the relevant directory, sort by modification time and download the log matching the incident. Attach the text file to your report; a photograph of the final line cannot replace the traceback.
+
+The **Log Manager** can display existing logs on the TV. The log settings include an option to show it in the Extensions menu. In the checked screen, **Red** switches between crash and debug logs, **Green** displays a file and **Yellow** deletes it. Follow the on-screen labels and save the relevant file before deleting anything.
+
+Through [SSH](../../netzwerk/fernzugriff/), first list the files:
+
+```sh
+ls -lt /home/root/logs/
+```
+
+Replace `FILENAME` below with an existing name from that list:
+
+```sh
+tail -n 100 /home/root/logs/FILENAME
+tail -f /home/root/logs/FILENAME
+```
+
+`tail -f` follows new lines in that file. **Ctrl+C** stops this viewer only. A GUI restart or log rotation may create a new file; open that file to continue following events. The final 100 lines help with an initial check, but a report may need the complete relevant log.
+
+
+Read the restore log separately:
+
+```sh
+tail -n 100 /home/root/FastRestore.log
+```
+
+## When the interface no longer works
+
+If SSH is still available, save existing crash logs first. On the checked OpenATV version, you can enable debug recording for the next start through `/etc/enigma2/settings`:
+
+1. Download a copy of the existing settings file first.
+2. Stop Enigma2 with `init 4`. Wait until `pidof enigma2` no longer returns a process number. Read the [start/stop explanation](../../netzwerk/fernzugriff/#stop-and-start-enigma2) for the effects.
+3. Edit the file as plain text with Unix line endings. Change the existing entry to `config.crash.debugLevel=4`, or add it once if absent. Do not create duplicate keys. `4` means enabled, `5` verbose and `0` disabled.
+4. Save the file on the receiver and start Enigma2 with `init 3`.
+5. Copy the new debug log. After diagnosis, restore the previous value, preferably in the log settings screen.
+
+Do not edit `settings` while Enigma2 is running: it may overwrite your change when exiting. Do not launch a second Enigma2 process manually.
+
+## Limit storage and report a fault
+
+Log settings provide limits for file size, retention and total log storage. Check them especially when recording verbose logs in internal flash. A large attached drive does not increase free space in the root filesystem. Logging to an HDD may also prevent drive standby.
+
+Before uploading, inspect a **copy** for passwords, tokens, share credentials and private addresses. Keep the error, traceback, package names and event sequence intact. Do not upload a complete settings backup as a public bug report. [Report a problem](../fehler-melden/) explains the forum, the appropriate GitHub projects and a report template.
+
+**Verification:** Menu options and filenames were checked against source code. New debug files were observed under `/home/root/logs/` on the test receiver with logging already enabled. No crash was deliberately triggered.
+
+Sources: [Log configuration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py), [Startup wrapper and debug files](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/tools/enigma2.sh.in), [Crash logs and fallback paths](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/main/bsod.cpp), [Log Manager](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/LogManager.py).

@@ -1,0 +1,57 @@
+---
+title: Software update or Flash Online?
+description: Understand Enigma2 package updates, feed status and update settings, and use Flash Online for release changes or large updates.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Software Update** updates packages in the installed image. **Flash Online** installs a complete new image. For a release-series change, a very old installation or a major rebuild, a fresh image is usually easier to reason about. Small updates within a supported release series can use Software Update.
+
+## Which route fits?
+
+| Situation | Starting point |
+| --- | --- |
+| Recent working image with a small number of approved updates | Enigma2 Software Update, after backing up and reading feed notices. |
+| Different OpenATV release series, long update gap or a warning about many packages | [Flash Online](../flash-online/) with a complete matching image. |
+| Investigating a fault without old settings | New image using **Clean**; selectively recover settings and plugins later. |
+| Enigma2 no longer starts | An available working MultiBoot slot or the device-specific [USB/recovery procedure](../usb-installation/). |
+
+Changing the package feed address is not a supported substitute for changing release series. Do not mix package sources from different image generations.
+
+## Update from the interface
+
+Open **Menu → Setup → Software Management → Software Update**. The QuickMenu opened with **short Blue** also provides access to software management.
+
+<Capture id="software-menu" language="en" alt="Software Management with Software Update, Flash Online and backup options" caption="Package updates, flashing and backups serve different purposes." />
+
+1. Back up settings and, if needed, the complete image. Finish recordings and timeshift and allow time for the restart.
+2. Check internet access and free space in the image. Free HDD space cannot replace free space in the root filesystem.
+3. Wait for the package list and feed status. Read notices and review the offered updates.
+4. Start the update using the labelled action. Consider any questions about modified configuration files before answering.
+5. Wait for completion. Keep power connected and do not restart the interface during package installation. Perform the recommended restart afterwards.
+6. Check reception, network and affected functions, then back up the new working state.
+
+## Read the feed traffic light
+
+| Display | What it means for your decision |
+| --- | --- |
+| Green / stable | The feed reports a stable state. This does not guarantee every individual plugin combination. |
+| Yellow / unstable | Read the notices; consider waiting for clarification on a receiver used daily. |
+| Red / disabled | The update has no normal release approval. Check the reason and forum notices. |
+| Status unavailable | Do not interpret it as approval. Check connectivity, DNS and current notices. |
+
+For a large number of packages, Enigma2 can explicitly recommend **Flash Online instead of a package update**. The threshold depends on the image. Free space on the recording drive does not remove the reason for that warning.
+
+## Understand Software Manager Settings
+
+**Software Management → Advanced Options → Software Manager Settings** includes policies for overwriting modified configuration and other package files. They govern package updates, do not replace a backup and should not all be changed to “overwrite everything” by default.
+
+The same screen contains **Mode for autorestore**. This controls the process after flashing and is covered separately in [AutoRestore](../autorestore/). Reinstalling add-ons additionally requires the appropriate flash-wizard choice.
+
+## Commands found in support instructions
+
+`opkg update` refreshes package lists; it does not install upgraded packages. `opkg upgrade` changes installed software. A blanket SSH upgrade bypasses the interface's explanatory choices and status notices. Use the GUI or Flash Online for this basic workflow, and run targeted terminal commands only once their purpose is understood.
+
+**Verification:** The menu and update implementation were inspected. No package upgrade was performed for this chapter.
+
+Source: [Software Update, including feed status and the flash recommendation](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SoftwareUpdate.py).

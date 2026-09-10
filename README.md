@@ -11,6 +11,10 @@ Die gemeinsame, modellneutrale Grunddokumentation für OpenATV: Deutsch und Engl
 - Versteckte Menüoptionen über MENU → MENU, vertikale/horizontale Menüs und Bearbeitungsmodus
 - Farbtasten, eigene Hotkeys und Langdruck-Verzeichnis aus der Keymap: 150 Zuordnungen für 77 Tastencodes
 - Backup/Wiederherstellung, Flash Online und MultiBoot mit Erhalt des aktuellen Images
+- Downloads und unterstützte Modelle, USB-Neuinstallation sowie Softwareupdate im Vergleich zu Flash Online
+- AutoRestore mit Turbo/Fast/Slow, Rückübernahme von Einstellungen, Plugins, Feeds und lokalen Add-ons
+- SSH/Telnet, Enigma2 stoppen/starten, Root-Passwort und Dateiübertragung mit SFTP/FTP
+- Debug-/Crashlogs aktivieren und auf der Box finden; Fehlerberichte im Forum, bei OpenATV Enigma2 oder OE-Alliance
 - HDD/USB: Einhängen, Aushängen, Mountpunkte, Formatieren und Dateisystemprüfung
 - Tuner und Sendersuche
 - LAN, WLAN, NAS und Netzwerkfreigaben
@@ -20,7 +24,7 @@ Die gemeinsame, modellneutrale Grunddokumentation für OpenATV: Deutsch und Engl
 - Einstellungsreferenz mit vorhandenen Beschriftungen und Originalhilfetexten
 - Erweiterbare Bereiche für Skins, Add-ons und spätere Anhänge
 
-Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 23 Kapitel pro Sprache enthalten echte Bildschirmaufnahmen: insgesamt 140 ausgewählte Bilder mit OpenATV 8.0.2-devel und MetrixHD. Davon zeigen 114 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für die zusätzlichen Skin-Kapitel.
+Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 27 Kapitel pro Sprache enthalten echte Bildschirmaufnahmen: insgesamt 146 ausgewählte Bilder mit OpenATV 8.0.2-devel und MetrixHD. Davon zeigen 120 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für die zusätzlichen Skin-Kapitel.
 
 Die vorhandene NAS-Freigabe und die HDD wurden auf Schreib- und Lesezugriff geprüft. Ihre Einbindung sowie Tuner- und LAN-Konfiguration blieben erhalten. Für einheitliche Bilder wurde MetrixHD verwendet; nach den DE/EN-Läufen wurde die ursprüngliche Sprache wiederhergestellt. Einzelne Assistentenansichten sind bebildert, der vollständige Neuinstallationsablauf ist noch nicht durchgetestet. WLAN und FBC folgen auf passender Hardware. Der [Prüfstand](docs/PRAXISTESTS.md) trennt aufgenommene Ansichten von vollständig getesteten Bedienabläufen.
 
@@ -38,7 +42,7 @@ pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Die Vorschauadresse wird im Terminal ausgegeben. Öffne unter diesem Host `/enimga2-doku/de/` oder `/enimga2-doku/en/`. Der Repository-Name **enimga2-doku** enthält dieselbe Schreibweise wie das vorhandene Git-Remote.
+Die Vorschauadresse wird im Terminal ausgegeben. Öffne unter diesem Host `/enigma2-doku/de/` oder `/enigma2-doku/en/`. Repository, GitHub-Pages-Projektpfad und Bearbeitungslinks verwenden **enigma2-doku**.
 
 Die vollständige Suche steht im gebauten Ergebnis zur Verfügung:
 
@@ -57,7 +61,7 @@ pnpm preview
 2. Im Repository **Settings → Pages → Build and deployment → Source → GitHub Actions** wählen.
 3. Den lokalen Commit nach `main` hochladen.
 4. Unter **Actions → Build and publish handbook** den Lauf prüfen. Falls Pages erst nach dem Upload aktiviert wurde, den Workflow über **Run workflow** erneut ausführen.
-5. Nach erfolgreicher Bereitstellung die Adresse aus **Settings → Pages** öffnen. Erwarteter Einstieg: [OpenATV-Handbuch](https://openatv.github.io/enimga2-doku/de/). Dieser Link ist erst nach einer erfolgreichen Veröffentlichung verfügbar.
+5. Nach erfolgreicher Bereitstellung die Adresse aus **Settings → Pages** öffnen. Erwarteter Einstieg: [OpenATV-Handbuch](https://openatv.github.io/enigma2-doku/de/). Dieser Link ist erst nach einer erfolgreichen Veröffentlichung verfügbar.
 
 Der Workflow installiert die festgelegten Abhängigkeiten, prüft Quellcode und Katalog, baut beide Sprachen, kontrolliert interne Links und den Suchindex, prüft die Größe und veröffentlicht. Pull Requests werden nur gebaut und geprüft. Erst Änderungen auf `main` beziehungsweise ein manueller Lauf auf dem vorgesehenen Branch veröffentlichen. Die `github-pages`-Umgebung sollte in GitHub auf `main` beschränkt werden.
 
@@ -83,7 +87,7 @@ Nach einem Import den Diff prüfen, neue oder geänderte Optionen redaktionell b
 
 ## Platzbedarf und Apache2
 
-`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Für die 140 freigegebenen Aufnahmen enthält die Website das Original-PNG zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build einschließlich zusätzlicher Sprachauswahl belegt rund 85,59 MB, etwa 8,56 Prozent des Budgets.
+`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Für die 146 freigegebenen Aufnahmen enthält die Website das Original-PNG zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit 106 Inhalten je Sprache und zusätzlicher Sprachauswahl belegt rund 89,95 MB, etwa 9,00 Prozent des Budgets.
 
 Bei einem Wechsel auf Apache2 wird dieselbe Website für die neue Adresse gebaut. Sie benötigt dort nur statische Dateiauslieferung. [Apache2-Bereitstellung](docs/APACHE2.md).
 

@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capture_tool": "https://github.com/openatv/enigma2-plugin-test",
-  "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+  "capture_tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1",
   "captures": [
     {
       "id": "main-menu",
@@ -2940,6 +2940,132 @@
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
       "capture_tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "logging-settings",
+      "language": "de",
+      "article": "hilfe/logs-diagnose",
+      "screen_key": "Logs",
+      "captured_at": "2026-09-10T04:56:08.347634+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "75d1d0b0e82df743c64a4d84e23f54356a6d6a30a68ffcad4c38dac67b017d2a",
+      "file": "de/logging-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autorestore-mode",
+      "language": "de",
+      "article": "wartung/autorestore",
+      "screen_key": "SoftwareManager",
+      "captured_at": "2026-09-10T04:56:12.129490+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "fe1197945fd1db5c3d4ee38b63d52a70abf176f61c80f58b009fca2689c6bd7f",
+      "file": "de/autorestore-mode.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "network-access",
+      "language": "de",
+      "article": "netzwerk/fernzugriff",
+      "screen_key": "network",
+      "captured_at": "2026-09-10T04:56:15.973369+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "12dfe4e6dd0e5b3ff9158f04411ab92ed0c6e0c000e74b5e95d1cdd673868b90",
+      "file": "de/network-access.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "logging-settings",
+      "language": "en",
+      "article": "hilfe/logs-diagnose",
+      "screen_key": "Logs",
+      "captured_at": "2026-09-10T04:56:44.720636+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "501023407d363193db07cf8fec9ca96567542fef5d317947265639c618af74b6",
+      "file": "en/logging-settings.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "autorestore-mode",
+      "language": "en",
+      "article": "wartung/autorestore",
+      "screen_key": "SoftwareManager",
+      "captured_at": "2026-09-10T04:56:48.440116+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "965dec07fa1893acff8c27d2698af3062e9ea5ff0a20ef23f4da11a49b123866",
+      "file": "en/autorestore-mode.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "network-access",
+      "language": "en",
+      "article": "netzwerk/fernzugriff",
+      "screen_key": "network",
+      "captured_at": "2026-09-10T04:56:52.299519+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1f04ead1a5b32072b1faa58c5acec81189bc7c0d56e23f6484aacaaca2912089",
+      "file": "en/network-access.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     }

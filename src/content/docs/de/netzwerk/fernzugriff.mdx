@@ -1,0 +1,126 @@
+---
+title: SSH, Dateien und Root-Passwort
+description: Root-Passwort setzen, per SSH oder Telnet auf OpenATV zugreifen, Enigma2 stoppen und starten sowie Logs mit SFTP oder FTP herunterladen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Über das Netzwerk kannst du Dateien von der Box holen und Wartungsbefehle ausführen. **SSH** öffnet eine verschlüsselte Konsole, **SFTP** überträgt Dateien über SSH. Beide verwenden üblicherweise denselben Benutzer `root` und dessen Passwort. Dieser Benutzer darf das gesamte System verändern.
+
+## Verbindung vorbereiten
+
+Verbinde PC und Receiver mit deinem lokalen Netzwerk. Lies die IP-Adresse am Receiver in den [Netzwerkeinstellungen](../lan/) ab. In den folgenden Befehlen ersetzt du **`BOX-IP` durch diese Adresse**. Ein SSH-Befehl wird im Terminal des PCs eingegeben; die nach der Anmeldung gezeigten Linux-Befehle laufen auf dem Receiver.
+
+| Zugang | Standardport | Verwendung |
+| --- | --- | --- |
+| SSH | 22 | Verschlüsselte Konsole, bevorzugt für Wartung. |
+| SFTP | 22 | Verschlüsselte Dateiübertragung über SSH. Benötigt auch das SFTP-Subsystem auf der Box. |
+| FTP | 21 | Dateiübertragung; normales FTP überträgt Anmeldung und Daten unverschlüsselt. |
+| Telnet | 23 | Unverschlüsselte Konsole für vorhandene ältere Arbeitsabläufe. |
+
+Die installierten und gestarteten Dienste findest du unter **Menü → Einstellungen → Netzwerk → Netzwerkdienste**. Ports können geändert sein; nicht jedes Image startet alle Dienste. Verwende SSH und SFTP, wenn sie verfügbar sind. Diese Anleitung beschreibt Zugriff im eigenen Netz; richte dafür keine Internet-Portfreigabe am Router ein.
+
+## Root-Passwort einrichten
+
+Öffne **Menü → Einstellungen → Netzwerk → Passwort einrichten**. Falls der Eintrag fehlt, prüfe die Expertenansicht.
+
+<Capture id="network-access" language="de" alt="Netzwerkmenü mit dem markierten Eintrag Passwort einrichten und dem Eintrag Netzwerkdienste" caption="Passwort und Netzwerkdienste befinden sich im Netzwerkmenü. Für die Aufnahme wurde kein Passwort geändert." />
+
+Gib ein eigenes Passwort ein, speichere es sicher und bestätige mit der eingeblendeten Speicherfunktion. Der Dialog setzt ein **neues** Passwort; ein leeres Eingabefeld zeigt nicht, ob bereits eines existiert. Die zufällige Passwortfunktion ist eine mögliche Alternative zur eigenen Eingabe. Warte auf die Erfolgsmeldung und prüfe anschließend eine neue SSH-Anmeldung mit dem neuen Passwort.
+
+Eine Box kann je nach Installations- und Restore-Zustand ein leeres oder bereits gesetztes Passwort haben. Es gibt kein hier vorausgesetztes gemeinsames OpenATV-Standardpasswort. Ist der Zugang ohne Passwort noch möglich, richte ein eigenes ein.
+
+Nach einer bestehenden SSH-Anmeldung als `root` kannst du das Passwort auch interaktiv setzen:
+
+```sh
+passwd
+```
+
+Gib das neue Passwort zweimal ein. Dass bei der Eingabe keine Zeichen erscheinen, ist normal. Schreibe das Passwort nicht als Befehlsargument in eine Anleitung oder einen Fehlerbericht. Eine bereits offene Sitzung bleibt kein verlässlicher Test für das neue Passwort; teste eine zweite Anmeldung.
+
+Das Root-Passwort ist nicht die Jugendschutz-PIN und nicht das Passwort deiner NAS-Freigabe. Auch die Anmeldung an Weboberflächen ist separat zu prüfen. Nach einer [Einstellungswiederherstellung](../../wartung/autorestore/) kann wieder das Root-Passwort aus der Sicherung gelten.
+
+## SSH-Verbindung öffnen
+
+Öffne unter Windows PowerShell oder Windows Terminal; unter Linux oder macOS ein Terminal. Wenn der SSH-Client installiert ist, verbindest du dich so:
+
+```sh
+ssh root@BOX-IP
+```
+
+Beim ersten Kontakt zeigt der Client den Hostschlüssel der Gegenstelle. Prüfe, dass du die richtige Box erreichst, bevor du ihn annimmst. Nach einem neuen Flash kann sich der Hostschlüssel ändern. Kläre eine entsprechende Warnung anhand der neuen Installation und der IP-Adresse; schalte die Prüfung nicht dauerhaft ab.
+
+Gib bei der Passwortabfrage dein Root-Passwort ein. Mit `exit` schließt du die Sitzung. Die Box wird dadurch nicht ausgeschaltet.
+
+Falls du für einen bestehenden Ablauf Telnet benötigst und Client sowie Server vorhanden sind:
+
+```sh
+telnet BOX-IP
+```
+
+Melde dich als `root` mit dem eingerichteten Passwort an. Auch hier beendet `exit` die Sitzung. Telnet verschlüsselt die Verbindung nicht.
+
+## Enigma2 stoppen und starten
+
+Für normale Neustarts nutze die Fernbedienung und **Bedienoberfläche neu starten**. Für Wartung über SSH oder Telnet verwendet der geprüfte OpenATV-Stand die folgenden Runlevel-Befehle.
+
+**Vorher:** Aufnahmen und Timeshift beenden und keinen Flash-, Update- oder Restore-Vorgang unterbrechen. Beim Stoppen beendet sich die Oberfläche mit Live-TV und ihren Diensten; der Bildschirm kann schwarz werden oder das Bootlogo zeigen. Das Betriebssystem läuft weiter.
+
+Enigma2 stoppen:
+
+```sh
+init 4
+```
+
+Warte auf das Ende des Prozesses. Zur Kontrolle:
+
+```sh
+pidof enigma2
+```
+
+Keine Ausgabe bedeutet, dass kein Prozess dieses Namens läuft. Danach kannst du die vorgesehene Wartung durchführen, etwa eine zuvor gesicherte Konfigurationsdatei bearbeiten.
+
+Enigma2 wieder starten:
+
+```sh
+init 3
+```
+
+Warte auf die Oberfläche und kontrolliere die Funktion. Ein GUI-Neustart über die Konsole besteht aus **Stopp → Ende abwarten → Start**; sende die Befehle nicht als unkontrollierte unmittelbare Folge. Auf der geprüften Box sind die Netzwerkdienste in beiden Runlevels eingerichtet, sodass die SSH-Verbindung für diesen Ablauf nutzbar bleibt.
+
+`killall enigma2` ist kein gleichwertiger dauerhafter Stopp: Der überwachte Prozess kann sofort wieder starten. Starte auch nicht einfach `enigma2` zusätzlich in einer Shell; der reguläre Startweg richtet seine Umgebung ein. Einen kompletten Receiver-Neustart brauchst du nur, wenn der Wartungsschritt ihn verlangt.
+
+## Dateien mit SFTP oder FTP übertragen
+
+Beispiel mit **WinSCP** oder einem vergleichbaren Dateiübertragungsprogramm:
+
+1. Lege eine Verbindung mit Protokoll **SFTP** an.
+2. Trage IP-Adresse der Box, Port **22**, Benutzer **root** und dein Passwort ein. Prüfe den Hostschlüssel beim ersten Verbinden.
+3. Öffne rechts das gewünschte Verzeichnis auf der Box, zum Beispiel **`/home/root/logs/`**.
+4. Wähle links einen lokalen Ordner und lade die passende Log-Datei dorthin herunter. Du musst dafür keine Dateien auf der Box ändern.
+5. Trenne die Verbindung nach der Übertragung.
+
+Für einen vorhandenen FTP-Server wählst du ausdrücklich **FTP**, üblicherweise Port **21**, und dieselben Anmeldedaten, sofern der Dienst Root-Anmeldung erlaubt. SFTP und FTPS sind unterschiedliche Protokolle; ein Protokollwechsel allein aktiviert keinen passenden Server.
+
+| Ort auf der Box | Typischer Inhalt |
+| --- | --- |
+| `/etc/enigma2/` | Enigma2-Konfiguration, Sender- und Bouquet-Dateien; vor Änderungen sichern. |
+| `/etc/enigma2/settings` | Viele zentrale Einstellungswerte. Nur bei gestopptem Enigma2 manuell bearbeiten. |
+| `/home/root/logs/` | Standardordner der Debug- und Crashlogs. |
+| `/home/root/FastRestore.log` | Separates Protokoll der frühen Wiederherstellung. |
+| `/media/hdd/` | Inhalt des dort eingehängten Laufwerks. Der Pfad allein beweist keine vorhandene HDD. |
+| `/tmp/` | Temporäre Dateien, nicht als dauerhafter Sicherungsort geeignet. |
+
+Für NAS-Dateien verwendest du den tatsächlich eingerichteten [Mountpunkt](../freigaben/). Kopiere keine Dateien in einen vermeintlichen Laufwerksordner, ohne die Einbindung zu prüfen: Sonst landen sie möglicherweise im internen Flash.
+
+## Wenn die Verbindung scheitert
+
+- **Zeitüberschreitung:** IP-Adresse, Kabel/WLAN, gemeinsames Netzwerk und Erreichbarkeit prüfen.
+- **Verbindung abgelehnt:** Dienst nicht gestartet, anderer Port oder Dienst nicht installiert; Netzwerkdienste kontrollieren.
+- **Anmeldung abgelehnt:** Benutzer `root`, gesetztes Passwort und Dienstregeln prüfen. Nach AutoRestore kann das gesicherte Passwort gelten.
+- **SSH geht, SFTP nicht:** Das SFTP-Subsystem kann fehlen. Das Paket heißt im geprüften Image `openssh-sftp-server`; seine Verfügbarkeit im passenden Feed prüfen und bei Bedarf über die Paketverwaltung installieren.
+- **Log-Ordner leer:** Eingestellten Speicherort und Log-Stufe wie unter [Logs aktivieren und finden](../../hilfe/logs-diagnose/) prüfen.
+
+**Prüfstand:** SSH und eine lesende SFTP-Verbindung wurden an der Testbox geprüft. Runlevel-Steuerung und Netzwerkdienste wurden aus ihrer installierten Konfiguration geprüft. Für dieses Kapitel wurde kein Passwort verändert.
+
+Quellen: [Passwort- und Netzwerkdialoge](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkServices.py), [Enigma2-Startumgebung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/tools/enigma2.sh.in), [SSH-Handbuch](https://man.openbsd.org/ssh), [SFTP-Handbuch](https://man.openbsd.org/sftp), [WinSCP-Anmeldedialog](https://winscp.net/eng/docs/ui_login).

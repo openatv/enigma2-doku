@@ -9,6 +9,8 @@ import Capture from '../../../../components/Capture.astro';
 
 ## Prepare
 
+See [Software update or Flash Online?](../software-update/) to choose between updating packages and installing an image. For boot/recovery installation, read [Prepare a USB drive](../usb-installation/) and the linked instructions for your exact model.
+
 Create a [backup](../backup-restore/), check the network connection and provide space for downloading and extracting the image. The backup or download drive and the **target slot** are different: the drive stores the file; the slot receives the installed image.
 
 To keep your current image, first open [MultiBoot Manager](../multiboot/) and note the slot marked **Active**. You need a **different** suitable slot whose contents may be overwritten. **Cancel the flash process if you cannot identify a separate target slot unambiguously.**
@@ -31,6 +33,8 @@ The slot selection marks the current image. The default selection may neverthele
 Choose the different slot you checked beforehand. Flashing replaces any image already installed there. An empty slot is suitable only if the receiver offers it as a flash target. Slot numbers are not universal recommendations: an example's “Slot 4” may not exist on your receiver.
 
 ## Backup and settings after flashing
+
+[AutoRestore and add-ons](../autorestore/) explains the four restore choices, Turbo/Fast/Slow, backup media and plugin reinstallation, including where to find the restore log.
 
 The wizard may offer a settings backup before flashing and choices for restoring settings afterwards. Decide whether to start with your previous settings or a fresh configuration. Depending on your choices, plugins can also be reinstalled.
 

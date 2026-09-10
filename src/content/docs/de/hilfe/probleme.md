@@ -31,6 +31,18 @@ Prüfe Empfang, die gelieferten Programmdaten und gegebenenfalls die zusätzlich
 
 Ein Skin verändert die Darstellung. Dieses Handbuch erklärt die gemeinsame Oberfläche anhand der Menütexte und Aktionen. [Skins verstehen](../../skins/).
 
+## Wo finde ich Logs und wohin melde ich einen Fehler?
+
+Normale Enigma2-Logs liegen standardmäßig unter **`/home/root/logs/`**. Das frühe Restore-Protokoll liegt separat unter **`/home/root/FastRestore.log`**. [Logs aktivieren und finden](../logs-diagnose/) erklärt auch abweichende Speicherorte und die Übertragung auf den PC. [Fehler melden](../fehler-melden/) nennt die passenden Forum-/GitHub-Adressen und eine Berichtsvorlage.
+
+## Wie komme ich an das richtige neue Image?
+
+Nutze [Downloads und Modelle](../downloads-modelle/) für den offiziellen Einstieg und die modellspezifische Flash-Anleitung. [Softwareupdate oder Flash Online?](../../wartung/software-update/), [USB-Neuinstallation](../../wartung/usb-installation/) und [AutoRestore](../../wartung/autorestore/) führen durch Auswahl, Vorbereitung und Rückübernahme.
+
+## Wie setze ich ein Passwort oder starte Enigma2 per Konsole neu?
+
+[SSH, Dateien und Root-Passwort](../../netzwerk/fernzugriff/) erklärt das Netzwerkmenü, `passwd`, `init 4` / `init 3` und SFTP/FTP. Die Anleitung unterscheidet einen GUI-Neustart vom Neustart der ganzen Box.
+
 ## Welche Teile sind bereits geprüft?
 
 Die Grundanleitungen wurden anhand des OpenATV-8.0-Quellstands erstellt. Das Verzeichnis übernimmt vorhandene Hilfetexte und zeigt noch nicht zugeordnete Menüwege offen an. Eine vollständige Prüfung aller Abläufe auf einer laufenden Installation ist damit nicht behauptet. Angaben zum Quellstand stehen an den jeweiligen Artikeln.

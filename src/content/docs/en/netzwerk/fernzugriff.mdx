@@ -1,0 +1,126 @@
+---
+title: SSH, file access and the root password
+description: Set a root password, connect to OpenATV using SSH or Telnet, stop and start Enigma2, and download logs through SFTP or FTP.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Network access lets you download files and run maintenance commands. **SSH** provides an encrypted console; **SFTP** transfers files through SSH. Both normally use the `root` account and its password. This account can change the entire system.
+
+## Prepare the connection
+
+Connect the computer and receiver to your local network. Find the receiver's IP address in its [network settings](../lan/). Replace **`BOX-IP` with that address** in the examples below. Enter the SSH command in your computer's terminal; after login, Linux commands run on the receiver.
+
+| Protocol | Default port | Purpose |
+| --- | --- | --- |
+| SSH | 22 | Encrypted console, preferred for maintenance. |
+| SFTP | 22 | Encrypted file transfer through SSH. Requires an SFTP subsystem on the receiver. |
+| FTP | 21 | File transfer; ordinary FTP sends credentials and data without encryption. |
+| Telnet | 23 | Unencrypted console for existing older workflows. |
+
+Check installed and running services under **Menu → Setup → Network → Network Services**. Ports may have been changed, and not every image starts every service. Prefer SSH and SFTP where available. This guide covers your own network; do not create router internet port forwarding for these steps.
+
+## Set the root password
+
+Open **Menu → Setup → Network → Password Settings**. Check Expert mode if the entry is missing.
+
+<Capture id="network-access" language="en" alt="Network menu with Password Settings highlighted and Network Services visible" caption="Password settings and network services are in the Network menu. No password was changed for this capture." />
+
+Enter your own password, store it securely and use the displayed save action. This dialog sets a **new** password; an empty input field does not tell you whether a password already exists. The random-password function is an alternative to choosing one yourself. Wait for confirmation and test a new SSH login with the new password.
+
+A receiver may have an empty or existing password depending on its installation and restore history. This guide assumes no shared OpenATV default password. If passwordless login is still possible, set your own password.
+
+From an existing SSH session logged in as `root`, you can also set it interactively:
+
+```sh
+passwd
+```
+
+Enter the new password twice. It is normal for no characters to appear while typing. Do not put a password in command arguments or a bug report. An already open session does not verify the new password; test a second login.
+
+The root password is separate from the parental-control PIN and your NAS credentials. Check web-interface authentication separately too. After a [settings restore](../../wartung/autorestore/), the root password from the backup may apply again.
+
+## Open an SSH connection
+
+Open PowerShell or Windows Terminal on Windows, or a terminal on Linux or macOS. With an SSH client installed, connect using:
+
+```sh
+ssh root@BOX-IP
+```
+
+On first contact, the client displays the remote host key. Check that you are connecting to the intended receiver before accepting it. A new flash can change that key. Investigate a warning using the installation history and IP address; do not permanently disable host-key checking.
+
+Enter your root password when prompted. Use `exit` to close the session. This does not switch the receiver off.
+
+If an existing workflow needs Telnet and both client and server are present:
+
+```sh
+telnet BOX-IP
+```
+
+Log in as `root` with the configured password. `exit` closes the session. Telnet does not encrypt this connection.
+
+## Stop and start Enigma2
+
+For ordinary interface restarts, use **Restart GUI** with the remote control. For SSH or Telnet maintenance, the checked OpenATV installation uses these runlevel commands.
+
+**Before stopping:** Finish recordings and timeshift, and do not interrupt a flash, update or restore operation. Stopping the interface also stops live TV and functions it manages; the screen may turn black or show the boot logo. The operating system remains running.
+
+Stop Enigma2:
+
+```sh
+init 4
+```
+
+Wait for the process to end. Check with:
+
+```sh
+pidof enigma2
+```
+
+No output means no process with that name is running. You can then perform the intended maintenance, such as editing a configuration file you have already backed up.
+
+Start Enigma2 again:
+
+```sh
+init 3
+```
+
+Wait for the interface and check its operation. A console GUI restart means **stop → wait for termination → start**, not sending both commands immediately without checking. On the checked receiver, network services are configured in both runlevels, keeping SSH usable for this workflow.
+
+`killall enigma2` is not an equivalent lasting stop: supervision may immediately start the process again. Do not simply run another `enigma2` process in a shell; the normal startup wrapper prepares its environment. Reboot the complete receiver only when the maintenance step calls for it.
+
+## Transfer files with SFTP or FTP
+
+Example using **WinSCP** or a similar transfer client:
+
+1. Create a connection using the **SFTP** protocol.
+2. Enter the receiver's IP, port **22**, username **root** and your password. Check the host key on first connection.
+3. Open the receiver directory on the remote side, for example **`/home/root/logs/`**.
+4. Choose a local folder and download the relevant log there. Downloading does not require changing receiver files.
+5. Disconnect when finished.
+
+For an existing FTP server, explicitly choose **FTP**, normally port **21**, and the same credentials if the service permits root login. SFTP and FTPS are different protocols; changing the client selection does not activate a matching server.
+
+| Receiver path | Typical contents |
+| --- | --- |
+| `/etc/enigma2/` | Enigma2 configuration, channel and bouquet files; back up before editing. |
+| `/etc/enigma2/settings` | Many central settings. Edit manually only with Enigma2 stopped. |
+| `/home/root/logs/` | Default debug and crash log directory. |
+| `/home/root/FastRestore.log` | Separate early-restore log. |
+| `/media/hdd/` | Contents of the drive mounted there. The directory alone does not prove an HDD is mounted. |
+| `/tmp/` | Temporary files, unsuitable for permanent backups. |
+
+For NAS files, use the actual configured [mount point](../freigaben/). Check the mount before copying into a supposed drive directory; otherwise files may end up in internal flash.
+
+## When a connection fails
+
+- **Timeout:** Check IP address, cable/Wi-Fi, the shared network and reachability.
+- **Connection refused:** The service may be stopped, absent or listening on another port. Check Network Services.
+- **Authentication failed:** Check username `root`, password and service rules. AutoRestore may reinstate the backed-up password.
+- **SSH works but SFTP fails:** The SFTP subsystem may be missing. The checked image uses package `openssh-sftp-server`; check the matching feed and install through package management if needed.
+- **Empty log folder:** Check the destination and logging level in [Enable and find logs](../../hilfe/logs-diagnose/).
+
+**Verification:** SSH and a read-only SFTP connection were tested on the receiver. Runlevel control and network services were checked in its installed configuration. No password was changed for this chapter.
+
+Sources: [Password and network dialogs](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkServices.py), [Enigma2 startup environment](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/tools/enigma2.sh.in), [SSH manual](https://man.openbsd.org/ssh), [SFTP manual](https://man.openbsd.org/sftp), [WinSCP login dialog](https://winscp.net/eng/docs/ui_login).

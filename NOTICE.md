@@ -28,6 +28,8 @@ Weitere 26 Aufnahmen aus der Tasten-/Wartungsserie ergänzen diesen Bestand auf 
 
 Das separate Aufnahmeplugin basiert auf [openatv/enigma2-plugin-test](https://github.com/openatv/enigma2-plugin-test), GPL-3.0. Sein Quellcode wird nicht in dieses GPL-2.0-Dokumentationsrepository kopiert. Die Commitangabe im Bildinventar bezeichnet den lokalen Werkzeugstand; er muss separat hochgeladen werden, bevor er auf GitHub abrufbar ist.
 
+Weitere sechs Bilder der Diagnose-Serie ergänzen den Bestand auf 146. Sie zeigen Log-Einstellungen, AutoRestore-Modus und Netzwerkmenü in DE/EN mit neutralem Bootlogo. Werkzeugstand: `befcd21743810dcb4d603471649e3e64d1c3eef1`. Es werden keine tatsächlichen Logdateien, Passwörter oder Sicherungsarchive veröffentlicht. Die Anleitung zur frühen Wiederherstellung wurde zusätzlich mit dem installierten Startskript der Testbox abgeglichen; das Skript selbst wird nicht in dieses Repository kopiert.
+
 ## MetrixHD und MyMetrixLite
 
 Die ergänzenden Anleitungen wurden anhand von [openatv/MetrixHD](https://github.com/openatv/MetrixHD/tree/c26f35adc71480851291a44da243ec0ba7b8a400) erstellt. Der installierte und für die Dialoge geprüfte Stand ist `c26f35adc71480851291a44da243ec0ba7b8a400`. Die MyMetrixLite-Quelldateien nennen Creative Commons BY-NC-SA 3.0; ihre Autoren- und Lizenzhinweise bleiben beim Originalprojekt. Die Originalmodule werden nicht in dieses Repository kopiert. Die Anleitungen sind redaktionell geschrieben und verlinken ihre Quellen. Screenshots enthalten die Gestaltung des Skins, Senderlogos und gegebenenfalls Programmbilder mit den jeweiligen Rechten ihrer Urheber.

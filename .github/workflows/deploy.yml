@@ -17,7 +17,7 @@ concurrency:
 env:
   ASTRO_TELEMETRY_DISABLED: '1'
   SITE_URL: https://openatv.github.io
-  BASE_PATH: /enimga2-doku
+  BASE_PATH: /enigma2-doku
 
 jobs:
   build:

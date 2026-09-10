@@ -158,3 +158,39 @@ Bildprovenienz: Aufnahmeplugin `60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3`. Die v
 - Rund 83,10 MB in 997 veröffentlichten Dateien; 8,31 Prozent des konservativen 1-GB-Budgets.
 
 Es wurde ausschließlich lokal committed. Die Website bleibt ohne Boxzugriff baubar; alle erzeugten privaten Dateien und Sicherungsarchive sind von der Veröffentlichung ausgeschlossen.
+
+## Ergänzung: Neuinstallation, Fernzugriff, Logs und Support
+
+Am 10. September 2026 wurden sieben weitere Kapitel je Sprache ergänzt: Downloads/Modelle, USB-Neuinstallation, Softwareupdate, AutoRestore, SSH/Dateizugriff/Passwort, Logs und Fehlerberichte. Die Anleitungen bleiben modellneutral. Einschaltfolgen und Recovery-Besonderheiten werden bewusst an die Hersteller-/Modellanleitungen im Forum angebunden.
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| Downloads und Modelle | Offizieller Einstieg mit `v=current` im Browser geöffnet; Gerätesuche, Hersteller und Versionswahl vorhanden. Keine feste Versions- oder Modellanzahl in die Anleitung kopiert |
+| Forum | Herstellerbereich unter `viewforum.php?f=454` im Browser geprüft |
+| Fehlerberichte | OpenATV-Enigma2- und OE-Alliance-Core-Issueseiten geprüft; Hinweis auf mögliche Einschränkungen beim Erstellen neuer Issues und Forum als Einstieg bei unklarer Zuordnung |
+| Menü-/Quellprüfung | OpenATV-Enigma2 `fdc9347241245fd18fd0b8bc93727237189c916c`: Logs, Password Settings, SoftwareUpdate, FlashManager, BackupRestore, Benutzer-/Paketwiederherstellung und Crashlog-Pfade |
+| FastRestore | Installiertes `/etc/init.d/settings-restore` gelesen: frühe Wiederherstellung, Modus-/Umfangsmarkierungen, Paketlisten, lokale IPKs und `/home/root/FastRestore.log` abgeglichen |
+| SSH und SFTP | SSH lesend genutzt; SFTP-Anmeldung und Verzeichnisabfrage erfolgreich. Das Image enthält `openssh-sftp-server` neben Dropbear |
+| Enigma2 starten/stoppen | Installierte `/etc/inittab` geprüft: GUI wird in Runlevel 3 überwacht, Runlevel 4 stoppt sie. SSH-/Telnet-/FTP-Dienste sind in beiden Runlevels eingerichtet |
+| Log-Dateien | Bereits aktivierte ausführliche Protokollierung beobachtet; neue `*-enigma2-debug.log` unter `/home/root/logs/` vorhanden. Menübezeichnung `/home/root/` und tatsächlicher Unterordner getrennt erklärt |
+| Neue Aufnahmen | Profil `diagnostics`: drei native Ansichten je Sprache; Log-Einstellungen, AutoRestore-Modus und Netzwerkmenü mit markiertem Passwort-Eintrag |
+| Sichtprüfung | Alle sechs DE/EN-Bilder einzeln auf Ansicht, Beschriftung, Sprache und neutralen Bootlogo-Hintergrund geprüft; Prüfsummen vor Import abgeglichen |
+| Unveränderte Einrichtung | Keine Log-Einstellung gespeichert, kein Root-Passwort geändert, kein Paketupgrade, Flash oder Restore ausgelöst. In dieser Ergänzung kein Laufwerk formatiert oder umkonfiguriert |
+| Übergabe der Box | Nach den Sprachneustarts ursprüngliches `de_DE` wiederhergestellt; GUI und Aufnahmedienst wieder verfügbar |
+
+Der Aufnahmeplugin-Stand ist `befcd21743810dcb4d603471649e3e64d1c3eef1`; seine 21 Python-Tests bestanden. Die sechs neuen Bilder aus `diagnostics-a-de-diagnostics` und `diagnostics-a-en-diagnostics` ergänzen die Bibliothek auf 146. Alle bisherigen Bilder behalten ihre jeweilige Provenienz. Der lokal gelesene Restore-Skriptstand hat SHA-256 `2d0ed4a0a7748497d97515ac9fd9cb945ceeed0acd5ceda0468a1b06858fc661`; das Skript und rohe Systemdaten werden nicht veröffentlicht.
+
+### Website und korrigierter Repository-Name
+
+Das Repository heißt jetzt **`openatv/enigma2-doku`**. Git-Remote, Pages-Basispfad, Workflow, GitHub-/Bearbeitungslinks, Vorschauanleitung und Testfälle verwenden diesen Namen. Das Remote war vom Betreiber bereits angepasst. Eine Suche im gebauten Ergebnis fand keinen Verweis mehr auf die frühere fehlerhafte Schreibweise.
+
+- 214 HTML-Seiten, 106 Inhalte je Sprache und 27 bebilderte Kapitel je Sprache.
+- 146 Original-PNGs und 438 responsive WebP-Dateien; Herkunft, Prüfsummen und DE/EN-Paare geprüft.
+- Astro: 21 Dateien geprüft, keine Fehler, Warnungen oder Hinweise.
+- Handbuch: alle 11 Node-Tests und 8 Python-Tests bestanden.
+- Produktionsbuild für GitHub Pages unter `/enigma2-doku` sowie für Apache am Domain-Ursprung erfolgreich. Links, Medien, Sprungmarken und Sprachgegenstücke geprüft.
+- Je 51 Suchprüfungen für beide Hosting-Varianten erfolgreich, einschließlich FAT32, AutoRestore, SFTP/Root-Passwort, FastRestore.log, Debug-Konfigurationsschlüssel, Modelle und Fehlerberichte.
+- Deutsche Log-Anleitung im lokalen Browser unter dem neuen Projektpfad geöffnet; Kapiteltext, Bildlink, Navigation und GitHub-Bearbeitungslink kontrolliert. Suchergebnisse wurden automatisiert gegen den echten Pagefind-Index geprüft.
+- Veröffentlichungsgröße: rund 89,95 MB in 1053 Dateien, etwa 9,00 Prozent des konservativen 1-GB-Budgets.
+
+Ein vollständiger USB-Flash, AutoRestore, absichtlich ausgelöster Crash oder Root-Passwortwechsel wurde für diese Ergänzung nicht getestet. Die dokumentierten Abläufe unterscheiden diese Grenzen von den tatsächlich geprüften Menüansichten und Lesezugriffen. Änderungen werden ausschließlich lokal committed; der Upload erfolgt durch den Betreiber.

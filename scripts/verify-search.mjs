@@ -7,7 +7,7 @@ import assert from 'node:assert/strict';
 import { normaliseBase } from './build-utils.mjs';
 
 const root = path.resolve('dist');
-const base = normaliseBase(process.env.BASE_PATH || '/enimga2-doku');
+const base = normaliseBase(process.env.BASE_PATH || '/enigma2-doku');
 let language = 'de';
 globalThis.document = {
   currentScript: null,
@@ -25,6 +25,22 @@ globalThis.fetch = async input => {
 };
 const pagefind = await import(pathToFileURL(path.join(root, 'pagefind/pagefind.js')));
 const checks = [
+  ['de', 'FAT32', '/de/wartung/usb-installation/'],
+  ['en', 'FAT32', '/en/wartung/usb-installation/'],
+  ['de', 'AutoRestore', '/de/wartung/autorestore/'],
+  ['en', 'AutoRestore', '/en/wartung/autorestore/'],
+  ['de', 'Softwareupdate', '/de/wartung/software-update/'],
+  ['en', 'software update', '/en/wartung/software-update/'],
+  ['de', 'SFTP', '/de/netzwerk/fernzugriff/'],
+  ['en', 'root password', '/en/netzwerk/fernzugriff/'],
+  ['de', 'FastRestore.log', '/de/hilfe/logs-diagnose/'],
+  ['en', 'FastRestore.log', '/en/hilfe/logs-diagnose/'],
+  ['de', 'config.crash.debugLevel', '/de/hilfe/logs-diagnose/'],
+  ['en', 'config.crash.debugLevel', '/en/hilfe/logs-diagnose/'],
+  ['de', 'Fehlerbericht', '/de/hilfe/fehler-melden/'],
+  ['en', 'bug report', '/en/hilfe/fehler-melden/'],
+  ['de', 'Modelle', '/de/hilfe/downloads-modelle/'],
+  ['en', 'supported models', '/en/hilfe/downloads-modelle/'],
   ['de', 'Blau lang', '/de/erste-schritte/farbtasten-langdruck/'],
   ['en', 'long Blue', '/en/erste-schritte/farbtasten-langdruck/'],
   ['de', 'displayHelpLong', '/de/anhaenge/langtasten/'],

@@ -3,7 +3,7 @@ import path from 'node:path';
 import { walk, localTarget, normaliseBase } from './build-utils.mjs';
 
 const root = path.resolve('dist');
-const base = normaliseBase(process.env.BASE_PATH || '/enimga2-doku');
+const base = normaliseBase(process.env.BASE_PATH || '/enigma2-doku');
 const origin = process.env.SITE_URL || 'https://openatv.github.io';
 const files = await walk(root);
 const known = new Set(files.map(file => path.relative(root, file).split(path.sep).join('/')));

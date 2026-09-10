@@ -1,0 +1,57 @@
+---
+title: Softwareupdate oder Flash Online?
+description: Paketupdates aus Enigma2, Feed-Ampel und Updateeinstellungen verstehen und bei Versionswechseln oder großen Updates Flash Online verwenden.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Softwareupdate** aktualisiert Pakete im installierten Image. **Flash Online** installiert ein vollständiges neues Image. Für einen Versionswechsel, einen sehr alten Stand oder einen größeren Neuaufbau ist ein frisches Image meist der besser nachvollziehbare Weg. Kleine Aktualisierungen innerhalb einer unterstützten Versionsreihe können über das Softwareupdate erfolgen.
+
+## Welcher Weg passt?
+
+| Situation | Geeigneter Ausgangspunkt |
+| --- | --- |
+| Aktuelles, funktionierendes Image; wenige freigegebene Paketupdates | Softwareupdate in Enigma2, nach Sicherung und Prüfung der Feed-Hinweise. |
+| Wechsel der OpenATV-Versionsreihe, sehr lange nicht aktualisiert oder Warnung vor vielen Paketen | [Flash Online](../flash-online/) mit einem vollständigen passenden Image. |
+| Fehler sollen ohne Altlasten untersucht werden | Neues Image mit der Auswahl **Sauber**; erst später gezielt Einstellungen und Plugins übernehmen. |
+| Enigma2 startet nicht mehr | Einen erhaltenen MultiBoot-Slot oder das modellabhängige [USB-/Recovery-Verfahren](../usb-installation/) verwenden. |
+
+Die Feed-Adresse im Paketmanager zu ändern ist kein unterstützter Ersatz für einen Versionswechsel. Mische nicht die Paketquellen unterschiedlicher Imagegenerationen.
+
+## Softwareupdate aus der Oberfläche
+
+Öffne **Menü → Einstellungen → Softwareverwaltung → Software aktualisieren**. Auch das Schnellstartmenü über **Blau kurz** führt zur Softwareverwaltung.
+
+<Capture id="software-menu" language="de" alt="Softwareverwaltung mit Softwareupdate, Flashen online/lokal und Sicherungsfunktionen" caption="Paketupdate, Flashen und Sichern haben unterschiedliche Aufgaben." />
+
+1. Sichere die Einstellungen und bei Bedarf das komplette Image. Beende Aufnahmen und Timeshift; plane den nötigen Neustart ein.
+2. Prüfe Internetverbindung und freien Platz im Image. Freier Platz auf der HDD ersetzt keinen freien Platz im Root-Dateisystem.
+3. Warte, bis Paketliste und Feed-Status geladen sind. Lies vorhandene Hinweise und die angezeigten Aktualisierungen.
+4. Starte die Aktualisierung mit der dafür beschrifteten Aktion. Bestätige eventuelle Rückfragen zu geänderten Konfigurationsdateien bewusst.
+5. Warte auf den Abschluss. Unterbrich weder Stromversorgung noch Oberfläche während der Paketinstallation und führe den empfohlenen Neustart aus.
+6. Prüfe danach Empfang, Netzwerk und die betroffenen Funktionen. Sichere den neuen funktionierenden Zustand erneut.
+
+## Die Feed-Ampel lesen
+
+| Anzeige | Bedeutung für die Entscheidung |
+| --- | --- |
+| Grün / stabil | Der Feed ist als stabil gemeldet. Das ist keine Garantie für jede individuelle Plugin-Kombination. |
+| Gelb / instabil | Hinweise lesen; auf einer produktiv genutzten Box eher auf Klärung warten. |
+| Rot / deaktiviert | Keine normale Freigabe für das Update. Ursache beziehungsweise Forumshinweise prüfen. |
+| Status nicht verfügbar | Keine positive Freigabe ableiten. Verbindung, DNS und aktuelle Hinweise prüfen. |
+
+Bei sehr vielen aktualisierbaren Paketen kann Enigma2 ausdrücklich **Flash Online statt Paketupdate** vorschlagen. Die Grenze ist imageabhängig. Die Warnung nicht allein deshalb übergehen, weil noch Platz auf dem Aufnahmelaufwerk frei ist.
+
+## Updateeinstellungen richtig einordnen
+
+Unter **Softwareverwaltung → Erweiterte Optionen → Updateeinstellungen** befinden sich unter anderem Vorgaben zum Überschreiben geänderter Konfigurationen und weiterer Paketdateien. Diese Optionen bestimmen die Behandlung beim Paketupdate; sie ersetzen keine Sicherung und sollten nicht pauschal auf „alles überschreiben“ gesetzt werden.
+
+In demselben Dialog steht der **Modus für automatische Wiederherstellung**. Er betrifft den Ablauf nach einem Flash und wird unter [AutoRestore](../autorestore/) separat erklärt. Für die Nachinstallation von Add-ons muss außerdem die passende Auswahl im Flash-Assistenten getroffen werden.
+
+## Befehle in Supportanleitungen
+
+`opkg update` lädt Paketlisten neu; es installiert noch keine aktualisierten Pakete. `opkg upgrade` verändert dagegen die installierte Software. Ein pauschales Upgrade über SSH umgeht die verständlichen Auswahl- und Statushinweise der Oberfläche. Verwende für diesen Grundablauf die GUI oder Flash Online und führe gezielte Terminalschritte erst aus, wenn ihr Zweck geklärt ist.
+
+**Prüfstand:** Menü und Update-Quellcode wurden geprüft. Für dieses Kapitel wurde kein Paketupgrade ausgeführt.
+
+Quelle: [Softwareupdate mit Feed-Status und Empfehlung zum Flashen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SoftwareUpdate.py).

@@ -1,0 +1,74 @@
+---
+title: AutoRestore – Einstellungen und Plugins zurückholen
+description: FastRestore, Turbo und langsame Wiederherstellung verstehen; Einstellungen, Feeds und Add-ons nach Flash Online oder Neuinstallation übernehmen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**AutoRestore** richtet ein neues Image mit einer vorhandenen Einstellungssicherung wieder ein. **FastRestore** bezeichnet dabei die frühe Wiederherstellung während des Systemstarts. Du entscheidest getrennt, **was** zurückkommen soll und **wie** der Restore abläuft.
+
+## Was soll nach dem Flash wiederhergestellt werden?
+
+Beim [Flashen online/lokal](../flash-online/) bietet ein passendes OpenATV-Image folgende Auswahl:
+
+| Auswahl | Ergebnis |
+| --- | --- |
+| Aktualisierung. Flashen und alles wiederherstellen. | Einstellungen übernehmen und die zur Rückinstallation vorgesehenen Plugins nachinstallieren. |
+| Sauber. Flashen und nichts wiederherstellen. | Mit dem Einrichtungsassistenten und frischen Einstellungen starten. |
+| Flashen und Einstellungen wiederherstellen, ohne Plugins. | Die gesicherten Einstellungen übernehmen, zusätzliche Plugin-Pakete nicht nachinstallieren. Bereits im neuen Image enthaltene Plugins bleiben natürlich vorhanden. |
+| Flashen, Einstellungen wiederherstellen und Plugins abfragen. | Einstellungen zurückholen und die Auswahl der nachzuinstallierenden Plugins in der Oberfläche anbieten. |
+
+„Alles“ bedeutet hier **den gesicherten Umfang und die Paketwiederherstellung**, nicht eine vollständige Kopie aller Dateien und Aufnahmen. Für den genauen Sicherungsumfang siehe [Backup und Wiederherstellung](../backup-restore/).
+
+## Turbo, Fast und Slow
+
+Öffne **Menü → Einstellungen → Softwareverwaltung → Erweiterte Optionen → Updateeinstellungen → Modus für automatische Wiederherstellung**. Der Eintrag benötigt die Expertenansicht.
+
+<Capture id="autorestore-mode" language="de" alt="Updateeinstellungen mit dem Modus für automatische Wiederherstellung und der Erklärung von Turbo, Schnell und Langsam" caption="Der Modus steuert den Ablauf. Welche Daten und Plugins zurückkommen, wählst du zusätzlich im Flash-Assistenten." />
+
+| Modus | Geplanter Ablauf |
+| --- | --- |
+| Turbo | Restore beim ersten Systemstart nach dem Flash; anschließend ohne den zusätzlichen Restore-Neustart in die Oberfläche weitergehen. |
+| Fast / Schnell | Restore früh im Systemstart, danach ein weiterer Neustart. |
+| Slow / Langsam | Wiederherstellung in der Enigma2-Oberfläche, danach Neustart. |
+
+Die Plugin-Abfrage benötigt eine Oberfläche; sie ist kein vollständig unbeaufsichtigter FastRestore. Ob der frühe Weg benutzt werden kann, hängt auch von Restore-Auswahl, Sicherung und Image-Unterstützung ab. Der Modus allein löst keine Wiederherstellung aus und ist kein Versprechen einer festen Gesamtdauer.
+
+## Vorbereiten – der zuverlässige Ablauf
+
+1. Erstelle eine **aktuelle Einstellungssicherung**, besonders nach neuen Plugins, Feeds oder Mounts. Bewahre eine zusätzliche Kopie auf dem PC auf.
+2. Verwende für die automatische Rückübernahme möglichst ein **lokal angeschlossenes, beim Booten verfügbares Laufwerk**, etwa USB oder HDD. Eine erst nach dem Start eingerichtete NAS-Freigabe kann zu spät kommen.
+3. Erhalte die vom Sicherungswerkzeug angelegte Struktur: `backup_<Image>_<Gerät>/enigma2settingsbackup.tar.gz` auf dem Sicherungsmedium. Das passende Gerät wird beim Suchen berücksichtigt; das Archiv nicht einfach beliebig umbenennen.
+4. Wähle im Flash-Assistenten, ob Einstellungen, alle vorgesehenen Plugins oder eine Plugin-Auswahl zurückkommen sollen. Prüfe zugleich den richtigen Zielslot.
+5. Lasse das Sicherungsmedium beim ersten Start angeschlossen und stelle für Feed-Pakete eine funktionierende Internetverbindung bereit.
+6. Warte auf das Ende der Wiederherstellung und die vorgesehenen Neustarts. Prüfe anschließend Tuner, Senderliste, Netzwerk, Mounts, Timer und Erweiterungen.
+
+Der Flash-Manager hinterlegt die Entscheidung in kleinen Markierungsdateien unter **`images/config/`** auf dem gewählten Medium. Beispielsweise stehen `settings`, `plugins` oder `noplugins` für den Umfang; `turbo`, `fast` oder `slow` für den Ablauf. Diese Dateien enthalten nicht deine gesicherten Einstellungen. Ein **Archiv plus passenden Ordnern und Auswahl** ist erforderlich.
+
+Bei USB-Neuinstallation ist das automatische Erkennen deshalb von der Vorbereitung abhängig. Ein gefundenes Backup kann auch im Erststart-Assistenten angeboten werden. Fehlt eine geeignete automatische Vorbereitung, richte Netzwerk und Sicherungslaufwerk ein und nutze die [manuelle Wiederherstellung](../backup-restore/#einstellungen-wiederherstellen).
+
+## Wie kommen Add-ons und Skins zurück?
+
+Die Sicherung enthält eine Liste zur Paketwiederherstellung, keine unveränderliche Kopie sämtlicher Plugin-Programme. AutoRestore gleicht Pakete ab und installiert benötigte, verfügbare Pakete nach. Dazu können Erweiterungen und Skins gehören. Konfigurationen kommen nur zurück, soweit die zugehörigen Dateien im Backup enthalten sind.
+
+- **Feed-Pakete:** Der Paketfeed muss erreichbar sein und eine zum neuen Image passende Version anbieten. Ein gelöschtes, umbenanntes oder inkompatibles Paket kann nicht einfach wieder erscheinen.
+- **Zusätzliche Feeds:** Deren Einrichtung beziehungsweise Feed-Pakete müssen ebenfalls verfügbar sein. Der Restore berücksichtigt Feed-Pakete vor den übrigen Paketen; Zugang und Erreichbarkeit bleiben Voraussetzung.
+- **Eigene IPK-Dateien:** Für dafür vorgesehene lokale Pakete werden unter anderem **`/media/hdd/images/ipk/`** und **`/media/usb/images/ipk/`** berücksichtigt. Lege dort nur vertrauenswürdige, zum neuen Image und zur Architektur passende Pakete ab. Die Auswahl „ohne Plugins“ fordert keine Nachinstallation dieser Add-ons an.
+- **Manuell kopierte Add-ons:** Was kein Paket ist und außerhalb der gesicherten Dateiauswahl liegt, wird nicht durch die Paketliste gerettet. Ergänze die benötigten Dateien bewusst in der Sicherung oder installiere das Add-on nach seiner Anleitung neu.
+- **Eigene Restore-Skripte:** Eine vorhandene `images/config/myrestore.sh` kann zusätzlich ausgeführt werden. Das ist eine Erweiterung für erfahrene Anwender und kann weitere Änderungen durchführen; für die normale Wiederherstellung brauchst du kein eigenes Skript.
+
+Eine neue Paketversion kann andere Einstellungen oder Abhängigkeiten besitzen. „Alle Plugins“ ist deshalb keine Zusicherung, dass alte Erweiterungen mit einer neuen Imagegeneration funktionieren. Für die Fehlersuche beginne gegebenenfalls sauber und füge Plugins einzeln hinzu.
+
+## Passwort und Netzwerk können sich ändern
+
+Die Einstellungssicherung kann auch Benutzerinformationen einschließlich des Root-Passwort-Hashes enthalten. Nach einem Restore kann deshalb wieder das **Passwort aus der Sicherung** gelten. Ebenso können IP-Adresse, Hostname und Netzwerkfreigaben auf den gesicherten Stand zurückgehen. Prüfe bei Verbindungsproblemen zunächst die neue Adresse am Receiver und das passende Passwort.
+
+## Wenn die Wiederherstellung unvollständig bleibt
+
+Prüfe zuerst, ob Archiv und Laufwerk gefunden wurden. Kontrolliere dann Internet, DNS, Uhrzeit und die Verfügbarkeit fehlender Pakete. Das frühe Restore-Protokoll findest du unter **`/home/root/FastRestore.log`**. Es liegt **außerhalb** des normalen Ordners `/home/root/logs/`. Der geprüfte Stand kann außerdem `FastRestore.log.1` nach einer Rotation behalten.
+
+Ein vorhandenes Log beweist noch keinen erfolgreichen Restore; es kann auch einen Abbruch oder einen Start ohne geeignete Sicherung beschreiben. Melde die konkrete Fehlermeldung und das fehlende Paket wie unter [Fehler melden](../../hilfe/fehler-melden/) beschrieben. Starte nicht wiederholt einen neuen Flash, solange die Ursache ein nicht erreichbarer Feed oder eine nicht eingebundene Sicherungsplatte ist.
+
+**Prüfstand:** Menü, Backup-/Plugin-Quellcode und das auf der Testbox installierte Startskript `/etc/init.d/settings-restore` wurden geprüft. Für dieses Kapitel wurde kein Image geflasht und kein vollständiger AutoRestore ausgeführt.
+
+Quellen: [Flash-Auswahl](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/FlashManager.py), [Backup und Plugin-Restore](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/SoftwareManager/BackupRestore.py), [Benutzer- und Paketinformationen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/SoftwareManager/ShellCompatibleFunctions.py).

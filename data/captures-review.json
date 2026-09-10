@@ -978,5 +978,47 @@
     "sha256": "b26af81e6cd408b2ddbfa1c2e96839ae0e4bdf3d4000a2c1ed795d7d74e21f77",
     "run": "maintenance-a-en-storage",
     "tool_commit": "60ebf969f22b9a2835190ef1f5abd7b7fcd0a6a3"
+  },
+  {
+    "language": "de",
+    "id": "logging-settings",
+    "sha256": "75d1d0b0e82df743c64a4d84e23f54356a6d6a30a68ffcad4c38dac67b017d2a",
+    "run": "diagnostics-a-de-diagnostics",
+    "tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1"
+  },
+  {
+    "language": "de",
+    "id": "autorestore-mode",
+    "sha256": "fe1197945fd1db5c3d4ee38b63d52a70abf176f61c80f58b009fca2689c6bd7f",
+    "run": "diagnostics-a-de-diagnostics",
+    "tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1"
+  },
+  {
+    "language": "de",
+    "id": "network-access",
+    "sha256": "12dfe4e6dd0e5b3ff9158f04411ab92ed0c6e0c000e74b5e95d1cdd673868b90",
+    "run": "diagnostics-a-de-diagnostics",
+    "tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1"
+  },
+  {
+    "language": "en",
+    "id": "logging-settings",
+    "sha256": "501023407d363193db07cf8fec9ca96567542fef5d317947265639c618af74b6",
+    "run": "diagnostics-a-en-diagnostics",
+    "tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1"
+  },
+  {
+    "language": "en",
+    "id": "autorestore-mode",
+    "sha256": "965dec07fa1893acff8c27d2698af3062e9ea5ff0a20ef23f4da11a49b123866",
+    "run": "diagnostics-a-en-diagnostics",
+    "tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1"
+  },
+  {
+    "language": "en",
+    "id": "network-access",
+    "sha256": "1f04ead1a5b32072b1faa58c5acec81189bc7c0d56e23f6484aacaaca2912089",
+    "run": "diagnostics-a-en-diagnostics",
+    "tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1"
   }
 ]

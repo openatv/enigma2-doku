@@ -3,7 +3,7 @@ import starlight from '@astrojs/starlight';
 
 export default defineConfig({
   site: process.env.SITE_URL || 'https://openatv.github.io',
-  base: process.env.BASE_PATH || '/enimga2-doku',
+  base: process.env.BASE_PATH || '/enigma2-doku',
   output: 'static',
   trailingSlash: 'always',
   integrations: [starlight({
@@ -18,8 +18,8 @@ export default defineConfig({
       LanguageSelect: './src/components/LanguageSelect.astro',
       PageTitle: './src/components/TranslationPageTitle.astro',
     },
-    social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/openatv/enimga2-doku' }],
-    editLink: { baseUrl: 'https://github.com/openatv/enimga2-doku/edit/main/' },
+    social: [{ icon: 'github', label: 'GitHub', href: 'https://github.com/openatv/enigma2-doku' }],
+    editLink: { baseUrl: 'https://github.com/openatv/enigma2-doku/edit/main/' },
     sidebar: [
       { label: 'Handbuch', translations: { en: 'Handbook' }, items: [
         { slug: '', label: 'Übersicht', translations: { en: 'Overview' } },
@@ -34,6 +34,7 @@ export default defineConfig({
         { slug: 'netzwerk/lan', label: 'LAN & IP-Einstellungen', translations: { en: 'LAN & IP settings' } },
         { slug: 'netzwerk/wlan', label: 'WLAN verbinden', translations: { en: 'Connect Wi-Fi' } },
         { slug: 'netzwerk/freigaben', label: 'NAS & Netzwerkfreigaben', translations: { en: 'NAS & network shares' } },
+        { slug: 'netzwerk/fernzugriff', label: 'SSH, Dateien & Passwort', translations: { en: 'SSH, files & password' } },
         { slug: 'plugins/installieren', label: 'Plugins installieren', translations: { en: 'Install plugins' } },
         { slug: 'settings/senderlisten', label: 'Settings & Senderlisten', translations: { en: 'Settings & channel lists' } },
         { slug: 'settings/kanalliste', label: 'Kanalliste & Stile', translations: { en: 'Channel list & styles' } },
@@ -41,7 +42,10 @@ export default defineConfig({
       ] },
       { label: 'Sichern & Warten', translations: { en: 'Backup & maintenance' }, items: [
         { slug: 'wartung/backup-restore', label: 'Backup & Wiederherstellung', translations: { en: 'Backup & restore' } },
+        { slug: 'wartung/software-update', label: 'Softwareupdate oder neues Image?', translations: { en: 'Software update or new image?' } },
         { slug: 'wartung/flash-online', label: 'Flash Online', translations: { en: 'Flash Online' } },
+        { slug: 'wartung/usb-installation', label: 'Neuinstallation per USB', translations: { en: 'USB installation' } },
+        { slug: 'wartung/autorestore', label: 'AutoRestore & Add-ons', translations: { en: 'AutoRestore & add-ons' } },
         { slug: 'wartung/multiboot', label: 'MultiBoot', translations: { en: 'MultiBoot' } },
         { slug: 'speicher/laufwerke', label: 'Laufwerke & Mountpunkte', translations: { en: 'Drives & mount points' } },
         { slug: 'speicher/formatieren-pruefen', label: 'Formatieren & Prüfen', translations: { en: 'Format & check' } },
@@ -49,7 +53,12 @@ export default defineConfig({
       { label: 'Nachschlagen', translations: { en: 'Reference' }, items: [
         { slug: 'einstellungen', label: 'Einstellung finden', translations: { en: 'Find a setting' } },
         { slug: 'anhaenge/langtasten', label: 'Langdruck-Verzeichnis', translations: { en: 'Long-press directory' } },
+      ] },
+      { label: 'Hilfe & Support', translations: { en: 'Help & support' }, items: [
         { slug: 'hilfe/probleme', label: 'Häufige Fragen', translations: { en: 'Common questions' } },
+        { slug: 'hilfe/downloads-modelle', label: 'Downloads & Modelle', translations: { en: 'Downloads & models' } },
+        { slug: 'hilfe/logs-diagnose', label: 'Logs aktivieren & finden', translations: { en: 'Enable & find logs' } },
+        { slug: 'hilfe/fehler-melden', label: 'Fehler melden', translations: { en: 'Report a problem' } },
       ] },
       { label: 'Erweitern', translations: { en: 'Extend' }, items: [
         { slug: 'skins', label: 'Skins', translations: { en: 'Skins' } },

@@ -1,0 +1,90 @@
+---
+title: Logs aktivieren, finden und auswerten
+description: Debug-Log und Crashlog auf der OpenATV-Box finden, Protokollierung einschalten, FastRestore.log sichern und Fehler eingrenzen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Ein **Debug-Log** zeichnet den Ablauf vor und während eines Fehlers auf. Ein **Crashlog** entsteht beim behandelten Absturz von Enigma2 und enthält häufig den Python-Traceback. Bei einem Hänger ohne Absturz muss kein Crashlog entstehen. Für einen Fehlerbericht sind deshalb der Zeitpunkt, die ausgeführten Schritte und das passende Protokoll wichtig.
+
+## Debug-Log einschalten
+
+1. Beende Aufnahmen und Timeshift, bevor du die Oberfläche neu startest. Ein GUI-Neustart unterbricht die von Enigma2 gesteuerten Funktionen.
+2. Öffne **Menü → Einstellungen → System → Logs**. Fehlen die Optionen, aktiviere die [Expertenansicht](../../erste-schritte/bedienung/).
+3. Wähle unter **Debug-Log aktivieren \*** zunächst die normale aktivierte Stufe. **Ausführlich** liefert zusätzliche Details, wenn sie zur Fehlersuche benötigt werden. **Deaktiviert** schaltet die normale Debug-Aufzeichnung aus.
+4. Kontrolliere **Speicherort für Logs** und den freien Platz. Ein ausgewähltes externes Laufwerk muss bereits verfügbar und beschreibbar sein.
+5. Speichere und starte die **Benutzeroberfläche (GUI)** neu. Der Stern kennzeichnet Optionen, die einen Neustart benötigen.
+6. Führe genau die Schritte aus, die den Fehler auslösen, und notiere die Uhrzeit. Kopiere das zugehörige Log auf deinen PC.
+7. Stelle die vorherige Protokollierungsstufe wieder her und starte die GUI erneut, wenn die Diagnose abgeschlossen ist.
+
+<Capture id="logging-settings" language="de" alt="Log-Einstellungen mit Debug-Stufe, Speicherort, Größenbegrenzung und zusätzlichen Diagnoseoptionen" caption="Für das Beispiel war die ausführliche Protokollierung bereits aktiv. Der Dialog wurde aufgenommen, ohne die Log-Konfiguration zu ändern." />
+
+Zusatzoptionen für EPG, Netzwerk, Paketverwaltung oder Multimedia aktivierst du gezielt für das betroffene Problem. Alle Detailprotokolle gleichzeitig erschweren die Suche und vergrößern die Dateien. Core-Dumps sind ein eigenes Diagnosewerkzeug und für den üblichen Fehlerbericht nicht erforderlich.
+
+## Wo liegen die Logs auf der Box?
+
+Die Pfade beziehen sich auf das **Dateisystem des Receivers**, nicht auf deinen PC. Öffne sie beispielsweise mit [SFTP](../../netzwerk/fernzugriff/#dateien-mit-sftp-oder-ftp-übertragen).
+
+| Datei oder Ordner | Inhalt und Bedeutung |
+| --- | --- |
+| **`/home/root/logs/`** | Standardordner für Enigma2-Debug- und Crashlogs. |
+| `JJJJMMTT-HHMMSS-enigma2-debug.log` | Debug-Aufzeichnung im eingestellten Log-Ordner, beispielsweise `20260910-065659-enigma2-debug.log`. Datum und Uhrzeit stammen von der Box. |
+| `JJJJMMTT-HHMMSS-enigma2-crash.log` | Crashlog im eingestellten Log-Ordner. Suche die Datei, deren Uhrzeit zum Fehler passt. |
+| **`/media/hdd/logs/`** | Beispiel für Logs auf der HDD, **wenn dieses Ziel ausgewählt und die Platte dort eingehängt ist**. Für andere Mountpunkte gilt entsprechend `<Mountpunkt>/logs/`. |
+| `/home/root/logs/enigma2_crash.log` | Ersatzpfad, wenn das reguläre Crashlog nicht angelegt werden kann. |
+| `/tmp/enigma2_crash.log` | Weiterer Crashlog-Ersatzpfad. `/tmp` ist flüchtig: vor einem vollständigen Neustart sichern. |
+| **`/home/root/FastRestore.log`** | Protokoll der frühen automatischen Wiederherstellung; liegt außerhalb von `logs/`. Eine rotierte Datei kann `FastRestore.log.1` heißen. Siehe [AutoRestore](../../wartung/autorestore/). |
+| `JJJJMMTT-HHMMSS-gstreamer-debug.log` | Zusätzliches Multimedia-Protokoll im Log-Ordner, sofern die entsprechende Diagnose aktiviert ist. |
+
+**Achtung bei der Ordneranzeige:** Im geprüften Log-Menü steht für das Standardziel **`/home/root/`**, während der tatsächlich verwendete Konfigurationswert **`/home/root/logs/`** lautet. Auch bei ausgewählten Laufwerken liegt der Log-Ordner unterhalb des angezeigten Mountpunkts. Schau deshalb im Unterordner `logs` nach.
+
+Der Startprozess verwendet einen eingestellten Debug-Ordner nur, wenn er vorhanden ist; andernfalls fällt er auf den Standardordner zurück. Bei fehlenden Dateien prüfst du daher beide Orte. Ein fehlendes Crashlog beweist nicht, dass kein Fehler aufgetreten ist: Ein Stromausfall, ein Hänger oder ein nicht beschreibbares Dateisystem kann die Ausgabe verhindern.
+
+## Dateien ansehen und auf den PC kopieren
+
+Mit einem SFTP-Programm öffnest du den passenden Ordner, sortierst nach Änderungszeit und lädst das Log zum Fehlerzeitpunkt herunter. Sende die Textdatei als Anhang; ein Foto der letzten Bildschirmzeile ersetzt den Traceback nicht.
+
+Der **Log-Manager** kann vorhandene Protokolle auch am Fernseher anzeigen. In den Log-Einstellungen lässt er sich für das Erweiterungsmenü einblenden. Im geprüften Dialog schaltet **Rot** zwischen Crash- und Debuglogs um, **Grün** zeigt eine Datei an und **Gelb** löscht sie. Beachte die eingeblendeten Tastenfunktionen und sichere das benötigte Log vor dem Löschen.
+
+Über eine [SSH-Verbindung](../../netzwerk/fernzugriff/) kannst du zunächst nur die Dateiliste lesen:
+
+```sh
+ls -lt /home/root/logs/
+```
+
+Ersetze im folgenden Beispiel `DATEINAME` durch einen tatsächlich vorhandenen Namen aus dieser Liste:
+
+```sh
+tail -n 100 /home/root/logs/DATEINAME
+tail -f /home/root/logs/DATEINAME
+```
+
+`tail -f` zeigt neue Zeilen dieser Datei an. **Strg+C** beendet nur diese Anzeige. Nach einem GUI-Neustart oder einer Log-Rotation kann eine neue Datei verwendet werden; öffne dann diese. Die letzten 100 Zeilen helfen beim ersten Blick, für einen Fehlerbericht kann das vollständige relevante Log nötig sein.
+
+Das Restore-Protokoll kannst du getrennt lesen:
+
+```sh
+tail -n 100 /home/root/FastRestore.log
+```
+
+## Wenn die Oberfläche nicht mehr bedienbar ist
+
+Wenn SSH noch funktioniert, sichere zuerst vorhandene Crashlogs. Für eine Debug-Aufzeichnung beim nächsten Start kannst du im geprüften OpenATV-Stand die Einstellung in `/etc/enigma2/settings` ändern:
+
+1. Kopiere die vorhandene Datei zunächst auf deinen PC.
+2. Stoppe Enigma2 mit `init 4`. Warte, bis `pidof enigma2` keine Prozessnummer mehr meldet. Die [Erklärung zu Start und Stopp](../../netzwerk/fernzugriff/#enigma2-stoppen-und-starten) beschreibt die Auswirkungen.
+3. Bearbeite die Datei als normalen Text mit Unix-Zeilenenden. Setze die vorhandene Zeile `config.crash.debugLevel=4` oder füge sie einmalig hinzu. Erzeuge keinen zweiten Eintrag für denselben Schlüssel. `4` bedeutet aktiviert, `5` ausführlich und `0` deaktiviert.
+4. Speichere die Datei auf der Box und starte Enigma2 mit `init 3`.
+5. Sichere das neue Debug-Log. Stelle nach der Diagnose den vorherigen Wert wieder her, vorzugsweise im Log-Menü.
+
+Bearbeite `settings` nicht bei laufendem Enigma2: Die Oberfläche kann deine Änderung beim Beenden überschreiben. Starte nicht zusätzlich einen zweiten Enigma2-Prozess von Hand.
+
+## Speicher begrenzen und Fehler melden
+
+Die Log-Einstellungen bieten Grenzen für Dateigröße, Aufbewahrungsdauer und gesamten Log-Speicher. Prüfe diese besonders bei ausführlicher Aufzeichnung im internen Flash. Ein großer Datenträger vergrößert nicht den freien Platz des Root-Dateisystems. Aufzeichnungen auf einer HDD können außerdem deren Standby verhindern.
+
+Vor dem Hochladen prüfst du eine **Kopie** des Logs auf Passwörter, Tokens, Freigabe-Zugangsdaten und private Adressen. Erhalte Fehlermeldung, Traceback, Paketnamen und zeitlichen Zusammenhang. Sende keine vollständige Einstellungssicherung als öffentlichen Fehlerbericht. Die Anleitung [Fehler melden](../fehler-melden/) nennt Forum, passende GitHub-Projekte und eine Berichtsvorlage.
+
+**Prüfstand:** Menü und Dateinamen wurden anhand des Quellcodes geprüft. Auf der Testbox wurden mit bereits aktivierter Protokollierung neue Debug-Dateien unter `/home/root/logs/` beobachtet. Es wurde kein Absturz absichtlich ausgelöst.
+
+Quellen: [Log-Konfiguration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py), [Startskript und Debug-Dateien](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/tools/enigma2.sh.in), [Crashlog und Ersatzpfade](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/main/bsod.cpp), [Log-Manager](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/LogManager.py).
