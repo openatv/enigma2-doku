@@ -33,4 +33,4 @@ A skin changes presentation. This handbook explains the shared interface using m
 
 ## What has been checked?
 
-The foundation guides were written against the openATV 8.0 source snapshot. The directory imports existing help text and marks unmapped menu locations. This does not imply that every workflow has been tested on a running installation. Articles link to their source snapshot.
+The foundation guides were written against the OpenATV 8.0 source snapshot. The directory imports existing help text and marks unmapped menu locations. This does not imply that every workflow has been tested on a running installation. Articles link to their source snapshot.

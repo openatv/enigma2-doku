@@ -1,11 +1,11 @@
 ---
 title: "Logs Settings"
-description: "Logs Settings: options, built-in help and menu location in openATV."
+description: "Logs Settings: options, built-in help and menu location in OpenATV."
 editUrl: false
 pagefind: true
 ---
 
-This reference contains the help text provided by openATV. The open dialog and selected options determine which entries are visible.
+This reference contains the help text provided by OpenATV. The open dialog and selected options determine which entries are visible.
 
 ## Where do I find it?
 
@@ -438,7 +438,7 @@ Setup level: Expert.
 
 <h2 id="option-02bf61c15122">Debug log time format *</h2>
 
-<p>This sets the prefix for each line in the debug log. The &#x27;Boot time&#x27; is the number of seconds since your openATV was last booted.</p>
+<p>This sets the prefix for each line in the debug log. The &#x27;Boot time&#x27; is the number of seconds since your OpenATV was last booted.</p>
 
 <details>
 <summary>Reference & notes</summary>
@@ -520,4 +520,4 @@ Setup level: Expert.
 
 ---
 
-Source: [openATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+Source: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.

@@ -1,0 +1,47 @@
+---
+title: MetrixHD und MyMetrixLite
+description: MetrixHD anpassen – Auflösung, Farben, Schriften, Wetter, Skinparts, Infobar und Senderlisten finden und verstehen.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+**MetrixHD** zeichnet die Oberfläche. **MyMetrixLite** ist das zugehörige Einstellungsplugin. Hier stellst du ein, wie MetrixHD aussieht und welche Zusatzinformationen es zeigt. Die Empfangs- und Netzwerkeinstellungen bleiben eigene Themen.
+
+## Wo öffne ich die Einstellungen?
+
+**Menü → Erweiterungen → MyMetrixLite**
+
+Fehlt der Eintrag, prüfe die Installation von MetrixHD und seinem Konfigurationsplugin in der [Plugin-Verwaltung](../../plugins/installieren/). Die allgemeine **Skinauswahl** wählt den Skin; dessen Detailgestaltung erfolgt in MyMetrixLite.
+
+<Capture id="metrix-main" language="de" alt="MyMetrixLite mit Schrift-, Farb-, Wetter-, sonstigen und Skinpart-Einstellungen sowie Sichern und Wiederherstellen" caption="Der Einstieg in die MetrixHD-Konfiguration. Grün wendet die gespeicherten Änderungen an." />
+
+## Die passende Option finden
+
+| Du möchtest … | Bereich |
+| --- | --- |
+| HD, FHD oder WQHD verwenden | [Auflösung](./aufloesung/) → Sonstige Einstellungen → Skinauflösung |
+| Größere Schrift, andere Schriftarten oder Farben | [Schriften und Farben](./gestaltung/) |
+| Wetterort, Wetterdienst oder Symbole einstellen | [Wetter](./wetter/) |
+| Einzelne Ansichten durch Zusatzmodule ersetzen | [Skinparts](./skinparts/) |
+| Uhr, Sendernummer, Signal- oder Tunerinformationen anzeigen | [Infobar und weitere Optionen](./sonstiges/) |
+| Klassische und neue Senderlisten vergleichen | [Kanallisten-Galerie](../../settings/kanalliste/) |
+| Eine eigene Gestaltung wiederherstellen | Sichern & Wiederherstellen in MyMetrixLite |
+
+## Speichern und anwenden
+
+1. Öffne einen Einstellungsbereich und ändere die gewünschten Werte.
+2. Wähle dort **Speichern**. **Abbrechen** verwirft die Änderungen des jeweiligen Dialogs.
+3. Zurück im MyMetrixLite-Hauptfenster drücke Grün: **Änderungen anwenden**. Dadurch wird der angepasste Skin erzeugt und geladen.
+4. Warte bis zum Abschluss. Der geprüfte Stand kann Ansichten direkt neu laden; folge einem angebotenen Neustart, wenn deine Version ihn verlangt.
+
+Einige Optionen wirken direkt und sind entsprechend beschrieben. Bleibt eine gespeicherte Gestaltung unverändert, kontrolliere zuerst, ob du **Änderungen anwenden** ausgeführt hast und MetrixHD aktiv ist. **Standard** setzt die Werte eines Bereichs zurück; es ist kein rückgängig machender „Zurück“-Knopf.
+
+## Eine Gestaltung sichern
+
+<Capture id="metrix-backup" language="de" alt="MyMetrixLite Sichern und Wiederherstellen mit Sicherungsnummer und Beschreibung" caption="Gelb sichert, Grün stellt wieder her, Blau löscht die ausgewählte Sicherung. Die Farbtasten haben hier andere Aufgaben als im Hauptfenster." />
+
+Wähle eine **Sicherungsnummer** und eine erkennbare **Sicherungsbeschreibung**. Das Plugin bietet bis zu 99 Sicherungssätze. Vor dem Wiederherstellen prüfe Nummer und Beschreibung. Diese Funktion sichert die MyMetrixLite-Einstellungen; sie ersetzt keine vollständige Sicherung des Images, der Senderlisten oder deiner Aufnahmen.
+
+Die Anleitung ist modellneutral. Aufnahmen: OpenATV 8.0, MetrixHD in HD. Verfügbare Auflösungen, installierte Skinparts und Erweiterungen bestimmen, welche zusätzlichen Felder erscheinen.
+
+Quelle: [MyMetrixLite-Menü und Anwenden der Änderungen](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/MainSettingsView.py).

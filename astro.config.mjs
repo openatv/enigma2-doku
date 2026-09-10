@@ -7,9 +7,9 @@ export default defineConfig({
   output: 'static',
   trailingSlash: 'always',
   integrations: [starlight({
-    title: { de: 'openATV Handbuch', en: 'openATV Handbook' },
+    title: { de: 'OpenATV Handbuch', en: 'OpenATV Handbook' },
     description: 'Enigma2 verstehen. Einstellungen finden. Schritt für Schritt einrichten.',
-    logo: { src: './src/assets/openatv-logo.png', alt: 'openATV', replacesTitle: true },
+    logo: { src: './src/assets/openatv-logo.png', alt: 'OpenATV', replacesTitle: true },
     favicon: '/branding/openatv-icon.png',
     defaultLocale: 'de',
     locales: { de: { label: 'Deutsch', lang: 'de' }, en: { label: 'English', lang: 'en' } },
@@ -29,6 +29,7 @@ export default defineConfig({
         { slug: 'netzwerk/freigaben', label: 'NAS & Netzwerkfreigaben', translations: { en: 'NAS & network shares' } },
         { slug: 'plugins/installieren', label: 'Plugins installieren', translations: { en: 'Install plugins' } },
         { slug: 'settings/senderlisten', label: 'Settings & Senderlisten', translations: { en: 'Settings & channel lists' } },
+        { slug: 'settings/kanalliste', label: 'Kanalliste & Stile', translations: { en: 'Channel list & styles' } },
         { slug: 'epg/grundlagen', label: 'EPG einrichten', translations: { en: 'Set up EPG' } },
       ] },
       { label: 'Nachschlagen', translations: { en: 'Reference' }, items: [
@@ -37,6 +38,14 @@ export default defineConfig({
       ] },
       { label: 'Erweitern', translations: { en: 'Extend' }, items: [
         { slug: 'skins', label: 'Skins', translations: { en: 'Skins' } },
+        { label: 'MetrixHD', collapsed: true, items: [
+          { slug: 'skins/metrixhd', label: 'MyMetrixLite – Einstieg', translations: { en: 'MyMetrixLite – getting started' } },
+          { slug: 'skins/metrixhd/aufloesung', label: 'HD, FHD & WQHD', translations: { en: 'HD, FHD & WQHD' } },
+          { slug: 'skins/metrixhd/wetter', label: 'Wetter', translations: { en: 'Weather' } },
+          { slug: 'skins/metrixhd/skinparts', label: 'Skinparts', translations: { en: 'Skinparts' } },
+          { slug: 'skins/metrixhd/gestaltung', label: 'Schriften & Farben', translations: { en: 'Fonts & colours' } },
+          { slug: 'skins/metrixhd/sonstiges', label: 'Infobar & weitere Optionen', translations: { en: 'Infobar & more options' } },
+        ] },
         { slug: 'addons', label: 'Add-ons', translations: { en: 'Add-ons' } },
         { slug: 'anhaenge', label: 'Anhänge', translations: { en: 'Appendices' } },
       ] },

@@ -1,11 +1,11 @@
 ---
 title: Mount a NAS or network share
-description: Mount network storage in openATV. Understand SMB, CIFS, NFS, autofs and local paths.
+description: Mount network storage in OpenATV. Understand SMB, CIFS, NFS, autofs and local paths.
 ---
 
 import Capture from '../../../../components/Capture.astro';
 
-A network share makes a folder on a NAS or server available in openATV. **Mounting** connects the remote share to a local directory, allowing applications to access it much like an attached storage device.
+A network share makes a folder on a NAS or server available in OpenATV. **Mounting** connects the remote share to a local directory, allowing applications to access it much like an attached storage device.
 
 ## What you need
 
@@ -14,7 +14,7 @@ A network share makes a folder on a NAS or server available in openATV. **Mounti
 - The server name or IP address, share name or NFS export path, and suitable access permissions.
 - For SMB, a NAS username and password if required.
 
-The server must allow access to the share. Adding it in openATV does not create a folder or grant permissions on the NAS.
+The server must allow access to the share. Adding it in OpenATV does not create a folder or grant permissions on the NAS.
 
 ## Menu location
 
@@ -59,7 +59,7 @@ This example is accessed at `/media/autofs/media`. Writing and reading a small t
 | Mount at boot time (`fstab`), without HDD replacement | `/media/net/NAME` |
 | `fstab` with HDD replacement | `/media/hdd` |
 
-`NAME` is the **Local share** field. These paths are confirmed for the openATV 8.0 version used here.
+`NAME` is the **Local share** field. These paths are confirmed for the OpenATV 8.0 version used here.
 
 ## SMB or NFS?
 

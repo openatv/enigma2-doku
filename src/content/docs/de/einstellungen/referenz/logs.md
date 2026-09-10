@@ -1,11 +1,11 @@
 ---
 title: "Logs"
-description: "Logs: Optionen, Originalhilfe und Menüweg in openATV."
+description: "Logs: Optionen, Originalhilfe und Menüweg in OpenATV."
 editUrl: false
 pagefind: true
 ---
 
-Diese Referenz enthält die vorhandenen Hilfetexte aus openATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.
+Diese Referenz enthält die vorhandenen Hilfetexte aus OpenATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.
 
 ## Wo finde ich das?
 
@@ -496,7 +496,7 @@ Bedienebene: Experte.
 
 **English:** Debug log time format \*
 
-<p>Das Präfix für die Zeilen im Debug-Log einstellen. &#x27;Bootzeit&#x27; sind die Sekunden, seit dem openATV gestartet wurde.</p>
+<p>Das Präfix für die Zeilen im Debug-Log einstellen. &#x27;Bootzeit&#x27; sind die Sekunden, seit dem OpenATV gestartet wurde.</p>
 
 <details>
 <summary>Zuordnung & Hinweise</summary>
@@ -588,4 +588,4 @@ Bedienebene: Experte.
 
 ---
 
-Quelle: [openATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+Quelle: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.

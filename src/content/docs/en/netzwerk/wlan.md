@@ -1,9 +1,9 @@
 ---
 title: Connect Wi-Fi
-description: Select a Wi-Fi network, enter its key and check the connection in openATV. Understand SSIDs, encryption and saved networks.
+description: Select a Wi-Fi network, enter its key and check the connection in OpenATV. Understand SSIDs, encryption and saved networks.
 ---
 
-Wi-Fi connects openATV to your router without a network cable. A recognised Wi-Fi adapter must be available in the network overview.
+Wi-Fi connects OpenATV to your router without a network cable. A recognised Wi-Fi adapter must be available in the network overview.
 
 ## Menu location
 

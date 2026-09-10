@@ -3,11 +3,11 @@ title: Appendices and scope
 description: Understand the shared Enigma2 interface covered by this handbook and where future special cases belong.
 ---
 
-This handbook covers the shared Enigma2 interface in openATV. It is not a collection of individual receiver manuals. Its focus is setup, menu locations and the meaning of settings.
+This handbook covers the shared Enigma2 interface in OpenATV. It is not a collection of individual receiver manuals. Its focus is setup, menu locations and the meaning of settings.
 
 ## Foundation edition
 
-The first edition follows the openATV 8.0 source snapshot from 9 September 2026. Older images may use different menu labels. German and English follow the same chapter structure.
+The first edition follows the OpenATV 8.0 source snapshot from 9 September 2026. Older images may use different menu labels. German and English follow the same chapter structure.
 
 ## Future additions
 

@@ -1,11 +1,11 @@
 ---
 title: "Customize System Settings"
-description: "Customize System Settings: options, built-in help and menu location in openATV."
+description: "Customize System Settings: options, built-in help and menu location in OpenATV."
 editUrl: false
 pagefind: true
 ---
 
-This reference contains the help text provided by openATV. The open dialog and selected options determine which entries are visible.
+This reference contains the help text provided by OpenATV. The open dialog and selected options determine which entries are visible.
 
 ## Where do I find it?
 
@@ -323,7 +323,7 @@ Setup level: Expert.
 
 <h2 id="option-1d80f7b8f0df">After power loss</h2>
 
-<p>Select what should be done when the openATV was shut down incorrectly, or after power was lost.</p>
+<p>Select what should be done when the OpenATV was shut down incorrectly, or after power was lost.</p>
 
 <details>
 <summary>Reference & notes</summary>
@@ -336,7 +336,7 @@ Setup level: Intermediate.
 
 <h2 id="option-e5ea3d1ce5a4">Boot-up action</h2>
 
-<p>Select what should be done when the openATV was boot-up, normal playing or goto Standby.</p>
+<p>Select what should be done when the OpenATV was boot-up, normal playing or goto Standby.</p>
 
 <details>
 <summary>Reference & notes</summary>
@@ -442,4 +442,4 @@ Setup level: Expert.
 
 ---
 
-Source: [openATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+Source: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.

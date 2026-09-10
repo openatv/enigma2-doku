@@ -1,0 +1,39 @@
+---
+title: MetrixHD – Schriften und Farben
+description: Schriftart, Schriftgröße, Skalierung, Farbbeispiele, Ebenen und Transparenz in MyMetrixLite einstellen.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+## Schrift und Lesbarkeit
+
+**Menü → Erweiterungen → MyMetrixLite → Schrifteinstellungen**
+
+<Capture id="metrix-fonts" language="de" alt="MetrixHD-Schrifteinstellungen mit Schriftbeispielen, Schriftarten und prozentualer Skalierung" caption="Schriftart und Skalierung werden nach Einsatzbereich getrennt eingestellt." />
+
+| Bereich | Wofür er verwendet wird |
+| --- | --- |
+| Schriftbeispiele | Vorbereitete Kombinationen als Ausgangspunkt |
+| Im Image enthaltene Schriften | Grundschriftrollen wie LCD, Ersatzschrift, Konsole oder feste Breite |
+| Im Skin enthaltene Schriften | MetrixHD-Schriftrollen wie Regular, RegularLight und SetrixHD |
+| Allgemein, Ansichten/Plugins | Individuell unterstützte Texte und Überschriften |
+| EPG, Senderliste, Filmliste | Schriftrollen für Listen, Sendungsinformationen und Beschreibungen |
+| Infobar, Moviebar | Texte in den Informationsleisten |
+
+**Schriftart** wählt die Schriftdatei, **Schriftskalierung [%]** deren Größe relativ zum vorgesehenen Wert. 100 % entspricht der jeweiligen Ausgangsgröße. Erhöhe schrittweise und prüfe lange Sendernamen und Beschreibungen. Die Skalierung schafft keinen zusätzlichen Platz im Layout; zu große Texte können abgeschnitten werden. Individuelle Schriftrollen wirken nur in Ansichten, die diese Rollen verwenden.
+
+## Farben und Ebenen
+
+**Menü → Erweiterungen → MyMetrixLite → Farbeinstellungen**
+
+<Capture id="metrix-colors" language="de" alt="MetrixHD-Farbeinstellungen mit Farbbeispielen und Schnellkonfiguration für linke und rechte Bereiche" caption="Für einen ersten Entwurf lassen sich Hintergrund, Transparenz und Textfarbe der beiden Hauptbereiche gemeinsam einstellen." />
+
+**Farbbeispiele** laden vorbereitete Kombinationen. Die **Schnelleinstellung** passt die linke und rechte Fläche an. Weitere Gruppen erlauben getrennte Farben für Menü, Fensterüberschrift, Infobar/Moviebar, Uhr, Wetter, Farbtasten, Scrollbalken und Skin-Design.
+
+**Ebene A** ist die Hauptebene, **Ebene B** die zweite Fläche. **Vordergrund** meint meist Schrift oder Symbole, **Hintergrund** die Fläche dahinter. Transparenz lässt darunterliegende Inhalte durchscheinen. Kontrolliere den Kontrast auch bei markierten Zeilen: Normaltext, ausgewählter Text und Auswahlbalken besitzen eigene Farben.
+
+Für grafischen/vertikalen EPG, Senderliste und EMC-Filmliste gibt es zusätzliche Farbgruppen. Statusfarben, etwa für Aufnahmen oder nicht verfügbare Sender, sollten weiterhin unterscheidbar bleiben.
+
+Speichere den Bereich und wähle anschließend im Hauptfenster **Änderungen anwenden**. Sichere eine brauchbare Gestaltung vor größeren Änderungen über [Sichern & Wiederherstellen](../).
+
+Quellen: [Schriftrollen](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/FontsSettingsView.py), [Farbbereiche](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/ColorsSettingsView.py).

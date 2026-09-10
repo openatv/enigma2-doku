@@ -1,0 +1,43 @@
+---
+import Capture from './Capture.astro';
+
+interface Props { language: 'de' | 'en'; }
+const { language } = Astro.props;
+const de = language === 'de';
+const lists = [
+  ['single', 'Single-line list', de ? 'Eine Zeile je Sender: viele Einträge auf einen Blick.' : 'One row per channel: many entries at a glance.'],
+  ['remaining', 'Picture list with remaining time', de ? 'Bilderliste mit verbleibender Laufzeit der aktuellen Sendung.' : 'Picture list with the time remaining for the current programme.'],
+  ['percent', 'Picture list with percentage', de ? 'Bilderliste mit prozentualem Fortschritt der aktuellen Sendung.' : 'Picture list with percentage progress for the current programme.'],
+  ['columns', 'Programme columns', de ? 'Sendungen in Spalten: mehr Programminformationen nebeneinander.' : 'Programme columns: more programme information side by side.'],
+  ['grid', 'Picture grid', de ? 'Bilderraster mit Karten für mehrere Sender.' : 'A picture grid with cards for several channels.'],
+];
+const classic = [
+  de ? 'Links, kein Picon, nächste 5 Sendungen' : 'Focus left, no picon, 5 next events',
+  de ? 'Links, großes Picon, nächste Sendung' : 'Focus left, big picon, next event',
+  de ? 'Rechts, großes Picon, nächste Sendung' : 'Focus right, big picon, next event',
+  de ? 'Rechts, kein Picon, nächste 5 Sendungen' : 'Focus right, no picon, 5 next events',
+];
+const groups = [
+  { id: 'legacy', label: de ? 'Klassisch' : 'Classic', title: de ? 'Alter Modus: vier MetrixHD-Varianten' : 'Legacy mode: four MetrixHD variants', items: classic.map((title, i) => ({ id: `channel-legacy-${i + 1}`, title, caption: `${de ? 'Klassische Variante' : 'Classic variant'} ${i + 1}: ${title}.` })) },
+  ...[
+    ['details', de ? 'Details' : 'Details', 'List and event details'],
+    ['tv', de ? 'TV-Fenster' : 'TV window', 'List and live TV'],
+    ['full', de ? 'Vollbild' : 'Full screen', 'Full screen'],
+  ].map(([id, label, title]) => ({ id, label, title, items: lists.map(([listId, name, description]) => ({ id: `channel-${id}-${listId}`, title: name, caption: `${title} · ${name}. ${description}` })) })),
+];
+---
+<div class="channel-gallery">
+  {groups.map(group => <details open={group.id === 'legacy'}>
+    <summary>{group.label} · {group.items.length} {de ? 'Varianten' : 'variants'}</summary>
+    <p><strong>{group.title}</strong></p>
+    {group.items.map(item => <section aria-label={item.title}>
+      <h4>{item.title}</h4>
+      <Capture id={item.id} language={language} alt={`${de ? 'MetrixHD-Senderliste' : 'MetrixHD channel list'}: ${group.title}, ${item.title}`} caption={item.caption} />
+    </section>)}
+  </details>)}
+</div>
+<style>
+  details { border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; margin-block: 1rem; padding: 1rem; }
+  summary { cursor: pointer; color: var(--sl-color-white); font-size: 1.1rem; font-weight: 600; }
+  summary:focus-visible { outline: 2px solid var(--sl-color-text-accent); outline-offset: .35rem; }
+</style>

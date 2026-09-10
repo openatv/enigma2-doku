@@ -1,0 +1,56 @@
+---
+title: MetrixHD – Infobar und weitere Optionen
+description: Uhr, Sendernummer, Picons, Signalwerte, Mini-TV, Moviebar, Filmliste, Laufschrift, Farbtasten und Skin-Design in MyMetrixLite finden.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+**Menü → Erweiterungen → MyMetrixLite → Sonstige Einstellungen**
+
+Dieser Bereich ist lang: Unterhalb der [Skinauflösung](../aufloesung/) folgen Gruppen für Informationsleisten, Listen und das übrige Aussehen. Scrolle weiter, wenn eine gesuchte Gruppe zunächst nicht sichtbar ist.
+
+## Infobar, Picons und Empfangsinformationen
+
+<Capture id="metrix-infobar-options" language="de" alt="Sonstige Einstellungen mit Uhr, Sendername, Sendernummer, Sendersymbolen und Empfangsinformationen" caption="Die Schalter bestimmen, welche Angaben MetrixHD in den Informationsleisten zeigt." />
+
+| Gruppe / Option | Verwendung |
+| --- | --- |
+| Receiverinformationen | Abstand der Anzeigen sowie freien RAM und CPU-Last anzeigen |
+| Erweiterte Informationen | Zusätzlichen Infobereich einblenden und dessen Stil bestimmen |
+| Picontyp, Größe und Versatz | Logoformat sowie Position und Größe bereits vorhandener Picons |
+| Uhr, Sendername, Sendernummer | Grundinformationen der Infobar einzeln ein-/ausblenden |
+| Sendersymbole und Aufnahmestatus | Kennzeichnungen zum Sender und zu laufenden Aufnahmen |
+| Auflösung / erweiterte Auflösung | Informationen zum Videosignal anzeigen; dies ändert die Skinauflösung nicht |
+| Orbitalposition, SNR und Tunerinformationen | Empfangsbezogene Anzeigen; Verfügbarkeit hängt vom Empfang ab |
+| STB-Info | Zusätzliche Systeminformationen in der jeweiligen Ansicht |
+| Laufschrift | Lange Texte im verfügbaren Feld bewegen |
+| Sendername/-nummer Schriftgröße | Größe dieser Infobar-Texte gezielt anpassen |
+
+Ein Anzeigeschalter ändert keine Empfangskonfiguration. Fehlende Picons werden durch Einblenden allein nicht heruntergeladen.
+
+## Mini-TV, Filmwiedergabe und Listen
+
+| Bereich | Typische Optionen |
+| --- | --- |
+| Mini-TV | Laufendes Bild in Senderliste, Movie Center oder EMC; die Optionen betreffen den jeweiligen Bildschirm |
+| EMC | Cover, Filmbeschreibung, Picons, Zeilenanzahl sowie Breiten der Datums-, Größen- und Fortschrittsfelder |
+| EMC/Filmliste | Listenstil, Scrollbalken und Laufschrift; einzelne Optionen gelten ausdrücklich nur für die normale Filmliste |
+| EMC/MoviePlayer | PVR-Status und Position, Moviebar-Stil, Uhr, Dateiname, Wiedergabezeit und Systeminfos |
+| Senderliste und grafischer EPG | Klassischer MetrixHD-Stil, Feldabstände und EPG-Layout |
+
+<Capture id="metrix-channel-options" language="de" alt="Sonstige Einstellungen mit Senderliste-Stil und weiteren Gestaltungseinstellungen" caption="Der klassische Senderliste-Stil gehört zu MyMetrixLite. Die neuen Listenstile werden direkt in den Senderlisteneinstellungen gewählt." />
+
+Die vier klassischen und alle neuen Varianten werden in der [Kanallisten-Galerie](../../../settings/kanalliste/) gezeigt. Die neueren Optionen **Senderliste / Bildschirm** und **Senderliste / Liste** findest du in der geöffneten Kanalliste über <kbd>MENU</kbd> → **Einstellungen**.
+
+## Skin-Design, Farbtasten und Menü
+
+- **Skin-Design:** Vorlagen, Flächen, Rahmen, Positionen und Abstände der Gestaltung. Diese Werte verändern die Aufteilung und können sich auf viele Ansichten auswirken.
+- **Scrollbalken:** Breite von Balken und Rahmen; der Balken zeigt die Position innerhalb einer längeren Liste.
+- **Menütasten und Scrollinformation:** Farbtasten und Hinweise auf weitere Einträge anzeigen.
+- **Großer Text am unteren Bildschirmrand:** Die große Hintergrundüberschrift ein-/ausblenden.
+- **Skin-Design-Tasten:** Hintergrund, Transparenz, Rahmen, Schrift, Textposition und Glanzeffekt der Tastengrafiken anpassen.
+- **Menüeintragsbeschreibung:** Zusätzlichen Erklärungstext zu Menüpunkten anzeigen, sofern vorhanden.
+
+Ändere zunächst eine zusammengehörige Gruppe, speichere und wende die Änderungen an. So lässt sich bei einem unerwarteten Ergebnis die betreffende Einstellung wiederfinden.
+
+Quelle: [Vollständige Gruppen und Bedingungen der sonstigen Einstellungen](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/OtherSettingsView.py).

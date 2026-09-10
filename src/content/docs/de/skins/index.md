@@ -1,6 +1,6 @@
 ---
 title: Skins verstehen und auswählen
-description: Was ein Skin in openATV verändert, wo man ihn auswählt und wie Skin-Anleitungen das Handbuch ergänzen.
+description: Was ein Skin in OpenATV verändert, wo man ihn auswählt und wie Skin-Anleitungen das Handbuch ergänzen.
 ---
 
 Ein Skin bestimmt die Darstellung der Enigma2-Oberfläche: Farben, Schriften, Anordnung und verfügbare Bildschirmvarianten. Die grundlegenden Aufgaben wie Netzwerk einrichten oder Plugins installieren bleiben dieselben.
@@ -22,6 +22,10 @@ Einige Skins bieten eigene Konfigurationsplugins. Deren Optionen findest du im j
 - **Picons:** Kleine Senderlogos; sie sind ein eigenes Thema und können unabhängig vom Skin installiert werden.
 - **Bedienung:** Die Grundanleitung erklärt Menüwege und Aktionen anhand ihrer Namen.
 
-Dieser Bereich ist der gemeinsame Einstieg. Eigene Anleitungen für einzelne Skins können hier als Unterseiten ergänzt werden und erscheinen in derselben Suche.
+## MetrixHD und MyMetrixLite
 
-Quelle: [openATV-Skinauswahl](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SkinSelection.py).
+Die [MetrixHD-Anleitung](./metrixhd/) erklärt HD/FHD/WQHD, Wetter, Skinparts, Schriften, Farben und weitere Optionen. In der [Kanallisten-Galerie](../settings/kanalliste/) kannst du vier klassische Ansichten und 15 neue Kombinationen vergleichen.
+
+Weitere Skin-Anleitungen können hier als Unterseiten ergänzt werden und erscheinen in derselben Suche.
+
+Quelle: [OpenATV-Skinauswahl](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/SkinSelection.py).

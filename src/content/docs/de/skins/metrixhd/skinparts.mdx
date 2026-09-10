@@ -1,0 +1,39 @@
+---
+title: Skinparts – einzelne Ansichten ergänzen
+description: Skinparts installieren, in MyMetrixLite aktivieren und einzelne Screens auswählen. Unterschied zwischen Skin, Skinpart und Funktionsplugin.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+Ein **Skinpart** ergänzt oder ersetzt ausgewählte Ansichten eines Skins, beispielsweise eine Infobar oder die Darstellung eines Plugins. Es ist kein vollständiger neuer Skin und installiert nicht automatisch die dazugehörige Funktion.
+
+**Menü → Erweiterungen → MyMetrixLite → Skinparteinstellungen**
+
+<Capture id="metrix-skinparts" language="de" alt="Skinparteinstellungen mit dem deaktivierten Beispiel-Skinpart example und seiner Vorschau" caption="Auf der Testbox ist hier das mitgelieferte Beispiel sichtbar. Andere installierte Pakete erzeugen zusätzliche Einträge." />
+
+## Installieren und aktivieren
+
+1. Installiere ein für MetrixHD und deinen Image-Stand vorgesehenes Skinpart-Paket über den angebotenen [Feed](../../../plugins/installieren/) oder nach der Anleitung seines Autors.
+2. Öffne die Skinparteinstellungen und markiere den gewünschten Eintrag.
+3. Lies Beschreibung und Vorschau. Blau **Zoom** vergrößert eine verfügbare Vorschau.
+4. Wähle **Ja** zum Aktivieren. Bei Paketen mit mehreren Ansichten kann **Ja, Bildschirme anzeigen** zusätzliche Untereinträge öffnen. Wähle dort die gewünschten Screens.
+5. Speichere und führe im MyMetrixLite-Hauptfenster **Änderungen anwenden** aus.
+6. Öffne die tatsächlich betroffene Ansicht und prüfe das Ergebnis.
+
+Zum Zurücknehmen deaktiviere den Skinpart und wende die Änderungen erneut an. **Standard** setzt die angebotenen Auswahlwerte zurück; es deinstalliert kein Paket.
+
+## Voraussetzungen verstehen
+
+| Situation | Erklärung |
+| --- | --- |
+| Skinpart für ein Plugin installiert, Funktion fehlt | Das Funktionsplugin muss separat vorhanden sein |
+| Vorschau fehlt | Ein Paket kann ohne Vorschaubild ausgeliefert werden; Beschreibung und Autorenhinweise prüfen |
+| Skinpart nicht verfügbar | Die benötigte XML-Datei fehlt oder das Paket passt nicht zur Installation |
+| Mehrere Parts verändern dieselbe Ansicht | Zunächst nur einen davon aktivieren, damit die Zuordnung eindeutig bleibt |
+| Darstellung passt bei FHD/WQHD nicht | Unterstützung der gewählten Auflösung beim jeweiligen Skinpart prüfen |
+
+MetrixHD liest lokale Skinparts unter `/usr/share/enigma2/MetrixHD/skinparts/`. Gemeinsam installierte Pakete können unter `/usr/share/enigma2/skinparts/` liegen und von MyMetrixLite verknüpft werden. Zum normalen Aktivieren ist keine manuelle Bearbeitung dieser Dateien nötig.
+
+Die veröffentlichte Aufnahme zeigt den vorhandenen Eintrag und seine Vorschau. Das Beispiel wurde für die Bildserie nicht aktiviert; zusätzliche Skinparts benötigen jeweils eine eigene Funktionsprüfung.
+
+Quelle: [Skinparts in MyMetrixLite](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/SkinpartSettingsView.py).

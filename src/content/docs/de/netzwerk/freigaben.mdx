@@ -1,11 +1,11 @@
 ---
 title: NAS und Netzwerkfreigaben einbinden
-description: Eine Netzwerkfreigabe in openATV mounten. SMB, CIFS, NFS, autofs und lokale Speicherpfade verständlich erklärt.
+description: Eine Netzwerkfreigabe in OpenATV mounten. SMB, CIFS, NFS, autofs und lokale Speicherpfade verständlich erklärt.
 ---
 
 import Capture from '../../../../components/Capture.astro';
 
-Eine Netzwerkfreigabe macht einen Ordner auf einem NAS oder Server in openATV nutzbar. Das **Mounten** verbindet die entfernte Freigabe mit einem lokalen Verzeichnis. Dadurch können Anwendungen darauf ähnlich wie auf einen angeschlossenen Datenträger zugreifen.
+Eine Netzwerkfreigabe macht einen Ordner auf einem NAS oder Server in OpenATV nutzbar. Das **Mounten** verbindet die entfernte Freigabe mit einem lokalen Verzeichnis. Dadurch können Anwendungen darauf ähnlich wie auf einen angeschlossenen Datenträger zugreifen.
 
 ## Was du benötigst
 
@@ -14,7 +14,7 @@ Eine Netzwerkfreigabe macht einen Ordner auf einem NAS oder Server in openATV nu
 - Servername oder IP-Adresse, Freigabename beziehungsweise NFS-Exportpfad und die erforderlichen Zugriffsrechte.
 - Bei SMB gegebenenfalls Benutzername und Passwort eines NAS-Benutzers.
 
-Die Freigabe muss auch auf dem Server freigegeben sein. Ein Eintrag in openATV erzeugt keinen Ordner und keine Berechtigung auf dem NAS.
+Die Freigabe muss auch auf dem Server freigegeben sein. Ein Eintrag in OpenATV erzeugt keinen Ordner und keine Berechtigung auf dem NAS.
 
 ## Menüweg
 
@@ -59,7 +59,7 @@ In diesem Beispiel lautet der lokale Zugriffspfad `/media/autofs/media`. Dort wu
 | Beim Start einbinden (`fstab`), ohne HDD-Ersatz | `/media/net/NAME` |
 | `fstab` mit HDD-Ersatz | `/media/hdd` |
 
-`NAME` entspricht dem Feld **Lokale Freigabe**. Diese Zuordnung ist für den hier geprüften openATV-8.0-Stand bestätigt.
+`NAME` entspricht dem Feld **Lokale Freigabe**. Diese Zuordnung ist für den hier geprüften OpenATV-8.0-Stand bestätigt.
 
 ## SMB oder NFS?
 

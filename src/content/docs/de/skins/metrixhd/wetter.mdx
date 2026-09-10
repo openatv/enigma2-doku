@@ -1,0 +1,47 @@
+---
+title: Wetter in MetrixHD
+description: Wetter aktivieren, Ort suchen, MSN, Open-Meteo oder OpenWeatherMap wählen und Temperatur, Vorhersage, Symbole und Aktualisierung einstellen.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+**Menü → Erweiterungen → MyMetrixLite → Wettereinstellungen**
+
+MetrixWeather ergänzt Wetterinformationen in der Infobar und auf Wunsch im MoviePlayer. Dafür werden eine Internetverbindung und ein gültiger Ort benötigt.
+
+<Capture id="metrix-weather" language="de" alt="Wettereinstellungen mit aktiviertem Wetter und dem Beispielort Hamburg" caption="Beispielwerte für die Dokumentation. Hamburg ist ein Beispielort; das Bild bestätigt keine erfolgreiche Wetterabfrage." />
+
+## Ort und Dienst einrichten
+
+1. Setze **Aktiviert** auf Ja.
+2. Wähle den **MetrixWetter-Dienst**. Der geprüfte Stand bietet MSN, Open-Meteo und OpenWeatherMap.
+3. Trage unter **MetrixWetter-Stadtname** deinen Ort ein.
+4. Drücke Blau für die Standortauswahl. Warte auf die Suche und wähle den richtigen Treffer; gleichnamige Orte können unterschiedliche Koordinaten haben.
+5. Für OpenWeatherMap trage zusätzlich deinen gültigen API-Schlüssel ein. Dieses Feld wird bei den anderen beiden Diensten nicht angezeigt.
+6. Speichere und prüfe anschließend die Infobar. Falls du gleichzeitig das Skinlayout geändert hast, wende die Änderungen im MyMetrixLite-Hauptfenster an.
+
+Die Ortsauswahl hinterlegt auch die geografischen Koordinaten. Nur den sichtbaren Stadtnamen zu ändern, genügt deshalb nicht immer. Verwende die angebotene Suche und kontrolliere ihre Rückmeldung.
+
+## Die Wetteroptionen
+
+| Option | Verwendung |
+| --- | --- |
+| Im MoviePlayer anzeigen | Wetter zusätzlich während der Medienwiedergabe anzeigen |
+| Temperatureinheit | Celsius oder Fahrenheit |
+| Symbolstil | Meteo-Symbole, animierte oder statische Symbole |
+| Symbolpfad | Verzeichnis für statische Wetterbilder; muss vorhanden sein |
+| Animationsgeschwindigkeit | Geschwindigkeit der animierten Symbole |
+| Nachtumschaltung | Passende Nachtbilder verwenden, sofern das Symbolset sie bietet |
+| Aktualisierungsintervall | Abstand der Datenabfragen; „Einmal“ lädt nach GUI-/Systemstart einmal |
+| Vorhersage anzeigen | Anzahl der angezeigten Vorhersagetage, im geprüften Stand 0 bis 5 |
+| Details anzeigen | Wind, gefühlte Temperatur und Luftfeuchtigkeit ergänzen |
+| Stadtname in Details | Ortsnamen in der Detaildarstellung anzeigen |
+| Daten zwischenspeichern | Letzte erhaltene Daten beim Start anzeigen, während neue Daten geladen werden |
+
+Unterfelder erscheinen passend zur Auswahl. Ein Icon-Paket ist die Bildsammlung; der Wetterdienst liefert die Wetterdaten. Ein Wechsel des Symbolstils behebt keinen Fehler bei der Ortsabfrage.
+
+## Wenn keine Daten erscheinen
+
+Prüfe zuerst [Internet und DNS](../../../netzwerk/lan/), dann Dienst, Standorttreffer und gegebenenfalls API-Schlüssel. Kontrolliere bei eigenen Symbolen zusätzlich deren Pfad. Alte Cachewerte können noch sichtbar sein, obwohl eine neue Abfrage scheitert. Eine sichtbare Wetterkonfiguration allein bestätigt weder Erreichbarkeit des Anbieters noch aktuelle Daten.
+
+Quellen: [Wetterdialog und Ortssuche](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/WeatherSettingsView.py), [Wetteroptionen](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/setup.xml).

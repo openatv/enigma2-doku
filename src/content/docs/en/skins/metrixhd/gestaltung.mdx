@@ -1,0 +1,39 @@
+---
+title: MetrixHD – fonts and colours
+description: Configure font types, font size, scaling, colour presets, layers and transparency in MyMetrixLite.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+## Fonts and readability
+
+**Menu → Plugin Browser → MyMetrixLite → Font settings**
+
+<Capture id="metrix-fonts" language="en" alt="MetrixHD font settings with examples, font types and percentage scaling" caption="Font type and scaling are configured separately for each use." />
+
+| Section | Used for |
+| --- | --- |
+| Font Examples | Prepared combinations as a starting point |
+| Fonts included in the image | Base roles such as LCD, replacement, console and fixed-width text |
+| Fonts included in the skin | MetrixHD roles such as Regular, RegularLight and SetrixHD |
+| Generally; Screens, Plugins | Individually supported text and headings |
+| EPG, Channellist, Movielist | Lists, programme information and descriptions |
+| Infobar, Moviebar | Information bar text |
+
+**Font type** selects a font file. **Font scale [%]** changes its size relative to the intended value. 100% is the respective base size. Increase gradually and check long channel names and descriptions. Scaling does not add layout space; oversized text can be clipped. Individual font roles only affect screens that use them.
+
+## Colours and layers
+
+**Menu → Plugin Browser → MyMetrixLite → Color settings**
+
+<Capture id="metrix-colors" language="en" alt="MetrixHD colour settings with examples and quick setup for left and right areas" caption="Quick Setup changes background, transparency and text colours for the two main areas." />
+
+**Color Examples** loads prepared combinations. **Quick Setup** adjusts the left and right areas. Further groups control menus, window titles, InfoBar/Moviebar, clock, weather, buttons, scrollbars and skin design.
+
+**Layer A** is the main layer; **Layer B** is the secondary area. **Foreground** usually means text or symbols, while **Background** is the area behind them. Transparency allows underlying content to show through. Check selected rows as well: ordinary text, selected text and the selection bar have separate colours.
+
+Graphical/vertical EPG, channel selection and the EMC movie list have additional colour groups. Keep status colours, such as recordings or unavailable channels, distinguishable.
+
+Save the section and choose **Apply changes** in the main window. Back up a useful appearance before larger changes using [Backup & Restore](../).
+
+Sources: [Font roles](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/FontsSettingsView.py), [colour groups](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/ColorsSettingsView.py).

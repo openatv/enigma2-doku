@@ -1,0 +1,47 @@
+---
+title: MetrixHD-Auflösung – HD, FHD und WQHD
+description: Skinauflösung, HDMI-Ausgabe und Schriftgröße unterscheiden. HD 1280×720, FHD 1920×1080 und WQHD 2560×1440 in MyMetrixLite.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+**Menü → Erweiterungen → MyMetrixLite → Sonstige Einstellungen → Skinauflösung**
+
+Die Skinauflösung ist die Zeichenfläche der Bedienoberfläche. Sie bestimmt, mit welcher Pixelzahl Menüs, Schriften und Symbole erstellt werden.
+
+| Auswahl | Zeichenfläche | Einordnung |
+| --- | --- | --- |
+| Standard HD | 1280 × 720 | Grundauflösung von MetrixHD |
+| Full HD / FHD | 1920 × 1080 | Höhere Auflösung der Oberfläche; erscheint bei gemeldeter FHD-Unterstützung |
+| WQHD | 2560 × 1440 | Noch höhere Auflösung; erscheint bei gemeldeter WQHD-Unterstützung |
+
+<Capture id="metrix-other" language="de" alt="Sonstige Einstellungen mit der markierten Skinauflösung Standard HD 1280x720" caption="Die Testbox bietet HD und FHD an. WQHD ist in diesem Dialog auf dieser Box nicht auswählbar." />
+
+## Ändern
+
+1. Wähle **Skinauflösung** und gehe mit Links/Rechts durch die angebotenen Werte.
+2. Wähle die gewünschte Auflösung und speichere den Bereich.
+3. Wähle im Hauptfenster **Änderungen anwenden** und warte auf den Abschluss.
+4. Prüfe Menütexte, Picons und deine üblichen Ansichten. Bei Bedarf korrigiere die [Schriftskalierung](../gestaltung/).
+
+Ein fehlender Eintrag wird nicht durch die Expertenansicht freigeschaltet. Der geprüfte Code macht FHD von `fhdskin` und WQHD von `wqhdskin` abhängig. Diese Unterstützung wird vom Image für das Gerät gemeldet. Das Handbuch benötigt dafür keine Modellliste.
+
+## Drei verschiedene Einstellungen
+
+| Einstellung | Was ändert sich? |
+| --- | --- |
+| Skinauflösung in MyMetrixLite | Pixelraster der Oberfläche |
+| Video-/HDMI-Ausgabe unter Einstellungen → Bild | Signal, das die Box an Fernseher oder AV-Receiver ausgibt |
+| Schriftart und Schriftskalierung | Aussehen und Größe der Texte innerhalb der Oberfläche |
+
+Ein Fernseher mit UHD-Auflösung erzwingt keine UHD-Bedienoberfläche. WQHD ist nicht UHD/4K. Eine höhere Skinauflösung macht einen Sender oder ein Video nicht detailreicher. Für bessere Lesbarkeit ist häufig die Schriftgröße die passendere Einstellung.
+
+## Weitere Optionen in diesem Abschnitt
+
+- **Alle berechneten Werte abrunden:** beeinflusst die Rundung skalierter Positionen und Größen bei höherer Skinauflösung.
+- **Zusätzlicher Versatz für die Schriftskalierung:** korrigiert die berechnete Schriftgröße. Große Abweichungen können Texte aus ihren vorgesehenen Feldern schieben.
+- **Verbesserte Piconskalierung** und deren Schärfe: beeinflussen die Darstellung skalierter Senderlogos. Sie installieren keine fehlenden Picons.
+
+HD wurde für die veröffentlichten Bildserien verwendet. FHD ist als Auswahl auf der Testbox bestätigt; ein vollständiger Durchlauf aller Ansichten in FHD und WQHD ist damit nicht belegt.
+
+Quellen: [Auflösungsfreigaben](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/__init__.py), [Auflösungs- und Zusatzoptionen](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/OtherSettingsView.py).

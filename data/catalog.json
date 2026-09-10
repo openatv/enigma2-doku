@@ -1,7 +1,7 @@
 {
   "source": "https://github.com/openatv/enigma2",
   "commit": "fdc9347241245fd18fd0b8bc93727237189c916c",
-  "image": "openATV 8.0",
+  "image": "OpenATV 8.0",
   "setups": [
     {
       "key": "Audio",

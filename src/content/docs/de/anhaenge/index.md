@@ -3,11 +3,11 @@ title: Anhänge und Geltungsbereich
 description: Welche gemeinsame Enigma2-Oberfläche diese Grundanleitung beschreibt und wo spätere Besonderheiten eingeordnet werden.
 ---
 
-Dieses Handbuch beschreibt die gemeinsame Enigma2-Bedienung in openATV. Es ist keine Sammlung einzelner Gerätehandbücher. Der Schwerpunkt liegt auf Einrichtung, Menüwegen und der Bedeutung von Einstellungen.
+Dieses Handbuch beschreibt die gemeinsame Enigma2-Bedienung in OpenATV. Es ist keine Sammlung einzelner Gerätehandbücher. Der Schwerpunkt liegt auf Einrichtung, Menüwegen und der Bedeutung von Einstellungen.
 
 ## Stand der Grundanleitung
 
-Die erste Ausgabe bezieht sich auf den openATV-8.0-Quellstand vom 9. September 2026. Menübezeichnungen können in älteren Images anders lauten. Deutsch und Englisch besitzen dieselbe Kapitelstruktur.
+Die erste Ausgabe bezieht sich auf den OpenATV-8.0-Quellstand vom 9. September 2026. Menübezeichnungen können in älteren Images anders lauten. Deutsch und Englisch besitzen dieselbe Kapitelstruktur.
 
 ## Was später ergänzt werden kann
 

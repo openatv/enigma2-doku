@@ -53,7 +53,7 @@ def quote(text):
 
 def md(text):
     # Escape markup in source help strings; preserve intentional line breaks.
-    text = text.replace('\\n', '\n').replace('%s %s', 'openATV')
+    text = text.replace('\\n', '\n').replace('%s %s', 'OpenATV')
     return re.sub(r'([\\`*_{}\[\]<>#|])', r'\\\1', text).replace('\n', '  \n')
 
 
@@ -140,7 +140,7 @@ def collect(source):
         setups.append({'key': section.get('key'), 'slug': slug(section.get('key')), 'title': section.get('title', section.get('key')),
                        'routes': routes.get(section.get('key'), []), 'items': list(unique.values())})
     commit = subprocess.check_output(['git', '-C', str(source), 'rev-parse', 'HEAD'], text=True).strip()
-    return {'source': 'https://github.com/openatv/enigma2', 'commit': commit, 'image': 'openATV 8.0',
+    return {'source': 'https://github.com/openatv/enigma2', 'commit': commit, 'image': 'OpenATV 8.0',
             'setups': setups, 'translations': translations}
 
 
@@ -153,9 +153,9 @@ def render(catalog, language):
         target = directory / (section['slug'] + '.md')
         expected.add(target)
         title = tr(section['title'])
-        description = (f'{title}: Optionen, Originalhilfe und Menüweg in openATV.' if language == 'de' else f'{title}: options, built-in help and menu location in openATV.')
+        description = (f'{title}: Optionen, Originalhilfe und Menüweg in OpenATV.' if language == 'de' else f'{title}: options, built-in help and menu location in OpenATV.')
         lines = ['---', f'title: {quote(title)}', f'description: {quote(description)}', 'editUrl: false', 'pagefind: true', '---', '',
-                 ('Diese Referenz enthält die vorhandenen Hilfetexte aus openATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.' if language == 'de' else 'This reference contains the help text provided by openATV. The open dialog and selected options determine which entries are visible.'), '',
+                 ('Diese Referenz enthält die vorhandenen Hilfetexte aus OpenATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.' if language == 'de' else 'This reference contains the help text provided by OpenATV. The open dialog and selected options determine which entries are visible.'), '',
                  ('## Wo finde ich das?' if language == 'de' else '## Where do I find it?'), '']
         if section['routes']:
             lines += ['**' + ' → '.join(md(tr(part)) for part in path) + '**' for path in section['routes']]
@@ -167,7 +167,7 @@ def render(catalog, language):
             if language == 'de' and tr(item['label']) != item['label']:
                 lines += ['**English:** ' + md(item['label']), '']
             if item['help']:
-                help_text = tr(item['help']).replace('\\n', '\n').replace('%s %s', 'openATV')
+                help_text = tr(item['help']).replace('\\n', '\n').replace('%s %s', 'OpenATV')
                 lines += ['<p>' + html.escape(help_text).replace('\n', '<br />') + '</p>', '']
             else:
                 lines += [('Zu dieser Option enthält die Quelle noch keinen Hilfetext.' if language == 'de' else 'The source does not yet provide help text for this option.'), '']
@@ -180,8 +180,8 @@ def render(catalog, language):
                 lines += [('Wird abhängig von anderen Optionen oder dem Dialog eingeblendet.' if language == 'de' else 'Visibility depends on other options or the dialog.'), '']
             lines += ['</details>', '']
         url = f'{catalog["source"]}/blob/{catalog["commit"]}/data/setup.xml'
-        lines += ['---', '', ('Quelle: ' if language == 'de' else 'Source: ') + f'[openATV setup.xml]({url}) · `{catalog["commit"][:10]}`.']
-        target.write_text('\n'.join(lines) + '\n', encoding='utf-8')
+        lines += ['---', '', ('Quelle: ' if language == 'de' else 'Source: ') + f'[OpenATV setup.xml]({url}) · `{catalog["commit"][:10]}`.']
+        target.write_text(('\n'.join(lines) + '\n').replace('openATV', 'OpenATV'), encoding='utf-8')
     for stale in directory.glob('*.md'):
         if stale not in expected:
             stale.unlink()  # Only importer-owned generated files, inside the validated directory.

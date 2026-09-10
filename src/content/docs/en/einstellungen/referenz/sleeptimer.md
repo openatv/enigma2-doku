@@ -1,11 +1,11 @@
 ---
 title: "SleepTimer Settings"
-description: "SleepTimer Settings: options, built-in help and menu location in openATV."
+description: "SleepTimer Settings: options, built-in help and menu location in OpenATV."
 editUrl: false
 pagefind: true
 ---
 
-This reference contains the help text provided by openATV. The open dialog and selected options determine which entries are visible.
+This reference contains the help text provided by OpenATV. The open dialog and selected options determine which entries are visible.
 
 ## Where do I find it?
 
@@ -72,4 +72,4 @@ Visibility depends on other options or the dialog.
 
 ---
 
-Source: [openATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+Source: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.

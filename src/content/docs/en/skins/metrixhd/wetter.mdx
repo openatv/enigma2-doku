@@ -1,0 +1,47 @@
+---
+title: Weather in MetrixHD
+description: Enable weather, select a location and provider, and configure temperature, forecasts, icons and refresh intervals.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+**Menu → Plugin Browser → MyMetrixLite → Weather settings**
+
+MetrixWeather adds weather information to the InfoBar and optionally the MoviePlayer. It needs internet access and a valid location.
+
+<Capture id="metrix-weather" language="en" alt="Enabled weather settings with the example location Hamburg" caption="Example values for the documentation. Hamburg is a sample location; this image does not confirm a successful weather request." />
+
+## Set up a location and service
+
+1. Set **Enabled** to Yes.
+2. Choose **MetrixWeather service**. The inspected version offers MSN, Open-Meteo and OpenWeatherMap.
+3. Enter your location in **MetrixWeather city name**.
+4. Press Blue for **Location Selection**. Wait for the search and choose the correct result; places with the same name can have different coordinates.
+5. For OpenWeatherMap, also enter a valid personal API key. This field is hidden for the other two providers.
+6. Save and check the InfoBar. If you also changed the skin layout, apply changes in the MyMetrixLite main window.
+
+Location selection also stores geographic coordinates. Changing only the visible city name may therefore be insufficient. Use the supplied search and check its result.
+
+## Weather options
+
+| Option | Purpose |
+| --- | --- |
+| Show in MoviePlayer | Also show weather during media playback |
+| Temperature unit | Celsius or Fahrenheit |
+| Icon style | Meteo icons, animated icons or static images |
+| Icon path | Existing directory for static weather images |
+| Animations speed | Speed of animated icons |
+| Icon night switch | Use night images when supplied by the icon set |
+| Refresh interval | Time between requests; Once loads once after a GUI/system start |
+| Show forecast | Number of forecast days, 0 to 5 in the inspected version |
+| Show detail | Add wind, feels-like temperature and humidity |
+| Show cityname in details | Include the location name in the detailed view |
+| Cache data | Display the last received data at startup while fetching updates |
+
+Subfields depend on the selected option. An icon package supplies images; the weather service supplies data. Changing icon style does not fix a failed location request.
+
+## If data is missing
+
+Check [internet access and DNS](../../../netzwerk/lan/), then the service, location result and API key where applicable. Check the path for custom icons. Cached values can remain visible while new requests fail. A configured dialog alone does not confirm provider availability or fresh data.
+
+Sources: [Weather dialog and location search](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/WeatherSettingsView.py), [weather options](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/setup.xml).

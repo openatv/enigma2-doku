@@ -1,11 +1,11 @@
 ---
 title: "Tastatur"
-description: "Tastatur: Optionen, Originalhilfe und Menüweg in openATV."
+description: "Tastatur: Optionen, Originalhilfe und Menüweg in OpenATV."
 editUrl: false
 pagefind: true
 ---
 
-Diese Referenz enthält die vorhandenen Hilfetexte aus openATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.
+Diese Referenz enthält die vorhandenen Hilfetexte aus OpenATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.
 
 ## Wo finde ich das?
 
@@ -17,7 +17,7 @@ Die Suche findet auch die englischen Bezeichnungen und technischen Schlüssel. [
 
 **English:** Keyboard
 
-<p>Den Typ der an openATV angeschlossenen Tastatur auswählen.</p>
+<p>Den Typ der an OpenATV angeschlossenen Tastatur auswählen.</p>
 
 <details>
 <summary>Zuordnung & Hinweise</summary>
@@ -30,4 +30,4 @@ Bedienebene: Einfach.
 
 ---
 
-Quelle: [openATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+Quelle: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.

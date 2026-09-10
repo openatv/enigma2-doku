@@ -1,0 +1,47 @@
+---
+title: MetrixHD resolution – HD, FHD and WQHD
+description: Understand skin resolution, HDMI output and font size. HD 1280×720, FHD 1920×1080 and WQHD 2560×1440 in MyMetrixLite.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+**Menu → Plugin Browser → MyMetrixLite → Other settings → Skin resolution**
+
+Skin resolution is the drawing surface of the interface. It defines the pixel dimensions used to create menus, text and icons.
+
+| Selection | Drawing surface | Meaning |
+| --- | --- | --- |
+| Standard HD | 1280 × 720 | MetrixHD's base resolution |
+| Full HD / FHD | 1920 × 1080 | Higher interface resolution; offered when FHD support is reported |
+| WQHD | 2560 × 1440 | Higher resolution again; offered when WQHD support is reported |
+
+<Capture id="metrix-other" language="en" alt="Other settings with Standard HD 1280x720 skin resolution selected" caption="The test receiver offers HD and FHD. WQHD is not selectable on this receiver." />
+
+## Change the resolution
+
+1. Select **Skin resolution** and use Left/Right to browse the offered values.
+2. Choose the intended resolution and save the section.
+3. Select **Apply changes** in the main window and wait for completion.
+4. Check text, picons and your usual screens. Adjust [font scaling](../gestaltung/) if needed.
+
+A missing resolution is not unlocked by Expert mode. The inspected code requires `fhdskin` for FHD and `wqhdskin` for WQHD. The image reports these device capabilities, so the handbook does not need a model list.
+
+## Three separate settings
+
+| Setting | What it changes |
+| --- | --- |
+| Skin resolution in MyMetrixLite | Pixel grid used by the interface |
+| Video/HDMI output under Setup → Video | Signal sent to the television or AV receiver |
+| Font type and scaling | Appearance and size of text within the interface |
+
+A UHD television does not require a UHD interface. WQHD is not UHD/4K. Higher skin resolution does not add detail to a channel or video. Font size is often the more appropriate setting when the goal is easier reading.
+
+## Related options
+
+- **All calculated values round down:** controls rounding of scaled positions and sizes at higher skin resolutions.
+- **Additional offset for font scaling:** adjusts the calculated text size. Large offsets can push text beyond its fields.
+- **Enhanced picon scaling** and sharpness: affect the rendering of resized channel logos; they do not install missing picons.
+
+Published screenshot series use HD. FHD was confirmed as an offered choice on the test receiver; this does not verify every screen in FHD or WQHD.
+
+Sources: [Resolution capabilities](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/__init__.py), [resolution options](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/OtherSettingsView.py).

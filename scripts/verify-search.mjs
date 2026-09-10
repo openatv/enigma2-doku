@@ -32,6 +32,12 @@ const checks = [
   ['en', 'network share', '/en/netzwerk/freigaben/'],
   ['en', 'config.epg.saveepg', '/en/einstellungen/referenz/epg/'],
   ['en', 'skin', '/en/skins/'],
+  ['de', 'WQHD', '/de/skins/metrixhd/aufloesung/'],
+  ['de', 'Skinparts', '/de/skins/metrixhd/skinparts/'],
+  ['de', 'Kanalliste', '/de/settings/kanalliste/'],
+  ['en', 'WQHD', '/en/skins/metrixhd/aufloesung/'],
+  ['en', 'Skinparts', '/en/skins/metrixhd/skinparts/'],
+  ['en', 'Picture grid', '/en/settings/kanalliste/'],
 ];
 for (const lang of ['de', 'en']) {
   language = lang;

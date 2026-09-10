@@ -1,11 +1,11 @@
 ---
 title: "EPG"
-description: "EPG: Optionen, Originalhilfe und Menüweg in openATV."
+description: "EPG: Optionen, Originalhilfe und Menüweg in OpenATV."
 editUrl: false
 pagefind: true
 ---
 
-Diese Referenz enthält die vorhandenen Hilfetexte aus openATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.
+Diese Referenz enthält die vorhandenen Hilfetexte aus OpenATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.
 
 ## Wo finde ich das?
 
@@ -17,7 +17,7 @@ Die Suche findet auch die englischen Bezeichnungen und technischen Schlüssel. [
 
 **English:** EPG location
 
-<p>Ort zur Speicherung der EPG-Daten auswählen, wenn openATV ausgeschaltet wird. Dieser Ort muss beim Start verfügbar sein!</p>
+<p>Ort zur Speicherung der EPG-Daten auswählen, wenn OpenATV ausgeschaltet wird. Dieser Ort muss beim Start verfügbar sein!</p>
 
 <details>
 <summary>Zuordnung & Hinweise</summary>
@@ -32,7 +32,7 @@ Bedienebene: Experte.
 
 **English:** EPG filename
 
-<p>Dateinamen für die EPG-Daten auswählen, wenn openATV ausgeschaltet wird. Das kann nützlich sein, wenn mehrere Receiver verwendet werden.</p>
+<p>Dateinamen für die EPG-Daten auswählen, wenn OpenATV ausgeschaltet wird. Das kann nützlich sein, wenn mehrere Receiver verwendet werden.</p>
 
 <details>
 <summary>Zuordnung & Hinweise</summary>
@@ -62,7 +62,7 @@ Bedienebene: Experte.
 
 **English:** Refresh every
 
-<p>openATV liest die gespeicherten EPG-Daten nach der eingestellten Zeit erneut ein.</p>
+<p>OpenATV liest die gespeicherten EPG-Daten nach der eingestellten Zeit erneut ein.</p>
 
 <details>
 <summary>Zuordnung & Hinweise</summary>
@@ -109,7 +109,7 @@ Bedienebene: Experte.
 
 **English:** Save every
 
-<p>openATV speichert die EPG-Daten automatisch nach der eingestellten Zeit.</p>
+<p>OpenATV speichert die EPG-Daten automatisch nach der eingestellten Zeit.</p>
 
 <details>
 <summary>Zuordnung & Hinweise</summary>
@@ -364,4 +364,4 @@ Bedienebene: Experte.
 
 ---
 
-Quelle: [openATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+Quelle: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.

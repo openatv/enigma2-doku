@@ -1,6 +1,6 @@
-# openATV Enigma2-Handbuch
+# OpenATV Enigma2-Handbuch
 
-Die gemeinsame, modellneutrale Grunddokumentation für openATV: Deutsch und Englisch, durchsuchbare Anleitungen und ein Verzeichnis der vorhandenen Einstellungen. Mit originalem openATV-Logo aus dem Enigma2-Repository.
+Die gemeinsame, modellneutrale Grunddokumentation für OpenATV: Deutsch und Englisch, durchsuchbare Anleitungen und ein Verzeichnis der vorhandenen Einstellungen. Mit originalem OpenATV-Logo aus dem Enigma2-Repository.
 
 ## Inhalt dieser ersten Ausgabe
 
@@ -8,10 +8,12 @@ Die gemeinsame, modellneutrale Grunddokumentation für openATV: Deutsch und Engl
 - Tuner und Sendersuche
 - LAN, WLAN, NAS und Netzwerkfreigaben
 - Plugins, Settings/Senderlisten und EPG
+- MetrixHD/MyMetrixLite: HD/FHD/WQHD, Wetter, Skinparts, Schriften, Farben und Infobar
+- Kanallisten-Menü und Galerie mit vier klassischen sowie 15 neuen Layoutkombinationen
 - Einstellungsreferenz mit vorhandenen Beschriftungen und Originalhilfetexten
 - Erweiterbare Bereiche für Skins, Add-ons und spätere Anhänge
 
-Die Anleitungen wurden anhand des openATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. Acht Kapitel pro Sprache enthalten jetzt echte OSD-Aufnahmen: insgesamt 26 geprüfte Bilder aus einer Serie von 34 Aufnahmen mit openATV 8.0.2-devel und MetrixHD. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz.
+Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 15 Kapitel pro Sprache enthalten echte Bildschirmaufnahmen: insgesamt 88 ausgewählte Bilder mit OpenATV 8.0.2-devel und MetrixHD. Die Aufnahmen wurden mit gestoppter Wiedergabe und neutralem Bootlogo wiederholt. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für die zusätzlichen Skin-Kapitel.
 
 Die vorhandene NAS-Freigabe und die HDD wurden auf Schreib- und Lesezugriff geprüft. Ihre Einbindung sowie Tuner- und LAN-Konfiguration blieben erhalten. Für einheitliche Bilder wurde MetrixHD verwendet; nach den DE/EN-Läufen wurde die ursprüngliche Sprache wiederhergestellt. Einzelne Assistentenansichten sind bebildert, der vollständige Neuinstallationsablauf ist noch nicht durchgetestet. WLAN und FBC folgen auf passender Hardware. Der [Prüfstand](docs/PRAXISTESTS.md) trennt aufgenommene Ansichten von vollständig getesteten Bedienabläufen.
 
@@ -48,7 +50,7 @@ pnpm preview
 2. Im Repository **Settings → Pages → Build and deployment → Source → GitHub Actions** wählen.
 3. Den lokalen Commit nach `main` hochladen.
 4. Unter **Actions → Build and publish handbook** den Lauf prüfen. Falls Pages erst nach dem Upload aktiviert wurde, den Workflow über **Run workflow** erneut ausführen.
-5. Nach erfolgreicher Bereitstellung die Adresse aus **Settings → Pages** öffnen. Erwarteter Einstieg: [openATV-Handbuch](https://openatv.github.io/enimga2-doku/de/). Dieser Link ist erst nach einer erfolgreichen Veröffentlichung verfügbar.
+5. Nach erfolgreicher Bereitstellung die Adresse aus **Settings → Pages** öffnen. Erwarteter Einstieg: [OpenATV-Handbuch](https://openatv.github.io/enimga2-doku/de/). Dieser Link ist erst nach einer erfolgreichen Veröffentlichung verfügbar.
 
 Der Workflow installiert die festgelegten Abhängigkeiten, prüft Quellcode und Katalog, baut beide Sprachen, kontrolliert interne Links und den Suchindex, prüft die Größe und veröffentlicht. Pull Requests werden nur gebaut und geprüft. Erst Änderungen auf `main` beziehungsweise ein manueller Lauf auf dem vorgesehenen Branch veröffentlichen. Die `github-pages`-Umgebung sollte in GitHub auf `main` beschränkt werden.
 
@@ -80,4 +82,4 @@ Bei einem Wechsel auf Apache2 wird dieselbe Website für die neue Adresse gebaut
 
 ## Quellen und Lizenzen
 
-Der Inhalt basiert auf dem [openATV-Enigma2-Projekt](https://github.com/openatv/enigma2). Herkunft der übernommenen Texte und Markenassets: [NOTICE.md](NOTICE.md). Dieses Repository verwendet GPL-2.0; siehe [LICENSE](LICENSE). Drittanbieterpakete behalten ihre jeweiligen Lizenzen. Die Bezeichnung und das Logo von openATV dienen der Zuordnung dieses Handbuchs und werden dadurch nicht zu einer neuen frei verwendbaren Marke.
+Der Inhalt basiert auf dem [OpenATV-Enigma2-Projekt](https://github.com/openatv/enigma2). Herkunft der übernommenen Texte und Markenassets: [NOTICE.md](NOTICE.md). Dieses Repository verwendet GPL-2.0; siehe [LICENSE](LICENSE). Drittanbieterpakete behalten ihre jeweiligen Lizenzen. Die Bezeichnung und das Logo von OpenATV dienen der Zuordnung dieses Handbuchs und werden dadurch nicht zu einer neuen frei verwendbaren Marke.

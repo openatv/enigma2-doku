@@ -1,0 +1,39 @@
+---
+title: Skinparts – add individual views
+description: Install and enable MetrixHD skinparts and select individual screens. Understand skins, skinparts and functional plugins.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+A **skinpart** adds or replaces selected views of a skin, such as an InfoBar or a plugin screen. It is not a complete new skin and does not automatically install the associated functionality.
+
+**Menu → Plugin Browser → MyMetrixLite → Skinpart settings**
+
+<Capture id="metrix-skinparts" language="en" alt="Skinpart settings showing the disabled example skinpart and its preview" caption="This receiver shows the supplied example. Other installed packages add further entries." />
+
+## Install and enable
+
+1. Install a skinpart package intended for MetrixHD and your image version through the offered [feed](../../../plugins/installieren/) or its author's instructions.
+2. Open Skinpart settings and select the entry.
+3. Read the description and preview. Blue **Zoom** enlarges an available preview.
+4. Choose **Yes** to enable it. Multi-screen packages may offer **Yes, show screens**, revealing individual screen selections.
+5. Save, then select **Apply changes** in the MyMetrixLite main window.
+6. Open the affected view and check the result.
+
+To undo the change, disable the skinpart and apply changes again. **Defaults** resets the offered values; it does not uninstall the package.
+
+## Understand requirements
+
+| Situation | Explanation |
+| --- | --- |
+| Plugin skinpart installed but the function is missing | The functional plugin must be installed separately |
+| No preview | A package may ship without a preview image; check its description |
+| Skinpart unavailable | Its required XML file is missing or the package does not match the installation |
+| Several parts change the same view | Start with only one enabled to keep the result identifiable |
+| Incorrect layout at FHD/WQHD | Check that this skinpart supports the chosen resolution |
+
+MetrixHD reads local skinparts from `/usr/share/enigma2/MetrixHD/skinparts/`. Shared packages can live under `/usr/share/enigma2/skinparts/` and be linked by MyMetrixLite. Normal activation does not require editing these files manually.
+
+The screenshot shows the existing entry and its preview. The example was not activated for the capture series; each additional skinpart needs its own functional check.
+
+Source: [Skinparts in MyMetrixLite](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/SkinpartSettingsView.py).

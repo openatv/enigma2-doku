@@ -1,11 +1,11 @@
 ---
 title: "EPG Settings"
-description: "EPG Settings: options, built-in help and menu location in openATV."
+description: "EPG Settings: options, built-in help and menu location in OpenATV."
 editUrl: false
 pagefind: true
 ---
 
-This reference contains the help text provided by openATV. The open dialog and selected options determine which entries are visible.
+This reference contains the help text provided by OpenATV. The open dialog and selected options determine which entries are visible.
 
 ## Where do I find it?
 
@@ -15,7 +15,7 @@ Search also matches technical keys. [Back to the directory](../../)
 
 <h2 id="option-8500723391e5">EPG location</h2>
 
-<p>Choose the location where the EPG data will be stored when the openATV is shut down. The location must be available at boot time.</p>
+<p>Choose the location where the EPG data will be stored when the OpenATV is shut down. The location must be available at boot time.</p>
 
 <details>
 <summary>Reference & notes</summary>
@@ -28,7 +28,7 @@ Setup level: Expert.
 
 <h2 id="option-747704d58ac2">EPG filename</h2>
 
-<p>Choose the name of the file that holds the EPG data when the openATV is shut down. This can be handy to differentiate between several receivers.</p>
+<p>Choose the name of the file that holds the EPG data when the OpenATV is shut down. This can be handy to differentiate between several receivers.</p>
 
 <details>
 <summary>Reference & notes</summary>
@@ -41,7 +41,7 @@ Setup level: Expert.
 
 <h2 id="option-20673f1b78f5">Scheduled load of &#x27;epg.dat&#x27;</h2>
 
-<p>Allows the openATV to read the stored EPG data regularly.</p>
+<p>Allows the OpenATV to read the stored EPG data regularly.</p>
 
 <details>
 <summary>Reference & notes</summary>
@@ -54,7 +54,7 @@ Setup level: Expert.
 
 <h2 id="option-ec653907007c">Refresh every</h2>
 
-<p>The openATV reads the stored EPG data every selected number of hours.</p>
+<p>The OpenATV reads the stored EPG data every selected number of hours.</p>
 
 <details>
 <summary>Reference & notes</summary>
@@ -82,7 +82,7 @@ Setup level: Expert.
 
 <h2 id="option-3c0f1cbfe23d">Scheduled save of &#x27;epg.dat&#x27;</h2>
 
-<p>Allows the openATV to store the EPG data regularly.</p>
+<p>Allows the OpenATV to store the EPG data regularly.</p>
 
 <details>
 <summary>Reference & notes</summary>
@@ -95,7 +95,7 @@ Setup level: Expert.
 
 <h2 id="option-d72f3a8f21cc">Save every</h2>
 
-<p>The openATV stores the EPG data every selected number of hours.</p>
+<p>The OpenATV stores the EPG data every selected number of hours.</p>
 
 <details>
 <summary>Reference & notes</summary>
@@ -318,4 +318,4 @@ Setup level: Expert.
 
 ---
 
-Source: [openATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+Source: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.

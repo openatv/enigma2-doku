@@ -45,6 +45,11 @@ def import_review(source, review, tool_commit):
             raise ValueError(f'Reviewed image changed: {relative}')
         metadata = {key: entry[key] for key in ('id', 'language', 'article', 'screen_key', 'captured_at', 'width', 'height', 'sha256')}
         metadata.update({'file': relative, 'image': manifest['image'], 'skin': manifest['skin'], 'reviewed': True})
+        backend = manifest.get('request', {}).get('backend')
+        if backend in ('grab', 'grab-logo', 'x11'):
+            metadata['backend'] = backend
+        if backend == 'grab-logo' and manifest.get('background') == 'receiver-bootlogo; playback stopped':
+            metadata['background'] = 'receiver-bootlogo; playback stopped'
         pending.append((image, metadata))
     if {name for lang, name in ids if lang == 'de'} != {name for lang, name in ids if lang == 'en'}:
         raise ValueError('Reviewed images must have matching DE/EN counterparts')

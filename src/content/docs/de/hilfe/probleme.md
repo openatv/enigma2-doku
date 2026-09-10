@@ -33,4 +33,4 @@ Ein Skin verändert die Darstellung. Dieses Handbuch erklärt die gemeinsame Obe
 
 ## Welche Teile sind bereits geprüft?
 
-Die Grundanleitungen wurden anhand des openATV-8.0-Quellstands erstellt. Das Verzeichnis übernimmt vorhandene Hilfetexte und zeigt noch nicht zugeordnete Menüwege offen an. Eine vollständige Prüfung aller Abläufe auf einer laufenden Installation ist damit nicht behauptet. Angaben zum Quellstand stehen an den jeweiligen Artikeln.
+Die Grundanleitungen wurden anhand des OpenATV-8.0-Quellstands erstellt. Das Verzeichnis übernimmt vorhandene Hilfetexte und zeigt noch nicht zugeordnete Menüwege offen an. Eine vollständige Prüfung aller Abläufe auf einer laufenden Installation ist damit nicht behauptet. Angaben zum Quellstand stehen an den jeweiligen Artikeln.

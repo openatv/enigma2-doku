@@ -1,9 +1,9 @@
 ---
 title: WLAN verbinden
-description: Ein WLAN auswählen, den Netzwerkschlüssel eingeben und die Verbindung in openATV kontrollieren. Wi-Fi, SSID und Passwort erklärt.
+description: Ein WLAN auswählen, den Netzwerkschlüssel eingeben und die Verbindung in OpenATV kontrollieren. Wi-Fi, SSID und Passwort erklärt.
 ---
 
-WLAN verbindet openATV ohne Netzwerkkabel mit dem Router. Voraussetzung ist ein in der Netzwerkübersicht verfügbarer WLAN-Adapter.
+WLAN verbindet OpenATV ohne Netzwerkkabel mit dem Router. Voraussetzung ist ein in der Netzwerkübersicht verfügbarer WLAN-Adapter.
 
 ## Menüweg
 

@@ -1,11 +1,11 @@
 ---
 title: "Systemeinstellungen"
-description: "Systemeinstellungen: Optionen, Originalhilfe und Menüweg in openATV."
+description: "Systemeinstellungen: Optionen, Originalhilfe und Menüweg in OpenATV."
 editUrl: false
 pagefind: true
 ---
 
-Diese Referenz enthält die vorhandenen Hilfetexte aus openATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.
+Diese Referenz enthält die vorhandenen Hilfetexte aus OpenATV. Je nach geöffnetem Dialog und gewählten Optionen ist nur ein Teil der Einträge sichtbar.
 
 ## Wo finde ich das?
 
@@ -369,7 +369,7 @@ Bedienebene: Experte.
 
 **English:** After power loss
 
-<p>Auswählen, was geschehen soll, nachdem openATV nicht ordnungsgemäß heruntergefahren wurde (z. B. nach einem Stromausfall).</p>
+<p>Auswählen, was geschehen soll, nachdem OpenATV nicht ordnungsgemäß heruntergefahren wurde (z. B. nach einem Stromausfall).</p>
 
 <details>
 <summary>Zuordnung & Hinweise</summary>
@@ -384,7 +384,7 @@ Bedienebene: Fortgeschritten.
 
 **English:** Boot-up action
 
-<p>Auswählen, was geschehen soll, wenn openATV gestartet wird.</p>
+<p>Auswählen, was geschehen soll, wenn OpenATV gestartet wird.</p>
 
 <details>
 <summary>Zuordnung & Hinweise</summary>
@@ -504,4 +504,4 @@ Bedienebene: Experte.
 
 ---
 
-Quelle: [openATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.
+Quelle: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml) · `fdc9347241`.

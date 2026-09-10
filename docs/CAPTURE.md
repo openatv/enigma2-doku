@@ -14,7 +14,7 @@ Stabile Bildkennungen verbinden die Stufen. Neue Skins, Erweiterungen oder Anhä
 
 ## Voraussetzungen und Installation
 
-Das Plugin benötigt einen passenden openATV-8.0-Stand, Python 3, `/usr/bin/grab` und SSH. Auf dem PC werden Python 3.10 oder neuer sowie `ssh` und `scp` benötigt. Für die dokumentierte Serie wurde MetrixHD verwendet. Der lokale Pluginstand ist in `data/captures.json` angegeben; ein ausschließlich lokaler Commit ist noch nicht auf GitHub verfügbar.
+Das Plugin benötigt einen passenden OpenATV-8.0-Stand, Python 3, `/usr/bin/grab` und SSH. Auf dem PC werden Python 3.10 oder neuer sowie `ssh` und `scp` benötigt. Für die dokumentierte Serie wurde MetrixHD verwendet. Die drei zusätzlichen MetrixHD-/Kanallisten-Profile benötigen außerdem MyMetrixLite und die aktuellen MetrixHD-Listenvorlagen. Der lokale Pluginstand ist in `data/captures.json` angegeben; ein ausschließlich lokaler Commit ist noch nicht auf GitHub verfügbar.
 
 Im separaten Repository `enigma2-plugin-test` ausführen; `BOX` durch die Testbox ersetzen:
 
@@ -31,8 +31,8 @@ Die Box muss für den gesamten Lauf frei sein. Die bestehende Netzwerkkonfigurat
 
 ```sh
 python tools/capture.py --host root@BOX --run-prefix handbuch-001 \
-  --profiles foundation onboarding connections satellite-single plugins \
-  --restart-languages
+  --profiles foundation onboarding connections satellite-single plugins metrix channel-controls channel-styles \
+  --restart-languages --bootlogo
 ```
 
 Die SSH-Hostkennung muss bereits bekannt sein. Eine getrennte bekannte Hostdatei kann über `--known-hosts PFAD` angegeben werden. Das Werkzeug speichert keine Adresse und keine Zugangsdaten im Repository.
@@ -44,8 +44,15 @@ Die SSH-Hostkennung muss bereits bekannt sein. Eine getrennte bekannte Hostdatei
 | `connections` | 4 | LAN und vorhandene Netzwerkfreigabe |
 | `satellite-single` | 2 | Empfangsmenü und herkömmlicher Sat-Anschluss |
 | `plugins` | 2 | Erweiterungsübersicht und Paketfeed |
+| `metrix` | 9 | MyMetrixLite, Schriften, Farben, Wetter, sonstige Optionen, Skinparts und Sicherungen |
+| `channel-controls` | 3 | Kontextmenü und die zwei Modi der Senderlisten-Einstellungen |
+| `channel-styles` | 19 | Vier klassische MetrixHD-Varianten und drei neue Bildschirme mit je fünf Listenstilen |
 
-Die Serie erzeugt 34 Bilder in Deutsch und Englisch. Enigma2 wird für jede Sprache neu gestartet, weil bereits angelegte Auswahlwerte sonst in der vorherigen Sprache bleiben können. Das Werkzeug stellt die vier ursprünglichen Spracheinstellungen anschließend wieder her. Die Details zu Abbruch und Wiederherstellung stehen in der README des Pluginrepositories.
+Die vollständige Serie erzeugt 96 Bilder in Deutsch und Englisch. Enigma2 wird für jede Sprache neu gestartet, weil bereits angelegte Auswahlwerte sonst in der vorherigen Sprache bleiben können. Das Werkzeug stellt die vier ursprünglichen Spracheinstellungen anschließend wieder her. Die Details zu Abbruch und Wiederherstellung stehen in der README des Pluginrepositories.
+
+`--bootlogo` benötigt zusätzlich `/usr/bin/showiframe` und `/usr/share/bootlogo.mvi`. Dieser Modus stoppt die Wiedergabe und nimmt OSD plus Bootlogo auf. Er prüft vor und nach der Aufnahme, dass kein Sender aktiv ist, und verwirft ein Bild bei gestarteter Wiedergabe. Ein nicht empfangbarer Startsender verhindert zwischen den Sprachneustarts laufendes TV. Für die neutrale Übergabe nach dem letzten Neustart nochmals ein einzelnes Profil in der ursprünglichen Sprache mit `--bootlogo` ausführen.
+
+Die Senderlisten-Galerie markiert für aussagekräftige Spalten vorhandene Sender mit EPG-Daten, ohne sie einzuschalten. MetrixHD-Einstellungen und native Layoutvorlagen werden dafür vorübergehend im Arbeitsspeicher gewählt und nach jedem Dialog wiederhergestellt. Das Wetterbild verwendet einen ungespeicherten Beispielort; Skinparts werden für die Aufnahme nicht aktiviert.
 
 Die Profile öffnen Ansichten und speichern keine darin gezeigten Konfigurationen. Das Paketprofil aktualisiert den Katalog, installiert jedoch kein Paket. Die beiden Assistentenbilder belegen die jeweiligen Ansichten; sie ersetzen keinen Test des gesamten Assistentenablaufs.
 
@@ -73,14 +80,14 @@ Die freigegebenen Dateien stehen in `data/captures-review.json`:
 ]
 ```
 
-Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme und sein englisches Gegenstück. Die aktuelle Datei enthält 26 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben in der ersten Ausgabe außerhalb der öffentlichen Bildauswahl.
+Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme und sein englisches Gegenstück. Die aktuelle Datei enthält 88 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
 
 Im Handbuchrepository importieren:
 
 ```sh
 python scripts/import-captures.py --source .capture-private \
   --review data/captures-review.json \
-  --tool-commit 3df80b90a8ae776c770c58c0fcb3975afd182a32
+  --tool-commit 32677d7566a1f07f68a11b353df6dbab378ac3fb
 ```
 
 Bei einer neuen Pluginversion ihren tatsächlichen Commit verwenden. Der Importer prüft erfolgreiche Läufe, Bildpfade, Prüfsummen und vollständige Sprachpaare, bevor er Dateien kopiert. Bereits veröffentlichte Bilder, die aus der Auswahl entfernt werden, müssen bewusst aus dem Assetordner gelöscht werden; der Importer meldet solche Reste. Er exportiert keine vollständigen Rohmanifeste und keine Verbindungsdaten.

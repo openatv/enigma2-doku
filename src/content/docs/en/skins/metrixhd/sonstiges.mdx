@@ -1,0 +1,56 @@
+---
+title: MetrixHD – InfoBar and other options
+description: Find clocks, channel numbers, picons, signal indicators, Mini TV, Moviebar, movie lists, scrolling text and button design in MyMetrixLite.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+**Menu → Plugin Browser → MyMetrixLite → Other settings**
+
+This is a long section. Below [skin resolution](../aufloesung/) are information bars, lists and appearance groups. Scroll further if the intended group is not initially visible.
+
+## InfoBar, picons and reception information
+
+<Capture id="metrix-infobar-options" language="en" alt="Other settings with clock, channel name, channel number, service icons and reception information" caption="These switches control the information displayed in MetrixHD's information bars." />
+
+| Group / option | Purpose |
+| --- | --- |
+| Receiver information | Spacing of indicators; free RAM and CPU load |
+| Extended information | Additional information area and its style |
+| Picon type, size and offsets | Format, position and size of existing channel logos |
+| Clock, channel name and number | Enable individual basic InfoBar details |
+| Service icons and record state | Channel characteristics and recording status |
+| Screen resolution / extended resolution | Display video signal information; does not change skin resolution |
+| Orbital position, SNR and tuner information | Reception indicators, where applicable |
+| STB information | Additional system information in the relevant view |
+| Running text | Scroll long text within its field |
+| Channel name/number font size | Adjust these InfoBar text elements specifically |
+
+An indicator does not change tuner configuration. Enabling picon display does not download missing logos.
+
+## Mini TV, movies and lists
+
+| Section | Typical options |
+| --- | --- |
+| Mini TV | Live picture in channel selection, Movie Center or EMC, depending on the selected screen |
+| EMC | Covers, descriptions, picons, row count and widths of date, size and progress fields |
+| EMC/MovieList | List style, scrollbar and running text; some options apply only to the standard movie list |
+| EMC/MoviePlayer | PVR status and position, Moviebar style, clock, filename, playback time and system details |
+| ChannelSelection and graphical EPG | Classic MetrixHD style, field spacing and EPG layout |
+
+<Capture id="metrix-channel-options" language="en" alt="Other settings with Channel selection style and related layout options" caption="Classic channel selection style belongs to MyMetrixLite. New list styles are selected in Channel Selection Settings." />
+
+The four classic and all new variants are shown in the [channel list gallery](../../../settings/kanalliste/). Open a channel list and press <kbd>MENU</kbd> → **Settings** to find the newer **Channel Selection Screen** and **Channel Selection List** choices.
+
+## Skin design, buttons and menus
+
+- **Skin Design:** presets, areas, frames, positions and spacing. These can affect many screens.
+- **Scrollbar:** slider and border widths; the bar indicates position within a longer list.
+- **Menu Buttons and Scrollinfo:** show colour buttons and indications of additional entries.
+- **Large text at the bottom:** enable or hide the large background heading.
+- **Skin Design Buttons:** background, transparency, borders, font, text position and glossy effects for button graphics.
+- **Menu entry description:** display explanatory text when available.
+
+Change one related group at a time, save and apply. This makes it easier to identify the responsible option if the result is unexpected.
+
+Source: [All Other settings groups and conditions](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/OtherSettingsView.py).

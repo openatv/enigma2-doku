@@ -1,0 +1,47 @@
+---
+title: MetrixHD and MyMetrixLite
+description: Customize MetrixHD – find resolution, colours, fonts, weather, skinparts, InfoBar and channel list options.
+---
+
+import Capture from '../../../../../components/Capture.astro';
+
+**MetrixHD** draws the interface. **MyMetrixLite** is its configuration plugin. It controls the appearance and additional information displayed by the skin. Reception and networking have their own settings.
+
+## Open the configuration
+
+**Menu → Plugin Browser → MyMetrixLite**
+
+If the entry is missing, check the installation of MetrixHD and its configuration plugin in [plugin management](../../plugins/installieren/). General **Skin Selection** chooses a skin; MyMetrixLite customizes this skin's details.
+
+<Capture id="metrix-main" language="en" alt="MyMetrixLite with font, colour, weather, other, skinpart and backup settings" caption="The entry point for MetrixHD configuration. Green applies the saved changes." />
+
+## Find the right option
+
+| You want to … | Go to |
+| --- | --- |
+| Use HD, FHD or WQHD | [Resolution](./aufloesung/) → Other settings → Skin resolution |
+| Change fonts, text size or colours | [Fonts and colours](./gestaltung/) |
+| Set the weather location, provider or icons | [Weather](./wetter/) |
+| Replace individual views with additional modules | [Skinparts](./skinparts/) |
+| Show a clock, channel numbers or reception information | [InfoBar and other options](./sonstiges/) |
+| Compare classic and new channel lists | [Channel list gallery](../../settings/kanalliste/) |
+| Restore a saved appearance | Backup & Restore my settings in MyMetrixLite |
+
+## Save and apply
+
+1. Open a configuration section and change the intended values.
+2. Choose **Save** there. **Cancel** discards changes in that dialog.
+3. Back in the main MyMetrixLite window, press Green: **Apply changes**. This generates and loads the customized skin.
+4. Wait for completion. The inspected version can reload views directly; follow a restart prompt if your version requires one.
+
+Some options take effect immediately and say so in their description. If saved changes are not visible, first check that you selected **Apply changes** and that MetrixHD is active. **Defaults** resets a section's values; it is not a Back button.
+
+## Back up an appearance
+
+<Capture id="metrix-backup" language="en" alt="MyMetrixLite backup and restore dialog with backup number and description" caption="Yellow backs up, Green restores and Blue deletes the selected backup. These buttons have different actions in the main window." />
+
+Choose **My Backup Number** and a recognizable description. The plugin offers up to 99 backup sets. Check the number and description before restoring. This backs up MyMetrixLite settings; it does not replace a full image backup or backups of channel lists and recordings.
+
+This guide is device neutral. Screenshots use OpenATV 8.0 and MetrixHD in HD. Supported resolutions, installed skinparts and extensions determine which additional fields appear.
+
+Source: [MyMetrixLite menu and applying changes](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/lib/enigma2/python/Plugins/Extensions/MyMetrixLite/MainSettingsView.py).

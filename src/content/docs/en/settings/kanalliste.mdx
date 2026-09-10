@@ -1,0 +1,87 @@
+---
+title: Channel list – menu, settings and all styles
+description: Use MENU to customise the channel list. Compare four classic MetrixHD views and 15 combinations of the new lists in a screenshot gallery.
+---
+
+import Capture from '../../../../components/Capture.astro';
+import ChannelGallery from '../../../../components/ChannelGallery.astro';
+
+The **channel list** displays channels and programme information. You can change its appearance without installing a new channel list package. This page shows the options provided by MetrixHD; other skins can supply different templates.
+
+## Open settings with MENU
+
+1. Open the channel list, usually with the up or down arrow. A customised key map may use another action.
+2. Press <kbd>MENU</kbd> inside the list to open the **Channel list context menu**.
+3. Select **Settings**. In the tested version, pressing <kbd>MENU</kbd> a second time also opens these settings directly.
+4. Change the required option and select **Save**. The channel list updates. **Cancel** discards changes made in this settings dialog.
+
+The regular menu path is **Menu → Setup → Usage & GUI → Channel Selection Settings**.
+
+<Capture id="channel-context" language="en" alt="Channel list context menu showing settings, bouquet actions, rename, remove and move mode" caption="MENU inside the channel list: Settings is at the top. The other actions depend on the selected entry and the open bouquet." />
+
+## What does the context menu do?
+
+| Action | Purpose |
+| --- | --- |
+| Settings | Change channel list appearance and behaviour |
+| Set as startup service | Choose a service to use at startup |
+| Add service to bouquet | Add the selected channel to a favourites list |
+| Find Currently Playing Service | Return the selection to the current service |
+| Rename entry | Edit the displayed name |
+| Remove entry | Remove an entry from the current list; check which list is affected before confirming |
+| Enable move mode | Change the order of entries; leave move mode when finished |
+| Add Marker To Bouquet | Add a visible separator to a bouquet |
+| Enable bouquet edit | Use the available bouquet editing functions |
+| Add alternatives | Define alternative services for a channel |
+| Reload services | Reload channel data, for example after editing it externally |
+
+Parental controls, information and additional plugin actions depend on the context, setup level and installed extensions. A menu opened in the bouquet overview offers different actions from one opened on an individual channel. To change a **style**, open **Settings**; editing actions change the channel lists themselves.
+
+## Choose the screen and list separately
+
+**Channel Selection Screen** selects the layout of the entire window. Template names may remain in English even when another interface language is selected.
+
+| Screen | Layout |
+| --- | --- |
+| Legacy mode | Classic channel list; MetrixHD supplies four variants |
+| List and event details | Channel list alongside detailed information about the selected programme |
+| List and live TV | Channel list with an embedded television window |
+| Full screen | A list using the wide screen area |
+
+<Capture id="channel-settings" language="en" alt="Channel list settings with Legacy mode selected as the screen style" caption="Legacy mode enables the classic layout. Choose its MetrixHD variant in MyMetrixLite." />
+
+A new screen layout also offers **Channel Selection List**, which controls how individual entries are displayed:
+
+| List | Useful for |
+| --- | --- |
+| Single-line list | A compact list showing many channels at once |
+| Picture list with remaining time | Pictures with the time remaining for the current programme |
+| Picture list with percentage | Pictures with percentage progress for the current programme |
+| Programme columns | Comparing programme information in columns |
+| Picture grid | Browsing channels as cards in a grid |
+
+<Capture id="channel-settings-new" language="en" alt="New channel list settings with separate selections for screen layout and list style" caption="Each of the three new screen layouts supports five list styles, giving 15 combinations." />
+
+Further options cover channel numbers, picons, service and encryption icons, timer or recording indicators and picon aspect ratio. The visible fields depend on the selected mode. See the [channel selection reference](../../einstellungen/referenz/channelselection/) for descriptions and configuration keys.
+
+## The four classic MetrixHD variants
+
+First select **Legacy mode** in the channel list settings. Then open **Menu → Plugin Browser → MyMetrixLite → Other settings** and scroll to the channel selection style. The four variants combine left or right alignment with a large picon or several upcoming programmes. Save the settings and select **Apply changes** in the main MyMetrixLite window.
+
+For the new screen styles, select templates in the channel list settings themselves. The classic selection in MyMetrixLite therefore depends on the selected mode. [More MetrixHD options](../../skins/metrixhd/sonstiges/).
+
+## Gallery: all 19 variants
+
+Expand a group to compare the four classic views or all five list styles of a new screen layout. Click an image to open the original capture. Every image comes from the running Enigma2 interface, with playback stopped and the receiver's bootlogo as the background. The TV window therefore contains no live programme. EPG text and existing programme artwork can still appear from stored data. Their language comes from the broadcaster or data provider, independently of the menu language.
+
+<ChannelGallery language="en" />
+
+## Understand artwork, picons and EPG
+
+**Picons** are channel logos. **Programme artwork** represents an individual programme and needs a suitable data source or extension. A picture template does not generate this data. Missing artwork does not automatically indicate a broken skin; some templates can show a picon as a fallback.
+
+If titles, times or progress are missing, check the [EPG](../../epg/grundlagen/). If entire channels are missing, check [channel lists and reception](../senderlisten/). If the list feels too small or crowded, start with **Single-line list**, then adjust [fonts and resolution](../../skins/metrixhd/aufloesung/).
+
+Tested with OpenATV 8.0 and MetrixHD at HD resolution. Available choices come from the installed skin templates; older image or skin versions may offer fewer options.
+
+Sources: [Channel list and context menu](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ChannelSelection.py), [Channel list options](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml), [MetrixHD templates](https://github.com/openatv/MetrixHD/blob/c26f35adc71480851291a44da243ec0ba7b8a400/usr/share/enigma2/MetrixHD/skinTemplates.xml).
