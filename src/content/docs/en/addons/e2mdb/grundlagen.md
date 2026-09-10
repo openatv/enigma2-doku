@@ -10,7 +10,7 @@ e2MDB consists of the Enigma2 plugin, a background service and stored metadata. 
 - OpenATV **8.0 or newer** with an e2MDB package compatible with the image and its Python/SQLite dependencies.
 - A reliably mounted HDD or SSD with write access and space for the database, artwork, logs and maintenance.
 - Working network access, DNS and a correct receiver clock for online providers.
-- A skin with e2MDB support when information should appear outside the plugin's own screens.
+- Displaying covers and additional information in the Infobar, channel list and other Enigma2 views requires an adapted skin such as [Umbra](../../../skins/umbra/) or [MetrixHD](../../../skins/metrixhd/). Check support in the particular skin version and view.
 
 ## Media folders and cache have different purposes
 

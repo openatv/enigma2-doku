@@ -23,8 +23,33 @@ globalThis.fetch = async input => {
   const body = await readFile(file);
   return new Response(body, { status: 200, headers: { 'content-type': file.endsWith('.json') ? 'application/json' : 'application/octet-stream' } });
 };
-const pagefind = await import(pathToFileURL(path.join(root, 'pagefind/pagefind.js')));
 const checks = [
+  ['de', 'eARC', '/de/bild-ton/anschliessen/'],
+  ['en', 'eARC', '/en/bild-ton/anschliessen/'],
+  ['de', 'EDID', '/de/bild-ton/hdmi-hdr/'],
+  ['en', 'EDID', '/en/bild-ton/hdmi-hdr/'],
+  ['de', 'autores_unknownres', '/de/bild-ton/video-optionen/'],
+  ['en', 'autores_unknownres', '/en/bild-ton/video-optionen/'],
+  ['de', 'autoresolution', '/de/bild-ton/autoresolution/'],
+  ['en', 'smart1080p', '/en/bild-ton/autoresolution/'],
+  ['de', 'AC3', '/de/bild-ton/audio-optionen/'],
+  ['en', 'AC3', '/en/bild-ton/audio-optionen/'],
+  ['de', 'TrueHD', '/de/bild-ton/audio-grundlagen/'],
+  ['en', 'TrueHD', '/en/bild-ton/audio-grundlagen/'],
+  ['de', 'audio_usecache', '/de/bild-ton/tonspuren/'],
+  ['en', 'audio_usecache', '/en/bild-ton/tonspuren/'],
+  ['de', '/etc/enigma2/volume.xml', '/de/bild-ton/lautstaerke/'],
+  ['en', '/etc/enigma2/volume.xml', '/en/bild-ton/lautstaerke/'],
+  ['de', 'Lipsync', '/de/bild-ton/lipsync/'],
+  ['en', 'lip sync', '/en/bild-ton/lipsync/'],
+  ['de', 'volume_forwarding', '/de/bild-ton/cec-optionen/'],
+  ['en', 'volume_forwarding', '/en/bild-ton/cec-optionen/'],
+  ['de', 'Enigma2-hdmicec', '/de/bild-ton/cec-logs/'],
+  ['en', 'Enigma2-hdmicec', '/en/bild-ton/cec-logs/'],
+  ['de', 'Overscan', '/de/bild-ton/bildanpassung/'],
+  ['en', 'overscan', '/en/bild-ton/bildanpassung/'],
+  ['de', 'Mediendatenbank', '/de/addons/e2mdb/'],
+  ['en', 'adapted skin', '/en/addons/e2mdb/'],
   ['de', 'enigma2-plugin-skins-umbra', '/de/skins/installieren/'],
   ['de', 'Umbra Cinema', '/de/skins/umbra/stilpakete/'],
   ['de', 'Farbwelt', '/de/skins/umbra/farben/'],
@@ -205,6 +230,9 @@ const checks = [
 ];
 for (const lang of ['de', 'en']) {
   language = lang;
+  // Each language page loads a fresh runtime in the browser. Isolate the
+  // language-specific WASM stemmer here too, instead of reusing the DE runtime.
+  const pagefind = await import(`${pathToFileURL(path.join(root, 'pagefind/pagefind.js')).href}?language=${lang}`);
   const instance = pagefind.createInstance({ basePath: `${base}/pagefind/`, baseUrl: `${base}/` });
   await instance.init();
   for (const [, query, expected] of checks.filter(check => check[0] === lang)) {

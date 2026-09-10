@@ -1,0 +1,45 @@
+---
+title: "Lautstärke, Senderpegel und Bluetooth"
+description: "OpenATV: Lautstärke, Senderpegel und Bluetooth. Einstellungen, Bedeutung, Anschlussbeispiele und Fehlersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+## Welches Gerät regelt den Ton?
+
+Bei decodiertem PCM regelt gewöhnlich die Box ihren Ausgangspegel. Bei komprimierter Durchleitung liegt die Regelung meistens im AVR/TV. **CEC-Lautstärketasten weiterleiten** sendet Steuerbefehle dorthin; es verändert nicht den Codec. Wenn die Tasten nach dem Aktivieren wirkungslos sind, CEC-Unterstützung und Zielgerät prüfen oder die Weiterleitung wieder ausschalten.
+
+Vor einem Wechsel von Downmix zu Bitstream die Lautstärke am Audiosystem reduzieren: Der dortige Pegel kann sich vom bisherigen Box-Pegel unterscheiden. Nicht mehrere automatische Lautstärkekorrekturen gleichzeitig einrichten.
+
+In **Toneinstellungen** bestimmen kurze/lange Lautstärkeschritte die Änderung pro Tastendruck (im Quellstand jeweils 1–10), die Anzeigedauer blendet Lautstärke/Stumm nach 1–10 Sekunden aus. Das sind Bedienungsoptionen und keine Klangregler.
+
+
+<Capture id="av-volume" language="de" alt="Allgemeine Lautstärkeanpassung mit Offset-Beispiel" caption="Die vier allgemeinen Felder, mit ungespeicherter Beispielauswahl für feste Offsets. Die vollständige Senderliste wird in einem eigenen Editor bearbeitet." />
+
+## Unterschiedliche Senderlautstärken
+
+**Einstellungen → Ton → Lautstärkeanpassung** bietet:
+
+| Modus / Feld | Bedeutung |
+| --- | --- |
+| Deaktiviert | Keine automatische senderbezogene Pegelanpassung. |
+| Definierter Lautstärkeoffset | Je Sender einen positiven oder negativen relativen Wert verwenden. |
+| Zuletzt verwendete/eingestellte Lautstärke | Letzten absoluten Pegel je Sender merken. |
+| Standardlautstärkeoffset | Startwert für neu hinzugefügte Sender; kein globaler Messwert der Programmlautheit. |
+| Standard-Dolby-Digital-Offset | Ersatzwert für Dolby-Digital-Sender ohne eigenen Eintrag. |
+| Lautstärkepegel automatisch anzeigen | Einblendung bei automatischer Pegeländerung. |
+
+Suchschlüssel der vier allgemeinen Felder: `config.volumeAdjust.adjustMode`, `config.volumeAdjust.defaultOffset`, `config.volumeAdjust.dolbyOffset` und `config.volumeAdjust.showVolumeBar`.
+
+Im nativen Bearbeitungsdialog den aktuellen Sender hinzufügen oder einen Eintrag auswählen, dessen Offset/letzten Pegel ändern und speichern. Die angebotenen Farbtasten für Hinzufügen/Entfernen beachten. Nur nicht mehr benötigte **Pegelzuordnungen** entfernen; dadurch wird keine Senderliste gelöscht. Die Zuordnungen liegen im geprüften Stand in `/etc/enigma2/volume.xml`.
+
+Offsets reichen im Quellstand von −100 bis +100, absolute Pegel von 0 bis 100; die wirksame Ausgabe wird begrenzt. Kleine Korrekturen sind praktikabler als Sprünge zum Maximum. Diese Automatik misst keine Lautheit im laufenden Programm und ersetzt keinen Nachtmodus am AVR. Bei Bitstream oder weitergeleiteten CEC-Tasten ist eine Änderung der internen Box-Lautstärke nicht automatisch eine Änderung des AVR-Pegels.
+
+## 3D Surround, Auto Volume und BT
+
+Optionale **3D-Surround-**, virtuelle Lautsprecher- und **Audio Auto Volume Level**-Funktionen sind Treiberbearbeitung. Sie erzeugen keine neue diskrete 5.1-Spur; auf unverändertem Bitstream können sie wirkungslos sein. Die [Audio-Referenz](../audio-optionen/) erklärt die Felder.
+
+**BT-Audio aktivieren** erscheint nur mit passender Unterstützung. Bluetooth-Kopplung, Profil und Gerät müssen separat eingerichtet sein. Der Schalter installiert keinen Bluetooth-Adapter und stellt nicht automatisch eine Verbindung her. Zusätzliche Funk-/Codecverzögerung kann [Lipsync](../lipsync/) erfordern. Eine Soundbar per HDMI und Kopfhörer per Bluetooth sind unterschiedliche Audioausgänge.
+
+
+[Bild und Ton](../) · [Quellen und Prüfumfang](../quellen/)

@@ -1,0 +1,71 @@
+---
+title: "HDMI-CEC-Logs und Fehlersuche"
+description: "OpenATV: HDMI-CEC-Logs und Fehlersuche. Einstellungen, Bedeutung, Anschlussbeispiele und Fehlersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Ein CEC-Log zeigt **Steuerverkehr**, keine Aufzeichnung des Films oder Audiobitstreams. Es hilft bei falschem Einschalten, unbeabsichtigtem Standby, falscher Eingangswahl und wirkungslosen Lautstärketasten.
+
+
+<Capture id="av-cec-log" language="de" alt="HDMI-CEC-Debugprotokoll aktivieren" caption="Das separate CEC-Debugfeld. Der angezeigte Zustand wurde für die Aufnahme nicht geändert." />
+
+## Ein brauchbares Log erzeugen
+
+1. Unter den [allgemeinen Logeinstellungen](../../hilfe/logs-diagnose/) einen vorhandenen, beschreibbaren Logpfad kontrollieren. Lokaler Speicher vermeidet eine zusätzliche Abhängigkeit vom NAS.
+2. **Einstellungen → System → HDMI-CEC-Einstellungen → Debug-Log aktivieren → Ja**, mit Grün speichern. CEC muss für den gewünschten Test aktiv sein.
+3. Uhrzeit notieren und genau einen Fehler nachstellen: etwa „13:10:20 Box aus Standby geweckt, TV blieb auf HDMI 2“.
+4. Die passende Tagesdatei sichern. Danach CEC-Debug wieder ausschalten und speichern.
+
+Der tatsächliche Basisordner ist **`config.crash.debug_path`**. Bei `/media/hdd/logs/` lautet eine Beispieldatei:
+
+```text
+/media/hdd/logs/Enigma2-hdmicec-20260910.log
+```
+
+Der Dateiname folgt **`Enigma2-hdmicec-YYYYMMDD.log`**. Es gibt keinen für alle Installationen festen `/tmp`-Logpfad. Bei falscher Systemzeit stimmt auch das Datum im Dateinamen nicht. Der Ordner muss existieren und frei beschreibbar sein; bei Platzmangel stoppt der Logger. Nicht nur auf aktiviertes allgemeines Enigma2-Debug verlassen: CEC hat seinen eigenen Schalter.
+
+## Per SSH ansehen
+
+Den Beispielordner zuerst durch den in der GUI angezeigten Pfad ersetzen:
+
+```sh
+ls -lh /media/hdd/logs/Enigma2-hdmicec-*.log
+tail -n 100 /media/hdd/logs/Enigma2-hdmicec-20260910.log
+tail -f /media/hdd/logs/Enigma2-hdmicec-20260910.log
+```
+
+`Ctrl+C` beendet die laufende Anzeige, nicht Enigma2. Die Datei mit [SFTP/FTP](../../netzwerk/fernzugriff/) herunterladen. Ein Neustart ist für das bloße Lesen nicht erforderlich.
+
+## Was bedeuten die Meldungen?
+
+| Bestandteil | Bedeutung |
+| --- | --- |
+| Zeitstempel | Reihenfolge mit den notierten Bedienaktionen abgleichen. |
+| Tx / Rx beziehungsweise Senden / Empfangen | Richtung des Steuerverkehrs relativ zur Box. Die genaue Schreibweise ist versionsabhängig. |
+| Physische / logische Adresse | Anschlussweg und Teilnehmer; keine Netzwerk-IP. |
+| Active Source / Routing / Set Stream Path | Quelle beziehungsweise HDMI-Eingangswahl. |
+| Standby / Image View On / Power Status | Schlafen, Aufwecken und gemeldeter Betriebszustand. |
+| User Control Pressed / Released | Tastendruck/-loslassen, etwa Lautstärke. |
+| System Audio Mode / Audio Status | Beteiligung des Audiosystems und dessen Status. |
+| Feature Abort / fehlende Antwort | Befehl wird nicht unterstützt, nicht akzeptiert oder beantwortet; Kontext und Geräteverhalten prüfen. |
+
+Eine gesendete Nachricht beweist nicht, dass der TV den Eingang wirklich umgeschaltet hat. Wiederholungen können beabsichtigt sein. Eine fehlende Antwort allein beweist noch keinen Kabeldefekt. Zum Eingrenzen beobachten, ob die Nachricht fehlt, das falsche Ziel erreicht oder vom Ziel nicht umgesetzt wird.
+
+## Befehlszeilenfunktion
+
+Diese Zusatzfunktion wird separat aktiviert. Sie liest `/tmp/hdmicec_cmd`; Ergebnis/Hilfe/Fehler liegen in `/tmp/hdmicec_msg`, `/tmp/hdmicec_cmd_hlp.txt` und `/tmp/hdmicec_cmd_err.log`. Das sind temporäre Steuerdateien, nicht das dauerhafte Tageslog. Nur die lokale Hilfe anfordern:
+
+```sh
+printf '%s\n' help > /tmp/hdmicec_cmd
+cat /tmp/hdmicec_cmd_hlp.txt
+```
+
+Zwischen Schreiben und Lesen einen Pollzyklus abwarten, falls die Datei noch fehlt. Andere Befehle können Geräte tatsächlich umschalten oder ausschalten. Für einen normalen Fehlerbericht genügt das Debug-Log; die Befehlszeilenfunktion danach wieder deaktivieren.
+
+## Fehlerbericht
+
+Anschlusskette mit Portnummern, OpenATV-/Enigma2-Version, TV-/AVR-/Soundbar-Modell und Firmware, Ausgangszustand, genaue Aktion mit Uhrzeit sowie erwartetes/tatsächliches Verhalten beilegen. CEC-Einstellungen und Tageslog hinzufügen. Persönliche Geräte-/Hostnamen und fremde Logdaten vor dem öffentlichen Upload prüfen. Der Bericht gehört ins [Forum oder passende Issue](../../hilfe/fehler-melden/); die Anleitung selbst bleibt modellneutral.
+
+
+[Bild und Ton](../) · [Quellen und Prüfumfang](../quellen/)

@@ -1,0 +1,956 @@
+{
+  "source_commit": "c446c39a38957950de9989538e87c6278d2470cc",
+  "source_files": {
+    "data/setup.xml": "24ebc11328ddaeb2b65cbfa057112427b2a09bda288baab4e313d656769dbf6e",
+    "data/menu.xml": "340bfaa1061c095d5d0bbdfb71c605373d741213e1796885b884b9536295a580",
+    "lib/python/Components/AVSwitch.py": "e220b59ec3da00d42fd9b42654b17fca672adcf9e73fed4addec823df1aef6f6",
+    "lib/python/Components/HdmiCec.py": "99fa446b09fcc6ecba3a1eb576b6b30ba8ecc73b8625926d26142e2a2caca7ec",
+    "lib/python/Screens/VideoMode.py": "4f919abec1fcf288dec599b703bb8f42c2252966b0c3f608a6e9727a9cf74edf",
+    "lib/python/Screens/HDMICEC.py": "02b6e036fa2fbfaa6412d6e8b58c87e31fcb094a8c9177bb1874f7843595b9b5",
+    "lib/python/Screens/AudioSelection.py": "b05ba242dfaca8e4652be8d436ab559ebd924406b92d6556f4f3db1d58eb22f5",
+    "lib/python/Screens/VolumeControl.py": "d4ec82afba6b46701644bbbb2ef1ea5316170f4a5707db85305534ba86593bb5",
+    "lib/python/Components/VolumeControl.py": "9e35472e1ad9e1ec2b804747ce417f279c98ed2c33b97d3547d79b39ef7bc441",
+    "lib/python/Screens/OSDCalibration.py": "5c27b8048700a67155d10fbe1981f5e46c3b89eac46efde5d7146e3de9174c5f",
+    "lib/python/Plugins/SystemPlugins/VideoEnhancement/plugin.py": "c0fcb8c11cc9a8462b7846c1309b2c162be54d75d99df3a9d1d440db71960c8b",
+    "lib/python/Plugins/SystemPlugins/VideoEnhancement/VideoEnhancement.py": "f40fe12e7135b8eeba29564592eed33dd0bd54c09529ecfccaffba27ca71de84",
+    "lib/python/Plugins/SystemPlugins/VideoTune/VideoFinetune.py": "5dd36d050de7de3b9d7f111e288a02cee1370ad2e7ebf92f0ecfda4f3099b7b1",
+    "lib/python/Plugins/SystemPlugins/VideoEnhancementAML/plugin.py": "569463657001425c01efdbe8ba9e1090bbf21910638f38ea0141ef236594cb52"
+  },
+  "sections": {
+    "Audio": [
+      {
+        "key": "config.volumeControl.pressStep",
+        "label": "Volume steps",
+        "help": "Select the size of the volume step when the VOLUME buttons are pressed.",
+        "requires": ""
+      },
+      {
+        "key": "config.volumeControl.longStep",
+        "label": "Long press volume steps",
+        "help": "Select the size of the volume steps when the VOLUME buttons are held down.",
+        "requires": ""
+      },
+      {
+        "key": "config.volumeControl.hideTimer",
+        "label": "Volume/Mute display timer",
+        "help": "Select how long, in seconds, that the volume and mute displays are shown before they automatically hide.",
+        "requires": ""
+      },
+      {
+        "key": "config.av.pcm_multichannel",
+        "label": "PCM Multichannel",
+        "help": "Select whether multichannel audio tracks should be output as PCM.",
+        "requires": "CanPcmMultichannel"
+      },
+      {
+        "key": "config.av.downmix_ac3",
+        "label": "AC3 downmix",
+        "help": "Select whether AC3 audio tracks should be downmixed to stereo.",
+        "requires": ""
+      },
+      {
+        "key": "config.av.passthrough_fix_short",
+        "label": "Passthrough audio handling delay AC3",
+        "help": "Used to specify delay when switching between services and AC3 passthrough is enabled.",
+        "requires": ""
+      },
+      {
+        "key": "config.av.passthrough_fix_long",
+        "label": "Passthrough audio handling delay AC3+",
+        "help": "Used to specify delay when switching between services and AC3+/Atmos passthrough is enabled.",
+        "requires": ""
+      },
+      {
+        "key": "config.av.transcodeac3plus",
+        "label": "AC3 plus transcoding",
+        "help": "Select whether AC3 Plus audio tracks should be transcoded to AC3.",
+        "requires": "CanAC3plusTranscode"
+      },
+      {
+        "key": "config.av.ac4",
+        "label": "AC4",
+        "help": "Select whether AC4 (Dolby Atmos) audio tracks should be passed through to the AVR, downmixed to stereo, or auto-routed based on HDMI sink capability.",
+        "requires": "CanAC4"
+      },
+      {
+        "key": "config.av.downmix_dts",
+        "label": "DTS downmix",
+        "help": "Select whether DTS channel audio tracks should be downmixed to stereo.",
+        "requires": "CanDownmixDTS"
+      },
+      {
+        "key": "config.av.dtshd",
+        "label": "DTS/DTS-HD HR/DTS-HD MA/DTS:X",
+        "help": "Select whether DTS channel audio tracks should be downmixed or transcoded.",
+        "requires": "CanDTSHD"
+      },
+      {
+        "key": "config.av.truehd",
+        "label": "Dolby TrueHD",
+        "help": "Select whether Dolby TrueHD audio tracks should be passed through or decoded.",
+        "requires": "CanTrueHD"
+      },
+      {
+        "key": "config.av.wmapro",
+        "label": "WMA Pro",
+        "help": "Select whether WMA Pro channel audio tracks should be downmixed or transcoded.",
+        "requires": "CanWMAPRO"
+      },
+      {
+        "key": "config.av.downmix_aac",
+        "label": "AAC downmix",
+        "help": "Select whether multichannel audio tracks should be downmixed to stereo.",
+        "requires": "CanDownmixAAC"
+      },
+      {
+        "key": "config.av.downmix_aacplus",
+        "label": "AAC plus downmix",
+        "help": "Select whether multichannel audio tracks should be downmixed to stereo.",
+        "requires": "CanDownmixAACPlus"
+      },
+      {
+        "key": "config.av.transcodeaac",
+        "label": "AAC transcoding",
+        "help": "Select whether AAC audio tracks should be transcoded.",
+        "requires": "CanAACTranscode"
+      },
+      {
+        "key": "config.av.audio_source",
+        "label": "Audio Source",
+        "help": "Select whether multichannel audio tracks should be converted to PCM or SPDIF.",
+        "requires": "Canaudiosource"
+      },
+      {
+        "key": "config.av.generalAC3delay",
+        "label": "General AC3 delay",
+        "help": "This option selects the general audio delay of Dolby Digital sound tracks.",
+        "requires": ""
+      },
+      {
+        "key": "config.av.generalPCMdelay",
+        "label": "General PCM delay",
+        "help": "This option selects the general audio delay of stereo sound tracks.",
+        "requires": ""
+      },
+      {
+        "key": "config.av.surround_3d",
+        "label": "3D Surround",
+        "help": "This option allows you to enable 3D Surround Sound.",
+        "requires": "Can3DSurround"
+      },
+      {
+        "key": "config.av.surround_3d_speaker",
+        "label": "3D Surround Speaker Position",
+        "help": "This option allows you to change the virtual loudspeaker position.",
+        "requires": "Can3DSpeaker"
+      },
+      {
+        "key": "config.av.autovolume",
+        "label": "Audio Auto Volume Level",
+        "help": "This option allows you to set the Auto Volume Level output.",
+        "requires": "CanAutoVolume"
+      },
+      {
+        "key": "config.av.btaudio",
+        "label": "Enable BT audio",
+        "help": "This option allows you to switch Audio to Bluetooth speakers.",
+        "requires": "CanBTAudio"
+      },
+      {
+        "key": "config.av.btaudiodelay",
+        "label": "General BT audio delay",
+        "help": "This option configures the audio delay value for Bluetooth speakers.",
+        "requires": "CanBTAudioDelay"
+      }
+    ],
+    "HDMICEC": [
+      {
+        "key": "config.hdmicec.enabled",
+        "label": "Enabled",
+        "help": "Enable or disable using HDMI-CEC.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.advanced_settings",
+        "label": "Advanced Settings",
+        "help": "Enable the advanced HDMI-CEC setting options.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.handle_deepstandby_events",
+        "label": "Regard Deep Standby as Standby",
+        "help": "Set to 'Yes' to enable sending the same TV commands for Deep Standby as for regular Standby.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.deepstandby_waitfortimesync",
+        "label": "Wait for timesync at startup",
+        "help": "If the Deep Standby workaround is enabled wait until the system time is synchronized. Depending on the requirement the device wake up will continuing after a maximum of 2 minutes.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.control_tv_standby",
+        "label": "Put TV in Standby",
+        "help": "Automatically put the TV in Standby whenever the receiver goes into Standby or Deep Standby.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.tv_standby_notinputactive",
+        "label": "Even if TV has another input active?",
+        "help": "You can skip this function and turn off the TV when you wake the receiver from Standby and immediately switch back to Standby.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.control_tv_wakeup",
+        "label": "Wake up TV from Standby",
+        "help": "When the receiver wakes from Standby or Deep Standby it will send a command to the TV to bring it out of Standby.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.tv_wakeup_zaptimer",
+        "label": "Even if a 'Zap' recording timer starting?",
+        "help": "Select 'Yes' if you want to wake the TV for a 'Zap' recording timer is starting.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.tv_wakeup_zapandrecordtimer",
+        "label": "Even if a 'Zap and Record' recording timer starting?",
+        "help": "Select 'Yes' if you want to wake the TV for a 'Zap and Record' recording timer is starting.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.tv_wakeup_wakeuppowertimer",
+        "label": "Even if a 'Wakeup' scheduled task starting?",
+        "help": "Select 'Yes' if you want to wake the TV when a 'Wakeup' scheduled task is starting.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.report_active_source",
+        "label": "Switch TV to correct input",
+        "help": "When the receiver wakes from Standby, send active source, stream path and routing commands so the TV switches to the HDMI input connected to the receiver.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.workaround_activesource",
+        "label": "Switch off the TV to correct input",
+        "help": "Some TVs can't switch to the correct input if another HDMI port is active. This setting puts the TV into Standby before switching. If the TV does not turn back on, a slower transmission interval or repeating the wake-up command may be required.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.handle_tv_wakeup",
+        "label": "Handle wake up from TV",
+        "help": "When enabled, the receiver will automatically wake from Standby when the TV is turned on.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.handle_tv_standby",
+        "label": "Handle Standby from TV",
+        "help": "When enabled, the receiver will automatically return to Standby when the TV is turned off.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.handle_tv_input",
+        "label": "Process action from TV",
+        "help": "Select the receiver action when the TV switches away from the receiver input.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.handle_tv_delaytime",
+        "label": "Time delay until Standby or Deep Standby",
+        "help": "'Handle Standby from TV' has a higher priority than 'Handle input from TV'.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.report_active_menu",
+        "label": "Use TV remote control",
+        "help": "Allows the TV remote to be used to control the receiver.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.volume_forwarding",
+        "label": "Forward volume keys",
+        "help": "Volume keys on the receiver remote will control the TV, AV receiver or soundbar volume over HDMI-CEC. If this feature is not supported the volume keys have no function!",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.control_receiver_standby",
+        "label": "Put your AV Receiver or Soundbar in Standby",
+        "help": "When enabled, the connected AV receiver or soundbar will automatically be switched off.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.control_receiver_wakeup",
+        "label": "Wake up your AV Receiver or Soundbar from Standby",
+        "help": "When enabled, the connected AV receiver or soundbar will automatically be switched on.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.minimum_send_interval",
+        "label": "Minimum send interval",
+        "help": "Optional delay between CEC commands when sending a series of commands. Leave disabled unless a device requires slower transmission.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.messages_repeat",
+        "label": "Repeat the sent standby and wake up commands",
+        "help": "Try to send repeated commands if not all commands were executed (e.g. TV wake up, but not switched to correct input).",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.messages_repeat_slowdown",
+        "label": "Time delay for the repeated transmission",
+        "help": "The time is multiplied by the current repeat counter.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.messages_repeat_standby",
+        "label": "Repeat the standby commands",
+        "help": "The command to wake from Standby will be sent multiple times.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.check_tv_state",
+        "label": "Check power and input state from TV",
+        "help": "An attempt is made to capture the current TV status. If status messages are incorrect or missing, the receiver may respond unexpectedly. Otherwise, it helps the receiver handle different operating conditions more effectively.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.workaround_turnbackon",
+        "label": "Ignore unexpectedly wake up and stay in Standby",
+        "help": "This is a workaround for devices that wake up immediately after entering Standby. Wake-up commands from other devices are ignored for a few seconds.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.preemphasis",
+        "label": "Use HDMI-preemphasis",
+        "help": "This setting can help improve signal quality or prevent issues with longer HDMI cables.",
+        "requires": "HDMI-PreEmphasis"
+      },
+      {
+        "key": "config.hdmicec.commandline",
+        "label": "Enable command line function",
+        "help": "Activate a way to send individual or specific internal HDMI-CEC commands from the command line.",
+        "requires": ""
+      },
+      {
+        "key": "config.hdmicec.debug",
+        "label": "Enable debug log",
+        "help": "If enabled, a log will be kept of CEC protocol traffic. The log files are located with the other log files but named 'Enigma2-hdmicec-[date].log'.",
+        "requires": ""
+      }
+    ],
+    "VolumeAdjust": [
+      {
+        "key": "config.volumeAdjust.adjustMode",
+        "label": "Volume adjustment mode",
+        "help": "Select 'Disabled' to disable all automated volume adjustments. Select 'Defined volume offsets' to assign a specified offset to the service's volume level. Select 'Last used/set volume' to remember the volume level last used for each service.",
+        "requires": ""
+      },
+      {
+        "key": "config.volumeAdjust.defaultOffset",
+        "label": "Default volume offset",
+        "help": "This is the initial / default volume offset applied to any services added to the volume adjust list.",
+        "requires": ""
+      },
+      {
+        "key": "config.volumeAdjust.dolbyOffset",
+        "label": "Default Dolby Digital / Dolby AC-3 offset",
+        "help": "This offset will only be used if the channel does not have its own volume offset.",
+        "requires": ""
+      },
+      {
+        "key": "config.volumeAdjust.showVolumeBar",
+        "label": "Auto show volume level",
+        "help": "Select 'Yes' to show the volume level on any automated changes of volume level.",
+        "requires": ""
+      }
+    ],
+    "AutoLanguage": [
+      {
+        "key": "config.autolanguage.audio_autoselect1",
+        "label": "Audio language selection 1",
+        "help": "Configure the first audio language (highest priority).",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.audio_autoselect2",
+        "label": "Audio language selection 2",
+        "help": "Configure the second audio language.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.audio_autoselect3",
+        "label": "Audio language selection 3",
+        "help": "Configure the third audio language.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.audio_autoselect4",
+        "label": "Audio language selection 4",
+        "help": "Configure the fourth audio language.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.audio_defaultac3",
+        "label": "Prefer AC3 track",
+        "help": "When enabled, the receiver will select an AC3 track (when available).",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.audio_defaultddp",
+        "label": "Prefer AC3+ track",
+        "help": "When enabled, the receiver will select an AC3+ track (when available).",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.audio_usecache",
+        "label": "Prefer audio track stored by service",
+        "help": "When enabled, the receiver will automatically use the audio track which you selected before.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.subtitle_autoselect1",
+        "label": "Subtitle language selection 1",
+        "help": "Configure the first subtitle language (highest priority).",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.subtitle_autoselect2",
+        "label": "Subtitle language selection 2",
+        "help": "Configure the second subtitle language.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.subtitle_autoselect3",
+        "label": "Subtitle language selection 3",
+        "help": "Configure the third subtitle language.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.subtitle_autoselect4",
+        "label": "Subtitle language selection 4",
+        "help": "Configure the fourth subtitle language.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.equal_languages",
+        "label": "Allow subtitle language to equal audio language",
+        "help": "Usually when the subtitle language is the same as the audio language, the subtitles will not be used. Enable this option to allow these subtitles to be used.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.subtitle_hearingimpaired",
+        "label": "Allow subtitles for hearing impaired",
+        "help": "When enabled, subtitles for the hearing impaired can be used.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.subtitle_defaultimpaired",
+        "label": "Prefer subtitles for hearing impaired",
+        "help": "When enabled, subtitles for the hearing impaired will be preferred over normal subtitles, when both types are available.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.subtitle_defaultdvb",
+        "label": "Prefer graphical DVB subtitles",
+        "help": "When enabled, graphical DVB subtitles are preferred over teletext subtitles, when both types are available.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.subtitle_usecache",
+        "label": "Prefer subtitles stored by service",
+        "help": "When enabled, the receiver will automatically use the subtitles which you selected before.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.audio_epglanguage",
+        "label": "EPG language selection 1",
+        "help": "Configure the primary EPG language.",
+        "requires": ""
+      },
+      {
+        "key": "config.autolanguage.audio_epglanguage_alternative",
+        "label": "EPG language selection 2",
+        "help": "Configure the secondary EPG language.",
+        "requires": ""
+      }
+    ],
+    "OSDCalibration": [
+      {
+        "key": "config.osd.dst_left",
+        "label": "Left",
+        "help": "Use the LEFT/RIGHT buttons on your remote to move the OSD left.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.dst_top",
+        "label": "Top",
+        "help": "Use the LEFT/RIGHT buttons on your remote to move the OSD top.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.dst_width",
+        "label": "Right",
+        "help": "Use the LEFT/RIGHT buttons on your remote to move the OSD right.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.dst_height",
+        "label": "Bottom",
+        "help": "Use the LEFT/RIGHT buttons on your remote to move the OSD bottom.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.dst_left",
+        "label": "Move Left/Right",
+        "help": "Use the LEFT/RIGHT buttons on your remote to move the OSD left/right.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.dst_top",
+        "label": "Move Up/Down",
+        "help": "Use the LEFT/RIGHT buttons on your remote to move the OSD up/down.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.dst_width",
+        "label": "Width",
+        "help": "Use the LEFT/RIGHT buttons on your remote to adjust the width of the OSD. LEFT button decreases the width, RIGHT increases the width.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.dst_height",
+        "label": "Height",
+        "help": "Use the LEFT/RIGHT buttons on your remote to adjust the height of the OSD. LEFT button decreases the height, RIGHT increases the height.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.alpha",
+        "label": "OSD visibility",
+        "help": "This option lets you adjust the transparency of the OSD.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.alpha_teletext",
+        "label": "Teletext base visibility",
+        "help": "Base transparency for teletext, more options are available within teletext screen.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.alpha_webbrowser",
+        "label": "Web browser base visibility",
+        "help": "Base transparency for OpenOpera web browser.",
+        "requires": ""
+      }
+    ],
+    "OSD3DCalibration": [
+      {
+        "key": "config.osd.threeDmode",
+        "label": "3D Mode",
+        "help": "This option lets you choose the 3D mode of the OSD.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.threeDznorm",
+        "label": "Depth",
+        "help": "This option lets you adjust the 3D depth of the OSD.",
+        "requires": ""
+      },
+      {
+        "key": "config.osd.show3dextensions",
+        "label": "Show in Extension Menu",
+        "help": "This option lets you show the 3D OSD menu option in the Extension Menu screen.",
+        "requires": ""
+      }
+    ],
+    "Video": [
+      {
+        "key": "config.av.videoport",
+        "label": "Video output",
+        "help": "Configures which video output connector will be used."
+      },
+      {
+        "key": "config.av.autores",
+        "label": "Automatic resolution",
+        "help": "If enabled the output resolution of the receiver will try to match the resolution of the video contents resolution."
+      },
+      {
+        "key": "config.av.videomode[config.av.videoport.value]",
+        "label": "Mode",
+        "help": "This option configures the video output mode (or resolution)."
+      },
+      {
+        "key": "config.av.aspect",
+        "label": "Aspect ratio",
+        "help": "Configure the aspect ratio of the screen."
+      },
+      {
+        "key": "config.av.edid_override",
+        "label": "Allow unsupported modes",
+        "help": "This option allows you to use all HDMI Modes."
+      },
+      {
+        "key": "config.av.colorformat",
+        "label": "Color format",
+        "help": "Configure which color format should be used on the SCART output."
+      },
+      {
+        "key": "config.av.scaler_sharpness",
+        "label": "Scaler sharpness",
+        "help": "This option configures the picture sharpness."
+      },
+      {
+        "key": "config.av.hdmicolorspace",
+        "label": "HDMI color space",
+        "help": "This option allows you to config the Colorspace from Auto to RGB."
+      },
+      {
+        "key": "config.av.hdmicolorimetry",
+        "label": "HDMI Colorimetry",
+        "help": "This option allows you to config the Colorimetry for HDR."
+      },
+      {
+        "key": "config.av.hdmicolordepth",
+        "label": "HDMI color depth",
+        "help": "This option allows you to config the Colordepth for UHD."
+      },
+      {
+        "key": "config.av.hdmihdrtype",
+        "label": "HDMI HDR Type",
+        "help": "This option allows you to force the HDR Modes for UHD."
+      },
+      {
+        "key": "config.av.hdmihdrosd",
+        "label": "HDR OSD adjustment",
+        "help": "This option adjusts SDR graphics and OSD colors while the HDMI output is in HDR mode."
+      },
+      {
+        "key": "config.av.bypass_edid_checking",
+        "label": "Bypass HDMI EDID Check",
+        "help": "This option allows you to bypass HDMI EDID check."
+      },
+      {
+        "key": "config.av.boxmode",
+        "label": "Change Boxmode to control Hardware Chip Modes*",
+        "help": "Switch Mode to enable HDR Modes or PiP Functions"
+      },
+      {
+        "key": "config.av.hlg_support",
+        "label": "HLG Support",
+        "help": "This option allows you to force the HLG Modes for UHD."
+      },
+      {
+        "key": "config.av.hdr10_support",
+        "label": "HDR10 Support",
+        "help": "This option allows you to force the HDR10 Modes for UHD."
+      },
+      {
+        "key": "config.av.allow_12bit",
+        "label": "Allow 12bit",
+        "help": "This option allows you to enable or disable the 12 Bit Color Mode."
+      },
+      {
+        "key": "config.av.allow_10bit",
+        "label": "Allow 10bit",
+        "help": "This option allows you to enable or disable the 10 Bit Color Mode."
+      },
+      {
+        "key": "config.av.sync_mode",
+        "label": "Sync mode",
+        "help": "Setup how to control the channel changing."
+      },
+      {
+        "key": "config.av.amlhlg_support",
+        "label": "HLG Support",
+        "help": "This option allows you to force the HLG Modes for UHD."
+      },
+      {
+        "key": "config.av.amlhdr10_support",
+        "label": "HDR10 Support",
+        "help": "This option allows you to force the HDR10 Modes for UHD."
+      },
+      {
+        "key": "config.av.autores_delay",
+        "label": "Delay time",
+        "help": "Set the time before checking video source for resolution information."
+      },
+      {
+        "key": "config.av.autores_label_timeout",
+        "label": "Automatic resolution label",
+        "help": "Allows you to adjust the amount of time the resolution information display on screen."
+      },
+      {
+        "key": "config.av.autores_deinterlace",
+        "label": "Force de-interlace",
+        "help": "If enabled the video will always be de-interlaced."
+      },
+      {
+        "key": "config.av.smart1080p",
+        "label": "Always use smart1080p mode",
+        "help": "This option allows you to always use e.g. 1080p50 for TV/.ts, and 1080p24/p50/p60 for videos"
+      },
+      {
+        "key": "config.av.autores_480p24",
+        "label": "Show 480/576p 24fps as",
+        "help": "This option allows you to choose how to display SD progressive 24Hz on your TV. (as not all TV's support these resolutions)"
+      },
+      {
+        "key": "config.av.autores_720p24",
+        "label": "Show 720p 24fps as",
+        "help": "This option allows you to choose how to display 720p 24Hz on your TV. (as not all TV's support these resolutions)"
+      },
+      {
+        "key": "config.av.autores_1080p24",
+        "label": "Show 1080p 24fps as",
+        "help": "This option allows you to choose how to display 1080p 24Hz on your TV. (as not all TV's support these resolutions)"
+      },
+      {
+        "key": "config.av.autores_1080p25",
+        "label": "Show 1080p 25fps as",
+        "help": "This option allows you to choose how to display 1080p 25Hz on your TV. (as not all TV's support these resolutions)"
+      },
+      {
+        "key": "config.av.autores_1080p30",
+        "label": "Show 1080p 30fps as",
+        "help": "This option allows you to choose how to display 1080p 30Hz on your TV. (as not all TV's support these resolutions)"
+      },
+      {
+        "key": "config.av.videorate[config.av.videomode[config.av.videoport.value].value]",
+        "label": "Resolution",
+        "help": "This option configures the screen resolution in PC output mode."
+      },
+      {
+        "key": "config.av.policy_43",
+        "label": "Display 4:3 content as",
+        "help": "When the content has an aspect ratio of 4:3, choose whether to scale/stretch the picture."
+      },
+      {
+        "key": "config.av.policy_169",
+        "label": "Display >16:9 content as",
+        "help": "When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture."
+      },
+      {
+        "key": "config.av.policy_169",
+        "label": "Display 16:9 content as",
+        "help": "When the content has an aspect ratio of 16:9, choose whether to scale/stretch the picture."
+      },
+      {
+        "key": "config.av.aspectswitch.enabled",
+        "label": "Aspect switch",
+        "help": "This option allows you to set offset values for different Letterbox resolutions."
+      },
+      {
+        "key": "config.av.wss",
+        "label": "WSS on 4:3",
+        "help": "When enabled, content with an aspect ratio of 4:3 will be stretched to fit the screen."
+      },
+      {
+        "key": "config.av.autores_sd",
+        "label": "Show SD as",
+        "help": "This option allows you to choose how to display standard definition video on your TV."
+      },
+      {
+        "key": "config.av.autores_2160p24",
+        "label": "Show 2160p 24fps as",
+        "help": "This option allows you to choose how to display 2160p 24Hz on your TV. (as not all TV's support these resolutions)"
+      },
+      {
+        "key": "config.av.autores_2160p25",
+        "label": "Show 2160p 25fps as",
+        "help": "This option allows you to choose how to display 2160p 25Hz on your TV. (as not all TV's support these resolutions)"
+      },
+      {
+        "key": "config.av.autores_2160p30",
+        "label": "Show 2160p 30fps as",
+        "help": "This option allows you to choose how to display 2160p 30Hz on your TV. (as not all TV's support these resolutions)"
+      },
+      {
+        "key": "config.av.autores_mode_sd[config.av.videoport.value]",
+        "label": "%sMode for SD (up to 576p)",
+        "help": "This option configures the video output mode (or resolution)."
+      },
+      {
+        "key": "config.av.autores_rate_sd[config.av.autores_mode_sd[config.av.videoport.value].value]",
+        "label": "%sRefresh rate for SD",
+        "help": "Configure the refresh rate of the screen."
+      },
+      {
+        "key": "config.av.autores_24p",
+        "label": "Show 24p up to 720p / higher than 720p as",
+        "help": "Show 24p up to resolution 720p or higher than 720p as a different Framerate."
+      },
+      {
+        "key": "config.av.autores_25p",
+        "label": "Show 25p up to 720p / higher than 720p as",
+        "help": "Show 25p up to resolution 720p or higher than 720p as a different Framerate."
+      },
+      {
+        "key": "config.av.autores_30p",
+        "label": "Show 30p up to 720p / higher than 720p as",
+        "help": "Show 30p up to resolution 720p or higher than 720p as a different Framerate."
+      },
+      {
+        "key": "config.av.videorate[config.av.videomode[config.av.videoport.value].value]",
+        "label": "Refresh rate",
+        "help": "Configure the refresh rate of the screen."
+      },
+      {
+        "key": "config.av.vcrswitch",
+        "label": "Auto SCART switching",
+        "help": "When enabled, your receiver will detect activity on the VCR SCART input."
+      },
+      {
+        "key": "config.av.autores_preview",
+        "label": "Enable preview",
+        "help": "Show preview of current mode (*)."
+      },
+      {
+        "key": "config.av.autores_mode_hd[config.av.videoport.value]",
+        "label": "%sMode for HD (up to 720p)",
+        "help": "This option configures the video output mode (or resolution)."
+      },
+      {
+        "key": "config.av.autores_rate_hd[config.av.autores_mode_hd[config.av.videoport.value].value]",
+        "label": "%sRefresh rate for HD",
+        "help": "Configure the refresh rate of the screen."
+      },
+      {
+        "key": "config.av.autores_mode_fhd[config.av.videoport.value]",
+        "label": "%sMode for FHD (up to 1080p)",
+        "help": "This option configures the video output mode (or resolution)."
+      },
+      {
+        "key": "config.av.autores_rate_fhd[config.av.autores_mode_fhd[config.av.videoport.value].value]",
+        "label": "%sRefresh rate for FHD",
+        "help": "Configure the refresh rate of the screen."
+      },
+      {
+        "key": "config.av.autores_mode_uhd[config.av.videoport.value]",
+        "label": "%sMode for UHD (up to 2160p)",
+        "help": "This option configures the video output mode (or resolution)."
+      },
+      {
+        "key": "config.av.autores_rate_uhd[config.av.autores_mode_uhd[config.av.videoport.value].value]",
+        "label": "%sRefresh rate for UHD",
+        "help": "Configure the refresh rate of the screen."
+      },
+      {
+        "key": "config.av.autores_mode_sd[config.av.videoport.value]",
+        "label": "Lowest Mode",
+        "help": "This option configures the video output mode (or resolution)."
+      },
+      {
+        "key": "config.av.autores_rate_sd[config.av.autores_mode_sd[config.av.videoport.value].value]",
+        "label": "Refresh rate for 'Lowest Mode'",
+        "help": "Configure the refresh rate of the screen."
+      },
+      {
+        "key": "config.av.autores_unknownres",
+        "label": "Show unknown video format as",
+        "help": "Show unknown Videoresolution as next higher or as highest screen resolution."
+      },
+      {
+        "key": "config.av.aspectswitch.offsets[str(aspect)]",
+        "label": "f' -> {avSwitch.ASPECT_SWITCH_MSG[aspect]}'",
+        "help": ""
+      },
+      {
+        "key": "config.av.autores_1080i_deinterlace",
+        "label": "%sShow 1080i as 1080p",
+        "help": "Use Deinterlacing for 1080i Videosignal?"
+      }
+    ],
+    "Enhancement": [
+      {
+        "key": "config.pep.split",
+        "label": "Split preview mode",
+        "help": "This option allows you to view the old and new settings side by side."
+      },
+      {
+        "key": "config.pep.auto_flesh",
+        "label": "Auto flesh",
+        "help": "This option sets the picture flesh tones."
+      },
+      {
+        "key": "config.pep.block_noise_reduction",
+        "label": "Block noise reduction",
+        "help": "This option allows to reduce the block-noise in the picture. Obviously this is at the cost of the picture's sharpness."
+      },
+      {
+        "key": "config.pep.brightness",
+        "label": "Brightness",
+        "help": "This option sets the picture brightness."
+      },
+      {
+        "key": "config.pep.blue_boost",
+        "label": "Boost blue",
+        "help": "This option allows you to boost the blue tones in the picture."
+      },
+      {
+        "key": "config.pep.green_boost",
+        "label": "Boost green",
+        "help": "This option allows you to boost the green tones in the picture."
+      },
+      {
+        "key": "config.pep.contrast",
+        "label": "Contrast",
+        "help": "This option sets  the picture contrast."
+      },
+      {
+        "key": "config.pep.digital_contour_removal",
+        "label": "Digital contour removal",
+        "help": "This option sets the suppression of false digital contours, that are the result of a limited number of discrete values."
+      },
+      {
+        "key": "config.pep.dynamic_contrast",
+        "label": "Dynamic contrast",
+        "help": "This option allows to set the level of dynamic contrast of the picture."
+      },
+      {
+        "key": "config.pep.hue",
+        "label": "Hue",
+        "help": "This option sets the picture hue."
+      },
+      {
+        "key": "config.pep.mosquito_noise_reduction",
+        "label": "Mosquito noise reduction",
+        "help": "This option set the level of suppression of mosquito noise (Mosquito Noise is random aliasing as a result of strong compression). Obviously this goes at the cost of picture details."
+      },
+      {
+        "key": "config.av.scaler_sharpness",
+        "label": "Scaler sharpness",
+        "help": "This option sets the scaler sharpness, used when stretching picture from 4:3 to 16:9."
+      },
+      {
+        "key": "config.pep.scaler_vertical_dejagging",
+        "label": "Scaler vertical anti-aliasing",
+        "help": "Control the use of vertical scaler anti-aliasing."
+      },
+      {
+        "key": "config.pep.smooth",
+        "label": "Smooth",
+        "help": "Control the smoothing filter used for the dithering process."
+      },
+      {
+        "key": "config.pep.sharpness",
+        "label": "Sharpness",
+        "help": "This option sets up the picture sharpness, used when the picture is being upscaled."
+      },
+      {
+        "key": "config.pep.saturation",
+        "label": "Saturation",
+        "help": "This option sets the picture saturation."
+      },
+      {
+        "key": "config.pep.color_space",
+        "label": "Color space",
+        "help": "This option sets the picture color space."
+      },
+      {
+        "key": "config.pep.configsteps",
+        "label": "Change step size",
+        "help": ""
+      }
+    ]
+  }
+}

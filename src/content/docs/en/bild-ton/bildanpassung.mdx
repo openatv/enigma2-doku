@@ -1,0 +1,57 @@
+---
+title: "OSD, picture enhancement and test patterns"
+description: "OpenATV: OSD, picture enhancement and test patterns. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+## Correct cropped menus
+
+First disable TV overscan/zoom or choose a suitable pixel-exact display mode. Then open **Setup → Video → OSD Calibration**. Left/Right and Up/Down move the interface; Width/Height set its area. Adjust the outer red border until it is just visible at the real TV's edges, then save with Green.
+
+The numbers can use an internal coordinate system: **720 × 576 in this dialog does not prove SD HDMI output.** A grab image shows the framebuffer and cannot establish whether the TV crops it. Check on the connected display.
+
+| OSD field | Purpose |
+| --- | --- |
+| Left/Right, Up/Down | Menu position, separate from the broadcast picture. |
+| Width, Height | Available menu area. Excessive reduction makes text unnecessarily small. |
+| OSD visibility | User-interface opacity. |
+| Teletext/browser base opacity | Separate base/background opacity for these views, where offered. |
+| OSD 3D mode and depth | For compatible 3D output: menu layout for Side-by-Side/Top-and-Bottom and depth. Not a 2D picture enhancement. |
+| Show in Extension Menu | Adds access to OSD 3D settings in the extensions menu; does not itself change the picture. |
+
+
+<Capture id="av-osd" language="en" alt="OSD Calibration with borders and positioning" caption="720 × 576 are internal calibration coordinates here, not HDMI or skin resolution." />
+
+<Capture id="av-enhancement" language="en" alt="Native video enhancement with brightness, contrast and sharpness" caption="Driver-dependent enhancement controls. No values were applied and no test-pattern calibration was performed for capture." />
+
+## Video enhancement
+
+The optional **VideoEnhancement** system plugin appears under Setup → Video when installed and supported. Its controls come from the video driver and vary across receivers. Other platforms may provide different picture controls. These affect decoded video, separately from skin colours and TV picture presets.
+
+| Option | Effect and trade-off |
+| --- | --- |
+| Brightness | Changes brightness/black level; retain shadow detail using suitable patterns. |
+| Contrast | Affects bright levels; excessive settings lose highlight detail. |
+| Saturation | Colour intensity, separate from HDMI colour negotiation. |
+| Hue / Auto flesh | Colour shift or automatic skin-tone processing. Compare neutral faces. |
+| Boost blue/green | Boosts particular colour components and can distort balance. |
+| Dynamic contrast | Scene-dependent contrast, potentially causing brightness shifts/detail loss. |
+| Block noise reduction | Smooths compression blocks at the cost of texture. |
+| Mosquito noise reduction | Reduces shimmering around edges, potentially removing fine detail. |
+| Digital contour removal | Processes artificial gradations/contours; judge with real material. |
+| Scaler sharpness / Sharpness | Edge enhancement in scaling/video processing. Too much causes halos and noise. |
+| Scaler vertical anti-aliasing | Smooths scaling jaggies where supported. |
+| Smooth | Driver-dependent smoothing in the dithering path. |
+| Colour space | Picture-processing control, not necessarily the HDMI colour-space selector. |
+| Split preview | Compares previous/new settings across separate picture areas. Disable after comparison. |
+| Step size | Adjustment increment per key press, not a separate picture effect. |
+
+**Green/OK** accepts, **Red/Exit** cancels; **Yellow** recalls the previous configuration and **Blue** the defaults. Some controls apply immediately as a preview. Note the starting values and change one setting at a time. Similar processing in the TV/AVR can compound the effect.
+
+## Use test patterns
+
+The optional **VideoTune** plugin provides brightness, contrast, colour and geometry/overscan patterns. View them on the TV with consistent room lighting and TV picture mode. A neutral baseline is more useful than maximum sharpness/saturation everywhere. An SDR pattern is not an HDR calibration; a screenshot is not a colour measurement.
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

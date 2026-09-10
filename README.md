@@ -4,9 +4,12 @@ Die gemeinsame, modellneutrale Grunddokumentation für OpenATV: Deutsch und Engl
 
 Über **Weitere Sprachen / More languages** lassen sich die englischen Kapitel automatisch mit Google Translate lesen. Die englischen Bilder bleiben erhalten; DE und EN sind weiterhin direkt als Original verfügbar. Bedienung, Suche und Hosting: [Weitere Sprachen](docs/TRANSLATION.md).
 
+Ein gemeinsamer Linkblock am Seitenende führt in beiden Sprachen zu Forum, Enigma2, OE-Alliance-Core, Plugin-Repositories, WLAN-Treibern und Image-Downloads. Die vorhandenen Vor-/Zurück-Verweise bleiben erhalten; der Block wird nicht in jedem Suchdokument erneut indiziert.
+
 ## Inhalt dieser ersten Ausgabe
 
 - Erste Einrichtung und grundlegende Bedienung
+- Bild und Ton: 17 Kapitel je Sprache zu Video, AutoResolution, HDR/EDID, OSD, Audioformaten, AVR/Soundbar, Passthrough, Tonspuren, Lautstärke, Lipsync und HDMI-CEC samt Logs
 - Infobar: Symbole, einfache Infoleiste, zweite INFO/ECM, Sendungsinformationen und OSD-Optionen
 - Versteckte Menüoptionen über MENU → MENU, vertikale/horizontale Menüs und Bearbeitungsmodus
 - Farbtasten, eigene Hotkeys und Langdruck-Verzeichnis aus der Keymap: 150 Zuordnungen für 77 Tastencodes
@@ -40,7 +43,7 @@ Die gemeinsame, modellneutrale Grunddokumentation für OpenATV: Deutsch und Engl
 - Einstellungsreferenz mit vorhandenen Beschriftungen und Originalhilfetexten
 - Erweiterbare Bereiche für Skins, Add-ons und spätere Anhänge
 
-Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 76 Kapitel pro Sprache sind bebildert: Der Bestand umfasst 306 ausgewählte native Enigma2-Bilder, eine ergänzende Web-Editor-Aufnahme und 16 Abbildungen aus dem ursprünglichen Umbra-Handbuch. Die neuen Aufnahmen stammen von OpenATV 8.0.2-devel mit MetrixHD beziehungsweise Umbra. Von den 306 nativen Bildern zeigen 280 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die zusätzlichen Umbra-Vorlagenbilder haben eigene Angaben zu Version und Herkunft, darunter vier berechnete Vergleiche. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für dessen Skin-Kapitel.
+Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 88 Kapitel pro Sprache sind bebildert: Der Bestand umfasst 332 ausgewählte native Enigma2-Bilder, eine ergänzende Web-Editor-Aufnahme und 16 Abbildungen aus dem ursprünglichen Umbra-Handbuch. Die neuen Aufnahmen stammen von OpenATV 8.0.2-devel mit MetrixHD beziehungsweise Umbra. Von den 332 nativen Bildern zeigen 306 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die zusätzlichen Umbra-Vorlagenbilder haben eigene Angaben zu Version und Herkunft, darunter vier berechnete Vergleiche. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für dessen Skin-Kapitel.
 
 Die vorhandene NAS-Freigabe und die HDD wurden auf Schreib- und Lesezugriff geprüft. Ihre Einbindung sowie Tuner- und LAN-Konfiguration blieben erhalten. Für die allgemeinen Bilder wurde MetrixHD verwendet, für die Umbra-Serie vorübergehend Umbra/FHD. Nach den DE/EN-Läufen wurden ursprüngliche Sprache und Skin wiederhergestellt. Einzelne Assistentenansichten sind bebildert, der vollständige Neuinstallationsablauf ist noch nicht durchgetestet. WLAN und FBC folgen auf passender Hardware. Der [Prüfstand](docs/PRAXISTESTS.md) trennt aufgenommene Ansichten von vollständig getesteten Bedienabläufen.
 
@@ -103,7 +106,7 @@ Nach einem Import den Diff prüfen, neue oder geänderte Optionen redaktionell b
 
 ## Platzbedarf und Apache2
 
-`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Die Website enthält die freigegebenen Original-PNGs zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit 198 Inhalten je Sprache und zusätzlicher Sprachauswahl belegt rund 186,06 MB in 2151 Dateien, etwa 18,61 Prozent des Budgets.
+`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Die Website enthält die freigegebenen Original-PNGs zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit 215 Inhalten je Sprache und zusätzlicher Sprachauswahl belegt rund 203,22 MB in 2325 Dateien, etwa 20,32 Prozent des Budgets.
 
 Bei einem Wechsel auf Apache2 wird dieselbe Website für die neue Adresse gebaut. Sie benötigt dort nur statische Dateiauslieferung. [Apache2-Bereitstellung](docs/APACHE2.md).
 
@@ -113,7 +116,7 @@ Der Inhalt basiert auf dem [OpenATV-Enigma2-Projekt](https://github.com/openatv/
 
 ## e2MDB – ausführlicher Add-on-Bereich
 
-Die bereitgestellte deutsche Anleitung wurde in 34 Webkapitel je Sprache überführt und vollständig auf Englisch ausgearbeitet. Die Skinner-Anhänge verwenden allgemeine Panelnamen und enthalten keine Umbra-Zuordnung. `data/e2mdb-settings.json` dokumentiert die 47 Felder des geprüften Hauptsetups; beide Sprachfassungen enthalten jeden Schlüssel.
+Die bereitgestellte deutsche Anleitung wurde in 34 Webkapitel je Sprache überführt und vollständig auf Englisch ausgearbeitet. Die Skinner-Anhänge verwenden allgemeine Panelnamen. Die Anzeige von e2MDB-Informationen in Infobar, Senderliste und weiteren Skinansichten benötigt einen angepassten Skin, beispielsweise Umbra oder MetrixHD; diese Voraussetzung steht in beiden Sprachfassungen. `data/e2mdb-settings.json` dokumentiert die 47 Felder des geprüften Hauptsetups; beide Sprachfassungen enthalten jeden Schlüssel.
 
 Alle vier ursprünglichen Skin-XML-Beispiele sind in DE/EN vorhanden und vom Skinner-Einstieg direkt verlinkt. Ein fünftes Beispiel zeigt beide Panel-Aufrufe für Basis- und Medienansicht samt umgekehrter Bedingung. Entfernt wurde die Umbra-Namenszuordnung, kein Skinner-Thema.
 
@@ -124,3 +127,9 @@ Alle vier ursprünglichen Skin-XML-Beispiele sind in DE/EN vorhanden und vom Ski
 Die 18 Fachkapitel der deutschen Vorlage `Umbra_Benutzerhandbuch_0.4.10.docx` bleiben inhaltlich erhalten und wurden vollständig ins Englische übertragen. Übersicht, Optionsreferenz, Quellen und neuere Menü-/Infoleistenfunktionen ergeben zusammen 22 Umbra-Kapitel je Sprache. Die allgemeine Anleitung zur Feed-Installation kommt separat hinzu. Spätere Funktionen bis zum abgeglichenen Quellstand 0.4.23 aktualisieren unter anderem die Auflösungsdichte und ergänzen horizontales Menü, InfoBarLite, zweite Infoleiste und Infoleisten-EPG.
 
 Alle 16 Vorlagenabbildungen sind mit Herkunft und Prüfsumme in `data/umbra-figures.json` erfasst. Bildausschnitte werden wie in der Vorlage dargestellt; die unveränderten Originale bleiben verlinkt. 14 neue native DE/EN-Bilder zeigen Skinauswahl und sechs Einstellungsansichten. Umbra verwendet im geprüften Pluginstand auch bei englischem Enigma2 deutsche Feldbezeichnungen; die englischen Texte erklären sie. `data/umbra-settings.json` enthält alle 39 Stiloptionen, `data/umbra-manual-coverage.json` ordnet die ursprünglichen Kapitel beiden Sprachfassungen zu.
+
+## Bild, Ton und HDMI-CEC
+
+17 Kapitel je Sprache erklären Anschlussketten, Video-/Bildratenwahl, automatische Auflösung, HDMI-Farben/HDR/EDID, OSD und Bildoptimierung sowie PCM, Downmix, Passthrough, Tonspuren, Lautstärke und Lipsync. Die Referenzen decken alle 24 Audiofelder, 29 CEC-Felder und 59 Videoeinträge/Beschriftungsvarianten des geprüften Quellstands ab. Treiberabhängige Auswahlmöglichkeiten sind ausdrücklich gekennzeichnet.
+
+Der Abgleich verwendet den zur Testinstallation passenden Enigma2-Stand `c446c39a38957950de9989538e87c6278d2470cc`; Quellhashes und Felder stehen in `data/av-settings.json`. 26 neue DE/EN-Aufnahmen wurden einzeln geprüft. HDMI blieb 1080p50; erfasste AV-/CEC-/OSD-/Skin-/Automatikwerte und geschützte Timer-/Mount-/e2MDB-Dateien stimmen vor/nach der Serie überein. Die Bilder belegen erreichbare Dialoge, keine universelle Codec-, CEC-, HDR- oder ARC/eARC-Kompatibilität.

@@ -1,0 +1,35 @@
+---
+title: "Bild und Ton synchronisieren"
+description: "OpenATV: Bild und Ton synchronisieren. Einstellungen, Bedeutung, Anschlussbeispiele und Fehlersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Wenn Lippenbewegung und Sprache nicht zusammenpassen, zuerst feststellen, **ob der Ton zu früh oder zu spät kommt**. Nutze eine bekannte Aufnahme oder ein Synchronisationstestvideo mit klar erkennbarem Bild-/Tonereignis. Ein Fehler nur bei einem einzelnen Sender kann bereits in dessen Quelle liegen.
+
+1. Unnötige Bildverbesserer am TV testweise reduzieren; sie können das Bild verzögern. Gleichen TV-Modus für Vergleiche verwenden.
+2. Tonweg prüfen: Box → AVR und Box → TV → ARC können verschiedene Verzögerungen haben.
+3. Bestehende Verzögerungen in Box, Player, TV und AVR notieren. Nicht an allen Stellen gleichzeitig korrigieren.
+4. Einen zuständigen Regler in kleinen Schritten ändern. **Positiver Audiodelay** verzögert den Ton; kommt er bereits zu spät, würde das den Fehler vergrößern. Negative Werte werden nicht von jedem Wiedergabeweg gleich umgesetzt.
+5. Mit PCM und einer unterstützten Dolby-Spur sowie nach einem Senderwechsel erneut prüfen.
+
+
+<Capture id="av-audio-delay" language="de" alt="Allgemeine AC3- und PCM-Verzögerung" caption="Separate Verzögerungsfelder für die Audiopfade; im Beispiel jeweils 0 ms." />
+
+## Welche Verzögerung ist gemeint?
+
+| Feld | Zweck |
+| --- | --- |
+| Allgemeine AC3-Verzögerung | Globale Verzögerung für den entsprechenden komprimierten/Dolby-Tonpfad. Im Quellstand −1000 bis +1000 ms, Schritt 5 ms. |
+| Allgemeine PCM-Verzögerung | Globale Verzögerung für decodierten PCM-Ton, gleicher Quellbereich. |
+| Allgemeine BT-Audioverzögerung | Zusätzlicher treiberabhängiger Bluetooth-Weg, sofern vorhanden. |
+| Sender-/Player-spezifische Verzögerung | Über eine vorhandene Audiosync-Erweiterung oder Playerfunktion; kann sich mit globalen Werten kombinieren. |
+| Passthrough-Umschaltverzögerung AC3/AC3+ | Wartezeit zur Stabilisierung beim Format-/Senderwechsel auf bestimmten Plattformen. **Kein Ersatz für eine dauerhafte Lipsync-Korrektur.** |
+| CEC-Sendeintervall / Wiederholungsverzögerung | Zeit zwischen Steuerbefehlen; verändert keine Audio-/Videosynchronität. |
+
+Ein zusätzliches **AudioSync**-Plugin kann feinere globale oder senderbezogene Korrekturen bieten. Sein Menüumfang hängt von der installierten Version ab; es ist keine Voraussetzung für die beiden nativen allgemeinen Verzögerungsfelder. Wenn eine senderbezogene Korrektur gespeichert wurde, diese vor einem globalen Nachregeln berücksichtigen.
+
+Wird die Abweichung mit der Wiedergabedauer immer größer, zuerst Zeitstempel, Stream, Player und Pufferung untersuchen. Ein konstanter Millisekundenwert kann eine fortlaufende Drift nicht dauerhaft ausgleichen. [Player-Fehlersuche](../../wiedergabe/formate/).
+
+
+[Bild und Ton](../) · [Quellen und Prüfumfang](../quellen/)

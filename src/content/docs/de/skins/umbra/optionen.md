@@ -479,6 +479,8 @@ Basis Graphit: Textfarbe
 
 `config.plugins.umbra.recordIndicatorMode`
 
+Der kurze Einstellungsname lautet `recordIndicatorMode`; damit lässt sich diese Aufnahmemarkierung über die Suche finden.
+
 Erklärung und Beispiele: [Aufnahme-Markierung](../aufnahmen/).
 
 ## Paketwahl und lokale Einstellungen

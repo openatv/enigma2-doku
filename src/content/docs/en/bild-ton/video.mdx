@@ -1,0 +1,42 @@
+---
+title: "Video output, resolution and refresh rate"
+description: "OpenATV: Video output, resolution and refresh rate. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Open **MENU → Setup → Video → Video Settings**. Video output controls the HDMI signal. Skin resolution is configured separately and does not automatically equal the video output resolution.
+
+
+<Capture id="av-video-main" language="en" alt="Video Settings with HDMI output, 1080p mode and refresh rate" caption="Native Video Settings. These choices are not recommendations for every connection chain; actual output remained 1080p50 during capture." />
+
+## Establish a stable baseline
+
+1. Select the connected output, normally HDMI.
+2. Start with automatic resolution disabled.
+3. Choose a mode supported by the complete chain. **1080p50** is often a suitable starting point for European television on a Full HD/UHD TV; older displays may need 720p50 or 1080i50. Use UHD only when the receiver, display, intermediate device and cable support it.
+4. Press Green and confirm **only if the picture is visible and correct**. The checked mode-change confirmation waits 20 seconds; without confirmation, the previous mode is restored. Some additional options apply immediately and are not all covered by that rollback.
+5. Check several channels and a known recording before changing colour/HDR or automatic switching.
+
+## Resolution, p/i and Hz
+
+| Term | Meaning |
+| --- | --- |
+| 576 / 720 / 1080 / 2160 | Vertical pixels of the output format. Upscaling cannot create detail absent from the source. |
+| p – progressive | Complete frames. 1080p50 sends 50 complete frames per second. |
+| i – interlaced | Fields. 1080i50 has 50 fields per second, not 50 complete source frames. |
+| 24 / 25 / 30 / 50 / 60 Hz | Output timing. Film, European television and other sources may require different rates. |
+| Multi / Auto | Driver-dependent refresh-rate combinations. Check the available choices; this is separate from automatic resolution selection. |
+
+A 24 fps film can show uneven camera pans at a fixed 50/60 Hz output. Matching film timing can help, but switching may briefly resynchronise HDMI. Changing refresh rate does not fix network buffering or decoding failures.
+
+## Aspect ratio
+
+16:9 normally suits a modern TV and is fixed by some output modes. **Pillarbox** preserves 4:3 with side bars. **Letterbox** preserves wider content with top/bottom bars. **Pan & Scan / Zoom** fills the screen by cropping; **stretch / nonlinear** changes proportions. Names and combinations depend on driver and output format.
+
+Bars encoded into the programme are part of the video. The aspect-ratio setting cannot automatically distinguish them from picture content. Additional zoom can crop subtitles or useful detail. [OSD and picture adjustment](../bildanpassung/) treats cropped menus separately.
+
+The [video reference](../video-optionen/) also covers SCART/WSS, EDID exceptions and hardware-dependent fields.
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

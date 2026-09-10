@@ -384,3 +384,23 @@ Die Benutzeranleitung enthält auf Wunsch keine Hinweise auf die beobachteten Ja
 - Englisches Wetterkapitel mit neuem FHD-Bild, historischem CSS-Bildausschnitt, Originaldateilinks und Tabellen im Browser kontrolliert. Deutsche Optionsreferenz und englisches zusätzliches XML-Beispiel ebenfalls visuell geprüft. Ein fehlendes Leerzeichen in einer englischen Bildunterschrift wurde vor den abschließenden Builds korrigiert.
 - 198 Inhalte und 76 bebilderte Kapitel pro Sprache. Insgesamt 306 native Enigma2-PNGs, zusätzlich ein Web-Editor-PNG und 16 Umbra-Vorlagenabbildungen. Finale Pages-Ausgabe rund 186,06 MB in 2151 Dateien: etwa 18,61 Prozent des konservativen 1-GB-Budgets.
 - Abschließend wieder für `/enigma2-doku` gebaut. Nur lokale Commits; kein Push und keine Veröffentlichung.
+
+## Bild, Ton, CEC und globale Links – 10. September 2026
+
+- 17 Kapitel je Sprache mit eigenständiger Erklärung und vollständigen Referenzen zu 24 Audiofeldern, 29 CEC-Feldern sowie 59 dynamischen Videoeinträgen/Beschriftungsvarianten. OSD-, Bildoptimierungs-, Tonspur- und Lautstärkefelder ergänzen die Referenzen. Quellstand `c446c39a38957950de9989538e87c6278d2470cc` entspricht der Paketrevision der Testinstallation; Quellen und Hashes in `data/av-settings.json`.
+- 13 native Szenen je Sprache in `av-b-de-av-guides` / `av-b-en-av-guides`, alle 26 Bilder einzeln gesichtet und anhand Manifest/Review-SHA-256 importiert. Die erste unvollständige Serie ist nicht veröffentlicht. Auf dieser Hardware ist HDMI Colorimetry vorhanden, HDMI Color Space hingegen nicht sichtbar; fehlende Treiberfelder werden anhand des Quellcodes erklärt.
+- CEC-aktiviert/eine Wiederholung, einfache AutoResolution und Lautstärke-Offset sind abgetrennte, ungespeicherte Formularbeispiele. Die tatsächliche AV-/CEC-Engine verwendet unveränderte Werte. Die erfassten Konfigurationswerte und Hashes geschützter Timer-, Mount- und e2MDB-Dateien stimmen vor/nach der Serie überein. Tatsächliche HDMI-Ausgabe 1080p50, Skin MetrixHD; deutsche Sprache wiederhergestellt. Keine Bytegleichheit sämtlicher Systemdateien behauptet.
+- Geprüft wurden erreichbare Ansichten und technische Quellzuordnungen. Keine vollständigen Codec-Hörtests, CEC-Ein-/Ausschaltzyklen, ARC/eARC-, HDR-, Bluetooth- oder TV-Kalibrierungstests. HDD und NAS wurden für diese Serie nicht verändert.
+- e2MDB korrigiert: Titel „e2MDB – Mediendatenbank ab OpenATV 8.0“; für Metadaten in Infobar, Senderliste und anderen Skinansichten ist ein angepasster Skin wie Umbra oder MetrixHD erforderlich. Die generischen XML-Beispiele bleiben erhalten.
+- Gemeinsamer DE/EN-Linkblock mit sechs Betreiberadressen in den Seitenfuß integriert. Vor-/Zurück-Navigation bleibt erhalten, Linkblock ist von Pagefind ausgenommen. Englischer Linkblock sowie deutsche/englische neue Inhalte im Browser geprüft.
+- Suchprüfung korrigiert: jede Sprache lädt einen eigenen Pagefind-/WASM-Laufzeitkontext, entsprechend einem frischen Browserseitenaufruf. Sonst verwendete die englische Prüfung zuvor den deutschen Wortstammalgorithmus; dies fiel mit TrueHD auf. Der kurze Umbra-Schlüssel recordIndicatorMode ist jetzt in beiden Sprachfassungen eigenständig indizierbar.
+
+### Website-Prüfungen für Bild und Ton
+
+- Astro-Check: 23 Dateien, keine Fehler, Warnungen oder Hinweise. 11 Node- und 8 Python-Tests des Handbuchs bestanden; Aufnahmeplugin 39 bestandene Tests.
+- GitHub-Pages-Build: 432 HTML-Dateien mit lokalen Links, Bildern und Sprungmarken sowie 203 echte Suchprüfungen erfolgreich. Die vier zunächst fehlerhaften Skinverweise im e2MDB-Einstieg wurden vor dem erfolgreichen Build korrigiert.
+- 215 Inhalte und 88 bebilderte Kapitel je Sprache; 332 native Enigma2-PNGs plus Web-Editor-Bild und 16 Umbra-Vorlagenabbildungen.
+
+- Apache-Build unter / ebenfalls mit 432 HTML-Dateien und 203 Suchprüfungen erfolgreich; abschließend wieder für GitHub Pages unter /enigma2-doku gebaut. Finale Ausgabe: 203,22 MB in 2325 Dateien, 20,32 Prozent des konservativen 1-GB-Budgets.
+- Alle sechs exakten Linkziele und der Ausschluss des Linkblocks aus Pagefind auf sämtlichen 430 Sprachseiten geprüft. Beide Sprachfassungen des Blocks, das deutsche CEC-Kapitel und der korrigierte e2MDB-Einstieg wurden visuell im Browser kontrolliert. 88 bebilderte Kapitel je Sprache umfassen 79 mit nativen Capture-Komponenten sowie weitere Seiten mit Vorlagen-/Webbildern.
+- Nur lokale Commits; kein Push und keine Veröffentlichung.

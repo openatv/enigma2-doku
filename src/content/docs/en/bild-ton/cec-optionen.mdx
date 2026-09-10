@@ -1,0 +1,198 @@
+---
+title: "All 29 HDMI-CEC settings"
+description: "OpenATV: All 29 HDMI-CEC settings. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+These are all **29 fields** in HDMI-CEC Settings. Extra entries appear with advanced settings and their parent conditions. Physical address selection is explained at the end.
+
+**MENU → Setup → System → HDMI-CEC Settings**. [Setup and context](../hdmi-cec/). Native names and configuration keys help locate a setting. Source defaults can differ from saved values or image presets.
+
+
+<Capture id="av-cec-volume" language="en" alt="CEC volume forwarding and AVR/soundbar control" caption="Unsaved view: volume forwarding is separate from power control." />
+
+<Capture id="av-cec-timing" language="en" alt="CEC repeats and timing" caption="One repeat is an unsaved example, not a general recommendation or a completed CEC switching test." />
+
+## Enabled
+
+Yes/No, source baseline No. Main HDMI-CEC switch; connected devices must also support/enable CEC.
+
+Key: `config.hdmicec.enabled`.
+
+## Advanced Settings
+
+Reveals additional event, repeat and diagnostic fields. Does not add hardware capability.
+
+Key: `config.hdmicec.advanced_settings`.
+
+## Regard Deep Standby as Standby
+
+Includes deep standby in standby/wake CEC handling. Does not guarantee hardware wake-up from deep standby.
+
+Key: `config.hdmicec.handle_deepstandby_events`.
+
+## Wait for timesync at startup
+
+Waits for time synchronisation in the relevant deep-standby workaround, up to about two minutes. Shown only with the corresponding combination of settings.
+
+Key: `config.hdmicec.deepstandby_waitfortimesync`.
+
+## Put TV in Standby
+
+Receiver → TV: also put the TV in standby when the receiver sleeps/shuts down. Configure the reverse direction separately.
+
+Key: `config.hdmicec.control_tv_standby`.
+
+## Even if TV has another input active?
+
+Allows TV standby while another input is active. No can avoid interrupting another viewer/game when TV state is known.
+
+Key: `config.hdmicec.tv_standby_notinputactive`.
+
+## Wake up TV from Standby
+
+Receiver → TV: wake the TV with the receiver. Check the event filters below it.
+
+Key: `config.hdmicec.control_tv_wakeup`.
+
+## Even if a 'Zap' recording timer starting?
+
+Also wake the TV for a zap timer; enable overnight only if intended.
+
+Key: `config.hdmicec.tv_wakeup_zaptimer`.
+
+## Even if a 'Zap and Record' recording timer starting?
+
+Also wake the TV for zap-and-record, separately from an ordinary recording-only timer.
+
+Key: `config.hdmicec.tv_wakeup_zapandrecordtimer`.
+
+## Even if a 'Wakeup' scheduled task starting?
+
+Wake the TV for a scheduled wake-up task. This is not every Linux cron job.
+
+Key: `config.hdmicec.tv_wakeup_wakeuppowertimer`.
+
+## Switch TV to correct input
+
+Report/request the receiver HDMI path so the TV selects it. Can displace another active source.
+
+Key: `config.hdmicec.report_active_source`.
+
+## Switch off the TV to correct input
+
+Workaround using a TV off/on sequence when input switching fails. It can really power the TV down; use only for a specific need.
+
+Key: `config.hdmicec.workaround_activesource`.
+
+## Handle wake up from TV
+
+Receiver wake trigger: disabled, wake-up, physical-address report, routing/source/stream/OSD-name request or any activity. Start with a narrow suitable trigger; any activity can include unrelated traffic.
+
+Key: `config.hdmicec.handle_tv_wakeup`.
+
+## Handle Standby from TV
+
+TV → receiver: disabled, standby or deep standby. Account for independent recordings/streams.
+
+Key: `config.hdmicec.handle_tv_standby`.
+
+## Process action from TV
+
+Response to another active TV input: disabled, standby or deep standby of the receiver. Not a command selecting the receiver input.
+
+Key: `config.hdmicec.handle_tv_input`.
+
+## Time delay until Standby or Deep Standby
+
+No delay or offered values from 5 seconds to 60 minutes. Delays the sleep response; TV standby takes priority over input changes.
+
+Key: `config.hdmicec.handle_tv_delaytime`.
+
+## Use TV remote control
+
+Accept supported TV-remote keys at the receiver. TVs do not necessarily send all long presses/colour keys.
+
+Key: `config.hdmicec.report_active_menu`.
+
+## Forward volume keys
+
+Forward receiver VOL+/VOL−/mute to the detected TV/audio system. Keys may become ineffective without compatible CEC support.
+
+Key: `config.hdmicec.volume_forwarding`.
+
+## Put your AV Receiver or Soundbar in Standby
+
+Put the AVR/soundbar in standby with the box. “Receiver” in this field means the audio system.
+
+Key: `config.hdmicec.control_receiver_standby`.
+
+## Wake up your AV Receiver or Soundbar from Standby
+
+Wake the AVR/soundbar with the box. Still check its input and audio output.
+
+Key: `config.hdmicec.control_receiver_wakeup`.
+
+## Minimum send interval
+
+Off or 10/50/100/150/250/500/750/1000 ms between CEC messages. Add delay only for equipment needing slower transmission.
+
+Key: `config.hdmicec.minimum_send_interval`.
+
+## Repeat the sent standby and wake up commands
+
+Off or 1–5 repeats of wake/standby sequences. Separate from continuous polling; more is not always better.
+
+Key: `config.hdmicec.messages_repeat`.
+
+## Time delay for the repeated transmission
+
+None or listed values from 500–5000 ms, multiplied by the repeat counter. Increases spacing between later repeats.
+
+Key: `config.hdmicec.messages_repeat_slowdown`.
+
+## Repeat the standby commands
+
+Also repeats standby sequences. Backend behaviour is standby, despite an older help string mentioning wake-up.
+
+Key: `config.hdmicec.messages_repeat_standby`.
+
+## Check power and input state from TV
+
+Query TV power/input state. Useful with reliable replies; missing/incorrect reports can cause unexpected reactions.
+
+Key: `config.hdmicec.check_tv_state`.
+
+## Ignore unexpectedly wake up and stay in Standby
+
+Off or ignore unexpected wake commands for 5/10/15/30/45/60 seconds after standby. Use for actual immediate re-wake problems.
+
+Key: `config.hdmicec.workaround_turnbackon`.
+
+## Use HDMI-preemphasis
+
+Optional HDMI driver signal setting, not CEC timing or volume. Not a substitute for suitable cabling.
+
+Key: `config.hdmicec.preemphasis`.
+
+## Enable command line function
+
+Enables the temporary CEC command-file input. Not needed for ordinary use; commands can control real equipment.
+
+Key: `config.hdmicec.commandline`.
+
+## Enable debug log
+
+Writes CEC traffic to config.crash.debug_path as Enigma2-hdmicec-YYYYMMDD.log. Disable after diagnosis.
+
+Key: `config.hdmicec.debug`.
+
+## Physical address and colour buttons
+
+An address such as `1.0.0.0` describes the HDMI path, not an IP address. **Yellow** sets or clears a fixed physical address (`config.hdmicec.fixed_physical_address`). `0.0.0.0` is the automatic default here. A fixed address may become wrong after recabling; normally leave it automatic. **Blue** loads setup defaults, **Green** saves, **Red/EXIT** cancels normal form edits. The address action can take immediate effect in the real dialog.
+
+[Log CEC traffic](../cec-logs/) before changing repeats or workarounds.
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

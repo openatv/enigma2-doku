@@ -1,0 +1,35 @@
+---
+title: "Synchronise picture and sound"
+description: "OpenATV: Synchronise picture and sound. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+First establish **whether audio is early or late**. Use a known recording or sync test with a clear visual/audio event. A problem on one service only may originate in that source.
+
+1. Temporarily reduce unnecessary TV picture processing, which can delay video. Keep the TV mode consistent for comparisons.
+2. Check the route: receiver → AVR and receiver → TV → ARC can have different delays.
+3. Note existing receiver, player, TV and AVR delays. Adjust one place at a time.
+4. Change the relevant control in small increments. **Positive audio delay** makes sound later; it worsens already-late audio. Negative values are not implemented equally by every playback path.
+5. Recheck PCM, a supported Dolby track and service switching.
+
+
+<Capture id="av-audio-delay" language="en" alt="General AC3 and PCM delay" caption="Separate delay fields for the audio paths, both at 0 ms in this example." />
+
+## Which delay?
+
+| Field | Purpose |
+| --- | --- |
+| General AC3 delay | Global delay for the corresponding compressed/Dolby path. Source range −1000 to +1000 ms, 5 ms steps. |
+| General PCM delay | Global delay for decoded PCM, with the same source range. |
+| General BT audio delay | Additional driver-dependent Bluetooth path where available. |
+| Service/player-specific delay | Provided by an installed audio-sync extension or player; can combine with global settings. |
+| Passthrough handling delay AC3/AC3+ | Stabilisation time during format/service changes on certain platforms. **Not a substitute for ongoing lip-sync correction.** |
+| CEC send/repeat interval | Timing between control messages, unrelated to audio/video synchronisation. |
+
+An optional **AudioSync** plugin can provide finer global or per-service adjustments. Its menu depends on the installed version; it is not required for the two native general delay controls. Account for saved per-service corrections before changing a global value.
+
+If the offset keeps growing during playback, investigate timestamps, stream, player and buffering. A fixed millisecond correction cannot permanently compensate for continuing drift. [Player troubleshooting](../../wiedergabe/formate/).
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

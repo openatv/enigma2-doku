@@ -98,6 +98,8 @@ Log settings provide limits for file size, retention and total log storage. Chec
 
 Before uploading, inspect a **copy** for passwords, tokens, share credentials and private addresses. Keep the error, traceback, package names and event sequence intact. Do not upload a complete settings backup as a public bug report. [Report a problem](../fehler-melden/) explains the forum, the appropriate GitHub projects and a report template.
 
+TV/AVR power, input selection and volume-key problems have a separate [daily HDMI-CEC log](../../bild-ton/cec-logs/). That chapter explains its own debug switch, filename and how to interpret control traffic.
+
 **Verification:** Menu options and filenames were checked against source code. New debug files were observed under `/home/root/logs/` on the test receiver with logging already enabled. No crash was deliberately triggered.
 
 Sources: [Log configuration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py), [Startup wrapper and debug files](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/tools/enigma2.sh.in), [Crash logs and fallback paths](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/main/bsod.cpp), [Log Manager](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/LogManager.py).

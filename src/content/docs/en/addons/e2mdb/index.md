@@ -1,9 +1,9 @@
 ---
-title: "e2MDB – metadata for OpenATV 8.0+"
+title: "e2MDB – media database for OpenATV 8.0+"
 description: "e2MDB: Setup, 47 settings, media, EPG, web editor, maintenance and skinner reference."
 ---
 
-**e2MDB adds descriptions, covers and other metadata to films, series, recordings and TV programmes.** This extensive section covers the new add-on **for OpenATV 8.0 and newer**. It is model-neutral and does not require a particular skin.
+**e2MDB adds descriptions, covers and other metadata to films, series, recordings and TV programmes.** This extensive section covers the new add-on **for OpenATV 8.0 and newer** and applies across receiver models. **Displaying e2MDB information in the Infobar, channel list and other Enigma2 views requires an adapted skin, such as [Umbra](../../skins/umbra/) or [MetrixHD](../../skins/metrixhd/).** The particular skin version and view must support e2MDB. Database processing, scans and the plugin's own screens/web pages are separate functions.
 
 A working display follows this sequence: **storage → providers and language → media paths or existing EPG → processing → supported view**. e2MDB does not download complete EPG listings or replace a video player.
 

@@ -1,0 +1,204 @@
+---
+title: "Alle 24 Audioeinstellungen"
+description: "OpenATV: Alle 24 Audioeinstellungen. Einstellungen, Bedeutung, Anschlussbeispiele und Fehlersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Hier stehen alle **24 Felder** des Audio-Setups im geprüften Quellstand. Sichtbarkeit und Auswahlwerte hängen vom Treiber ab. Nur ein Teil ist auf jeder Box vorhanden.
+
+**MENÜ → Einstellungen → Ton → Toneinstellungen**. [Einrichtung und Zusammenhänge](../audio-grundlagen/). Die englische Originalbezeichnung und der Schlüssel helfen bei der Suche. Quellvorgaben können von gespeicherten Werten oder Image-Voreinstellungen abweichen.
+
+
+<Capture id="av-audio-formats" language="de" alt="Toneinstellungen mit AC3- und DTS-Downmix" caption="Die Testbox zeigt einen Teil der 24 beschriebenen Felder. Keine Audioformat- oder Passthrough-Einstellung wurde für das Bild gespeichert." />
+
+## Lautstärkeschritte bei Taste VOL +/-
+
+Original: **Volume steps**.
+
+1–10 Schritte bei kurzem VOL-Druck; Basis 1. Keine Klangänderung.
+
+Schlüssel: `config.volumeControl.pressStep`.
+
+## Lautstärkeschritte bei VOL +/- lang
+
+Original: **Long press volume steps**.
+
+1–10 Schritte bei gehaltenem VOL; Basis 5. Größere Werte führen schneller zu Pegelsprüngen.
+
+Schlüssel: `config.volumeControl.longStep`.
+
+## Anzeigedauer der Lautstärke/Stummschaltung
+
+Original: **Volume/Mute display timer**.
+
+1–10 Sekunden für Lautstärke-/Stummanzeige, Basis 3. Verändert nicht die tatsächliche Stummschaltung.
+
+Schlüssel: `config.volumeControl.hideTimer`.
+
+## PCM-Mehrkanal
+
+Original: **PCM Multichannel**.
+
+Ja/Nein. Erlaubt decodierte Mehrkanal-PCM-Ausgabe auf unterstütztem Treiber/HDMI-Weg. Kann durch andere Downmix-Einstellungen bedingt sein; PCM ist nicht automatisch Stereo.
+
+Schlüssel: `config.av.pcm_multichannel`.
+
+## AC3-Downmix
+
+Original: **AC3 downmix**.
+
+Ja mischt Dolby Digital gewöhnlich zu Stereo; Nein reicht AC3 auf einem unterstützten Weg weiter. Für AVR erst dessen Decoder und Anschluss prüfen. Basis im Quellstand: Ja.
+
+Schlüssel: `config.av.downmix_ac3`.
+
+## Audioverzögerung beim Durchschleifen von AC3
+
+Original: **Passthrough audio handling delay AC3**.
+
+Plattformspezifische AC3-Umschaltwartezeit, Basis 100 ms. Nur bei entsprechenden Tonproblemen beim Zappen verändern; keine allgemeine Lipsync-Korrektur.
+
+Schlüssel: `config.av.passthrough_fix_short`.
+
+## Audioverzögerung beim Durchschleifen von AC3+
+
+Original: **Passthrough audio handling delay AC3+**.
+
+Entsprechende längere Wartezeit für AC3+/Atmos-Formatwechsel, Basis 1200 ms. Eine längere Pause kann den Tonstart verzögern.
+
+Schlüssel: `config.av.passthrough_fix_long`.
+
+## AC3+-Transkodierung
+
+Original: **AC3 plus transcoding**.
+
+Je Plattform: durch HDMI gesteuert/beste Ausgabe, Passthrough, Downmix, AC3, Mehrkanal-PCM, DTS oder AC3+ erzwingen. Nur angebotene und unterstützte Wege verwenden. Umwandlung zu AC3 bewahrt Atmos nicht allgemein.
+
+Schlüssel: `config.av.transcodeac3plus`.
+
+## AC4
+
+Wo vorhanden: beste/durch HDMI gesteuerte Ausgabe, Passthrough oder Downmix. AC4 ist nicht gleichbedeutend mit Atmos; Quelle, Decoder und Ziel müssen passen.
+
+Schlüssel: `config.av.ac4`.
+
+## DTS-Downmix
+
+Original: **DTS downmix**.
+
+Ja für Stereo-Decodierung von DTS, Nein für unterstützte DTS-Durchleitung. DTS-HD-Varianten separat betrachten.
+
+Schlüssel: `config.av.downmix_dts`.
+
+## DTS/DTS-HD HR/DTS-HD MA/DTS:X
+
+Je Plattform Downmix, DTS-Konvertierung, Mehrkanal-PCM, Passthrough oder HDMI-gesteuerte Wahl. Konvertierung zu DTS ist nicht identisch mit verlustfreier DTS-HD-Ausgabe.
+
+Schlüssel: `config.av.dtshd`.
+
+## Dolby TrueHD
+
+Wo angeboten Downmix, Passthrough oder beste HDMI-Ausgabe. Verlustfreies Quellformat und Atmos-Zusatzdaten setzen einen passenden vollständigen Wiedergabeweg voraus.
+
+Schlüssel: `config.av.truehd`.
+
+## WMA Pro
+
+Treiberabhängig Downmix, Passthrough, Mehrkanal-PCM oder beste HDMI-Ausgabe. Kein universeller WMA-Pro-Decoder allein durch diese Auswahl.
+
+Schlüssel: `config.av.wmapro`.
+
+## AAC-Downmix
+
+Original: **AAC downmix**.
+
+Je Plattform Ja/Nein oder erweiterte Auswahl mit Downmix, Passthrough, Mehrkanal-PCM, HDMI-gesteuert sowie AC3-/DTS-Umwandlung. TV/AVR akzeptiert nicht zwingend AAC-Bitstream.
+
+Schlüssel: `config.av.downmix_aac`.
+
+## AAC+-Downmix
+
+Original: **AAC plus downmix**.
+
+Für AAC+/HE-AAC angebotenen Downmix-/Passthrough-Modus wählen. Nicht mit Dolby Digital Plus verwechseln.
+
+Schlüssel: `config.av.downmix_aacplus`.
+
+## AAC-Transkodierung
+
+Original: **AAC transcoding**.
+
+Separater AAC-Encoderpfad: Auswahl stammt aus Treiberfähigkeiten; zum Beispiel aus, AC3 oder DTS, sofern angeboten. Nicht gleichzeitig widersprüchliche Downmix-Regeln wählen.
+
+Schlüssel: `config.av.transcodeaac`.
+
+## Tonquelle
+
+Original: **Audio Source**.
+
+Treiberinterne HDMI-Audioquelle, etwa PCM/S/PDIF, auf bestimmten Plattformen zusätzlich Bluetooth. Nicht der ARC-Rückkanal und nicht automatisch die Wahl eines physischen Ausgabekabels.
+
+Schlüssel: `config.av.audio_source`.
+
+## Allgemeine AC3-Verzögerung
+
+Original: **General AC3 delay**.
+
+−1000 bis +1000 ms, 5-ms-Schritte, Basis 0. Positive Werte verzögern den Ton des entsprechenden Dolby-/komprimierten Audiopfads. Wirksamkeit pro Player prüfen.
+
+Schlüssel: `config.av.generalAC3delay`.
+
+## Allgemeine PCM-Verzögerung
+
+Original: **General PCM delay**.
+
+Gleicher Bereich für decodierten PCM-Ton. Bei mehreren Geräten mit Audiodelay nur an einer Stelle nachregeln.
+
+Schlüssel: `config.av.generalPCMdelay`.
+
+## 3D-Surround
+
+Original: **3D Surround**.
+
+Aus oder Bearbeitung auf HDMI, S/PDIF beziehungsweise DAC, sofern angeboten. Virtueller Raumeindruck ist kein zusätzliches diskretes Mehrkanalsignal.
+
+Schlüssel: `config.av.surround_3d`.
+
+## 3D-Surround-Lautsprecherposition
+
+Original: **3D Surround Speaker Position**.
+
+Mitte, breit oder extra breit: virtuelle Lautsprecherposition für aktivierte 3D-Surround-Bearbeitung. Keine physische AVR-Lautsprecher-Einmessung.
+
+Schlüssel: `config.av.surround_3d_speaker`.
+
+## Automatische Lautstärkeanpassung
+
+Original: **Audio Auto Volume Level**.
+
+Aus beziehungsweise HDMI/S/PDIF/DAC, je Treiber. Pegelbearbeitung im Audiopfad, getrennt von der Sender-Offsetliste. Unveränderte Bitstreams können davon unberührt bleiben.
+
+Schlüssel: `config.av.autovolume`.
+
+## Bluetooth-Audio aktivieren
+
+Original: **Enable BT audio**.
+
+Ein/Aus für den unterstützten BT-Audiopfad. Kopplung und Bluetooth-Hardware separat einrichten; nicht auf jeder Box vorhanden.
+
+Schlüssel: `config.av.btaudio`.
+
+## Allgemeine Bluetooth-Audioverzögerung
+
+Original: **General BT audio delay**.
+
+Treiberabhängiger BT-Delay: −1000 bis +1000 ms in 5-ms-Schritten, Basis 0. Echte Funkverzögerung am verwendeten Gerät prüfen.
+
+Schlüssel: `config.av.btaudiodelay`.
+
+## Weitere Tonmenüs
+
+[Automatische Tonspurwahl](../tonspuren/), [Lautstärke je Sender](../lautstaerke/) und [Lippensynchronität](../lipsync/) ergänzen diese Felder. Bei Datei-/IPTV-Wiedergabe zusätzlich den [verwendeten Player](../../wiedergabe/serviceapp/) prüfen.
+
+
+[Bild und Ton](../) · [Quellen und Prüfumfang](../quellen/)

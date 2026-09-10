@@ -1,0 +1,42 @@
+---
+title: "HDMI colour, HDR and EDID"
+description: "OpenATV: HDMI colour, HDR and EDID. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**EDID** describes capabilities reported by the display or intermediate HDMI device. It can determine the available resolutions, rates and audio formats. Behind an AVR, the receiver sees capabilities forwarded by that AVR. Changing connections can therefore change available options.
+
+
+<Capture id="av-video-hdmi" language="en" alt="HDMI Colorimetry in Video Settings" caption="This hardware exposes HDMI Colorimetry. Other colour-space, depth and HDR fields require corresponding support." />
+
+## Separate the colour settings
+
+| Setting | Meaning |
+| --- | --- |
+| HDMI colour space | RGB or YCbCr 4:4:4, 4:2:2 or 4:2:0: how brightness/colour information is transmitted. Auto is a useful baseline. |
+| HDMI Colorimetry | Colour description such as BT.709 or BT.2020. Forcing BT.2020 does not correctly convert SDR into HDR. |
+| HDMI colour depth | 8, 10 or 12 bits per component, where offered. Resolution, rate and depth together must fit the link bandwidth; an 8-bit source does not acquire new original gradations. |
+| Full / limited RGB range | Source and TV must agree on signal levels. A mismatch produces grey blacks or lost bright/dark detail. This is separate from HDR. |
+| HDMI HDR type / HDR10 / HLG | Signalling or handling of high dynamic range formats. Source, decoder, driver and entire HDMI chain must support the format. |
+
+4:2:0 reduces colour bandwidth compared with 4:4:4. It is separate from bit depth and limited RGB range. Not every HDMI path supports maximum resolution, refresh rate, bit depth and 4:4:4 simultaneously.
+
+For incorrect black/white levels, first match the range at both ends; adjusting brightness/contrast can otherwise hide the cause. Auto depends on correct signalling. [Manufacturer explanation of HDMI Dynamic Range](https://www.sony.com/electronics/support/televisions-projectors-lcd-tvs/kdl-40ex501/articles/00013709).
+
+## Understand HDR
+
+HDR10 and HLG are different systems. A driver-dependent selector may include HDR10+ or Dolby Vision; that does not prove support for every profile or player. **Auto / controlled by HDMI** preserves intended negotiation. Forcing a mode is appropriate only for a specific compatibility test.
+
+The TV input may need its enhanced HDMI signal mode enabled, under a manufacturer-specific name. An older AVR can limit the signal. Test directly at the TV with suitable cabling to isolate the problem.
+
+**HDR OSD adjustment** concerns SDR graphics/menus during HDR output on supported hardware. It is not a general movie HDR control. **Boxmode** can switch hardware resources between functions such as PiP and HDR/colour-depth operation on some platforms. Keep a working setting unless a specific change is needed.
+
+## Override EDID?
+
+**Allow unsupported modes** expands the selector beyond reported modes. **Bypass HDMI EDID Check** is a separate driver switch where present. Neither creates missing bandwidth or hardware capabilities. Recover to a known mode after a black picture; start diagnosis with Auto and supported modes.
+
+The checked implementation writes **Allow 10bit/12bit** values to driver files named `disable_10bit` and `disable_12bit`. The label-to-driver mapping is therefore ambiguous across platforms. Do not infer a universal inverse rule from the label; check current driver help and actual output. [All video options](../video-optionen/).
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

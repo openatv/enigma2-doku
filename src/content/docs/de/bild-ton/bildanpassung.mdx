@@ -1,0 +1,57 @@
+---
+title: "OSD, Bildoptimierung und Testbilder"
+description: "OpenATV: OSD, Bildoptimierung und Testbilder. Einstellungen, Bedeutung, Anschlussbeispiele und Fehlersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+## Abgeschnittene Menüs korrigieren
+
+Zuerst am TV Overscan/Zoom abschalten oder eine passende Funktion wie pixelgenaue Darstellung wählen. Danach **Einstellungen → Bild → OSD-Kalibrierung** öffnen. Links/Rechts und Hoch/Runter verschieben die Oberfläche; Breite/Höhe ändern ihre Fläche. Den äußeren roten Rahmen am echten Fernseher gerade sichtbar an die Ränder anpassen und mit Grün speichern.
+
+Die angezeigten Werte können ein internes Koordinatensystem verwenden: **720 × 576 im Dialog ist kein Beleg für SD-HDMI-Ausgabe.** Ein Grab-Bild zeigt den Framebuffer und kann Overscan am TV nicht nachweisen. Diese Kontrolle muss am angeschlossenen Bildschirm erfolgen.
+
+| OSD-Feld | Zweck |
+| --- | --- |
+| Links/Rechts, Hoch/Runter | Position der Menüs; nicht die Lage des ausgestrahlten Videoinhalts. |
+| Breite, Höhe | Nutzbare Menüfläche. Zu starkes Verkleinern macht Schrift unnötig klein. |
+| OSD-Sichtbarkeit | Deckkraft der Bedienoberfläche. |
+| Videotext-/Webbrowser-Grunddeckkraft | Separate Hintergrund-/Grunddeckkraft für diese Ansichten, sofern angeboten. |
+| OSD-3D-Modus und Tiefe | Nur für passende 3D-Ausgabe: Menüanordnung bei Side-by-Side/Top-and-Bottom und räumliche Tiefe. Kein 2D-Bildverbesserer. |
+| Im Erweiterungsmenü anzeigen | Fügt einen Zugang zur OSD-3D-Einstellung im Erweiterungsmenü hinzu; verändert selbst kein Bild. |
+
+
+<Capture id="av-osd" language="de" alt="OSD-Kalibrierung mit Rahmen und Positionseinstellungen" caption="720 × 576 sind hier interne Kalibrierungskoordinaten, nicht die HDMI- oder Skinauflösung." />
+
+<Capture id="av-enhancement" language="de" alt="Native Bildverbesserung mit Helligkeit, Kontrast und Schärfe" caption="Treiberabhängige Regler der Bildverbesserung. Für die Aufnahme wurden weder Werte angewendet noch Testbilder kalibriert." />
+
+## Bildoptimierung
+
+Das optionale Systemplugin **VideoEnhancement / Bildoptimierung** erscheint bei passender Installation unter Einstellungen → Bild. Optionen stammen vom Videotreiber; sie sind nicht auf allen Boxen gleich. Andere Plattformen können einen anderen Bildregler anbieten. Diese Einstellungen betreffen das decodierte Bild und sind von Skinfarben sowie TV-Bildprofilen zu trennen.
+
+| Option | Wirkung und Abwägung |
+| --- | --- |
+| Helligkeit | Verschiebt Bildhelligkeit/Schwarzlage; dunkle Details mit geeigneten Testbildern erhalten. |
+| Kontrast | Beeinflusst den Pegel heller Bereiche; zu hoch verschluckt helle Details. |
+| Farbsättigung | Farbintensität; nicht die HDMI-Farbprofil-Aushandlung. |
+| Farbton / automatische Hautfarbe | Farbverschiebung beziehungsweise automatische Hauttonbehandlung. Neutrale Gesichter als Vergleich nutzen. |
+| Blau-/Grünanteil erhöhen | Verstärkt bestimmte Farbanteile; kann die Farbbalance verfälschen. |
+| Dynamischer Kontrast | Szenenabhängiger Kontrast. Kann wechselnde Helligkeit und Detailverlust verursachen. |
+| Block-Rauschunterdrückung | Glättet sichtbare Kompressionsblöcke, kann Texturen verlieren. |
+| Mosquito-Rauschreduzierung | Dämpft flimmernde Störungen um Kanten; kann feine Details reduzieren. |
+| Digitale Konturen entfernen | Behandelt künstliche Abstufungen/Konturen; Wirkung am Material beurteilen. |
+| Skaliererschärfe / Schärfe | Kantennachschärfung beim Skalieren beziehungsweise im Videopfad. Zu viel erzeugt helle Ränder und Rauschen. |
+| Vertikales Anti-Aliasing | Glättet treppenartige vertikale Skalierartefakte, sofern angeboten. |
+| Smooth | Glättungsfilter des Ditheringpfads, treiberabhängig. |
+| Farbraum | Verarbeitung im Bildoptimierungsplugin; nicht automatisch identisch mit HDMI-Farbraum. |
+| Splitscreen-Vorschau | Vergleicht alte/neue Einstellungen in getrennten Bildteilen. Zum Schluss wieder ausschalten. |
+| Schrittweite | Stärke eines Tastenschritts beim Verändern, kein eigener Bildeffekt. |
+
+**Grün/OK** übernimmt, **Rot/Exit** bricht ab; **Gelb** ruft die letzte Konfiguration, **Blau** die Standardwerte auf. Einige Regler wirken als Vorschau unmittelbar. Vorher Ausgangswerte notieren und nur einen Parameter ändern. Gleiche Verbesserungsfunktionen zusätzlich im TV/AVR können sich verstärken.
+
+## Testbilder sinnvoll verwenden
+
+Das optionale **VideoTune** stellt unter anderem Helligkeits-, Kontrast-, Farb- und Geometrie-/Overscan-Testbilder bereit. Testbild auf dem TV ansehen, Raumlicht und TV-Bildmodus konstant halten. Ein neutraler Ausgangspunkt hilft mehr als überall maximale Schärfe/Sättigung. Ein SDR-Testbild ersetzt keine HDR-Kalibrierung; eine Screenshot-Datei ist keine Farbmessung.
+
+
+[Bild und Ton](../) · [Quellen und Prüfumfang](../quellen/)

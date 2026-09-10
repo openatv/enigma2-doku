@@ -1,0 +1,164 @@
+---
+title: "All 24 audio settings"
+description: "OpenATV: All 24 audio settings. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+These are all **24 fields** in Audio Settings at the checked source revision. Visibility and choices depend on the driver. Each receiver shows only its supported subset.
+
+**MENU → Setup → Audio → Audio Settings**. [Setup and context](../audio-grundlagen/). Native names and configuration keys help locate a setting. Source defaults can differ from saved values or image presets.
+
+
+<Capture id="av-audio-formats" language="en" alt="Audio Settings with AC3 and DTS downmix" caption="The receiver shows a subset of the 24 documented fields. No audio-format or passthrough choice was saved for the image." />
+
+## Volume steps
+
+1–10 steps for a short volume press; baseline 1. No sound processing.
+
+Key: `config.volumeControl.pressStep`.
+
+## Long press volume steps
+
+1–10 steps while holding volume; baseline 5. Larger values change level faster.
+
+Key: `config.volumeControl.longStep`.
+
+## Volume/Mute display timer
+
+1–10 seconds for volume/mute indicators, baseline 3. Does not change actual muting.
+
+Key: `config.volumeControl.hideTimer`.
+
+## PCM Multichannel
+
+Yes/No. Allows decoded multichannel PCM on supported driver/HDMI paths. Other downmix settings can affect availability; PCM is not necessarily stereo.
+
+Key: `config.av.pcm_multichannel`.
+
+## AC3 downmix
+
+Yes normally mixes Dolby Digital to stereo; No forwards AC3 on a supported path. Check the AVR decoder/connection first. Source baseline: Yes.
+
+Key: `config.av.downmix_ac3`.
+
+## Passthrough audio handling delay AC3
+
+Platform-specific AC3 switching wait, baseline 100 ms. Adjust for relevant zap-related audio problems, not general lip sync.
+
+Key: `config.av.passthrough_fix_short`.
+
+## Passthrough audio handling delay AC3+
+
+Longer wait for AC3+/Atmos format changes, baseline 1200 ms. A larger value can delay audio onset.
+
+Key: `config.av.passthrough_fix_long`.
+
+## AC3 plus transcoding
+
+Platform choices can include HDMI-controlled/best, passthrough, downmix, AC3, multichannel PCM, DTS or forced AC3+. Use only offered supported paths. AC3 conversion does not generally preserve Atmos.
+
+Key: `config.av.transcodeac3plus`.
+
+## AC4
+
+Where available: best/HDMI-controlled, passthrough or downmix. AC4 is not synonymous with Atmos; source, decoder and destination must match.
+
+Key: `config.av.ac4`.
+
+## DTS downmix
+
+Yes for DTS stereo decoding, No for supported DTS passthrough. Treat DTS-HD variants separately.
+
+Key: `config.av.downmix_dts`.
+
+## DTS/DTS-HD HR/DTS-HD MA/DTS:X
+
+Depending on platform: downmix, DTS conversion, multichannel PCM, passthrough or HDMI-controlled selection. DTS conversion is not lossless DTS-HD output.
+
+Key: `config.av.dtshd`.
+
+## Dolby TrueHD
+
+Where offered: downmix, passthrough or best HDMI output. Lossless source audio and Atmos extensions require a suitable complete playback path.
+
+Key: `config.av.truehd`.
+
+## WMA Pro
+
+Driver-dependent downmix, passthrough, multichannel PCM or best HDMI output. The selector does not itself provide a universal WMA Pro decoder.
+
+Key: `config.av.wmapro`.
+
+## AAC downmix
+
+Depending on platform: Yes/No or choices including downmix, passthrough, multichannel PCM, HDMI-controlled and AC3/DTS conversion. TV/AVR support for AAC bitstream is not guaranteed.
+
+Key: `config.av.downmix_aac`.
+
+## AAC plus downmix
+
+Select the offered downmix/passthrough mode for AAC+/HE-AAC. It is different from Dolby Digital Plus.
+
+Key: `config.av.downmix_aacplus`.
+
+## AAC transcoding
+
+Separate AAC encoding path with driver-defined choices, such as off, AC3 or DTS when offered. Avoid conflicting downmix rules.
+
+Key: `config.av.transcodeaac`.
+
+## Audio Source
+
+Driver-internal HDMI audio source, such as PCM/S/PDIF or Bluetooth on some platforms. Not ARC and not necessarily selection of a physical output cable.
+
+Key: `config.av.audio_source`.
+
+## General AC3 delay
+
+−1000 to +1000 ms in 5 ms steps, baseline 0. Positive values delay the corresponding Dolby/compressed audio path. Verify per-player behaviour.
+
+Key: `config.av.generalAC3delay`.
+
+## General PCM delay
+
+Same range for decoded PCM. Adjust one place at a time when several devices have delay controls.
+
+Key: `config.av.generalPCMdelay`.
+
+## 3D Surround
+
+Off or processing on HDMI, S/PDIF or DAC where offered. Virtual surround does not add discrete source channels.
+
+Key: `config.av.surround_3d`.
+
+## 3D Surround Speaker Position
+
+Centre, wide or extra wide: virtual speaker placement for active 3D Surround. Not physical AVR speaker calibration.
+
+Key: `config.av.surround_3d_speaker`.
+
+## Audio Auto Volume Level
+
+Off or HDMI/S/PDIF/DAC, driver-dependent. Audio-path level processing, separate from per-service offsets. Unchanged bitstreams may be unaffected.
+
+Key: `config.av.autovolume`.
+
+## Enable BT audio
+
+On/Off for a supported Bluetooth audio path. Pairing and hardware setup are separate; not available on every receiver.
+
+Key: `config.av.btaudio`.
+
+## General BT audio delay
+
+Driver-dependent Bluetooth delay: −1000 to +1000 ms in 5 ms steps, baseline 0. Check actual latency with the connected device.
+
+Key: `config.av.btaudiodelay`.
+
+## Other audio menus
+
+[Automatic track selection](../tonspuren/), [per-service volume](../lautstaerke/) and [lip sync](../lipsync/) complement these fields. For file/IPTV playback also check the [player in use](../../wiedergabe/serviceapp/).
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

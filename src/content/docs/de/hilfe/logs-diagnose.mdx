@@ -97,6 +97,8 @@ Die Log-Einstellungen bieten Grenzen für Dateigröße, Aufbewahrungsdauer und g
 
 Vor dem Hochladen prüfst du eine **Kopie** des Logs auf Passwörter, Tokens, Freigabe-Zugangsdaten und private Adressen. Erhalte Fehlermeldung, Traceback, Paketnamen und zeitlichen Zusammenhang. Sende keine vollständige Einstellungssicherung als öffentlichen Fehlerbericht. Die Anleitung [Fehler melden](../fehler-melden/) nennt Forum, passende GitHub-Projekte und eine Berichtsvorlage.
 
+Für Probleme mit TV-/AVR-Einschalten, Eingangswahl oder Lautstärketasten gibt es ein separates [HDMI-CEC-Tageslog](../../bild-ton/cec-logs/). Dort sind der eigene Debug-Schalter, Dateiname und die Auswertung des Steuerverkehrs erklärt.
+
 **Prüfstand:** Menü und Dateinamen wurden anhand des Quellcodes geprüft. Auf der Testbox wurden mit bereits aktivierter Protokollierung neue Debug-Dateien unter `/home/root/logs/` beobachtet. Es wurde kein Absturz absichtlich ausgelöst.
 
 Quellen: [Log-Konfiguration](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/UsageConfig.py), [Startskript und Debug-Dateien](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/tools/enigma2.sh.in), [Crashlog und Ersatzpfade](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/main/bsod.cpp), [Log-Manager](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/LogManager.py).

@@ -271,3 +271,15 @@ Das Profil setzt eine vorhandene Umbra-Installation voraus. Für diese Serie wur
 Der Adapter zeigt ungespeicherte Beispielwerte und sperrt Speichern, Paketzurücksetzen, Export und den tatsächlichen Skinwechsel aus dem Auswahlbildschirm. Hamburg-Koordinaten sind ein Formularbeispiel. Keine Wetterabfrage wird als live geprüft behauptet. Die Skin-eigenen deutschen Beschriftungen bleiben auch in der englischen GUI unverändert. Die Bilder zeigen die erreichbaren Formulare, keinen vollständigen Installationstest und keine Prüfung aller Auflösungen.
 
 Die 16 Abbildungen des ursprünglichen Word-Handbuchs sind getrennt vom nativen Capture-Inventar erfasst: `data/umbra-figures.json`. Vollständige Originale bleiben unverändert, frühere Word-Ausschnitte werden als CSS-Ansicht wiedergegeben. Berechnete Vergleiche dürfen nicht als neue Receiver-Screenshots beschriftet werden.
+
+## Bild, Ton und HDMI-CEC
+
+`av-guides` ergänzt 13 Szenen je Sprache: drei Videoansichten, Audioformate, Delay, allgemeine Lautstärkeanpassung, automatische Sprachauswahl, vier CEC-Ansichten, OSD-Kalibrierung und Bildoptimierung. Der Katalog umfasst damit 27 Profile und 171 Szenen. Die 26 freigegebenen Bilder stammen ausschließlich aus `av-b-de-av-guides` und `av-b-en-av-guides`; die unvollständige erste Serie bleibt privat. Werkzeugstand: `14a48e84e89537f58e5421747b05883a09681529`.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix av-demo --profiles av-guides --restart-languages --bootlogo --output .capture-private
+```
+
+`av.py` trennt Formularfelder einschließlich veränderbarer Werte, Notifier und Callbacks von der laufenden AV-/CEC-Konfiguration. Nur die Formularmodule erhalten vorübergehend die abgetrennte Ansicht. Treiber und CEC-Engine behalten ihre ursprünglichen Werte. Speichern, Anwenden, Rücksetzen, Vorschau und feste Adressänderung sind gesperrt. CEC aktiviert/eine Wiederholung, einfache AutoResolution sowie Offset-Modus sind ungespeicherte Beispiele und entsprechend beschriftet. Die Lautstärkeaufnahme zeigt die vier allgemeinen Felder, nicht den Sendereditor.
+
+Alle 26 Bilder in beiden GUI-Sprachen wurden einzeln geprüft. Die Ausgabe blieb 1080p50 mit MetrixHD; die ursprüngliche deutsche Sprache und die geschützten EMC-/AutoTimer-Werte wurden wiederhergestellt. Erfasste Konfiguration und geschützte Dateien verglichen unverändert. Keine HDMI-Umschaltung, CEC-Power-Sequenz oder akustische Formatprüfung wird behauptet. 39 lokale Tests des Aufnahmeplugins bestanden. Gesamtbestand: 332 native PNGs.

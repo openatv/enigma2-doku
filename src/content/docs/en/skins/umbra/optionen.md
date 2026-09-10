@@ -479,6 +479,8 @@ Graphite base: Text colour
 
 `config.plugins.umbra.recordIndicatorMode`
 
+The short setting name is `recordIndicatorMode`; use it to find this recording indicator option in the search.
+
 Explanation and examples: [Recording marking](../aufnahmen/).
 
 ## Pack selection and local settings

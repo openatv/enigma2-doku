@@ -1,0 +1,43 @@
+---
+title: "Set up HDMI-CEC: TV, AVR and soundbar"
+description: "OpenATV: Set up HDMI-CEC: TV, AVR and soundbar. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**HDMI-CEC carries control messages over HDMI:** power, input selection and some remote-control keys. It does not replace an audio connection or guarantee ARC/eARC or any audio format. Manufacturers may use their own CEC product names.
+
+Open **MENU → Setup → System → HDMI-CEC Settings**. Also enable CEC on the connected equipment and relevant HDMI ports. Green saves; additional entries appear after enabling CEC and Advanced Settings.
+
+
+<Capture id="av-cec-power" language="en" alt="HDMI-CEC Settings for TV power and wake events" caption="CEC is enabled only in the detached capture form. These values were not saved and do not operate the TV/AVR here." />
+
+## Configure step by step
+
+1. Establish picture and sound before coordinated power control.
+2. Enable CEC and decide whether the receiver should wake the TV and select its input.
+3. Test putting the TV in standby. Decide separately whether that is allowed while someone uses another TV input.
+4. Configure the reverse direction: should TV standby put the receiver to sleep? For independent recordings/streams, Disabled or ordinary Standby can be more suitable than untested Deep Standby.
+5. Then enable AVR/soundbar power control and volume key forwarding. Test each function separately.
+6. Capture a [CEC log](../cec-logs/) before combining repeat settings and workarounds.
+
+## Two directions, different events
+
+**Wake up TV from Standby** means receiver → TV. **Handle wake up from TV** means TV/CEC bus → receiver. Broadly enabling both directions can create unwanted feedback. “Any activity” can wake the receiver for bus traffic unrelated to watching it.
+
+**Handle input from TV / Process action from TV** controls the receiver's response when the TV changes to another source. It differs from “Switch TV to correct input”, which requests the receiver's own input. Standby delay and TV-standby events affect these responses.
+
+## Recording and overnight wake-up
+
+CEC controls the television; timer/scheduler logic wakes the receiver. An ordinary recording normally should not wake the TV. Separate options cover zap timers, zap-and-record timers and scheduled wake-up tasks. Decide which events should also start the TV. **Regard Deep Standby as Standby** controls CEC events, not the receiver's hardware ability to wake from deep standby.
+
+Real deep standby stops the GUI and can affect recordings, streams and NAS access. Normal Enigma2 prompts and timer logic remain relevant. See [timers](../../timer/aufnahmen/) and [wake-up/time](../../system/zeit-aufwachen/).
+
+## Keys and device addresses
+
+**Use TV remote control** accepts supported CEC keys from the TV. Not every TV sends every key, colour key or long press. **Forward volume keys** controls the detected TV/audio system; it is not digital audio-level scaling.
+
+The **physical CEC address**, such as `1.0.0.0`, describes the HDMI route, not an IP address. A **logical address** identifies a bus participant. Changing ports or adding an AVR can change the physical route. Start with automatic addressing; use a fixed address only for a specific justified case. Yellow sets the current address as fixed or clears that override. See [all CEC options](../cec-optionen/).
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

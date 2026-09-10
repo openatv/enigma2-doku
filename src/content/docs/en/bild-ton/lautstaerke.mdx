@@ -1,0 +1,45 @@
+---
+title: "Volume, per-service levels and Bluetooth"
+description: "OpenATV: Volume, per-service levels and Bluetooth. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+## Which device controls sound level?
+
+With decoded PCM, the receiver normally controls its output level. With compressed passthrough, volume usually belongs to the AVR/TV. **Forward volume keys over CEC** sends control messages to that device; it does not change the codec. If keys stop working after enabling it, check CEC support/destination or disable forwarding again.
+
+Reduce sound-system volume before switching from downmix to bitstream: its level can differ from the receiver's previous level. Avoid setting up multiple automatic corrections at once.
+
+In **Audio Settings**, short/long volume steps control the increment per key press (1–10 each in the checked source). The 1–10 second display timer hides volume/mute indicators. These are controls, not sound processing.
+
+
+<Capture id="av-volume" language="en" alt="General volume adjustment with an example offset" caption="The four general fields with an unsaved fixed-offset example. Per-service entries are managed in a separate full editor." />
+
+## Different levels between channels
+
+**Setup → Audio → Volume Adjust Settings** provides:
+
+| Mode / field | Meaning |
+| --- | --- |
+| Disabled | No automatic per-service volume adjustment. |
+| Defined volume offsets | A positive or negative relative value for each service. |
+| Last used/set volume | Remembers the last absolute level per service. |
+| Default volume offset | Initial value for newly added services, not a loudness measurement. |
+| Default Dolby Digital / Dolby AC-3 offset | Fallback for Dolby Digital services without their own entry. |
+| Auto show volume level | Displays automatic changes. |
+
+Search keys for these four general fields: `config.volumeAdjust.adjustMode`, `config.volumeAdjust.defaultOffset`, `config.volumeAdjust.dolbyOffset` and `config.volumeAdjust.showVolumeBar`.
+
+In the native editor, add the current service or select an existing entry, adjust its offset/last level and save. Follow the displayed add/remove colour keys. Removing a **volume mapping** does not remove the service from the channel list. The checked implementation stores mappings in `/etc/enigma2/volume.xml`.
+
+Source ranges are −100 to +100 for offsets and 0–100 for absolute levels; actual output is limited. Small corrections are preferable to large jumps. This automation does not measure programme loudness continuously or replace an AVR night mode. With bitstream or CEC key forwarding, changing the internal receiver level does not necessarily change AVR volume.
+
+## 3D Surround, Auto Volume and Bluetooth
+
+Optional **3D Surround**, virtual speaker and **Audio Auto Volume Level** functions are driver processing. They do not create a new discrete 5.1 track and may not affect unchanged bitstream output. See the [audio reference](../audio-optionen/).
+
+**Enable BT audio** requires compatible support. Pairing, profile and device must be configured separately. The switch neither installs a Bluetooth adapter nor automatically establishes a connection. Wireless/codec latency may need [lip-sync adjustment](../lipsync/). An HDMI soundbar and Bluetooth headphones are different output paths.
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

@@ -81,7 +81,7 @@ Die Texte sind eigenständige Erklärungen mit Optionsnamen und verlinkten Prim�
 
 ## e2MDB
 
-Die 34 Kapitel je Sprache basieren auf der vom Betreiber bereitgestellten deutschen e2MDB-Anleitung (September 2026), redaktioneller Erweiterung und vollständiger englischer Ausarbeitung. Die ursprünglichen Umbra-Bezüge wurden durch allgemeine Skin- und Panelbeispiele ersetzt. Die bestehende Word-Datei außerhalb dieses Repositorys wurde nicht verändert.
+Die 34 Kapitel je Sprache basieren auf der vom Betreiber bereitgestellten deutschen e2MDB-Anleitung (September 2026), redaktioneller Erweiterung und vollständiger englischer Ausarbeitung. Die ursprüngliche Umbra-Namenszuordnung in den XML-Beispielen wurde durch allgemeine Panelnamen ersetzt. Die erforderliche Skin-Unterstützung wird mit Umbra und MetrixHD als Beispielen ausdrücklich erklärt. Die bestehende Word-Datei außerhalb dieses Repositorys wurde nicht verändert.
 
 Technischer Abgleich: [openatv/e2MDB, 7442e3d04aac25c741fa96b370c22994131928e2](https://github.com/openatv/e2MDB/tree/7442e3d04aac25c741fa96b370c22994131928e2). Optionsnamen, Standardwerte, Auswahlwerte und Hilfen in der 47-Felder-Referenz stammen aus `src/e2MDB/setup.xml`, `__init__.py` und dem deutschen Übersetzungskatalog; Abweichungen zwischen Hilfetext und Backend-Verhalten sind ausdrücklich erläutert. Original-Pluginmodule werden nicht mit der Website ausgeliefert.
 
@@ -89,7 +89,13 @@ Technischer Abgleich: [openatv/e2MDB, 7442e3d04aac25c741fa96b370c22994131928e2](
 
 `src/assets/e2mdb-web/editor.png` zeigt die echte Plugin-Weboberfläche mit einem vorhandenen Testclip und den Metadaten zu „21“; Browserauswahl ohne Umbenennen oder Abspielen. Beide Handbuchsprachen verwenden dieses Bild mit einer Erklärung des nativen Web-Sprachstands. Prüfsumme und Sichtprüfung stehen in `data/e2mdb-web-review.json`. Poster, Hintergrundbilder, Programmnamen, Texte und Kennzeichen bleiben den jeweiligen Anbietern und Rechteinhabern zugeordnet.
 
-## Umbra
+## Ergänzung: Bild, Ton und HDMI-CEC
+
+17 neue Kapitel je Sprache mit eigenständigen Erklärungen sowie nativen Optionsnamen. Grundlage: Enigma2 `c446c39a38957950de9989538e87c6278d2470cc`, passend zum installierten Paketstand. `data/av-settings.json` hält die Quellhashes und Feldzuordnungen fest: 24 Audiofelder, 29 CEC-Felder, 59 dynamische Videoeinträge/Beschriftungsvarianten sowie Sprach-, Lautstärke-, OSD- und Bildoptimierungsfelder. Die ursprünglichen Programmlizenzen bleiben beim Upstream; Originalmodule werden nicht mit der Website ausgeliefert. Verlinkte HDMI-, Dolby- und Herstellerquellen ergänzen Anschluss- und Formatbegriffe.
+
+26 weitere native DE/EN-PNGs aus `av-b-de-av-guides` und `av-b-en-av-guides`, Werkzeugstand `14a48e84e89537f58e5421747b05883a09681529`. Alle einzeln geprüft und mit SHA-256 importiert. MetrixHD mit Bootlogo bei gestoppter Wiedergabe; keine nachträgliche Bildbearbeitung. CEC-, AutoResolution- und Lautstärke-Beispielwerte sind ungespeichert. Der native Gesamtbestand steigt auf 332 PNGs, davon 306 mit Bootlogo und 26 mit früherem Senderhintergrund.
+
+## Umbra: Vorlage und Bilder
 
 Die 22 Kapitel je Sprache basieren auf der vom Betreiber bereitgestellten Datei `Umbra_Benutzerhandbuch_0.4.10.docx`, deren 18 Fachkapiteln sowie den begleitenden Quellen aus `Umbra/docs`. SHA-256 der Word-Vorlage: `d385afd904c928f58b64b9cd9c389d95f04d59ab333e9ff31ae21c05e9e1e0b7`. Die Vorlage wurde nicht verändert. Deutsche Texte und Tabellen wurden für die Website übernommen und aktualisiert, die englischen Texte vollständig ausgearbeitet. Die Zuordnung der Quellblöcke und Kapitel steht in `data/umbra-manual-coverage.json`.
 

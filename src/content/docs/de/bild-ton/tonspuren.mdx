@@ -1,0 +1,39 @@
+---
+title: "AUDIO-Taste, Tonspuren und Sprachauswahl"
+description: "OpenATV: AUDIO-Taste, Tonspuren und Sprachauswahl. Einstellungen, Bedeutung, Anschlussbeispiele und Fehlersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Während TV oder Wiedergabe öffnet die **AUDIO-Taste** normalerweise die Tonspurauswahl. Bei abweichender Fernbedienung/Hotkey-Belegung die zugeordnete Audioaktion verwenden. Angezeigt werden nur Spuren, die der Dienst oder Player tatsächlich liefert.
+
+
+<Capture id="av-language" language="de" alt="Automatische Sprachwahl mit vier Tonspur-Prioritäten" caption="Tonspuren und Untertitel haben getrennte Prioritäten. Die Tabelle im Kapitel erklärt die Audiofelder." />
+
+## Eine Spur auswählen
+
+Tonspuren können Sprache, Codec, Kanalzahl und Zusatzbezeichnungen zeigen. Wähle beispielsweise die normale deutsche Spur statt „Audiodeskription“, wenn keine gesprochenen Bildbeschreibungen gewünscht sind. Mehrere „Deutsch“-Einträge können unterschiedliche Codecs oder Kommentarfassungen enthalten. „Original“ setzt passende Kennzeichnung durch den Anbieter voraus.
+
+Mit Hoch/Runter die gewünschte Spur auswählen und mit OK übernehmen. Je nach Dialog wechseln Links/Rechts zwischen Spur- und Einstellungsbereich. Die angezeigten Farb-/Hilfetasten beachten. Dort können zusätzlich Downmix, Audio-Kanalmodus oder weitere pluginabhängige Audiofunktionen erreichbar sein. **MENU im Audiodialog** öffnet im geprüften Stand die automatische Sprachkonfiguration. Audio- und Untertitelseite können über die angebotene Umschaltung gewechselt werden.
+
+**Links / Stereo / Rechts** ist eine Kanalzuordnung, kein Surround-Schalter. Bei einer Zweikanaltonsendung kann links/rechts unterschiedliche Kommentare enthalten. Für normale Stereoquellen Stereo verwenden, damit nicht ein Kanal verloren geht.
+
+## Automatisch die richtige Sprache
+
+**Einstellungen → Ton → Automatische Sprachauswahl**:
+
+| Option | Zweck |
+| --- | --- |
+| Tonsprachauswahl 1–4 | Prioritäten in Reihenfolge. Beispielsweise Deutsch, dann Englisch; unbenötigte Positionen auf Keine. |
+| AC3 bevorzugen | Eine vorhandene Dolby-Digital-Spur bevorzugen; aktiviert keinen Decoder und keinen Passthrough-Modus. |
+| AC3+ bevorzugen | Entsprechend für Dolby Digital Plus; nur einschalten, wenn die Anlage den Weg unterstützt. |
+| Standardtonspur des Senders bevorzugen / gespeicherte Tonspur | Die zuvor für den Sender ausgewählte Spur kann die allgemeine Sprachauswahl übersteuern. Bei scheinbar ignorierter Sprache diesen Sender-Cache prüfen. |
+
+Die zugehörigen Suchschlüssel sind `config.autolanguage.audio_autoselect1`, `config.autolanguage.audio_autoselect2`, `config.autolanguage.audio_autoselect3`, `config.autolanguage.audio_autoselect4`, `config.autolanguage.audio_defaultac3`, `config.autolanguage.audio_defaultddp` und `config.autolanguage.audio_usecache`.
+
+Die GUI-Sprache übersetzt Menüs, die Tonsprachauswahl wählt Programmaudio. Keine der beiden Funktionen übersetzt eine Sendung. EPG-Sprachen und Untertitelprioritäten stehen im gleichen Setup, haben aber eigene Aufgaben; siehe [Untertitel](../../wiedergabe/untertitel/).
+
+Nach dem Speichern zu einem anderen Sender und zurück wechseln. Wenn die Auswahl weiterhin nicht stimmt, vorhandene Spuren und deren Anbieterkennzeichnung prüfen. Für IPTV und Dateien entscheidet zusätzlich der Player, welche Trackinformationen er an Enigma2 meldet.
+
+
+[Bild und Ton](../) · [Quellen und Prüfumfang](../quellen/)

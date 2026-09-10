@@ -2140,5 +2140,187 @@
     "sha256": "66a2d1af492b85cfd8d9d2b8f7558d7a37de9b59a8d2638bfe46907ceaaa0986",
     "run": "umbra-a-en-umbra-guides",
     "tool_commit": "2b3281e0c8c00286cd128227f0942c1c3d075cc1"
+  },
+  {
+    "language": "de",
+    "id": "av-video-main",
+    "sha256": "c721df6caacc4cb93658415cdd94476bcdc39bc905701f1f9a922dc1ff580c7a",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-video-auto",
+    "sha256": "f86efb4129a855276d76f2d05d8488574d4aac67c35730d6a3027c4bb699f797",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-video-hdmi",
+    "sha256": "bce3790a34fbffb736b5acf2b9115103a2ec38257329be70004a4a5d6e4ca2ab",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-audio-formats",
+    "sha256": "35d06704b32a38e0e08daaa1ca7db28b9e082265cc0eed78ac802d12949064d6",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-audio-delay",
+    "sha256": "f99779b4c33df6f57aeb13ac00cf103b98264570ad7c4ad409e0416dda2ad5ae",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-volume",
+    "sha256": "3d5c5e23a95cb575cef2076983aeea44be6e482d30a64b79140c5fdbae43c6d3",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-language",
+    "sha256": "8a30310fb20116d2ddf30b09251479176389890fc95e7b53c91b1991a583d479",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-cec-power",
+    "sha256": "a4b72e17940aa368ac1f2d01d72bcb6940c31f9563c16ba2fa40aac63f4f2460",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-cec-volume",
+    "sha256": "ea92ae612d579c6bc6ddf8a838078c6d1281cfc8d8060ebd8050603e8ccb67b0",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-cec-timing",
+    "sha256": "912e853315ea6ef82e5da24e36b4b18d5f7927631ecff40a83118ba7b0425d15",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-cec-log",
+    "sha256": "08115c25bc000aaedbccb24f02ef8a0b8e1bc7b4904f7e0d105b6cb083f7235a",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-osd",
+    "sha256": "275bb8fe69cd7847139fc1e7646e6ae33e066cc48e7fa6623a34c94f7f7cfc72",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "av-enhancement",
+    "sha256": "ab04d0e39a57b92a4116c4b61c0bb6a7bb80c9868dcc8d1b75bc6ed7dab9732f",
+    "run": "av-b-de-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-video-main",
+    "sha256": "cba2162f2e239dab02157180c7c0bee91488f17c8334d68f9992878a614364e6",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-video-auto",
+    "sha256": "4f57b62e3dc7597f8ee4cc290e080b909c23f4d552cf5909633767dbfbbaea5f",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-video-hdmi",
+    "sha256": "09a18ac9da0d406947abfa8b3568023c26c2a76e0b24edcebcf9ebe02c6f9539",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-audio-formats",
+    "sha256": "39a638707a4612c5ae22c70d8f6946ffda551f81a342e1a91248aa387f90f057",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-audio-delay",
+    "sha256": "f8ca37726590ce71b9f97727552555a08f0bea67afec588a72d1cf2cc2665015",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-volume",
+    "sha256": "8569c6215ff8db543dc8be1d000f8d227eddf3f4baa5457597d781842ad30839",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-language",
+    "sha256": "4728125c432f9dc82d9e4167fdb730ecbe8f2a2d94b13029c44360a407e88e74",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-cec-power",
+    "sha256": "8416c2c0c4f8a3232b9159c93e33a80f263dd907c650d1861a4c6aa14c8729b3",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-cec-volume",
+    "sha256": "7b0f226ff7fdc1a46a46888cbd5f74a4701692883fd26c8aaf1919d8b0ab48f1",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-cec-timing",
+    "sha256": "2266c64ef2b7929fa18ac9761ac9576cd15618a779cb35b55a738caa04690ad2",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-cec-log",
+    "sha256": "17ec96ddce0898b9bd31f4b38797f83a5b26208449030b7fe227ffe9766a1b60",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-osd",
+    "sha256": "84ff063281ff41da42f92afd79c9dbe4830a0efacdc4f523c28409a85014366c",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "en",
+    "id": "av-enhancement",
+    "sha256": "987708aaa5cb7803c92b135c9f53cc8566ab5d35fd1e234b78f500c7b51ad270",
+    "run": "av-b-en-av-guides",
+    "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
   }
 ]

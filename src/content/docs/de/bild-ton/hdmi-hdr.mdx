@@ -1,0 +1,42 @@
+---
+title: "HDMI-Farbe, HDR und EDID"
+description: "OpenATV: HDMI-Farbe, HDR und EDID. Einstellungen, Bedeutung, Anschlussbeispiele und Fehlersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**EDID** sind die vom angeschlossenen Bildschirm beziehungsweise HDMI-Zwischengerät gemeldeten Fähigkeiten. Daraus können angebotene Auflösungen, Bildraten und Tonformate abgeleitet werden. Hinter einem AVR sieht die Box die von diesem weitergegebenen Fähigkeiten. Nach einem Anschlusswechsel können deshalb andere Optionen erscheinen.
+
+
+<Capture id="av-video-hdmi" language="de" alt="HDMI-Farbmetrik in den Bildeinstellungen" caption="Auf dieser Hardware ist HDMI-Farbmetrik sichtbar. Andere Farbraum-, Farbtiefen- und HDR-Felder erscheinen nur bei entsprechender Unterstützung." />
+
+## Farbeinstellungen auseinanderhalten
+
+| Einstellung | Bedeutung |
+| --- | --- |
+| HDMI-Farbraum | RGB oder YCbCr mit 4:4:4, 4:2:2 oder 4:2:0. Diese Angaben betreffen die Übertragung von Helligkeits-/Farbinformationen. Auto ist ein sinnvoller Ausgangspunkt. |
+| HDMI-Farbprofile / Colorimetry | Farbbeschreibung, etwa BT.709 oder BT.2020. Ein erzwungenes BT.2020-Profil macht aus SDR kein korrektes HDR. |
+| HDMI-Farbtiefe | 8, 10 oder 12 Bit pro Komponente, sofern angeboten. Mehr Bit benötigt zusammen mit Auflösung/Bildrate passende Bandbreite; ein 8-Bit-Quellvideo erhält dadurch keine neuen ursprünglichen Abstufungen. |
+| Voller / begrenzter RGB-Bereich | Signalpegel müssen an Quelle und TV zusammenpassen. Unterschiedliche Erwartungen verursachen graues Schwarz oder abgeschnittene helle/dunkle Details. Nicht mit HDR verwechseln. |
+| HDMI-HDR-Typ / HDR10 / HLG | Kennzeichnung beziehungsweise Behandlung dynamischer Helligkeitsformate. Quelle, Decoder, Treiber und komplette HDMI-Kette müssen mitspielen. |
+
+4:2:0 spart gegenüber 4:4:4 Übertragungsbandbreite für Farbinformationen. Das ist nicht dieselbe Einstellung wie Farbtiefe oder begrenzter RGB-Pegel. Eine Kombination aus maximaler Auflösung, Bildrate, Farbtiefe und 4:4:4 ist nicht auf jedem HDMI-Weg möglich.
+
+Für falsche Schwarz-/Weißpegel zuerst den Bereich auf beiden Geräten passend einstellen; Kontrast oder Helligkeit nachzuregeln verdeckt sonst die Ursache. Auto funktioniert nur so gut wie die übermittelten Informationen. [Herstellererklärung zu HDMI Dynamic Range](https://www.sony.com/electronics/support/televisions-projectors-lcd-tvs/kdl-40ex501/articles/00013709).
+
+## HDR richtig einordnen
+
+HDR10 und HLG sind unterschiedliche Verfahren. Weitere Namen wie HDR10+ oder Dolby Vision können in einem treiberabhängigen Auswahlfeld vorkommen; das ist kein Nachweis einer allgemeinen Wiedergabefähigkeit für jedes Profil oder jeden Player. **Auto / durch HDMI gesteuert** erhält die vorgesehene Aushandlung. Erzwingen eignet sich nur für einen gezielten Kompatibilitätstest.
+
+Ein HDR-fähiger Eingang am TV muss gegebenenfalls auf dessen erweiterten HDMI-Signalmodus gestellt werden. Die Bezeichnung ist herstellerabhängig. Ein älterer AVR kann das Signal begrenzen. Für die Fehlersuche zuerst direkt am TV mit geeigneter Verkabelung prüfen.
+
+**HDR-OSD-Anpassung** betrifft auf unterstützten Geräten die Darstellung von SDR-Grafiken/Menüs während HDR-Ausgabe. Sie ist kein allgemeiner HDR-Regler für den Film. **Boxmode** kann auf einzelnen Plattformen zwischen Hardwarefunktionen wie PiP und HDR-/Farbtiefenbetrieb umschalten. Ohne Bedarf die funktionierende Einstellung beibehalten.
+
+## EDID übergehen?
+
+**Nicht unterstützte Modi erlauben** erweitert die Auswahl über die gemeldeten Modi hinaus. **Bypass HDMI EDID Check** ist ein zusätzlicher, separat vorhandener Treiberschalter. Beide ersetzen weder fehlende Bandbreite noch Hardwarefunktionen. Bei schwarzem Bild wieder auf den bekannten Modus zurückgehen. Für die Diagnose zunächst Auto und unterstützte Modi verwenden.
+
+Die Optionen **10bit/12bit erlauben** haben im geprüften Quellstand eine uneindeutige Zuordnung: Die Werte werden in Treiberdateien namens `disable_10bit` beziehungsweise `disable_12bit` geschrieben. Deshalb keine modellübergreifende Umkehrregel aus dem Titel ableiten; aktuelle Treiberhilfe und tatsächlich ausgegebenen Modus prüfen. [Alle Videooptionen](../video-optionen/).
+
+
+[Bild und Ton](../) · [Quellen und Prüfumfang](../quellen/)

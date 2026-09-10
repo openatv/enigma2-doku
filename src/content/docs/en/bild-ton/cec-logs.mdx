@@ -1,0 +1,71 @@
+---
+title: "HDMI-CEC logs and diagnosis"
+description: "OpenATV: HDMI-CEC logs and diagnosis. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+A CEC log records **control traffic**, not movie video or audio bitstreams. Use it for unexpected power changes, standby, input selection or ineffective volume keys.
+
+
+<Capture id="av-cec-log" language="en" alt="Enable HDMI-CEC debug logging" caption="The separate CEC debug field. Its shown state was not changed for capture." />
+
+## Capture a useful log
+
+1. Check an existing writable directory under [general logging settings](../../hilfe/logs-diagnose/). Local storage avoids an extra NAS dependency.
+2. Open **Setup → System → HDMI-CEC Settings → Enable debug log → Yes** and save with Green. CEC must be active for the intended test.
+3. Note the time and reproduce one failure, for example “13:10:20 receiver woke from standby; TV stayed on HDMI 2”.
+4. Save the relevant daily file, then disable CEC debug and save again.
+
+The actual base directory is **`config.crash.debug_path`**. With `/media/hdd/logs/`, an example is:
+
+```text
+/media/hdd/logs/Enigma2-hdmicec-20260910.log
+```
+
+The filename is **`Enigma2-hdmicec-YYYYMMDD.log`**. There is no universal `/tmp` log directory. Incorrect system time also gives an incorrect filename date. The directory must exist and be writable; the logger stops when space is low. General Enigma2 debug alone does not replace the separate CEC debug switch.
+
+## Read over SSH
+
+Replace the example directory with the path shown in your GUI:
+
+```sh
+ls -lh /media/hdd/logs/Enigma2-hdmicec-*.log
+tail -n 100 /media/hdd/logs/Enigma2-hdmicec-20260910.log
+tail -f /media/hdd/logs/Enigma2-hdmicec-20260910.log
+```
+
+`Ctrl+C` stops the display, not Enigma2. Download the file through [SFTP/FTP](../../netzwerk/fernzugriff/). Reading it does not require a restart.
+
+## Interpret messages
+
+| Item | Meaning |
+| --- | --- |
+| Timestamp | Compare event order against your recorded actions. |
+| Tx / Rx or send/receive labels | Traffic direction relative to the receiver; exact spelling varies by version. |
+| Physical / logical address | HDMI route and participant, not a network IP. |
+| Active Source / Routing / Set Stream Path | Source/input selection. |
+| Standby / Image View On / Power Status | Sleep, wake-up and reported power state. |
+| User Control Pressed / Released | Key press/release, including volume. |
+| System Audio Mode / Audio Status | Audio-system participation and state. |
+| Feature Abort / missing response | Unsupported, rejected or unanswered command; inspect context and actual device behaviour. |
+
+A transmitted message does not prove the TV switched inputs. Repetition can be intentional. A missing reply alone does not establish a cable fault. Determine whether the message is missing, targets the wrong device or is not carried out.
+
+## Command-line function
+
+Enable this separately. It reads `/tmp/hdmicec_cmd`; response/help/errors use `/tmp/hdmicec_msg`, `/tmp/hdmicec_cmd_hlp.txt` and `/tmp/hdmicec_cmd_err.log`. These temporary control files are separate from the daily log. Request only local help:
+
+```sh
+printf '%s\n' help > /tmp/hdmicec_cmd
+cat /tmp/hdmicec_cmd_hlp.txt
+```
+
+Allow one poll cycle before reading if the file is not ready. Other commands can really switch inputs or power devices off. Ordinary reports only need the debug log; disable the command-line function afterwards.
+
+## Report a problem
+
+Include connection order and port numbers, OpenATV/Enigma2 version, TV/AVR/soundbar model and firmware, initial state, exact timed action and expected/observed result. Attach CEC settings and the daily log. Review personal device/host names and unrelated log content before public upload. Use the [forum or appropriate issue tracker](../../hilfe/fehler-melden/); the guide itself remains model-neutral.
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

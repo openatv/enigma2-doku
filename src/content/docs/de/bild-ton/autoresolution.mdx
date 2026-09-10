@@ -1,0 +1,40 @@
+---
+title: "Automatische Auflösung und Deinterlacing"
+description: "OpenATV: Automatische Auflösung und Deinterlacing. Einstellungen, Bedeutung, Anschlussbeispiele und Fehlersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Die native automatische Auflösung steht in **Einstellungen → Bild → Bildeinstellungen**. Sie wertet das aktuelle Video aus und wählt einen Ausgangsmodus. Ein zusätzlich aktives AutoResolution-Plugin kann die native Auswahl ausblenden. Verwende einen zuständigen Mechanismus und vermeide widersprüchliche Regeln.
+
+| Auswahl | Wirkung und Einsatz |
+| --- | --- |
+| Deaktiviert | Feste Auflösung; die Box skaliert auf diesen Ausgang. Weniger HDMI-Umschaltungen. |
+| Einfach | Eigene Zielauflösung und Rate für SD, HD, FHD und gegebenenfalls UHD. Praktisch, wenn etwa SD/HD einheitlich auf 1080p ausgegeben werden sollen. |
+| Nativ | Möglichst quellnahe Ausgabe innerhalb der angebotenen Modi, mit unterer Grenze und Regeln für unbekannte Formate. TV/AVR übernimmt mehr Skalierungsarbeit. |
+| Alle Auflösungen | Automatische Anpassung mit zusätzlichen Regeln für progressive Sonderformate und Deinterlacing. |
+| Nur HD | Automatik für HD; für SD wird ein festgelegtes Ausgabeformat benutzt. |
+
+„Nativ“ bedeutet weder verlustfreie Wiedergabe in jeder Situation noch ein Durchreichen des komprimierten Videostreams über HDMI. Die Box decodiert das Video weiterhin. Ein nicht unterstütztes Quellenformat muss auf ein verfügbares Ausgangsformat abgebildet werden.
+
+
+<Capture id="av-video-auto" language="de" alt="Einfache automatische Auflösung mit SD-, HD-, FHD- und UHD-Gruppen" caption="Ungespeichertes Beispiel der einfachen Automatik. Die sichtbaren 720p-Gruppenvorgaben wurden nicht angewendet und sind keine Empfehlung, alle Quellen auf 720p auszugeben." />
+
+## Gruppen und Filmraten
+
+Die einfache Automatik teilt Quellen nach Höhe ein: SD bis 576, HD bis 720, FHD bis 1080, darüber UHD im unterstützten Bereich. **Modus** und **Bildwiederholrate** gehören jeweils zusammen. Für 24p/25p/30p gibt es zusätzliche Zuordnungen. Bei Angaben wie **50p/24p** steht der erste Teil für Quellen bis 720p, der zweite für höhere Auflösungen.
+
+„1080i als 1080p“ und „Deinterlacing erzwingen“ verlagern die Umwandlung von Halbbildern zu Vollbildern in die Box. Welche Variante besser aussieht, hängt vom Material und den beteiligten Geräten ab. Prüfe Bewegung, Laufschriften und feine Kanten; eine hohe Zahl allein ist kein Qualitätsbeleg.
+
+## Umschaltzeit und Anzeige
+
+**Verzögerungszeit** wartet vor dem Auswerten der Quellinformationen. Zu frühes Prüfen kann vorläufige Daten verwenden, längeres Warten verzögert die Anpassung. Der geprüfte Quellstand bietet 0–3000 ms in 50-ms-Schritten, Basis 400 ms. Das ist keine Audio-Lipsync-Einstellung.
+
+Die **Auflösungsanzeige** blendet das ermittelte Format für 5–15 Sekunden ein oder bleibt aus. Die optionale **Vorschau** in der einfachen Automatik kann den aktuellen Gruppenmodus bereits vor dem Speichern umschalten; erst mit einem stabilen Grundmodus verwenden.
+
+**smart1080p** kombiniert eine feste TV-/TS-Basis mit passenden Filmraten. Trotz des Namens können je nach Treiber auch andere Basisauflösungen angeboten werden. Die vollständigen Zuordnungsfelder und unbekannte Formate stehen in der [Video-Referenz](../video-optionen/).
+
+Teste einen SD-Sender, HD-Sender und eine Filmaufnahme nacheinander. Wenn jeder Wechsel lange schwarz bleibt, entscheide zwischen stärkerer Anpassung an die Quelle und einer festen, schnelleren Ausgabe. Ein Screenshot kann die HDMI-Umschaltpause oder Bewegungsqualität nicht belegen.
+
+
+[Bild und Ton](../) · [Quellen und Prüfumfang](../quellen/)

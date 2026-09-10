@@ -1,0 +1,39 @@
+---
+title: "AUDIO button, tracks and language selection"
+description: "OpenATV: AUDIO button, tracks and language selection. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+During TV or playback, the **AUDIO button** normally opens track selection. With a different remote/hotkey mapping, use the assigned audio action. Only tracks actually supplied by the service/player are listed.
+
+
+<Capture id="av-language" language="en" alt="Automatic language selection with four audio priorities" caption="Audio and subtitles have separate priorities. The chapter table explains the audio fields." />
+
+## Select a track
+
+Track information can include language, codec, channel count and role. Choose the normal language track instead of “Audio description” when spoken visual descriptions are not wanted. Several entries for the same language may use different codecs or commentary. “Original” relies on correct provider signalling.
+
+Use Up/Down to select a track and OK to apply it. Depending on the dialog, Left/Right switches between tracks and settings. Follow the displayed colour/help keys. Downmix, channel mode or plugin-specific audio functions may also be available. **MENU inside the audio dialog** opens automatic language settings in the checked version. Use the offered switch to move between audio and subtitle pages.
+
+**Left / Stereo / Right** chooses channels, not a surround mode. A dual-mono broadcast can put different commentary on left/right. Use Stereo for ordinary stereo material to retain both channels.
+
+## Automatic language selection
+
+Open **Setup → Audio → Auto Language Settings**:
+
+| Option | Purpose |
+| --- | --- |
+| Audio language selection 1–4 | Ordered priorities, such as English then German. Leave unused positions at None. |
+| Prefer AC3 track | Prefers an available Dolby Digital track; does not enable decoding or passthrough. |
+| Prefer AC3+ track | The equivalent for Dolby Digital Plus; use when the audio path supports it. |
+| Prefer audio track stored by service | A previous per-service choice can override general language preferences. Check this cache when preferences appear ignored. |
+
+The corresponding search keys are `config.autolanguage.audio_autoselect1`, `config.autolanguage.audio_autoselect2`, `config.autolanguage.audio_autoselect3`, `config.autolanguage.audio_autoselect4`, `config.autolanguage.audio_defaultac3`, `config.autolanguage.audio_defaultddp` and `config.autolanguage.audio_usecache`.
+
+GUI language translates menus; audio language selection chooses programme audio. Neither translates the programme. EPG language and subtitle priorities in the same setup serve separate purposes; see [subtitles](../../wiedergabe/untertitel/).
+
+After saving, switch to another service and back. If selection still fails, inspect available tracks and provider signalling. For IPTV/files, the player also determines which track information reaches Enigma2.
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

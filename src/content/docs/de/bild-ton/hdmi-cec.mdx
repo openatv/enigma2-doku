@@ -1,0 +1,43 @@
+---
+title: "HDMI-CEC einrichten: TV, AVR und Soundbar"
+description: "OpenATV: HDMI-CEC einrichten: TV, AVR und Soundbar. Einstellungen, Bedeutung, Anschlussbeispiele und Fehlersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**HDMI-CEC überträgt Steuerbefehle über HDMI:** Ein-/Ausschalten, Eingangswahl und bestimmte Fernbedienungstasten. Es ersetzt keinen Audioanschluss und garantiert weder ARC/eARC noch ein bestimmtes Tonformat. Hersteller können CEC unter eigenen Namen anbieten.
+
+Öffne **MENU → Einstellungen → System → HDMI-CEC-Einstellungen**. Aktiviere CEC außerdem an den beteiligten Geräten und deren passenden HDMI-Anschlüssen. Grün speichert; weitere Optionen erscheinen nach „Aktiviert“ und „Erweiterte Einstellungen“.
+
+
+<Capture id="av-cec-power" language="de" alt="HDMI-CEC-Einstellungen für TV-Betrieb und Aufwachereignisse" caption="CEC ist nur in der abgetrennten Aufnahmeansicht aktiviert. Die Werte wurden nicht gespeichert und lösen hier keine TV-/AVR-Steuerung aus." />
+
+## Schrittweise einrichten
+
+1. Zuerst Bild und Ton ohne gemeinsame Einschaltautomatik prüfen.
+2. CEC aktivieren und festlegen, ob die Box den TV aufwecken und dessen Eingang auswählen soll.
+3. Prüfen, ob der TV mit der Box in Standby geht. Entscheide separat, ob dies auch passieren darf, wenn jemand am TV gerade einen anderen Eingang nutzt.
+4. Die Gegenrichtung einstellen: Soll TV-Standby die Box schlafen legen? Für einen Receiver, der unabhängig aufnimmt oder streamt, ist „Deaktiviert“ beziehungsweise einfacher Standby oft passender als ungeprüfter Deep-Standby.
+5. Erst dann AVR-/Soundbar-Power und Lautstärketastenweiterleitung aktivieren. Jede Funktion einzeln prüfen.
+6. Bei Problemen ein [CEC-Log](../cec-logs/) aufnehmen, bevor Wiederholungen und Workarounds kombiniert werden.
+
+## Zwei Richtungen, verschiedene Ereignisse
+
+**TV aus Standby aufwecken** bedeutet Box → TV. **TV-Wakeup verwalten** bedeutet TV/CEC-Bus → Box. Wer beide Richtungen breit aktiviert, kann ungewollte Rückkopplungen erhalten. „Jede Aktivität“ als Weckauslöser reagiert auch auf Busverkehr, der nicht zum Fernsehen mit der Box gedacht ist.
+
+**TV-Eingänge verwalten** bestimmt die Reaktion der Box, wenn der TV auf eine andere Quelle wechselt. Es ist etwas anderes als „TV auf korrekten Eingang umschalten“, das den Box-Eingang anfordern soll. Abschaltverzögerung und TV-Standby-Ereignis können diese Reaktionen beeinflussen.
+
+## Aufnahmen und nächtliches Aufwachen
+
+CEC schaltet den Fernseher; Aufnahme-/Aufgabenplanung weckt die Box. Eine reine Aufnahme soll den TV normalerweise nicht einschalten. Separate Optionen behandeln Umschalttimer, Umschalten-und-Aufnehmen und eine geplante Aufwachaufgabe. Entscheide pro Anlass, ob der TV mit starten soll. **Deep-Standby wie Standby behandeln** steuert zusätzliche CEC-Ereignisse, nicht die Hardwarefähigkeit der Box, aus Deep-Standby aufzuwachen.
+
+Ein echter Deep-Standby beendet die GUI; Aufnahmen, Streams und NAS-Zugriff können davon betroffen sein. Normale Enigma2-Abfragen und Timerlogik bleiben relevant. Siehe [Timer](../../timer/aufnahmen/) und [Aufwachen/Uhrzeit](../../system/zeit-aufwachen/).
+
+## Tasten und Geräteadressen
+
+**TV-Fernbedienung benutzen** erlaubt unterstützte CEC-Tasten vom TV zur Box. Nicht jede Taste, Farbtaste oder Langdruckfunktion wird von jedem TV gesendet. **Lautstärketasten weiterleiten** steuert das erkannte TV-/Audiosystem. Das ist keine Lautstärkeskalierung im digitalen Tonstrom.
+
+Die **physische CEC-Adresse**, etwa `1.0.0.0`, beschreibt den HDMI-Anschlussweg. Sie ist keine IP-Adresse. Die **logische Adresse** beschreibt einen Teilnehmer am CEC-Bus. Nach einem Port-/AVR-Wechsel kann sich der physische Weg ändern. Automatische Adresswahl ist der Ausgangspunkt; eine feste Adresse nur für einen begründeten Sonderfall. Gelb übernimmt die aktuelle Adresse oder hebt die feste Zuordnung wieder auf. Details: [alle CEC-Optionen](../cec-optionen/).
+
+
+[Bild und Ton](../) · [Quellen und Prüfumfang](../quellen/)

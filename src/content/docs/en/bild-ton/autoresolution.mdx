@@ -1,0 +1,40 @@
+---
+title: "Automatic resolution and deinterlacing"
+description: "OpenATV: Automatic resolution and deinterlacing. Settings, purpose, connection examples and troubleshooting."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Native automatic resolution is under **Setup → Video → Video Settings**. It examines the current video and chooses an output mode. An enabled AutoResolution plugin can hide the native selector. Use one controlling mechanism and avoid conflicting rules.
+
+| Mode | Behaviour and use |
+| --- | --- |
+| Disabled | Fixed resolution; the receiver scales to this output. Fewer HDMI mode changes. |
+| Simple | Separate target resolution/rate for SD, HD, FHD and, when supported, UHD. Useful for outputting several source groups at 1080p. |
+| Native | Closest available source-like output, subject to a lowest mode and unknown-format rules. The TV/AVR does more scaling. |
+| All resolutions | Automatic adaptation with extra progressive-format and deinterlacing rules. |
+| Only HD | Automatic handling for HD; SD uses a selected fixed output. |
+
+“Native” does not mean lossless playback in every case or forwarding the compressed video stream over HDMI. The receiver still decodes the video. Unsupported source modes must be mapped to an available output mode.
+
+
+<Capture id="av-video-auto" language="en" alt="Simple automatic resolution with SD, HD, FHD and UHD groups" caption="Unsaved simple-mode example. The shown 720p group defaults were not applied and are not a recommendation to output all sources at 720p." />
+
+## Source groups and film rates
+
+Simple mode groups sources by height: SD up to 576, HD up to 720, FHD up to 1080, then supported UHD. **Mode** and **refresh rate** belong together. Additional mappings cover 24p/25p/30p. In a pair such as **50p/24p**, the first value applies up to 720p and the second to higher resolutions.
+
+“Show 1080i as 1080p” and “Force de-interlace” move field-to-frame conversion into the receiver. The better result depends on material and equipment. Check movement, scrolling text and fine edges; a higher number alone does not establish better quality.
+
+## Timing and status display
+
+**Delay time** waits before reading source information. Checking too early can use provisional values; waiting longer delays adjustment. The checked source offers 0–3000 ms in 50 ms steps, with a 400 ms baseline. This is not an audio lip-sync setting.
+
+The **resolution label** appears for 5–15 seconds or can be hidden. Simple mode's optional **preview** can change the current group's output before saving; use it only after establishing a working baseline.
+
+**smart1080p** combines a TV/TS base mode with suitable film rates. Despite its name, other base resolutions may be offered. The [video reference](../video-optionen/) lists mappings and unknown-format handling.
+
+Check an SD channel, an HD channel and a film recording in sequence. If each switch causes a long black screen, weigh closer source matching against a fixed, faster output. Screenshots cannot establish HDMI switching time or motion quality.
+
+
+[Picture and sound](../) · [Sources and verification](../quellen/)

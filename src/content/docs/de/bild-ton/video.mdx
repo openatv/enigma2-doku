@@ -1,0 +1,42 @@
+---
+title: "Videoausgabe, Auflösung und Bildrate"
+description: "OpenATV: Videoausgabe, Auflösung und Bildrate. Einstellungen, Bedeutung, Anschlussbeispiele und Fehlersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Öffne **MENU → Einstellungen → Bild → Bildeinstellungen**. Die Videoausgabe legt das HDMI-Signal fest. Die Auflösung des Skins wird separat gewählt und ist nicht automatisch identisch mit der Videoausgabe.
+
+
+<Capture id="av-video-main" language="de" alt="Bildeinstellungen mit HDMI-Ausgang, 1080p-Modus und Bildrate" caption="Native Bildeinstellungen. Sichtbare Auswahlwerte sind keine Empfehlung für jede Anschlusskette; während der Serie blieb die tatsächliche Ausgabe 1080p50." />
+
+## Einen stabilen Ausgangspunkt einstellen
+
+1. Den verwendeten Anschluss wählen, normalerweise HDMI.
+2. Automatische Auflösung zunächst deaktivieren.
+3. Eine von der gesamten Kette unterstützte Auflösung wählen. **1080p50** ist ein häufig geeigneter Ausgangspunkt für europäisches Fernsehen an einem Full-HD-/UHD-TV; ältere Geräte benötigen eventuell 720p50 oder 1080i50. UHD-Ausgabe erst wählen, wenn Box, TV, Zwischenstation und Kabel sie unterstützen.
+4. Mit Grün speichern und den Bestätigungsdialog **nur bei sichtbarem, korrektem Bild** bestätigen. Beim geprüften Moduswechsel wartet OpenATV 20 Sekunden; ohne Bestätigung wird der vorherige Modus wiederhergestellt. Einzelne Zusatzoptionen können unmittelbar wirken und gehören nicht vollständig zu dieser Rücknahme.
+5. Mit mehreren Sendern und einer bekannten Aufnahme prüfen. Danach erst Farbe/HDR oder automatische Umschaltung verändern.
+
+## Auflösung, p/i und Hz
+
+| Begriff | Bedeutung |
+| --- | --- |
+| 576 / 720 / 1080 / 2160 | Vertikale Bildpunkte des jeweiligen Ausgabeformats. Hochskalieren erzeugt keine zusätzlichen Details in der Quelle. |
+| p – progressiv | Vollbilder. 1080p50 überträgt 50 Vollbilder pro Sekunde. |
+| i – interlaced | Halbbilder. 1080i50 hat 50 Halbbilder pro Sekunde; das ist nicht dasselbe wie 50 vollständige Quellbilder. |
+| 24 / 25 / 30 / 50 / 60 Hz | Zeitraster der Ausgabe. Film, europäisches Fernsehen und andere Quellen können unterschiedliche Raster benötigen. |
+| Multi / Auto | Treiberabhängige Bildratenkombinationen; angebotene Auswahl prüfen. Nicht gleichbedeutend mit automatischer Auflösungswahl. |
+
+Ein Film mit 24 Bildern/s kann bei fester 50-/60-Hz-Ausgabe ungleichmäßige Kameraschwenks zeigen. Eine passende Film-Bildrate kann helfen, verursacht bei der Umschaltung aber möglicherweise eine kurze HDMI-Neusynchronisation. Ruckeln durch Netzwerk- oder Decoderprobleme behebt eine andere Bildrate nicht.
+
+## Seitenverhältnis
+
+Für einen modernen Fernseher ist normalerweise 16:9 passend; bei manchen Ausgangsmodi ist es fest vorgegeben. **Pillarbox** erhält 4:3-Inhalt mit Balken links/rechts. **Letterbox** erhält ein breiteres Bild mit Balken oben/unten. **Pan & Scan / Zoom** füllt den Bildschirm durch Abschneiden; **Strecken / nicht linear** verändert die Proportionen. Namen und angebotene Kombinationen hängen vom Treiber und Zielformat ab.
+
+Bereits in das ausgestrahlte Bild eingebrannte Balken sind Teil des Videos. Die Seitenverhältnisoption kann sie nicht automatisch von echten Bildflächen unterscheiden. Zusätzlicher Zoom kann deshalb Untertitel oder Bildteile abschneiden. [OSD und Bildanpassung](../bildanpassung/) erklärt abgeschnittene Menüs getrennt.
+
+Die [Video-Referenz](../video-optionen/) beschreibt auch SCART/WSS, EDID-Ausnahmen und die hardwareabhängigen Zusatzfelder.
+
+
+[Bild und Ton](../) · [Quellen und Prüfumfang](../quellen/)
