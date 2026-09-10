@@ -1,0 +1,96 @@
+---
+title: Use an Enigma2 receiver as an NFS server
+description: Enable the NFS service, export directories, restrict clients and understand /etc/exports and /etc/nfs.conf.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+An OpenATV receiver can serve files from attached storage. The **server receiver** exports a directory; another box connects as an [NFS client](../nfs/). These roles have separate settings.
+
+## Prerequisites and service
+
+The server needs a stable reachable address, correctly mounted storage and a directory with suitable permissions, such as `/media/hdd/movie` for existing recordings. First verify the HDD's actual mount in [Device Manager](../../speicher/laufwerke/).
+
+Open **Menu → Setup → Network → Network Services**. Select **Install** for **NFS** if required and save. The checked image uses package group `packagegroup-base-nfs`. Check **running state** separately from **autostart**: Yellow starts/stops the selected service, while Enable/Disable followed by Save changes startup configuration. Installation alone does not establish that a service is running.
+
+Configure exports before using the server from other devices. **NFS Server Settings** in the Network menu requires the installed server and Expert mode. After installation, the interface may need refreshing before the entry appears.
+
+## Configure exports in the menu
+
+1. Open **Menu → Setup → Network → NFS Server Settings**.
+2. Set **Allowed clients** to the receiving box's actual address. Use a subnet/prefix only when every intended device in that network should be allowed. Screenshot address `192.0.2.50` is a documentation placeholder.
+3. Select **Read Only** for playback and initially **Root squash = Yes**. This restricts client root requests. Writing also requires suitable permissions on the server directory.
+4. Press **Yellow – Exports**, select only the required directories and confirm. A directory name alone does not select it for export.
+5. Save. Reload export rules or restart the NFS service after active client access has finished.
+6. Mount the export on the client and test a known file. Configure write access deliberately only after reading works.
+
+<Capture id="nfs-server" language="en" alt="NFS server settings with one example client, read-only access and root squash" caption="Unsaved example with a single client, Read Only and root squash. The broader dialog defaults are not a recommendation for an unrestricted share." />
+
+| Option | Purpose |
+| --- | --- |
+| NFS threads | Number of server workers. Retain the existing value initially; more workers do not replace network bandwidth or drive speed. |
+| Enable NFSv3 / NFSv4 | Offer the versions clients need and support. Match the path and firewall configuration. |
+| Access mode | Applies to exports managed by this dialog. Export-level write permission alone does not grant file permissions. |
+| Allowed clients | One address or a deliberately chosen subnet. `*` allows all hosts that can reach the server. |
+| Root squash | Map client root to an unprivileged account. No generates `no_root_squash`, allowing much broader access. |
+| Exports | Local directories to provide. Do not export the entire root filesystem. |
+
+A server in deep standby or without power cannot serve files. Normal standby and disk standby are different states; check reachability and wake-up time in your setup. Re-exporting a NAS share already mounted on the receiver requires separate configuration and is outside this basic workflow.
+
+## What belongs in /etc/exports?
+
+**`/etc/exports`** describes server exports. **`/etc/fstab`** and **`/etc/auto.network`** describe client mounts. An export does not create a mount on the second receiver.
+
+Read-only example for one client:
+
+```text
+/media/hdd/movie 192.0.2.50(ro,sync,no_subtree_check,root_squash)
+```
+
+Replace the path and address. There is **no space between the client address and opening parenthesis**. `ro` means read-only, `sync` acknowledges write changes after synchronous processing, `no_subtree_check` omits additional subtree checks and `root_squash` restricts client root. Another client group needs another `CLIENT(OPTIONS)` block on that line; the simple GUI field is not a complete editor for distinct per-client rules.
+
+The checked dialog uses this marker:
+
+```text
+# OpenATV managed exports
+```
+
+**Saving replaces the section starting at this marker.** Earlier lines are retained. Manage custom exports with differing permissions outside that section, and do not also select the same paths in the GUI. Back up files before manual edits and avoid duplicate or conflicting exports.
+
+## A restricted directory for writing
+
+Instead of granting full root access, you can map all requests from an allowed client to an intended unprivileged server account. Its **UID/GID and ownership of this specific directory** must match. Check `id USER` on the server rather than assuming numeric identities.
+
+This **template** is for a manually managed export. `UID`, `GID`, address and path must be replaced; do not paste it unchanged into the GUI:
+
+```text
+/media/hdd/e2-recordings 192.0.2.50(rw,sync,no_subtree_check,all_squash,anonuid=UID,anongid=GID,mountpoint=/media/hdd)
+```
+
+`all_squash` maps all client users to that account. Give it write permission only on the intended directory. `mountpoint=/media/hdd` prevents exporting the underlying fallback directory when the HDD is absent. Blanket `chmod -R 777` on the HDD is unnecessary. These advanced options are not offered by OpenATV's simple export dialog.
+
+## /etc/nfs.conf and applying changes
+
+**`/etc/nfs.conf`** controls the NFS service, for example in the existing section:
+
+```ini
+[nfsd]
+threads = 8
+vers3 = y
+vers4 = y
+```
+
+This is an excerpt, not a replacement for all existing service options. The checked dialog updates these keys in `[nfsd]`. Export rules and service parameters are separate files.
+
+After deliberately editing `exports`, use [SSH](../fernzugriff/) to reload and inspect rules:
+
+```sh
+exportfs -ra
+exportfs -v
+```
+
+`exportfs -ra` changes the running server; review the rules first. Changed protocol versions or other service parameters require a service restart. The checked service is `/etc/init.d/nfsserver`; prefer the Network Services screen and finish client access first. Restarting the Enigma2 GUI does not reliably reload the NFS service.
+
+**Verification:** Server package, tools and native dialog checked on the receiver. Export, NFS and existing mount files remained unchanged; these captures activated no new export.
+
+Sources: [NFS dialog and managed file section](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkServices.py), [service mapping](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/networkdaemons.xml), [export rules](https://man7.org/linux/man-pages/man5/exports.5.html), [NFS setup](https://ubuntu.com/server/docs/how-to/networking/install-nfs/).

@@ -67,6 +67,18 @@ Das Restore-Protokoll kannst du getrennt lesen:
 tail -n 100 /home/root/FastRestore.log
 ```
 
+## Kernelhinweise bei NAS- und Laufwerksfehlern
+
+Über SSH zeigt `dmesg` den Kernel-Ringpuffer. Für einen ersten Blick kannst du dessen letzte Zeilen lesen:
+
+```sh
+dmesg | tail -n 100
+```
+
+NFS-/CIFS-Meldungen, Zeitüberschreitungen oder Ein-/Ausgabefehler können den Zusammenhang mit einem ausgefallenen NAS erklären. Die Ausgabe liegt nicht automatisch im Enigma2-Debug-Log. Sichere relevante Meldungen vor einem Neustart und notiere die Uhrzeit des Fehlers; Kernel-Zeitstempel können sich auf die Zeit seit dem Booten beziehen. Prüfe eine Kopie vor dem Weitergeben auf private Angaben.
+
+Bei einer nicht erreichbaren Freigabe kann bereits `df`, `ls` oder eine Ordnerprüfung warten. Lies zunächst die lokalen Logs und beachte [autofs, fstab und NAS-Ausfälle](../../netzwerk/autofs-fstab/). Ein Spinner ohne Absturz muss kein Crashlog erzeugen.
+
 ## Wenn die Oberfläche nicht mehr bedienbar ist
 
 Wenn SSH noch funktioniert, sichere zuerst vorhandene Crashlogs. Für eine Debug-Aufzeichnung beim nächsten Start kannst du im geprüften OpenATV-Stand die Einstellung in `/etc/enigma2/settings` ändern:

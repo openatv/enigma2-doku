@@ -1,0 +1,67 @@
+---
+title: NFS-Freigaben verbinden und Optionen verstehen
+description: Einen NFS-Export vom NAS oder einer zweiten Enigma2-Box mounten. NFSv3/v4, Rechte, Locking, Blockgrößen, Timeout und Soft/Hard erklärt.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Bei NFS stellt ein Server einen **Exportpfad** bereit. OpenATV bindet ihn als Client ein. Dafür muss auf der empfangenden Box kein NFS-Server laufen. Eine zweite Box kann selbst [NFS-Server](../nfs-server/) sein.
+
+## Auf dem NAS vorbereiten
+
+Aktiviere NFS in der NAS-Verwaltung und erlaube den Zugriff auf den gewünschten Ordner für die **IP-Adresse der Box**. Eine DHCP-Reservierung im Router hält diese Zuordnung stabil. Erlaube Schreiben nur, wenn dort aufgenommen oder gelöscht werden soll. Übernimm den angezeigten Exportpfad, nicht den SMB-Freigabenamen.
+
+NFS im üblichen Heimnetz mit `AUTH_SYS` arbeitet mit Clientadresse und Benutzer-/Gruppenkennungen (UID/GID). Ein SMB-Benutzer samt Passwort erteilt keine NFS-Rechte. NFSv4 ist außerdem nicht automatisch verschlüsselt; dieser Grundablauf gehört in ein vertrauenswürdiges lokales Netz.
+
+## In OpenATV eintragen
+
+Öffne **Menü → Einstellungen → Netzwerk → Netzwerkfreigabeübersicht → MENU → Einhängepunkt manuell hinzufügen**. Die Adresse `192.0.2.10` ist ausschließlich ein Dokumentationsbeispiel und muss ersetzt werden.
+
+| Feld | Beispiel |
+| --- | --- |
+| Aktiviert / Protokoll | Ja / NFS |
+| Server | Adresse deines NAS; im Bild `192.0.2.10` |
+| Remote-Pfad | Vom Server genannter Export, im Beispiel `/srv/recordings` |
+| Lokale Freigabe | `nas-recordings` |
+| Einhängemodus | Beim ersten Zugriff einbinden (`autofs`) |
+| Als Festplattenersatz verwenden | Nein; Aufnahmeordner später gezielt auswählen |
+| Zugriffsmodus | Lesen/Schreiben für Aufnahmen, sonst gegebenenfalls Nur Lesen |
+| NFS-Version | Zunächst Automatisch, sofern der Server keine bestimmte Version verlangt |
+
+<Capture id="nfs-mount" language="de" alt="NFS-Mountdialog mit Beispielserver, Exportpfad und autofs" caption="Ungespeichertes Beispiel im echten Dialog. Die Adresse gehört keinem getesteten NAS; vorhandene Freigaben wurden nicht verändert." />
+
+Speichere deine eigenen Angaben und öffne **`/media/autofs/nas-recordings`** in der Dateiauswahl. Der erste Zugriff löst das Mounten aus. Prüfe das Lesen und mit einer entbehrlichen Testdatei auch Erstellen, Umbenennen und Löschen. Für Aufnahmen folgt die Auswahl des [NAS-Aufnahmeziels](../../speicher/nas-aufnahmen/).
+
+## NFSv3 und NFSv4
+
+**Automatisch** überlässt die Versionswahl dem Client und Server. Eine feste Auswahl erzwingt NFSv3 beziehungsweise NFSv4 und kann bei unpassender Gegenstelle scheitern. Der Pfad kann sich unterscheiden: Bei NFSv4 kann ein vom Server bereitgestellter Exportbaum einen anderen Clientpfad ergeben als der lokale Verzeichnisname.
+
+NFSv3 verwendet neben NFS üblicherweise weitere RPC-Dienste für Mount-Ermittlung und Sperren. NFSv4 vereint mehr Funktionen im Protokoll und verwendet normalerweise TCP 2049. Bei einer Firewall zwischen Box und NAS müssen die zum tatsächlich eingesetzten Verfahren gehörenden Dienste gezielt erlaubt sein. Nur Port 2049 freizugeben genügt nicht pauschal für NFSv3.
+
+`showmount -e SERVER` kann vorhandene Exporte ermitteln, wenn das Werkzeug und der entsprechende Serverdienst verfügbar sind. Ein reiner NFSv4-Server muss diese Abfrage nicht beantworten. Eine leere Suche ist deshalb kein sicherer Beweis für einen fehlenden Export; nutze die Serverangaben.
+
+## Weitere NFS-Optionen
+
+<Capture id="nfs-mount-options" language="de" alt="NFS-Einstellungen mit markiertem Timeout und Optionen für Sperren, Blockgrößen und Soft Mount" caption="Timeout und Soft Mount beeinflussen Fehlerverhalten. Sie sind keine allgemeinen Beschleunigungsschalter." />
+
+| Einstellung | Bedeutung und Ausgangspunkt |
+| --- | --- |
+| NFS-Dateisperren verwenden | Für koordinierten Dateizugriff aktiviert lassen. „Nein“ setzt `nolock`; nur bei einem dafür geeigneten alten Server gezielt verwenden. NFSv4-Sperren sind Teil des Protokolls. |
+| Lese-/Schreibblockgröße | `rsize` und `wsize` begrenzen die Datenmenge pro Anfrage. Automatisch lässt den passenden Wert aushandeln. Die festen Größen sind keine Netzwerk-MTU. |
+| Timeout | `0` im Dialog lässt den Kernelstandard bestehen. Andere Werte werden als `timeo` übernommen: **Zehntelsekunden**, beispielsweise `50` = 5 Sekunden vor einem Wiederholungsversuch. Das begrenzt nicht die Gesamtdauer eines blockierten Zugriffs. |
+| Soft mount | Standardmäßig Nein: der normale Hard-Mount wiederholt ausgefallene Anfragen und kann dabei warten. Soft kann Fehler an die Anwendung zurückgeben; bei Schreibzugriffen sind Datenverlust oder beschädigte Dateien möglich. Für Aufnahmen nicht als pauschale Spinner-Lösung aktivieren. |
+| Optionale Einstellungen | Zusätzliche, nicht bereits oben gesetzte Mount-Parameter, durch Kommas getrennt. Der geprüfte Dialog lehnt doppelte beziehungsweise reservierte Optionen ab. |
+
+Der geprüfte Manager erzeugt **`proto=tcp`** selbst. Er setzt bei Automatisch keine feste NFS-Version oder Blockgröße und bei Soft = Nein kein `soft`. Schreibe `rw`, `nfsvers`, `rsize`, `wsize`, `timeo`, `hard` oder `soft` nicht nochmals in das Zusatzfeld. Alte Beispielzeilen mit `udp`, `nolock` oder extrem kleinen Zeitlimits nicht ungeprüft übernehmen.
+
+## Zugriff verweigert oder Aufnahme nicht möglich
+
+Prüfe zuerst Client-IP, Exportpfad, NFS-Version und Exportregeln. Dann folgen die Dateirechte auf dem Server: **`rw` erlaubt grundsätzlich Schreiben, erzeugt aber keine fehlenden Benutzerrechte.**
+
+Viele Enigma2-Prozesse laufen als Root. Ein Server mit **`root_squash`** bildet diese Zugriffe auf einen unprivilegierten Benutzer ab. Darf dieser den Aufnahmeordner nicht beschreiben, scheitert die Aufnahme trotz erfolgreichem Mount. Richte auf dem NAS eine passende, auf diesen Ordner begrenzte Benutzerzuordnung oder Berechtigung ein. `no_root_squash` gibt dem Client weitgehende Root-Rechte und ist keine allgemeine Reparaturanweisung.
+
+Bei NAS-Ausfällen helfen [autofs, fstab und Spinner verstehen](../autofs-fstab/) und [Logs finden](../../hilfe/logs-diagnose/).
+
+**Prüfstand:** Native Dialoge mit ungespeicherten Beispieldaten und Quellcode geprüft. Für dieses Kapitel wurde kein fremder NFS-Export eingerichtet oder eine Aufnahme über NFS ausgeführt.
+
+Quellen: [Mountdialog](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkMounts.py), [erzeugte Optionen](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NetworkManager.py), [NFS-Client und Fehlerverhalten](https://man7.org/linux/man-pages/man5/nfs.5.html), [NFS-Grundlagen](https://ubuntu.com/server/docs/how-to/networking/install-nfs/).

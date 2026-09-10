@@ -16,6 +16,18 @@ Eine Netzwerkfreigabe macht einen Ordner auf einem NAS oder Server in OpenATV nu
 
 Die Freigabe muss auch auf dem Server freigegeben sein. Ein Eintrag in OpenATV erzeugt keinen Ordner und keine Berechtigung auf dem NAS.
 
+## Den passenden Ablauf wählen
+
+| Dein Ziel | Anleitung |
+| --- | --- |
+| Einen NFS-Export des NAS einbinden | [NFS verbinden und Optionen verstehen](../nfs/) |
+| Eine NAS-Freigabe mit Benutzer und Passwort einbinden | [SMB/CIFS einrichten](../smb-cifs/) |
+| Einen Windows-Ordner für die Box freigeben oder vom PC auf das NAS zugreifen | [Windows 11, Benutzer, Rechte und Firewall](../windows11/) |
+| Mountmodus wählen oder einen Spinner bei ausgefallenem NAS einordnen | [autofs, fstab und Offline-Verhalten](../autofs-fstab/) |
+| Dateien der Box einer zweiten Box anbieten | [Enigma2 als NFS-Server und /etc/exports](../nfs-server/) |
+| Auf das NAS aufnehmen oder Timeshift planen | [Aufnahmeziele und HDD-Ersatz](../../speicher/nas-aufnahmen/) |
+| ext4, NTFS, exFAT und FAT32 unterscheiden | [Dateisysteme und Netzwerkprotokolle](../../speicher/dateisysteme/) |
+
 ## Menüweg
 
 **Menü → Einstellungen → Netzwerk → Netzwerkfreigabeübersicht**
@@ -31,7 +43,7 @@ Mit **Durchsuchen** kannst du nach angebotenen Freigaben suchen. Für einen beka
 | Feld | Beispiel und Erklärung |
 | --- | --- |
 | Aktiviert | Ja – die Definition soll verwendet werden |
-| Protokoll | SMB / CIFS – beide Namen beziehen sich hier auf Windows-artige Netzwerkfreigaben |
+| Protokoll | SMB / CIFS – der Mounttyp `cifs` unterstützt auch moderne SMB-Versionen; der Name bedeutet nicht SMB1 |
 | Server | `nas` oder die tatsächliche IP-Adresse des NAS |
 | Remote-Pfad | `Aufnahmen` – der freigegebene Name auf dem NAS; Server und Freigabe getrennt eintragen |
 | Lokale Freigabe | `nas-aufnahmen` – der Name des lokalen Mount-Verzeichnisses |
@@ -71,6 +83,8 @@ SMB verwendet üblicherweise den Freigabenamen und ein Benutzerkonto. Bei NFS gi
 - **fstab:** Bindet die Freigabe beim Start ein. Der Server muss dann entsprechend erreichbar sein.
 - **HDD-Ersatz:** Verwendet beim `fstab`-Modus `/media/hdd` anstelle eines eigenen Pfades unter `/media/net`. Im hier geprüften `autofs`-Modus bleibt der Pfad unter `/media/autofs`. Bei einer bereits unter `/media/hdd` eingebundenen Festplatte lasse den HDD-Ersatz für die zusätzliche NAS-Freigabe ausgeschaltet.
 - **Optionale Einstellungen:** Zusätzliche Mount-Parameter. Für den ersten Versuch leer lassen, solange keine konkrete Anforderung besteht.
+
+autofs hilft bei nur gelegentlich erreichbaren Servern, verhindert jedoch nicht jeden wartenden Dateizugriff. Schon eine Ordnerprüfung kann einen Mount auslösen. Die [Erklärung zu Startverzögerungen und Spinnern](../autofs-fstab/) unterscheidet Mount-Leerlauf und Protokoll-Timeouts.
 
 ## Wenn es nicht klappt
 

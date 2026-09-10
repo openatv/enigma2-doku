@@ -68,6 +68,18 @@ Read the restore log separately:
 tail -n 100 /home/root/FastRestore.log
 ```
 
+## Kernel messages for NAS and disk failures
+
+Over SSH, `dmesg` displays the kernel ring buffer. For an initial look, read its latest lines:
+
+```sh
+dmesg | tail -n 100
+```
+
+NFS/CIFS messages, timeouts or I/O errors may help explain an unavailable NAS. This output is not automatically part of the Enigma2 debug log. Save relevant messages before rebooting and note when the problem occurred; kernel timestamps may refer to time since boot. Check a copy for private details before sharing it.
+
+When a share is unreachable, even `df`, `ls` or a directory check may wait. Start with local logs and see [autofs, fstab and NAS outages](../../netzwerk/autofs-fstab/). A spinner without a crash need not produce a crashlog.
+
 ## When the interface no longer works
 
 If SSH is still available, save existing crash logs first. On the checked OpenATV version, you can enable debug recording for the next start through `/etc/enigma2/settings`:

@@ -1,0 +1,80 @@
+---
+title: Connect a NAS using SMB/CIFS
+description: Mount SMB3 shares with a username and password. Understand share names, permissions, character sets, signing and extra CIFS options.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+SMB connects OpenATV to a NAS, Windows PC or Samba server. **CIFS** is also the Linux mount type `cifs`; that name does not imply SMB1. For new connections, use SMB3 and a dedicated account.
+
+## Prepare the NAS share and account
+
+1. Enable SMB in the NAS administration. Use an up-to-date server supporting SMB2/SMB3.
+2. Create a folder/share, for example **`Recordings`**.
+3. Create a dedicated user such as **`e2recorder`** with a password. It does not need administrator privileges.
+4. Give that account read/write access to the recording share. Read access is sufficient for playback only.
+5. Check share permissions, file permissions and any quota. A user quota can be exhausted while the NAS still has free space overall.
+
+NAS menu names vary by manufacturer. For a Windows PC providing storage, follow the [Windows 11 guide](../windows11/).
+
+## Configure the receiver
+
+Open **Menu → Setup → Network → Network Mounts Overview → MENU → Add Mount Manually**.
+
+| Field | Example and meaning |
+| --- | --- |
+| Protocol | SMB / CIFS |
+| Server | Actual NAS hostname or IP address |
+| Remote path | **`Recordings`**, the published share name. Not a Windows drive letter or the NAS-internal `/volume…` path |
+| Local share | `nas-recordings`, used in the receiver's local path |
+| Mount mode | `autofs` for access on demand |
+| Username / Password | An account on the **server**, such as `e2recorder`; not automatically the receiver's root login |
+| SMB version | Start with SMB3 |
+| Character set | UTF-8 for typical modern environments |
+| Access mode | Read/Write for recording |
+| HDD replacement | No for an additional NAS share |
+
+<Capture id="smb-mount" language="en" alt="SMB mount dialog with SMB3, UTF-8 and unsaved example values" caption="Documentation address and empty password field. A real connection requires your credentials; this example was not saved." />
+
+Save and open **`/media/autofs/nas-recordings`**. Check files and write access before selecting it as a [recording destination](../../speicher/nas-aufnahmen/). You can also select shares using **Browse**; supply server credentials if listing requires authentication.
+
+A missing discovery entry does not prove SMB is unavailable. Try a manual definition with the known server and share name. **Do not install SMB1** merely to recover an old-style browse list.
+
+## SMB versions and security
+
+The checked dialog offers **SMB3**, **SMB2** and **Legacy (SMB1)**, generating `vers=3.0`, `vers=2.0` and `vers=1.0` respectively. In this version, “SMB3” therefore does not explicitly select `vers=3.1.1`. If a server permits only a different dialect, the image, client kernel and server policy must be compatible. Do not override the version using another `vers=` in the extra field.
+
+**Signing** protects SMB messages against undetected alteration; **encryption** also protects their contents in transit. Modern Windows configurations may require signing. Use compatible clients and authenticated accounts instead of disabling signing or password protection. The [Windows guide](../windows11/) also distinguishes connection direction.
+
+## Additional SMB options
+
+Leave **Optional arguments** empty initially. These examples explain individual controls; they are not one combined optimisation string:
+
+| Option | Purpose |
+| --- | --- |
+| `domain=MEDIA-PC` | Supply the Windows computer/account domain when needed. A local account does not require setting up a domain server. |
+| `sec=ntlmssp` | Modern password-based NTLMSSP authentication, often already the client default. Do not fall back to old `sec=ntlm` recipes. |
+| `sec=ntlmsspi` | Variant requiring signing, if supported by the client and needed for the case. |
+| `seal` | Request SMB encryption; both endpoints must support it. |
+| `uid=…`, `gid=…` | Local ownership mapping where suitable Unix information is not provided. Does not change the authenticated server account's rights. |
+| `file_mode=…`, `dir_mode=…` | Local mode presentation, depending on server/Unix extensions. Does not replace NAS ACLs. |
+| `cache=strict` | Consistency-oriented client caching. More aggressive settings can make incorrect assumptions when multiple clients write. |
+
+Not every kernel supports every option. Change only what the specific failure requires, then check the result. `noperm`, blanket `0777` permissions or disabled security features do not fix server-side authentication rejection.
+
+The manager generates user, password, `ro`/`rw`, `vers` and `iocharset` from dedicated fields, rejecting those parameters in the extra field. Mount files and saved server credentials can contain passwords: do not publish complete `fstab`, `auto.network` or `.cache` files.
+
+## Common failures
+
+| Symptom | Next check |
+| --- | --- |
+| Login rejected | Username, password, account domain and server account restrictions |
+| Server visible but share missing | Credentials for listing and permission on this specific share |
+| IP works but hostname fails | Name resolution and DHCP assignment |
+| Dialect/signing error | Versions and security requirements at both endpoints |
+| Reads work but writes fail | Mount mode, NAS share/file permissions and user quota |
+| Freeze while NAS is off | [Outage behaviour and autofs](../autofs-fstab/) |
+
+**Verification:** Native SMB dialog captured; the existing CIFS/autofs share was previously checked for reading and writing. Extra options are not individually tested defaults for every NAS.
+
+Sources: [Dialog and dialects](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkMounts.py), [mount parameters](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NetworkManager.py), [CIFS mount options](https://man7.org/linux/man-pages/man8/mount.cifs.8.html), [Linux SMB client](https://docs.kernel.org/admin-guide/cifs/usage.html), [SMB1 in Windows](https://learn.microsoft.com/en-us/windows-server/storage/file-server/troubleshoot/smbv1-not-installed-by-default-in-windows).

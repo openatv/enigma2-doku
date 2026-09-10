@@ -16,6 +16,18 @@ A network share makes a folder on a NAS or server available in OpenATV. **Mounti
 
 The server must allow access to the share. Adding it in OpenATV does not create a folder or grant permissions on the NAS.
 
+## Choose the right guide
+
+| Your goal | Guide |
+| --- | --- |
+| Mount an NFS export from a NAS | [Connect NFS and understand its options](../nfs/) |
+| Mount a NAS share with a username and password | [Set up SMB/CIFS](../smb-cifs/) |
+| Share a Windows folder with the receiver or access a NAS from the PC | [Windows 11, accounts, permissions and firewall](../windows11/) |
+| Choose a mount mode or understand a spinner when the NAS is unavailable | [autofs, fstab and offline behaviour](../autofs-fstab/) |
+| Share receiver files with another box | [Enigma2 as an NFS server and /etc/exports](../nfs-server/) |
+| Record to a NAS or plan time shift | [Recording destinations and HDD replacement](../../speicher/nas-aufnahmen/) |
+| Compare ext4, NTFS, exFAT and FAT32 | [File systems and network protocols](../../speicher/dateisysteme/) |
+
 ## Menu location
 
 **Menu → Setup → Network → Network Mounts Overview**
@@ -31,7 +43,7 @@ Choose **Browse** to look for shares. If you know the server details, you can al
 | Field | Example and meaning |
 | --- | --- |
 | Enabled | Yes – use this definition |
-| Protocol | SMB / CIFS – these names refer to Windows-style network shares here |
+| Protocol | SMB / CIFS – the `cifs` mount type also supports modern SMB versions; its name does not mean SMB1 |
 | Server | `nas` or the actual NAS IP address |
 | Remote path | `Recordings` – the share name on the NAS; keep server and share in separate fields |
 | Local share | `nas-recordings` – the local mount directory name |
@@ -71,6 +83,8 @@ SMB normally uses a share name and a user account. For NFS, enter the export pat
 - **fstab:** Mounts at boot time, when the server must be reachable as required.
 - **HDD replacement:** In `fstab` mode, uses `/media/hdd` instead of a separate path below `/media/net`. In the tested `autofs` mode, the path remains below `/media/autofs`. If a hard disk is already mounted at `/media/hdd`, leave HDD replacement disabled for an additional NAS share.
 - **Optional arguments:** Additional mount parameters. Leave empty initially unless there is a specific requirement.
+
+autofs helps with servers that are only available occasionally, but does not prevent every blocking file access. Even checking a directory can trigger a mount. [Startup delays and spinners](../autofs-fstab/) distinguishes mount idle expiry from protocol timeouts.
 
 ## Troubleshooting
 

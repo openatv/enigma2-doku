@@ -46,3 +46,11 @@ Use [Downloads and models](../downloads-modelle/) for the official downloads and
 ## What has been checked?
 
 The foundation guides were written against the OpenATV 8.0 source snapshot. The directory imports existing help text and marks unmapped menu locations. This does not imply that every workflow has been tested on a running installation. Articles link to their source snapshot.
+
+## Spinner or slow startup when the NAS is off
+
+A file access can wait, even with autofs. A `stat()` call or free-space check may access the share. [autofs, fstab and NAS outages](../../netzwerk/autofs-fstab/) explains idle expiry, startup delays and next steps. Also check your [recording and time shift destinations](../../speicher/nas-aufnahmen/).
+
+## Windows 11 is missing from the share browser
+
+Check the private network profile, targeted firewall rules, account and share permissions. Enter a known server manually when needed. **Do not install SMB1 or disable the firewall.** [Prepare Windows 11](../../netzwerk/windows11/) covers both connection directions.

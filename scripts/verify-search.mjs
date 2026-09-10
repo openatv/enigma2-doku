@@ -25,6 +25,22 @@ globalThis.fetch = async input => {
 };
 const pagefind = await import(pathToFileURL(path.join(root, 'pagefind/pagefind.js')));
 const checks = [
+  ['de', 'NFSv4', '/de/netzwerk/nfs/'],
+  ['en', 'NFSv4', '/en/netzwerk/nfs/'],
+  ['de', 'ntlmsspi', '/de/netzwerk/smb-cifs/'],
+  ['en', 'ntlmsspi', '/en/netzwerk/smb-cifs/'],
+  ['de', 'Windows 11', '/de/netzwerk/windows11/'],
+  ['en', 'Windows 11', '/en/netzwerk/windows11/'],
+  ['de', 'Privates Netzwerk', '/de/netzwerk/windows11/'],
+  ['en', 'Private network', '/en/netzwerk/windows11/'],
+  ['de', 'Spinner', '/de/netzwerk/autofs-fstab/'],
+  ['en', 'spinner', '/en/netzwerk/autofs-fstab/'],
+  ['de', 'root_squash', '/de/netzwerk/nfs-server/'],
+  ['en', 'root_squash', '/en/netzwerk/nfs-server/'],
+  ['de', 'Timeraufnahmeverzeichnis', '/de/speicher/nas-aufnahmen/'],
+  ['en', 'Timer recording location', '/en/speicher/nas-aufnahmen/'],
+  ['de', 'exFAT', '/de/speicher/dateisysteme/'],
+  ['en', 'exFAT', '/en/speicher/dateisysteme/'],
   ['de', 'FAT32', '/de/wartung/usb-installation/'],
   ['en', 'FAT32', '/en/wartung/usb-installation/'],
   ['de', 'AutoRestore', '/de/wartung/autorestore/'],

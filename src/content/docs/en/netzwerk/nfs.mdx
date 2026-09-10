@@ -1,0 +1,67 @@
+---
+title: Connect NFS shares and understand their options
+description: Mount an NFS export from a NAS or another Enigma2 receiver. Versions, permissions, locking, block sizes, timeouts and soft/hard mounts explained.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+An NFS server provides an **export path** which OpenATV mounts as a client. The receiving box does not need to run an NFS server. Another receiver can act as the [NFS server](../nfs-server/).
+
+## Prepare the NAS
+
+Enable NFS in the NAS administration and permit access to the intended folder from the **receiver's IP address**. A router DHCP reservation keeps that address stable. Allow writing only for recording or deleting files. Use the advertised export path, rather than the SMB share name.
+
+Typical home-network NFS using `AUTH_SYS` relies on the client address and user/group IDs (UID/GID). SMB credentials do not grant NFS permissions. NFSv4 is not automatically encrypted either; this basic workflow is for a trusted local network.
+
+## Enter the mount in OpenATV
+
+Open **Menu → Setup → Network → Network Mounts Overview → MENU → Add Mount Manually**. Address `192.0.2.10` is for documentation only; replace it with your server.
+
+| Field | Example |
+| --- | --- |
+| Enabled / Protocol | Yes / NFS |
+| Server | Your NAS address; the screenshot uses `192.0.2.10` |
+| Remote path | Export supplied by the server, `/srv/recordings` in this example |
+| Local share | `nas-recordings` |
+| Mount mode | Mount on first access (`autofs`) |
+| Use as HDD replacement | No; choose the recording directory separately |
+| Access mode | Read/Write for recordings, otherwise Read-Only where appropriate |
+| NFS version | Automatic initially, unless the server requires a specific version |
+
+<Capture id="nfs-mount" language="en" alt="NFS mount dialog with example server, export path and autofs" caption="Unsaved example in the native dialog. This address is not a tested NAS, and existing shares were not changed." />
+
+Save your own values and open **`/media/autofs/nas-recordings`** in the file selector. First access triggers mounting. Check reading and use an expendable test file to check creating, renaming and deleting. Then select the [NAS recording destination](../../speicher/nas-aufnahmen/).
+
+## NFSv3 and NFSv4
+
+**Automatic** lets the client and server negotiate. A fixed choice forces NFSv3 or NFSv4 and fails if the other endpoint cannot provide it. Paths can differ: an NFSv4 export namespace may expose a different client path from the server's local directory name.
+
+NFSv3 normally uses additional RPC services for mount discovery and locking. NFSv4 integrates more functions and normally uses TCP 2049. A firewall between receiver and NAS must allow the services actually required by that configuration. Opening port 2049 alone is not a universal NFSv3 setup.
+
+`showmount -e SERVER` can list exports if the tool and corresponding server service are available. An NFSv4-only server does not have to answer this request. An empty discovery result therefore does not prove the export is absent; use the server's documented path.
+
+## Additional NFS options
+
+<Capture id="nfs-mount-options" language="en" alt="NFS options with Timeout selected, file locking, block sizes and Soft mount" caption="Timeout and Soft mount control failure behaviour; they are not general speed switches." />
+
+| Setting | Meaning and starting point |
+| --- | --- |
+| Use NFS file locking | Leave enabled for coordinated file access. No adds `nolock`; use only for a suitable older server. NFSv4 locking is part of the protocol. |
+| Read/write block size | `rsize` and `wsize` limit data per request. Automatic allows negotiation. These sizes are not the network MTU. |
+| Timeout | Dialog value `0` retains the kernel default. Other values become `timeo`, in **tenths of a second**: `50` means 5 seconds before retrying. This does not cap the total duration of a blocked operation. |
+| Soft mount | No is the default: normal hard mounts retry failed requests and can wait. Soft mounts can return errors to applications; writes can suffer data loss or corruption. Do not enable as a blanket spinner fix for recordings. |
+| Optional arguments | Comma-separated extra parameters not already set above. The checked dialog rejects duplicates and reserved options. |
+
+The checked manager supplies **`proto=tcp`** itself. Automatic omits fixed NFS versions and block sizes; Soft = No omits `soft`. Do not repeat `rw`, `nfsvers`, `rsize`, `wsize`, `timeo`, `hard` or `soft` in the extra field. Do not blindly copy old examples with `udp`, `nolock` or very short timeouts.
+
+## Permission denied or recording failure
+
+Check client IP, export path, NFS version and export rules first, followed by server file permissions. **`rw` permits writing at the export level; it does not create missing user permissions.**
+
+Many Enigma2 processes run as root. A server using **`root_squash`** maps these requests to an unprivileged account. Recording fails if that account cannot write the destination, even after a successful mount. Configure an appropriate mapping or folder-specific permission on the NAS. `no_root_squash` gives clients extensive root privileges and is not a general repair step.
+
+For outages, see [autofs, fstab and spinners](../autofs-fstab/) and [Find logs](../../hilfe/logs-diagnose/).
+
+**Verification:** Native dialogs with unsaved example data and source code checked. No external NFS export was configured and no NFS recording was performed for this chapter.
+
+Sources: [Mount dialog](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkMounts.py), [generated options](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NetworkManager.py), [NFS client and failure handling](https://man7.org/linux/man-pages/man5/nfs.5.html), [NFS fundamentals](https://ubuntu.com/server/docs/how-to/networking/install-nfs/).

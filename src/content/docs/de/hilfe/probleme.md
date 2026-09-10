@@ -46,3 +46,11 @@ Nutze [Downloads und Modelle](../downloads-modelle/) für den offiziellen Einsti
 ## Welche Teile sind bereits geprüft?
 
 Die Grundanleitungen wurden anhand des OpenATV-8.0-Quellstands erstellt. Das Verzeichnis übernimmt vorhandene Hilfetexte und zeigt noch nicht zugeordnete Menüwege offen an. Eine vollständige Prüfung aller Abläufe auf einer laufenden Installation ist damit nicht behauptet. Angaben zum Quellstand stehen an den jeweiligen Artikeln.
+
+## Spinner oder langsamer Start bei ausgeschaltetem NAS
+
+Ein Dateizugriff kann warten, auch bei autofs. Schon `stat()` oder die Prüfung des freien Platzes kann die Freigabe ansprechen. [autofs, fstab und NAS-Ausfälle](../../netzwerk/autofs-fstab/) erklärt Leerlauf, Startverzögerungen und die nächsten Schritte. Prüfe außerdem die [Aufnahme- und Timeshift-Ziele](../../speicher/nas-aufnahmen/).
+
+## Windows 11 wird nicht in der Freigabensuche gefunden
+
+Prüfe privates Netzwerkprofil, gezielte Firewall-Regeln, Benutzer und Freigaberechte. Trage einen bekannten Server bei Bedarf manuell ein. **SMB1 nicht installieren und die Firewall nicht abschalten.** [Windows 11 vorbereiten](../../netzwerk/windows11/) führt durch beide Verbindungsrichtungen.

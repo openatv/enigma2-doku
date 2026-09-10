@@ -1,0 +1,96 @@
+---
+title: Eine Enigma2-Box als NFS-Server
+description: NFS-Dateiserver aktivieren, Ordner exportieren, Clients begrenzen und /etc/exports sowie /etc/nfs.conf verstehen.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+Eine OpenATV-Box kann Dateien ihres angeschlossenen Speichers an andere Geräte liefern. Die **Serverbox** stellt einen Ordner bereit; die andere Box bindet ihn als [NFS-Client](../nfs/) ein. Beide Rollen haben unterschiedliche Einstellungen.
+
+## Voraussetzungen und Dienst
+
+Die Serverbox braucht eine feste erreichbare Adresse, einen korrekt eingehängten Datenträger und einen Ordner mit passenden Dateirechten. Beispiel: `/media/hdd/movie` für vorhandene Aufnahmen. Prüfe vorher in der [Geräteverwaltung](../../speicher/laufwerke/), dass dort wirklich die HDD liegt.
+
+Öffne **Menü → Einstellungen → Netzwerk → Netzwerkdienste**. Wähle beim Eintrag **NFS** gegebenenfalls **Installieren** und speichere. Im geprüften Image gehört dieser Eintrag zur Paketgruppe `packagegroup-base-nfs`. Danach kontrollierst du getrennt den **laufenden Dienst** und seinen **Autostart**: Gelb startet/stoppt den ausgewählten Dienst, während Aktivieren/Deaktivieren mit Speichern die Startkonfiguration betrifft. Ein installierter Dienst läuft nicht allein durch seine Existenz.
+
+Richte die Exporte ein, bevor du den Server für andere Geräte nutzt. Der Menüpunkt **NFS-Dateiserver** unter Netzwerk benötigt den installierten Server und die Expertenansicht. Nach Installation kann eine Aktualisierung der Oberfläche nötig sein, bevor er erscheint.
+
+## Exporte im Menü einrichten
+
+1. Öffne **Menü → Einstellungen → Netzwerk → NFS-Dateiserver**.
+2. Trage unter **Erlaubte Clients** die tatsächliche Adresse der empfangenden Box ein. Nur wenn alle Geräte eines Netzes zugreifen sollen, verwende das passende Subnetz mit Präfix. `192.0.2.50` im Bild ist eine zu ersetzende Dokumentationsadresse.
+3. Wähle **Nur Lesen** für Wiedergabe und zunächst **Root Squash = Ja**. Das beschränkt Rechte von Root-Anfragen des Clients. Für Schreibzugriff sind zusätzlich geeignete Rechte am Serverordner erforderlich.
+4. Öffne mit **Gelb – Exports** die Verzeichnisauswahl, markiere nur die benötigten Verzeichnisse und bestätige die Auswahl. Der Verzeichnisname allein ersetzt nicht dessen Auswahl.
+5. Speichere die Einstellungen. Lade die Exportregeln neu beziehungsweise starte den NFS-Dienst nach Abschluss laufender Clientzugriffe neu.
+6. Binde den Export auf der Clientbox ein und prüfe eine bekannte Datei. Erst nach einem erfolgreichen Lesetest gegebenenfalls gezielt Schreibzugriff einrichten.
+
+<Capture id="nfs-server" language="de" alt="NFS-Dateiserver mit eingeschränktem Beispielclient, Nur Lesen und aktiviertem Root Squash" caption="Ungespeichertes Beispiel: einzelner Client, Nur Lesen und Root Squash. Die breiteren Vorgaben des Dialogs sind keine Empfehlung für eine öffentliche Freigabe." />
+
+| Option | Verwendung |
+| --- | --- |
+| NFS-Threads | Anzahl der Server-Arbeiter. Die vorhandene Vorgabe zunächst beibehalten; mehr Threads ersetzen weder Netzwerkbandbreite noch schnelle Laufwerke. |
+| NFSv3 / NFSv4 aktivieren | Nur benötigte, von den Clients unterstützte Versionen bereitstellen. Pfad und Firewall müssen dazu passen. |
+| Zugriffsmodus | Gilt für die durch diesen Dialog verwalteten Exporte. Schreibrecht auf Exportebene allein reicht nicht für Dateizugriff. |
+| Erlaubte Clients | Einzelne Adresse oder bewusst gewähltes Subnetz. `*` erlaubt grundsätzlich alle erreichenden Hosts. |
+| Root Squash | Root vom Client wird auf einen unprivilegierten Benutzer abgebildet. Nein erzeugt `no_root_squash` und erlaubt wesentlich mehr. |
+| Exports | Ausgewählte lokale Verzeichnisse, die angeboten werden sollen. Nicht das gesamte Root-Dateisystem exportieren. |
+
+Eine Serverbox im Deep-Standby oder ohne Strom liefert keine Dateien. Normaler Standby und Festplatten-Standby sind andere Zustände; prüfe die Erreichbarkeit und Anlaufzeit im eigenen Aufbau. Eine bereits eingebundene NAS-Freigabe nochmals über die Box zu exportieren ist ein gesonderter Re-Export-Fall und nicht Teil dieses Grundablaufs.
+
+## Was steht in /etc/exports?
+
+**`/etc/exports`** beschreibt serverseitige Freigaben. **`/etc/fstab`** und **`/etc/auto.network`** beschreiben dagegen Client-Mounts. Ein Export macht noch keinen Mount auf der zweiten Box.
+
+Ein lesendes Beispiel für genau einen Client:
+
+```text
+/media/hdd/movie 192.0.2.50(ro,sync,no_subtree_check,root_squash)
+```
+
+Ersetze Pfad und Adresse durch deine Werte. Zwischen **Clientadresse und öffnender Klammer steht kein Leerzeichen**. `ro` heißt nur lesen, `sync` bestätigt Schreibänderungen nach synchroner Verarbeitung, `no_subtree_check` verzichtet auf zusätzliche Teilbaumprüfungen und `root_squash` beschränkt Client-Root. Für eine weitere Clientgruppe erhält dieselbe Zeile einen weiteren `CLIENT(OPTIONEN)`-Block; das einfache GUI-Feld ist keine vollständige Verwaltung unterschiedlicher Regeln pro Client.
+
+Der geprüfte Dialog setzt die Marke:
+
+```text
+# OpenATV managed exports
+```
+
+**Beim Speichern ersetzt er den Bereich ab dieser Marke.** Zeilen davor bleiben erhalten. Eigene, unterschiedlich berechtigte Exporte verwaltest du deshalb bewusst außerhalb dieses Bereichs und nicht zugleich für denselben Pfad im GUI. Sichere vorhandene Dateien vor manueller Bearbeitung; doppelte oder widersprüchliche Exporte vermeiden.
+
+## Ein begrenzter Ordner für Schreibzugriffe
+
+Für ein eigenes Aufnahmeverzeichnis kannst du statt voller Root-Rechte alle Anfragen des erlaubten Clients einem dafür vorgesehenen unprivilegierten Serverkonto zuordnen. Dazu müssen **UID/GID und Besitzerrechte dieses einen Ordners** zusammenpassen. Prüfe die Werte mit `id BENUTZER` auf der Serverbox; übernimm keine unbekannten Kennungen.
+
+Das folgende **Muster** gehört in einen manuell verwalteten Export, nicht unverändert in die GUI. `UID`, `GID`, Adresse und Pfad sind Platzhalter:
+
+```text
+/media/hdd/e2-recordings 192.0.2.50(rw,sync,no_subtree_check,all_squash,anonuid=UID,anongid=GID,mountpoint=/media/hdd)
+```
+
+`all_squash` bildet alle Clientbenutzer auf dieses Konto ab. Gib ihm Schreibrechte nur auf den vorgesehenen Ordner. `mountpoint=/media/hdd` verhindert das Exportieren des darunterliegenden Ersatzordners, wenn die HDD nicht eingehängt ist. Ein pauschales `chmod -R 777` auf die HDD ist dafür nicht erforderlich. Diese erweiterten Optionen werden vom einfachen OpenATV-Exportdialog nicht angeboten.
+
+## /etc/nfs.conf und Regeln übernehmen
+
+**`/etc/nfs.conf`** enthält Einstellungen des NFS-Dienstes, beispielsweise im bereits vorhandenen Abschnitt:
+
+```ini
+[nfsd]
+threads = 8
+vers3 = y
+vers4 = y
+```
+
+Das ist ein Ausschnitt, keine Ersatzdatei für alle vorhandenen Dienstoptionen. Der geprüfte Dialog ändert diese Schlüssel im `[nfsd]`-Abschnitt. Exportregeln und Dienstparameter sind getrennte Dateien.
+
+Nach bewusst bearbeiteter `exports`-Datei kannst du über [SSH](../fernzugriff/) die Regeln neu einlesen und anzeigen:
+
+```sh
+exportfs -ra
+exportfs -v
+```
+
+`exportfs -ra` ist eine Änderung am laufenden Server: erst nach Prüfung der Regeln ausführen. Bei geänderten NFS-Versionen oder anderen Dienstparametern ist ein Dienstneustart nötig. Der geprüfte Dienst heißt `/etc/init.d/nfsserver`; nutze dafür vorzugsweise die Netzwerkdienste und beende Clientzugriffe vorher. Ein Neustart der Enigma2-Oberfläche ist kein verlässlicher Ersatz für das Neuladen des NFS-Servers.
+
+**Prüfstand:** Serverpaket, Werkzeuge und Dialog wurden auf der Box geprüft. Die Dateien für Exporte, NFS und vorhandene Mounts blieben unverändert; kein neuer Serverexport wurde durch die Aufnahmen aktiviert.
+
+Quellen: [NFS-Dialog und verwalteter Dateibereich](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkServices.py), [Dienstzuordnung](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/networkdaemons.xml), [Exportregeln](https://man7.org/linux/man-pages/man5/exports.5.html), [NFS-Einrichtung](https://ubuntu.com/server/docs/how-to/networking/install-nfs/).

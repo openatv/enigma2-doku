@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "capture_tool": "https://github.com/openatv/enigma2-plugin-test",
-  "capture_tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1",
+  "capture_tool_commit": "e1e6f83685c16dbe51ca7449607f506d98c559e2",
   "captures": [
     {
       "id": "main-menu",
@@ -3066,6 +3066,174 @@
       "skin": "MetrixHD/skin.xml",
       "reviewed": true,
       "capture_tool_commit": "befcd21743810dcb4d603471649e3e64d1c3eef1",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "nfs-mount",
+      "language": "de",
+      "article": "netzwerk/nfs",
+      "screen_key": "nfs-example",
+      "captured_at": "2026-09-10T05:40:37.590484+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "28839e33461aec9ddf04c8cf8866febeb9f2056c94e54af789cc122f0300a513",
+      "file": "de/nfs-mount.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "e1e6f83685c16dbe51ca7449607f506d98c559e2",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "nfs-mount-options",
+      "language": "de",
+      "article": "netzwerk/nfs",
+      "screen_key": "nfs-example",
+      "captured_at": "2026-09-10T05:40:41.319941+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "8202c0fcd1786f453de8b9f87fefa74977b76679cd3e4aad2e238714ae03a974",
+      "file": "de/nfs-mount-options.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "e1e6f83685c16dbe51ca7449607f506d98c559e2",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "smb-mount",
+      "language": "de",
+      "article": "netzwerk/smb-cifs",
+      "screen_key": "smb-example",
+      "captured_at": "2026-09-10T05:40:45.037242+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "72cb3535d72f6da8cc4c1f3d74b5c63ece0fbf630dcf949c6e98d5d5b86fd700",
+      "file": "de/smb-mount.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "e1e6f83685c16dbe51ca7449607f506d98c559e2",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "nfs-server",
+      "language": "de",
+      "article": "netzwerk/nfs-server",
+      "screen_key": "nfs-server-example",
+      "captured_at": "2026-09-10T05:40:48.853953+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "02522c2e9999c6d960c0282e8d2b0cf3a3b974d2e2b71f52f0e68a76359d1c6f",
+      "file": "de/nfs-server.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "e1e6f83685c16dbe51ca7449607f506d98c559e2",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "nfs-mount",
+      "language": "en",
+      "article": "netzwerk/nfs",
+      "screen_key": "nfs-example",
+      "captured_at": "2026-09-10T05:41:18.451210+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "33c5aa5fb97b8fdb08d02f69ade34f15c2844af5d67ee726ed75cf3925959bde",
+      "file": "en/nfs-mount.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "e1e6f83685c16dbe51ca7449607f506d98c559e2",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "nfs-mount-options",
+      "language": "en",
+      "article": "netzwerk/nfs",
+      "screen_key": "nfs-example",
+      "captured_at": "2026-09-10T05:41:22.321719+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "076e35a8e9e5132b3e8a3ccc6669a32f6e6dec1e16b6d02bb5dfd32496d8471f",
+      "file": "en/nfs-mount-options.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "e1e6f83685c16dbe51ca7449607f506d98c559e2",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "smb-mount",
+      "language": "en",
+      "article": "netzwerk/smb-cifs",
+      "screen_key": "smb-example",
+      "captured_at": "2026-09-10T05:41:26.037816+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "ddae0ed021fde4fe00d5306d41d18de304426b0aac0bd2223ae18f9d326ff9a7",
+      "file": "en/smb-mount.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "e1e6f83685c16dbe51ca7449607f506d98c559e2",
+      "backend": "grab-logo",
+      "background": "receiver-bootlogo; playback stopped"
+    },
+    {
+      "id": "nfs-server",
+      "language": "en",
+      "article": "netzwerk/nfs-server",
+      "screen_key": "nfs-server-example",
+      "captured_at": "2026-09-10T05:41:29.797658+00:00",
+      "width": 1280,
+      "height": 720,
+      "sha256": "1758bf157fea6ffdbcfc2387350952f253e830ea54a1b5b31e4a0e994db8dd31",
+      "file": "en/nfs-server.png",
+      "image": {
+        "distro": "openatv",
+        "imageversion": "8.0.2-devel",
+        "imagerevision": ""
+      },
+      "skin": "MetrixHD/skin.xml",
+      "reviewed": true,
+      "capture_tool_commit": "e1e6f83685c16dbe51ca7449607f506d98c559e2",
       "backend": "grab-logo",
       "background": "receiver-bootlogo; playback stopped"
     }

@@ -1,0 +1,80 @@
+---
+title: NAS über SMB/CIFS verbinden
+description: SMB3-Freigaben mit Benutzer und Passwort einbinden. Freigabenamen, Berechtigungen, Zeichensatz, Signierung und zusätzliche CIFS-Optionen erklären.
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+SMB verbindet OpenATV mit Freigaben eines NAS, Windows-PCs oder Samba-Servers. **CIFS** ist hier auch der Linux-Mounttyp `cifs`; dieser Name bedeutet nicht, dass SMB1 verwendet wird. Für eine neue Verbindung verwenden wir SMB3 und ein eigenes Benutzerkonto.
+
+## Freigabe und Benutzer auf dem NAS vorbereiten
+
+1. Aktiviere den SMB-Dienst in der NAS-Verwaltung. Verwende einen aktuellen Server mit SMB2/SMB3-Unterstützung.
+2. Erstelle einen Ordner beziehungsweise eine Freigabe, zum Beispiel **`Recordings`**.
+3. Richte einen eigenen Benutzer, zum Beispiel **`e2recorder`**, mit Passwort ein. Administratorrechte sind dafür nicht nötig.
+4. Erteile diesem Konto Lese-/Schreibrechte für die Aufnahmefreigabe. Zum ausschließlichen Abspielen reichen Leserechte.
+5. Prüfe Freigaberechte, Dateirechte und gegebenenfalls Speicherquote. Ein Benutzer kann durch eine Quote keinen Platz mehr haben, obwohl das NAS insgesamt noch freien Speicher zeigt.
+
+Die Menübezeichnungen des NAS hängen vom Hersteller ab. Für einen freigebenden Windows-PC gibt es die konkrete [Windows-11-Anleitung](../windows11/).
+
+## Verbindung auf der Box anlegen
+
+Öffne **Menü → Einstellungen → Netzwerk → Netzwerkfreigabeübersicht → MENU → Einhängepunkt manuell hinzufügen**.
+
+| Feld | Beispiel und Bedeutung |
+| --- | --- |
+| Protokoll | SMB / CIFS |
+| Server | Tatsächlicher Hostname oder IP-Adresse des NAS |
+| Remote-Pfad | **`Recordings`**, der veröffentlichte Freigabename. Kein Windows-Laufwerksbuchstabe und kein NAS-internes `/volume…`-Verzeichnis |
+| Lokale Freigabe | `nas-recordings`; wird Bestandteil des lokalen Zugriffswegs |
+| Einhängemodus | `autofs` für Einbinden bei Bedarf |
+| Benutzername / Passwort | Konto des **Servers**, im Beispiel `e2recorder`; nicht automatisch der Root-Zugang der Box |
+| SMB-Version | SMB3 als Ausgangspunkt |
+| Zeichensatz | UTF-8 für die übliche moderne Umgebung |
+| Zugriffsmodus | Lesen/Schreiben für Aufnahmen |
+| HDD-Ersatz | Nein für eine zusätzliche NAS-Freigabe |
+
+<Capture id="smb-mount" language="de" alt="SMB-Mountdialog mit SMB3, UTF-8 und ungespeicherten Beispieldaten" caption="Beispiel mit Dokumentationsadresse und leerem Passwortfeld. Für eine echte Verbindung sind die eigenen Zugangsdaten nötig; dieses Beispiel wurde nicht gespeichert." />
+
+Speichere und öffne **`/media/autofs/nas-recordings`**. Prüfe Dateien und Schreibrechte. Erst danach wählst du diesen Speicher als [Aufnahmeziel](../../speicher/nas-aufnahmen/). Freigaben lassen sich auch über **Durchsuchen** auswählen; hinterlege die Server-Anmeldedaten, wenn die Auflistung eine Anmeldung verlangt.
+
+Ein fehlender Eintrag in der Netzwerksuche ist nicht gleichbedeutend mit fehlendem SMB-Zugriff. Probiere eine manuelle Definition mit bekanntem Server und Freigabenamen. **SMB1 nicht nachinstallieren**, nur um eine alte Browserliste zurückzubekommen.
+
+## SMB-Version und Sicherheit
+
+Der geprüfte Dialog bietet **SMB3**, **SMB2** und **Legacy (SMB1)**. Diese Werte erzeugen `vers=3.0`, `vers=2.0` beziehungsweise `vers=1.0`. Die Auswahl „SMB3“ bedeutet in diesem Stand daher nicht ausdrücklich `vers=3.1.1`. Erzwingt ein Server ausschließlich einen anderen Dialekt, muss die Kombination aus Image, Client-Kernel und Servervorgabe dazu passen. Die Versionsauswahl nicht durch ein zweites `vers=` im Zusatzfeld überschreiben.
+
+**Signierung** schützt vor unbemerkter Veränderung der SMB-Nachrichten; **Verschlüsselung** schützt zusätzlich deren Inhalt auf dem Übertragungsweg. Moderne Windows-Konfigurationen können Signierung verlangen. Verwende kompatible Clients und authentifizierte Konten, statt Signierung oder Kennwortschutz abzuschalten. Die [Windows-Anleitung](../windows11/) unterscheidet außerdem die Richtung der Verbindung.
+
+## Zusätzliche SMB-Optionen
+
+Für den Einstieg bleibt **Optionale Einstellungen** leer. Diese Beispiele sind zur Einordnung gedacht, nicht als gemeinsam einzufügende Optimierungszeile:
+
+| Option | Wozu sie dient |
+| --- | --- |
+| `domain=MEDIA-PC` | Bei Bedarf den Windows-Rechnernamen beziehungsweise die Kontendomäne angeben. Für ein lokales Windows-Konto ist das keine Aufforderung, einen Domänenserver einzurichten. |
+| `sec=ntlmssp` | Moderne passwortbasierte NTLMSSP-Anmeldung, häufig bereits Standard des Clients. Kein Rückschritt auf alte `sec=ntlm`-Rezepte. |
+| `sec=ntlmsspi` | Variante mit erzwungener Signierung, wenn vom verwendeten Client unterstützt und für den Fall erforderlich. |
+| `seal` | Fordert SMB-Verschlüsselung an. Beide Seiten müssen sie unterstützen. |
+| `uid=…`, `gid=…` | Lokale Besitzerzuordnung, soweit der Server keine passenden Unix-Informationen liefert. Ändert nicht die Berechtigungen des angemeldeten Serverkontos. |
+| `file_mode=…`, `dir_mode=…` | Lokale Modusdarstellung, abhängig von Server/Unix-Erweiterungen. Ersetzt keine NAS-ACL. |
+| `cache=strict` | Konsistenzorientiertes Client-Caching. Aggressivere Cache-Einstellungen können bei mehreren Schreibern falsche Annahmen über Dateiinhalte erzeugen. |
+
+Nicht jeder Kernel unterstützt jede Option. Ändere jeweils nur den für die konkrete Fehlermeldung nötigen Punkt und kontrolliere das Ergebnis. `noperm`, pauschales `0777` oder abgeschaltete Sicherheitsfunktionen beheben keine serverseitig verweigerte Anmeldung.
+
+Der Manager erzeugt Benutzer, Passwort, `ro`/`rw`, `vers` und `iocharset` aus den eigenen Feldern. Diese Parameter im Zusatzfeld werden abgewiesen. Mountdateien und gespeicherte Server-Anmeldungen können Passwörter enthalten: keine vollständige `fstab`, `auto.network` oder `.cache`-Datei öffentlich posten.
+
+## Typische Fehler
+
+| Symptom | Nächster Schritt |
+| --- | --- |
+| Anmeldung verweigert | Benutzer, Passwort, Kontodomäne und Sperren am Server prüfen |
+| Server sichtbar, Freigabe fehlt | Anmeldung für die Auflistung und Rechte auf genau diese Freigabe prüfen |
+| Zugriff per IP geht, Name nicht | Namensauflösung/DHCP-Zuordnung prüfen |
+| Dialekt-/Signierungsfehler | Unterstützte SMB-Versionen und Sicherheitsanforderungen beider Seiten abgleichen |
+| Lesen geht, Schreiben nicht | Mountmodus, NAS-Freigabe-/Dateirechte und Benutzerquote prüfen |
+| Hänger bei ausgeschaltetem NAS | [Ausfallverhalten und autofs](../autofs-fstab/) prüfen |
+
+**Prüfstand:** SMB-Dialog aufgenommen; die vorhandene CIFS-/autofs-Freigabe wurde bereits lesend und schreibend geprüft. Die zusätzlichen Optionen sind keine einzeln an jedem NAS getesteten Vorgaben.
+
+Quellen: [Dialog und Dialekte](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/NetworkMounts.py), [Mount-Parameter](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NetworkManager.py), [CIFS-Mountoptionen](https://man7.org/linux/man-pages/man8/mount.cifs.8.html), [Linux-SMB-Client](https://docs.kernel.org/admin-guide/cifs/usage.html), [SMB1 in Windows](https://learn.microsoft.com/en-us/windows-server/storage/file-server/troubleshoot/smbv1-not-installed-by-default-in-windows).

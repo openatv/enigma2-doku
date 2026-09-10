@@ -54,6 +54,7 @@ Die SSH-Hostkennung muss bereits bekannt sein. Eine getrennte bekannte Hostdatei
 | `firmware` | 2 | Flash-Manager und MultiBoot |
 | `storage` | 4 | USB-/Dateisystem- und Laufwerksoptionen |
 | `diagnostics` | 3 | Log-Einstellungen, AutoRestore-Modus und Netzwerkmenü mit Passwort-Eintrag |
+| `network-shares` | 4 | Ungespeicherte NFS-/SMB-Mountbeispiele und NFS-Serveroptionen |
 
 Die oben gezeigte Bootlogo-Serie mit den bisherigen acht Profilen erzeugt 96 Bilder in Deutsch und Englisch. Die zwei neuen Profile ergänzen 26 Bilder mit Senderhintergrund. Enigma2 wird für jede Sprache neu gestartet, weil bereits angelegte Auswahlwerte sonst in der vorherigen Sprache bleiben können. Das Werkzeug stellt die vier ursprünglichen Spracheinstellungen anschließend wieder her. Die Details zu Abbruch und Wiederherstellung stehen in der README des Pluginrepositories.
 
@@ -106,7 +107,7 @@ Die freigegebenen Dateien stehen in `data/captures-review.json`:
 ]
 ```
 
-Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme, einen gültigen Werkzeug-Commit und sein englisches Gegenstück. Die aktuelle Datei enthält 146 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
+Dies ist nur ein Formbeispiel; der echte Eintrag benötigt die tatsächliche Prüfsumme, einen gültigen Werkzeug-Commit und sein englisches Gegenstück. Die aktuelle Datei enthält 154 ausdrücklich ausgewählte Bilder. NAS-Einstellungen, Netzwerkübersicht, Pluginübersicht und ein zusätzliches Systemmenü bleiben außerhalb der öffentlichen Bildauswahl.
 
 Im Handbuchrepository importieren:
 
@@ -175,3 +176,15 @@ Im Handbuch-Repository ausführen. Der Import liest XML-Daten, führt keinen Eni
 Der [Prüfstand](PRAXISTESTS.md) hält die bisherige Abdeckung fest. Als nächste Abläufe bieten sich vollständige Ersteinrichtung, Settings-Auswahl oder Sat-Suchlauf, Aufnahmeziele und weitere EPG-Ansichten an. Für WLAN und FBC folgen getrennte Tests mit geeigneter Hardware. Neue Profile benötigen erkennbare Start- und Endzustände sowie einen definierten Abbruch; zusätzliche Bildschirmklassen müssen vorab auf Seiteneffekte geprüft werden.
 
 Plugin und Website bleiben getrennte Repositories mit ihren jeweiligen Lizenzen. Für eine Veröffentlichung beider Änderungen müssen beide lokalen Commits separat hochgeladen werden. Die Website ist mit den eingecheckten Bildern auch ohne veröffentlichtes Plugin baubar.
+
+## NFS- und SMB-Beispiele
+
+Das Profil `network-shares` erzeugt vier Bilder je Sprache: NFS-Mount, weitere NFS-Optionen, SMB-Mount und NFS-Server. Die acht freigegebenen Bilder aus `network-a-de-network-shares` und `network-a-en-network-shares` stammen vom Werkzeugstand `e1e6f83685c16dbe51ca7449607f506d98c559e2`. Zusammen sind 154 Originalbilder veröffentlicht; der Profilkatalog umfasst 16 Profile mit 81 Ansichten je Sprache, einschließlich nicht veröffentlichter Ansichten.
+
+```sh
+python tools/capture.py --host root@BOX --run-prefix network-001 --profiles network-shares --restart-languages --bootlogo
+```
+
+Diese Beispiele verwenden die nativen Dialogklassen mit lokalen, ungespeicherten Formularwerten. Die Dokumentationsadressen `192.0.2.10` und `192.0.2.50`, Freigabenamen und Benutzerbeispiele sind keine erreichbaren Testserver. Das Passwort bleibt leer. Speichern ist gesperrt; beim NFS-Server zusätzlich die Verzeichnisauswahl. Die Tour erstellt weder Client-Mounts noch Serverexporte und startet keinen Netzwerkdienst. Der Serverdialog benötigt das bereits installierte NFS-Paket.
+
+Alle acht PNGs wurden einzeln auf Inhalt, Sprache und Lesbarkeit geprüft. Native Hilfetexte, einschließlich der sichtbaren Legacy-SMB1-Auswahl, bleiben in den Pixeln erhalten; der Artikel erklärt ausdrücklich, warum SMB1 kein Einrichtungsweg ist. Die Prüfsummen von `fstab`, `auto.network`, `exports` und `nfs.conf` waren vor und nach der Serie identisch. Die ursprüngliche Sprache wurde wiederhergestellt.

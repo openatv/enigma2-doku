@@ -194,3 +194,35 @@ Das Repository heißt jetzt **`openatv/enigma2-doku`**. Git-Remote, Pages-Basisp
 - Veröffentlichungsgröße: rund 89,95 MB in 1053 Dateien, etwa 9,00 Prozent des konservativen 1-GB-Budgets.
 
 Ein vollständiger USB-Flash, AutoRestore, absichtlich ausgelöster Crash oder Root-Passwortwechsel wurde für diese Ergänzung nicht getestet. Die dokumentierten Abläufe unterscheiden diese Grenzen von den tatsächlich geprüften Menüansichten und Lesezugriffen. Änderungen werden ausschließlich lokal committed; der Upload erfolgt durch den Betreiber.
+
+## Ergänzung: NFS, SMB, Windows 11 und NAS-Aufnahmen
+
+Am 10. September 2026 wurden sieben neue Kapitel je Sprache ergänzt: NFS-Mounts, SMB/CIFS, Windows 11, autofs/fstab mit Offline-Verhalten, Enigma2 als NFS-Server, NAS-Aufnahmen und Dateisysteme. Der gemeinsame NAS-Einstieg, Navigation, Startseiten, Laufwerksanleitungen, FAQ und Log-Kapitel verweisen darauf.
+
+| Prüfung | Ergebnis |
+| --- | --- |
+| Enigma2-Quellen | `NetworkMounts`, `NetworkManager`, NFS-Dienst/Exportdialog, Recording, Timeshift, UsageConfig und deutsche Beschriftungen im festgehaltenen Quellstand geprüft |
+| Besondere Befunde | SMB3-Auswahl erzeugt `vers=3.0`; NFS-`timeo` ist in Zehntelsekunden; autofs-HDD-Ersatz bleibt unter `/media/autofs`; `preferredPath` berücksichtigt den Expertenmodus; der NFS-Dialog ersetzt die Datei ab `# OpenATV managed exports` |
+| Externe Grundlagen | Verlinkte Microsoft-Dokumentation zu Windows 11, SMB-Signierung, Freigaben und Firewall sowie NFS-/CIFS-/autofs- und Dateisystem-Dokumentation abgeglichen |
+| Neues Aufnahmeprofil | `network-shares`, vier native Ansichten je Sprache, alle acht PNGs vollständig und einzeln gesichtet |
+| Beispieldaten | Dokumentationsadressen, Beispielnamen und leeres Passwort; Speichern und Exportauswahl gesperrt, keine neuen Mounts/Exporte eingerichtet |
+| Werkzeugstand | `e1e6f83685c16dbe51ca7449607f506d98c559e2`; 23 Python-Tests des Aufnahmeplugins erfolgreich |
+| Bestehende Konfiguration | SHA-256 von `/etc/fstab`, `/etc/auto.network`, `/etc/exports` und `/etc/nfs.conf` vor/nach der Serie identisch |
+| Übergabe der Box | Enigma2 läuft, ursprüngliche Sprache `de_DE` wiederhergestellt; HDD und NAS-Einbindung erhalten |
+
+Die Bilder aus `network-a-de-network-shares` und `network-a-en-network-shares` wurden als DE/EN-Paare mit Prüfsummen importiert. Die ersten 146 Aufnahmen behalten ihre jeweiligen Werkzeugstände. Der neue Bestand umfasst **154 Original-PNGs**, davon 128 mit Bootlogo und 26 mit dem zuvor gewählten Senderhintergrund. Es gibt **30 bebilderte Kapitel je Sprache**. Native Dialoge wurden verwendet; Beispiele wurden nicht als erfolgreich eingerichtete Verbindungen ausgegeben.
+
+### Website-Prüfungen
+
+- Astro: keine Fehler, Warnungen oder Hinweise.
+- Handbuch: 11 Node- und 8 Python-Tests erfolgreich, einschließlich Bildinventar und Herkunft.
+- Produktionsbuild für GitHub Pages und Apache am Domain-Ursprung erfolgreich; 228 HTML-Dateien, lokale Links, Bilder, Sprungmarken und Sprachpaare geprüft.
+- 67 Suchprüfungen gegen den erzeugten Index erfolgreich, einschließlich NFSv4, SMB-Optionen, Windows-Privatprofil, Spinner, Root Squash, Aufnahmeziele und exFAT in DE/EN.
+- Gebautes NFS-Kapitel in der lokalen Browseransicht kontrolliert: neue Navigation, Tabellen, Bildlinks, Kapitelübergänge und Sprachmenü vorhanden.
+- 113 Inhalte je Sprache, 154 Screenshot-PNGs plus 462 responsive WebP-Varianten. GitHub-Build rund 95,08 MB, etwa 9,51 Prozent des verwendeten 1-GB-Budgets.
+
+### Bewusst noch offene Praxistests
+
+Auf dem Windows-PC wurden keine Konten, Freigaben, Profile oder Firewall-Regeln verändert. Ein vollständiger Windows-SMB-Aufnahmetest, neu eingerichtete NFS-Exporte mit Clientzugriff, NAS-Timer/Timeshift unter Last und ein absichtlich ausgelöster NAS-Ausfall wurden in diesem Abschnitt nicht durchgeführt. Die Anleitung nennt dafür konkrete Kontrollen, behauptet aber keine gemessenen Ausfallzeiten. Die vorhandene CIFS-Freigabe war bereits in der ersten Serie schreibend und lesend geprüft worden.
+
+Es wurde kein Laufwerk formatiert, kein aktuelles Image überschrieben und keine Aufnahmeziel-Konfiguration umgestellt. Rohserien und private Prüfprotokolle bleiben lokal. Handbuch und Aufnahmeplugin werden jeweils nur lokal committed; kein Push und keine Veröffentlichung in diesem Abschnitt.
