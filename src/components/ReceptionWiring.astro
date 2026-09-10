@@ -1,0 +1,19 @@
+---
+interface Props { id: string; language: 'de' | 'en'; alt: string; caption: string; }
+const { id, language, alt, caption } = Astro.props;
+const allowed = ['single-sat','diseqc','multiswitch','unicable','cable-terrestrial','spaun-0v','spaun-5v','motor'];
+if (!allowed.includes(id)) throw new Error(`Unknown wiring diagram: ${id}`);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const url = `${base}/diagrams/reception/${language}/${id}.svg`;
+const open = language === 'de' ? 'Schaubild vergrößern' : 'Enlarge wiring diagram';
+---
+<figure class="reception-wiring">
+  <a href={url} target="_blank" rel="noopener" aria-label={`${open}: ${alt}`}><img src={url} alt={alt} loading="lazy" width="980" height={id === 'unicable' ? 620 : 580} /></a>
+  <figcaption>{caption} <a href={url} target="_blank" rel="noopener">{open} ↗</a></figcaption>
+</figure>
+<style>
+  figure { margin: 1.5rem 0 2rem; }
+  img { display: block; width: 100%; height: auto; border-radius: .75rem; }
+  figcaption { margin-top: .6rem; font-size: .9rem; line-height: 1.6; }
+  figcaption a { white-space: nowrap; }
+</style>

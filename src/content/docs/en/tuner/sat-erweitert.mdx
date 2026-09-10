@@ -1,0 +1,42 @@
+---
+title: "Advanced satellite configuration and switch cascades"
+description: "OpenATV: Advanced satellite configuration and switch cascades."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+
+**Advanced** describes installations that Simple mode cannot represent fully. Open Menu → Setup → Tuners, Scanning & Reception → Tuner Configuration → connected tuner → Configuration mode Advanced. Write down the wiring, ports and LNB parameters before filling the forms.
+
+## Satellite and LNB are separate levels
+
+Select a **satellite** at the top. Its **LNB number** refers to a configuration profile within this tuner. A motor can use the same physical LNB for several positions; two fixed LNBs normally use separate profiles. The number is neither a tuner address nor a Unicable channel. Scanning cannot enable a position that has no assigned signal path.
+
+| Group | Options and purpose |
+| --- | --- |
+| Satellite | Position, LNB assignment, selecting a group of satellites together |
+| LNB | Type, priority, LOF/L, LOF/H, threshold; see [LNB types](../lnb/) |
+| Supply | Voltage by polarisation or fixed value; increased voltage only for a suitable installation |
+| Tone | By band or fixed; normally Band for universal Ku |
+| Switch | DiSEqC mode, toneburst, committed and uncommitted port commands |
+| Cascade | Command order, Fast DiSEqC, sequence repeat, DiSEqC 1.1 repeats |
+| Motor | USALS per satellite or stored position, location and movement parameters |
+| Single cable | SCR device profile, User Band, frequency, protocol, PIN and supply |
+
+## Cascade example
+
+Starting at the receiver, the signal path encounters an **uncommitted** switch, then a **committed** four-way switch, then the LNB. Commands must select the upstream path and the input behind it. Enter both actual input numbers and the matching command order. A switch operating in another mode may require a different sequence.
+
+**Toneburst**, **committed** and **uncommitted** are different commands. Arrange the command-order steps used by the installation. Fast DiSEqC avoids some repeated commands; Sequence repeat sends a sequence again. Repeats increase switching time and cannot correct a wrong port assignment. Do not enable every repeat option as a precaution on a simple installation.
+
+## Frontend-specific fields
+
+**SCPC search range**, **tone amplitude**, **T2MI RAW Mode**, **Connector** and **Legacy Signal stats** appear only with suitable hardware. SCPC concerns narrow single carriers; T2MI RAW enables a different processing path for T2-MI data, for example with astra-sm. These settings do not fix an ordinary misconfigured Astra connection. The full [option reference](../optionen/) covers each extracted form variant.
+
+Tuner relationships such as Equal to, Connected to and Depends on must match the actual signal path. They matter for shared cables, motors and later FBC configurations. Change one path at a time and check its satellite positions, H/V and low/high band.
+
+Source revision: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).
+
+## Receiver views
+
+<Capture id="rx-nim-advanced" language="en" alt="Advanced switch options. The displayed command order illustrates the form; the correct order must match your own cascade." caption="Advanced switch options. The displayed command order illustrates the form; the correct order must match your own cascade." />

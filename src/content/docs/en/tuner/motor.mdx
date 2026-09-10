@@ -1,0 +1,50 @@
+---
+title: "Motor, USALS and stored positions"
+description: "OpenATV: Motor, USALS and stored positions."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+A DiSEqC motor rotates the entire dish. With a typical coax-powered motor, the receiver sends commands and supplies both motor and LNB through the same cable. Correct mechanical installation and alignment are essential.
+
+<Wiring id="motor" language="en" alt="LNB output to motor LNB socket, motor REC socket to receiver SAT IN" caption="The motor’s LNB and REC/RECV sockets have different roles. The permitted total current must cover both motor and LNB." />
+
+## Configure USALS
+
+1. Select a positioner mode in simple configuration, or use Advanced with DiSEqC 1.2 and USALS.
+2. Enter **your geographic longitude and latitude**, including East/West and North/South. These are your location coordinates, not the satellite’s 19.2°E.
+3. Assign the LNB type and reachable satellites or satellite group.
+4. Enter manufacturer rotation speeds, step size and number of positions only where those additional fields are needed.
+5. Move to a reachable reference satellite and check reception. Test other positions without exceeding mechanical limits.
+
+USALS calculates a target angle from location and orbital position. Wrong signs or hemisphere choices produce wrong targets. USALS cannot correct an uneven mast or a misaligned installation.
+
+## DiSEqC 1.2 without USALS
+
+Each satellite uses a position number stored in the motor. Disable USALS for that satellite in Advanced configuration and assign the matching **stored position**. Entering an arbitrary number in tuner setup does not store the dish at that position.
+
+The **PositionerSetup** extension provides reference-transponder tuning, East/West movement, individual steps, stop, stored position access, reference movement and limits depending on driver support. These actions physically move the dish. Identify **Stop** and the clear movement range first; a shared system must not have a recording that needs another position.
+
+## Motor options
+
+| Option | Purpose |
+| --- | --- |
+| Longitude/latitude and hemispheres | Location for USALS |
+| Use USALS for this satellite | Calculated target instead of stored position |
+| Stored position | Memory in the motor, not a multiboot or tuner slot |
+| H/V turning speed | Motor specifications at different supply voltages; used to estimate movement time |
+| Step size / rotor positions | Motor specifications for positioning and time calculation |
+| Use power measurement | Detect movement from current consumption if measurement hardware supports it |
+| Measured current | Readout, not a current setpoint |
+| Power threshold in mA | Difference between idle and moving current, not the maximum permitted load |
+| Fast / slow / time window | Time-dependent fast movement where available; begin/end set the window |
+
+A motor introduces delay when changing satellite and shared dependencies between reception paths. Plan recordings accordingly. The test installation is fixed on Astra; no motor movements were performed there.
+
+Source revision: [OpenATV plugin.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/PositionerSetup/plugin.py).
+
+## Receiver views
+
+<Capture id="rx-nim-motor" language="en" alt="USALS with an illustrative location of 50° north, 10° east. Use your own coordinates. No motor was moved for this capture." caption="USALS with an illustrative location of 50° north, 10° east. Use your own coordinates. No motor was moved for this capture." />

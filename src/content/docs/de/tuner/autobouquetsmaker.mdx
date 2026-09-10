@@ -1,0 +1,62 @@
+---
+title: "AutoBouquetsMaker: Anbieter, Bouquets und Zeitplan"
+description: "OpenATV: AutoBouquetsMaker: Anbieter, Bouquets und Zeitplan."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+
+**AutoBouquetsMaker (ABM) erzeugt Bouquets nach Regeln und Daten eines unterstützten Anbieters.** Das hilft bei Senderumstellungen und offizieller Nummerierung. Es ist kein allgemeiner Internet-Download beliebiger Senderlisten und repariert keine unpassende Tuner-Konfiguration.
+
+Installieren über Plugins herunterladen, Paket **`enigma2-plugin-systemplugins-autobouquetsmaker`**. Anschließend Menü → Einstellungen → Empfang → AutoBouquetsMaker. Die verfügbaren Anbieter hängen von Plugin-Daten, Empfangsart und eingerichteten Positionen ab.
+
+## Erster Durchlauf
+
+1. Settings sichern und funktionierenden Empfang prüfen.
+2. **Anbieter** öffnen, einen tatsächlich empfangbaren Anbieter aktivieren und gegebenenfalls die Region wählen.
+3. Entscheiden, welche Haupt-, Themen-, HD- und FTA-Bouquets erzeugt werden sollen.
+4. In **Konfiguration** zunächst **alle Nicht-ABM-Bouquets behalten** aktiv lassen. Position der neuen Bouquets und Präfix festlegen.
+5. Einen manuellen ABM-Suchlauf starten, Ergebnis und Protokoll prüfen. Erst nach einem erfolgreichen Test den Zeitplan einschalten.
+
+## Anbieteroptionen
+
+| Option | Verwendung |
+| --- | --- |
+| Anbieter aktivieren / Region | Wählt die tatsächlich zu verarbeitende Anbieter- und Regionalvariante |
+| Nur FTA | Verschlüsselt signalisierte Dienste für diesen Anbieter auslassen |
+| Hauptbouquet | Gesamtliste, nur HD/FTA-HD soweit angeboten, eigenes Bouquet oder keines |
+| Eigenes Hauptbouquet | Vorhandenes Bouquet auswählen; der geprüfte Stand nutzt dafür die ersten 100 Einträge |
+| Themenbouquets | Gruppen wie Film, Unterhaltung oder Dokumentation erstellen |
+| HD-, FTA-, FTA-HD-Bouquet | Zusätzliche gefilterte Listen erzeugen |
+| Sender tauschen | Anbieterabhängig SD durch passende HD-Varianten an den vorgesehenen Nummern ersetzen |
+| Benutzerdefinierter Modus | Anbieterspezifische Regeln zum Ergänzen, Entfernen oder Umbenennen anwenden |
+| Nicht nummerierte Sender | Zusätzlich gefundene Dienste ohne offizielle Nummer am Listenende ergänzen |
+
+Nicht jeder Anbieter bietet jede Auswahl. Änderungen direkt in einem automatisch erzeugten ABM-Bouquet können beim nächsten Lauf verloren gehen. Für eine dauerhaft selbst gepflegte Ordnung ein eigenes Nicht-ABM-Bouquet verwenden oder die dafür vorgesehenen Anpassungsregeln pflegen.
+
+## Globale Optionen und Zeitplan
+
+| Option | Wirkung |
+| --- | --- |
+| Suche planen, Uhrzeit, Wochentage | Führt ABM zu den ausgewählten Zeiten aus; es ist kein Linux-Cron-Eintrag |
+| Aus Deep Standby aufwecken | Benötigt passende Hardware und korrekte Uhrzeit; siehe [Aufwachen](../../system/zeit-aufwachen/) |
+| Danach zurück in Deep Standby | Bei geplantem Aufwachen, Standby und ohne laufende Aufnahme wieder ausschalten |
+| Alle Nicht-ABM-Bouquets behalten | Eigene vorhandene Bouquets im Index behalten |
+| Bouquets behalten | Wird bei abgeschalteter Gesamterhaltung zur gezielten Auswahl verfügbar |
+| Anbietername voranstellen | Macht die Herkunft der Listen erkennbar |
+| Anbietermarker / Marker-Stil | Anbietergruppen und Bouquetabschnitte optisch trennen |
+| Bouquets oben/unten | Position im Bouquetindex |
+| Sender nicht eingerichteter Satelliten überspringen | Verhindert nicht nutzbare Einträge außerhalb der konfigurierten Positionen |
+| Extra-Debug | Mehr Diagnose im Enigma2-Log; nur zur Fehlersuche nötig |
+| DVB-T-Frequenzfinder zeigen | Spezialwerkzeug für passende britische Anbieter-/Repeatergebiete, keine universelle DVB-T-Suche |
+| In Erweiterungen anzeigen | ABM-Suchstart zusätzlich im Erweiterungsmenü anbieten |
+
+Im Hauptmenü lassen sich abhängig von Konfiguration Anbieterreihenfolge und ausgeblendete Bereiche verwalten. Eigene Providerdateien liegen unter **`/etc/enigma2/AutoBouquetsMaker/providers`**, benutzerdefinierte Anpassungen unter **`/etc/enigma2/AutoBouquetsMaker/custom`**. Diese Daten gehören in die Settings-Sicherung. Nicht unkontrolliert die paketierten Definitionen überschreiben.
+
+Bei Timeout zuerst prüfen, ob der benötigte Einstiegstransponder und dessen Tabellen erreichbar sind. ABM-Anbieteraktualisierung, Empfangsprüfung und Log helfen mehr als wiederholtes Löschen aller Bouquets. Vermeide sich überlappende ABM-, EPGRefresh- und Aufnahmetermine.
+
+Quellen: [ABM-Einstellungen, passender Quellstand](https://github.com/oe-alliance/AutoBouquetsMaker/blob/ba6010b90b/AutoBouquetsMaker/src/setup.py), [ABM-Anpassungen](https://github.com/oe-alliance/AutoBouquetsMaker/blob/ba6010b90b/AutoBouquetsMaker/src/README.txt). [Alle ABM-Felder in der Referenz](../abm-optionen/).
+
+## Ansichten auf der Box
+
+<Capture id="rx-abm" language="de" alt="AutoBouquetsMaker mit eingeblendeter Zeitplanung. Die aktivierte Planung ist ein nicht gespeichertes Formularbeispiel." caption="AutoBouquetsMaker mit eingeblendeter Zeitplanung. Die aktivierte Planung ist ein nicht gespeichertes Formularbeispiel." />

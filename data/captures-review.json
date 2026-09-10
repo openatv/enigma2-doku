@@ -2322,5 +2322,271 @@
     "sha256": "987708aaa5cb7803c92b135c9f53cc8566ab5d35fd1e234b78f500c7b51ad270",
     "run": "av-b-en-av-guides",
     "tool_commit": "14a48e84e89537f58e5421747b05883a09681529"
+  },
+  {
+    "language": "de",
+    "id": "rx-nim-toneburst",
+    "sha256": "cf236efd33f64247a595dd50306dc5af9997c71fb2f4706bd5b9bfab04047b2c",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-nim-diseqc",
+    "sha256": "469d1f28f41bd49d8e60cdf3f20de9c5818636be416c3c64242897075e868a26",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-nim-four",
+    "sha256": "58c9eb7cf1025a03ef926a3523d7b14a00d7c6fb16dce1688da0a912855d6942",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-nim-advanced",
+    "sha256": "aeaef7d03aa7ac8de96c78d0e2c525c9b2a917427b2a50d316802f3e6ccab96b",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-nim-unicable",
+    "sha256": "803255220549368a606c597c78b9c11bfc237a2950dad21aac93a7c137a67bb1",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-nim-motor",
+    "sha256": "16384ea9ee4301c30aed1c8b0308598f4708f0a624d60f8e3c62683064b811a0",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-nim-cable",
+    "sha256": "98e5e161545d0f5117b498d9d210b856452b58423709264a676ba2f648ca578c",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-nim-cable-bands",
+    "sha256": "921e2048d5cf9d93a94c6bbe98dec6879199ef6700f8b0d72383cf7975e7265e",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-nim-terrestrial",
+    "sha256": "d0770eb9a816b71a353bde34b3942a54e85d9d00ca6af92efdea664525525689",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-scan-manual",
+    "sha256": "7b61cabcc62fd338703f3aed591814aa524fff9c92e39a2388bd5863856b91f0",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-scan-auto",
+    "sha256": "c9518ef46d7671f62f8399214ed76f9d243ca03b35b0631ed8cf25d3c37256cd",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-tuner-options",
+    "sha256": "ab2e4568486307aafeb34c636c67dbb611a5ce1b41030a5ab95ff497df5c7aeb",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-dab",
+    "sha256": "9e40f16d21f5458c5824ce6d7914943a98cecf973428a54cdff6fed4bdcb4fc5",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-abm",
+    "sha256": "94240015e0099eaf7cd164dda781d21c61912a195d0209663f5821421e46ae38",
+    "run": "rx-c-de-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-menu",
+    "sha256": "d9e57294557b7e94f5d0881a31e86360d8e79f279ab060d1c2403bb98f46afdc",
+    "run": "rx-tools-a-de-reception-tools",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-finder",
+    "sha256": "06a4978425e0c0608e5acfdc5666c3176118faab4c72a930f1b6c54a617da093",
+    "run": "rx-tools-a-de-reception-tools",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-cablescan",
+    "sha256": "0a0577831f30009618456fca96a8b0408295f28a32a78eb08be5ec1eff35f65c",
+    "run": "rx-tools-a-de-reception-tools",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-blindscan",
+    "sha256": "8b908b0df526bf605671ac5d2d8d967f52f2dbbac1b54bdd13042e3a376fd63d",
+    "run": "rx-tools-a-de-reception-tools",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "de",
+    "id": "rx-dab-usb",
+    "sha256": "7386bc6cce7766609a100f63fc592a358438a05097733a93a9702d4b1aba35bb",
+    "run": "rx-tools-a-de-reception-tools",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-nim-toneburst",
+    "sha256": "cc7d1ae5342c8007406bece7afa70251f8c8ff647c2ef11affab2a105785875a",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-nim-diseqc",
+    "sha256": "d7bb44e8a4fefa92e914b54956426354d4a02e3057599256ab56c93d286102a1",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-nim-four",
+    "sha256": "75ff8a98f70daa3030eb5210cc41342504ca6079fc458d47e6dd590b5ff4917e",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-nim-advanced",
+    "sha256": "e7e40bbf4ca83de1e93a3d4a24577d16a7fa44d6b169e40eb55285c628a30b95",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-nim-unicable",
+    "sha256": "4dc794defb9590ca6f41f8642735bfab7c8cc036f8c5061291ce9f3663e1c3bf",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-nim-motor",
+    "sha256": "ffba48ec15943fc95fe9dab73634406d389e0c8267a4b5347dc1ae53540a6bbe",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-nim-cable",
+    "sha256": "31bd9b4fb7d7f73322b2226e33a993e5137fbb8b65040fb3748eafef4f10d0e3",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-nim-cable-bands",
+    "sha256": "a744340ee54a5f6db02b245b83111111991e4e2afc78447acd1494930190f9e6",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-nim-terrestrial",
+    "sha256": "fb539f89cb5509735592353c4d709b3e5b5c35236bf2777a32ceee0f7bc8ffa8",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-scan-manual",
+    "sha256": "70f6079f90d4dbb5ca3d8b4f6223d70f025c34be2c0205ecce885351b29b98fc",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-scan-auto",
+    "sha256": "452365f363fd81f1b57be37c43af5b054a5cfb30f11e1b290f76dac79ca757bf",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-tuner-options",
+    "sha256": "5753bd7edce73cdbfc1029ee8ab5c06573ec10b6c422b82f79fae0982d0b9302",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-dab",
+    "sha256": "f3f51306ec1b1b9b368079bbc192caa448a5659c17d657c01108e192b1fc2ff7",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-abm",
+    "sha256": "40ad8731854837e790fae0a6cf6f537b613013c34727867b086b75601727f432",
+    "run": "rx-c-en-reception-guides",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-menu",
+    "sha256": "82d6d0463f1b58be09c07ff5ec84f41cc0839347e65b0159b1d36b7bd80e96c5",
+    "run": "rx-tools-a-en-reception-tools",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-finder",
+    "sha256": "c45c0a3af6efd963b1f52d154fda061c652d49b6b4320ec1049351e7f9f360a2",
+    "run": "rx-tools-a-en-reception-tools",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-cablescan",
+    "sha256": "01137c93bf3123f8783afacce91c0dc24996651de0a71242257ee5d07756cef1",
+    "run": "rx-tools-a-en-reception-tools",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-blindscan",
+    "sha256": "fbc254bffb0bc6294f19d30e89fae43d57c613a850ccb1da1be13566d60cbac8",
+    "run": "rx-tools-a-en-reception-tools",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
+  },
+  {
+    "language": "en",
+    "id": "rx-dab-usb",
+    "sha256": "7c76ed9240c44e2a3372737a7ad4d8dc0ce9685dd7769c5718b0acbfef7aa7dc",
+    "run": "rx-tools-a-en-reception-tools",
+    "tool_commit": "92de9f0dd414bbf2bf0eb021ea230955b5cfe950"
   }
 ]

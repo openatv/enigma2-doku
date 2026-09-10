@@ -1,0 +1,50 @@
+---
+title: "Motor, USALS und gespeicherte Positionen"
+description: "OpenATV: Motor, USALS und gespeicherte Positionen."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+Ein DiSEqC-Motor dreht die gesamte Schüssel. Die Box sendet Steuerbefehle und versorgt bei typischen Koaxmotoren Motor und LNB über dasselbe Kabel. Die Anlage muss mechanisch passend montiert und ausgerichtet sein.
+
+<Wiring id="motor" language="de" alt="LNB-Ausgang an LNB-Buchse des Motors, REC-Buchse des Motors an SAT IN der Box" caption="Die Motorbuchsen LNB und REC/RECV haben unterschiedliche Aufgaben. Der zulässige Gesamtstrom umfasst Motor und LNB." />
+
+## USALS einrichten
+
+1. Im einfachen Tuner-Modus eine Rotor-Konfiguration wählen oder Erweitert mit DiSEqC 1.2 und USALS verwenden.
+2. **Eigenen geografischen Längengrad und Breitengrad** eintragen, jeweils mit Ost/West und Nord/Süd. Das sind Standortkoordinaten, nicht 19.2°E des Satelliten.
+3. LNB-Typ und tatsächlich erreichbare Satelliten bzw. Satellitengruppe zuordnen.
+4. Herstellerwerte für Drehgeschwindigkeit, Schrittweite und Zahl der Positionen nur übernehmen, wenn diese Zusatzfelder benötigt werden.
+5. Einen erreichbaren Referenzsatelliten anfahren und prüfen. Danach weitere Positionen testen, ohne mechanische Grenzen zu überfahren.
+
+USALS berechnet aus Standort und Orbitposition den Zielwinkel. Falsche Vorzeichen oder Ost/West-Auswahl verursachen falsche Ziele. USALS korrigiert weder einen schiefen Mast noch eine falsch montierte Antenne.
+
+## DiSEqC 1.2 ohne USALS
+
+Für jeden Satelliten wird eine im Motor gespeicherte Positionsnummer verwendet. Im erweiterten Dialog USALS für diese Position ausschalten und die **gespeicherte Position** passend zuweisen. Eine beliebige Nummer im Tuner-Dialog speichert die Antenne noch nicht an dieser Stelle.
+
+Die Erweiterung **PositionerSetup / Rotor-Einstellungen** bietet je nach Treiber Abstimmen auf einen Referenztransponder, Ost/West-Bewegung, einzelne Schritte, Stoppen, Speichern/Abrufen von Positionen, Referenzfahrt sowie Grenzen. Diese Aktionen bewegen die Schüssel tatsächlich. Zuerst die Funktion **Stopp** und den freien Bewegungsbereich kennen; bei mehreren Nutzern darf keine laufende Aufnahme eine andere Position benötigen.
+
+## Motoroptionen
+
+| Option | Zweck |
+| --- | --- |
+| Längen-/Breitengrad und Richtung | Standort für USALS |
+| USALS für diesen Satelliten | Automatisches Ziel statt gespeicherter Positionsnummer |
+| Gespeicherte Position | Slot im Motor, nicht Multiboot- oder Tuner-Slot |
+| Drehgeschwindigkeit H/V | Angabe des Motors bei unterschiedlichen Versorgungsspannungen; dient der Bewegungszeitabschätzung |
+| Schrittweite / Rotorpositionen | Technische Motordaten für Positionierung und Zeitberechnung |
+| Strommessung verwenden | Bewegung anhand Stromaufnahme erkennen, nur bei unterstützter Messhardware |
+| Gemessener Strom | Anzeige, kein einzustellender Sollstrom |
+| Stromschwelle mA | Unterschied zwischen Ruhe und Bewegung; nicht maximal erlaubte Stromaufnahme |
+| Schnell / langsam / Zeitraum | Zeitabhängige schnelle Bewegung, soweit angeboten; Beginn/Ende definieren den Zeitraum |
+
+Ein Motor bedeutet Wartezeit beim Satellitenwechsel und gemeinsame Abhängigkeiten bei geteilten Empfangswegen. Plane Aufnahmen entsprechend. Die Testinstallation ist eine feste Astra-Anlage; Motorfahrten wurden dort nicht durchgeführt.
+
+Quellstand: [OpenATV plugin.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/PositionerSetup/plugin.py).
+
+## Ansichten auf der Box
+
+<Capture id="rx-nim-motor" language="de" alt="USALS mit fiktivem Beispielstandort 50° Nord, 10° Ost. Eigene Koordinaten verwenden. Für diese Aufnahme wurde kein Motor bewegt." caption="USALS mit fiktivem Beispielstandort 50° Nord, 10° Ost. Eigene Koordinaten verwenden. Für diese Aufnahme wurde kein Motor bewegt." />

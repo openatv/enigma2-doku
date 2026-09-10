@@ -1,0 +1,58 @@
+---
+title: "DAB+: Satellitenfeeds, RTL-SDR und Einstellungen"
+description: "OpenATV: DAB+: Satellitenfeeds, RTL-SDR und Einstellungen."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+
+**DAB+ ist Digitalradio mit mehreren Programmen in einem Ensemble.** In diesem OpenATV-8.0-Quellstand gibt es zwei Empfangswege: DAB-over-DVB über unterstützte Satelliten-Zuführungen und terrestrisches DAB+ über einen geeigneten **RTL-SDR-USB-Empfänger**. Normales DVB-S-Radio und Internet-Radio sind davon verschieden.
+
+## DAB+ über Satellit
+
+Die Box empfängt einen DVB-Transponder, aus dem der Backend-Dienst den DAB-Ensemble-Datenstrom gewinnt. Das setzt einen in der Definition unterstützten Feed, passende Sat-Einrichtung und installierte Decoder voraus. Es genügt nicht, irgendeinen Radiosender auf DAB+ umzubenennen. Ein örtlicher DVB-T2-Tuner empfängt dadurch ebenfalls nicht automatisch terrestrisches DAB+.
+
+**Menü → Einstellungen → Empfang → DAB+ Einstellungen** zeigt gemeinsame Optionen und, abhängig von verfügbaren Quellen, die Auswahl der zu scannenden Satelliten. Danach **DAB+ Suchlauf** öffnen. Dieser führt den Scan aus und kann den benötigten Empfangstuner belegen; nicht während wichtiger Aufnahmen starten.
+
+## DAB+ mit RTL-SDR-USB-Stick
+
+1. Einen tatsächlich kompatiblen Stick und eine für DAB geeignete Antenne anschließen. Nicht jeder USB-DVB-T-Stick unterstützt diesen Backend-Pfad.
+2. Passendes Backend vom Image-Feed installieren, falls es fehlt. Das Vorhandensein des Pakets beweist noch keinen erkannten USB-Tuner.
+3. DAB+ Einstellungen öffnen, **Aktualisieren** verwenden und Hardwarestatus prüfen.
+4. DAB+-Modus aktivieren, Empfänger und Scanregion wählen. DVB-T und DAB+ können denselben USB-Stick nicht gleichzeitig verwenden.
+5. Zunächst automatische Verstärkung verwenden; erst bei Empfangsproblemen manuelle RF-Verstärkung und ppm-Korrektur gezielt ändern.
+6. DAB+ Suchlauf starten und danach die neu erzeugten **Radio-Bouquets** öffnen.
+
+## Alle Einstellungen
+
+| Option | Zweck |
+| --- | --- |
+| DAB+-Slideshow anzeigen | Übertragene Stationsbilder statt statischem Radiohintergrund; nur wenn der Sender Bilder liefert |
+| Empfangsquellen durchsuchen | USB, Satellitenfeeds oder beide, wenn beides verfügbar ist |
+| Satellitenfeeds durchsuchen | Einzelne konfigurierte Positionen an-/abwählen; Auswahl erscheint bei mehreren verfügbaren Positionen |
+| DAB+-Modus aktivieren | Gewählten RTL-SDR für DAB+ verwenden |
+| Tuner auswählen | Automatisch oder konkretes erkanntes USB-Gerät |
+| Scanregion | Beschränkt die DAB-Frequenzblöcke nach `dab.xml` |
+| Automatische Verstärkung | RF-Verstärkung vom Backend wählen lassen |
+| RF-Verstärkung | Position im unterstützten Verstärkungsbereich; das Backend wählt den nächsten verfügbaren Schritt |
+| Frequenzkorrektur / ppm | Oszillatorabweichung korrigieren; kein Kanal- oder Lautstärkeregler |
+| DVB-Kerneltreiber sperren, falls angeboten | Verhindert Belegung durch den DVB-T-Treiber zugunsten RTL-SDR; beim Speichern kann eine dauerhafte Treiberkonfiguration entstehen, nicht nur eine Anzeigeänderung |
+| Aktualisieren | USB-Inventar neu einlesen; die Ansicht öffnet den Tuner dabei bewusst nicht exklusiv |
+
+Die Diagnose zeigt je nach Gerät Status, Modell, Hersteller, Produkt, Seriennummer, USB-ID, USB-Port, Geschwindigkeit, Kerneltreiber, DVB-Frontend, erkannten Tuner und Verstärkungsstufen. „Backend fehlt“ und „kein USB-Gerät erkannt“ sind unterschiedliche Ursachen. Ein von DVB-T belegter Stick steht DAB+ nicht zugleich zur Verfügung.
+
+## Dateien, Decoder und Ergebnisse
+
+Die paketierte Definition liegt unter **`/usr/share/enigma2/dab.xml`**. Eine lokale **`/etc/enigma2/dab.xml`** ersetzt sie für eigene Tests/Anpassungen; eine alte lokale Datei kann deshalb neue Paketdefinitionen verdecken. Das XML enthält Satelliten-, Transponder- und Transportparameter sowie terrestrische Blöcke. Stationsnamen und Dienste werden aus dem empfangenen Ensemble gelesen.
+
+Der geprüfte Code unterstützt Feedpfade mit **fedi2eti, tsniv2ni, ts2na12 und ts2na** sowie den RTL-SDR-Pfad. Diese Begriffe sind Transportdecoder, keine Antennentypen. Ergebnisse werden als Radio-Bouquets registriert; Fehlschläge sind im Scanstatus und in Enigma2-Logs mit **`DABScan`** erkennbar. `/tmp`-Diagnosen sind flüchtig. Bei fehlender Funktion zuerst Image-/Backendstand, verfügbare Quelle und Empfang prüfen.
+
+Grundlagen: [WorldDAB erklärt DAB](https://www.worlddab.org/dab/how-dab-works). Die Anleitung beschreibt die Softwarefunktionen; ein terrestrischer DAB+-USB-Empfangstest wurde auf der bisherigen Testbox nicht durchgeführt.
+
+Quellstand: [OpenATV DABScan.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/DABScan.py).
+
+## Ansichten auf der Box
+
+<Capture id="rx-dab" language="de" alt="DAB+-Setup mit Satelliten- und USB-Funktion. Einige neuere Beschriftungen sind im deutschen Image noch Englisch." caption="DAB+-Setup mit Satelliten- und USB-Funktion. Einige neuere Beschriftungen sind im deutschen Image noch Englisch." />
+
+<Capture id="rx-dab-usb" language="de" alt="USB-DAB+-Ansicht mit erkanntem RTL2832U-Gerät. Geräteerkennung allein belegt noch keinen DAB+-Empfang; es wurde kein USB-Suchlauf gestartet." caption="USB-DAB+-Ansicht mit erkanntem RTL2832U-Gerät. Geräteerkennung allein belegt noch keinen DAB+-Empfang; es wurde kein USB-Suchlauf gestartet." />

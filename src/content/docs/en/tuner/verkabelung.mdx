@@ -1,0 +1,43 @@
+---
+title: "Understand the wiring: from socket to receiver"
+description: "OpenATV: Understand the wiring: from socket to receiver."
+---
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+A **coaxial cable** carries the reception signal. **HDMI** sends the receiver’s picture and sound to the television. **LAN/Wi-Fi** connects the receiver to the network. A network cable replaces an aerial feed only for explicitly configured network services such as IPTV or [fallback reception](../fallback/).
+
+## Satellite connection in a house
+
+<Wiring id="single-sat" language="en" alt="Dish with universal LNB through a SAT wall outlet to the receiver SAT IN, HDMI to television" caption="A conventional satellite connection uses an F connector on the SAT input. The wall outlet must pass the satellite IF band and the required control signals." />
+
+1. Shut down and disconnect the receiver from power before reconnecting coax cables. A stray braid strand touching the centre conductor can short the LNB supply.
+2. Find the correct **input**: `SAT IN`/`LNB IN` for satellite, `ANT IN`/`CABLE IN` for cable or terrestrial. `LOOP OUT` is not a second independent input.
+3. Use the SAT output of a SAT/TV/radio wall plate. Follow the labels and installation plan, rather than relying on connector shape alone.
+4. Connect receiver HDMI OUT to television HDMI IN and select that TV input.
+5. Connect LAN separately for updates, EPG imports and network features.
+
+## Several subscribers in a house
+
+<Wiring id="multiswitch" language="en" alt="Four fixed Quattro LNB planes to a multiswitch, with separate cables to two receivers" caption="A conventional multiswitch supplies separate subscriber cables. Connect each Quattro plane to the input with the matching label." />
+
+**Quad and Quattro are different.** A Quattro has fixed VL/HL/VH/HH outputs for a suitable multiswitch. A Quad has four switchable subscriber outputs. See [LNB types](../lnb/).
+
+## Cable TV and terrestrial aerial
+
+<Wiring id="cable-terrestrial" language="en" alt="Alternative paths: cable TV outlet to DVB-C or aerial to DVB-T2, each with HDMI to the TV" caption="Two alternative direct connections. A shared socket does not turn a single hybrid tuner into two independent frontends." />
+
+Leave aerial power off for direct cable TV. A compatible active aerial may require **5 V**. Follow the aerial instructions for passive or separately powered models. Combine cable and aerial only through a suitable switch, such as the [SPAUN TAR 5](../hybrid-spaun/).
+
+## Which drawing matches my installation?
+
+| Existing equipment | Drawing and settings |
+| --- | --- |
+| Two satellite positions, two LNBs or monoblock | [DiSEqC switch](../diseqc/) |
+| One cable with allocated User Bands | [Unicable/SCR/JESS](../unicable/) |
+| Motorised satellite dish | [Motor and USALS](../motor/) |
+| Cable + DVB-T2 on a shared input | [SPAUN, both switching states](../hybrid-spaun/) |
+
+The drawings explain signal paths. Roof installation, earthing and bonding belong to the professionally designed aerial system; these illustrations are not installation plans for that work.
+
+Source revision: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).

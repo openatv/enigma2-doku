@@ -1,0 +1,39 @@
+---
+title: "DVB-T/T2 and 5 V for active aerials"
+description: "OpenATV: DVB-T/T2 and 5 V for active aerials."
+---
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**Menu → Setup → Tuners, Scanning & Reception → Tuner Configuration → enable terrestrial reception.** Country and region select prepared scan frequencies. DVB-T2 requires a suitable frontend; changing the region cannot turn a DVB-T tuner into DVB-T2 hardware.
+
+## Direct aerial connection
+
+<Wiring id="cable-terrestrial" language="en" alt="Aerial to the DVB-T2 input shown in the lower connection example" caption="Use the lower path for DVB-T2. HDMI then connects the receiver to the television." />
+
+1. Connect the aerial to ANT IN or the shared DVB-C/T2 socket.
+2. Enable DVB-T/T2 and select country and region. If the region is absent, use All or an appropriate general frequency list.
+3. Enable **5 V for active antenna** only as required by the connection.
+4. Scan; if reception fails, test a known local multiplex directly.
+
+## When should 5 V be enabled?
+
+The supply named in the OpenATV tuner form is **5 V**, not 4 V. Actual availability depends on the receiver.
+
+| Connection | 5 V setting |
+| --- | --- |
+| Active aerial explicitly designed for 5 V over coax | On if its load is within the receiver limit |
+| Passive aerial | Normally off |
+| Aerial with separate power supply/inserter | Follow its wiring plan; do not add another supply without checking |
+| Direct cable TV outlet | Off |
+| SPAUN TAR 5 before a hybrid tuner | On in the DVB-T section to select the aerial branch; [details and DC blocking](../hybrid-spaun/) |
+
+5 V cannot amplify a passive aerial. An active aerial does not automatically benefit from more gain: excessive signal level can also reduce reception quality. Check the receiver, accessory and aerial current limits together.
+
+## T2 parameters and picture formats
+
+Manual scan offers frequency or channel number, bandwidth, DVB-T/T2 system, modulation, code rates, guard interval, transmission mode, hierarchy and the T2 **PLP ID**. Use Auto where supported and appropriate, otherwise follow operator data. A PLP is a physical data pipe in the T2 transmission, not a programme number. See the [scan reference](../scan-optionen/).
+
+A T2 lock does not prove that the video can be decoded. Encryption and codecs are additional requirements. PLP and driver limits can restrict sharing between recording and live TV: [single tuner](../single-tuner/).
+
+Source revision: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).

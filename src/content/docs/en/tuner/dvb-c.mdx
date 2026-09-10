@@ -1,0 +1,44 @@
+---
+title: "DVB-C: cable connection and scan parameters"
+description: "OpenATV: DVB-C: cable connection and scan parameters."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**Menu → Setup → Tuners, Scanning & Reception → Tuner Configuration → cable frontend.** Connect the cable outlet’s TV socket to the matching receiver input. Do not confuse it with a conventional satellite output. Leave aerial power off on a direct cable connection.
+
+<Wiring id="cable-terrestrial" language="en" alt="Cable outlet to DVB-C input and a separate alternative with aerial to DVB-T2" caption="Use the upper connection for DVB-C. Your receiver determines the available connector and tuner." />
+
+## Setup
+
+1. Enable DVB-C on a supported hybrid tuner; do not enable unconnected reception types without a reason.
+2. Select **Scan type: Provider** if the listed country, provider and region match the actual service.
+3. Set **Network ID** from the operator’s information. It can vary by location even with the same provider.
+4. If there is no suitable provider entry, use **Bands** or **Steps** with matching parameters.
+5. Save, start an [automatic or manual scan](../suchlauf/) and check a free-to-air service.
+
+| Option | Meaning |
+| --- | --- |
+| Provider, country, region | Selects a prepared frequency list |
+| Network ID | Identifies the cable network; unrelated to Wi-Fi SSID, IP address or customer number |
+| EU/US bands | Spectrum ranges for frequency discovery; avoid enabling both sets without reason |
+| Frequency step in kHz | Raster for stepped searching; smaller steps may take longer, unsuitable steps can miss carriers |
+| QAM 16/32/64/128/256 | Modulations to check during frequency discovery |
+| Symbol rates 6900/6875 and additional SR | Search candidates from operator specifications; these numbers are kSym/s, not MHz |
+| Connector | Physical input selection where the driver provides it |
+
+A network scan reads additional frequencies from the NIT **after receiving a suitable initial carrier**. It cannot overcome an incorrect start frequency or symbol rate. [CableScan](../cablescan/) is an additional provider module with its own Network ID, HD list and numbering; it is not universal for every cable network.
+
+## Reception, encryption and concurrent use
+
+A discovered service may be encrypted. A successful scan does not supply a subscription, suitable decryption or a supported codec. Two services in the same cable multiplex may be usable concurrently with one tuner; see [limits and examples](../single-tuner/). **DVB-C FBC** will be extended separately with a suitable receiver.
+
+Source revision: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).
+
+## Receiver views
+
+<Capture id="rx-nim-cable" language="en" alt="DVB-C configuration with provider selection. The form was captured without changing the connected Astra reception configuration." caption="DVB-C configuration with provider selection. The form was captured without changing the connected Astra reception configuration." />
+
+<Capture id="rx-nim-cable-bands" language="en" alt="Band scan with frequency bands, QAM variants and symbol rates. Provider information helps narrow the scan appropriately." caption="Band scan with frequency bands, QAM variants and symbol rates. Provider information helps narrow the scan appropriately." />

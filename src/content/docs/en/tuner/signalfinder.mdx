@@ -1,0 +1,37 @@
+---
+title: "Signal Finder / Satfinder: fields and buttons"
+description: "OpenATV: Signal Finder / Satfinder: fields and buttons."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Tuners, Scanning & Reception → Signal Finder.** The extension is technically named **Satfinder**, but the reviewed revision also supports suitable DVB-C, DVB-T/T2 and ATSC frontends. It combines transponder selection with regularly updated signal readings.
+
+<Capture id="rx-finder" language="en" alt="Signal Finder with measurement fields and manual transponder parameters" caption="Native form without tuning during capture: N/A means no measurement here. The image specifies neither a target level nor a reception fault in the installation." />
+
+## Operation
+
+1. Select the connected tuner. On a hybrid frontend choose only a supported, configured reception type.
+2. Choose **User defined/Single transponder** for manual parameters or **Predefined transponder** for a list entry.
+3. For satellite, select the position, then choose or enter the reference transponder.
+4. Wait for stable readings after a change. In normal use, Signal Finder tunes the frontend to these parameters.
+5. **OK or Green/Scan** starts a service scan on the selected carrier; it is not a harmless confirmation. Use **EXIT/Close** to return.
+
+## Available parameters
+
+| Reception type | Fields |
+| --- | --- |
+| Satellite | System, satellite, frequency, inversion, symbol rate, polarisation, FEC, S2 modulation, roll-off, pilot; supported MIS/IS ID, PLS mode/code and T2MI PLP/PID |
+| Cable | Frequency, symbol rate, modulation, FEC and inversion or predefined transponder |
+| DVB-T/T2 | Frequency or channel, region/transponder, system, bandwidth, modulation, code rates, transmission mode, guard interval, hierarchy, T2 PLP ID |
+| ATSC | System, frequency, inversion, modulation or predefined entry |
+
+See the [scan field reference](../scan-optionen/) for each parameter. Signal Finder limits scan type to **single or predefined transponder**. It removes the normal Network scan, Clear and Only free form rows; its initial purpose is tuning and measurement.
+
+## Interpret the readings
+
+**Lock/Signal** confirms synchronisation. **SNR**, **AGC** and **BER** depend on driver data; not every receiver supplies every value. [Signal diagnosis](../signaldiagnose/) explains readings and common faults. Higher AGC alone does not prove better quality.
+
+Signal Finder can interrupt live TV and request a free tuner. Selecting another satellite on a motorised installation can move the dish. Account for active recordings when tuners are occupied. This tool cannot remotely correct mechanical alignment and does not replace suitable installation measurement equipment.
+
+Source revision: [OpenATV plugin.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/Satfinder/plugin.py).

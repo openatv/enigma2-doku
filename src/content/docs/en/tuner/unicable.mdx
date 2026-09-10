@@ -1,0 +1,66 @@
+---
+title: "Assign Unicable, SCR and JESS correctly"
+description: "OpenATV: Assign Unicable, SCR and JESS correctly."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**Unicable carries several requested transponders over one coaxial cable.** Each independent tuner needs its own allocated **User Band number and frequency**. Do not guess unused values without installation details: a duplicate UB can disrupt another subscriber.
+
+<Wiring id="unicable" language="en" alt="SCR output through a SAT splitter to two tuners with different User Bands" caption="UB 1 / 1210 MHz and UB 2 / 1420 MHz are examples only. Follow the allocation and frequency plan of the actual installation." />
+
+## Obtain these details first
+
+From the label, installer or building operator: **LNB/multiswitch manufacturer and model, protocol, UB number, UB frequency, available satellite positions**, plus PIN and external supply details if applicable. A programmed multiswitch may differ from its factory profile.
+
+| Term | Meaning |
+| --- | --- |
+| SCR / EN 50494 / Unicable I | Protocol for up to eight User Bands |
+| JESS / EN 50607 / Unicable II / dCSS | EN 50607 addresses up to 32 User Bands; the actual system may provide fewer |
+| SCR LNB | Single-cable conversion in the LNB |
+| SCR matrix | Single-cable conversion in the multiswitch |
+| Legacy output | Conventional switchable satellite output; do not configure SCR on it |
+| Channel / SCR / UB | Identifier of the User Band allocated to the tuner |
+| Frequency | This User Band’s frequency, not a service or satellite frequency |
+
+## Configure the advanced tuner form
+
+1. Select **Configuration mode: Advanced**, then the first supplied satellite position.
+2. Assign an LNB number, for example LNB 1.
+3. Select **Type of LNB/Device: Unicable**, then SCR LNB, SCR matrix or User defined.
+4. Select the **exact** model profile. For reprogrammed or unlisted installations use User defined with the operator’s parameters.
+5. Check the allocated **channel and frequency**. Some documents count from 1 while software values may count from 0: verify the frequency and allocation together instead of copying a number blindly.
+6. Select the matching protocol under **Diction** if shown in manual configuration. A UB that requires EN 50607 cannot be addressed using EN 50494.
+7. Enable a PIN only if this UB is protected. The operator supplies it; it is not an arbitrary personal receiver password.
+8. Assign other positions from the same system, save and test several services. Then check the second subscriber.
+
+## Further fields
+
+| Option | Meaning |
+| --- | --- |
+| Use LNB 1 User Band | Reuse LNB 1’s UB/frequency for **the same tuner** across positions from the same single-cable system. This does not permit two independent tuners to share one UB |
+| Unicable position | 0 derives the position from LNB number/profile. Use 1–64 only according to a matching programmed installation; this is not orbital position in degrees |
+| Externally powered / Power Inserter | Enable when an external supply actually powers the SCR device |
+| LNB/Switch bootup time | Delay after power-up in milliseconds; follow the datasheet |
+| Tuning algorithm | Adjusts SCR command timing for SCR outlets and multiple subscribers; start with the default |
+| Connected through another tuner / Connected to | Use only for an existing physical/internal signal path; not a substitute for a missing splitter |
+| Profile frequency | Determined by channel selection; correct the model or use User defined if the table does not match |
+
+## Recognise wiring faults
+
+A splitter must support satellite IF, SCR control and the necessary DC paths. Follow the system plan for diode isolation and any power inserter. Account for splitter loss, termination and permitted cable lengths. A plain Y lead does not provide independent legacy satellite reception.
+
+- Reception fails when another subscriber zaps: check duplicate UBs and DC/splitter paths.
+- Only one position works: check position mapping and profile before assigning an additional UB.
+- No signal after a cold start: check supply, bootup time and SCR outlet.
+- A new receiver disrupts a neighbour: confirm its allocation with the building operator.
+
+Manufacturer examples illustrate why exact tables matter: [Inverto programmable 32-UB LNB](https://www.inverto.tv/lnb/192/programmable-lnb-with-32-ub). This is a technical reference, not a configuration for every installation. FBC with multiple demodulators will have a [separate extension](../fbc-sat/).
+
+Source revision: [OpenATV NimManager.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NimManager.py).
+
+## Receiver views
+
+<Capture id="rx-nim-unicable" language="en" alt="User-defined SCR example with 1284 MHz. This is not a universal default. The drawing uses different example values; only your assigned user-band frequency is authoritative." caption="User-defined SCR example with 1284 MHz. This is not a universal default. The drawing uses different example values; only your assigned user-band frequency is authoritative." />

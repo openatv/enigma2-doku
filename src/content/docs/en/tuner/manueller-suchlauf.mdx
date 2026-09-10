@@ -1,0 +1,56 @@
+---
+title: "Manual scan: frequency, MIS, PLS and T2MI"
+description: "OpenATV: Manual scan: frequency, MIS, PLS and T2MI."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+
+**Menu → Setup → Tuners, Scanning & Reception → Manual Scan.** Start troubleshooting with a known transponder. Use operator data or a current reliable frequency list. An incorrect number format can yield no results even with correct tuner configuration.
+
+## Satellite
+
+Choose tuner, scan type and satellite. For **Single transponder**, enter frequency in the displayed unit, polarisation and symbol rate. Values must match the current transmission; an old tutorial is not a current frequency list.
+
+| Parameter | Purpose |
+| --- | --- |
+| DVB-S / S2 / supported S2X | Transmission system; the hardware must support demodulation |
+| Frequency | Satellite RF frequency, not a Unicable UB or LNB intermediate frequency |
+| Polarisation | H/V or L/R matching service and LNB |
+| Symbol rate | Symbol speed, often shown in kSym/s |
+| FEC | Error protection; use Auto only if supported |
+| Modulation | Such as QPSK or 8PSK; match the transmission |
+| Inversion | Spectrum orientation; normally Auto where offered |
+| Roll-off / Pilot | Additional S2 transmission parameters |
+| Transport Stream Type / Multistream | Select a component stream where the frontend and service use MIS |
+| Input Stream ID / IS ID | Identifier of the desired input stream |
+| PLS mode and code | Physical-layer scrambling parameters; not decryption keys or channel numbers |
+| T2MI PLP and T2MI PID | Select the transported T2-MI path and PLP; suitable support is required |
+
+**Multistream, PLS and T2MI are separate concepts.** Ordinary Astra direct reception does not need arbitrary PLS codes. T2-MI carries terrestrial multiplex information over another transport path; its PLP ID is not a normal DVB-S service ID. Normal DVB-T2 PLP selection in an aerial tuner belongs to terrestrial reception instead.
+
+## Cable, terrestrial and ATSC
+
+For **DVB-C**: frequency, symbol rate, QAM modulation, and FEC/inversion where applicable. For **DVB-T/T2**: frequency or channel, bandwidth, modulation, HP/LP code rates, transmission mode, guard interval, hierarchy and PLP ID. Predefined transponders supply many values from the selected list.
+
+**ATSC** appears only with suitable hardware/region and provides system, frequency, inversion and modulation. This form does not promise support for every ATSC generation or regional encryption system.
+
+## Scan options and buttons
+
+**Network scan (NIT)** reads the broadcast Network Information Table to include further advertised transponders. The scan can therefore extend beyond the entered frequency. Disable it to test only this transponder; use suitable provider data for a complete network scan.
+
+**Clear before scan: No** adds or updates discovered services. Clearing variants can remove existing services within the affected scan scope; they are not required to add one new channel. **Only free scan** filters by the broadcast encryption flag and does not guarantee that every result always broadcasts a freely viewable programme.
+
+Use **up/down** to select a row, **left/right** to change a choice, and number buttons for values. **OK or Green/Scan** starts scanning. **EXIT/Cancel** returns. Afterwards, check the results in the channel list and add services to a bouquet as needed.
+
+## Select multiple satellites manually
+
+Single satellite and multisat modes scan existing transponder lists for selected positions. Multisat variants may start with satellites selected or deselected. Check the selections before starting. Predefined means that initial parameters already exist; Blindscan discovers carriers through a different process.
+
+For additions, choose Clear: No, set network scan deliberately and start. If there is no lock, check the signal and parameters first. [Look up all form variants](../scan-optionen/).
+
+Source revision: [OpenATV ScanSetup.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ScanSetup.py).
+
+## Receiver views
+
+<Capture id="rx-scan-manual" language="en" alt="Manual satellite scan with transponder fields and Network scan, Clear before scan and Only free scan options. No scan was started during this series." caption="Manual satellite scan with transponder fields and Network scan, Clear before scan and Only free scan options. No scan was started during this series." />

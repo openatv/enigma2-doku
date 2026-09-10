@@ -1,0 +1,49 @@
+---
+title: "DVB-C und DVB-T2 mit SPAUN TAR 5 umschalten"
+description: "OpenATV: DVB-C und DVB-T2 mit SPAUN TAR 5 umschalten."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+import { Image } from 'astro:assets';
+import spaun from '../../../../assets/reception/spaun-tar5.png';
+
+**Ein geeigneter Hybrid-Tuner kann Kabel und Antenne abwechselnd verwenden.** Beim SPAUN TAR 5 entscheidet die Antennenspannung, welcher Eingang mit dem Tuner verbunden wird: **0 V → CATV/Kabel, 5 V → DVB-T/Antenne**. Es ist ein HF-Relais, kein zweiter Tuner und kein DiSEqC-Satellitenschalter.
+
+<figure><Image src={spaun} alt="Vom Betreiber bereitgestelltes Foto des SPAUN TAR 5 mit Anschlüssen Tuner/TV, DVB-T 5 V und CATV TV" width={612} /><figcaption>Originalfoto des bereitgestellten TAR 5. Maßgeblich sind die Beschriftung und das Datenblatt der tatsächlich vorhandenen Ausführung.</figcaption></figure>
+
+## Kabel richtig anschließen
+
+1. Kabel-TV-Dose an die Buchse **CATV / TV** des TAR 5.
+2. Terrestrische Antenne an **DVB-T / 5 V**.
+3. Anschluss **Tuner / TV-Gerät** des TAR 5 an den gemeinsamen **DVB-C/T2-Eingang** der Box.
+4. HDMI der Box wie gewohnt zum TV. Keinen SAT-Ausgang mit 13/18 V an diese Anordnung anschließen.
+
+<Wiring id="spaun-0v" language="de" alt="SPAUN TAR 5 bei 0 V: Kabel-TV wird zum Hybrid-Tuner durchgeschaltet, Antenne ist inaktiv" caption="Beim Kabelsender bleibt die DVB-T-Antennenspannung aus. Das Relais verbindet CATV mit dem Tuner." />
+
+<Wiring id="spaun-5v" language="de" alt="SPAUN TAR 5 bei 5 V: Antenne wird zum Hybrid-Tuner durchgeschaltet, Kabel-TV ist inaktiv" caption="Beim terrestrischen Sender schaltet die Box die konfigurierte 5-V-Speisung ein. Das Relais wählt den Antennenzweig." />
+
+## In OpenATV konfigurieren
+
+**Menü → Einstellungen → Empfang → Tuner → gemeinsamer C/T2-Tuner.** Bei unterstützter Hardware beide Empfangsarten konfigurieren: DVB-C mit Anbieter-/Suchdaten und DVB-T mit Land/Region. Im **DVB-T-Zweig „5 V für aktive Antenne“ einschalten**. Die Einspeisung dient hier auch zur Relaissteuerung.
+
+Kabel- und terrestrischen Suchlauf getrennt ausführen. Danach je einen Sender beider Empfangsarten in ein Testbouquet aufnehmen und hin- und herschalten. Der Treiber muss beim Wechsel der Empfangsart die Antennenspannung entsprechend setzen. Wenn die Box nur eine dauerhaft gewählte Empfangsart unterstützt oder keine steuerbare 5-V-Ausgabe bietet, funktioniert dieses Beispiel nicht allein durch das Relais.
+
+## Passive Antenne und Stromversorgung
+
+Der TAR 5 benötigt die 5 V auch dann zum Umschalten, wenn die angeschlossene Antenne selbst keine Versorgung benötigt. Für eine **nicht DC-taugliche Antenne** nennt SPAUN ein DC-Trennglied im **DVB-T-Antennenzweig**. Es gehört zwischen Antenne und Relais, damit die Steuerleitung von der Box zum Relais weiterhin 5 V übertragen kann. Nicht pauschal einen DC-Blocker zwischen Box und TAR 5 setzen.
+
+Das Foto nennt 5 V, 35 mA und 5–862 MHz. Unterschiedliche Unterlagen/Ausführungen nennen unterschiedliche DC-Durchlassgrenzen; daher **die Grenze des vorhandenen Geräts und der Box prüfen**, nicht einen höheren Katalogwert auf das abgebildete Gerät übertragen. Relais und gegebenenfalls aktive Antenne belasten gemeinsam die Versorgung. Der Frequenzbereich muss auch zu den verwendeten Kabelkanälen passen; oberhalb 862 MHz besteht für diese Ausführung keine zugesagte Abdeckung.
+
+## Aufnahmen bleiben an die Empfangsart gebunden
+
+Eine DVB-C-Aufnahme belegt den gemeinsamen Tuner. Gleichzeitig einen DVB-T2-Sender zu sehen oder aufzunehmen würde die Quelle umschalten und geht mit diesem einen Empfangsteil nicht. Dass beide Senderlisten eingerichtet sind, ändert daran nichts. [Mehrere Programme innerhalb eines Multiplexes](../single-tuner/) sind ein anderer Fall.
+
+Herstellergrundlage: [SPAUN-Katalog, Anschlussbeispiel Seite 99 und TAR-5-Daten Seite 135](https://cdn.centralpoint.nl/objects/pdf/0/008/1350021543_1.pdf). Die Verkabelung ist erklärt; ein praktischer TAR-5-Umschalttest gehört zur späteren Hardware-Ergänzung.
+
+Quellstand: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).
+
+## Ansichten auf der Box
+
+<Capture id="rx-nim-terrestrial" language="de" alt="Native C/T-Hybridansicht mit 5-V-Option für DVB-T/T2. Beim TAR 5 steuert diese Spannung den Antennenweg; die Kabel-TV-Konfiguration verwendet keine 5-V-Speisung." caption="Native C/T-Hybridansicht mit 5-V-Option für DVB-T/T2. Beim TAR 5 steuert diese Spannung den Antennenweg; die Kabel-TV-Konfiguration verwendet keine 5-V-Speisung." />

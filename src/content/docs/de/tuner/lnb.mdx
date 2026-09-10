@@ -1,0 +1,48 @@
+---
+title: "LNB-Typen, Ku-/C-Band und LOF"
+description: "OpenATV: LNB-Typen, Ku-/C-Band und LOF."
+---
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+Das **LNB** sitzt an der Sat-Schüssel. Es nimmt das Satellitensignal auf und setzt es in einen niedrigeren Frequenzbereich um, den das Koaxialkabel zur Box überträgt. Die passende LNB-Einstellung beschreibt diese Umsetzung und die Steuerung.
+
+## LNB-Bauformen
+
+| Typ | Anschluss und Verwendung |
+| --- | --- |
+| Single | Ein schaltbarer Teilnehmerausgang für einen konventionellen Empfangsweg |
+| Twin | Zwei unabhängige Teilnehmerausgänge |
+| Quad | Vier unabhängige schaltbare Teilnehmerausgänge |
+| Quattro | Vier **feste** Ebenen: vertikal/low, horizontal/low, vertikal/high, horizontal/high. An einen passenden Multischalter anschließen |
+| Monoblock | Mehrere LNB für verschiedene Positionen mit integriertem Schalter. Portreihenfolge und Winkel müssen passen |
+| Unicable-LNB | Gibt angeforderte Transponder auf zugeteilten User Bands aus; eigene [SCR-Konfiguration](../unicable/) erforderlich |
+| Wideband | Meist je ein breiter Frequenzausgang für H und V. Benötigt passende Matrix oder ausdrücklich unterstützten Eingang; kein normaler Universal-LNB-Ersatz |
+| Optische Verteilung | Am Receiver zählt das Ausgangssignal des optisch/elektrischen Umsetzers, etwa Legacy oder SCR |
+
+„Single“ bei einem LNB bezeichnet die Zahl der Teilnehmerausgänge; „Single-Tuner“ bezeichnet ein Empfangsteil der Box. Ein Quad-LNB verwandelt einen einzelnen Tuner nicht in vier Tuner.
+
+<Wiring id="multiswitch" language="de" alt="Quattro-LNB mit vier Ebenen an Multischalter und getrennte Teilnehmerleitungen" caption="Beim Quattro ist die richtige Zuordnung aller vier Ebenen entscheidend. Für einen direkten Teilnehmeranschluss wird gewöhnlich ein schaltbarer Ausgang verwendet." />
+
+## Ku-Band, C-Band und Polarisation
+
+Bei üblichen europäischen Astra-/Hotbird-Haushaltsanlagen wird **Ku-Band** verwendet. Ein gewöhnliches Universal-Ku-LNB arbeitet für diesen Bereich mit zwei Oszillatorfrequenzen. **C-Band** liegt tiefer und verwendet andere LNB-Daten, häufig größere Antennen und je nach Dienst lineare oder zirkulare Polarisation. „C-Band“ hat nichts mit DVB-C-Kabelfernsehen zu tun.
+
+**Linear:** horizontal/vertikal (H/V). **Zirkular:** links-/rechtsdrehend (L/R). Die Auswahl muss zum LNB und zum Satellitendienst passen. Ein H/V-LNB wird durch einen Menüwert allein nicht zu einem zirkularen LNB.
+
+## LOF und Steuersignale verstehen
+
+| Feld | Bedeutung / übliches Universal-Ku-Beispiel |
+| --- | --- |
+| LOF/L | Lokaler Oszillator für das untere Band, gewöhnlich **9750 MHz** |
+| LOF/H | Oszillator für das obere Band, gewöhnlich **10600 MHz** |
+| Schaltschwelle / Threshold | Bandgrenze, gewöhnlich **11700 MHz** |
+| Spannung | Normalerweise etwa 13 V für V und 18 V für H; Anlage und LNB bestimmen die Verwendung |
+| 22-kHz-Ton | Bei Universal-Ku normalerweise aus für Low, an für High |
+| Erhöhte Spannung | Sonderfall zur Spannungsversorgung; kein Regler für besseren SNR oder stärkere Antennenverstärkung |
+
+Diese drei Frequenzwerte sind **kein Standard für alle LNBs**. Bei C-Band, Wideband oder besonderen Oszillatoren den passenden Typ bzw. „Benutzerdefiniert“ mit den Herstellerdaten auswählen. Beispiel der Umsetzung im üblichen Ku-Lowband: 11000 MHz Empfangsfrequenz − 9750 MHz LOF = 1250 MHz Zwischenfrequenz. In der Sendersuche gibst du die Satellitenfrequenz ein, nicht versehentlich die Zwischenfrequenz.
+
+Wenn nur Low/High oder nur H/V funktioniert, prüfe Spannung, Ton, Verkabelung der Quattro-Ebenen und LNB-Daten. Ein vollständiger Sendersuchlauf behebt eine vertauschte Ebene nicht.
+
+Quellstand: [OpenATV NimManager.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NimManager.py).

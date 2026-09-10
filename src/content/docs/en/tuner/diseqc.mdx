@@ -1,0 +1,52 @@
+---
+title: "Toneburst, DiSEqC and Astra + Hotbird"
+description: "OpenATV: Toneburst, DiSEqC and Astra + Hotbird."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**DiSEqC selects the signal path through the satellite cable.** A satellite name in the service list cannot select an external switch on its own. The receiver needs a mapping between each port and LNB.
+
+<Wiring id="diseqc" language="en" alt="Astra 19.2 East on port A and Hotbird 13.0 East on port B of a DiSEqC switch, OUT to receiver" caption="Example: A = Astra 19.2°E, B = Hotbird 13.0°E. Your existing switch may use the opposite mapping." />
+
+## Configure Astra and Hotbird
+
+1. Open Menu → Setup → Tuners, Scanning & Reception → Tuner Configuration → the connected satellite tuner.
+2. Choose **Configuration mode: Simple**.
+3. Choose **Mode: DiSEqC A/B** for a suitable two-input switch.
+4. Assign Astra 19.2°E to A and Hotbird 13.0°E to B **if the cables use those ports**.
+5. Leave voltage and 22 kHz enabled for a conventional universal-LNB system. Save, check and scan each position separately.
+
+A monoblock combines the LNBs and switch in one housing. Whether Astra is A or B depends on the product and mounting. Both LNBs on a multi-feed dish must be aligned to the intended positions.
+
+## Simple modes and their purpose
+
+| Mode / option | Purpose |
+| --- | --- |
+| Single | One LNB/position on a conventional feed |
+| Send DiSEqC in Single mode | Yes if a multiswitch specifically requires a port-A command; normally No for a direct LNB |
+| Toneburst A/B | Simple two-way switching signal for a compatible switch; also called Mini-DiSEqC |
+| DiSEqC A/B | Digital port command for two inputs |
+| DiSEqC A/B/C/D | Up to four directly selected inputs; set unused ports to Nothing connected |
+| Set voltage and 22 kHz | Selects polarisation and band on a universal LNB; does not amplify the signal |
+| Send DiSEqC only on satellite change | Avoids resending the port command within one position; check normal per-zap commands if switching is unreliable |
+| Use circular LNB | Only for actual circular reception equipment, not an ordinary linear Astra/Hotbird Ku LNB |
+| Positioner / satellite group | Motorised installation; see the [motor chapter](../motor/) |
+
+## 1.0, 1.1 and 1.2
+
+**DiSEqC 1.0** uses committed commands for up to four switch positions. **1.1** adds uncommitted switches for larger or cascaded installations. **1.2** controls motor positions. **USALS** calculates motor targets from the location and satellite position. Higher numbers do not mean better picture quality. Cascades require matching command order, port numbers and repeats: [advanced settings](../sat-erweitert/).
+
+If only one position works, check the port mapping and switch output, then test a known frequency on the other position before changing repeats. [AutoDiSEqC](../autodiseqc/) can identify supported positions but cannot correct the wiring.
+
+Source revision: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).
+
+## Receiver views
+
+<Capture id="rx-nim-toneburst" language="en" alt="Toneburst A/B for a compatible two-input switch. Port assignments follow the wiring." caption="Toneburst A/B for a compatible two-input switch. Port assignments follow the wiring." />
+
+<Capture id="rx-nim-diseqc" language="en" alt="DiSEqC A/B: Astra on A and Hotbird on B in this example. These example values were not saved." caption="DiSEqC A/B: Astra on A and Hotbird on B in this example. These example values were not saved." />
+
+<Capture id="rx-nim-four" language="en" alt="Four DiSEqC ports. Unused inputs remain set to Nothing connected." caption="Four DiSEqC ports. Unused inputs remain set to Nothing connected." />

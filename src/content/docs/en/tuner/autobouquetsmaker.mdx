@@ -1,0 +1,62 @@
+---
+title: "AutoBouquetsMaker: providers, bouquets and scheduling"
+description: "OpenATV: AutoBouquetsMaker: providers, bouquets and scheduling."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+
+**AutoBouquetsMaker (ABM) creates bouquets using the rules and data of a supported provider.** It helps track service changes and official numbering. It is not a general Internet downloader for arbitrary channel lists and cannot fix tuner configuration.
+
+Install **`enigma2-plugin-systemplugins-autobouquetsmaker`** through Download plugins, then open Menu → Setup → Tuners, Scanning & Reception → AutoBouquetsMaker. Available providers depend on plugin data, reception type and configured positions.
+
+## First run
+
+1. Back up settings and verify reception.
+2. Open **Providers**, enable a provider you can actually receive and select the region if applicable.
+3. Choose which main, section, HD and FTA bouquets to create.
+4. In **Configure**, initially leave **Keep all non-ABM bouquets** enabled. Choose placement and provider prefix.
+5. Run ABM manually, check the result and log. Enable scheduling after a successful test.
+
+## Provider options
+
+| Option | Purpose |
+| --- | --- |
+| Enable provider / region | Select the provider and regional variant to process |
+| FTA only | Omit services signalled as encrypted for this provider |
+| Main bouquet | Complete list, HD/FTA-HD where offered, custom bouquet or none |
+| Custom main bouquet | Choose an existing bouquet; the reviewed revision uses its first 100 entries |
+| Section bouquets | Create groups such as movies, entertainment and documentaries |
+| HD, FTA, FTA-HD bouquet | Create additional filtered lists |
+| Swap channels | Replace SD with suitable HD variants at provider-defined positions where supported |
+| Custom mode | Apply provider-specific additions, removals or renaming |
+| Non-indexed services | Append extra services that have no official channel number |
+
+Not every provider offers every option. Direct edits to a generated ABM bouquet may be lost on the next run. Keep a separate non-ABM bouquet for a permanent personal order, or use the intended customisation rules.
+
+## Global options and schedule
+
+| Option | Effect |
+| --- | --- |
+| Schedule scan, time, weekdays | Run ABM at selected times; this is not a Linux cron entry |
+| Wake from deep standby | Requires suitable hardware and correct time; see [wakeup](../../system/zeit-aufwachen/) |
+| Return to deep standby | Shut down again after scheduled wakeup when in standby and no recording is active |
+| Keep all non-ABM bouquets | Retain existing personal bouquets in the index |
+| Keep bouquets | Available for individual selection when blanket retention is disabled |
+| Add provider name | Identify each list’s source |
+| Provider markers / marker styles | Visually separate provider groups and bouquet sections |
+| Place bouquets at top/bottom | Position in the bouquet index |
+| Skip services on unconfigured satellites | Avoid unusable entries outside configured positions |
+| Extra debug | Additional Enigma2 logging for diagnosis |
+| Show DVB-T frequency finder | Specialist tool for appropriate UK provider/repeater areas, not a universal terrestrial scan |
+| Show in extensions | Add a scan entry to the extensions menu |
+
+The main menu also manages provider order and hidden sections as applicable. User provider definitions belong under **`/etc/enigma2/AutoBouquetsMaker/providers`**, and custom adjustments under **`/etc/enigma2/AutoBouquetsMaker/custom`**. Include these in settings backups. Avoid uncontrolled edits to packaged definitions.
+
+For a timeout, first check whether the required entry transponder and its tables are receivable. Updated provider definitions, reception checks and logs are more useful than repeatedly deleting every bouquet. Avoid overlapping ABM, EPGRefresh and recording schedules.
+
+Sources: [ABM settings, matching revision](https://github.com/oe-alliance/AutoBouquetsMaker/blob/ba6010b90b/AutoBouquetsMaker/src/setup.py), [ABM customisation](https://github.com/oe-alliance/AutoBouquetsMaker/blob/ba6010b90b/AutoBouquetsMaker/src/README.txt). [All ABM fields](../abm-optionen/).
+
+## Receiver views
+
+<Capture id="rx-abm" language="en" alt="AutoBouquetsMaker with scheduling fields visible. The enabled schedule is an unsaved form example." caption="AutoBouquetsMaker with scheduling fields visible. The enabled schedule is an unsaved form example." />

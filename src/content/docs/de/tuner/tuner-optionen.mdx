@@ -1,0 +1,29 @@
+---
+title: "Allgemeine Tunereinstellungen und Prioritäten"
+description: "OpenATV: Allgemeine Tunereinstellungen und Prioritäten."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+
+**Menü → Einstellungen → Empfang → Tunereinstellungen** ist ein anderer Dialog als die Einrichtung der einzelnen Anschlüsse. Er beeinflusst die Auswahl vorhandener Tuner und einige Treibersonderfälle. Die vollständigen **12 ausgelesenen Setup-Einträge** stehen bereits in der [allgemeinen Referenz](../../einstellungen/referenz/tuner/).
+
+| Gruppe | Bedeutung |
+| --- | --- |
+| Bevorzugter Tuner | Bevorzugung beim normalen Empfang, wenn mehrere verwendbare Tuner vorhanden sind; „Auto“ lässt Enigma2 entscheiden |
+| Bevorzugter Tuner für Aufnahmen | Eigene Priorität für Aufnahmen; „Deaktiviert“ folgt der allgemeinen Präferenz, „Auto“ nutzt die Standardauswahl |
+| Mehrfachauswahl für Aufnahmen | Liste bevorzugter Tuner auf Expertenebene |
+| Strikte Begrenzung, experimentell | Verändert die gemeinsame Verwendung belegter Empfangsteile zugunsten der bevorzugten Liste; kann verfügbare Ressourcen anders verteilen |
+| Hintergrundsuche deaktivieren | Unterbindet normale Aktualisierung von Transponderdiensten während des Empfangs; nicht vorsorglich aktivieren |
+| DVB-S/C/T-Namespace-Unternetz ignorieren | Spezialregeln zur Dienstidentität bei gültigen ONIDs; kann Zuordnung beeinflussen, ist keine Frequenzkorrektur |
+| Delivery-System-Workaround | Kompatibilität für alte Tuner-Treiber; nur bei entsprechendem Problem |
+| LNB-Spannung/Toneburst erzwingen | Hardwareabhängige Sondersteuerung, keine allgemeinen Empfangsverbesserer |
+| 12-V-Ausgang | Separater Schaltausgang bei unterstützten Geräten; nicht die 5-V-Antennenspeisung und nicht HDMI |
+
+Eine Tunerpriorität erschafft keinen zusätzlichen Empfangsweg und hebt [Single-Tuner-Grenzen](../single-tuner/) nicht auf. Bei einer normalen Installation zunächst automatische Auswahl verwenden. Beschreibe bei Problemen mit Aufnahmen immer auch die Verkabelung.
+
+Quellstand: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml).
+
+## Ansichten auf der Box
+
+<Capture id="rx-tuner-options" language="de" alt="Allgemeine Tunereinstellungen regeln unter anderem bevorzugte Tuner und Reservierung. Sie sind vom Anschlussformular getrennt." caption="Allgemeine Tunereinstellungen regeln unter anderem bevorzugte Tuner und Reservierung. Sie sind vom Anschlussformular getrennt." />

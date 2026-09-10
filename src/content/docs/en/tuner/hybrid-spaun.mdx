@@ -1,0 +1,49 @@
+---
+title: "Switch DVB-C and DVB-T2 with SPAUN TAR 5"
+description: "OpenATV: Switch DVB-C and DVB-T2 with SPAUN TAR 5."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+import { Image } from 'astro:assets';
+import spaun from '../../../../assets/reception/spaun-tar5.png';
+
+**A suitable hybrid tuner can use cable and aerial reception alternately.** On the SPAUN TAR 5, aerial voltage selects the input connected to the tuner: **0 V → CATV/cable, 5 V → DVB-T/aerial**. This is an RF relay, not another tuner or a satellite DiSEqC switch.
+
+<figure><Image src={spaun} alt="Operator-supplied SPAUN TAR 5 photo showing Tuner/TV, DVB-T 5 V and CATV TV connectors" width={612} /><figcaption>Original photograph of the supplied TAR 5. Follow the label and datasheet of the actual hardware revision.</figcaption></figure>
+
+## Connect the cables
+
+1. Cable TV wall outlet to the TAR 5 **CATV / TV** socket.
+2. Terrestrial aerial to **DVB-T / 5 V**.
+3. TAR 5 **Tuner / TV** connector to the receiver’s shared **DVB-C/T2 input**.
+4. Connect HDMI to the television as usual. Never connect a 13/18 V satellite output to this arrangement.
+
+<Wiring id="spaun-0v" language="en" alt="SPAUN TAR 5 at 0 V: cable TV is connected to the hybrid tuner and the aerial is inactive" caption="For a cable service, DVB-T aerial voltage stays off. The relay connects CATV to the tuner." />
+
+<Wiring id="spaun-5v" language="en" alt="SPAUN TAR 5 at 5 V: the aerial is connected to the hybrid tuner and cable TV is inactive" caption="For a terrestrial service, the receiver applies the configured 5 V supply. The relay selects the aerial branch." />
+
+## Configure OpenATV
+
+Open **Menu → Setup → Tuners, Scanning & Reception → Tuner Configuration → shared C/T2 tuner**. On supported hardware, configure both reception types: DVB-C with provider/scan parameters and DVB-T with country/region. **Enable 5 V for active antenna in the DVB-T section.** Here the supply also controls the relay.
+
+Run cable and terrestrial scans separately. Add one service of each type to a test bouquet and switch between them. The driver must change aerial voltage as the reception type changes. If the receiver supports only one permanently selected mode, or lacks a controllable 5 V output, the relay alone cannot make this example work.
+
+## Passive aerials and supply current
+
+The TAR 5 still requires 5 V for switching when the aerial itself needs no power. For a **non-DC-compatible aerial**, SPAUN specifies a DC blocker in the **DVB-T aerial branch**. Place it between aerial and relay so that the receiver-to-relay control path still carries 5 V. Do not indiscriminately insert a blocker between receiver and TAR 5.
+
+The photograph specifies 5 V, 35 mA and 5–862 MHz. Different documents/revisions list different DC-pass limits, so **check the limits of the actual relay and receiver** instead of applying a higher catalogue figure to the photographed device. The relay and any active aerial share the supply load. Its frequency range must cover the cable channels in use; this revision does not promise coverage above 862 MHz.
+
+## Recordings remain tied to the reception type
+
+A DVB-C recording occupies the shared tuner. Watching or recording DVB-T2 at the same time would change the input source and is not possible with this one frontend. Having both channel lists configured does not change this. [Multiple services within one multiplex](../single-tuner/) are a separate case.
+
+Manufacturer reference: [SPAUN catalogue, connection example on page 99 and TAR 5 data on page 135](https://cdn.centralpoint.nl/objects/pdf/0/008/1350021543_1.pdf). This explains the wiring; a practical TAR 5 switching test belongs to the later hardware extension.
+
+Source revision: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).
+
+## Receiver views
+
+<Capture id="rx-nim-terrestrial" language="en" alt="Native C/T hybrid form with the DVB-T/T2 5 V option. With the TAR 5 this voltage selects the aerial path; the cable TV configuration uses no 5 V supply." caption="Native C/T hybrid form with the DVB-T/T2 5 V option. With the TAR 5 this voltage selects the aerial path; the cable TV configuration uses no 5 V supply." />

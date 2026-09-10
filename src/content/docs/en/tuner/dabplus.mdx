@@ -1,0 +1,58 @@
+---
+title: "DAB+: satellite feeds, RTL-SDR and settings"
+description: "OpenATV: DAB+: satellite feeds, RTL-SDR and settings."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+
+**DAB+ is digital radio carrying multiple services in an ensemble.** This OpenATV 8.0 source revision supports two reception paths: DAB-over-DVB through supported satellite feeds, and terrestrial DAB+ using a compatible **RTL-SDR USB receiver**. Normal DVB-S radio and Internet radio are different services.
+
+## DAB+ through satellite
+
+The receiver tunes a DVB transponder and a backend extracts the DAB ensemble stream. This requires a supported feed definition, correct satellite configuration and installed decoders. Renaming an arbitrary radio service to DAB+ is not enough. It also does not make a normal DVB-T2 frontend receive terrestrial DAB+ automatically.
+
+**Menu → Setup → Tuners, Scanning & Reception → DAB+ Settings** shows common options and, depending on available sources, the satellite selection. Open **DAB+ Scan** afterwards. This runs the scan and may occupy the required reception tuner; avoid starting it during important recordings.
+
+## DAB+ with an RTL-SDR USB stick
+
+1. Connect a compatible stick and suitable DAB aerial. Not every USB DVB-T stick supports this backend path.
+2. Install the matching backend from the image feed if absent. An installed package does not prove that a USB tuner has been detected.
+3. Open DAB+ Settings, select **Refresh** and check hardware status.
+4. Enable DAB+ mode, select receiver and scan region. DVB-T and DAB+ cannot use the same stick simultaneously.
+5. Start with automatic gain; change manual RF gain and ppm correction only for a specific reception issue.
+6. Run DAB+ Scan, then open the generated **radio bouquets**.
+
+## All settings
+
+| Option | Purpose |
+| --- | --- |
+| Show DAB+ slideshow | Broadcast station images instead of a static radio background, where the station supplies them |
+| Reception sources to scan | USB, satellite feeds or both when available |
+| Satellite feeds to scan | Include/exclude configured positions; selection appears when several positions are available |
+| Enable DAB+ mode | Use the selected RTL-SDR for DAB+ |
+| Select tuner | Automatic or a specific detected USB device |
+| Scan region | Limit DAB frequency blocks according to `dab.xml` |
+| Automatic gain | Let the backend choose RF gain |
+| RF gain | Position within supported gain range; backend selects the nearest supported step |
+| Frequency correction / ppm | Correct oscillator offset; not a channel or volume control |
+| Block DVB kernel driver, where offered | Prevent the DVB-T driver claiming hardware needed by RTL-SDR; saving can create a persistent driver configuration, not merely alter the display |
+| Refresh | Read the USB inventory again; the settings view deliberately avoids opening the tuner exclusively |
+
+Diagnostics show status, model, manufacturer, product, serial number, USB ID/port/speed, kernel driver, DVB frontend, detected tuner and gain steps where available. Missing backend and undetected USB hardware are different faults. A stick occupied by DVB-T cannot serve DAB+ at the same time.
+
+## Files, decoders and results
+
+The packaged definition is **`/usr/share/enigma2/dab.xml`**. A local **`/etc/enigma2/dab.xml`** replaces it for testing/customisation; an old local file can hide newer package definitions. The XML defines satellite, transponder and transport parameters as well as terrestrial blocks. Station names and services are read from the received ensemble.
+
+The reviewed code supports **fedi2eti, tsniv2ni, ts2na12 and ts2na** feed paths plus RTL-SDR. These are transport decoders, not aerial types. Results are registered as radio bouquets; failures appear in the scan status and Enigma2 logs tagged **`DABScan`**. `/tmp` diagnostics are temporary. Check image/backend revision, available source and reception first if the feature is absent or fails.
+
+Background: [WorldDAB explains DAB](https://www.worlddab.org/dab/how-dab-works). This chapter documents software functions; terrestrial USB DAB+ reception has not been tested on the current receiver.
+
+Source revision: [OpenATV DABScan.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/DABScan.py).
+
+## Receiver views
+
+<Capture id="rx-dab" language="en" alt="DAB+ setup with satellite and USB functionality." caption="DAB+ setup with satellite and USB functionality." />
+
+<Capture id="rx-dab-usb" language="en" alt="USB DAB+ form with a detected RTL2832U device. Detection alone does not establish DAB+ reception; no USB scan was started." caption="USB DAB+ form with a detected RTL2832U device. Detection alone does not establish DAB+ reception; no USB scan was started." />

@@ -1,0 +1,48 @@
+---
+title: "LNB types, Ku/C band and LOF"
+description: "OpenATV: LNB types, Ku/C band and LOF."
+---
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+The **LNB** sits on the satellite dish. It receives the satellite signal and converts it to a lower frequency range that the coaxial cable carries to the receiver. The LNB settings describe this conversion and its control.
+
+## LNB designs
+
+| Type | Connection and purpose |
+| --- | --- |
+| Single | One switchable subscriber output for one conventional reception path |
+| Twin | Two independent subscriber outputs |
+| Quad | Four independent switchable subscriber outputs |
+| Quattro | Four **fixed** planes: vertical/low, horizontal/low, vertical/high, horizontal/high. Connect to a suitable multiswitch |
+| Monoblock | LNBs for different positions with a built-in switch. Port mapping and angular spacing must match |
+| Unicable LNB | Outputs requested transponders on allocated User Bands; requires [SCR configuration](../unicable/) |
+| Wideband | Usually separate wideband H and V outputs. Requires a compatible matrix or explicitly supported input; not a direct universal-LNB replacement |
+| Optical distribution | Configure for the electrical converter’s receiver output, such as legacy or SCR |
+
+“Single” on an LNB describes its subscriber outputs; “single tuner” describes a receiver frontend. A Quad LNB does not turn one tuner into four.
+
+<Wiring id="multiswitch" language="en" alt="Four Quattro LNB planes to a multiswitch and separate subscriber feeds" caption="A Quattro requires the correct mapping of all four planes. A direct subscriber normally uses a switchable output." />
+
+## Ku band, C band and polarisation
+
+Typical European domestic Astra/Hotbird installations use **Ku band**. An ordinary universal Ku LNB uses two local oscillator frequencies for this range. **C band** is lower and requires different LNB parameters, often larger dishes, and linear or circular polarisation depending on the service. C band is unrelated to DVB-C cable television.
+
+**Linear:** horizontal/vertical (H/V). **Circular:** left/right (L/R). Match the LNB and satellite service. Changing a menu entry cannot turn an H/V LNB into a circular LNB.
+
+## LOF and control signals
+
+| Field | Meaning / typical universal Ku example |
+| --- | --- |
+| LOF/L | Low-band local oscillator, commonly **9750 MHz** |
+| LOF/H | High-band local oscillator, commonly **10600 MHz** |
+| Threshold | Band switching boundary, commonly **11700 MHz** |
+| Voltage | Typically about 13 V for V and 18 V for H; the installation and LNB determine its use |
+| 22 kHz tone | Normally off for low band and on for high band on universal Ku |
+| Increased voltage | A supply-related special setting; not an SNR or aerial gain control |
+
+These three frequencies are **not universal defaults for every LNB**. For C band, wideband or special oscillators, select the matching type or User defined with manufacturer data. A typical Ku low-band example is 11000 MHz satellite frequency − 9750 MHz LOF = 1250 MHz intermediate frequency. Enter the satellite frequency in a service scan, not the intermediate frequency by mistake.
+
+If only low/high band or H/V works, check voltage, tone, Quattro plane wiring and LNB parameters. A full scan cannot correct a swapped plane.
+
+Source revision: [OpenATV NimManager.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NimManager.py).

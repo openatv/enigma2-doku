@@ -1,0 +1,37 @@
+---
+title: "Signalfinder / Satfinder: Felder und Tasten"
+description: "OpenATV: Signalfinder / Satfinder: Felder und Tasten."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Empfang → Signalfinder.** Die Erweiterung heißt technisch **Satfinder**, ist im geprüften Stand aber auch für unterstützte DVB-C-, DVB-T/T2- und ATSC-Empfangsteile ausgelegt. Sie verbindet die Transponderauswahl mit einer laufend aktualisierten Signalanzeige.
+
+<Capture id="rx-finder" language="de" alt="Signalfinder mit Messfeldern und manuellen Transponderparametern" caption="Native Formularansicht ohne Abstimmung während der Bildaufnahme: N/A bedeutet hier keine Messung. Das Bild gibt weder einen Sollpegel noch einen Empfangsfehler der Anlage vor." />
+
+## Bedienung
+
+1. Den tatsächlich angeschlossenen Tuner wählen. Bei einem Hybrid-Tuner nur eine unterstützte und eingerichtete Empfangsart auswählen.
+2. **Benutzerdefinierter/Einzeltransponder** für eigene Frequenzdaten oder **Vordefinierter Transponder** für einen Listeneintrag wählen.
+3. Bei SAT die Position einstellen, dann den Referenztransponder wählen bzw. seine Daten eintragen.
+4. Nach einer Änderung auf stabile Messwerte warten. Im normalen Betrieb stimmt der Signalfinder den Tuner auf diese Werte ab.
+5. **OK bzw. Grün/Suchlauf** startet eine Dienstesuche auf dem gewählten Träger; es ist keine reine Bestätigung ohne Aktion. Mit **EXIT/Schließen** zurückkehren.
+
+## Welche Parameter gibt es?
+
+| Empfangsart | Felder |
+| --- | --- |
+| SAT | System, Satellit, Frequenz, Inversion, Symbolrate, Polarisation, FEC, S2-Modulation, Roll-off, Pilot; bei Unterstützung MIS/IS-ID, PLS-Modus/-Code und T2MI-PLP/PID |
+| Kabel | Frequenz, Symbolrate, Modulation, FEC und Inversion bzw. vordefinierter Transponder |
+| DVB-T/T2 | Frequenz oder Kanal, Region/Transponder, System, Bandbreite, Modulation, Code-Raten, Übertragungsmodus, Schutzintervall, Hierarchie, T2-PLP-ID |
+| ATSC | System, Frequenz, Inversion, Modulation bzw. vordefinierter Eintrag |
+
+Die Bedeutung der einzelnen Parameter steht in der [Suchfeldreferenz](../scan-optionen/). Der Signalfinder beschränkt die Suchart auf **einzelnen oder vordefinierten Transponder**. Die normalen Formularzeilen Netzwerksuche, Löschen und Nur-FTA werden hier ausgeblendet; das Tool dient zunächst dem Abstimmen und Messen.
+
+## Anzeigen richtig lesen
+
+**Lock/Signal** bestätigt die Synchronisation. **SNR**, **AGC** und **BER** hängen von Treiberdaten ab; nicht jede Box liefert jede Anzeige. Die [Signaldiagnose](../signaldiagnose/) erklärt Werte und typische Fehler. Ein höherer AGC-Wert allein beweist keine bessere Qualität.
+
+Der Signalfinder kann Live-TV unterbrechen und einen freien Tuner anfordern. Bei einer Motoranlage kann eine andere Satellitenposition eine Bewegung auslösen. Bei belegten Tunern zuerst die laufenden Aufnahmen beachten. Das Tool verändert keine mechanische Ausrichtung aus der Ferne und ersetzt kein geeignetes Messgerät für die Installation.
+
+Quellstand: [OpenATV plugin.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/Satfinder/plugin.py).

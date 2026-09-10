@@ -1,0 +1,42 @@
+---
+title: "Erweiterte Sat-Konfiguration und Schalterkaskaden"
+description: "OpenATV: Erweiterte Sat-Konfiguration und Schalterkaskaden."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+
+**Erweitert** beschreibt Anlagen, deren Signalwege mit „Einfach“ nicht vollständig abgebildet werden. Menü → Einstellungen → Empfang → Tuner → angeschlossener Tuner → Konfigurationsmodus Erweitert. Erst einen Anschlussplan mit Ports und LNB-Daten aufschreiben, dann die Formulare füllen.
+
+## Satellit und LNB sind zwei Ebenen
+
+Oben wählst du einen **Satelliten**. Seine **LNB-Nummer** verweist auf ein Einstellungsprofil innerhalb dieses Tuners. Ein Motor kann dasselbe physische LNB für mehrere Positionen verwenden; bei zwei festen LNBs werden gewöhnlich getrennte Profile zugeordnet. Die Nummer ist keine Tuneradresse und kein Unicable-Kanal. Eine nicht zugewiesene Position wird nicht durch einen Sendersuchlauf aktiviert.
+
+| Gruppe | Optionen und Zweck |
+| --- | --- |
+| Satellit | Satellitenwahl, LNB-Zuordnung, gemeinsame Auswahl einer Satellitengruppe |
+| LNB | Typ, Priorität, LOF/L, LOF/H, Schaltschwelle; siehe [LNB-Typen](../lnb/) |
+| Versorgung | Spannung nach Polarisation oder feste Vorgabe; erhöhte Spannung nur bei passender Anlage |
+| Ton | Nach Band oder feste Vorgabe; für Universal-Ku normalerweise „Band“ |
+| Schalter | DiSEqC-Modus, Toneburst, committed und uncommitted Portbefehle |
+| Kaskade | Befehlsreihenfolge, Fast DiSEqC, Sequenzwiederholung, DiSEqC-1.1-Wiederholungen |
+| Motor | USALS je Satellit oder gespeicherte Position, Standort und Bewegungseinstellungen |
+| Einkabel | SCR-Geräteprofil, User Band, Frequenz, Protokoll, PIN und Speisung |
+
+## Beispiel einer Kaskade
+
+Vom Receiver aus liegt zuerst ein **uncommitted** Schalter, dahinter ein **committed** Vierfachschalter, dahinter das LNB. Die Software muss zunächst den vorgelagerten Pfad und anschließend den dahinterliegenden Eingang adressieren. Trage die beiden tatsächlichen Eingangsnummern ein und wähle die passende Reihenfolge. Ein vorgeschalteter Schalter im anderen Modus kann eine andere Reihenfolge verlangen.
+
+**Toneburst**, **committed** und **uncommitted** sind verschiedene Befehle. Im Feld Befehlsreihenfolge werden nur die für die Anlage verwendeten Schritte passend angeordnet. „Fast DiSEqC“ vermeidet bestimmte wiederholte Befehle; „Sequenzwiederholung“ sendet eine Folge erneut. Wiederholungen erhöhen die Umschaltzeit und ersetzen keine richtige Portzuordnung. Ohne Kaskade nicht vorsorglich sämtliche Wiederholungen aktivieren.
+
+## Spezialfelder des Empfangsteils
+
+**SCPC-Suchbereich**, **Tonamplitude**, **T2MI RAW Mode**, **Anschluss/Connector** und **Legacy-Signalwerte** erscheinen nur bei passender Hardware. SCPC betrifft schmale Einzelträger; T2MI RAW erlaubt eine andere Weiterverarbeitung von T2-MI-Daten, beispielsweise durch astra-sm. Diese Felder beheben keine gewöhnlich falsch eingestellte Astra-Anlage. Die vollständige [Optionsreferenz](../optionen/) erklärt jede ausgelesene Formularvariante.
+
+Tuner-Verknüpfungen „gleich wie“, „verbunden mit“ und „abhängig von“ müssen zur realen Signalführung passen. Sie sind besonders bei gemeinsamem Kabel, Motor und später bei FBC wichtig. Ändere zunächst nur einen Signalweg und prüfe dessen Positionen, H/V sowie Low/High.
+
+Quellstand: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).
+
+## Ansichten auf der Box
+
+<Capture id="rx-nim-advanced" language="de" alt="Erweiterte Schalteroptionen. Die gezeigte Befehlsreihenfolge ist ein Formularbeispiel; die richtige Reihenfolge muss zur eigenen Kaskade passen." caption="Erweiterte Schalteroptionen. Die gezeigte Befehlsreihenfolge ist ein Formularbeispiel; die richtige Reihenfolge muss zur eigenen Kaskade passen." />

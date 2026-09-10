@@ -1,0 +1,29 @@
+---
+title: "General tuner settings and priorities"
+description: "OpenATV: General tuner settings and priorities."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+
+**Menu → Setup → Tuners, Scanning & Reception → Tuner Settings** is separate from configuring individual inputs. It controls selection among available tuners and certain driver-specific cases. The **12 extracted setup entries** are already listed in the [general reference](../../einstellungen/referenz/tuner/).
+
+| Group | Meaning |
+| --- | --- |
+| Preferred tuner | Preference for normal reception when multiple usable tuners exist; Auto lets Enigma2 choose |
+| Preferred tuner for recordings | Recording-specific preference; Disabled follows the general preference, Auto uses default allocation rules |
+| Multiple preferred recording tuners | Expert-level list of preferred tuners |
+| Strict limitation, experimental | Changes sharing of occupied frontends in favour of the preferred list; may distribute resources differently |
+| Disable background scanning | Prevents normal service updates while receiving a transponder; do not enable without a reason |
+| Ignore DVB-S/C/T namespace subnetwork | Specialist service-identity rules with valid ONIDs; affects matching, not frequency correction |
+| Delivery system workaround | Compatibility with older tuner drivers; only for the relevant problem |
+| Force LNB power / toneburst | Hardware-specific control, not general reception improvements |
+| 12 V output | Separate switching output on supported receivers; not 5 V aerial power or HDMI |
+
+A tuner preference cannot create another signal path or bypass [single-tuner limits](../single-tuner/). Start with automatic allocation for a normal installation. Include wiring details when reporting recording allocation problems.
+
+Source revision: [OpenATV setup.xml](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/data/setup.xml).
+
+## Receiver views
+
+<Capture id="rx-tuner-options" language="en" alt="General tuner settings control preferred tuners and reservation, among other options. They are separate from the connection form." caption="General tuner settings control preferred tuners and reservation, among other options. They are separate from the connection form." />

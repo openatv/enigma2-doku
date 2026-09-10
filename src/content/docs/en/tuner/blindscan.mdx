@@ -1,0 +1,22 @@
+---
+title: "Blindscan: workflow, filters and transponder results"
+description: "OpenATV: Blindscan: workflow, filters and transponder results."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Tuners, Scanning & Reception → Blind scan.** The plugin discovers carriers without a complete initial frequency list. It requires a supported tuner and matching manufacturer backend. Installing the plugin alone is insufficient.
+
+<Capture id="rx-blindscan" language="en" alt="Blindscan form with search type, frequency range, symbol rates and filters" caption="Native form for a universal Ku connection. The image series shows options without executing a blind scan." />
+
+1. Select a configured tuner and satellite.
+2. Choose **Scan for transponders** to inspect carriers first, or **channel scan** to discover services afterwards.
+3. Match frequency range, polarisation and symbol-rate range to the installation. Symbol rates here are in **MSym/s**.
+4. Check clearing and FTA settings. Filter known transponders, duplicates and adjacent positions according to the intended search.
+5. Start with **Green/Scan** and wait for results. In the transponder list, select wanted candidates and start the service scan from them.
+
+**Blue/Restore defaults**, where shown, resets plugin values. **Yellow/Open XML**, where results exist, opens the XML output. **EXIT/Exit** leaves the dialog. Displayed actions can change during a scan.
+
+All **23 extracted form variants** appear in the [Blindscan reference section](../scan-optionen/#blindscan). These include C-band and user-defined inverted-LNB frequency boundaries, device-specific step size and discovered-transponder selection. Copying another receiver’s values cannot add unsupported features.
+
+The [module overview](../scan-module/) explains each filter and XML results under `/tmp`. Check unexpected satellite positions and duplicate carriers before replacing your service database. A full scan cannot correct dish alignment or a wrong DiSEqC port.

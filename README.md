@@ -19,7 +19,7 @@ Ein gemeinsamer Linkblock am Seitenende führt in beiden Sprachen zu Forum, Enig
 - SSH/Telnet, Enigma2 stoppen/starten, Root-Passwort und Dateiübertragung mit SFTP/FTP
 - Debug-/Crashlogs aktivieren und auf der Box finden; Fehlerberichte im Forum, bei OpenATV Enigma2 oder OE-Alliance
 - HDD/USB: Einhängen, Aushängen, Mountpunkte, Formatieren und Dateisystemprüfung
-- Tuner und Sendersuche
+- Empfang: 33 Kapitel je Sprache, Verkabelungsbilder, DiSEqC/AutoDiSEqC, Unicable, Motor, DVB-C/T2 und SPAUN TAR 5; manuelle/automatische Suche, Signalfinder, CableScan, Blindscan, FastScan, ABM und DAB+
 - LAN und WLAN; NAS-Freigaben über NFS und SMB/CIFS mit Optionen und Berechtigungen
 - Windows 11: privates Netzwerk, eigener Benutzer mit Passwort, Freigaben, gezielte Firewall-Regeln und Explorer-Zugriff
 - Enigma2 als NFS-Server, Exportdateien, autofs/fstab, Offline-Verhalten und Spinner
@@ -43,7 +43,7 @@ Ein gemeinsamer Linkblock am Seitenende führt in beiden Sprachen zu Forum, Enig
 - Einstellungsreferenz mit vorhandenen Beschriftungen und Originalhilfetexten
 - Erweiterbare Bereiche für Skins, Add-ons und spätere Anhänge
 
-Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 88 Kapitel pro Sprache sind bebildert: Der Bestand umfasst 332 ausgewählte native Enigma2-Bilder, eine ergänzende Web-Editor-Aufnahme und 16 Abbildungen aus dem ursprünglichen Umbra-Handbuch. Die neuen Aufnahmen stammen von OpenATV 8.0.2-devel mit MetrixHD beziehungsweise Umbra. Von den 332 nativen Bildern zeigen 306 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die zusätzlichen Umbra-Vorlagenbilder haben eigene Angaben zu Version und Herkunft, darunter vier berechnete Vergleiche. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für dessen Skin-Kapitel.
+Die Anleitungen wurden anhand des OpenATV-8.0-Quellstands `fdc9347241245fd18fd0b8bc93727237189c916c` erstellt. 106 Kapitel pro Sprache sind bebildert: Der Bestand umfasst 370 ausgewählte native Enigma2-Bilder, eine ergänzende Web-Editor-Aufnahme und 16 Abbildungen aus dem ursprünglichen Umbra-Handbuch. Die neuen Aufnahmen stammen von OpenATV 8.0.2-devel mit MetrixHD beziehungsweise Umbra. Von den 370 nativen Bildern zeigen 344 das Bootlogo bei gestoppter Wiedergabe und 26 den vom Betreiber ausgewählten Beispielsender mit vorhandenen EPG-Daten. Die zusätzlichen Umbra-Vorlagenbilder haben eigene Angaben zu Version und Herkunft, darunter vier berechnete Vergleiche. Die Texte erklären die sichtbaren Optionen und verweisen auf die Einstellungsreferenz. Der MetrixHD-Quellstand `c26f35adc71480851291a44da243ec0ba7b8a400` liefert die Grundlage für dessen Skin-Kapitel.
 
 Die vorhandene NAS-Freigabe und die HDD wurden auf Schreib- und Lesezugriff geprüft. Ihre Einbindung sowie Tuner- und LAN-Konfiguration blieben erhalten. Für die allgemeinen Bilder wurde MetrixHD verwendet, für die Umbra-Serie vorübergehend Umbra/FHD. Nach den DE/EN-Läufen wurden ursprüngliche Sprache und Skin wiederhergestellt. Einzelne Assistentenansichten sind bebildert, der vollständige Neuinstallationsablauf ist noch nicht durchgetestet. WLAN und FBC folgen auf passender Hardware. Der [Prüfstand](docs/PRAXISTESTS.md) trennt aufgenommene Ansichten von vollständig getesteten Bedienabläufen.
 
@@ -106,7 +106,7 @@ Nach einem Import den Diff prüfen, neue oder geänderte Optionen redaktionell b
 
 ## Platzbedarf und Apache2
 
-`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Die Website enthält die freigegebenen Original-PNGs zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit 215 Inhalten je Sprache und zusätzlicher Sprachauswahl belegt rund 203,22 MB in 2325 Dateien, etwa 20,32 Prozent des Budgets.
+`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Die Website enthält die freigegebenen Original-PNGs zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit 247 Inhalten je Sprache und zusätzlicher Sprachauswahl belegt rund 228,64 MB in 2625 Dateien, etwa 22,86 Prozent des Budgets.
 
 Bei einem Wechsel auf Apache2 wird dieselbe Website für die neue Adresse gebaut. Sie benötigt dort nur statische Dateiauslieferung. [Apache2-Bereitstellung](docs/APACHE2.md).
 
@@ -133,3 +133,11 @@ Alle 16 Vorlagenabbildungen sind mit Herkunft und Prüfsumme in `data/umbra-figu
 17 Kapitel je Sprache erklären Anschlussketten, Video-/Bildratenwahl, automatische Auflösung, HDMI-Farben/HDR/EDID, OSD und Bildoptimierung sowie PCM, Downmix, Passthrough, Tonspuren, Lautstärke und Lipsync. Die Referenzen decken alle 24 Audiofelder, 29 CEC-Felder und 59 Videoeinträge/Beschriftungsvarianten des geprüften Quellstands ab. Treiberabhängige Auswahlmöglichkeiten sind ausdrücklich gekennzeichnet.
 
 Der Abgleich verwendet den zur Testinstallation passenden Enigma2-Stand `c446c39a38957950de9989538e87c6278d2470cc`; Quellhashes und Felder stehen in `data/av-settings.json`. 26 neue DE/EN-Aufnahmen wurden einzeln geprüft. HDMI blieb 1080p50; erfasste AV-/CEC-/OSD-/Skin-/Automatikwerte und geschützte Timer-/Mount-/e2MDB-Dateien stimmen vor/nach der Serie überein. Die Bilder belegen erreichbare Dialoge, keine universelle Codec-, CEC-, HDR- oder ARC/eARC-Kompatibilität.
+
+## Empfang, Verkabelung und Suchläufe
+
+Der Empfangsbereich enthält 33 Kapitel je Sprache einschließlich des bisherigen Sat-Einstiegs. Acht eigene, vergrößerbare SVG-Zeichnungen je Sprache erläutern Einfamilienhaus-SAT, zwei Satelliten über DiSEqC, Quattro/Multischalter, Unicable, Kabel/Antenne, beide SPAUN-Schaltzustände und Motorverkabelung. Das bereitgestellte SPAUN-TAR-5-Foto ist unverändert enthalten; Herkunft und SHA-256 stehen in `data/reception-figures.json`. Die Zeichnungen lassen sich ohne Zusatzpakete mit `python scripts/create-reception-diagrams.py` neu erzeugen.
+
+`data/reception-settings.json` erfasst 287 Formularvarianten mit Quellstand und Prüfsummen: 124 Tuner-, 56 Scan-, 20 Positioner-, je acht CableScan-/FastScan-, 28 ABM-, 23 Blindscan-, acht DAB+- und zwölf allgemeine Tunerfelder. Die zwölf allgemeinen Felder verweisen auf die bestehende Referenz. Dynamische DAB+-Satelliten-/USB-Zeilen werden zusätzlich im Kapitel erklärt. Feldnamen sind Suchhilfen, keine Werte zum ungeprüften Einfügen.
+
+38 neue native DE/EN-Bilder sind freigegeben. Die Beispielkonfigurationen waren von den produktiven Tunerwerten getrennt; es wurde kein Suchlauf und keine Motorfahrt ausgeführt. N/A im Signalfinder ist als nicht durchgeführte Messung beschriftet. Hotbird, SCR, Motor, Kabel-/Antennenempfang, SPAUN-Umschaltung und USB-DAB+ bleiben erklärte Beispiele ohne behaupteten HF-Praxistest. DVB-S-FBC und DVB-C-FBC haben eigene Grundlagenkapitel und erhalten später die vereinbarten praktischen Erweiterungen.

@@ -283,3 +283,17 @@ python tools/capture.py --host root@receiver.local --run-prefix av-demo --profil
 `av.py` trennt Formularfelder einschließlich veränderbarer Werte, Notifier und Callbacks von der laufenden AV-/CEC-Konfiguration. Nur die Formularmodule erhalten vorübergehend die abgetrennte Ansicht. Treiber und CEC-Engine behalten ihre ursprünglichen Werte. Speichern, Anwenden, Rücksetzen, Vorschau und feste Adressänderung sind gesperrt. CEC aktiviert/eine Wiederholung, einfache AutoResolution sowie Offset-Modus sind ungespeicherte Beispiele und entsprechend beschriftet. Die Lautstärkeaufnahme zeigt die vier allgemeinen Felder, nicht den Sendereditor.
 
 Alle 26 Bilder in beiden GUI-Sprachen wurden einzeln geprüft. Die Ausgabe blieb 1080p50 mit MetrixHD; die ursprüngliche deutsche Sprache und die geschützten EMC-/AutoTimer-Werte wurden wiederhergestellt. Erfasste Konfiguration und geschützte Dateien verglichen unverändert. Keine HDMI-Umschaltung, CEC-Power-Sequenz oder akustische Formatprüfung wird behauptet. 39 lokale Tests des Aufnahmeplugins bestanden. Gesamtbestand: 332 native PNGs.
+
+## Empfang und Suchmodule
+
+`reception-guides` enthält 14 Szenen je Sprache: Toneburst, DiSEqC A/B und vier Ports, Erweitert, Unicable, Motor, Kabelanbieter, Kabelbänder, C/T-Hybrid, manuelle und automatische Suche, allgemeine Tuneroptionen, DAB+ und ABM. `reception-tools` ergänzt Empfangsmenü, Signalfinder, CableScan, Blindscan und DAB+-USB. Der Katalog umfasst damit 29 Profile und 190 Szenen. Werkzeugstand: `92de9f0dd414bbf2bf0eb021ea230955b5cfe950`.
+
+```sh
+python tools/capture.py --host root@receiver.local --run-prefix reception-demo --profiles reception-guides reception-tools --restart-languages --bootlogo --output .capture-private
+```
+
+Die freigegebenen Serien sind `rx-c-de-reception-guides`, `rx-c-en-reception-guides`, `rx-tools-a-de-reception-tools` und `rx-tools-a-en-reception-tools`. Alle 38 Bilder wurden einzeln geprüft und per SHA-256 importiert. Gesamtbestand: 370 native PNGs, davon 344 mit Bootlogo und 26 mit ausgewähltem EPG-Beispielsender.
+
+`reception.py` trennt native Konfigurationsbäume, Felder, Auswahlwerte und Notifier von der laufenden Konfiguration. Die erweiterte LNB-Ansicht nutzt nur den isolierten Schemaaufbau; globale Konfigurationsreferenzen und gemeinsame Default-Templates werden auch im Fehlerfall restauriert. Keine SEC-Aktualisierung, Tunerinitialisierung, Motorbewegung oder Suche. Formulareingaben und Aktionen sind gesperrt; ABM-Zeitplanung, SCR-Frequenz, Motorstandort und 5-V-Konfiguration sind ungespeicherte Beispiele. Der Signalfinder wird nicht abgestimmt und zeigt daher N/A; CableScan-Werte sind keine allgemeinen Anbietervorgaben.
+
+USB-Inventar und DAB+-Diagnose sind passive Anzeigen. Einige neue DAB+-Feldnamen sind im installierten deutschen Image noch Englisch; Bilder bleiben original. Während Sprachneustarts werden EMC-/AutoTimer-Automatiken wie bei den anderen Profilen vorübergehend suspendiert und wiederhergestellt. Tunerwerte, Sprache/Skin und geschützte Sender-, Timer-, Mount- und e2MDB-Dateien wurden vor/nachher verglichen. Die vollständige `/etc/enigma2/settings` ist wegen GUI-Neuschreibens nicht als bytegleich ausgewiesen. Das Aufnahmeprojekt hat 41 bestandene Tests, einschließlich isolierter verschachtelter Werte und Wiederherstellung nach Fehlern beim Schemaaufbau.

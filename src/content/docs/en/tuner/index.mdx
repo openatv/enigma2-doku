@@ -1,0 +1,42 @@
+---
+title: "Reception: connections, tuners and scanning"
+description: "OpenATV: Reception: connections, tuners and scanning."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Start with the cable and the distribution system.** Knowing what the socket supplies is the basis for configuring the tuner and the scan. Installing a channel list does not configure the reception path.
+
+## From connection to first picture
+
+1. [Check the wiring drawings](./verkabelung/).
+2. Configure the connection: [single satellite feed](./konfiguration/), [cable TV](./dvb-c/) or [DVB-T2 aerial](./dvb-t2/).
+3. For shared systems, establish the [Unicable allocation](./unicable/) or [DiSEqC satellite mapping](./diseqc/) first.
+4. [Choose a scan method](./suchlauf/) and [check reception](./signaldiagnose/).
+5. Understand [recording and watching with one tuner](./single-tuner/) before configuring additional tuners.
+
+## Where are the controls?
+
+Start at **Menu → Setup → Tuners, Scanning & Reception**. “Tuner Configuration” configures the connections; “Tuner Settings” contains general tuner selection and operating rules. Plugins extend this menu depending on installation and hardware.
+
+<Capture id="rx-menu" language="en" alt="OpenATV reception menu" caption="The reception menu opens tuner configuration and scanning. Available entries depend on the installation." />
+
+| Task | Chapter |
+| --- | --- |
+| Automatic scan and provider entry point | [Automatic scan](./automatischer-suchlauf/), [CableScan](./cablescan/), [FastScan](./fastscan/) |
+| Measure reception, discover frequencies | [Signal finder](./signalfinder/), [Blindscan](./blindscan/) |
+| Toneburst, Astra + Hotbird, switch ports | [DiSEqC](./diseqc/) and [AutoDiSEqC](./autodiseqc/) |
+| Quad, Quattro, C/Ku band, LOF | [LNBs and frequency bands](./lnb/) |
+| Cascaded switches and specialist satellite systems | [Advanced configuration](./sat-erweitert/), [motor/USALS](./motor/) |
+| Cable and aerial on one input | [Hybrid tuner and SPAUN TAR 5](./hybrid-spaun/) |
+| Frequencies, MIS/PLS/T2MI | [Manual scan](./manueller-suchlauf/) |
+| Blindscan and provider fast scans | [Additional scan modules](./scan-module/) |
+| Automatic provider bouquets | [AutoBouquetsMaker](./autobouquetsmaker/) |
+| DAB+ by satellite or USB | [DAB+](./dabplus/) |
+| General tuner rules, another receiver | [Tuner settings](./tuner-optionen/), [fallback](./fallback/) |
+| Find a particular form field | [Tuner option reference](./optionen/), [scan option reference](./scan-optionen/) |
+| Future FBC extensions | [DVB-S FBC](./fbc-sat/) and [DVB-C FBC](./fbc-kabel/) |
+
+The handbook covers shared Enigma2 functions. **Visible entries depend on the frontend, driver, setup level and plugin version.** The test installation verifies a conventional Astra connection. Other topologies are explained connection examples; [sources and verification](./quellen/) distinguish these explicitly.
+
+Source revision: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).

@@ -1,0 +1,42 @@
+---
+title: "Empfang: Anschluss, Tuner und Sendersuche"
+description: "OpenATV: Empfang: Anschluss, Tuner und Sendersuche."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Beginne beim Kabel und der Empfangsanlage.** Erst wenn klar ist, welches Signal die Buchse liefert, lassen sich Tuner und Suche richtig einstellen. Ein installiertes Senderpaket ersetzt diese Konfiguration nicht.
+
+## Der Weg zum ersten Bild
+
+1. [Verkabelung anhand der Schaubilder prüfen](./verkabelung/).
+2. Den Anschluss einrichten: [einzelner Sat-Anschluss](./konfiguration/), [Kabel-TV](./dvb-c/) oder [DVB-T2-Antenne](./dvb-t2/).
+3. Bei Gemeinschaftsanlagen zuerst [Unicable](./unicable/) bzw. [DiSEqC und mehrere Satelliten](./diseqc/) klären.
+4. [Suchverfahren auswählen](./suchlauf/) und anschließend [Empfang prüfen](./signaldiagnose/).
+5. [Aufnehmen und gleichzeitig fernsehen](./single-tuner/) verstehen, bevor weitere Tuner konfiguriert werden.
+
+## Wo finde ich die Funktionen?
+
+**Menü → Einstellungen → Empfang** ist der Ausgangspunkt. „Tuner“ konfiguriert Anschlüsse; „Tunereinstellungen“ enthält allgemeine Regeln zur Auswahl und zum Betrieb der Tuner. Plugins ergänzen das Menü abhängig von Installation und Hardware.
+
+<Capture id="rx-menu" language="de" alt="OpenATV-Empfangsmenü" caption="Vom Empfangsmenü aus erreichst du Tuner und Suchläufe. Der Umfang hängt von der Installation ab." />
+
+| Aufgabe | Kapitel |
+| --- | --- |
+| Automatische Suche und Anbieter-Einstieg | [Automatischer Suchlauf](./automatischer-suchlauf/), [CableScan](./cablescan/), [FastScan](./fastscan/) |
+| Signal messen, Frequenzen entdecken | [Signalfinder](./signalfinder/), [Blindscan](./blindscan/) |
+| Toneburst, Astra + Hotbird, Schalterports | [DiSEqC](./diseqc/) und [AutoDiSEqC](./autodiseqc/) |
+| Quad, Quattro, C-/Ku-Band, LOF | [LNB und Frequenzbänder](./lnb/) |
+| Kaskaden und besondere Sat-Anlagen | [Erweiterte Konfiguration](./sat-erweitert/), [Motor/USALS](./motor/) |
+| Kabel und Antenne am selben Eingang | [Hybrid-Tuner und SPAUN TAR 5](./hybrid-spaun/) |
+| Frequenzen, MIS/PLS/T2MI | [Manuelle Suche](./manueller-suchlauf/) |
+| Blindscan und Anbieter-Schnellsuche | [Weitere Suchmodule](./scan-module/) |
+| Automatische Anbieter-Bouquets | [AutoBouquetsMaker](./autobouquetsmaker/) |
+| DAB+ über Satellit oder USB | [DAB+](./dabplus/) |
+| Allgemeine Tunerregeln, zweiter Receiver | [Tunereinstellungen](./tuner-optionen/), [Fallback](./fallback/) |
+| Einzelne Formularzeile suchen | [Tuner-Optionsreferenz](./optionen/), [Suchlauf-Optionsreferenz](./scan-optionen/) |
+| Spätere FBC-Erweiterungen | [DVB-S FBC](./fbc-sat/) und [DVB-C FBC](./fbc-kabel/) |
+
+Die Anleitung beschreibt gemeinsame Enigma2-Funktionen. **Menüeinträge erscheinen passend zu Empfangsteil, Treiber, Bedienebene und Plugin-Version.** Die Testinstallation belegt den konventionellen Astra-Anschluss. Andere Topologien sind erklärte Anschlussbeispiele; [Prüfumfang und Quellen](./quellen/) unterscheiden das ausdrücklich.
+
+Quellstand: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).

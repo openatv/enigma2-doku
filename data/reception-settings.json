@@ -1,0 +1,4648 @@
+{
+  "source_commit": "fdc9347241245fd18fd0b8bc93727237189c916c",
+  "source_files": {
+    "data/setup.xml": "c725b62e0f57d4e418454a43d486368dd132fad54f250f5e47c294007215744c",
+    "data/menu.xml": "0d8da7853ce8cc51e0073bb24b071a2662fe97f331afa7f41a46dc16d279fe0f",
+    "data/dab.xml": "95b44c7d61184ce9029c720f197f2b4a2e13ee69c41e4ed335216239f7288e6c",
+    "data/unicable.xml": "a5205975ce560c6ca67888b389a8c339fa72410c966dcd1e54acb7ac1dd2aa01",
+    "lib/python/Screens/Satconfig.py": "65be72988a7ddad85944c24c22d1f4dd35a83cb33ce5afd25241808001a21385",
+    "lib/python/Screens/ScanSetup.py": "b29179a052d188bc8c415215315c4dd3888a9acc4e32679204ae694366abadd5",
+    "lib/python/Screens/AutoDiseqc.py": "87a610dbbf711f0a1090377c390c008b4dd35fb736bee21cee0c636a9f702ee9",
+    "lib/python/Screens/DABScan.py": "1b7f2c8412a80f12e42d4dc8b317bbbee5d586cd45b5bcee75d45e00394d4d58",
+    "lib/python/Screens/RTLSDRSetup.py": "e9a9b5b7cbb67973bec437a82b67ecc2c3dcaec576fe415250979d8ef059fa0f",
+    "lib/python/Screens/SetupFallbacktuner.py": "96c87e3ef2bc6757db912a9bbda8ef7551cbfd4e0c8ed8a269dad160555d4651",
+    "lib/python/Components/NimManager.py": "8044022d953a11717fe7483c25ae9e7368b4109292183ab77512c2d0e219cfd1",
+    "lib/python/Components/RTLSDR.py": "c81c7f12755e46fa01f6e6ae6bc62a05adab500376e66b68811c28e8f01dfb1b",
+    "lib/python/Components/SystemInfo.py": "0be4d44427bc3c15becf1903891b546a676643725e9f453e9028fb9bb65f943a",
+    "lib/python/Plugins/SystemPlugins/Satfinder/plugin.py": "7f8c399e0501db6a8806c568569181744c449cb1f669b98511ccb1eb5c61ab5e",
+    "lib/python/Plugins/SystemPlugins/PositionerSetup/plugin.py": "6374b4aa8ee03b4b00a08f6cf8be54e6734b7ab959006be7eec4c7168b4521f7",
+    "lib/python/Plugins/SystemPlugins/CableScan/plugin.py": "fe809a7b46c8bd8222ace107821eb30f2acdc80403681206818b32d058fd61a9",
+    "lib/python/Plugins/SystemPlugins/FastScan/plugin.py": "4e1d675a79ab5055be3e2deb946fb3958807afc5eee2cf2d9a32a4e541bd3eaa",
+    "lib/dvb/dvb.cpp": "8059aeb5fb0b90629f040bec64252b57270b658238d50d555704b31da98b98b1",
+    "lib/dvb/frontend.cpp": "a66120304f8d9d3e7d2c299dc7344a70cd7911b284621cec9ddad39081f05248"
+  },
+  "sections": {
+    "Satconfig": [
+      {
+        "key": "self.inputPowerValue",
+        "label": "Measured current",
+        "help": "Current supplied to the LNB and positioner.",
+        "line": 261,
+        "display": {
+          "de": {
+            "label": "Aktuell gemessen",
+            "help": "Stromversorgung für den LNB und Rotor."
+          },
+          "en": {
+            "label": "Measured current",
+            "help": "Current supplied to the LNB and positioner."
+          }
+        }
+      },
+      {
+        "key": "ConfigSelection(choices=[('inherited', value)], default='inherited')",
+        "label": "Inherited channel / frequency",
+        "help": "description",
+        "line": 376,
+        "display": {
+          "de": {
+            "label": "Übernommenes User Band",
+            "help": "Nur Anzeige: Kanal und Frequenz werden für dieselbe Einkabelanlage vom zugeordneten LNB-Profil übernommen."
+          },
+          "en": {
+            "label": "Inherited User Band",
+            "help": "Readout only: channel and frequency are inherited from the assigned LNB profile for the same single-cable system."
+          }
+        }
+      },
+      {
+        "key": "self.additionalMotorOptions",
+        "label": "Extra motor options",
+        "help": "Additional motor options allow you to enter details from your motor's specifications so Enigma can work out how long it will take to move the dish from one satellite to another.",
+        "line": 625,
+        "display": {
+          "de": {
+            "label": "Spezielle Motoroptionen",
+            "help": "Mit zusätzlichen Motoroptionen können Details aus dem Datenblatt des Motors eingegeben werden, so dass berechnet werden kann, wie lange es dauert, die Antenne von einem Satelliten zum anderen zu bewegen."
+          },
+          "en": {
+            "label": "Extra motor options",
+            "help": "Additional motor options allow you to enter details from your motor's specifications so Enigma can work out how long it will take to move the dish from one satellite to another."
+          }
+        }
+      },
+      {
+        "key": "configMode",
+        "label": "label",
+        "help": "description",
+        "line": 668,
+        "display": {
+          "de": {
+            "label": "Konfiguration / Empfangsart",
+            "help": "Empfangsart aktivieren oder einfachen/erweiterten Sat-Modus und reale Tuner-Verknüpfung auswählen."
+          },
+          "en": {
+            "label": "Configuration / reception type",
+            "help": "Enable the reception type or select simple/advanced satellite mode and the actual tuner relationship."
+          }
+        }
+      },
+      {
+        "key": "Sat.lnb",
+        "label": "LNB",
+        "help": "Allocate a number to the physical LNB you are configuring. You will be able to select this LNB again for other satellites (e.g. motorized dishes) to save setting up the same LNB multiple times.",
+        "line": 1061,
+        "display": {
+          "de": {
+            "label": "LNB",
+            "help": "Dem physikalischen LNB, der konfiguriert wurde, eine Nummer zuweisen. Dieser LNB kann erneut für andere Satelliten (zum Beispiel motorisierte) ausgewählt werden, um die Einrichtung desselben LNBs mehrere Male zu speichern."
+          },
+          "en": {
+            "label": "LNB",
+            "help": "Allocate a number to the physical LNB you are configuring. You will be able to select this LNB again for other satellites (e.g. motorized dishes) to save setting up the same LNB multiple times."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbs.configMode",
+        "label": "Configuration mode",
+        "help": "",
+        "line": 1241,
+        "display": {
+          "de": {
+            "label": "Konfiguration",
+            "help": "Einfachen oder erweiterten Sat-Modus passend zur Anlage auswählen."
+          },
+          "en": {
+            "label": "Configuration mode",
+            "help": "Choose simple or advanced satellite mode matching the installation."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbs.advanced.sats",
+        "label": "Satellite",
+        "help": "",
+        "line": 1243,
+        "display": {
+          "de": {
+            "label": "Satellit",
+            "help": "Orbitalposition aus der bereits konfigurierten Anlage wählen."
+          },
+          "en": {
+            "label": "Satellite",
+            "help": "Choose an orbital position supplied by the configured installation."
+          }
+        }
+      },
+      {
+        "key": "nim.diseqcA",
+        "label": "Satellite",
+        "help": "Select the satellite from which your dish is receiving its signal. If you are unsure select 'Automatic' and the receiver will attempt to determine this for you.",
+        "line": 570,
+        "display": {
+          "de": {
+            "label": "Satellit",
+            "help": "Den Satelliten auswählen, von dem der Receiver Signale empfängt. Falls unsicher, 'Automatisch' auswählen und der Receiver wird versuchen, dies zu ermitteln."
+          },
+          "en": {
+            "label": "Satellite",
+            "help": "Select the satellite from which your dish is receiving its signal. If you are unsure select 'Automatic' and the receiver will attempt to determine this for you."
+          }
+        }
+      },
+      {
+        "key": "nim.pressOKtoList",
+        "label": "Press OK to select satellites",
+        "help": "Press OK to select a group of satellites to configure in one block.",
+        "line": 599,
+        "display": {
+          "de": {
+            "label": "OK drücken, um Satelliten auszuwählen",
+            "help": "OK drücken, um eine Gruppe von Satelliten auszuwählen, die in einem Block konfiguriert werden sollen."
+          },
+          "en": {
+            "label": "Press OK to select satellites",
+            "help": "Press OK to select a group of satellites to configure in one block."
+          }
+        }
+      },
+      {
+        "key": "nim.longitude",
+        "label": "Longitude",
+        "help": "Enter your current longitude. This is the number of degrees you are from zero meridian as a decimal.",
+        "line": 601,
+        "display": {
+          "de": {
+            "label": "Längengrad",
+            "help": "Den aktuellen Längengrad eingeben. Dies ist die Anzahl der Grade (als Dezimalzahl) der Entfernung zum Nullmeridian."
+          },
+          "en": {
+            "label": "Longitude",
+            "help": "Enter your current longitude. This is the number of degrees you are from zero meridian as a decimal."
+          }
+        }
+      },
+      {
+        "key": "nim.longitudeOrientation",
+        "label": " ",
+        "help": "Enter if you are in the East or West hemisphere.",
+        "line": 602,
+        "display": {
+          "de": {
+            "label": "Längengrad: Ost/West",
+            "help": "Eingeben, ob sich der Receiver in der östlichen oder westlichen Hemisphäre befindet."
+          },
+          "en": {
+            "label": "Longitude hemisphere",
+            "help": "Enter if you are in the East or West hemisphere."
+          }
+        }
+      },
+      {
+        "key": "nim.latitude",
+        "label": "Latitude",
+        "help": "Enter your current latitude. This is the number of degrees you are from the equator as a decimal.",
+        "line": 603,
+        "display": {
+          "de": {
+            "label": "Breitengrad",
+            "help": "Den aktuellen Breitengrad eingeben. Dies ist die Anzahl der Grade (als Dezimalzahl) der Entfernung zum Äquator."
+          },
+          "en": {
+            "label": "Latitude",
+            "help": "Enter your current latitude. This is the number of degrees you are from the equator as a decimal."
+          }
+        }
+      },
+      {
+        "key": "nim.latitudeOrientation",
+        "label": " ",
+        "help": "Enter if you are North or South of the equator.",
+        "line": 604,
+        "display": {
+          "de": {
+            "label": "Breitengrad: Nord/Süd",
+            "help": "Eingeben, ob sich der Receiver nördlich oder südlich des Äquators befindet."
+          },
+          "en": {
+            "label": "Latitude hemisphere",
+            "help": "Enter if you are North or South of the equator."
+          }
+        }
+      },
+      {
+        "key": "nim.powerMeasurement",
+        "label": "Use power measurement",
+        "help": "Detect positioner movement by its current consumption.",
+        "line": 607,
+        "display": {
+          "de": {
+            "label": "Stromaufnahme messen",
+            "help": "Rotorbewegung anhand des Stromverbrauchs erkennen."
+          },
+          "en": {
+            "label": "Use power measurement",
+            "help": "Detect positioner movement by its current consumption."
+          }
+        }
+      },
+      {
+        "key": "currLnb.lof",
+        "label": "Type of LNB/Device",
+        "help": "Select the type of LNB/device being used (normally 'Universal'). If your LNB type is not available select 'User defined'.",
+        "line": 1068,
+        "display": {
+          "de": {
+            "label": "LNB / Gerätetyp",
+            "help": "Den Typ des verwendeten LNB/Gerätes auswählen (normalerweise 'Universal'). Wenn der LNB-Typ nicht verfügbar ist, 'Benutzerdefiniert' auswählen."
+          },
+          "en": {
+            "label": "Type of LNB/Device",
+            "help": "Select the type of LNB/device being used (normally 'Universal'). If your LNB type is not available select 'User defined'."
+          }
+        }
+      },
+      {
+        "key": "nim.simpleSingleSendDiSEqC",
+        "label": "Send DiSEqC",
+        "help": "Select 'Yes' if you are using a multi-switch which requires a DiSEqC Port-A command signal. Select 'No' for all other setups.",
+        "line": 574,
+        "display": {
+          "de": {
+            "label": "DiSEqC senden",
+            "help": "Wenn ein Multiswitch verwendet wird, der ein DiSEqC-Port-A-Befehlssignal benötigt 'Ja' auswählen, ansonsten 'Nein'."
+          },
+          "en": {
+            "label": "Send DiSEqC",
+            "help": "Select 'Yes' if you are using a multi-switch which requires a DiSEqC Port-A command signal. Select 'No' for all other setups."
+          }
+        }
+      },
+      {
+        "key": "nim.diseqcA",
+        "label": "Port A",
+        "help": "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'Automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'Nothing connected'.",
+        "line": 576,
+        "display": {
+          "de": {
+            "label": "Port A",
+            "help": "Den Satelliten auswählen, der an Port A des Switches angeschlossen ist. Falls unsicher, 'Automatisch' auswählen und der Receiver wird versuchen, dies zu ermitteln. Ist dieser Port nicht belegt, 'Nichts angeschlossen' auswählen."
+          },
+          "en": {
+            "label": "Port A",
+            "help": "Select the satellite which is connected to Port-A of your switch. If you are unsure select 'Automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'Nothing connected'."
+          }
+        }
+      },
+      {
+        "key": "nim.diseqcB",
+        "label": "Port B",
+        "help": "Select the satellite which is connected to Port-B of your switch. If you are unsure select 'Automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'Nothing connected'.",
+        "line": 578,
+        "display": {
+          "de": {
+            "label": "Port B",
+            "help": "Den Satelliten auswählen, der an Port B des Switches angeschlossen ist. Falls unsicher, 'Automatisch' auswählen und der Receiver wird versuchen, dies zu ermitteln. Ist dieser Port nicht belegt, 'Nichts angeschlossen' auswählen."
+          },
+          "en": {
+            "label": "Port B",
+            "help": "Select the satellite which is connected to Port-B of your switch. If you are unsure select 'Automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'Nothing connected'."
+          }
+        }
+      },
+      {
+        "key": "autoOrder",
+        "label": "Auto DiSEqC search order",
+        "help": "Limit the search to the satellite group normally used by this installation.",
+        "line": 593,
+        "display": {
+          "de": {
+            "label": "Automatische DiSEqC-Suchreihenfolge",
+            "help": "Die Suche auf die Satellitengruppe beschränken, die normalerweise verwendet wird."
+          },
+          "en": {
+            "label": "Auto DiSEqC search order",
+            "help": "Limit the search to the satellite group normally used by this installation."
+          }
+        }
+      },
+      {
+        "key": "nim.turningSpeed",
+        "label": "Rotor turning speed",
+        "help": "Select how quickly the dish should move between satellites.",
+        "line": 611,
+        "display": {
+          "de": {
+            "label": "Rotor Drehgeschwindigkeit",
+            "help": "Auswählen, wie schnell sich die Antenne zwischen den Satelliten bewegen soll."
+          },
+          "en": {
+            "label": "Rotor turning speed",
+            "help": "Select how quickly the dish should move between satellites."
+          }
+        }
+      },
+      {
+        "key": "nim.turningspeedH",
+        "label": "   %s [°%s",
+        "help": "Consult your motor's specifications for this information, or leave the default setting.",
+        "line": 628,
+        "display": {
+          "de": {
+            "label": "Drehgeschwindigkeit H",
+            "help": "Im Datenblatt des Motors für diese Information nachsehen oder die Standardeinstellung belassen."
+          },
+          "en": {
+            "label": "H turning speed",
+            "help": "Consult your motor's specifications for this information, or leave the default setting."
+          }
+        }
+      },
+      {
+        "key": "nim.turningspeedV",
+        "label": "   %s [°%s",
+        "help": "Consult your motor's specifications for this information, or leave the default setting.",
+        "line": 629,
+        "display": {
+          "de": {
+            "label": "Drehgeschwindigkeit V",
+            "help": "Im Datenblatt des Motors für diese Information nachsehen oder die Standardeinstellung belassen."
+          },
+          "en": {
+            "label": "V turning speed",
+            "help": "Consult your motor's specifications for this information, or leave the default setting."
+          }
+        }
+      },
+      {
+        "key": "nim.tuningstepsize",
+        "label": "   %s [°]",
+        "help": "Consult your motor's specifications for this information, or leave the default setting.",
+        "line": 630,
+        "display": {
+          "de": {
+            "label": "Motor-Schrittweite",
+            "help": "Im Datenblatt des Motors für diese Information nachsehen oder die Standardeinstellung belassen."
+          },
+          "en": {
+            "label": "Motor step size",
+            "help": "Consult your motor's specifications for this information, or leave the default setting."
+          }
+        }
+      },
+      {
+        "key": "nim.rotorPositions",
+        "label": "   %s",
+        "help": "Consult your motor's specifications for this information, or leave the default setting.",
+        "line": 631,
+        "display": {
+          "de": {
+            "label": "Motorpositionen",
+            "help": "Im Datenblatt des Motors für diese Information nachsehen oder die Standardeinstellung belassen."
+          },
+          "en": {
+            "label": "Motor positions",
+            "help": "Consult your motor's specifications for this information, or leave the default setting."
+          }
+        }
+      },
+      {
+        "key": "nimConfig.diseqcMode",
+        "label": "Mode",
+        "help": "Select how the satellite dish is set up. i.e. fixed dish, single LNB, DiSEqC switch, positioner, etc.",
+        "line": 792,
+        "display": {
+          "de": {
+            "label": "Modus",
+            "help": "Auswählen, wie die Satellitenschüssel eingerichtet ist (feste Schüssel, einzelner LNB, DiSEqC-Schalter, Rotor usw.)."
+          },
+          "en": {
+            "label": "Mode",
+            "help": "Select how the satellite dish is set up. i.e. fixed dish, single LNB, DiSEqC switch, positioner, etc."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_type",
+        "label": "Used service scan type",
+        "help": "Select 'Provider' to scan from the predefined list of cable multiplexes. Select 'Bands' to only scan certain parts of the spectrum. Select 'Steps' to scan in steps of a particular frequency bandwidth.",
+        "line": 877,
+        "display": {
+          "de": {
+            "label": "Verwendeter Suchlauf",
+            "help": "'Anbieter' auswählen, um aus der vordefinierten Liste von Kabelmultiplexen zu scannen, 'Bänder', um nur bestimmte Teile des Spektrums zu scannen, oder 'Schritte', um in Schritten einer bestimmten Frequenzbandbreite zu scannen."
+          },
+          "en": {
+            "label": "Used service scan type",
+            "help": "Select 'Provider' to scan from the predefined list of cable multiplexes. Select 'Bands' to only scan certain parts of the spectrum. Select 'Steps' to scan in steps of a particular frequency bandwidth."
+          }
+        }
+      },
+      {
+        "key": "self.terrestrialRegions",
+        "label": "Region",
+        "help": "Select your region. If it is not available change 'Country' to 'All' and select one of the default alternatives.",
+        "line": 969,
+        "display": {
+          "de": {
+            "label": "Region",
+            "help": "Die Region auswählen. Wenn nicht verfügbar, 'Land' in 'Alle' ändern und eine der Standardalternativen auswählen."
+          },
+          "en": {
+            "label": "Region",
+            "help": "Select your region. If it is not available change 'Country' to 'All' and select one of the default alternatives."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.force_legacy_signal_stats",
+        "label": "Force Legacy Signal stats",
+        "help": "Select 'Yes' to use signal values (SNR, etc) calculated from the older API V3. This API version has now been superseded.",
+        "line": 983,
+        "display": {
+          "de": {
+            "label": "Ursprünglichen Signalstatus erzwingen",
+            "help": "Bei 'Ja' werden die Signalwerte (SNR usw.) aus API V3 berechnet.\nDies ist eine alte API-Version, die jetzt ersetzt wurde."
+          },
+          "en": {
+            "label": "Force Legacy Signal stats",
+            "help": "Select 'Yes' to use signal values (SNR, etc) calculated from the older API V3. This API version has now been superseded."
+          }
+        }
+      },
+      {
+        "key": "currLnb.prio",
+        "label": "Priority",
+        "help": "This setting is for special setups only. It gives this LNB higher priority over other LNBs with lower values. The free LNB with the highest priority will be the first LNB selected for tuning services.",
+        "line": 1067,
+        "display": {
+          "de": {
+            "label": "Priorität",
+            "help": "Diese Einstellung ist nur für spezielle Konfigurationen vorgesehen. Sie weist diesem LNB eine höhere Priorität zu als anderen LNBs mit niedrigeren Werten. Der verfügbare LNB mit der höchsten Priorität wird zuerst für das Tuning von Sendern verwendet."
+          },
+          "en": {
+            "label": "Priority",
+            "help": "This setting is for special setups only. It gives this LNB higher priority over other LNBs with lower values. The free LNB with the highest priority will be the first LNB selected for tuning services."
+          }
+        }
+      },
+      {
+        "key": "currLnb.unicable",
+        "label": "%s%s",
+        "help": "warningText",
+        "line": 1078,
+        "display": {
+          "de": {
+            "label": "Unicable-Gerätetyp",
+            "help": "SCR-LNB, SCR-Matrix oder benutzerdefinierte Einkabelanlage auswählen."
+          },
+          "en": {
+            "label": "Unicable device type",
+            "help": "Select SCR LNB, SCR matrix or a user-defined single-cable system."
+          }
+        }
+      },
+      {
+        "key": "currLnb.powerInserter",
+        "label": "Externally powered",
+        "help": "Enable this when a power inserter or external supply powers the Unicable device.",
+        "line": 1080,
+        "display": {
+          "de": {
+            "label": "Extern angetrieben",
+            "help": "Aktivieren, wenn das Unicable-Gerät über einen Power-Inserter oder eine externe Stromversorgung mit Strom versorgt wird."
+          },
+          "en": {
+            "label": "Externally powered",
+            "help": "Enable this when a power inserter or external supply powers the Unicable device."
+          }
+        }
+      },
+      {
+        "key": "currLnb.unicableTuningAlgo",
+        "label": "Tuning algorithm",
+        "help": "SCR timing adjustment, in conjunction with SCR socket and operation of several SCR devices with one cable.",
+        "line": 1147,
+        "display": {
+          "de": {
+            "label": "Tuning-Algorithmus",
+            "help": "Timingeinstellung, in Verbindung mit Unicabledose und Betrieb mehrerer Geräte über einem Kabel."
+          },
+          "en": {
+            "label": "Tuning algorithm",
+            "help": "SCR timing adjustment, in conjunction with SCR socket and operation of several SCR devices with one cable."
+          }
+        }
+      },
+      {
+        "key": "currLnb.increased_voltage",
+        "label": "Increased voltage",
+        "help": "Use increased voltage '14/18V' if there are problems when switching the LNB.",
+        "line": 1165,
+        "display": {
+          "de": {
+            "label": "Erhöhte Spannung",
+            "help": "Bei Umschaltproblemen des LNBs (vertikal/horizontal), sehr langen Antennenkabeln oder Kabeln mit sehr dünnem Innenleiter die Voltzahl, normalerweise 14/18 Volt, erhöhen."
+          },
+          "en": {
+            "label": "Increased voltage",
+            "help": "Use increased voltage '14/18V' if there are problems when switching the LNB."
+          }
+        }
+      },
+      {
+        "key": "currLnb.diseqcMode",
+        "label": "DiSEqC mode",
+        "help": "Select '1.0' for standard committed switches, '1.1' for uncommitted switches, and '1.2' for systems using a positioner.",
+        "line": 1173,
+        "display": {
+          "de": {
+            "label": "DiSEqC-Modus",
+            "help": "'1.0' für Standard-Commit-Switches auswählen, '1.1' für nicht zugewiesene Switches und '1.2' für Systeme, die einen Rotor verwenden."
+          },
+          "en": {
+            "label": "DiSEqC mode",
+            "help": "Select '1.0' for standard committed switches, '1.1' for uncommitted switches, and '1.2' for systems using a positioner."
+          }
+        }
+      },
+      {
+        "key": "currLnb.toneburst",
+        "label": "Tone burst",
+        "help": "Select 'A' or 'B' if your aerial system requires this, otherwise select 'None'. If you are unsure select 'None'.",
+        "line": 1177,
+        "display": {
+          "de": {
+            "label": "Toneburst",
+            "help": "'A' oder 'B' auswählen, wenn das Antennensystem dies erfordert. Andernfalls, oder falls unsicher, 'Keine' auswählen."
+          },
+          "en": {
+            "label": "Tone burst",
+            "help": "Select 'A' or 'B' if your aerial system requires this, otherwise select 'None'. If you are unsure select 'None'."
+          }
+        }
+      },
+      {
+        "key": "currLnb.commitedDiseqcCommand",
+        "label": "DiSEqC 1.0 command",
+        "help": "If you are using a DiSEqC committed switch enter the port letter required to access the LNB used for this satellite.",
+        "line": 1179,
+        "display": {
+          "de": {
+            "label": "DiSEqC 1.0 Befehl",
+            "help": "Wenn ein zugewiesener DiSEqC-Commit-Switch verwendet wird, den Portbuchstaben eingeben, der für den Zugriff auf den für diesen Satelliten verwendeten LNB erforderlich ist."
+          },
+          "en": {
+            "label": "DiSEqC 1.0 command",
+            "help": "If you are using a DiSEqC committed switch enter the port letter required to access the LNB used for this satellite."
+          }
+        }
+      },
+      {
+        "key": "nim.simpleDiSEqCSetCircularLNB",
+        "label": "Use circular LNB",
+        "help": "If you are using a circular polarized LNB select 'Yes', otherwise select 'No'.",
+        "line": 573,
+        "display": {
+          "de": {
+            "label": "Circularen LNB verwenden",
+            "help": "Wird ein zirkular polarisierter LNB verwendet 'Ja' auswählen, andernfalls 'Nein'."
+          },
+          "en": {
+            "label": "Use circular LNB",
+            "help": "If you are using a circular polarized LNB select 'Yes', otherwise select 'No'."
+          }
+        }
+      },
+      {
+        "key": "nim.diseqcC",
+        "label": "Port C",
+        "help": "Select the satellite which is connected to Port-C of your switch. If you are unsure select 'Automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'Nothing connected'.",
+        "line": 580,
+        "display": {
+          "de": {
+            "label": "Port C",
+            "help": "Den Satelliten auswählen, der an Port C des Switches angeschlossen ist. Falls unsicher, 'Automatisch' auswählen und der Receiver wird versuchen, dies zu ermitteln. Ist dieser Port nicht belegt, 'Nichts angeschlossen' auswählen."
+          },
+          "en": {
+            "label": "Port C",
+            "help": "Select the satellite which is connected to Port-C of your switch. If you are unsure select 'Automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'Nothing connected'."
+          }
+        }
+      },
+      {
+        "key": "nim.diseqcD",
+        "label": "Port D",
+        "help": "Select the satellite which is connected to Port-D of your switch. If you are unsure select 'Automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'Nothing connected'.",
+        "line": 581,
+        "display": {
+          "de": {
+            "label": "Port D",
+            "help": "Den Satelliten auswählen, der an Port D des Switches angeschlossen ist. Falls unsicher, 'Automatisch' auswählen und der Receiver wird versuchen, dies zu ermitteln. Ist dieser Port nicht belegt, 'Nichts angeschlossen' auswählen."
+          },
+          "en": {
+            "label": "Port D",
+            "help": "Select the satellite which is connected to Port-D of your switch. If you are unsure select 'Automatic' and the receiver will attempt to determine this for you. If nothing is connected to this port, select 'Nothing connected'."
+          }
+        }
+      },
+      {
+        "key": "nim.simpleDiSEqCSetVoltageTone",
+        "label": "Set voltage and 22KHz",
+        "help": "Leave this set to 'Yes' unless you fully understand why you are adjusting it.",
+        "line": 583,
+        "display": {
+          "de": {
+            "label": "Spannung und 22 kHz setzen",
+            "help": "Diese Einstellung auf 'Ja' belassen, es sei denn, es wird vollständig verstanden, warum sie angepasst wird."
+          },
+          "en": {
+            "label": "Set voltage and 22KHz",
+            "help": "Leave this set to 'Yes' unless you fully understand why you are adjusting it."
+          }
+        }
+      },
+      {
+        "key": "nim.simpleDiSEqCOnlyOnSatChange",
+        "label": "Send DiSEqC only on satellite change",
+        "help": "Select 'Yes' to only send the DiSEqC command when changing from one satellite to another, or select 'No' for the DiSEqC command to be resent on every zap.",
+        "line": 584,
+        "display": {
+          "de": {
+            "label": "DiSEqC nur bei Satellitenwechsel senden",
+            "help": "'Ja', um nur dann den DiSEqC-Befehl zu senden, wenn von einem Satelliten zu einem anderen gewechselt wird. Bei 'Nein' wird der DiSEqC-Befehl bei jedem Senderwechsel gesendet."
+          },
+          "en": {
+            "label": "Send DiSEqC only on satellite change",
+            "help": "Select 'Yes' to only send the DiSEqC command when changing from one satellite to another, or select 'No' for the DiSEqC command to be resent on every zap."
+          }
+        }
+      },
+      {
+        "key": "nim.powerThreshold",
+        "label": "Power threshold in mA",
+        "help": "Minimum difference between idle and moving current.",
+        "line": 610,
+        "display": {
+          "de": {
+            "label": "Schwellwert Stromverbrauch in mA",
+            "help": "Mindestunterschied zwischen Leerlauf und aktueller Bewegung."
+          },
+          "en": {
+            "label": "Power threshold in mA",
+            "help": "Minimum difference between idle and moving current."
+          }
+        }
+      },
+      {
+        "key": "nim.fastTurningBegin",
+        "label": "Begin time",
+        "help": "Only move the dish quickly after this hour.",
+        "line": 614,
+        "display": {
+          "de": {
+            "label": "Anfangszeit",
+            "help": "Bewegen der Satellitenschüssel erst nach dieser Stunde."
+          },
+          "en": {
+            "label": "Begin time",
+            "help": "Only move the dish quickly after this hour."
+          }
+        }
+      },
+      {
+        "key": "nim.fastTurningEnd",
+        "label": "End time",
+        "help": "Only move the dish quickly before this hour.",
+        "line": 615,
+        "display": {
+          "de": {
+            "label": "Endzeit",
+            "help": "Bewegen der Satellitenschüssel erst kurz vor dieser Stunde."
+          },
+          "en": {
+            "label": "End time",
+            "help": "Only move the dish quickly before this hour."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.configMode",
+        "label": "Configuration mode",
+        "help": "cableWarning",
+        "line": 778,
+        "display": {
+          "de": {
+            "label": "Konfiguration",
+            "help": "Kabelempfang am vorhandenen Anschluss aktivieren. Bei einem Hybrid-Empfangsteil werden C und T abwechselnd verwendet."
+          },
+          "en": {
+            "label": "Configuration mode",
+            "help": "Enable cable reception on the actual input. A shared hybrid frontend uses C and T alternately."
+          }
+        }
+      },
+      {
+        "key": "nimConfig.toneAmplitude",
+        "label": "Tone amplitude",
+        "help": "Your receiver can use tone amplitude. Consult your receiver's manual for more information.",
+        "line": 855,
+        "display": {
+          "de": {
+            "label": "Tonamplitude",
+            "help": "Der Receiver kann die Tonamplitude verwenden. Weitere Informationen befinden sich im Handbuch des Receivers."
+          },
+          "en": {
+            "label": "Tone amplitude",
+            "help": "Your receiver can use tone amplitude. Consult your receiver's manual for more information."
+          }
+        }
+      },
+      {
+        "key": "nimConfig.scpcSearchRange",
+        "label": "SCPC optimized search range",
+        "help": "Your receiver can use SCPC optimized search range. Consult your receiver's manual for more information.",
+        "line": 857,
+        "display": {
+          "de": {
+            "label": "SCPC optimierter Suchbereich",
+            "help": "Der Receiver kann SCPC-optimierten Suchbereich verwenden. Weitere Informationen befinden sich im Handbuch des Receivers."
+          },
+          "en": {
+            "label": "SCPC optimized search range",
+            "help": "Your receiver can use SCPC optimized search range. Consult your receiver's manual for more information."
+          }
+        }
+      },
+      {
+        "key": "nimConfig.t2miRawMode",
+        "label": "T2MI RAW Mode",
+        "help": "With T2MI RAW mode disabled (default) we can use single T2MI PLP de-encapsulation. With T2MI RAW mode enabled we can use astra-sm to analyze T2MI",
+        "line": 859,
+        "display": {
+          "de": {
+            "label": "T2MI-RAW-Mode",
+            "help": "Ist der T2MI-RAW-Modus deaktiviert (Standard), kann man eine einzelne T2MI-PLP-Entkapselung verwenden. Mit aktiviertem T2MI-RAW-Modus kann man Astra-SM zur Analyse von T2MI verwenden"
+          },
+          "en": {
+            "label": "T2MI RAW Mode",
+            "help": "With T2MI RAW mode disabled (default) we can use single T2MI PLP de-encapsulation. With T2MI RAW mode enabled we can use astra-sm to analyze T2MI"
+          }
+        }
+      },
+      {
+        "key": "nimConfig.input",
+        "label": "Connector",
+        "help": "Select the input connector you want to use.",
+        "line": 861,
+        "display": {
+          "de": {
+            "label": "Anschluss",
+            "help": "Den gewünschten Anschluss auswählen."
+          },
+          "en": {
+            "label": "Connector",
+            "help": "Select the input connector you want to use."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_networkid",
+        "label": "Network ID",
+        "help": "This setting depends on your cable provider and location. If you don't know the correct setting refer to the menu in the official cable receiver, or get it from your cable provider, or seek help via Internet forum.",
+        "line": 876,
+        "display": {
+          "de": {
+            "label": "Netzwerk-ID (0 – alle Netzwerke)",
+            "help": "Diese Einstellung hängt vom Kabelanbieter und Standort ab. Wenn die richtige Einstellung nicht bekannt ist, im Menü des offiziellen Kabelreceivers nachsehen, beim Kabelanbieter nachfragen, oder Hilfe über das Internetforum suchen."
+          },
+          "en": {
+            "label": "Network ID",
+            "help": "This setting depends on your cable provider and location. If you don't know the correct setting refer to the menu in the official cable receiver, or get it from your cable provider, or seek help via Internet forum."
+          }
+        }
+      },
+      {
+        "key": "self.cableRegions",
+        "label": "Region",
+        "help": "Select your provider and region. If not present in this list you will need to select one of the other 'Service scan types'.",
+        "line": 902,
+        "display": {
+          "de": {
+            "label": "Region",
+            "help": "Den Anbieter und die Region auswählen. Wenn sie in dieser Liste nicht vorhanden sind, muss einer der anderen Suchläufe ausgewählt werden."
+          },
+          "en": {
+            "label": "Region",
+            "help": "Select your provider and region. If not present in this list you will need to select one of the other 'Service scan types'."
+          }
+        }
+      },
+      {
+        "key": "self.terrestrialCountries",
+        "label": "Country",
+        "help": "Select your country. If not available select 'All'.",
+        "line": 952,
+        "display": {
+          "de": {
+            "label": "Land",
+            "help": "Das Land auswählen. Wenn nicht verfügbar, 'Alle' auswählen."
+          },
+          "en": {
+            "label": "Country",
+            "help": "Select your country. If not available select 'All'."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.atsc.atsc",
+        "label": "ATSC provider",
+        "help": "Select your ATSC provider.",
+        "line": 980,
+        "display": {
+          "de": {
+            "label": "ATSC-Anbieter",
+            "help": "Den ATSC-Anbieter auswählen."
+          },
+          "en": {
+            "label": "ATSC provider",
+            "help": "Select your ATSC provider."
+          }
+        }
+      },
+      {
+        "key": "currLnb.lofl",
+        "label": "LOF/L",
+        "help": "Enter your low band local oscillator frequency. For more information consult the specifications of your LNB.",
+        "line": 1071,
+        "display": {
+          "de": {
+            "label": "LOF/L",
+            "help": "Die Frequenz des lokalen Low-Band-Oszillators eingeben. Weitere Informationen befinden sich im Datenblatt des LNBs."
+          },
+          "en": {
+            "label": "LOF/L",
+            "help": "Enter your low band local oscillator frequency. For more information consult the specifications of your LNB."
+          }
+        }
+      },
+      {
+        "key": "currLnb.lofh",
+        "label": "LOF/H",
+        "help": "Enter your high band local oscillator frequency. For more information consult the specifications of your LNB.",
+        "line": 1072,
+        "display": {
+          "de": {
+            "label": "LOF/H",
+            "help": "Die Frequenz des lokalen High-Band-Oszillators eingeben. Weitere Informationen befinden sich im Datenblatt des LNBs."
+          },
+          "en": {
+            "label": "LOF/H",
+            "help": "Enter your high band local oscillator frequency. For more information consult the specifications of your LNB."
+          }
+        }
+      },
+      {
+        "key": "currLnb.threshold",
+        "label": "Threshold",
+        "help": "Enter the frequency at which you LNB switches between low band and high band. For more information consult the specifications of your LNB.",
+        "line": 1073,
+        "display": {
+          "de": {
+            "label": "Schwellwert",
+            "help": "Die Frequenz eingeben, mit der der LNB zwischen Low- und High-Band wechselt. Weitere Informationen befinden sich im Datenblatt des LNBs."
+          },
+          "en": {
+            "label": "Threshold",
+            "help": "Enter the frequency at which you LNB switches between low band and high band. For more information consult the specifications of your LNB."
+          }
+        }
+      },
+      {
+        "key": "currLnb.unicableUseLnb1UserBand",
+        "label": "Use LNB 1 User Band",
+        "help": "Select 'Yes' to use the same User Band channel and frequency as LNB 1. This is intended for multiple satellite positions delivered by the same Unicable system.",
+        "line": 1086,
+        "display": {
+          "de": {
+            "label": "User-Band für LNB 1 verwenden",
+            "help": "'Ja' auswählen, um denselben User-Band-Kanal und dieselbe Frequenz wie bei LNB 1 zu verwenden. Dies ist für mehrere Satellitenpositionen vorgesehen, die über dasselbe Unicable-System bereitgestellt werden."
+          },
+          "en": {
+            "label": "Use LNB 1 User Band",
+            "help": "Select 'Yes' to use the same User Band channel and frequency as LNB 1. This is intended for multiple satellite positions delivered by the same Unicable system."
+          }
+        }
+      },
+      {
+        "key": "currLnb.dictionuser",
+        "label": "Diction",
+        "help": "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II).",
+        "line": 1089,
+        "display": {
+          "de": {
+            "label": "Diktion",
+            "help": "Das Protokoll des Unicable/SCR-Gerätes auswählen. 'SCR Unicable' (Unicable I-Format) oder 'SCR JESS' (Unicable II-Format)."
+          },
+          "en": {
+            "label": "Diction",
+            "help": "Select the protocol used by your SCR device. Choices are 'SCR Unicable' (Unicable), or 'SCR JESS' (JESS, also known as Unicable II)."
+          }
+        }
+      },
+      {
+        "key": "currLnb.unicable_use_pin",
+        "label": "Use PIN",
+        "help": "Enable this when the User Band is protected by a PIN in a multi-dwelling Unicable installation.",
+        "line": 1143,
+        "display": {
+          "de": {
+            "label": "PIN verwenden",
+            "help": "Aktivieren, wenn das User-Band in einer Unicable-Installation für Mehrfamilienhäuser durch eine PIN geschützt ist."
+          },
+          "en": {
+            "label": "Use PIN",
+            "help": "Enable this when the User Band is protected by a PIN in a multi-dwelling Unicable installation."
+          }
+        }
+      },
+      {
+        "key": "nimConfig_advanced.unicableconnected",
+        "label": "Connected through another tuner",
+        "help": "Select 'Yes' if this tuner is connected to the SCR device through another tuner, otherwise select 'No'.",
+        "line": 1157,
+        "display": {
+          "de": {
+            "label": "Über anderen Tuner verbunden",
+            "help": "'Ja' auswählen, wenn dieser Tuner über einen anderen Tuner mit dem Unicable/SCR-Gerät verbunden ist, andernfalls 'Nein'."
+          },
+          "en": {
+            "label": "Connected through another tuner",
+            "help": "Select 'Yes' if this tuner is connected to the SCR device through another tuner, otherwise select 'No'."
+          }
+        }
+      },
+      {
+        "key": "Sat.voltage",
+        "label": "Voltage mode",
+        "help": "Select 'Polarization' if using a 'Universal' LNB, otherwise consult your LNB specifications.",
+        "line": 1163,
+        "display": {
+          "de": {
+            "label": "Spannungsmodus",
+            "help": "'Polarisation' auswählen, wenn ein 'Universal LNB' verwendet wird, andernfalls im LNB-Datenblatt nachsehen."
+          },
+          "en": {
+            "label": "Voltage mode",
+            "help": "Select 'Polarization' if using a 'Universal' LNB, otherwise consult your LNB specifications."
+          }
+        }
+      },
+      {
+        "key": "Sat.tonemode",
+        "label": "Tone mode",
+        "help": "Select 'Band' if using a 'Universal' LNB, otherwise consult your LNB specifications.",
+        "line": 1164,
+        "display": {
+          "de": {
+            "label": "Tonmodus",
+            "help": "'Band' auswählen, wenn ein 'Universal LNB' verwendet wird, andernfalls im LNB-Datenblatt nachsehen."
+          },
+          "en": {
+            "label": "Tone mode",
+            "help": "Select 'Band' if using a 'Universal' LNB, otherwise consult your LNB specifications."
+          }
+        }
+      },
+      {
+        "key": "currLnb.fastDiseqc",
+        "label": "Fast DiSEqC",
+        "help": "Select Fast DiSEqC if your aerial system supports it. If you are unsure select 'No'.",
+        "line": 1176,
+        "display": {
+          "de": {
+            "label": "Schnelles DiSEqC",
+            "help": "'Ja' auswählen, wenn das Antennensystem schnelles DiSEqC unterstützt. Andernfalls, oder falls unsicher, 'Nein' auswählen."
+          },
+          "en": {
+            "label": "Fast DiSEqC",
+            "help": "Select Fast DiSEqC if your aerial system supports it. If you are unsure select 'No'."
+          }
+        }
+      },
+      {
+        "key": "currLnb.uncommittedDiseqcCommand",
+        "label": "DiSEqC 1.1 command",
+        "help": "If you are using a DiSEqC uncommitted switch enter the port number required to access the LNB used for this satellite.",
+        "line": 1185,
+        "display": {
+          "de": {
+            "label": "DiSEqC 1.1 Befehl",
+            "help": "Wenn ein nicht zugewiesener DiSEqC-Switch verwendet wird, die Portnummer eingeben, die für den Zugriff auf den für diesen Satelliten verwendeten LNB erforderlich ist."
+          },
+          "en": {
+            "label": "DiSEqC 1.1 command",
+            "help": "If you are using a DiSEqC uncommitted switch enter the port number required to access the LNB used for this satellite."
+          }
+        }
+      },
+      {
+        "key": "currLnb.commandOrder",
+        "label": "Command order",
+        "help": "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end).",
+        "line": 1194,
+        "display": {
+          "de": {
+            "label": "Befehlsfolge",
+            "help": "In dieser Reihenfolge werden DiSEqC-Befehle an das Antennensystem gesendet. Die Reihenfolge muss genau der Reihenfolge entsprechen, in der die physikalischen Geräte entlang des Signalkabels angeordnet sind (ausgehend vom Empfängerende)."
+          },
+          "en": {
+            "label": "Command order",
+            "help": "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
+          }
+        }
+      },
+      {
+        "key": "currLnb.sequenceRepeat",
+        "label": "Sequence repeat",
+        "help": "Set sequence repeats if your aerial system requires this. Normally if the aerial system has been configured correctly sequence repeats will not be necessary. If yours does, recheck you have command order set correctly.",
+        "line": 1199,
+        "display": {
+          "de": {
+            "label": "Sequenz-Wiederholung",
+            "help": "Die Sequenzeinstellung wird wiederholt, wenn das Antennensystem dies erfordert. Normalerweise (bei korrekter Konfiguration) sind Sequenzwiederholungen nicht notwendig. Wenn dies jedoch der Fall ist, erneut überprüfen, ob die Befehlsreihenfolge richtig eingestellt ist."
+          },
+          "en": {
+            "label": "Sequence repeat",
+            "help": "Set sequence repeats if your aerial system requires this. Normally if the aerial system has been configured correctly sequence repeats will not be necessary. If yours does, recheck you have command order set correctly."
+          }
+        }
+      },
+      {
+        "key": "Sat.usals",
+        "label": "Use USALS for this sat",
+        "help": "USALS automatically moves a motorized dish to the correct satellite based on the coordinates entered by the user. Without USALS each satellite will need to be setup and saved individually.",
+        "line": 1218,
+        "display": {
+          "de": {
+            "label": "USALS für diesen Satelliten verwenden",
+            "help": "USALS bewegt automatisch eine motorisierte Schüssel auf den richtigen Satelliten, basierend auf den vom Benutzer eingegebenen Koordinaten. Ohne USALS muss jeder Satellit individuell eingerichtet und gespeichert werden."
+          },
+          "en": {
+            "label": "Use USALS for this sat",
+            "help": "USALS automatically moves a motorized dish to the correct satellite based on the coordinates entered by the user. Without USALS each satellite will need to be setup and saved individually."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbt.configMode",
+        "label": "Configuration mode",
+        "help": "Select 'Enabled' if this tuner has a signal cable connected, otherwise select 'Nothing connected'.",
+        "line": 780,
+        "display": {
+          "de": {
+            "label": "Konfiguration",
+            "help": "'Aktiviert' auswählen, wenn an diesem Tuner ein Signalkabel angeschlossen ist, andernfalls 'Nichts angeschlossen'."
+          },
+          "en": {
+            "label": "Configuration mode",
+            "help": "Select 'Enabled' if this tuner has a signal cable connected, otherwise select 'Nothing connected'."
+          }
+        }
+      },
+      {
+        "key": "nimConfig.connectedTo",
+        "label": "Tuner",
+        "help": "This setting allows the tuner configuration to be a duplication of another configured tuner.",
+        "line": 804,
+        "display": {
+          "de": {
+            "label": "Tuner",
+            "help": "Diese Einstellung ermöglicht es, die Tunerkonfiguration eines anderen bereits konfigurierten Tuners zu duplizieren."
+          },
+          "en": {
+            "label": "Tuner",
+            "help": "This setting allows the tuner configuration to be a duplication of another configured tuner."
+          }
+        }
+      },
+      {
+        "key": "self.cableCountries",
+        "label": "Country",
+        "help": "Select your country. If not available select 'All'.",
+        "line": 887,
+        "display": {
+          "de": {
+            "label": "Land",
+            "help": "Das Land auswählen. Wenn nicht verfügbar, 'Alle' auswählen."
+          },
+          "en": {
+            "label": "Country",
+            "help": "Select your country. If not available select 'All'."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbt.terrestrial_5V",
+        "label": "Enable 5V for active antenna",
+        "help": "Enable this setting if your aerial system needs power.",
+        "line": 973,
+        "display": {
+          "de": {
+            "label": "5 Volt für aktive Antenne aktivieren",
+            "help": "Diese Einstellung aktivieren, wenn das Antennensystem Strom benötigt."
+          },
+          "en": {
+            "label": "Enable 5V for active antenna",
+            "help": "Enable this setting if your aerial system needs power."
+          }
+        }
+      },
+      {
+        "key": "currLnb.unicablePosition",
+        "label": "Unicable position",
+        "help": "Leave this at 0 to derive the position from the LNB number and device profile. Enter 1 to 64 only for a reprogrammed Unicable device.",
+        "line": 1083,
+        "display": {
+          "de": {
+            "label": "Unicable-Position",
+            "help": "Diese Einstellung auf '0' belassen, um die Position anhand der LNB-Nummer und des Geräteprofils abzuleiten. Nur Werte zwischen '1' und '64' eingeben, wenn es sich um ein neu programmiertes Unicable-Gerät handelt."
+          },
+          "en": {
+            "label": "Unicable position",
+            "help": "Leave this at 0 to derive the position from the LNB number and device profile. Enter 1 to 64 only for a reprogrammed Unicable device."
+          }
+        }
+      },
+      {
+        "key": "satcr",
+        "label": "Channel",
+        "help": "Select the Unicable channel to be assigned to this tuner. This is a unique value. Be certain that no other device connected to this same Unicable system is allocated to the same Unicable channel.",
+        "line": 1100,
+        "display": {
+          "de": {
+            "label": "Kanal",
+            "help": "Den Unicable-Kanal auswählen, der diesem Tuner zugeordnet werden soll. Das ist eine eindeutige Nummer. Sicherstellen, dass kein anderes Gerät im System demselben Kanal zugeordnet wurde."
+          },
+          "en": {
+            "label": "Channel",
+            "help": "Select the Unicable channel to be assigned to this tuner. This is a unique value. Be certain that no other device connected to this same Unicable system is allocated to the same Unicable channel."
+          }
+        }
+      },
+      {
+        "key": "currLnb.unicableMatrixManufacturer",
+        "label": "Manufacturer",
+        "help": "Select the manufacturer of your SCR device. If the manufacturer is not listed, set 'SCR' to 'User defined' and enter the device parameters manually according to its specifications.",
+        "line": 1113,
+        "display": {
+          "de": {
+            "label": "Hersteller",
+            "help": "Den Hersteller des Unicable/SCR-Gerätes auswählen. Wenn der Hersteller nicht aufgeführt ist, 'SCR' auf 'Benutzerdefiniert' setzen und die Geräteparameter gemäß dem zugehörigen Datenblatt manuell eingeben."
+          },
+          "en": {
+            "label": "Manufacturer",
+            "help": "Select the manufacturer of your SCR device. If the manufacturer is not listed, set 'SCR' to 'User defined' and enter the device parameters manually according to its specifications."
+          }
+        }
+      },
+      {
+        "key": "currLnb.powerMeasurement",
+        "label": "Use power measurement",
+        "help": "Detect positioner movement by its current consumption.",
+        "line": 1203,
+        "display": {
+          "de": {
+            "label": "Stromaufnahme messen",
+            "help": "Rotorbewegung anhand des Stromverbrauchs erkennen."
+          },
+          "en": {
+            "label": "Use power measurement",
+            "help": "Detect positioner movement by its current consumption."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.atsc.configMode",
+        "label": "Configuration mode",
+        "help": "Select 'Enabled' if this tuner has a signal cable connected, otherwise select 'Nothing connected'.",
+        "line": 782,
+        "display": {
+          "de": {
+            "label": "Konfiguration",
+            "help": "'Aktiviert' auswählen, wenn an diesem Tuner ein Signalkabel angeschlossen ist, andernfalls 'Nichts angeschlossen'."
+          },
+          "en": {
+            "label": "Configuration mode",
+            "help": "Select 'Enabled' if this tuner has a signal cable connected, otherwise select 'Nothing connected'."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_EU_VHF_I",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 908,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: EU VHF I-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan EU VHF I band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_EU_MID",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 909,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: EU MID-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan EU MID band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_EU_VHF_III",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 910,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: EU VHF III-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan EU VHF III band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_EU_UHF_IV",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 911,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: EU UHF IV-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan EU UHF IV band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_EU_UHF_V",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 912,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: EU UHF V-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan EU UHF V band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_EU_SUPER",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 913,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: EU SUPER-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan EU SUPER band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_EU_HYPER",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 914,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: EU HYPER-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan EU HYPER band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_US_LOW",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 915,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: US LOW-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan US LOW band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_US_MID",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 916,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: US MID-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan US MID band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_US_HIGH",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 917,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: US HIGH-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan US HIGH band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_US_SUPER",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 918,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: US SUPER-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan US SUPER band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_band_US_HYPER",
+        "label": "Scan %s band",
+        "help": "Select 'Yes' to include the %s band in your search.",
+        "line": 919,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: US HYPER-Band",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan US HYPER band",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_mod_qam16",
+        "label": "Scan %s",
+        "help": "Select 'Yes' to include %s multiplexes in your search.",
+        "line": 924,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: QAM16",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan QAM16",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_mod_qam32",
+        "label": "Scan %s",
+        "help": "Select 'Yes' to include %s multiplexes in your search.",
+        "line": 925,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: QAM32",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan QAM32",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_mod_qam64",
+        "label": "Scan %s",
+        "help": "Select 'Yes' to include %s multiplexes in your search.",
+        "line": 926,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: QAM64",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan QAM64",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_mod_qam128",
+        "label": "Scan %s",
+        "help": "Select 'Yes' to include %s multiplexes in your search.",
+        "line": 927,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: QAM128",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan QAM128",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_mod_qam256",
+        "label": "Scan %s",
+        "help": "Select 'Yes' to include %s multiplexes in your search.",
+        "line": 928,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: QAM256",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan QAM256",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_sr_6900",
+        "label": "Scan %s",
+        "help": "Select 'Yes' to include symbol rate %s in your search.",
+        "line": 929,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: 6900 kSym/s",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan 6900 kSym/s",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_sr_6875",
+        "label": "Scan %s",
+        "help": "Select 'Yes' to include symbol rate %s in your search.",
+        "line": 930,
+        "display": {
+          "de": {
+            "label": "Durchsuchen: 6875 kSym/s",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan 6875 kSym/s",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_sr_ext1",
+        "label": "Scan additional SR",
+        "help": "This field allows you to search an additional symbol rate up to %s.",
+        "line": 931,
+        "display": {
+          "de": {
+            "label": "Weitere SR durchsuchen",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan additional SR",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_sr_ext2",
+        "label": "Scan additional SR",
+        "help": "This field allows you to search an additional symbol rate up to %s.",
+        "line": 932,
+        "display": {
+          "de": {
+            "label": "Weitere SR durchsuchen",
+            "help": "Diesen Band-, Modulations- oder Symbolratenkandidaten bei der Kabelsuche berücksichtigen. Zusätzliche Symbolraten nur nach Anbieterdaten eintragen."
+          },
+          "en": {
+            "label": "Scan additional SR",
+            "help": "Include this band, modulation or symbol-rate candidate in cable discovery. Enter additional symbol rates only from provider data."
+          }
+        }
+      },
+      {
+        "key": "stcrvco",
+        "label": "Frequency",
+        "help": "Select the User Band frequency to be assigned to this tuner. This is the frequency the SCR switch or SCR LNB uses to pass the requested transponder to the tuner.",
+        "line": 1102,
+        "display": {
+          "de": {
+            "label": "Frequenz",
+            "help": "Die User-Band-Frequenz auswählen, die diesem Empfänger zugewiesen werden soll. Dies ist die Frequenz, die der SCR-Switch oder SCR-LNB verwendet, um den angeforderten Transponder an den Empfänger zu übertragen."
+          },
+          "en": {
+            "label": "Frequency",
+            "help": "Select the User Band frequency to be assigned to this tuner. This is the frequency the SCR switch or SCR LNB uses to pass the requested transponder to the tuner."
+          }
+        }
+      },
+      {
+        "key": "currLnb.bootuptimeuser",
+        "label": "LNB/Switch Bootup time [ms]",
+        "help": "",
+        "line": 1107,
+        "display": {
+          "de": {
+            "label": "LNB/Switch-Startzeit [ms]",
+            "help": "Startzeit des SCR-LNB/Schalters in Millisekunden; erst nach Geräteangabe ändern."
+          },
+          "en": {
+            "label": "LNB/Switch Bootup time [ms]",
+            "help": "SCR LNB/switch startup delay in milliseconds; follow device specifications."
+          }
+        }
+      },
+      {
+        "key": "manufacturer.product",
+        "label": "Model",
+        "help": "Select the model number of your Unicable device. If the model number is not listed, set 'SCR' to 'User defined' and enter the device parameters manually according to its specifications.",
+        "line": 1117,
+        "display": {
+          "de": {
+            "label": "Modell",
+            "help": "Das Modell des Unicable/SCR-Gerätes auswählen. Wenn der Hersteller nicht aufgeführt ist, 'SCR' auf 'Benutzerdefiniert' setzen und die Geräteparameter gemäß dem zugehörigen Datenblatt manuell eingeben."
+          },
+          "en": {
+            "label": "Model",
+            "help": "Select the model number of your Unicable device. If the model number is not listed, set 'SCR' to 'User defined' and enter the device parameters manually according to its specifications."
+          }
+        }
+      },
+      {
+        "key": "currLnb.unicableLnbManufacturer",
+        "label": "Manufacturer",
+        "help": "Select the manufacturer of your SCR device. If the manufacturer is not listed, set 'SCR' to 'User defined' and enter the device parameters manually according to its specifications.",
+        "line": 1130,
+        "display": {
+          "de": {
+            "label": "Hersteller",
+            "help": "Den Hersteller des Unicable/SCR-Gerätes auswählen. Wenn der Hersteller nicht aufgeführt ist, 'SCR' auf 'Benutzerdefiniert' setzen und die Geräteparameter gemäß dem zugehörigen Datenblatt manuell eingeben."
+          },
+          "en": {
+            "label": "Manufacturer",
+            "help": "Select the manufacturer of your SCR device. If the manufacturer is not listed, set 'SCR' to 'User defined' and enter the device parameters manually according to its specifications."
+          }
+        }
+      },
+      {
+        "key": "currLnb.unicable_pin",
+        "label": "PIN",
+        "help": "Enter the PIN from 0 to 255 assigned to this User Band by the installer or building operator.",
+        "line": 1146,
+        "display": {
+          "de": {
+            "label": "PIN",
+            "help": "Die PIN zwischen 0 und 255 eingeben, die diesem User-Band zugewiesen wurde."
+          },
+          "en": {
+            "label": "PIN",
+            "help": "Enter the PIN from 0 to 255 assigned to this User Band by the installer or building operator."
+          }
+        }
+      },
+      {
+        "key": "nimConfig_advanced.unicableconnectedTo",
+        "label": "Connected to",
+        "help": "Select the tuner to which the signal cable of the SCR device is connected.",
+        "line": 1161,
+        "display": {
+          "de": {
+            "label": "Verbunden mit",
+            "help": "Den Tuner auswählen, an dem das Signalkabel des Unicable/SCR-Gerätes angeschlossen ist."
+          },
+          "en": {
+            "label": "Connected to",
+            "help": "Select the tuner to which the signal cable of the SCR device is connected."
+          }
+        }
+      },
+      {
+        "key": "currLnb.commandOrder1_0",
+        "label": "Command order",
+        "help": "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end).",
+        "line": 1183,
+        "display": {
+          "de": {
+            "label": "Befehlsfolge",
+            "help": "In dieser Reihenfolge werden DiSEqC-Befehle an das Antennensystem gesendet. Die Reihenfolge muss genau der Reihenfolge entsprechen, in der die physikalischen Geräte entlang des Signalkabels angeordnet sind (ausgehend vom Empfängerende)."
+          },
+          "en": {
+            "label": "Command order",
+            "help": "This is the order in which DiSEqC commands are sent to the aerial system. The order must correspond exactly with the order the physical devices are arranged along the signal cable (starting from the receiver end)."
+          }
+        }
+      },
+      {
+        "key": "currLnb.diseqcRepeats",
+        "label": "DiSEqC 1.1 repeats",
+        "help": "If using multiple uncommitted switches the DiSEqC commands must be sent multiple times. Set to the number of uncommitted switches in the chain minus one.",
+        "line": 1198,
+        "display": {
+          "de": {
+            "label": "DiSEqC 1.1 Wiederholungen",
+            "help": "Wenn mehrere nicht zugewiesene Switches verwendet werden, müssen die DiSEqC-Befehle mehrmals gesendet werden. Die Anzahl der nicht zugewiesenen Switches in der Kette minus eins festlegen."
+          },
+          "en": {
+            "label": "DiSEqC 1.1 repeats",
+            "help": "If using multiple uncommitted switches the DiSEqC commands must be sent multiple times. Set to the number of uncommitted switches in the chain minus one."
+          }
+        }
+      },
+      {
+        "key": "currLnb.turningSpeed",
+        "label": "Rotor turning speed",
+        "help": "Select how quickly the dish should move between satellites.",
+        "line": 1207,
+        "display": {
+          "de": {
+            "label": "Rotor Drehgeschwindigkeit",
+            "help": "Auswählen, wie schnell sich die Antenne zwischen den Satelliten bewegen soll."
+          },
+          "en": {
+            "label": "Rotor turning speed",
+            "help": "Select how quickly the dish should move between satellites."
+          }
+        }
+      },
+      {
+        "key": "currLnb.longitude",
+        "label": "Longitude",
+        "help": "Enter your current longitude. This is the number of degrees you are from zero meridian as a decimal.",
+        "line": 1222,
+        "display": {
+          "de": {
+            "label": "Längengrad",
+            "help": "Den aktuellen Längengrad eingeben. Dies ist die Anzahl der Grade (als Dezimalzahl) der Entfernung zum Nullmeridian."
+          },
+          "en": {
+            "label": "Longitude",
+            "help": "Enter your current longitude. This is the number of degrees you are from zero meridian as a decimal."
+          }
+        }
+      },
+      {
+        "key": "currLnb.longitudeOrientation",
+        "label": " ",
+        "help": "Enter if you are in the East or West hemisphere.",
+        "line": 1223,
+        "display": {
+          "de": {
+            "label": "Längengrad: Ost/West",
+            "help": "Eingeben, ob sich der Receiver in der östlichen oder westlichen Hemisphäre befindet."
+          },
+          "en": {
+            "label": "Longitude hemisphere",
+            "help": "Enter if you are in the East or West hemisphere."
+          }
+        }
+      },
+      {
+        "key": "currLnb.latitude",
+        "label": "Latitude",
+        "help": "Enter your current latitude. This is the number of degrees you are from the equator as a decimal.",
+        "line": 1224,
+        "display": {
+          "de": {
+            "label": "Breitengrad",
+            "help": "Den aktuellen Breitengrad eingeben. Dies ist die Anzahl der Grade (als Dezimalzahl) der Entfernung zum Äquator."
+          },
+          "en": {
+            "label": "Latitude",
+            "help": "Enter your current latitude. This is the number of degrees you are from the equator as a decimal."
+          }
+        }
+      },
+      {
+        "key": "currLnb.latitudeOrientation",
+        "label": " ",
+        "help": "Enter if you are North or South of the equator.",
+        "line": 1225,
+        "display": {
+          "de": {
+            "label": "Breitengrad: Nord/Süd",
+            "help": "Eingeben, ob sich der Receiver nördlich oder südlich des Äquators befindet."
+          },
+          "en": {
+            "label": "Latitude hemisphere",
+            "help": "Enter if you are North or South of the equator."
+          }
+        }
+      },
+      {
+        "key": "Sat.rotorposition",
+        "label": "Stored position",
+        "help": "Enter the number stored in the positioner that corresponds to this satellite.",
+        "line": 1227,
+        "display": {
+          "de": {
+            "label": "Gespeicherte Position",
+            "help": "Die Nummer eingeben, die im Stellungsregler für diesen Satelliten gespeichert ist."
+          },
+          "en": {
+            "label": "Stored position",
+            "help": "Enter the number stored in the positioner that corresponds to this satellite."
+          }
+        }
+      },
+      {
+        "key": "currLnb.turningspeedH",
+        "label": "   %s [°%s",
+        "help": "Consult your motor's specifications for this information, or leave the default setting.",
+        "line": 1234,
+        "display": {
+          "de": {
+            "label": "Drehgeschwindigkeit H",
+            "help": "Im Datenblatt des Motors für diese Information nachsehen oder die Standardeinstellung belassen."
+          },
+          "en": {
+            "label": "H turning speed",
+            "help": "Consult your motor's specifications for this information, or leave the default setting."
+          }
+        }
+      },
+      {
+        "key": "currLnb.turningspeedV",
+        "label": "   %s [°%s",
+        "help": "Consult your motor's specifications for this information, or leave the default setting.",
+        "line": 1235,
+        "display": {
+          "de": {
+            "label": "Drehgeschwindigkeit V",
+            "help": "Im Datenblatt des Motors für diese Information nachsehen oder die Standardeinstellung belassen."
+          },
+          "en": {
+            "label": "V turning speed",
+            "help": "Consult your motor's specifications for this information, or leave the default setting."
+          }
+        }
+      },
+      {
+        "key": "currLnb.tuningstepsize",
+        "label": "   %s [°]",
+        "help": "Consult your motor's specifications for this information, or leave the default setting.",
+        "line": 1236,
+        "display": {
+          "de": {
+            "label": "Motor-Schrittweite",
+            "help": "Im Datenblatt des Motors für diese Information nachsehen oder die Standardeinstellung belassen."
+          },
+          "en": {
+            "label": "Motor step size",
+            "help": "Consult your motor's specifications for this information, or leave the default setting."
+          }
+        }
+      },
+      {
+        "key": "currLnb.rotorPositions",
+        "label": "   %s",
+        "help": "Consult your motor's specifications for this information, or leave the default setting.",
+        "line": 1237,
+        "display": {
+          "de": {
+            "label": "Motorpositionen",
+            "help": "Im Datenblatt des Motors für diese Information nachsehen oder die Standardeinstellung belassen."
+          },
+          "en": {
+            "label": "Motor positions",
+            "help": "Consult your motor's specifications for this information, or leave the default setting."
+          }
+        }
+      },
+      {
+        "key": "nimConfig.connectedTo",
+        "label": "Connected to",
+        "help": "Select the tuner upon which this loop through depends.",
+        "line": 819,
+        "display": {
+          "de": {
+            "label": "Verbunden mit",
+            "help": "Den Tuner auswählen, von dem diese Durchschleifung abhängt."
+          },
+          "en": {
+            "label": "Connected to",
+            "help": "Select the tuner upon which this loop through depends."
+          }
+        }
+      },
+      {
+        "key": "self.nimConfig.dvbc.scan_frequency_steps",
+        "label": "Frequency scan step size(khz)",
+        "help": "Enter the frequency step size for the tuner to use when searching for cable multiplexes. For more information consult your cable provider's documentation.",
+        "line": 921,
+        "display": {
+          "de": {
+            "label": "Frequenzschrittweite beim Suchlauf (kHz)",
+            "help": "Die Frequenzschrittgröße eingeben, die der Tuner bei der Suche nach Kabelmultiplexen verwenden soll. Weitere Informationen befinden sich in der Dokumentation des Kabelanbieters."
+          },
+          "en": {
+            "label": "Frequency scan step size(khz)",
+            "help": "Enter the frequency step size for the tuner to use when searching for cable multiplexes. For more information consult your cable provider's documentation."
+          }
+        }
+      },
+      {
+        "key": "manufacturer.scr[product_name]",
+        "label": "Channel",
+        "help": "Select the User Band channel to be assigned to this tuner. This is an index into the table of frequencies the SCR switch uses to pass the requested transponder to the tuner.",
+        "line": 1122,
+        "display": {
+          "de": {
+            "label": "Kanal",
+            "help": "Den User-Band-Kanal auswählen, der diesem Tuner zugewiesen werden soll. Dies ist die Frequenz, die der SCR-Schalter verwendet, um den angeforderten Transponder an den Tuner zu übergeben."
+          },
+          "en": {
+            "label": "Channel",
+            "help": "Select the User Band channel to be assigned to this tuner. This is an index into the table of frequencies the SCR switch uses to pass the requested transponder to the tuner."
+          }
+        }
+      },
+      {
+        "key": "currLnb.powerThreshold",
+        "label": "Power threshold in mA",
+        "help": "Minimum difference between idle and moving current.",
+        "line": 1206,
+        "display": {
+          "de": {
+            "label": "Schwellwert Stromverbrauch in mA",
+            "help": "Mindestunterschied zwischen Leerlauf und aktueller Bewegung."
+          },
+          "en": {
+            "label": "Power threshold in mA",
+            "help": "Minimum difference between idle and moving current."
+          }
+        }
+      },
+      {
+        "key": "currLnb.fastTurningBegin",
+        "label": "Begin time",
+        "help": "Only move the dish quickly after this hour.",
+        "line": 1210,
+        "display": {
+          "de": {
+            "label": "Anfangszeit",
+            "help": "Bewegen der Satellitenschüssel erst nach dieser Stunde."
+          },
+          "en": {
+            "label": "Begin time",
+            "help": "Only move the dish quickly after this hour."
+          }
+        }
+      },
+      {
+        "key": "currLnb.fastTurningEnd",
+        "label": "End time",
+        "help": "Only move the dish quickly before this hour.",
+        "line": 1211,
+        "display": {
+          "de": {
+            "label": "Endzeit",
+            "help": "Bewegen der Satellitenschüssel erst kurz vor dieser Stunde."
+          },
+          "en": {
+            "label": "End time",
+            "help": "Only move the dish quickly before this hour."
+          }
+        }
+      },
+      {
+        "key": "nimConfig.advanced.sats",
+        "label": "Satellite",
+        "help": "Select the satellite you want to configure. Once configured you can select and configure other satellites that will be accessed using this same tuner.",
+        "line": 834,
+        "display": {
+          "de": {
+            "label": "Satellit",
+            "help": "Den Satelliten auswählen, der konfiguriert werden soll. Sobald dieser konfiguriert ist, können andere Satelliten ausgewählt und konfiguriert werden, auf die mit demselben Tuner zugegriffen wird."
+          },
+          "en": {
+            "label": "Satellite",
+            "help": "Select the satellite you want to configure. Once configured you can select and configure other satellites that will be accessed using this same tuner."
+          }
+        }
+      },
+      {
+        "key": "manufacturer.vco[product_name][manufacturer.scr[product_name].index]",
+        "label": "Frequency",
+        "help": "Select the User Band frequency to be assigned to this tuner. This is the frequency the SCR switch uses to pass the requested transponder to the tuner.",
+        "line": 1124,
+        "display": {
+          "de": {
+            "label": "Frequenz",
+            "help": "Die User-Band-Frequenz auswählen, die diesem Tuner zugewiesen werden soll. Mit dieser Frequenz leitet der Unicable-Switch den angeforderten Transponder an den Tuner weiter."
+          },
+          "en": {
+            "label": "Frequency",
+            "help": "Select the User Band frequency to be assigned to this tuner. This is the frequency the SCR switch uses to pass the requested transponder to the tuner."
+          }
+        }
+      },
+      {
+        "key": "nimConfig.pressOKtoList",
+        "label": "Press OK to select satellites",
+        "help": "Selecting this option allows you to configure a group of satellites in one block.",
+        "line": 841,
+        "display": {
+          "de": {
+            "label": "OK drücken, um Satelliten auszuwählen",
+            "help": "Hiermit kann eine Gruppe von Satelliten in einem Block konfiguriert werden."
+          },
+          "en": {
+            "label": "Press OK to select satellites",
+            "help": "Selecting this option allows you to configure a group of satellites in one block."
+          }
+        }
+      }
+    ],
+    "ScanSetup": [
+      {
+        "key": "self.scan_nims",
+        "label": "Tuner",
+        "help": "",
+        "line": 731,
+        "display": {
+          "de": {
+            "label": "Tuner",
+            "help": "Empfangsteil auswählen, dessen Anschluss das gewünschte Signal liefert."
+          },
+          "en": {
+            "label": "Tuner",
+            "help": "Choose the frontend connected to the required signal."
+          }
+        }
+      },
+      {
+        "key": "multiType",
+        "label": "Tuner type %s",
+        "help": "",
+        "line": 756,
+        "display": {
+          "de": {
+            "label": "Tunerart",
+            "help": "Empfangsart des unterstützten Hybrid-Tuners wählen; das ist keine zusätzliche Hardware."
+          },
+          "en": {
+            "label": "Tuner type",
+            "help": "Choose a supported hybrid reception type; this does not add hardware."
+          }
+        }
+      },
+      {
+        "key": "self.scan_type",
+        "label": "Type of scan",
+        "help": "",
+        "line": 773,
+        "display": {
+          "de": {
+            "label": "Art des Suchlaufs",
+            "help": "Einzeltransponder, vordefinierte Frequenz oder eine vollständige Position/Netzliste auswählen."
+          },
+          "en": {
+            "label": "Type of scan",
+            "help": "Choose one transponder, a predefined frequency or a full position/network list."
+          }
+        }
+      },
+      {
+        "key": "self.scan_networkScan",
+        "label": "Network scan",
+        "help": "",
+        "line": 925,
+        "display": {
+          "de": {
+            "label": "Netzwerksuchlauf",
+            "help": "NIT-Informationen für weitere Frequenzen auswerten; benötigt einen empfangbaren Einstiegsträger."
+          },
+          "en": {
+            "label": "Network scan",
+            "help": "Read NIT data for additional frequencies; requires a receivable initial carrier."
+          }
+        }
+      },
+      {
+        "key": "self.scan_clearallservices",
+        "label": "Clear before scan",
+        "help": "",
+        "line": 926,
+        "display": {
+          "de": {
+            "label": "Vor der Suche löschen",
+            "help": "Nein ergänzt; Ja entfernt Dienste im betroffenen Suchbereich; Feeds behalten ist nur eine spezielle Ausnahme."
+          },
+          "en": {
+            "label": "Clear before scan",
+            "help": "No adds/updates; Yes removes services in the affected scan scope; Keep feeds is a limited exception."
+          }
+        }
+      },
+      {
+        "key": "self.scan_onlyfree",
+        "label": "Only free scan",
+        "help": "",
+        "line": 927,
+        "display": {
+          "de": {
+            "label": "Suche nur freie Sender",
+            "help": "Nur als frei signalisierte Dienste übernehmen; keine Entschlüsselungsfunktion."
+          },
+          "en": {
+            "label": "Only free scan",
+            "help": "Include only services signalled as free; this does not decrypt services."
+          }
+        }
+      },
+      {
+        "key": "self.scan_typecable",
+        "label": "Type of scan",
+        "help": "",
+        "line": 780,
+        "display": {
+          "de": {
+            "label": "Art des Suchlaufs",
+            "help": "Einzeltransponder, vordefinierte Frequenz oder eine vollständige Position/Netzliste auswählen."
+          },
+          "en": {
+            "label": "Type of scan",
+            "help": "Choose one transponder, a predefined frequency or a full position/network list."
+          }
+        }
+      },
+      {
+        "key": "self.scan_typeterrestrial",
+        "label": "Type of scan",
+        "help": "",
+        "line": 783,
+        "display": {
+          "de": {
+            "label": "Art des Suchlaufs",
+            "help": "Einzeltransponder, vordefinierte Frequenz oder eine vollständige Position/Netzliste auswählen."
+          },
+          "en": {
+            "label": "Type of scan",
+            "help": "Choose one transponder, a predefined frequency or a full position/network list."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.system",
+        "label": "System",
+        "help": "",
+        "line": 800,
+        "display": {
+          "de": {
+            "label": "System",
+            "help": "DVB-S/S2, DVB-T/T2 oder ATSC passend zu Ausstrahlung und Empfangsteil auswählen."
+          },
+          "en": {
+            "label": "System",
+            "help": "Match DVB-S/S2, DVB-T/T2 or ATSC to the transmission and frontend."
+          }
+        }
+      },
+      {
+        "key": "self.scan_satselection[index_to_scan]",
+        "label": "Satellite",
+        "help": "",
+        "line": 805,
+        "display": {
+          "de": {
+            "label": "Satellit",
+            "help": "Orbitalposition aus der bereits konfigurierten Anlage wählen."
+          },
+          "en": {
+            "label": "Satellite",
+            "help": "Choose an orbital position supplied by the configured installation."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.frequency",
+        "label": "Frequency",
+        "help": "",
+        "line": 806,
+        "display": {
+          "de": {
+            "label": "Frequenz",
+            "help": "Frequenz in der angezeigten Einheit eingeben. Bei normaler Suche ist das die RF-Frequenz, bei Unicable das ausdrücklich zugeteilte User Band."
+          },
+          "en": {
+            "label": "Frequency",
+            "help": "Enter frequency in the displayed unit. Normal scans use RF frequency; Unicable fields use the explicitly assigned User Band."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.inversion",
+        "label": "Inversion",
+        "help": "",
+        "line": 807,
+        "display": {
+          "de": {
+            "label": "Inversion",
+            "help": "Spektralinversion passend zur Übertragung; Auto verwenden, soweit sinnvoll unterstützt."
+          },
+          "en": {
+            "label": "Inversion",
+            "help": "Spectrum inversion matching the transmission; use Auto where suitably supported."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.symbolrate",
+        "label": "Symbol rate",
+        "help": "",
+        "line": 808,
+        "display": {
+          "de": {
+            "label": "Symbolrate",
+            "help": "Symbolgeschwindigkeit des Trägers nach Betreiberdaten. kSym/s und MSym/s nicht verwechseln."
+          },
+          "en": {
+            "label": "Symbol rate",
+            "help": "Carrier symbol rate from operator data. Do not confuse kSym/s with MSym/s."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.polarization",
+        "label": "Polarization",
+        "help": "",
+        "line": 809,
+        "display": {
+          "de": {
+            "label": "Polarisation",
+            "help": "H/V oder L/R passend zu Dienst und LNB."
+          },
+          "en": {
+            "label": "Polarization",
+            "help": "H/V or L/R matching the service and LNB."
+          }
+        }
+      },
+      {
+        "key": "self.scan_input_as",
+        "label": "Use frequency or channel",
+        "help": "",
+        "line": 786,
+        "display": {
+          "de": {
+            "label": "Frequenz- oder Sendersuchlauf",
+            "help": "Terrestrischen Träger über Frequenz oder regionale Kanalnummer angeben."
+          },
+          "en": {
+            "label": "Use frequency or channel",
+            "help": "Specify a terrestrial carrier by frequency or regional channel number."
+          }
+        }
+      },
+      {
+        "key": "self.scan_typeatsc",
+        "label": "Type of scan",
+        "help": "",
+        "line": 792,
+        "display": {
+          "de": {
+            "label": "Art des Suchlaufs",
+            "help": "Einzeltransponder, vordefinierte Frequenz oder eine vollständige Position/Netzliste auswählen."
+          },
+          "en": {
+            "label": "Type of scan",
+            "help": "Choose one transponder, a predefined frequency or a full position/network list."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.fec",
+        "label": "FEC",
+        "help": "",
+        "line": 811,
+        "display": {
+          "de": {
+            "label": "FEC",
+            "help": "Fehlerkorrekturrate des Trägers; richtige Systemvariante und gegebenenfalls Auto verwenden."
+          },
+          "en": {
+            "label": "FEC",
+            "help": "Carrier error-correction rate; choose the matching system variant or Auto where appropriate."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.modulation",
+        "label": "Modulation",
+        "help": "",
+        "line": 814,
+        "display": {
+          "de": {
+            "label": "Modulation",
+            "help": "Modulationsverfahren des Trägers, etwa QPSK/8PSK oder QAM, passend auswählen."
+          },
+          "en": {
+            "label": "Modulation",
+            "help": "Select the carrier modulation, such as QPSK/8PSK or QAM."
+          }
+        }
+      },
+      {
+        "key": "self.preDefTransponders",
+        "label": "Transponder",
+        "help": "",
+        "line": 844,
+        "display": {
+          "de": {
+            "label": "Transponder",
+            "help": "Vorbereiteten Eintrag aus der Frequenzliste wählen; seine Daten können veralten."
+          },
+          "en": {
+            "label": "Transponder",
+            "help": "Choose a prepared frequency-list entry; its data can become outdated."
+          }
+        }
+      },
+      {
+        "key": "self.scan_cab.frequency",
+        "label": "Frequency",
+        "help": "",
+        "line": 864,
+        "display": {
+          "de": {
+            "label": "Frequenz",
+            "help": "Frequenz in der angezeigten Einheit eingeben. Bei normaler Suche ist das die RF-Frequenz, bei Unicable das ausdrücklich zugeteilte User Band."
+          },
+          "en": {
+            "label": "Frequency",
+            "help": "Enter frequency in the displayed unit. Normal scans use RF frequency; Unicable fields use the explicitly assigned User Band."
+          }
+        }
+      },
+      {
+        "key": "self.scan_cab.inversion",
+        "label": "Inversion",
+        "help": "",
+        "line": 865,
+        "display": {
+          "de": {
+            "label": "Inversion",
+            "help": "Spektralinversion passend zur Übertragung; Auto verwenden, soweit sinnvoll unterstützt."
+          },
+          "en": {
+            "label": "Inversion",
+            "help": "Spectrum inversion matching the transmission; use Auto where suitably supported."
+          }
+        }
+      },
+      {
+        "key": "self.scan_cab.symbolrate",
+        "label": "Symbol rate",
+        "help": "",
+        "line": 866,
+        "display": {
+          "de": {
+            "label": "Symbolrate",
+            "help": "Symbolgeschwindigkeit des Trägers nach Betreiberdaten. kSym/s und MSym/s nicht verwechseln."
+          },
+          "en": {
+            "label": "Symbol rate",
+            "help": "Carrier symbol rate from operator data. Do not confuse kSym/s with MSym/s."
+          }
+        }
+      },
+      {
+        "key": "self.scan_cab.modulation",
+        "label": "Modulation",
+        "help": "",
+        "line": 867,
+        "display": {
+          "de": {
+            "label": "Modulation",
+            "help": "Modulationsverfahren des Trägers, etwa QPSK/8PSK oder QAM, passend auswählen."
+          },
+          "en": {
+            "label": "Modulation",
+            "help": "Select the carrier modulation, such as QPSK/8PSK or QAM."
+          }
+        }
+      },
+      {
+        "key": "self.scan_cab.fec",
+        "label": "FEC",
+        "help": "",
+        "line": 868,
+        "display": {
+          "de": {
+            "label": "FEC",
+            "help": "Fehlerkorrekturrate des Trägers; richtige Systemvariante und gegebenenfalls Auto verwenden."
+          },
+          "en": {
+            "label": "FEC",
+            "help": "Carrier error-correction rate; choose the matching system variant or Auto where appropriate."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.fec_s2",
+        "label": "FEC",
+        "help": "",
+        "line": 813,
+        "display": {
+          "de": {
+            "label": "FEC",
+            "help": "Fehlerkorrekturrate des Trägers; richtige Systemvariante und gegebenenfalls Auto verwenden."
+          },
+          "en": {
+            "label": "FEC",
+            "help": "Carrier error-correction rate; choose the matching system variant or Auto where appropriate."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.rolloff",
+        "label": "Roll-off",
+        "help": "",
+        "line": 816,
+        "display": {
+          "de": {
+            "label": "Roll-off",
+            "help": "Formung des S2-Signals gemäß Übertragungsdaten."
+          },
+          "en": {
+            "label": "Roll-off",
+            "help": "S2 signal shaping parameter from transmission data."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.pilot",
+        "label": "Pilot",
+        "help": "",
+        "line": 817,
+        "display": {
+          "de": {
+            "label": "Pilot",
+            "help": "S2-Pilotsymbole nach Ausstrahlung oder unterstützt automatisch erkennen."
+          },
+          "en": {
+            "label": "Pilot",
+            "help": "Match S2 pilot symbols to the transmission or use supported automatic detection."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.is_id_bool",
+        "label": "Transport Stream Type",
+        "help": "",
+        "line": 819,
+        "display": {
+          "de": {
+            "label": "Transportstreamtyp",
+            "help": "Single- oder Multistream-Empfang auswählen; MIS benötigt passende Hardware und Parameter."
+          },
+          "en": {
+            "label": "Transport Stream Type",
+            "help": "Choose single-stream or multistream reception; MIS requires suitable hardware and parameters."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.t2mi_plp_id_bool",
+        "label": "T2MI PLP",
+        "help": "",
+        "line": 830,
+        "display": {
+          "de": {
+            "label": "T2MI-PLP",
+            "help": "Zusätzliche Auswahl des T2-MI-Pfads einblenden, wenn Dienst und Hardware ihn unterstützen."
+          },
+          "en": {
+            "label": "T2MI PLP",
+            "help": "Enable T2-MI path selection where supported by the service and hardware."
+          }
+        }
+      },
+      {
+        "key": "self.CableTransponders",
+        "label": "Transponder",
+        "help": "",
+        "line": 871,
+        "display": {
+          "de": {
+            "label": "Transponder",
+            "help": "Vorbereiteten Eintrag aus der Frequenzliste wählen; seine Daten können veralten."
+          },
+          "en": {
+            "label": "Transponder",
+            "help": "Choose a prepared frequency-list entry; its data can become outdated."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.system",
+        "label": "System",
+        "help": "",
+        "line": 879,
+        "display": {
+          "de": {
+            "label": "System",
+            "help": "DVB-S/S2, DVB-T/T2 oder ATSC passend zu Ausstrahlung und Empfangsteil auswählen."
+          },
+          "en": {
+            "label": "System",
+            "help": "Match DVB-S/S2, DVB-T/T2 or ATSC to the transmission and frontend."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.inversion",
+        "label": "Inversion",
+        "help": "",
+        "line": 891,
+        "display": {
+          "de": {
+            "label": "Inversion",
+            "help": "Spektralinversion passend zur Übertragung; Auto verwenden, soweit sinnvoll unterstützt."
+          },
+          "en": {
+            "label": "Inversion",
+            "help": "Spectrum inversion matching the transmission; use Auto where suitably supported."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.bandwidth",
+        "label": "Bandwidth",
+        "help": "",
+        "line": 892,
+        "display": {
+          "de": {
+            "label": "Bandbreite",
+            "help": "Breite des terrestrischen Kanals, beispielsweise 6/7/8 MHz je Übertragung."
+          },
+          "en": {
+            "label": "Bandwidth",
+            "help": "Terrestrial channel bandwidth, for example 6/7/8 MHz depending on transmission."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.fechigh",
+        "label": "Code rate HP",
+        "help": "",
+        "line": 893,
+        "display": {
+          "de": {
+            "label": "Informationsrate HP",
+            "help": "Fehlerkorrektur des hoch priorisierten DVB-T-Datenstroms."
+          },
+          "en": {
+            "label": "Code rate HP",
+            "help": "Error correction for the high-priority DVB-T stream."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.feclow",
+        "label": "Code rate LP",
+        "help": "",
+        "line": 894,
+        "display": {
+          "de": {
+            "label": "Informationsrate LP",
+            "help": "Fehlerkorrektur des niedrig priorisierten DVB-T-Datenstroms bei hierarchischer Übertragung."
+          },
+          "en": {
+            "label": "Code rate LP",
+            "help": "Error correction for the low-priority DVB-T stream in hierarchical transmission."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.modulation",
+        "label": "Modulation",
+        "help": "",
+        "line": 895,
+        "display": {
+          "de": {
+            "label": "Modulation",
+            "help": "Modulationsverfahren des Trägers, etwa QPSK/8PSK oder QAM, passend auswählen."
+          },
+          "en": {
+            "label": "Modulation",
+            "help": "Select the carrier modulation, such as QPSK/8PSK or QAM."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.transmission",
+        "label": "Transmission mode",
+        "help": "",
+        "line": 896,
+        "display": {
+          "de": {
+            "label": "Übertragungsmodus",
+            "help": "OFDM-Übertragungsmodus passend zum terrestrischen Multiplex."
+          },
+          "en": {
+            "label": "Transmission mode",
+            "help": "OFDM transmission mode matching the terrestrial multiplex."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.guard",
+        "label": "Guard Interval",
+        "help": "",
+        "line": 897,
+        "display": {
+          "de": {
+            "label": "Überwachungsintervall",
+            "help": "Schutzintervall gegen Laufzeitunterschiede; muss zur Ausstrahlung passen."
+          },
+          "en": {
+            "label": "Guard Interval",
+            "help": "Guard interval for propagation delays; must match the transmission."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.hierarchy",
+        "label": "Hierarchy info",
+        "help": "",
+        "line": 898,
+        "display": {
+          "de": {
+            "label": "Hierarchieinfo",
+            "help": "Hierarchische DVB-T-Modulation nach Ausstrahlungsdaten."
+          },
+          "en": {
+            "label": "Hierarchy info",
+            "help": "Hierarchical DVB-T modulation according to transmission data."
+          }
+        }
+      },
+      {
+        "key": "self.TerrestrialRegion",
+        "label": "Region",
+        "help": "",
+        "line": 903,
+        "display": {
+          "de": {
+            "label": "Region",
+            "help": "Passende regionale Frequenz- bzw. Anbieterdefinition auswählen."
+          },
+          "en": {
+            "label": "Region",
+            "help": "Choose the matching regional frequency or provider definition."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ats.system",
+        "label": "System",
+        "help": "",
+        "line": 914,
+        "display": {
+          "de": {
+            "label": "System",
+            "help": "DVB-S/S2, DVB-T/T2 oder ATSC passend zu Ausstrahlung und Empfangsteil auswählen."
+          },
+          "en": {
+            "label": "System",
+            "help": "Match DVB-S/S2, DVB-T/T2 or ATSC to the transmission and frontend."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.channel",
+        "label": "Channel",
+        "help": "",
+        "line": 885,
+        "display": {
+          "de": {
+            "label": "Kanal",
+            "help": "Beim terrestrischen Scan die RF-Kanalnummer; beim SCR-Setup die zugeteilte UB-Kennung."
+          },
+          "en": {
+            "label": "Channel",
+            "help": "RF channel number in a terrestrial scan; allocated UB identifier in SCR setup."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.frequency",
+        "label": "Frequency",
+        "help": "",
+        "line": 890,
+        "display": {
+          "de": {
+            "label": "Frequenz",
+            "help": "Frequenz in der angezeigten Einheit eingeben. Bei normaler Suche ist das die RF-Frequenz, bei Unicable das ausdrücklich zugeteilte User Band."
+          },
+          "en": {
+            "label": "Frequency",
+            "help": "Enter frequency in the displayed unit. Normal scans use RF frequency; Unicable fields use the explicitly assigned User Band."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ter.plp_id",
+        "label": "PLP ID",
+        "help": "",
+        "line": 900,
+        "display": {
+          "de": {
+            "label": "PLP-ID",
+            "help": "Physical Layer Pipe des DVB-T2-Multiplexes; keine Programmnummer."
+          },
+          "en": {
+            "label": "PLP ID",
+            "help": "Physical Layer Pipe within the DVB-T2 multiplex; not a programme number."
+          }
+        }
+      },
+      {
+        "key": "self.TerrestrialTransponders",
+        "label": "Transponder",
+        "help": "",
+        "line": 906,
+        "display": {
+          "de": {
+            "label": "Transponder",
+            "help": "Vorbereiteten Eintrag aus der Frequenzliste wählen; seine Daten können veralten."
+          },
+          "en": {
+            "label": "Transponder",
+            "help": "Choose a prepared frequency-list entry; its data can become outdated."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ats.frequency",
+        "label": "Frequency",
+        "help": "",
+        "line": 916,
+        "display": {
+          "de": {
+            "label": "Frequenz",
+            "help": "Frequenz in der angezeigten Einheit eingeben. Bei normaler Suche ist das die RF-Frequenz, bei Unicable das ausdrücklich zugeteilte User Band."
+          },
+          "en": {
+            "label": "Frequency",
+            "help": "Enter frequency in the displayed unit. Normal scans use RF frequency; Unicable fields use the explicitly assigned User Band."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ats.inversion",
+        "label": "Inversion",
+        "help": "",
+        "line": 917,
+        "display": {
+          "de": {
+            "label": "Inversion",
+            "help": "Spektralinversion passend zur Übertragung; Auto verwenden, soweit sinnvoll unterstützt."
+          },
+          "en": {
+            "label": "Inversion",
+            "help": "Spectrum inversion matching the transmission; use Auto where suitably supported."
+          }
+        }
+      },
+      {
+        "key": "self.scan_ats.modulation",
+        "label": "Modulation",
+        "help": "",
+        "line": 918,
+        "display": {
+          "de": {
+            "label": "Modulation",
+            "help": "Modulationsverfahren des Trägers, etwa QPSK/8PSK oder QAM, passend auswählen."
+          },
+          "en": {
+            "label": "Modulation",
+            "help": "Select the carrier modulation, such as QPSK/8PSK or QAM."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.is_id",
+        "label": "%s%s",
+        "help": "",
+        "line": 822,
+        "display": {
+          "de": {
+            "label": "Input Stream ID",
+            "help": "Kennung des zu empfangenden MIS-Teilstroms."
+          },
+          "en": {
+            "label": "Input Stream ID",
+            "help": "Identifier of the MIS component stream to receive."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.pls_mode",
+        "label": "%s%s",
+        "help": "",
+        "line": 823,
+        "display": {
+          "de": {
+            "label": "PLS-Modus",
+            "help": "Physical-Layer-Scrambling-Verfahren des Signals."
+          },
+          "en": {
+            "label": "PLS mode",
+            "help": "Physical-layer scrambling mode of the signal."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.pls_code",
+        "label": "%s%s",
+        "help": "",
+        "line": 824,
+        "display": {
+          "de": {
+            "label": "PLS-Code",
+            "help": "Zum Dienst gehörender Physical-Layer-Scrambling-Code; kein Entschlüsselungsschlüssel."
+          },
+          "en": {
+            "label": "PLS code",
+            "help": "Service-specific physical-layer scrambling code; not a decryption key."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.t2mi_plp_id",
+        "label": "%s%s",
+        "help": "",
+        "line": 833,
+        "display": {
+          "de": {
+            "label": "T2MI-PLP-ID",
+            "help": "Gewünschte PLP innerhalb des transportierten T2-MI-Signals."
+          },
+          "en": {
+            "label": "T2MI PLP ID",
+            "help": "Desired PLP within the transported T2-MI signal."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.t2mi_pid",
+        "label": "%s%s",
+        "help": "",
+        "line": 834,
+        "display": {
+          "de": {
+            "label": "T2MI-PID",
+            "help": "PID, die T2-MI-Daten im Transportstrom führt."
+          },
+          "en": {
+            "label": "T2MI PID",
+            "help": "PID carrying T2-MI data in the transport stream."
+          }
+        }
+      },
+      {
+        "key": "sat",
+        "label": "x[0]",
+        "help": "",
+        "line": 858,
+        "display": {
+          "de": {
+            "label": "Satellit für Suche aktivieren",
+            "help": "Diese konfigurierte Position in die Multisat-Suche aufnehmen oder auslassen."
+          },
+          "en": {
+            "label": "Satellite enabled for scan",
+            "help": "Include or exclude this configured position in a multisatellite scan."
+          }
+        }
+      },
+      {
+        "key": "self.ATSCTransponders",
+        "label": "Transponder",
+        "help": "",
+        "line": 922,
+        "display": {
+          "de": {
+            "label": "Transponder",
+            "help": "Vorbereiteten Eintrag aus der Frequenzliste wählen; seine Daten können veralten."
+          },
+          "en": {
+            "label": "Transponder",
+            "help": "Choose a prepared frequency-list entry; its data can become outdated."
+          }
+        }
+      },
+      {
+        "key": "nimconfig",
+        "label": "Scan ",
+        "help": "",
+        "line": 2029,
+        "display": {
+          "de": {
+            "label": "Netz für Suche aktivieren",
+            "help": "Dieses verfügbare Netz in den automatischen Suchlauf aufnehmen."
+          },
+          "en": {
+            "label": "Network enabled for scan",
+            "help": "Include this available network in the automatic scan."
+          }
+        }
+      }
+    ],
+    "RTLSDR": [
+      {
+        "key": "config.dab.slideshow",
+        "label": "Show DAB+ slideshow",
+        "help": "Replace the static radio background with pictures transmitted by the current DAB+ station.",
+        "line": 61,
+        "display": {
+          "de": {
+            "label": "DAB+-Slideshow anzeigen",
+            "help": "Übertragene Bilder der DAB+-Station statt des statischen Radiohintergrunds anzeigen."
+          },
+          "en": {
+            "label": "Show DAB+ slideshow",
+            "help": "Replace the static radio background with pictures transmitted by the current DAB+ station."
+          }
+        }
+      },
+      {
+        "key": "config.dab.scanSource",
+        "label": "Reception sources to scan",
+        "help": "Scan the USB tuner, available DAB+ satellite feeds, or both.",
+        "line": 65,
+        "display": {
+          "de": {
+            "label": "Empfangsquellen durchsuchen",
+            "help": "USB-Tuner, verfügbare DAB+-Satellitenfeeds oder beide durchsuchen."
+          },
+          "en": {
+            "label": "Reception sources to scan",
+            "help": "Scan the USB tuner, available DAB+ satellite feeds, or both."
+          }
+        }
+      }
+    ],
+    "Positioner": [
+      {
+        "key": "self.transponderOnid",
+        "label": "ONID",
+        "help": "",
+        "line": 1261,
+        "display": {
+          "de": {
+            "label": "ONID",
+            "help": "Original Network ID des Referenztransponders zur Identitätsprüfung."
+          },
+          "en": {
+            "label": "ONID",
+            "help": "Original Network ID of the reference transponder for identification."
+          }
+        }
+      },
+      {
+        "key": "self.transponderTsid",
+        "label": "TSID",
+        "help": "",
+        "line": 1262,
+        "display": {
+          "de": {
+            "label": "TSID",
+            "help": "Transport Stream ID des Referenztransponders zur Identitätsprüfung."
+          },
+          "en": {
+            "label": "TSID",
+            "help": "Transport Stream ID of the reference transponder for identification."
+          }
+        }
+      },
+      {
+        "key": "self.tuning.type",
+        "label": "Tune",
+        "help": "",
+        "line": 1421,
+        "display": {
+          "de": {
+            "label": "Abstimmen",
+            "help": "Manuell eingegebene oder vordefinierte Referenzfrequenz verwenden."
+          },
+          "en": {
+            "label": "Tune",
+            "help": "Use manually entered or predefined reference tuning parameters."
+          }
+        }
+      },
+      {
+        "key": "self.tuning.sat",
+        "label": "Satellite",
+        "help": "",
+        "line": 1422,
+        "display": {
+          "de": {
+            "label": "Satellit",
+            "help": "Orbitalposition aus der bereits konfigurierten Anlage wählen."
+          },
+          "en": {
+            "label": "Satellite",
+            "help": "Choose an orbital position supplied by the configured installation."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.frequency",
+        "label": "Frequency",
+        "help": "",
+        "line": 1431,
+        "display": {
+          "de": {
+            "label": "Frequenz",
+            "help": "Frequenz in der angezeigten Einheit eingeben. Bei normaler Suche ist das die RF-Frequenz, bei Unicable das ausdrücklich zugeteilte User Band."
+          },
+          "en": {
+            "label": "Frequency",
+            "help": "Enter frequency in the displayed unit. Normal scans use RF frequency; Unicable fields use the explicitly assigned User Band."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.polarization",
+        "label": "Polarization",
+        "help": "",
+        "line": 1432,
+        "display": {
+          "de": {
+            "label": "Polarisation",
+            "help": "H/V oder L/R passend zu Dienst und LNB."
+          },
+          "en": {
+            "label": "Polarization",
+            "help": "H/V or L/R matching the service and LNB."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.symbolrate",
+        "label": "Symbol rate",
+        "help": "",
+        "line": 1433,
+        "display": {
+          "de": {
+            "label": "Symbolrate",
+            "help": "Symbolgeschwindigkeit des Trägers nach Betreiberdaten. kSym/s und MSym/s nicht verwechseln."
+          },
+          "en": {
+            "label": "Symbol rate",
+            "help": "Carrier symbol rate from operator data. Do not confuse kSym/s with MSym/s."
+          }
+        }
+      },
+      {
+        "key": "self.tuning.transponder",
+        "label": "Transponder",
+        "help": "",
+        "line": 1451,
+        "display": {
+          "de": {
+            "label": "Transponder",
+            "help": "Vorbereiteten Eintrag aus der Frequenzliste wählen; seine Daten können veralten."
+          },
+          "en": {
+            "label": "Transponder",
+            "help": "Choose a prepared frequency-list entry; its data can become outdated."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.system",
+        "label": "System",
+        "help": "",
+        "line": 1427,
+        "display": {
+          "de": {
+            "label": "System",
+            "help": "DVB-S/S2, DVB-T/T2 oder ATSC passend zu Ausstrahlung und Empfangsteil auswählen."
+          },
+          "en": {
+            "label": "System",
+            "help": "Match DVB-S/S2, DVB-T/T2 or ATSC to the transmission and frontend."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.fec",
+        "label": "FEC",
+        "help": "",
+        "line": 1435,
+        "display": {
+          "de": {
+            "label": "FEC",
+            "help": "Fehlerkorrekturrate des Trägers; richtige Systemvariante und gegebenenfalls Auto verwenden."
+          },
+          "en": {
+            "label": "FEC",
+            "help": "Carrier error-correction rate; choose the matching system variant or Auto where appropriate."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.inversion",
+        "label": "Inversion",
+        "help": "",
+        "line": 1436,
+        "display": {
+          "de": {
+            "label": "Inversion",
+            "help": "Spektralinversion passend zur Übertragung; Auto verwenden, soweit sinnvoll unterstützt."
+          },
+          "en": {
+            "label": "Inversion",
+            "help": "Spectrum inversion matching the transmission; use Auto where suitably supported."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.modulation",
+        "label": "Modulation",
+        "help": "",
+        "line": 1440,
+        "display": {
+          "de": {
+            "label": "Modulation",
+            "help": "Modulationsverfahren des Trägers, etwa QPSK/8PSK oder QAM, passend auswählen."
+          },
+          "en": {
+            "label": "Modulation",
+            "help": "Select the carrier modulation, such as QPSK/8PSK or QAM."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.fec_s2",
+        "label": "FEC",
+        "help": "",
+        "line": 1438,
+        "display": {
+          "de": {
+            "label": "FEC",
+            "help": "Fehlerkorrekturrate des Trägers; richtige Systemvariante und gegebenenfalls Auto verwenden."
+          },
+          "en": {
+            "label": "FEC",
+            "help": "Carrier error-correction rate; choose the matching system variant or Auto where appropriate."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.rolloff",
+        "label": "Roll-off",
+        "help": "",
+        "line": 1442,
+        "display": {
+          "de": {
+            "label": "Roll-off",
+            "help": "Formung des S2-Signals gemäß Übertragungsdaten."
+          },
+          "en": {
+            "label": "Roll-off",
+            "help": "S2 signal shaping parameter from transmission data."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.pilot",
+        "label": "Pilot",
+        "help": "",
+        "line": 1443,
+        "display": {
+          "de": {
+            "label": "Pilot",
+            "help": "S2-Pilotsymbole nach Ausstrahlung oder unterstützt automatisch erkennen."
+          },
+          "en": {
+            "label": "Pilot",
+            "help": "Match S2 pilot symbols to the transmission or use supported automatic detection."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.t2mi_plp_id",
+        "label": "T2MI PLP ID",
+        "help": "",
+        "line": 1448,
+        "display": {
+          "de": {
+            "label": "T2MI-PLP-ID",
+            "help": "Gewünschte PLP innerhalb des transportierten T2-MI-Signals."
+          },
+          "en": {
+            "label": "T2MI PLP ID",
+            "help": "Desired PLP within the transported T2-MI signal."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.t2mi_pid",
+        "label": "T2MI PID",
+        "help": "",
+        "line": 1449,
+        "display": {
+          "de": {
+            "label": "T2MI-PID",
+            "help": "PID, die T2-MI-Daten im Transportstrom führt."
+          },
+          "en": {
+            "label": "T2MI PID",
+            "help": "PID carrying T2-MI data in the transport stream."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.is_id",
+        "label": "Input Stream ID",
+        "help": "",
+        "line": 1445,
+        "display": {
+          "de": {
+            "label": "Input Stream ID",
+            "help": "Kennung des zu empfangenden MIS-Teilstroms."
+          },
+          "en": {
+            "label": "Input Stream ID",
+            "help": "Identifier of the MIS component stream to receive."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.pls_mode",
+        "label": "PLS Mode",
+        "help": "",
+        "line": 1446,
+        "display": {
+          "de": {
+            "label": "PLS-Modus",
+            "help": "Physical-Layer-Scrambling-Verfahren des Signals."
+          },
+          "en": {
+            "label": "PLS mode",
+            "help": "Physical-layer scrambling mode of the signal."
+          }
+        }
+      },
+      {
+        "key": "self.scan_sat.pls_code",
+        "label": "PLS Code",
+        "help": "",
+        "line": 1447,
+        "display": {
+          "de": {
+            "label": "PLS-Code",
+            "help": "Zum Dienst gehörender Physical-Layer-Scrambling-Code; kein Entschlüsselungsschlüssel."
+          },
+          "en": {
+            "label": "PLS code",
+            "help": "Service-specific physical-layer scrambling code; not a decryption key."
+          }
+        }
+      }
+    ],
+    "CableScan": [
+      {
+        "key": "self.scan_nims",
+        "label": "Tuner",
+        "help": "",
+        "line": 151,
+        "display": {
+          "de": {
+            "label": "Tuner",
+            "help": "Empfangsteil auswählen, dessen Anschluss das gewünschte Signal liefert."
+          },
+          "en": {
+            "label": "Tuner",
+            "help": "Choose the frontend connected to the required signal."
+          }
+        }
+      },
+      {
+        "key": "config.plugins.CableScan.frequency",
+        "label": "Frequency",
+        "help": "",
+        "line": 153,
+        "display": {
+          "de": {
+            "label": "Frequenz",
+            "help": "Frequenz in der angezeigten Einheit eingeben. Bei normaler Suche ist das die RF-Frequenz, bei Unicable das ausdrücklich zugeteilte User Band."
+          },
+          "en": {
+            "label": "Frequency",
+            "help": "Enter frequency in the displayed unit. Normal scans use RF frequency; Unicable fields use the explicitly assigned User Band."
+          }
+        }
+      },
+      {
+        "key": "config.plugins.CableScan.symbolrate",
+        "label": "Symbol rate",
+        "help": "",
+        "line": 154,
+        "display": {
+          "de": {
+            "label": "Symbolrate",
+            "help": "Symbolgeschwindigkeit des Trägers nach Betreiberdaten. kSym/s und MSym/s nicht verwechseln."
+          },
+          "en": {
+            "label": "Symbol rate",
+            "help": "Carrier symbol rate from operator data. Do not confuse kSym/s with MSym/s."
+          }
+        }
+      },
+      {
+        "key": "config.plugins.CableScan.modulation",
+        "label": "Modulation",
+        "help": "",
+        "line": 155,
+        "display": {
+          "de": {
+            "label": "Modulation",
+            "help": "Modulationsverfahren des Trägers, etwa QPSK/8PSK oder QAM, passend auswählen."
+          },
+          "en": {
+            "label": "Modulation",
+            "help": "Select the carrier modulation, such as QPSK/8PSK or QAM."
+          }
+        }
+      },
+      {
+        "key": "config.plugins.CableScan.networkid",
+        "label": "Network ID",
+        "help": "",
+        "line": 156,
+        "display": {
+          "de": {
+            "label": "Netzwerk-ID (0 – alle Netzwerke)",
+            "help": "Kennung des Anbieternetzes nach regionaler Betreiberangabe."
+          },
+          "en": {
+            "label": "Network ID",
+            "help": "Provider network identifier from regional operator data."
+          }
+        }
+      },
+      {
+        "key": "config.plugins.CableScan.keepnumbering",
+        "label": "Use official channel numbering",
+        "help": "",
+        "line": 157,
+        "display": {
+          "de": {
+            "label": "Offizielle Sendernummerierung verwenden",
+            "help": "Die vom unterstützten Anbieter vorgegebene Nummerierung übernehmen."
+          },
+          "en": {
+            "label": "Use official channel numbering",
+            "help": "Use numbering supplied by the supported provider."
+          }
+        }
+      },
+      {
+        "key": "config.plugins.CableScan.hdlist",
+        "label": "HD list",
+        "help": "",
+        "line": 158,
+        "display": {
+          "de": {
+            "label": "HD-Liste",
+            "help": "HD-Variante der Anbieterliste auswählen, falls angeboten."
+          },
+          "en": {
+            "label": "HD list",
+            "help": "Select the provider HD list where available."
+          }
+        }
+      },
+      {
+        "key": "config.plugins.CableScan.auto",
+        "label": "Enable auto cable scan",
+        "help": "",
+        "line": 159,
+        "display": {
+          "de": {
+            "label": "Täglich automatisch suchen",
+            "help": "Spätere automatische CableScan-Aktualisierung aktivieren; Zeit- und Standbyverhalten beachten."
+          },
+          "en": {
+            "label": "Enable auto cable scan",
+            "help": "Enable later automatic CableScan updates; account for timing and standby behaviour."
+          }
+        }
+      }
+    ],
+    "FastScan": [
+      {
+        "key": "self.scan_nims",
+        "label": "Tuner",
+        "help": "",
+        "line": 177,
+        "display": {
+          "de": {
+            "label": "Tuner",
+            "help": "Empfangsteil auswählen, dessen Anschluss das gewünschte Signal liefert."
+          },
+          "en": {
+            "label": "Tuner",
+            "help": "Choose the frontend connected to the required signal."
+          }
+        }
+      },
+      {
+        "key": "self.scan_provider",
+        "label": "Provider",
+        "help": "",
+        "line": 178,
+        "display": {
+          "de": {
+            "label": "Anbieter",
+            "help": "Tatsächlich empfangbaren und vom Modul unterstützten Anbieter auswählen."
+          },
+          "en": {
+            "label": "Provider",
+            "help": "Select a receivable provider supported by this module."
+          }
+        }
+      },
+      {
+        "key": "self.scan_hd",
+        "label": "HD list",
+        "help": "",
+        "line": 179,
+        "display": {
+          "de": {
+            "label": "HD-Liste",
+            "help": "HD-Variante der Anbieterliste auswählen, falls angeboten."
+          },
+          "en": {
+            "label": "HD list",
+            "help": "Select the provider HD list where available."
+          }
+        }
+      },
+      {
+        "key": "self.scan_keepnumbering",
+        "label": "Use fastscan channel numbering",
+        "help": "",
+        "line": 195,
+        "display": {
+          "de": {
+            "label": "Sendernummerierung des Schnellsuchlaufs verwenden",
+            "help": "Kanalnummern aus den FastScan-Tabellen übernehmen."
+          },
+          "en": {
+            "label": "Use fastscan channel numbering",
+            "help": "Use channel numbering from FastScan tables."
+          }
+        }
+      },
+      {
+        "key": "self.scan_keepsettings",
+        "label": "Use fastscan channel names",
+        "help": "",
+        "line": 196,
+        "display": {
+          "de": {
+            "label": "Sendernamen des Schnellsuchlaufs verwenden",
+            "help": "Sendernamen aus den FastScan-Tabellen verwenden."
+          },
+          "en": {
+            "label": "Use fastscan channel names",
+            "help": "Use service names from FastScan tables."
+          }
+        }
+      },
+      {
+        "key": "self.scan_create_radio_bouquet",
+        "label": "Create separate radio user bouquet",
+        "help": "",
+        "line": 197,
+        "display": {
+          "de": {
+            "label": "Separates Radiobouquet erstellen",
+            "help": "Radiosender in ein eigenes Benutzerbouquet eintragen."
+          },
+          "en": {
+            "label": "Create separate radio user bouquet",
+            "help": "Put radio services in a separate user bouquet."
+          }
+        }
+      },
+      {
+        "key": "config.misc.fastscan.auto",
+        "label": "Enable auto fast scan",
+        "help": "",
+        "line": 198,
+        "display": {
+          "de": {
+            "label": "Automatische Schnellsuche aktivieren",
+            "help": "Automatische Aktualisierung unterstützter Anbieter aktivieren."
+          },
+          "en": {
+            "label": "Enable auto fast scan",
+            "help": "Enable automatic updates for supported providers."
+          }
+        }
+      },
+      {
+        "key": "self.config_autoproviders[provider[0]]",
+        "label": "Enable auto fast scan for %s",
+        "help": "",
+        "line": 201,
+        "display": {
+          "de": {
+            "label": "Automatischen FastScan für Anbieter aktivieren",
+            "help": "Diesen Anbieter für automatische FastScan-Läufe auswählen."
+          },
+          "en": {
+            "label": "Enable auto fast scan for provider",
+            "help": "Select this provider for automatic FastScan runs."
+          }
+        }
+      }
+    ],
+    "Tuner": [
+      {
+        "key": "config.tunermisc.forceLnbPower",
+        "label": "Force LNB Power",
+        "help": "Force LNB Tuner Power settings.",
+        "requires": "ForceLNBPowerChanged",
+        "display": {
+          "de": {
+            "label": "LNB Power erzwingen",
+            "help": "Einstellung für LNB Power."
+          },
+          "en": {
+            "label": "Force LNB Power",
+            "help": "Force LNB Tuner Power settings."
+          }
+        }
+      },
+      {
+        "key": "config.tunermisc.forceToneBurst",
+        "label": "Force ToneBurst",
+        "help": "Force LNB Tuner ToneBurst settings.",
+        "requires": "ForceToneBurstChanged",
+        "display": {
+          "de": {
+            "label": "Toneburst erzwingen",
+            "help": "Einstellung für Toneburst."
+          },
+          "en": {
+            "label": "Force ToneBurst",
+            "help": "Force LNB Tuner ToneBurst settings."
+          }
+        }
+      },
+      {
+        "key": "config.usage.output_12V",
+        "label": "12V output",
+        "help": "12V output.",
+        "requires": "12V_Output",
+        "display": {
+          "de": {
+            "label": "12V-Ausgang",
+            "help": "12V-Ausgang."
+          },
+          "en": {
+            "label": "12V output",
+            "help": "12V output."
+          }
+        }
+      },
+      {
+        "key": "config.usage.frontend_priority",
+        "label": "Preferred tuner",
+        "help": "Configure which tuner will be preferred, when more than one tuner is available. If set to 'auto' the system will give priority to the tuner having the lowest number of channels/satellites.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "Bevorzugter Tuner",
+            "help": "Den bevorzugten Tuner einstellen, wenn mehr als ein Tuner verfügbar ist. Bei 'Automatisch' wird zuerst der Tuner mit den wenigsten Sendern/Satelliten genommen."
+          },
+          "en": {
+            "label": "Preferred tuner",
+            "help": "Configure which tuner will be preferred, when more than one tuner is available. If set to 'auto' the system will give priority to the tuner having the lowest number of channels/satellites."
+          }
+        }
+      },
+      {
+        "key": "config.usage.recording_frontend_priority",
+        "label": "Preferred tuner for recordings",
+        "help": "Configure which tuner will be preferred for recordings, when more than one tuner is available. 'Disabled' would select a tuner based on preferred tuner in customize screen. 'Auto' would choose based on E2's default rules, ignoring preferred tuner in customize screen.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "Bevorzugter Tuner bei Aufnahmen",
+            "help": "Den bevorzugten Tuner für Aufnahmen einstellen, wenn mehr als ein Tuner verfügbar ist. 'Deaktiviert' verwendet den bevorzugten Tuner, der unter 'Anpassen' eingestellt ist. 'Automatisch' wählt den Tuner nach E2-Regeln und ignoriert die Einstellung in 'Anpassen'."
+          },
+          "en": {
+            "label": "Preferred tuner for recordings",
+            "help": "Configure which tuner will be preferred for recordings, when more than one tuner is available. 'Disabled' would select a tuner based on preferred tuner in customize screen. 'Auto' would choose based on E2's default rules, ignoring preferred tuner in customize screen."
+          }
+        }
+      },
+      {
+        "key": "config.usage.recording_frontend_priority_multiselect",
+        "label": "Preferred tuners for recordings, multiple selection allowed",
+        "help": "In expert mode, configure which tuners will be preferred for recordings, when more than one tuner is available.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "Bevorzugte Tuner bei Aufnahmen",
+            "help": "Im Expertenmodus einstellen, welche Tuner für Aufnahmen bevorzugt werden sollen, wenn mehr als ein Tuner verfügbar ist."
+          },
+          "en": {
+            "label": "Preferred tuners for recordings, multiple selection allowed",
+            "help": "In expert mode, configure which tuners will be preferred for recordings, when more than one tuner is available."
+          }
+        }
+      },
+      {
+        "key": "config.usage.recording_frontend_priority_strictly",
+        "label": "Experimental: strict limitation to preferred tuners for recordings",
+        "help": "Configure whether another tuner from the preferred list is allocated for recordings instead of sharing a tuner that is already active receiving the same live TV channel.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "Exp.: Beschränkung auf bevorzugte Tuner bei Aufnahmen",
+            "help": "Legt fest, ob bei Aufnahmen ein weiterer bevorzugter Tuner belegt wird, selbst wenn ein anderer Tuner mit verwendet werden könnte, der den gleichen Sender live empfängt."
+          },
+          "en": {
+            "label": "Experimental: strict limitation to preferred tuners for recordings",
+            "help": "Configure whether another tuner from the preferred list is allocated for recordings instead of sharing a tuner that is already active receiving the same live TV channel."
+          }
+        }
+      },
+      {
+        "key": "config.misc.disable_background_scan",
+        "label": "Disable background scanning",
+        "help": "When tuned to a service, the system normally scans the transponder for changes and saves them. Enable only if you know what you're doing.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "Suchlauf im Hintergrund deaktivieren",
+            "help": "Wenn ein Sender eingestellt ist, durchsucht das System den Transponder nach Änderungen und speichert diese. 'Ja' nur auswählen, wenn die Auswirkungen bekannt sind."
+          },
+          "en": {
+            "label": "Disable background scanning",
+            "help": "When tuned to a service, the system normally scans the transponder for changes and saves them. Enable only if you know what you're doing."
+          }
+        }
+      },
+      {
+        "key": "config.usage.subnetwork",
+        "label": "Ignore DVB-S namespace sub network",
+        "help": "On valid ONIDs, ignore frequency sub network part.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "DVB-S-Subnetzwerk ignorieren",
+            "help": "Bei 'Ja' werden Subnetzwerk-Frequenzen bei gültigen ONIDs ignoriert."
+          },
+          "en": {
+            "label": "Ignore DVB-S namespace sub network",
+            "help": "On valid ONIDs, ignore frequency sub network part."
+          }
+        }
+      },
+      {
+        "key": "config.usage.subnetwork_cable",
+        "label": "Ignore DVB-C namespace sub network",
+        "help": "On valid ONIDs, ignore frequency sub network part.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "DVB-C-Subnetzwerk ignorieren",
+            "help": "Bei 'Ja' werden Subnetzwerk-Frequenzen bei gültigen ONIDs ignoriert."
+          },
+          "en": {
+            "label": "Ignore DVB-C namespace sub network",
+            "help": "On valid ONIDs, ignore frequency sub network part."
+          }
+        }
+      },
+      {
+        "key": "config.usage.subnetwork_terrestrial",
+        "label": "Ignore DVB-T namespace sub network",
+        "help": "On valid ONIDs, ignore frequency sub network part.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "DVB-T-Subnetzwerk ignorieren",
+            "help": "Bei 'Ja' werden Subnetzwerk-Frequenzen bei gültigen ONIDs ignoriert."
+          },
+          "en": {
+            "label": "Ignore DVB-T namespace sub network",
+            "help": "On valid ONIDs, ignore frequency sub network part."
+          }
+        }
+      },
+      {
+        "key": "config.usage.enable_delivery_system_workaround",
+        "label": "Delivery system workaround",
+        "help": "Workaround for old tuner driver.",
+        "requires": "need_dsw",
+        "display": {
+          "de": {
+            "label": "Problemumgehung für Verteilersystem",
+            "help": "Nur auf 'Ja' stellen, wenn es Probleme mit Multituner gibt."
+          },
+          "en": {
+            "label": "Delivery system workaround",
+            "help": "Workaround for old tuner driver."
+          }
+        }
+      }
+    ],
+    "RTLSDRSetup": [
+      {
+        "key": "config.dab.rtlsdr.enabled",
+        "label": "Enable DAB+ mode",
+        "help": "Enable a selected RTL-SDR USB receiver for DAB+ reception. DVB-T and DAB+ cannot use the same receiver at the same time.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "DAB+-Modus aktivieren",
+            "help": "Gewählten RTL-SDR für DAB+ aktivieren. DVB-T und DAB+ können denselben Empfänger nicht gleichzeitig verwenden."
+          },
+          "en": {
+            "label": "Enable DAB+ mode",
+            "help": "Enable a selected RTL-SDR USB receiver for DAB+ reception. DVB-T and DAB+ cannot use the same receiver at the same time."
+          }
+        }
+      },
+      {
+        "key": "config.dab.rtlsdr.device",
+        "label": "Select tuner",
+        "help": "Select the RTL-SDR USB tuner to be used for DAB+ reception.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "Tuner auswählen",
+            "help": "Den für DAB+ zu verwendenden RTL-SDR-USB-Tuner auswählen."
+          },
+          "en": {
+            "label": "Select tuner",
+            "help": "Select the RTL-SDR USB tuner to be used for DAB+ reception."
+          }
+        }
+      },
+      {
+        "key": "config.dab.rtlsdr.region",
+        "label": "Scan region",
+        "help": "Limit a DAB+ USB scan to the frequency blocks defined for this region in the 'dab.xml' file.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "Scanregion",
+            "help": "USB-Suche auf die in dab.xml für diese Region definierten DAB-Blöcke begrenzen."
+          },
+          "en": {
+            "label": "Scan region",
+            "help": "Limit a DAB+ USB scan to the frequency blocks defined for this region in the 'dab.xml' file."
+          }
+        }
+      },
+      {
+        "key": "config.dab.rtlsdr.automaticGain",
+        "label": "Automatic gain",
+        "help": "Let the tuner select its RF gain automatically.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "Automatische Verstärkung",
+            "help": "RF-Verstärkung automatisch vom Tuner auswählen lassen."
+          },
+          "en": {
+            "label": "Automatic gain",
+            "help": "Let the tuner select its RF gain automatically."
+          }
+        }
+      },
+      {
+        "key": "config.dab.rtlsdr.gain",
+        "label": "RF gain",
+        "help": "Position in the tuner's supported gain range. The back end selects the closest gain step.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "RF-Verstärkung",
+            "help": "Position im unterstützten Verstärkungsbereich; das Backend wählt den nächsten verfügbaren Schritt."
+          },
+          "en": {
+            "label": "RF gain",
+            "help": "Position in the tuner's supported gain range. The back end selects the closest gain step."
+          }
+        }
+      },
+      {
+        "key": "config.dab.rtlsdr.ppm",
+        "label": "Frequency correction offset",
+        "help": "Adjust the tuner oscillator offset to refine the DAB+ signal reception.",
+        "requires": "",
+        "display": {
+          "de": {
+            "label": "Frequenzkorrektur",
+            "help": "Oszillatorabweichung für besseren DAB+-Empfang gezielt korrigieren."
+          },
+          "en": {
+            "label": "Frequency correction offset",
+            "help": "Adjust the tuner oscillator offset to refine the DAB+ signal reception."
+          }
+        }
+      }
+    ],
+    "ABM": [
+      {
+        "key": "config.autobouquetsmaker.schedule",
+        "label": "Schedule scan",
+        "help": "Allows you to set a schedule to perform a scan ",
+        "line": 476,
+        "display": {
+          "de": {
+            "label": "Geplanter Scan",
+            "help": "Erlaubt es einen Zeitplan für den Scan zu erstellen "
+          },
+          "en": {
+            "label": "Schedule scan",
+            "help": "Allows you to set a schedule to perform a scan "
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.keepallbouquets",
+        "label": "Keep all non-ABM bouquets",
+        "help": "When disabled this will enable the 'Keep bouquets' option in the main menu, allowing you to hide some 'existing' bouquets.",
+        "line": 483,
+        "display": {
+          "de": {
+            "label": "Alle nicht ABM Favoritenlisten behalten",
+            "help": "Wenn deaktiviert wird 'Favoritenlisten behalten' im Hauptmenü aktiviert. Diese Option erlaubt es einige bestehen Favoritenlisten zu verstecken."
+          },
+          "en": {
+            "label": "Keep all non-ABM bouquets",
+            "help": "When disabled this will enable the 'Keep bouquets' option in the main menu, allowing you to hide some 'existing' bouquets."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.addprefix",
+        "label": "Add provider name to bouquets",
+        "help": "This option will add the provider's name to bouquet names.",
+        "line": 484,
+        "display": {
+          "de": {
+            "label": "Füge Provider Namen in Bouquets ein",
+            "help": "Diese Option setzt den Namen des Anbieters vor den Namen der Favoritenliste."
+          },
+          "en": {
+            "label": "Add provider name to bouquets",
+            "help": "This option will add the provider's name to bouquet names."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.markersinindex",
+        "label": "Add provider markers",
+        "help": "This option places markers in the bouquet index to group all bouquets of each provider.",
+        "line": 485,
+        "display": {
+          "de": {
+            "label": "Providermarkierungen hinzufügen",
+            "help": "Diese Option platziert Markierungen im Bouquet-Index, um alle Bouquets jedes Anbieters zu gruppieren."
+          },
+          "en": {
+            "label": "Add provider markers",
+            "help": "This option places markers in the bouquet index to group all bouquets of each provider."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.bouquetmarkerstyle",
+        "label": "Style of bouquet marker",
+        "help": "Choose the style of the markers that separate channels into groups in the channel lists.",
+        "line": 488,
+        "display": {
+          "de": {
+            "label": "Stil des Bouquet Markers",
+            "help": "Wählen Sie den Stil der Markierungen, die Kanäle in den Kanallisten in Gruppen unterteilen."
+          },
+          "en": {
+            "label": "Style of bouquet marker",
+            "help": "Choose the style of the markers that separate channels into groups in the channel lists."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.placement",
+        "label": "Place bouquets at",
+        "help": "This option will allow you choose where to place the created bouquets.",
+        "line": 489,
+        "display": {
+          "de": {
+            "label": "Platziere Favoriten",
+            "help": "Mit dieser Option können Sie auswählen, wo die erstellten Bouquets platziert werden sollen."
+          },
+          "en": {
+            "label": "Place bouquets at",
+            "help": "This option will allow you choose where to place the created bouquets."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.skipservices",
+        "label": "Skip services on not configured sats",
+        "help": "If a service is carried on a satellite that is not configured, 'yes' means the channel will not appear in the channel list, 'no' means the channel will show in the channel list but be greyed out and not be accessible.",
+        "line": 490,
+        "display": {
+          "de": {
+            "label": "Überspringe nicht konfigurierte Satelliten",
+            "help": "Sender von nicht konfigurierten Satelliten überspringen. 'Ja' bedeutet der Sender erscheint nicht in der Favoritenliste. 'Nein' bedeutet der Sender erscheint in der Favoritenliste is aber ausgegraut und kann nicht gewählt werden."
+          },
+          "en": {
+            "label": "Skip services on not configured sats",
+            "help": "If a service is carried on a satellite that is not configured, 'yes' means the channel will not appear in the channel list, 'no' means the channel will show in the channel list but be greyed out and not be accessible."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.extra_debug",
+        "label": "Extra debug",
+        "help": "This feature is for development only. Requires debug logs to be enabled or enigma2 to be started in console mode.",
+        "line": 491,
+        "display": {
+          "de": {
+            "label": "Zusätzliches Debuggen",
+            "help": "Diese Funktion ist nur für die Entwicklung bestimmt. Erfordert die Aktivierung von Debug-Protokollen oder den Start von Enigma2 im Konsolenmodus."
+          },
+          "en": {
+            "label": "Extra debug",
+            "help": "This feature is for development only. Requires debug logs to be enabled or enigma2 to be started in console mode."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.frequencyfinder",
+        "label": "Show DVB-T frequency finder",
+        "help": "Select \"yes\" to show the \"DVB-T frequency finder\" tool in the main menu. This tool is used to create a working provider file for difficult areas of the UK, e.g. areas covered by repeaters, etc.",
+        "line": 492,
+        "display": {
+          "de": {
+            "label": "DVB-T-Frequenzfinder anzeigen",
+            "help": "Wählen Sie „Ja“, um das Tool „DVB-T-Frequenzfinder“ im Hauptmenü anzuzeigen. Dieses Tool wird verwendet, um eine funktionierende Providerdatei für schwierige Gebiete im Vereinigten Königreich zu erstellen, z.B. Bereiche, die von Repeatern usw. abgedeckt werden."
+          },
+          "en": {
+            "label": "Show DVB-T frequency finder",
+            "help": "Select \"yes\" to show the \"DVB-T frequency finder\" tool in the main menu. This tool is used to create a working provider file for difficult areas of the UK, e.g. areas covered by repeaters, etc."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.extensions",
+        "label": "Show in extensions",
+        "help": "When enabled, allows you start a scan from the extensions list.",
+        "line": 493,
+        "display": {
+          "de": {
+            "label": "In Erweiterungen anzeigen",
+            "help": "Wenn diese Option aktiviert ist, können Sie einen Scan über die Erweiterungsliste starten."
+          },
+          "en": {
+            "label": "Show in extensions",
+            "help": "When enabled, allows you start a scan from the extensions list."
+          }
+        }
+      },
+      {
+        "key": "self.providers_configs[provider]",
+        "label": "self.providers[provider]['name']",
+        "help": "This option enables the current selected provider.",
+        "line": 293,
+        "display": {
+          "de": {
+            "label": "Anbieter aktivieren",
+            "help": "Diese Option aktiviert den aktuell gewählten Anbieter."
+          },
+          "en": {
+            "label": "Provider enabled",
+            "help": "This option enables the current selected provider."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.scheduletime",
+        "label": "Schedule time of day",
+        "help": "Set the time of day to perform a scan.",
+        "line": 478,
+        "display": {
+          "de": {
+            "label": "Plane die Tageszeit",
+            "help": "Setze die Zeit wann der Scan durchgeführt werden soll."
+          },
+          "en": {
+            "label": "Schedule time of day",
+            "help": "Set the time of day to perform a scan."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.dayscreen",
+        "label": "Schedule days of the week",
+        "help": "Press OK to select which days to perform a scan.",
+        "line": 479,
+        "display": {
+          "de": {
+            "label": "Plane Wochentage",
+            "help": "Drücke OK, um die Tage auszuwählen, an denen ein Scan durchgeführt werden soll."
+          },
+          "en": {
+            "label": "Schedule days of the week",
+            "help": "Press OK to select which days to perform a scan."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.schedulewakefromdeep",
+        "label": "Schedule wake from deep standby",
+        "help": "If the receiver is in 'Deep Standby' when the schedule is due, wake it up to perform a scan.",
+        "line": 480,
+        "display": {
+          "de": {
+            "label": "Plane das Aufwecken aus dem Deep-Standby",
+            "help": "Wenn sich der Receiver zum Zeitpunkt des Zeitplans im „Deep Standby“ befindet, aktivieren Sie ihn, um einen Scan durchzuführen."
+          },
+          "en": {
+            "label": "Schedule wake from deep standby",
+            "help": "If the receiver is in 'Deep Standby' when the schedule is due, wake it up to perform a scan."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.indexmarkerstyle",
+        "label": "Style of provider marker",
+        "help": "Choose the style of markers that separate one provider from another in bouquet indexes.",
+        "line": 487,
+        "display": {
+          "de": {
+            "label": "Stil des Provider Markers",
+            "help": "Wähle den Stil des Markers, die im Bouquet einen Anbieter von einem anderen unterscheiden."
+          },
+          "en": {
+            "label": "Style of provider marker",
+            "help": "Choose the style of markers that separate one provider from another in bouquet indexes."
+          }
+        }
+      },
+      {
+        "key": "self.config.days[i]",
+        "label": "days[i]",
+        "help": "",
+        "line": 532,
+        "display": {
+          "de": {
+            "label": "Wochentag aktivieren",
+            "help": "ABM-Suchlauf an diesem Wochentag zulassen."
+          },
+          "en": {
+            "label": "Weekday enabled",
+            "help": "Allow scheduled ABM scanning on this weekday."
+          }
+        }
+      },
+      {
+        "key": "config.autobouquetsmaker.scheduleshutdown",
+        "label": "Schedule return to deep standby",
+        "help": "If the receiver was woken from 'Deep Standby' and is currently in 'Standby' and no recordings are in progress return it to 'Deep Standby' once the scan has completed.",
+        "line": 482,
+        "display": {
+          "de": {
+            "label": "Plane die Rückkehr in den Deep-Standby",
+            "help": "Wenn der Receiver aus „Deep Standby“ aufgeweckt wurde und sich derzeit im „Standby“ befindet und keine Aufnahmen laufen, schalten Sie ihn nach Abschluss des Scanvorgangs wieder in „Deep Standby“ zurück."
+          },
+          "en": {
+            "label": "Schedule return to deep standby",
+            "help": "If the receiver was woken from 'Deep Standby' and is currently in 'Standby' and no recordings are in progress return it to 'Deep Standby' once the scan has completed."
+          }
+        }
+      },
+      {
+        "key": "self.providers_area[provider]",
+        "label": "Region",
+        "help": "This option allows you to choose what region of the country you live in, so it populates the correct channels for your region.",
+        "line": 296,
+        "display": {
+          "de": {
+            "label": "Region",
+            "help": "Diese Option erlaubt es die Region des Landes vorzugeben damit die korrekten Sender gewählt werden."
+          },
+          "en": {
+            "label": "Region",
+            "help": "This option allows you to choose what region of the country you live in, so it populates the correct channels for your region."
+          }
+        }
+      },
+      {
+        "key": "self.providers_FTA_only[provider]",
+        "label": "FTA only",
+        "help": "This affects all bouquets. Select 'no' to scan in all services. Select 'yes' to skip encrypted ones.",
+        "line": 300,
+        "display": {
+          "de": {
+            "label": "Nur FTA",
+            "help": "Diese Option betrifft alle Favoritenlisten. Wähle 'Nein' um alle Sender zu durchsuchen. Wähle 'Nein' um nur unverschlüsselte Sender zu durchsuchen."
+          },
+          "en": {
+            "label": "FTA only",
+            "help": "This affects all bouquets. Select 'no' to scan in all services. Select 'yes' to skip encrypted ones."
+          }
+        }
+      },
+      {
+        "key": "self.providers_makemain[provider]",
+        "label": "Create main bouquet",
+        "help": "This option has several choices \"Yes\", (create a bouquet with all the channels in it), \"Yes HD only\", (will group all HD channels into this bouquet), \"Custom\", (allows you to select your own bouquet), \"No\", (do not use a main bouquet)",
+        "line": 303,
+        "display": {
+          "de": {
+            "label": "Erzeuge Haupt Kanalliste",
+            "help": "Diese Option enthält mehrere Wahlmöglichkeiten \"Ja\" (erzeuge eine Favoritenliste mit allen Sendern), \"Ja nur HD\" (erzeuge eine Favoritenliste mit allen HD Sendern), \"benutzerdefiniert\" (erlaubt es eine Favoritenliste auszuwählen), \"Nein\" (Hauptfavoritenliste nicht benutzen)"
+          },
+          "en": {
+            "label": "Create main bouquet",
+            "help": "This option has several choices \"Yes\", (create a bouquet with all the channels in it), \"Yes HD only\", (will group all HD channels into this bouquet), \"Custom\", (allows you to select your own bouquet), \"No\", (do not use a main bouquet)"
+          }
+        }
+      },
+      {
+        "key": "self.providers_custommain[provider]",
+        "label": "Custom bouquet for main",
+        "help": "Select your own bouquet from the list, please note that the only the first 100 channels for this bouquet will be used.",
+        "line": 306,
+        "display": {
+          "de": {
+            "label": "Benutzerdefinierte Haupt Kanalliste",
+            "help": "Wähle deine eigene Favoritenliste aus der Liste. Bitte beachten das nur die ersten 100 Sender der Favoritenliste benutzt werden."
+          },
+          "en": {
+            "label": "Custom bouquet for main",
+            "help": "Select your own bouquet from the list, please note that the only the first 100 channels for this bouquet will be used."
+          }
+        }
+      },
+      {
+        "key": "self.providers_makesections[provider]",
+        "label": "Create sections bouquets",
+        "help": "This option will create bouquets for each type of channel, ie Entertainment, Movies, Documentary.",
+        "line": 309,
+        "display": {
+          "de": {
+            "label": "Erzeuge Sektionen Kanallisten",
+            "help": "Diese Option erzeugt eine Favoritenliste für jede Programmart wie z.B. Unterhaltung, Filme, Serien."
+          },
+          "en": {
+            "label": "Create sections bouquets",
+            "help": "This option will create bouquets for each type of channel, ie Entertainment, Movies, Documentary."
+          }
+        }
+      },
+      {
+        "key": "self.providers_makehd[provider]",
+        "label": "Create HD bouquet",
+        "help": "This option will create a High Definition bouquet, it will group all HD channels into this bouquet.",
+        "line": 312,
+        "display": {
+          "de": {
+            "label": "Erzeuge HD Kanalliste",
+            "help": "Diese Option erzeugt eine HighDefinition (HD) Favoritenliste. Alle HD Sender werden in einer Favoritenliste zusammen gefasst."
+          },
+          "en": {
+            "label": "Create HD bouquet",
+            "help": "This option will create a High Definition bouquet, it will group all HD channels into this bouquet."
+          }
+        }
+      },
+      {
+        "key": "self.providers_makefta[provider]",
+        "label": "Create FTA bouquet",
+        "help": "This option will create a FreeToAir bouquet, it will group all free channels into this bouquet.",
+        "line": 315,
+        "display": {
+          "de": {
+            "label": "Erzeuge FTA Kanalliste",
+            "help": "Diese Option erstellt ein FreeToAir-Bouquet und gruppiert alle freien Kanäle in diesem Bouquet."
+          },
+          "en": {
+            "label": "Create FTA bouquet",
+            "help": "This option will create a FreeToAir bouquet, it will group all free channels into this bouquet."
+          }
+        }
+      },
+      {
+        "key": "self.providers_makeftahd[provider]",
+        "label": "Create FTA HD bouquet",
+        "help": "This option will create a FreeToAir High Definition bouquet, it will group all FTA HD channels into this bouquet.",
+        "line": 318,
+        "display": {
+          "de": {
+            "label": "Erzeuge FTA HD Kanalliste",
+            "help": "Diese Option erstellt ein FreeToAir High Definition-Bouquet und gruppiert alle FTA HD-Kanäle in diesem Bouquet."
+          },
+          "en": {
+            "label": "Create FTA HD bouquet",
+            "help": "This option will create a FreeToAir High Definition bouquet, it will group all FTA HD channels into this bouquet."
+          }
+        }
+      },
+      {
+        "key": "self.providers_swapchannels[provider]",
+        "label": "Swap channels",
+        "help": "This option will swap SD versions of channels with HD versions. (eg BBC One SD with BBC One HD, Channel Four SD with with Channel Four HD)",
+        "line": 325,
+        "display": {
+          "de": {
+            "label": "Sender tauschen",
+            "help": "Mit dieser Option werden SD-Versionen von Kanälen durch HD-Versionen ausgetauscht. (z. B. BBC One SD mit BBC One HD, Channel Four SD mit Channel Four HD)"
+          },
+          "en": {
+            "label": "Swap channels",
+            "help": "This option will swap SD versions of channels with HD versions. (eg BBC One SD with BBC One HD, Channel Four SD with with Channel Four HD)"
+          }
+        }
+      },
+      {
+        "key": "self.providers_custom_list[provider]",
+        "label": "Custom mode",
+        "help": "Enable custom mode to apply provider-specific channel adjustments such as adding, removing or renaming channels.",
+        "line": 328,
+        "display": {
+          "de": {
+            "label": "Benutzerdefinierter Modus",
+            "help": "Anbieterspezifische Regeln zum Ergänzen, Entfernen oder Umbenennen von Sendern anwenden."
+          },
+          "en": {
+            "label": "Custom mode",
+            "help": "Enable custom mode to apply provider-specific channel adjustments such as adding, removing or renaming channels."
+          }
+        }
+      },
+      {
+        "key": "self.providers_extraservices[provider]",
+        "label": "Include non-indexed channels",
+        "help": "When a search finds extra channels that do not have an allocated channel number, 'yes' will add these at the end of the channel list, and 'no' means these will not be included.",
+        "line": 331,
+        "display": {
+          "de": {
+            "label": "Nicht nummerierte Sender aufnehmen",
+            "help": "Wenn die Suche zusätzliche Kanäle findet, denen keine Kanalnummer zugeordnet ist, können sie mit 'Ja' an das Ende der Liste sortiert und mit 'Nein' ignoriert werden."
+          },
+          "en": {
+            "label": "Include non-indexed channels",
+            "help": "When a search finds extra channels that do not have an allocated channel number, 'yes' will add these at the end of the channel list, and 'no' means these will not be included."
+          }
+        }
+      }
+    ],
+    "Blindscan": [
+      {
+        "key": "self.scan_nims",
+        "label": "Tuner",
+        "help": "Select a tuner that is configured for the satellite you wish to searchwarning_text",
+        "line": 569,
+        "display": {
+          "de": {
+            "label": "Tuner",
+            "help": "Empfangsteil auswählen, dessen Anschluss das gewünschte Signal liefert."
+          },
+          "en": {
+            "label": "Tuner",
+            "help": "Choose the frontend connected to the required signal."
+          }
+        }
+      },
+      {
+        "key": "self.scan_satselection[self.getSelectedSatIndex(index_to_scan)]",
+        "label": "Satellite",
+        "help": "Select the satellite you wish to search",
+        "line": 577,
+        "display": {
+          "de": {
+            "label": "Satellit",
+            "help": "Wählen Sie den Satelliten, den Sie durchsuchen möchten"
+          },
+          "en": {
+            "label": "Satellite",
+            "help": "Select the satellite you wish to search"
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.search_type",
+        "label": "Search type",
+        "help": "\"channel scan\" searches for channels and saves them to your receiver; \"transponder scan\" does a transponder search and displays the results allowing user to select some or all transponder. Both options save the results in satellites.xml format under /tmp",
+        "line": 589,
+        "display": {
+          "de": {
+            "label": "Suchmodus",
+            "help": "\"Sender Suche\" sucht nach Sendern und speichert sie auf dem Receiver; \"Transponder Suche\" sucht nach Transpondern und zeigt das Resultat zur Auswahl an. Bei beiden Optionen werden die Ergebnisse in der satellites.xml unter /tmp gespeichert."
+          },
+          "en": {
+            "label": "Search type",
+            "help": "\"channel scan\" searches for channels and saves them to your receiver; \"transponder scan\" does a transponder search and displays the results allowing user to select some or all transponder. Both options save the results in satellites.xml format under /tmp"
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.dont_scan_known_tps",
+        "label": "Only scan unknown transponders",
+        "help": "If you select \"yes\" the scan will only search transponders not listed in satellites.xml",
+        "line": 621,
+        "display": {
+          "de": {
+            "label": "Nur unbekannte Transponder durchsuchen",
+            "help": "Wenn \"Ja\", werden nur Transponder gesucht, die nicht in satellites.xml stehen"
+          },
+          "en": {
+            "label": "Only scan unknown transponders",
+            "help": "If you select \"yes\" the scan will only search transponders not listed in satellites.xml"
+          }
+        }
+      },
+      {
+        "key": "cb",
+        "label": "t[0]",
+        "help": "",
+        "line": 198,
+        "display": {
+          "de": {
+            "label": "Transponder für Suche auswählen",
+            "help": "Gefundenen Blindscan-Transponder für die anschließende Dienstesuche markieren."
+          },
+          "en": {
+            "label": "Transponder selected for scan",
+            "help": "Select a discovered Blindscan transponder for the following service scan."
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.polarization",
+        "label": "Polarisation",
+        "help": "The suggested polarisation for this satellite is \"%s\"",
+        "line": 616,
+        "display": {
+          "de": {
+            "label": "Polarisation",
+            "help": "Suchgrenze innerhalb des zum LNB passenden Bereichs setzen; die im Dialog angezeigten MHz-Grenzen beachten."
+          },
+          "en": {
+            "label": "Polarisation",
+            "help": "Set the search boundary within the range matching the LNB; observe the MHz limits displayed in the form."
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.start_symbol",
+        "label": "Scan start symbolrate",
+        "help": "Symbol rate values are in megasymbols; enter a value between 1 and 44",
+        "line": 617,
+        "display": {
+          "de": {
+            "label": "Startsymbolrate für Suche",
+            "help": "Symbolraten sind in Megasymbolen, geben Sie einen Wert zwischen 1 und 44 ein"
+          },
+          "en": {
+            "label": "Scan start symbolrate",
+            "help": "Symbol rate values are in megasymbols; enter a value between 1 and 44"
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.stop_symbol",
+        "label": "Scan stop symbolrate",
+        "help": "Symbol rate values are in megasymbols; enter a value between 2 and 45",
+        "line": 618,
+        "display": {
+          "de": {
+            "label": "Endsymbolrate für Suche",
+            "help": "Symbolraten sind in Megasymbolen, geben Sie einen Wert zwischen 2 und 45 ein"
+          },
+          "en": {
+            "label": "Scan stop symbolrate",
+            "help": "Symbol rate values are in megasymbols; enter a value between 2 and 45"
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.clearallservices",
+        "label": "Clear before scan",
+        "help": "If you select \"yes\" all channels on the satellite being searched will be deleted before starting the current search, yes (keep feeds) means the same but hold all feed services/transponders.",
+        "line": 619,
+        "display": {
+          "de": {
+            "label": "Vor der Suche löschen",
+            "help": "Nein ergänzt; Ja entfernt Dienste im betroffenen Suchbereich; Feeds behalten ist nur eine spezielle Ausnahme."
+          },
+          "en": {
+            "label": "Clear before scan",
+            "help": "No adds/updates; Yes removes services in the affected scan scope; Keep feeds is a limited exception."
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.onlyFTA",
+        "label": "Only free scan",
+        "help": "If you select \"yes\" the scan will only save channels that are not encrypted; \"no\" will find encrypted and non-encrypted channels.",
+        "line": 620,
+        "display": {
+          "de": {
+            "label": "Suche nur freie Sender",
+            "help": "Wenn Sie \"Ja\" wählen, speichert der Scan nur Kanäle, die nicht verschlüsselt sind; \"Nein\" findet verschlüsselte und nicht verschlüsselte Kanäle."
+          },
+          "en": {
+            "label": "Only free scan",
+            "help": "If you select \"yes\" the scan will only save channels that are not encrypted; \"no\" will find encrypted and non-encrypted channels."
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.disable_remove_duplicate_tps",
+        "label": "Disable remove duplicates",
+        "help": "CAUTION: If you select \"yes\" the scan will not remove \"duplicated\" transponders from the list. Default is \"no\". Only change this if you understand why you are doing it.",
+        "line": 625,
+        "display": {
+          "de": {
+            "label": "Deaktivieren Sie das Entfernen von Duplikaten",
+            "help": "Doppelte Trägerkandidaten behalten; normalerweise werden Duplikate entfernt."
+          },
+          "en": {
+            "label": "Disable remove duplicates",
+            "help": "Retain duplicate carrier candidates; duplicates are normally removed."
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.filter_off_adjacent_satellites",
+        "label": "Filter out adjacent satellites",
+        "help": "When a neighbouring satellite is very strong this avoids searching transponders known to be coming from the neighbouring satellite.",
+        "line": 626,
+        "display": {
+          "de": {
+            "label": "Angrenzende Satelliten heraus filtern",
+            "help": "Wenn ein benachbarter Satellit sehr stark ist, vermeidet dies die Suche nach Transpondern, die bekanntermaßen vom benachbarten Satelliten kommen."
+          },
+          "en": {
+            "label": "Filter out adjacent satellites",
+            "help": "When a neighbouring satellite is very strong this avoids searching transponders known to be coming from the neighbouring satellite."
+          }
+        }
+      },
+      {
+        "key": "self.blindscan_C_band_start_frequency",
+        "label": "Scan start frequency",
+        "help": "Frequency values must be between %d MHz and %d MHz (C-band)",
+        "line": 593,
+        "display": {
+          "de": {
+            "label": "Startfrequenz für Suche",
+            "help": "Untere Suchgrenze in MHz innerhalb des zum LNB passenden Bereichs. Den im Dialog genannten Grenzwert beachten."
+          },
+          "en": {
+            "label": "Scan start frequency",
+            "help": "Lower scan boundary in MHz within the range matching the LNB. Observe the limit displayed in the form."
+          }
+        }
+      },
+      {
+        "key": "self.blindscan_C_band_stop_frequency",
+        "label": "Scan stop frequency",
+        "help": "Frequency values must be between %d MHz and %d MHz (C-band)",
+        "line": 594,
+        "display": {
+          "de": {
+            "label": "Endfrequenz für Suche",
+            "help": "Obere Suchgrenze in MHz innerhalb des zum LNB passenden Bereichs. Sie muss über der Startfrequenz liegen."
+          },
+          "en": {
+            "label": "Scan stop frequency",
+            "help": "Upper scan boundary in MHz within the range matching the LNB. It must exceed the start frequency."
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.step_mhz_tbs5925",
+        "label": "Scan Step in MHz(TBS5925)",
+        "help": "Smaller steps takes longer but scan is more thorough",
+        "line": 615,
+        "display": {
+          "de": {
+            "label": "Scan Schritt in MHz (TBS5925)",
+            "help": "Kleinere Schritte dauern länger, aber das Scannen ist gründlicher"
+          },
+          "en": {
+            "label": "Scan Step in MHz(TBS5925)",
+            "help": "Smaller steps takes longer but scan is more thorough"
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.disable_sync_with_known_tps",
+        "label": "Disable sync with known transponders",
+        "help": "CAUTION: If you select \"yes\" the scan will not sync with transponders listed in satellites.xml. Default is \"no\". Only change this if you understand why you are doing it.",
+        "line": 624,
+        "display": {
+          "de": {
+            "label": "Deaktivieren Sie die Synchronisierung mit bekannten Transpondern",
+            "help": "Gemessene Parameter nicht mit bekannten Transpondern abgleichen; normalerweise deaktiviert lassen."
+          },
+          "en": {
+            "label": "Disable sync with known transponders",
+            "help": "Avoid matching measured parameters to known transponders; normally leave this disabled."
+          }
+        }
+      },
+      {
+        "key": "self.blindscan_Ku_band_start_frequency",
+        "label": "Scan start frequency",
+        "help": "Frequency values must be between %d MHz and %d MHz",
+        "line": 596,
+        "display": {
+          "de": {
+            "label": "Startfrequenz für Suche",
+            "help": "Untere Suchgrenze in MHz innerhalb des zum LNB passenden Bereichs. Den im Dialog genannten Grenzwert beachten."
+          },
+          "en": {
+            "label": "Scan start frequency",
+            "help": "Lower scan boundary in MHz within the range matching the LNB. Observe the limit displayed in the form."
+          }
+        }
+      },
+      {
+        "key": "self.blindscan_Ku_band_stop_frequency",
+        "label": "Scan stop frequency",
+        "help": "Frequency values must be between %d MHz and %d MHz",
+        "line": 597,
+        "display": {
+          "de": {
+            "label": "Endfrequenz für Suche",
+            "help": "Obere Suchgrenze in MHz innerhalb des zum LNB passenden Bereichs. Sie muss über der Startfrequenz liegen."
+          },
+          "en": {
+            "label": "Scan stop frequency",
+            "help": "Upper scan boundary in MHz within the range matching the LNB. It must exceed the start frequency."
+          }
+        }
+      },
+      {
+        "key": "config.blindscan.user_defined_lnb_inversion",
+        "label": "LNB inversion",
+        "help": "CAUTION: Only select \"inverted\" if you are using an inverted LNB (i.e. an LNB where the local oscillator frequency is greater than the scan frequency). Default is \"normal\". Only change this if you understand why you are doing it.",
+        "line": 599,
+        "display": {
+          "de": {
+            "label": "LNB-Inversion",
+            "help": "Nur für ein invertierendes LNB wählen, dessen Oszillator über der Empfangsfrequenz liegt. Normal ist die übliche Vorgabe."
+          },
+          "en": {
+            "label": "LNB inversion",
+            "help": "Select inverted only for an LNB with its oscillator above the reception frequency. Normal is the usual default."
+          }
+        }
+      },
+      {
+        "key": "self.blindscan_user_defined_lnb_inverted_start_frequency",
+        "label": "Scan start frequency",
+        "help": "Frequency values must be between %d MHz and %d MHz",
+        "line": 608,
+        "display": {
+          "de": {
+            "label": "Startfrequenz für Suche",
+            "help": "Untere Suchgrenze in MHz innerhalb des zum LNB passenden Bereichs. Den im Dialog genannten Grenzwert beachten."
+          },
+          "en": {
+            "label": "Scan start frequency",
+            "help": "Lower scan boundary in MHz within the range matching the LNB. Observe the limit displayed in the form."
+          }
+        }
+      },
+      {
+        "key": "self.blindscan_user_defined_lnb_inverted_stop_frequency",
+        "label": "Scan stop frequency",
+        "help": "Frequency values must be between %d MHz and %d MHz",
+        "line": 609,
+        "display": {
+          "de": {
+            "label": "Endfrequenz für Suche",
+            "help": "Obere Suchgrenze in MHz innerhalb des zum LNB passenden Bereichs. Sie muss über der Startfrequenz liegen."
+          },
+          "en": {
+            "label": "Scan stop frequency",
+            "help": "Upper scan boundary in MHz within the range matching the LNB. It must exceed the start frequency."
+          }
+        }
+      },
+      {
+        "key": "self.blindscan_user_defined_lnb_start_frequency",
+        "label": "Scan start frequency",
+        "help": "Frequency values must be between %d MHz and %d MHz",
+        "line": 611,
+        "display": {
+          "de": {
+            "label": "Startfrequenz für Suche",
+            "help": "Untere Suchgrenze in MHz innerhalb des zum LNB passenden Bereichs. Den im Dialog genannten Grenzwert beachten."
+          },
+          "en": {
+            "label": "Scan start frequency",
+            "help": "Lower scan boundary in MHz within the range matching the LNB. Observe the limit displayed in the form."
+          }
+        }
+      },
+      {
+        "key": "self.blindscan_user_defined_lnb_stop_frequency",
+        "label": "Scan stop frequency",
+        "help": "Frequency values must be between %d MHz and %d MHz",
+        "line": 612,
+        "display": {
+          "de": {
+            "label": "Endfrequenz für Suche",
+            "help": "Obere Suchgrenze in MHz innerhalb des zum LNB passenden Bereichs. Sie muss über der Startfrequenz liegen."
+          },
+          "en": {
+            "label": "Scan stop frequency",
+            "help": "Upper scan boundary in MHz within the range matching the LNB. It must exceed the start frequency."
+          }
+        }
+      }
+    ]
+  },
+  "external_sources": {
+    "ABM": {
+      "url": "https://github.com/oe-alliance/AutoBouquetsMaker/blob/ba6010b90b/AutoBouquetsMaker/src/setup.py",
+      "sha256": "ded5769725ebe2ea9c8651ee6b366b49789d617a0ed3e9cbd9c860a3068a16d1"
+    },
+    "Blindscan": {
+      "url": "https://github.com/oe-alliance-plugins/Blindscan/blob/35aed6fadf8d2bd2c125237db675d8bae49f349a/src/Blindscan/plugin.py",
+      "sha256": "be57efef9067428535db11595af83d4effaa28401f4b69307abd73a48d6d90a3"
+    }
+  }
+}

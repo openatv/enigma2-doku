@@ -1,0 +1,22 @@
+---
+title: "Blindscan: Ablauf, Filter und Transponderergebnisse"
+description: "OpenATV: Blindscan: Ablauf, Filter und Transponderergebnisse."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Empfang → Blindscan.** Das Plugin sucht Träger ohne vollständige vorherige Frequenzliste. Ein unterstützter Tuner und ein passendes Hersteller-Backend sind Voraussetzung. Die bloße Installation des Plugins reicht nicht.
+
+<Capture id="rx-blindscan" language="de" alt="Blindscan-Formular mit Suchmodus, Frequenzbereich, Symbolraten und Filtern" caption="Native Ansicht für einen Universal-Ku-Anschluss. Die Bildserie zeigt die Optionen, ohne einen Blindscan auszuführen." />
+
+1. Konfigurierten Tuner und Satelliten wählen.
+2. **Suche nach Transpondern** wählen, um gefundene Träger zuerst zu prüfen, oder **Sendersuche**, um anschließend Dienste zu erfassen.
+3. Frequenzbereich, Polarisation und Symbolratenbereich passend zur Anlage setzen. Die Symbolraten werden hier in **MSym/s** angegeben.
+4. Lösch- und FTA-Optionen prüfen. Bekannte Transponder, Duplikate und Nachbarpositionen nur nach gewünschtem Suchzweck filtern.
+5. Mit **Grün/Suche** starten; Ergebnis abwarten. In der Transponderliste gewünschte Treffer markieren und daraus den Dienstesuchlauf starten.
+
+**Blau/Standards wiederherstellen**, falls angezeigt, setzt Pluginwerte zurück. **Gelb/XML öffnen**, falls ein Ergebnis vorhanden ist, öffnet die XML-Ausgabe. **EXIT/Beenden** verlässt den Dialog. Während einer Suche können die beschrifteten Aktionen wechseln.
+
+Alle **23 erfassten Formularvarianten** stehen im [Blindscan-Abschnitt der Referenz](../scan-optionen/#blindscan). Dazu gehören zusätzliche Frequenzgrenzen für C-Band und benutzerdefinierte invertierende LNBs, geräteabhängige Schrittweite sowie die Auswahl gefundener Transponder. Eine ausgeblendete Option lässt sich nicht durch Übernahme fremder Gerätewerte nachrüsten.
+
+Die [Modulübersicht](../scan-module/) erklärt jeden Filter und das XML-Ergebnis unter `/tmp`. Ergebnisse mit unplausibler Position oder doppelten Trägern prüfen, bevor sie die eigene Senderdatenbank ersetzen. Ein kompletter Scan verändert weder die Schüsselausrichtung noch einen falsch zugeordneten DiSEqC-Port.

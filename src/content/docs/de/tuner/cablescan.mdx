@@ -1,0 +1,29 @@
+---
+title: "CableScan / Kabelsuchlauf: alle acht Einstellungen"
+description: "OpenATV: CableScan / Kabelsuchlauf: alle acht Einstellungen."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Empfang → Kabelsuchlauf** öffnet das zusätzliche **CableScan**-Modul, sofern installiert. Es liest die Tabellen eines passenden Kabelanbieters. Der allgemeine automatische oder manuelle DVB-C-Suchlauf bleibt als anderer Weg verfügbar.
+
+<Capture id="rx-cablescan" language="de" alt="CableScan mit Frequenz, Symbolrate, Modulation, Netzwerk-ID und Listenoptionen" caption="Formularbeispiel des vorhandenen Plugins. 330 MHz, 6900 und Netzwerk-ID 0 sind angezeigte Ausgangswerte, keine universellen Kabelanbieter-Daten. Kein Kabelsuchlauf wurde ausgeführt." />
+
+| Einstellung | Was einzutragen bzw. zu entscheiden ist |
+| --- | --- |
+| Tuner | Mit dem Kabelnetz verbundenes DVB-C-fähiges Empfangsteil |
+| Frequenz | Einstiegsträger des Anbieters; dieses Formular verwendet MHz |
+| Symbolrate | Symbolrate dieses Trägers in kSym/s |
+| Modulation | QAM-Wert nach Anbieterangabe |
+| Netzwerk-ID | Regional passende Netzkennung; 0 ist kein Ersatz für eine bekannte notwendige ID |
+| Offizielle Sendernummerierung | Nummerierung der Anbietertabellen übernehmen |
+| HD-Liste | HD-Variante wählen, soweit vom Anbieter unterstützt |
+| Täglich automatisch suchen / Enable auto cable scan | Spätere automatische Aktualisierungen aktivieren; im geprüften Plugin an Standby-Abläufe gekoppelt |
+
+**Hoch/runter** wählt eine Zeile; **links/rechts** bzw. Zifferntasten ändern Werte. **OK** startet die Suche und speichert deren Konfiguration. Die Speichern-Aktion übernimmt Einstellungen; **EXIT/Abbrechen** schließt den Dialog. Beschriftungen können mit Skin/Tastenbelegung variieren.
+
+Die automatische Variante wartet auf Standby und startet nicht einfach einen unabhängigen Cron-Job. Keine Box aus Deep Standby allein wegen dieser Option als garantiert aufwachend betrachten. Erst einen erfolgreichen manuellen CableScan durchführen, danach die Automatik aktivieren und Aufnahmezeiten berücksichtigen.
+
+Wenn der Anbieter oder seine Tabellen nicht unterstützt werden, mit dessen Daten einen [normalen DVB-C-Suchlauf](../dvb-c/) verwenden. Bei null Treffern zunächst Eingang, Lock, Startfrequenz, QAM, Symbolrate und Netzkennung prüfen. Ein DVB-C/T2-Hybrid-Eingang muss währenddessen die Kabelquelle erhalten; [SPAUN-Beispiel](../hybrid-spaun/).
+
+Quellstand: [OpenATV plugin.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/CableScan/plugin.py).

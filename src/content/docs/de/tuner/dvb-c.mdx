@@ -1,0 +1,44 @@
+---
+title: "DVB-C: Kabelanschluss und Suchparameter"
+description: "OpenATV: DVB-C: Kabelanschluss und Suchparameter."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**Menü → Einstellungen → Empfang → Tuner → Kabel-Empfangsteil.** Schließe die TV-Buchse der Kabeldose an den passenden Eingang der Box an. Die Dose darf nicht mit einem klassischen SAT-Ausgang verwechselt werden. Bei direktem Kabelanschluss bleibt die Antennenspeisung aus.
+
+<Wiring id="cable-terrestrial" language="de" alt="Kabeldose an DVB-C-Eingang und als getrennte Alternative Antenne an DVB-T2" caption="Für DVB-C gilt der obere Anschlussweg. Welche Buchse und welcher Tuner zur Verfügung stehen, zeigt das Gerät." />
+
+## Einrichtung
+
+1. Bei unterstütztem Hybrid-Tuner DVB-C aktivieren; unverbundene Empfangsarten nicht ohne Anlass aktivieren.
+2. **Suchart: Anbieter** wählen, wenn Land, Anbieter und Region in der Liste zur eigenen Versorgung passen.
+3. **Netzwerk-ID** nach Betreiberangabe setzen. Sie kann sich nach Ort unterscheiden, auch bei demselben Anbieter.
+4. Ist kein passender Anbieter hinterlegt, **Bänder** oder **Schritte** mit den passenden Parametern verwenden.
+5. Speichern, [automatischen oder manuellen Suchlauf](../suchlauf/) starten und einen freien Sender prüfen.
+
+| Option | Bedeutung |
+| --- | --- |
+| Anbieter, Land, Region | Wählt die passende vorbereitete Frequenzliste |
+| Netzwerk-ID | Identifiziert das Kabelnetz; nicht WLAN-SSID, IP-Adresse oder Anschluss-Kundennummer |
+| Bänder EU/US | Wählt Spektrumsbereiche für die Frequenzsuche; nicht wahllos beide Welten aktivieren |
+| Frequenzschritt kHz | Raster bei schrittweiser Suche; kleiner kann länger dauern, ein ungeeignetes Raster kann Träger verfehlen |
+| QAM 16/32/64/128/256 | Welche Modulationen die Frequenzsuche prüfen soll |
+| Symbolraten 6900/6875 und zusätzliche SR | Zulässige Suchkandidaten nach Betreiberangabe; die Zahlen sind kSym/s, keine MHz |
+| Connector | Physischer Anschluss, sofern der Treiber eine Auswahl bietet |
+
+Eine Netzwerksuche liest weitere Frequenzen aus der NIT, **nachdem ein geeigneter Einstiegsträger empfangen wurde**. Eine falsche Startfrequenz oder falsche Symbolrate kann sie nicht überbrücken. [CableScan](../cablescan/) ist zusätzlich ein Anbieter-Modul mit eigener Netzwerk-ID, HD-Liste und Nummerierung; es ist nicht auf jedes Kabelnetz übertragbar.
+
+## Empfang, Verschlüsselung und parallele Nutzung
+
+Ein gefundener Sender kann verschlüsselt sein. Die erfolgreiche Suche ersetzt keinen Vertrag, keine passende Entschlüsselung und keinen unterstützten Codec. Zwei Programme desselben Kabelmultiplexes können mit einem Tuner parallel nutzbar sein; [Grenzen und Beispiele](../single-tuner/). **DVB-C FBC** wird als eigenes Kapitel mit einer geeigneten Box erweitert.
+
+Quellstand: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).
+
+## Ansichten auf der Box
+
+<Capture id="rx-nim-cable" language="de" alt="DVB-C-Konfiguration mit Anbieter-Auswahl. Die Oberfläche wurde erfasst, ohne den angeschlossenen Astra-Empfang umzukonfigurieren." caption="DVB-C-Konfiguration mit Anbieter-Auswahl. Die Oberfläche wurde erfasst, ohne den angeschlossenen Astra-Empfang umzukonfigurieren." />
+
+<Capture id="rx-nim-cable-bands" language="de" alt="Bandsuche mit Frequenzbändern, QAM-Varianten und Symbolraten. Anbieterangaben helfen, die Suche sinnvoll einzugrenzen." caption="Bandsuche mit Frequenzbändern, QAM-Varianten und Symbolraten. Anbieterangaben helfen, die Suche sinnvoll einzugrenzen." />

@@ -1,0 +1,29 @@
+---
+title: "CableScan: all eight settings"
+description: "OpenATV: CableScan: all eight settings."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Tuners, Scanning & Reception → Cable Scan** opens the additional **CableScan** module where installed. It reads tables from a compatible cable provider. General automatic and manual DVB-C scans remain separate methods.
+
+<Capture id="rx-cablescan" language="en" alt="CableScan with frequency, symbol rate, modulation, Network ID and list options" caption="Form from the installed plugin. 330 MHz, 6900 and Network ID 0 are displayed starting values, not universal provider parameters. No cable scan was performed." />
+
+| Setting | What to enter or decide |
+| --- | --- |
+| Tuner | DVB-C-capable frontend connected to the cable network |
+| Frequency | Provider entry carrier; this form uses MHz |
+| Symbol rate | This carrier’s rate in kSym/s |
+| Modulation | QAM value from the provider |
+| Network ID | Correct regional network identifier; 0 does not replace a known required ID |
+| Use official channel numbering | Adopt numbering from provider tables |
+| HD list | Choose the HD variant where supplied |
+| Enable auto cable scan | Enable later automatic updates; tied to standby handling in the reviewed plugin |
+
+**Up/down** selects a row; **left/right** or number keys change values. **OK** starts scanning and saves its configuration. The Save action saves settings; **EXIT/Cancel** closes the dialog. Labels can vary with skin and key assignments.
+
+The automatic variant waits for standby; it does not create an independent cron job. Do not assume that this option alone guarantees wakeup from deep standby. Complete one successful manual CableScan first, then enable automation and account for recordings.
+
+If the provider or its tables are unsupported, use its parameters with a [normal DVB-C scan](../dvb-c/). For no results, check input, lock, entry frequency, QAM, symbol rate and network identifier first. A DVB-C/T2 hybrid input must receive the cable source during the scan; see the [SPAUN example](../hybrid-spaun/).
+
+Source revision: [OpenATV plugin.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Plugins/SystemPlugins/CableScan/plugin.py).

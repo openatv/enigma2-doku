@@ -1,0 +1,43 @@
+---
+title: "Verkabelung verstehen – vom Anschluss zur Box"
+description: "OpenATV: Verkabelung verstehen – vom Anschluss zur Box."
+---
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+Ein **Koaxialkabel** transportiert das Empfangssignal. **HDMI** überträgt das von der Box ausgegebene Bild und den Ton zum Fernseher. **LAN/WLAN** verbinden die Box mit dem Netzwerk. Ein Netzwerkkabel ersetzt den Antennenanschluss nur bei ausdrücklich eingerichteten Netzwerkdiensten wie IPTV oder [Fallback](../fallback/).
+
+## Sat-Anschluss im Einfamilienhaus
+
+<Wiring id="single-sat" language="de" alt="Sat-Schüssel mit Universal-LNB über Sat-Dose an SAT IN der Box, HDMI zum Fernseher" caption="Ein konventioneller Sat-Anschluss: F-Stecker an die SAT-Buchse. Die Dose muss den Satelliten-ZF-Bereich und die benötigten Steuersignale durchlassen." />
+
+1. Box herunterfahren und vor dem Umstecken von Koaxialleitungen stromlos machen. Ein einzelner Schirmdraht am Innenleiter kann die LNB-Versorgung kurzschließen.
+2. Am Gehäuse den passenden **Eingang** suchen: `SAT IN`/`LNB IN` für Satellit, `ANT IN`/`CABLE IN` für Kabel oder Antenne. `LOOP OUT` ist kein zweiter unabhängiger Eingang.
+3. Bei einer SAT/TV/Radio-Dose den SAT-Ausgang verwenden. Nicht nach Steckerform allein entscheiden: Anschrift und Anschlussplan sind maßgeblich.
+4. HDMI OUT der Box mit HDMI IN des Fernsehers verbinden und dort diesen Eingang wählen.
+5. Für Update, EPG-Import und Netzwerkfunktionen zusätzlich LAN anschließen.
+
+## Mehrere Teilnehmer im Haus
+
+<Wiring id="multiswitch" language="de" alt="Vier feste Ebenen eines Quattro-LNB an einen Multischalter, von dort je ein Kabel zu zwei Boxen" caption="Ein klassischer Multischalter versorgt getrennte Teilnehmerleitungen. Die vier Quattro-Ebenen werden an die jeweils gleich beschrifteten Eingänge angeschlossen." />
+
+**Quad und Quattro sind verschieden.** Ein Quattro hat feste Ebenen VL/HL/VH/HH und gehört an einen dafür geeigneten Multischalter. Ein Quad bietet vier schaltbare Teilnehmerausgänge. Weitere Details stehen bei [LNB-Typen](../lnb/).
+
+## Kabel-TV und terrestrische Antenne
+
+<Wiring id="cable-terrestrial" language="de" alt="Alternative Anschlusswege: Kabel-TV-Dose an DVB-C oder Antenne an DVB-T2, jeweils HDMI zum TV" caption="Zwei Alternativen für direkte Verbindungen. Eine Kombibuchse macht aus einem einzelnen Hybrid-Tuner keine zwei unabhängigen Empfangsteile." />
+
+Die Antennenspeisung bleibt bei direktem Kabel-TV aus. Für eine geeignete aktive Antenne kann **5 V** erforderlich sein. Bei passiven oder separat versorgten Antennen gelten deren Anschlussangaben. Kabel und Antenne werden nur über einen geeigneten Umschalter zusammengeführt, beispielsweise den [SPAUN TAR 5](../hybrid-spaun/).
+
+## Welche Zeichnung passt zu meiner Anlage?
+
+| Vorhandene Technik | Passendes Schaubild und Einstellung |
+| --- | --- |
+| Zwei Sat-Positionen, zwei LNB oder Monoblock | [DiSEqC-Schalter](../diseqc/) |
+| Ein Kabel mit vergebenen User Bands | [Unicable/SCR/JESS](../unicable/) |
+| Drehbare Sat-Schüssel | [Motor und USALS](../motor/) |
+| Kabel + DVB-T2 am gemeinsamen Eingang | [SPAUN, beide Schaltzustände](../hybrid-spaun/) |
+
+Die Bilder erklären Signalwege. Dachmontage, Erdung und Potentialausgleich gehören zum fachgerecht geplanten Antennensystem; die Zeichnungen sind keine Montagepläne dafür.
+
+Quellstand: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).

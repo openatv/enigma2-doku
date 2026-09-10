@@ -1,0 +1,24 @@
+---
+title: "Automatischer Suchlauf: Netze, NIT und Löschen"
+description: "OpenATV: Automatischer Suchlauf: Netze, NIT und Löschen."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menü → Einstellungen → Empfang → Automatischer Suchlauf.** Dieser Dialog durchsucht die eingerichteten Empfangsnetze. Die Startfrequenzen kommen aus der Tuner-Konfiguration und den verfügbaren Frequenzlisten bzw. unterstützten Suchroutinen.
+
+<Capture id="rx-scan-auto" language="de" alt="Automatischer Suchlauf mit Netzwerksuche, aktiviertem Astra-Netz und Löschoption" caption="Native Ausgangsansicht: Löschen steht hier auf Ja. Für eine ergänzende Suche vorher auf Nein umstellen. Es wurde kein Suchlauf gestartet." />
+
+| Zeile | Entscheidung |
+| --- | --- |
+| Netzwerksuchlauf | NIT-Informationen des empfangenen Netzes nutzen, um weitere Frequenzen zu finden. Keine LAN-/Internet-Suche |
+| Suchlauf Tuner / Netz / Satellit | Nur die gewünschten und tatsächlich angeschlossenen Empfangswege markieren |
+| Vor dem Suchlauf löschen | Nein erhält alte Dienste und ergänzt Treffer; Ja baut den betroffenen Bereich neu auf; „Feeds behalten“ ist eine begrenzte Ausnahme |
+
+**Hoch/runter** wählt die Zeile, **links/rechts** ändert die Auswahl. **Grün/Suchlauf oder OK** startet die Suche entsprechend der angezeigten Tastenbelegung. **Rot/Schließen bzw. EXIT** verlässt das Formular. Nach dem Start gelten die Beschriftungen des Fortschrittsdialogs; ein Abbruch liefert nur einen unvollständig durchsuchten Bereich.
+
+Bei mehreren Tunern kann Enigma2 denselben Empfangsbereich zusammenfassen. Entscheidend ist das gewählte Netz, nicht möglichst viele Häkchen. Ein Hybrid-Tuner sucht seine aktivierten Empfangsarten nacheinander ab. Ein lang dauernder Suchlauf belegt Ressourcen, die sonst für Fernsehen oder Aufnahmen benötigt werden.
+
+Nach Abschluss zuerst Anzahl und Typ der gefundenen Dienste prüfen. In den Senderlistenansichten „Alle“, „Satelliten“ oder „Anbieter“ nachsehen; neue Sender landen nicht automatisch an deiner gewünschten Position im persönlichen Bouquet. Kein Treffer: [Signal prüfen](../signaldiagnose/) und mit [manueller Suche](../manueller-suchlauf/) eine bekannte Frequenz testen. [Vergleich aller Suchverfahren](../suchlauf/).
+
+Quellstand: [OpenATV ScanSetup.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ScanSetup.py).

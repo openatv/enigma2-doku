@@ -1,0 +1,24 @@
+---
+title: "Automatic scan: networks, NIT and clearing"
+description: "OpenATV: Automatic scan: networks, NIT and clearing."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+**Menu → Setup → Tuners, Scanning & Reception → Automatic Scan.** This dialog searches configured reception networks. Initial frequencies come from tuner configuration and available frequency lists or supported discovery routines.
+
+<Capture id="rx-scan-auto" language="en" alt="Automatic scan with network scan, enabled Astra network and clearing option" caption="Native initial form: Clear before scan is Yes here. Change it to No for an additive scan. No scan was started." />
+
+| Field | Decision |
+| --- | --- |
+| Network scan | Use received NIT data to find further frequencies; not a LAN/Internet search |
+| Scan tuner / network / satellite | Select only the intended, connected reception paths |
+| Clear before scan | No keeps older services while updating/adding; Yes rebuilds the affected scope; Keep feeds is a limited exception |
+
+**Up/down** selects a row and **left/right** changes it. **Green/Scan or OK** starts scanning according to the displayed key assignments. **Red/Close or EXIT** leaves the form. After starting, follow the progress dialog’s labels; cancelling leaves the selected scope only partly searched.
+
+Enigma2 may consolidate the same reception network across several tuners. Selecting the right network matters more than enabling every row. A hybrid tuner searches enabled reception types in sequence. Long scans occupy resources otherwise needed for television or recordings.
+
+After completion, check the number and type of discovered services. Look under All, Satellites or Providers in the channel list; new services do not automatically occupy your preferred position in a personal bouquet. No results: [check the signal](../signaldiagnose/) and test one known frequency with [manual scan](../manueller-suchlauf/). [Compare all scan methods](../suchlauf/).
+
+Source revision: [OpenATV ScanSetup.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ScanSetup.py).

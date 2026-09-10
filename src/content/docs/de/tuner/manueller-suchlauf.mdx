@@ -1,0 +1,56 @@
+---
+title: "Manueller Suchlauf: Frequenz, MIS, PLS und T2MI"
+description: "OpenATV: Manueller Suchlauf: Frequenz, MIS, PLS und T2MI."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+
+**Menü → Einstellungen → Empfang → Manueller Suchlauf.** Für die Fehlersuche zunächst einen bekannten Transponder verwenden. Parameter vom Anbieter bzw. aus einer aktuellen verlässlichen Frequenzliste übernehmen. Ein falsches Zahlenformat kann trotz korrekter Tuner-Konfiguration zu null Treffern führen.
+
+## Satellit
+
+Tuner, Suchart und Satellit wählen. Bei **Einzeltransponder** die Frequenz in der angezeigten Einheit, Polarisation und Symbolrate eintragen. Beispielwerte müssen zur aktuellen Ausstrahlung gehören; eine alte Anleitung ist keine aktuelle Senderfrequenzliste.
+
+| Parameter | Zweck |
+| --- | --- |
+| DVB-S / S2 / unterstütztes S2X | Übertragungsverfahren; die Hardware muss es demodulieren können |
+| Frequenz | Satelliten-RF-Frequenz, nicht Unicable-UB oder LNB-Zwischenfrequenz |
+| Polarisation | H/V bzw. L/R passend zum Dienst und LNB |
+| Symbolrate | Symbolgeschwindigkeit, häufig in kSym/s dargestellt |
+| FEC | Fehlerschutz; Auto nur verwenden, wenn unterstützt |
+| Modulation | Etwa QPSK oder 8PSK; passend zur Ausstrahlung |
+| Inversion | Spektrallage; normalerweise Auto, sofern angeboten |
+| Roll-off / Pilot | Zusätzliche S2-Übertragungsparameter |
+| Transport Stream Type / Multistream | Aktiviert Auswahl eines Teilstroms, wenn Empfangsteil und Dienst MIS verwenden |
+| Input Stream ID / IS ID | Kennung des gewünschten Teilstroms |
+| PLS-Modus und PLS-Code | Physical-Layer-Scrambling-Parameter; weder Entschlüsselungsschlüssel noch Sendernummer |
+| T2MI PLP und T2MI PID | Wählt den transportierten T2-MI-Datenpfad und dessen PLP; erfordert die passende Unterstützung |
+
+**Multistream, PLS und T2MI sind verschiedene Dinge.** Ein gewöhnlicher Astra-Direktempfang benötigt keine beliebigen PLS-Codes. T2-MI transportiert Informationen für terrestrische Multiplexe über einen anderen Übertragungsweg; dessen PLP-ID ist nicht die normale DVB-S-Service-ID. Die normale DVB-T2-PLP-Auswahl im Antennentuner gehört wiederum zum terrestrischen Empfang.
+
+## Kabel, Antenne und ATSC
+
+Für **DVB-C**: Frequenz, Symbolrate, QAM-Modulation, gegebenenfalls FEC und Inversion. Für **DVB-T/T2**: Frequenz oder Kanal, Bandbreite, Modulation, HP-/LP-Code-Rate, Übertragungsmodus, Guard-Intervall, Hierarchie und PLP-ID. Bei vordefinierten Transpondern werden viele Werte aus der gewählten Liste übernommen.
+
+**ATSC** erscheint nur bei passender Hardware/Region und bietet System, Frequenz, Inversion und Modulation. Dieses Formular ist keine Zusage für jede ATSC-Generation oder länderspezifische Verschlüsselung.
+
+## Suchoptionen und Tasten
+
+**Netzwerk-Suchlauf (NIT)** wertet die ausgestrahlte Network Information Table aus, um weitere gemeldete Transponder einzubeziehen. Dadurch kann die Suche über die eingegebene Frequenz hinausgehen. Für einen gezielten Test nur dieses Transponders ausschalten; für eine vollständige Netzwerksuche passende Anbieterdaten verwenden.
+
+**Vor der Suche löschen: Nein** ergänzt bzw. aktualisiert gefundene Dienste. Die Löschvarianten können bestehende Dienste aus dem betroffenen Suchbereich entfernen; sie sind keine Voraussetzung für einen einzelnen neuen Sender. **Nur frei empfangbare** filtert nach der ausgestrahlten Verschlüsselungskennzeichnung und garantiert nicht, dass jeder Treffer jederzeit ein frei sichtbares Programm sendet.
+
+Mit **Hoch/runter** die Zeile, mit **links/rechts** die Auswahl ändern; Zahlen direkt eingeben. **OK bzw. Grün/Suchlauf** startet die Suche. **EXIT/Abbrechen** kehrt zurück. Nach dem Abschluss die Treffer in der Senderliste prüfen und bei Bedarf einem Bouquet zuordnen.
+
+## Mehrere Satelliten manuell wählen
+
+Die Sucharten Einzelner Satellit und Multisat durchsuchen vorhandene Transponderlisten der ausgewählten Positionen. Multisat-Varianten können die Satellitenauswahl zunächst an- oder abgewählt vorbelegen. Vor Start die Häkchen prüfen. „Vordefiniert“ bedeutet, dass die Startdaten vorhanden sind; „Blindscan“ ermittelt Träger auf anderem Weg.
+
+Zum Ergänzen „Löschen: Nein“ wählen, Netzwerksuche bewusst setzen und starten. Bei keinem Lock zuerst Signal und Parameter prüfen. [Alle Formularvarianten nachschlagen](../scan-optionen/).
+
+Quellstand: [OpenATV ScanSetup.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/ScanSetup.py).
+
+## Ansichten auf der Box
+
+<Capture id="rx-scan-manual" language="de" alt="Manueller Satellitensuchlauf mit Transponderfeldern und den Optionen Netzwerk-Suchlauf, Vor der Suche löschen und Nur frei empfangbare. Die Serie hat keinen Suchlauf gestartet." caption="Manueller Satellitensuchlauf mit Transponderfeldern und den Optionen Netzwerk-Suchlauf, Vor der Suche löschen und Nur frei empfangbare. Die Serie hat keinen Suchlauf gestartet." />

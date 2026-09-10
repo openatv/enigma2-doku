@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "description": "Original bilingual wiring diagrams and operator-provided SPAUN photograph for the reception handbook.",
+  "generator": "scripts/create-reception-diagrams.py",
+  "languages": [
+    "de",
+    "en"
+  ],
+  "diagrams": [
+    "single-sat",
+    "diseqc",
+    "multiswitch",
+    "unicable",
+    "cable-terrestrial",
+    "spaun-0v",
+    "spaun-5v",
+    "motor"
+  ],
+  "photograph": {
+    "file": "src/assets/reception/spaun-tar5.png",
+    "source": "Operator-provided SPAUN TAR 5 photograph",
+    "altered": false,
+    "sha256": "a0848f6b778977d3f17963c4758fc07cf79399f821d5066bf1194a9246148e57",
+    "note": "Label shows a 100 mA limit; later catalogue variants must not override the photographed unit rating."
+  }
+}

@@ -1,0 +1,66 @@
+---
+title: "Unicable, SCR und JESS sicher zuordnen"
+description: "OpenATV: Unicable, SCR und JESS sicher zuordnen."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**Unicable verteilt mehrere angeforderte Transponder über ein gemeinsames Koaxialkabel.** Jeder unabhängig arbeitende Tuner benötigt eine eigene zugewiesene Kombination aus **User-Band-Nummer und Frequenz**. Ohne diese Anlagenangaben nicht einfach freie Werte ausprobieren: Ein doppeltes UB kann den Empfang eines anderen Teilnehmers stören.
+
+<Wiring id="unicable" language="de" alt="SCR-Ausgang über SAT-Verteiler zu zwei Tunern mit verschiedenen User Bands" caption="UB 1 / 1210 MHz und UB 2 / 1420 MHz sind ausschließlich Beispielwerte. Verbindlich sind Zuteilung und Frequenzplan der vorhandenen Anlage." />
+
+## Diese Daten zuerst beschaffen
+
+Vom Typenschild, Installateur oder Hausbetreiber: **LNB/Matrix-Hersteller und Modell, Protokoll, UB-Nummer, UB-Frequenz, verfügbare Satellitenpositionen**, eventuell PIN und externe Stromversorgung. Ein programmierter Multischalter kann vom ursprünglichen Werksprofil abweichen.
+
+| Begriff | Bedeutung |
+| --- | --- |
+| SCR / EN 50494 / Unicable I | Protokoll für bis zu acht User Bands |
+| JESS / EN 50607 / Unicable II / dCSS | EN 50607 adressiert bis zu 32 User Bands; die konkrete Anlage kann weniger bereitstellen |
+| SCR-LNB | Einkabelumsetzung im LNB |
+| SCR-Matrix | Einkabelumsetzung im Multischalter |
+| Legacy-Ausgang | Konventioneller schaltbarer Sat-Ausgang; dort kein SCR-Profil verwenden |
+| Kanal / Channel / SCR / UB | Kennung des dem Tuner zugeteilten User Bands |
+| Frequenz | Frequenz dieses User Bands, nicht die Sender- oder Satellitenfrequenz |
+
+## Schritt für Schritt im erweiterten Tuner-Dialog
+
+1. **Konfigurationsmodus: Erweitert**; erste versorgte Satellitenposition auswählen.
+2. Dieser Position eine LNB-Nummer zuweisen, beispielsweise LNB 1.
+3. **LNB-/Gerätetyp: Unicable**, anschließend SCR-LNB, SCR-Matrix oder Benutzerdefiniert auswählen.
+4. Das **exakte** Modellprofil auswählen. Bei umprogrammierter oder nicht aufgeführter Anlage Benutzerdefiniert mit Betreiberangaben verwenden.
+5. Zugewiesenen **Kanal und Frequenz** überprüfen. Manche Dokumente zählen ab 1, manche Softwarewerte ab 0: Nicht blind eine Zahl übertragen, sondern Frequenz und Zuordnung gemeinsam abgleichen.
+6. Protokoll unter **Diction** passend auswählen, sofern die manuelle Konfiguration es zeigt. Ein nur nach EN 50607 nutzbares UB kann nicht mit EN 50494 angesprochen werden.
+7. PIN nur aktivieren, wenn dieses UB tatsächlich geschützt ist. Die PIN wird vom Betreiber vergeben; sie ist kein beliebiges persönliches Box-Passwort.
+8. Weitere Positionen derselben Anlage zuordnen, Speichern und mehrere Sender testen. Danach den zweiten Teilnehmer prüfen.
+
+## Weitere Felder
+
+| Option | Erklärung |
+| --- | --- |
+| LNB 1 User Band verwenden | Für **denselben Tuner** und mehrere Positionen derselben Einkabelanlage: identisches UB/Frequenzpaar von LNB 1 übernehmen. Keine Freigabe, dass zwei unabhängige Tuner dasselbe UB verwenden dürfen |
+| Unicable-Position | 0 lässt Position aus LNB-Nummer/Profil ableiten. 1–64 nur nach Zuordnung einer passend programmierten Anlage; keine Orbitalposition in Grad |
+| Extern versorgt / Power Inserter | Einschalten, wenn das SCR-Gerät tatsächlich von einer externen Speisung versorgt wird |
+| LNB/Schalter-Startzeit | Wartezeit nach dem Einschalten in Millisekunden; Datenblatt beachten |
+| Tuning-Algorithmus | Anpassung des SCR-Befehlstimings an Einkabeldosen und mehrere Teilnehmer; zunächst Vorgabe verwenden |
+| Verbunden durch anderen Tuner / Verbunden mit | Nur wenn diese physische/interne Signalführung besteht. Keine Ersatzlösung für einen fehlenden Splitter |
+| Frequenz aus Profil | Durch Kanalwahl festgelegt; bei falscher Tabelle das Modell bzw. Benutzerdefiniert korrigieren |
+
+## Verkabelungsfehler erkennen
+
+Ein Verteiler muss für SAT-ZF, SCR-Steuerung und die benötigte DC-Führung geeignet sein. Diodenentkopplung und gegebenenfalls ein Power Inserter richten sich nach dem Anlagenplan. Verteilerdämpfung, Abschlusswiderstände und zulässige Kabellängen beachten. Ein gewöhnliches Y-Kabel ist keine Lösung für unabhängigen Legacy-Sat-Empfang.
+
+- Ausfall, sobald ein zweiter Teilnehmer zappt: doppelte UB-Zuteilung oder falsche DC-/Verteilerführung prüfen.
+- Nur eine Position erreichbar: Positionszuordnung und Profil prüfen, nicht automatisch ein zusätzliches UB vergeben.
+- Nach Kaltstart kein Empfang: Versorgung, Startzeit und SCR-Dose prüfen.
+- Neues Gerät stört die Nachbarwohnung: dessen UB-Zuordnung mit dem Betreiber klären.
+
+Herstellerbeispiele zeigen, warum Modelltabellen maßgeblich sind: [Inverto, programmierbares 32-UB-LNB](https://www.inverto.tv/lnb/192/programmable-lnb-with-32-ub). Das ist eine technische Referenz, keine Vorgabe für vorhandene Anlagen. FBC mit mehreren Demodulatoren wird [separat ergänzt](../fbc-sat/).
+
+Quellstand: [OpenATV NimManager.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Components/NimManager.py).
+
+## Ansichten auf der Box
+
+<Capture id="rx-nim-unicable" language="de" alt="Benutzerdefiniertes SCR-Beispiel mit 1284 MHz. Das ist kein allgemeiner Standardwert. Die Zeichnung verwendet andere Beispielwerte; entscheidend ist ausschließlich die zugeteilte Userband-Frequenz." caption="Benutzerdefiniertes SCR-Beispiel mit 1284 MHz. Das ist kein allgemeiner Standardwert. Die Zeichnung verwendet andere Beispielwerte; entscheidend ist ausschließlich die zugeteilte Userband-Frequenz." />

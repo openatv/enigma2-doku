@@ -1,0 +1,39 @@
+---
+title: "DVB-T/T2 und 5 V für aktive Antennen"
+description: "OpenATV: DVB-T/T2 und 5 V für aktive Antennen."
+---
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**Menü → Einstellungen → Empfang → Tuner → terrestrischen Empfang aktivieren.** Land und Region bestimmen die vorbereiteten Suchfrequenzen. DVB-T2 verlangt ein geeignetes Empfangsteil; ein DVB-T-Tuner wird durch die Regionsauswahl nicht zu DVB-T2.
+
+## Direkter Antennenanschluss
+
+<Wiring id="cable-terrestrial" language="de" alt="Antenne am DVB-T2-Eingang als unteres Anschlussbeispiel" caption="Für DVB-T2 gilt der untere Weg. HDMI verbindet anschließend die Box mit dem Fernseher." />
+
+1. Antenne an ANT IN bzw. die gemeinsame DVB-C/T2-Buchse anschließen.
+2. DVB-T/T2 aktivieren, Land und Region auswählen. Fehlt die Region, „Alle“ bzw. eine geeignete allgemeine Frequenzliste verwenden.
+3. **5 V für aktive Antenne** nur passend zum Anschluss aktivieren.
+4. Suchlauf durchführen; bei Problemen einen bekannten lokalen Multiplex gezielt prüfen.
+
+## Wann 5 V einschalten?
+
+Die im OpenATV-Tuner-Dialog bezeichnete Speisung ist **5 V**, nicht 4 V. Die tatsächliche Verfügbarkeit hängt vom Gerät ab.
+
+| Anschluss | 5-V-Einstellung |
+| --- | --- |
+| Aktive Antenne, ausdrücklich für 5 V über Koax geeignet | Ein, sofern Strombedarf und Receivergrenze passen |
+| Passive Antenne | Normalerweise aus |
+| Antenne mit separatem Netzteil/Einspeiser | Nach Herstellerplan; keine zusätzliche Speisung ungeprüft einspeisen |
+| Direkte Kabel-TV-Dose | Aus |
+| SPAUN TAR 5 vor Hybrid-Tuner | Im DVB-T-Zweig ein, damit der Schalter den Antennenzweig wählt; [Details und DC-Sperre](../hybrid-spaun/) |
+
+Eine passive Antenne wird durch 5 V nicht verstärkt. Eine aktive Antenne benötigt nicht automatisch mehr Verstärkung: Zu hoher Pegel kann den Empfang ebenfalls verschlechtern. Stromgrenze von Box, Zubehör und Antenne gemeinsam beachten.
+
+## T2-Parameter und Bildformate
+
+In der manuellen Suche gibt es Frequenz oder Kanalnummer, Bandbreite, System DVB-T/T2, Modulation, Code-Raten, Schutzintervall, Übertragungsmodus, Hierarchie und bei T2 die **PLP-ID**. „Auto“ verwenden, wo unterstützt und sinnvoll; ansonsten Betreiberdaten. Eine PLP ist ein physischer Datenkanal innerhalb einer T2-Ausstrahlung, keine Programmnummer. Details in der [Suchreferenz](../scan-optionen/).
+
+Ein T2-Lock beweist noch keine decodierbare Videoausgabe. Verschlüsselung und eingesetzte Codecs sind zusätzliche Voraussetzungen. Bei Aufnahme/Live-TV können PLP- und Treibergrenzen die gemeinsame Nutzung einschränken: [Single-Tuner](../single-tuner/).
+
+Quellstand: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).

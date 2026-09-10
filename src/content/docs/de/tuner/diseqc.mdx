@@ -1,0 +1,52 @@
+---
+title: "Toneburst, DiSEqC und Astra + Hotbird"
+description: "OpenATV: Toneburst, DiSEqC und Astra + Hotbird."
+---
+
+import Capture from '../../../../components/Capture.astro';
+
+import Wiring from '../../../../components/ReceptionWiring.astro';
+
+**DiSEqC wählt den Signalweg über das Sat-Kabel.** Die Satellitenposition in der Senderliste allein schaltet keinen externen Verteiler um. Die Box muss wissen, welcher Port zu welchem LNB gehört.
+
+<Wiring id="diseqc" language="de" alt="Astra 19,2 Ost an Port A und Hotbird 13,0 Ost an Port B eines DiSEqC-Schalters, OUT zur Box" caption="Beispiel: A = Astra 19.2°E, B = Hotbird 13.0°E. Am vorhandenen Schalter kann die Zuordnung umgekehrt sein." />
+
+## Astra und Hotbird einrichten
+
+1. Menü → Einstellungen → Empfang → Tuner → angeschlossenen Sat-Tuner öffnen.
+2. **Konfigurationsmodus: Einfach** wählen.
+3. **Modus: DiSEqC A/B** für einen passenden Zweifachschalter wählen.
+4. Port A auf Astra 19.2°E, Port B auf Hotbird 13.0°E setzen, **wenn die Kabel so angeschlossen sind**.
+5. Spannung und 22 kHz für eine gewöhnliche Universal-LNB-Anlage aktiviert lassen. Speichern, beide Positionen separat prüfen und durchsuchen.
+
+Bei einem Monoblock stecken LNB und Schalter zusammen in einem Gehäuse. Ob Astra A oder B ist, hängt vom Produkt und der Montage ab. Zwei LNB an einer Schüssel müssen beide auf die gewünschten Positionen ausgerichtet sein.
+
+## Einfache Modi und ihre Bedeutung
+
+| Modus / Option | Verwendung |
+| --- | --- |
+| Einzeln | Ein LNB/eine Position am konventionellen Anschluss |
+| DiSEqC senden bei Einzeln | „Ja“, wenn ein Multischalter ausdrücklich einen Port-A-Befehl braucht; bei direktem LNB normalerweise „Nein“ |
+| Toneburst A/B | Einfaches Zweifach-Umschaltsignal für einen dafür vorgesehenen Schalter; auch Mini-DiSEqC genannt |
+| DiSEqC A/B | Digitaler Portbefehl für zwei Eingänge |
+| DiSEqC A/B/C/D | Bis zu vier direkt angewählte Eingänge; unbenutzte Ports auf „Nichts angeschlossen“ |
+| Spannung und 22 kHz setzen | Steuert Polarisation und Band bei Universal-LNBs; keine Verstärkung des Signals |
+| DiSEqC nur bei Satellitenwechsel | Spart erneute Portbefehle beim Zappen innerhalb einer Position; bei unzuverlässiger Umschaltung normale Befehlswiederholung je Umschaltung prüfen |
+| Zirkulares LNB | Nur für tatsächlich verwendete zirkulare Empfangstechnik, nicht für übliches lineares Astra/Hotbird-Ku-LNB |
+| Rotor / Satellitengruppe | Drehbare Anlage; [Motor-Kapitel](../motor/) beachten |
+
+## 1.0, 1.1 und 1.2
+
+**DiSEqC 1.0** verwendet committed Befehle für bis zu vier Schalterpositionen. **1.1** ergänzt uncommitted Schalter für größere oder kaskadierte Anlagen. **1.2** steuert Motorpositionen. **USALS** berechnet Motorziele aus Standort und Satellitenposition. Höhere Zahlen bedeuten hier keine bessere Bildqualität. Bei Kaskaden müssen Befehlsreihenfolge, Eingangsnummern und Wiederholungen zum Aufbau passen: [erweiterte Einstellungen](../sat-erweitert/).
+
+Wenn nur eine Position funktioniert: Portbelegung und Schalterausgang prüfen, bekannte Frequenz auf der zweiten Position testen, danach erst Wiederholungen ändern. [AutoDiSEqC](../autodiseqc/) kann unterstützte Positionen erkennen, ersetzt aber keine korrekte Verkabelung.
+
+Quellstand: [OpenATV Satconfig.py](https://github.com/openatv/enigma2/blob/fdc9347241245fd18fd0b8bc93727237189c916c/lib/python/Screens/Satconfig.py).
+
+## Ansichten auf der Box
+
+<Capture id="rx-nim-toneburst" language="de" alt="Toneburst A/B für einen passenden Zweifachschalter. Die Portbelegung folgt der Verkabelung." caption="Toneburst A/B für einen passenden Zweifachschalter. Die Portbelegung folgt der Verkabelung." />
+
+<Capture id="rx-nim-diseqc" language="de" alt="DiSEqC A/B: hier Astra an A und Hotbird an B. Beispielwerte wurden nicht gespeichert." caption="DiSEqC A/B: hier Astra an A und Hotbird an B. Beispielwerte wurden nicht gespeichert." />
+
+<Capture id="rx-nim-four" language="de" alt="Vier DiSEqC-Ports. Nicht belegte Eingänge bleiben auf Nichts angeschlossen." caption="Vier DiSEqC-Ports. Nicht belegte Eingänge bleiben auf Nichts angeschlossen." />
