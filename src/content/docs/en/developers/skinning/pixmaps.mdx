@@ -1,0 +1,44 @@
+---
+title: Pixmaps, scaling and image transparency
+description: Load skin artwork, compare none, scale and centerScaled, and understand alphaTest and image paths in Enigma2.
+---
+import DeveloperContent from '../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/pixmaps.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+## Static and dynamic images
+
+Use `<ePixmap>` for static artwork in XML. A Python `Pixmap` component uses `<widget name="…">`. A dynamic source-based image uses an appropriate renderer, such as `Pixmap`, provided the source exposes the data that renderer expects.
+
+`pixmap` is a file path, `size` is the widget rectangle and `scale` controls how the loaded image fits inside it. These are three different decisions.
+
+<SkinExample id="pixmaps" alt="The same two-to-one test PNG unscaled, stretched and scaled while preserving its aspect ratio" caption="The source image is 240 × 120. Stretching it into 380 × 260 makes its circle elliptical; centerScaled keeps the circle round and centres the fitted image." />
+
+## Common scaling values
+
+| `scale` value | Behaviour |
+| --- | --- |
+| `none` | Keep original pixel size |
+| `scale` | Stretch to the widget rectangle, potentially changing aspect ratio |
+| `keepAspect` | Scale while preserving aspect ratio |
+| `centerScaled` | Fit with aspect ratio preserved and centre horizontally/vertically |
+| `leftTop`, `rightBottom`, etc. | Fit with preserved aspect ratio and the stated alignment |
+
+The engine accepts more flags and legacy spellings. Use [parseScale](../api/functions/#functions-parseScale) to inspect the exact mapping. `scale` here does not select HD/FHD/WQHD.
+
+## Alpha handling
+
+`alphaTest="off"` disables the pixmap alpha mode. `on` uses alpha testing; `blend` uses smooth alpha blending and is the usual choice for antialiased PNG edges and partial transparency. The lowercase `alphatest` spelling is a compatibility alias.
+
+A PNG's alpha channel follows the image format's convention. Do not invert PNG alpha because Enigma2's **XML colour strings** use `00` for opaque; the image loader handles the conversion.
+
+## Paths and file failures
+
+The sample plugin supplies `self.skin_path` and uses `~/assets/pattern.png`. If an image is missing, check the resolved path, filename case and file readability. Linux filenames are case-sensitive.
+
+The original test artwork is also supplied as SVG source, with a PNG used in the example. That makes the demonstration reproducible without a dependency on a particular skin's artwork. Larger source images use more receiver memory; choose an appropriate size and preserve crisp edges at the intended display resolution.
+
+</DeveloperContent>

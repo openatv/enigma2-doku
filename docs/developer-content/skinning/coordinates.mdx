@@ -1,0 +1,44 @@
+---
+title: Coordinates, size and resolution
+description: Enigma2 position and size, local panel origins, center versus c, e and percentages, and HD/FHD/WQHD screen scaling.
+---
+
+## The coordinate system
+
+`position="x,y"` identifies the top-left corner. `size="width,height"` defines the rectangle. The origin is at the top left, positive x moves right, and positive y moves down. Child positions are relative to their current screen or panel context.
+
+<SkinExample id="coordinates" alt="Three rectangles showing explicit, centred and right-relative positions inside a panel" caption="The panel starts at screen coordinate 48,216. Its cyan child at 80,80 therefore begins at 128,296 in the design grid." />
+
+## Relative expressions
+
+| Value | Meaning on one axis | Example in a parent 1000 wide with a child 200 wide |
+| --- | --- | --- |
+| `40` | Fixed design coordinate, scaled with the screen | 40 at 1:1 scale |
+| `center` | Centre the whole child | (1000 − 200) / 2 = 400 |
+| `c` | The parent's centre point | 500; using it as x places the child's left edge there |
+| `e` | Parent's extent/end | 1000 |
+| `e-220` | Leave a 20-pixel right margin for a 200-pixel child | 780 |
+| `25%` | Quarter of the parent extent | 250 |
+| `center+20` | Centred child plus an offset | 420 at 1:1 scale |
+
+These expressions are parsed by [parseCoordinate](../api/functions/#functions-parseCoordinate). The exact context matters: font-relative `w`/`h` terms use registered alias metrics, not the measured length of an arbitrary string. The `*` wildcard is for contexts that support flexible layout; it is not a substitute for every size. Start with explicit sizes before using automatic layouts.
+
+## HD, FHD and WQHD
+
+The examples declare `resolution="1280,720"`. That is the **design grid**, independent of the HDMI video signal. When the desktop is larger, Enigma2 derives x/y scale ratios from the desktop and the declared resolution.
+
+| Design grid | Desktop | Scale for ordinary coordinates |
+| --- | --- | --- |
+| 1280 × 720 | 1280 × 720 | 1.0 |
+| 1280 × 720 | 1920 × 1080 | 1.5 |
+| 1280 × 720 | 2560 × 1440 | 2.0 |
+
+The receiver screenshots in this unit were captured at 1280 × 720. The larger sizes in this table explain the scaling model; they are not additional receiver test results. Fonts are scaled vertically; many individual attributes have their own scaling code. Do not assume every integer attribute is scaled identically.
+
+Changing `resolution` on a screen changes its coordinate interpretation. A skin-wide `<output><resolution … /></output>` can change the desktop itself. The test plugin only declares screen resolution and leaves the active skin's desktop setting alone.
+
+Avoid manually multiplying coordinates with `getSkinFactor()` and also declaring a scaled screen resolution: that can apply scaling twice. `getSkinFactor()` is explicitly deprecated for OpenATV in this source revision.
+
+## Practical layout checks
+
+Keep related widgets inside a consistent grid, allow text expansion, and check both long and empty strings. A correctly positioned rectangle can still have clipped text if its height is too small. Use [alignment and text options](../text/) to control the content inside it.

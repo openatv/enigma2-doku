@@ -1,0 +1,15 @@
+<screen name="HandbookSkinLab_coordinates" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,32" font="Regular;22" text="OpenATV / Developer / Skin Lab" foregroundColor="#005BD4EC" backgroundColor="#00101928" />
+  <eLabel position="48,70" size="1184,52" font="Regular;36" text="Position and size" foregroundColor="#00FFFFFF" backgroundColor="#00101928" />
+  <eLabel position="48,130" size="1184,58" font="Regular;23" text="x increases to the right; y increases downwards. A panel adds a local origin." foregroundColor="#00BDCADA" backgroundColor="#00101928" />
+  <!-- example:start -->
+  <panel position="48,216" size="1184,360">
+    <eLabel position="0,0" size="1184,360" backgroundColor="#001E3048" />
+    <eLabel position="0,0" size="420,42" font="Regular;24" text="Local origin: 0,0" foregroundColor="#00FFFFFF" backgroundColor="#004C6180" />
+    <eLabel position="80,80" size="420,74" font="Regular;26" text="position=80,80 | size=420,74" foregroundColor="#00101928" backgroundColor="#005BD4EC" />
+    <eLabel position="center,180" size="420,74" font="Regular;26" text="position=center,180" foregroundColor="#00101928" backgroundColor="#00F3C86A" />
+    <eLabel position="e-440,270" size="420,64" font="Regular;26" text="position=e-440,270" foregroundColor="#00101928" backgroundColor="#009DE0B4" />
+  </panel>
+  <!-- example:end -->
+  <eLabel position="48,664" size="1184,32" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" backgroundColor="#00101928" />
+</screen>

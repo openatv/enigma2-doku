@@ -1,0 +1,14 @@
+<screen name="HandbookSkinLab_data" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,32" font="Regular;22" text="OpenATV / Developer / Skin Lab" foregroundColor="#005BD4EC" backgroundColor="#00101928" />
+  <eLabel position="48,70" size="1184,52" font="Regular;36" text="Source -&gt; converter -&gt; renderer" foregroundColor="#00FFFFFF" backgroundColor="#00101928" />
+  <eLabel position="48,130" size="1184,58" font="Regular;23" text="Sources expose data; converters transform it; renderers display the result." foregroundColor="#00BDCADA" backgroundColor="#00101928" />
+  <!-- example:start -->
+  <widget source="message" render="Label" position="48,220" size="1184,70" font="Regular;32" foregroundColor="#005BD4EC" backgroundColor="#002F4968" />
+  <widget source="message" render="Label" position="48,320" size="1184,70" font="Regular;24" horizontalAlignment="right" foregroundColor="#00F3C86A" backgroundColor="#002F4968" />
+  <eLabel position="48,452" size="780,80" font="Regular;26" text="3661 seconds -> ClockToText: AsLength ->" foregroundColor="#00FFFFFF" transparent="1" />
+  <widget source="duration" render="Label" position="870,452" size="362,80" font="Regular;40" foregroundColor="#009DE0B4" backgroundColor="#002F4968">
+    <convert type="ClockToText">AsLength</convert>
+  </widget>
+  <!-- example:end -->
+  <eLabel position="48,664" size="1184,32" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" backgroundColor="#00101928" />
+</screen>

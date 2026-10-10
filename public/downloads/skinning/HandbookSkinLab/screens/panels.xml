@@ -1,0 +1,18 @@
+<screen name="HandbookSkinLab_panels" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,32" font="Regular;22" text="OpenATV / Developer / Skin Lab" foregroundColor="#005BD4EC" backgroundColor="#00101928" />
+  <eLabel position="48,70" size="1184,52" font="Regular;36" text="Panels create layout contexts" foregroundColor="#00FFFFFF" backgroundColor="#00101928" />
+  <eLabel position="48,130" size="1184,58" font="Regular;23" text="Children use local coordinates. A panel itself draws no background." foregroundColor="#00BDCADA" backgroundColor="#00101928" />
+  <!-- example:start -->
+  <panel position="48,220" size="560,360">
+    <eLabel position="0,0" size="560,360" backgroundColor="#002F4968" />
+    <eLabel position="24,24" size="512,60" font="Regular;28" text="Panel at 48,220" foregroundColor="#00FFFFFF" transparent="1" />
+    <eLabel position="24,104" size="512,200" font="Regular;26" text="Child at 24,104&#10;Screen position: 72,324" foregroundColor="#00101928" backgroundColor="#005BD4EC" />
+  </panel>
+  <panel position="672,220" size="560,360">
+    <eLabel position="0,0" size="560,360" backgroundColor="#002F4968" />
+    <eLabel position="24,24" size="512,60" font="Regular;28" text="Panel at 672,220" foregroundColor="#00FFFFFF" transparent="1" />
+    <eLabel position="24,104" size="512,200" font="Regular;26" text="Child at 24,104&#10;Screen position: 696,324" foregroundColor="#00101928" backgroundColor="#00F3C86A" />
+  </panel>
+  <!-- example:end -->
+  <eLabel position="48,664" size="1184,32" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" backgroundColor="#00101928" />
+</screen>

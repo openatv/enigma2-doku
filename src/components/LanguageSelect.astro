@@ -1,8 +1,9 @@
 ---
-import { languages, localePath } from '../lib/translation.mjs';
+import { languages, localePath, isDeveloperPath } from '../lib/translation.mjs';
 const base = import.meta.env.BASE_URL;
 const de = Astro.locals.starlightRoute.locale === 'de';
 const label = de ? 'Weitere Sprachen' : 'More languages';
+const developer = isDeveloperPath(Astro.url.pathname);
 ---
 <div class="atv-languages notranslate" translate="no" lang={de ? 'de' : 'en'} dir="ltr" data-pagefind-ignore data-translation-controls data-base={base}>
   <label class="native-language">
@@ -21,6 +22,7 @@ const label = de ? 'Weitere Sprachen' : 'More languages';
         {de ? 'Sprache wählen' : 'Choose a language'}
         <select data-machine-language aria-label={de ? 'Automatische Übersetzung' : 'Automatic translation'}>
           <option value="">{de ? 'Sprache wählen …' : 'Choose a language …'}</option>
+          {developer && <option value="de">Deutsch — automatic</option>}
           {Object.entries(languages).map(([code, name]) => <option value={code}>{name}</option>)}
         </select>
       </label>

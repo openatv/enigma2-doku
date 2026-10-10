@@ -1,0 +1,57 @@
+---
+title: Run and capture the Skin Lab examples
+description: Install the downloadable isolated Handbook Skin Lab, browse its native screens and capture only the OSD with grab.
+---
+
+The **Handbook Skin Lab** opens independent example screens and leaves the selected main skin in place. It supplies synthetic text and artwork; the examples do not depend on live television, network shares, EPG data or credentials.
+
+## Install the examples
+
+Download the ZIP from any [illustrated example](../first-screen/). Extract its `HandbookSkinLab` folder on your computer and transfer that folder to:
+
+```text
+/usr/lib/enigma2/python/Plugins/Extensions/HandbookSkinLab/
+```
+
+The folder must directly contain `__init__.py`, `plugin.py`, `screens/` and `assets/`. Restart the GUI once after installing the new plugin, at a time when no recordings or other receiver work will be interrupted. Open **Plugins → Handbook Skin Lab**. LEFT/RIGHT moves between the twelve examples; OK or EXIT closes the screen.
+
+## Change one thing
+
+1. Copy an example XML locally before changing it.
+2. Change one attribute, such as `horizontalAlignment`, `font` or `zPosition`.
+3. Transfer the XML into the plugin's `screens/` directory.
+4. Close and reopen that example. The lab reads the XML again for each new screen instance.
+5. Compare the result and inspect the Enigma2 log for that screen.
+
+This XML-only loop does not require changing the global skin. Changes to imported Python classes normally require a GUI restart; replacing a file on disk does not replace an already imported Python object.
+
+## Capture without television video
+
+While an example is open, run on the receiver:
+
+```sh
+grab -o -d -p /tmp/skin-example.png
+```
+
+`-o` captures only the OSD, `-d` keeps the OSD resolution, and `-p` writes PNG. Copy the PNG to your computer. Transparent OSD areas remain transparent in the image; a video plane is not added. The lab screens paint a neutral background themselves.
+
+For a later tutorial that needs an all-plane screenshot, stop live playback first and use the receiver bootlogo. Do not include live TV frames in this handbook's skin demonstrations.
+
+## Optional batch capture
+
+The lab's session service watches a **local file** under `/tmp/handbook-skin-lab/`; it opens no network listener. From live TV or the plugin browser, send a JSON request containing known example IDs:
+
+```sh
+mkdir -p /tmp/handbook-skin-lab
+printf '%s' '{"scenes":["hello","coordinates","alignment"]}' \
+  > /tmp/handbook-skin-lab/request.tmp
+mv /tmp/handbook-skin-lab/request.tmp /tmp/handbook-skin-lab/request.json
+```
+
+The service requires an English locale and refuses unknown IDs or an already-open unrelated dialog. It opens each requested example, uses native `grab`, closes the example, and returns to the original dialog. Do not operate the remote while a batch is running. PNGs and `manifest.json` appear in the same temporary directory.
+
+The manifest records the Enigma2 version string, locale, desktop dimensions, image hashes and hashes of the XML files used. A `complete` manifest means the requested captures finished; visual review is still necessary before publishing. Temporary files disappear at reboot.
+
+## Remove the lab
+
+Stop the GUI, remove only the `HandbookSkinLab` plugin directory that you installed, then start the GUI again. The [SSH maintenance guide](../../../netzwerk/fernzugriff/) explains GUI stop/start commands. Removing the lab does not require resetting receiver settings or uninstalling the active skin.

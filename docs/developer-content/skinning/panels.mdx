@@ -1,0 +1,35 @@
+---
+title: Panels and reusable layouts
+description: Use Enigma2 panel contexts, local coordinates and named screen inclusions without confusing them with painted widgets.
+---
+
+## A panel is a layout context
+
+A `<panel>` changes the coordinate origin and available rectangle for its children. It is not itself a coloured GUI widget. Add an `eRectangle`, `eLabel` or pixmap if a visible background is required.
+
+<SkinExample id="panels" alt="Two panel contexts with identical child coordinates at different screen positions" caption="Both coloured child labels use 24,104. Their different panel origins produce screen positions 72,324 and 696,324." />
+
+Panel children are laid out into the surrounding screen. Do not assume a panel is a separate clipping container like an HTML element with overflow hidden. Keep child geometry inside its intended bounds and check overlapping layers.
+
+## Reuse a named definition
+
+```xml
+<skin>
+  <screen name="LabHeading">
+    <eLabel position="0,0" size="600,50" font="Regular;30"
+            text="Reusable heading" transparent="1" />
+  </screen>
+  <screen name="MyScreen" position="center,center" size="700,300"
+          resolution="1280,720" title="Panel example">
+    <panel name="LabHeading" position="30,25" size="600,50" />
+  </screen>
+</skin>
+```
+
+Here `name="LabHeading"` refers to a registered named screen definition. It does not open a second Python dialog. Include only components available in the owning Python screen. Recursive named-panel references must be avoided.
+
+## Flow and stacking contexts
+
+The source supports panel `layout` values such as `stack`, `vertical` and `horizontal`. Edge positions can consume remaining space in a normal context; the stack context leaves the available rectangle unchanged. `SkinContextVertical` and `SkinContextHorizontal` implement flow-specific placement.
+
+Begin with the explicit positions shown above. Flexible flow, the separate native `<eStack>` widget and list templates have additional semantics and will receive their own advanced recipes. Their classes are already discoverable in the [API index](../api/classes/).

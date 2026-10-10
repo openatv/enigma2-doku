@@ -1,0 +1,20 @@
+<screen name="HandbookSkinLab_colors" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,32" font="Regular;22" text="OpenATV / Developer / Skin Lab" foregroundColor="#005BD4EC" backgroundColor="#00101928" />
+  <eLabel position="48,70" size="1184,52" font="Regular;36" text="Colour alpha: #AARRGGBB" foregroundColor="#00FFFFFF" backgroundColor="#00101928" />
+  <eLabel position="48,130" size="1184,58" font="Regular;23" text="Enigma2 colour alpha is transparency: 00 = opaque, FF = transparent." foregroundColor="#00BDCADA" backgroundColor="#00101928" />
+  <!-- example:start -->
+  <eLabel position="48,208" size="380,46" font="Regular;24" text='backgroundColor="#002E8BC0"' foregroundColor="#00FFFFFF" transparent="1" />
+  <eRectangle position="48,272" size="380,260" backgroundColor="#00F3C86A" zPosition="0" />
+  <eRectangle position="78,302" size="320,200" backgroundColor="#002E8BC0" zPosition="1" alphaBlend="1" />
+  <eLabel position="84,370" size="308,70" font="Regular;24" text="Opaque" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" horizontalAlignment="center" />
+  <eLabel position="448,208" size="380,46" font="Regular;24" text='backgroundColor="#802E8BC0"' foregroundColor="#00FFFFFF" transparent="1" />
+  <eRectangle position="448,272" size="380,260" backgroundColor="#00F3C86A" zPosition="0" />
+  <eRectangle position="478,302" size="320,200" backgroundColor="#802E8BC0" zPosition="1" alphaBlend="1" />
+  <eLabel position="484,370" size="308,70" font="Regular;24" text="Half transparent" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" horizontalAlignment="center" />
+  <eLabel position="848,208" size="380,46" font="Regular;24" text='backgroundColor="#FF2E8BC0"' foregroundColor="#00FFFFFF" transparent="1" />
+  <eRectangle position="848,272" size="380,260" backgroundColor="#00F3C86A" zPosition="0" />
+  <eRectangle position="878,302" size="320,200" backgroundColor="#FF2E8BC0" zPosition="1" alphaBlend="1" />
+  <eLabel position="884,370" size="308,70" font="Regular;24" text="Fully transparent" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" horizontalAlignment="center" />
+  <!-- example:end -->
+  <eLabel position="48,664" size="1184,32" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" backgroundColor="#00101928" />
+</screen>

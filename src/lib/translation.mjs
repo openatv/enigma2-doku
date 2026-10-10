@@ -3,9 +3,11 @@ import languages from '../../data/translation-languages.json' with { type: 'json
 export { languages };
 export const translationParam = 'translate';
 /** @param {unknown} value */
-export function isTranslationLanguage(value) {
-  return typeof value === 'string' && Object.hasOwn(languages, value);
+export function isTranslationLanguage(value, allowGerman = false) {
+  return (allowGerman && value === 'de') || (typeof value === 'string' && Object.hasOwn(languages, value));
 }
+/** English developer chapters exist in both native routes. @param {string} pathname */
+export function isDeveloperPath(pathname) { return /\/(?:de|en)\/developers(?:\/|$)/.test(pathname); }
 /** @param {string} base */
 export function cleanBase(base) { return '/' + base.replace(/^\/+|\/+$/g, ''); }
 /** @param {string} pathname @param {'de' | 'en'} language @param {string} base */
@@ -24,7 +26,7 @@ export function languageUrl(current, language, base, target = null) {
   if (path !== url.pathname) url.hash = '';
   url.pathname = path;
   url.searchParams.delete(translationParam);
-  if (language === 'en' && isTranslationLanguage(target)) url.searchParams.set(translationParam, /** @type {string} */ (target));
+  if (language === 'en' && isTranslationLanguage(target, isDeveloperPath(url.pathname))) url.searchParams.set(translationParam, /** @type {string} */ (target));
   return url;
 }
 /** A shared Google cookie alone is never consent to load translation here.
@@ -32,7 +34,7 @@ export function languageUrl(current, language, base, target = null) {
  */
 export function requestedLanguage(url, saved) {
   const value = url.searchParams.has(translationParam) ? url.searchParams.get(translationParam) : saved;
-  return isTranslationLanguage(value) ? value : null;
+  return isTranslationLanguage(value, isDeveloperPath(url.pathname)) ? value : null;
 }
 /** Expire only Google's translation cookie, including host/domain variants.
  * @param {string} hostname @param {string} base

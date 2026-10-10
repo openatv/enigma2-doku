@@ -1,0 +1,48 @@
+---
+title: Skinning foundations
+description: Understand OpenATV skins, XML screens, Python components and the native rendering engine before building your first layout.
+---
+import DeveloperContent from '../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/index.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+A skin describes **how an existing interface looks**. Enigma2's Python code supplies its data and behaviour. The native GUI classes supplied by Enigma2 draw text, shapes, images and lists onto the OSD.
+
+## From screen to pixels
+
+| Stage | Responsibility | Where to look |
+| --- | --- | --- |
+| Python `Screen` | Creates components and sources, handles actions, owns the screen lifecycle | `Screens/*.py` or a plugin's Python code |
+| Skin XML | Names the screen; lays out its widgets and decoration | The skin's `skin.xml`, included files or an embedded `skin` string |
+| `skin.py` | Selects a layout, parses values, resolves paths and connects data pipelines | [API reference](./api/) |
+| GUI component / renderer | Bridges Python data and a native widget | `Components/`, `Components/Renderer/` |
+| Native GUI | Paints the result and implements widget-specific setters | Enigma2 `lib/gui/` C++ classes such as `eLabel` and `ePixmap` |
+
+Skin XML is not HTML or CSS. `position="40,60"` uses the skin coordinate system; `font="Regular;28"` identifies a registered font, and `#80FFFFFF` has Enigma2's transparency convention. Browser CSS rules do not apply to these values.
+
+## Three ways to put something on screen
+
+| XML | Purpose | Python requirement |
+| --- | --- | --- |
+| `<eLabel ... />` | A decorative/static label | No `self[...]` component is needed |
+| `<widget name="greeting" ... />` | Skin a Python GUI component | For example, `self["greeting"] = Label(...)` |
+| `<widget source="message" render="Label" ... />` | Display a source through a renderer | For example, `self["message"] = StaticText(...)` |
+
+The two `Label` classes have different roles: `Components.Label.Label` is a GUI component; `Components.Renderer.Label.Label` is a renderer connected to a source. Matching their names does not make them interchangeable.
+
+## Skin versus skin configuration plugin
+
+The main skin may include several XML files, images and fonts. A settings plugin can generate or select those files, as MetrixHD and Umbra do. Settings such as a weather provider or an alternative InfoBar layout belong to that skin's configuration system; they are not automatically properties of every Enigma2 skin.
+
+A plugin may also carry its own embedded screen layout. The active skin can replace it with a compatible named screen. Changing the XML does not create missing Python components, install a converter or add a tuner capability.
+
+## Read and experiment
+
+Start with [files and load order](./files/), then open the [first screen](./first-screen/). Every illustrated example provides the XML that produced its screenshot and a download of the complete test plugin. [Run the examples](./lab/) on a test receiver and use [the reference](./api/) when you meet an unfamiliar name.
+
+The source and receiver versions are recorded in [verification and provenance](./verification/). Newer source attributes may not exist in older images; check the implementation and the receiver log rather than silently assuming support.
+
+</DeveloperContent>

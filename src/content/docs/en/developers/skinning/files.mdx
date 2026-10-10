@@ -1,0 +1,73 @@
+---
+title: Skin files, paths and loading order
+description: skin.xml, skin_user.xml, includes, fonts, pixmaps, Python components and the OpenATV skin loading order.
+---
+import DeveloperContent from '../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/files.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+## Files you will encounter
+
+| Path or file | What it contains |
+| --- | --- |
+| `/usr/share/enigma2/MySkin/skin.xml` | Main skin XML: output resolution, resources and named screens |
+| Other XML inside the skin | Included screens, palettes, styles or generated skin parts; filenames are skin-specific |
+| PNG/SVG artwork | Icons, backgrounds, buttons and other pixmaps; support goes through the receiver's image loader |
+| TTF/OTF font files | Font resources registered with a skin name before widgets use them; package the required fonts with appropriate licences |
+| `/etc/enigma2/skin_user.xml` | Optional generic user screen overrides |
+| `/etc/enigma2/skin_user_MySkin.xml` | Optional skin-specific override for a primary skin named `MySkin/skin.xml` |
+| `/etc/enigma2/settings` | Contains `config.skin.primary_skin=MySkin/skin.xml`; it is not a screen-layout file |
+| `/usr/lib/enigma2/python/skin.py` or `skin.pyc` | Skin engine; images may ship compiled Python only |
+| `.../Screens/` and plugin folders | Python screen logic and embedded fallback layouts |
+| `.../Components/Sources/`, `Converter/`, `Renderer/` | Source classes, data transformations and display bridges |
+| `/usr/share/enigma2/display/` | Front-display skins; separate from the TV OSD |
+
+`MySkin` is a placeholder. Use the actual primary-skin directory. Do not edit generated skin XML without understanding its generator: the next settings save or package update may replace it.
+
+## Loading order and overrides
+
+In the documented `InitSkins()` implementation, later named screens replace earlier definitions of the same name:
+
+1. Emergency/fallback skin and subtitle skin.
+2. The configured primary GUI skin, with a default-skin fallback on failure.
+3. The display skin on its own screen/display ID.
+4. Eligible optional `mySkin/skin_*.xml` parts, sorted by filename. This particular core path excludes the configured default skin; a skin's own plugin can use a different mechanism.
+5. A readable skin-specific user override, otherwise the generic `skin_user.xml`.
+
+This is replacement of a **whole named screen**, not a CSS-style merge of every matching widget. A partial override must still satisfy the screen's expected components. Optional includes are loaded at the point the loader processes them.
+
+Inside `readSkin()`, the names in `screen.skinName` are tried in order. A valid registered layout takes priority; otherwise Enigma2 can use the Python screen's embedded `skin` string. Required widgets can cause an incompatible named layout to be rejected.
+
+## A minimal resource file
+
+```xml
+<skin>
+  <colors>
+    <color name="LabBackground" value="#00101928" />
+    <color name="LabAccent" value="#005BD4EC" />
+  </colors>
+  <fonts>
+    <font filename="DejaVuSans.ttf" name="LabRegular" scale="100" />
+  </fonts>
+  <include filename="MySkin/screens.xml" />
+</skin>
+```
+
+This fragment assumes the font and included file resolve on that receiver. It does not create an installable complete skin by itself. The included XML also uses a `<skin>` root.
+
+## Resolve paths deliberately
+
+`Tools.Directories.resolveFilename()` understands scopes. `SCOPE_GUISKIN` searches skin-specific configuration overrides, common overrides, the active skin and fallback locations. For XML it also considers the legacy `/etc/enigma2/` override location. `SCOPE_FONTS` has its own search order, including skin fonts and `/usr/share/fonts/`.
+
+For an isolated plugin screen, set `self.skin_path` to the plugin directory and use **`~/assets/pattern.png`**. Here `~/` is a skin-engine path prefix relative to that explicit skin path; it does not mean the Linux home directory. The [pixmap examples](../pixmaps/) use this convention.
+
+Prefer a unique prefix for new resource and screen names. Generic names such as `Background` or `TestScreen` can collide with another skin or plugin.
+
+## Source links
+
+The [loading functions](../api/functions/) document `InitSkins`, `loadSkin`, `loadSingleSkinData` and `readSkin`. Path lookup is implemented in [Tools/Directories.py](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/Tools/Directories.py).
+
+</DeveloperContent>

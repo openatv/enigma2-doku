@@ -1,0 +1,6420 @@
+{
+  "schema": 1,
+  "repository": "https://github.com/openatv/enigma2",
+  "revision": "f4135659cb5ee225efd84db1a944b5f72fa6b2a0",
+  "path": "lib/python/skin.py",
+  "sha256": "362f23f6326e83d24c371c677871f87f49673c70ca9660b898b7fe0dc14e3f8c",
+  "attributes": [
+    {
+      "name": "align",
+      "kind": "attribute",
+      "signature": "align(self, value)",
+      "line": 1043,
+      "end_line": 1044,
+      "doc": "",
+      "calls": [
+        "self.guiObject.setAlign"
+      ],
+      "native_calls": [
+        "setAlign"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Stack alignment passed to setAlign; this is an engine-facing value, not text alignment."
+    },
+    {
+      "name": "alphaBlend",
+      "kind": "attribute",
+      "signature": "alphaBlend(self, value)",
+      "line": 1046,
+      "end_line": 1047,
+      "doc": "",
+      "calls": [
+        "parseBoolean",
+        "self.guiObject.setWidgetAlphaBlend"
+      ],
+      "native_calls": [
+        "setWidgetAlphaBlend"
+      ],
+      "parsers": [
+        "parseBoolean"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Colour and decoration",
+      "summary": "Enable native widget background/border alpha blending where supported; useful for overlaying translucent rectangles."
+    },
+    {
+      "name": "alphaTest",
+      "kind": "attribute",
+      "signature": "alphaTest(self, value)",
+      "line": 1049,
+      "end_line": 1050,
+      "doc": "",
+      "calls": [
+        "parseAlphaTest",
+        "self.guiObject.setAlphatest"
+      ],
+      "native_calls": [
+        "setAlphatest"
+      ],
+      "parsers": [
+        "parseAlphaTest"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "Pixmap transparency: off, on (alpha test), or blend (smooth alpha blending)."
+    },
+    {
+      "name": "alphatest",
+      "kind": "attribute",
+      "signature": "alphatest(self, value)",
+      "line": 1052,
+      "end_line": 1053,
+      "doc": "",
+      "calls": [
+        "self.alphaTest"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "alphaTest",
+      "no_op": false,
+      "deprecated": false,
+      "group": "Compatibility aliases",
+      "summary": "Compatibility spelling for alphaTest. Use the canonical camel-case name in new examples."
+    },
+    {
+      "name": "animationMode",
+      "kind": "attribute",
+      "signature": "animationMode(self, value)",
+      "line": 1056,
+      "end_line": 1057,
+      "doc": "",
+      "calls": [
+        "parseAnimationMode",
+        "self.guiObject.setAnimationMode"
+      ],
+      "native_calls": [
+        "setAnimationMode"
+      ],
+      "parsers": [
+        "parseAnimationMode"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Control window show/hide animation; off disables both directions."
+    },
+    {
+      "name": "animationPaused",
+      "kind": "attribute",
+      "signature": "animationPaused(self, value)",
+      "line": 1059,
+      "end_line": 1060,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Reserved no-op in this revision; it does not pause an animation."
+    },
+    {
+      "name": "backgroundColor",
+      "kind": "attribute",
+      "signature": "backgroundColor(self, value)",
+      "line": 1062,
+      "end_line": 1066,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "parseGradient",
+        "self.guiObject.setBackgroundColor",
+        "self.guiObject.setBackgroundGradient"
+      ],
+      "native_calls": [
+        "setBackgroundColor",
+        "setBackgroundGradient"
+      ],
+      "parsers": [
+        "parseColor",
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Colour and decoration",
+      "summary": "Solid #AARRGGBB/named colour, or gradient specification start[,middle],end,direction[,alphaBlend]."
+    },
+    {
+      "name": "backgroundColorEven",
+      "kind": "attribute",
+      "signature": "backgroundColorEven(self, value)",
+      "line": 1068,
+      "end_line": 1069,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setBackgroundColorRows"
+      ],
+      "native_calls": [
+        "setBackgroundColorRows"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Solid colour for alternating even list rows; gradients are not accepted here."
+    },
+    {
+      "name": "backgroundColorOdd",
+      "kind": "attribute",
+      "signature": "backgroundColorOdd(self, value)",
+      "line": 1071,
+      "end_line": 1072,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setBackgroundColor"
+      ],
+      "native_calls": [
+        "setBackgroundColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Solid base/odd-row list background; gradients are not accepted here."
+    },
+    {
+      "name": "backgroundColorRows",
+      "kind": "attribute",
+      "signature": "backgroundColorRows(self, value)",
+      "line": 1074,
+      "end_line": 1076,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "parseColor",
+        "self.guiObject.setBackgroundColorRows"
+      ],
+      "native_calls": [
+        "setBackgroundColorRows"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of backgroundColorEven."
+    },
+    {
+      "name": "backgroundColorSelected",
+      "kind": "attribute",
+      "signature": "backgroundColorSelected(self, value)",
+      "line": 1078,
+      "end_line": 1082,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "parseGradient",
+        "self.guiObject.setBackgroundColorSelected",
+        "self.guiObject.setBackgroundGradientSelected"
+      ],
+      "native_calls": [
+        "setBackgroundColorSelected",
+        "setBackgroundGradientSelected"
+      ],
+      "parsers": [
+        "parseColor",
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Selected row background, as solid colour or a gradient specification."
+    },
+    {
+      "name": "backgroundGradient",
+      "kind": "attribute",
+      "signature": "backgroundGradient(self, value)",
+      "line": 1084,
+      "end_line": 1086,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "parseGradient",
+        "self.guiObject.setBackgroundGradient"
+      ],
+      "native_calls": [
+        "setBackgroundGradient"
+      ],
+      "parsers": [
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated dedicated gradient attribute; use a gradient value in backgroundColor."
+    },
+    {
+      "name": "backgroundGradientSelected",
+      "kind": "attribute",
+      "signature": "backgroundGradientSelected(self, value)",
+      "line": 1088,
+      "end_line": 1090,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "parseGradient",
+        "self.guiObject.setBackgroundGradientSelected"
+      ],
+      "native_calls": [
+        "setBackgroundGradientSelected"
+      ],
+      "parsers": [
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated dedicated selected-row gradient attribute; use backgroundColorSelected."
+    },
+    {
+      "name": "backgroundPixmap",
+      "kind": "attribute",
+      "signature": "backgroundPixmap(self, value)",
+      "line": 1092,
+      "end_line": 1093,
+      "doc": "",
+      "calls": [
+        "parsePixmap",
+        "self.guiObject.setBackgroundPixmap"
+      ],
+      "native_calls": [
+        "setBackgroundPixmap"
+      ],
+      "parsers": [
+        "parsePixmap"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "Background image for a native target implementing setBackgroundPixmap; not universal to all widgets."
+    },
+    {
+      "name": "base",
+      "kind": "attribute",
+      "signature": "base(self, value)",
+      "line": 1095,
+      "end_line": 1096,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Reserved no-op in AttributeParser; do not expect a visible effect from this setter."
+    },
+    {
+      "name": "borderColor",
+      "kind": "attribute",
+      "signature": "borderColor(self, value)",
+      "line": 1098,
+      "end_line": 1099,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setBorderColor"
+      ],
+      "native_calls": [
+        "setBorderColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Colour and decoration",
+      "summary": "Generic border setter. On eLabel this currently changes the text outline; use widgetBorderColor for a rectangle border."
+    },
+    {
+      "name": "borderWidth",
+      "kind": "attribute",
+      "signature": "borderWidth(self, value)",
+      "line": 1101,
+      "end_line": 1102,
+      "doc": "",
+      "calls": [
+        "self.applyVerticalScale",
+        "self.guiObject.setBorderWidth"
+      ],
+      "native_calls": [
+        "setBorderWidth"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Colour and decoration",
+      "summary": "Generic border width. On eLabel this currently changes glyph outlines; use widgetBorderWidth for the widget frame."
+    },
+    {
+      "name": "condition",
+      "kind": "attribute",
+      "signature": "condition(self, value)",
+      "line": 1104,
+      "end_line": 1105,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Construction-time condition evaluated by readSkin for supported config/BoxInfo expressions, not a live visibility binding."
+    },
+    {
+      "name": "conditional",
+      "kind": "attribute",
+      "signature": "conditional(self, value)",
+      "line": 1107,
+      "end_line": 1108,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Include an element when at least one named component exists in the screen; processed by readSkin."
+    },
+    {
+      "name": "connection",
+      "kind": "attribute",
+      "signature": "connection(self, value)",
+      "line": 1110,
+      "end_line": 1111,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Names the component connections for a GUI addon; readSkin consumes this before attribute application."
+    },
+    {
+      "name": "cornerRadius",
+      "kind": "attribute",
+      "signature": "cornerRadius(self, value)",
+      "line": 1113,
+      "end_line": 1115,
+      "doc": "",
+      "calls": [
+        "parseRadius",
+        "self.guiObject.setCornerRadius"
+      ],
+      "native_calls": [
+        "setCornerRadius"
+      ],
+      "parsers": [
+        "parseRadius"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Colour and decoration",
+      "summary": "Corner radius, optionally followed by a semicolon and edge names, e.g. 24;topLeft,topRight."
+    },
+    {
+      "name": "enableWrapAround",
+      "kind": "attribute",
+      "signature": "enableWrapAround(self, value)",
+      "line": 1117,
+      "end_line": 1118,
+      "doc": "",
+      "calls": [
+        "parseBoolean",
+        "self.guiObject.setWrapAround"
+      ],
+      "native_calls": [
+        "setWrapAround"
+      ],
+      "parsers": [
+        "parseBoolean"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Allow list navigation to wrap from the final entry to the first and back."
+    },
+    {
+      "name": "entryFont",
+      "kind": "attribute",
+      "signature": "entryFont(self, value)",
+      "line": 1120,
+      "end_line": 1121,
+      "doc": "",
+      "calls": [
+        "parseFont",
+        "self.guiObject.setEntryFont"
+      ],
+      "native_calls": [
+        "setEntryFont"
+      ],
+      "parsers": [
+        "parseFont"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Font for configuration entry labels on native targets supporting it."
+    },
+    {
+      "name": "errorCorrection",
+      "kind": "attribute",
+      "signature": "errorCorrection(self, value)",
+      "line": 1123,
+      "end_line": 1124,
+      "doc": "",
+      "calls": [
+        "parseErrorCorrection",
+        "self.guiObject.setErrorCorrection"
+      ],
+      "native_calls": [
+        "setErrorCorrection"
+      ],
+      "parsers": [
+        "parseErrorCorrection"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "QR code recovery level: low, medium, quartile or high."
+    },
+    {
+      "name": "excludes",
+      "kind": "attribute",
+      "signature": "excludes(self, value)",
+      "line": 1126,
+      "end_line": 1127,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Skip an element when any listed component exists; processed while building the screen."
+    },
+    {
+      "name": "flags",
+      "kind": "attribute",
+      "signature": "flags(self, value)",
+      "line": 1129,
+      "end_line": 1140,
+      "doc": "",
+      "calls": [
+        "\"', '\".join",
+        "errors.append",
+        "print",
+        "self.guiObject.setFlag",
+        "value.split",
+        "x.strip"
+      ],
+      "native_calls": [
+        "setFlag"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Comma-separated eWindow flags, for example wfNoBorder; belongs on a screen/window."
+    },
+    {
+      "name": "font",
+      "kind": "attribute",
+      "signature": "font(self, value)",
+      "line": 1142,
+      "end_line": 1143,
+      "doc": "",
+      "calls": [
+        "parseFont",
+        "self.guiObject.setFont"
+      ],
+      "native_calls": [
+        "setFont"
+      ],
+      "parsers": [
+        "parseFont"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Registered font face or alias and size, for example Regular;28. It is not a font file path."
+    },
+    {
+      "name": "fontScale",
+      "kind": "attribute",
+      "signature": "fontScale(self, value)",
+      "line": 1145,
+      "end_line": 1148,
+      "doc": "",
+      "calls": [
+        "parseFontScale",
+        "self.guiObject.setFontScale"
+      ],
+      "native_calls": [
+        "setFontScale"
+      ],
+      "parsers": [
+        "parseFontScale"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Automatic label font adjustment: size;offset or width;offset (default offset -4)."
+    },
+    {
+      "name": "foregroundColor",
+      "kind": "attribute",
+      "signature": "foregroundColor(self, value)",
+      "line": 1150,
+      "end_line": 1154,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "parseGradient",
+        "self.guiObject.setForegroundColor",
+        "self.guiObject.setForegroundGradient"
+      ],
+      "native_calls": [
+        "setForegroundColor",
+        "setForegroundGradient"
+      ],
+      "parsers": [
+        "parseColor",
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Text/foreground colour. A gradient value is supported only by the slider foreground path."
+    },
+    {
+      "name": "foregroundColorSelected",
+      "kind": "attribute",
+      "signature": "foregroundColorSelected(self, value)",
+      "line": 1156,
+      "end_line": 1157,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setForegroundColorSelected"
+      ],
+      "native_calls": [
+        "setForegroundColorSelected"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Foreground/text colour for selected list entries."
+    },
+    {
+      "name": "foregroundGradient",
+      "kind": "attribute",
+      "signature": "foregroundGradient(self, value)",
+      "line": 1159,
+      "end_line": 1161,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "parseGradient",
+        "self.guiObject.setForegroundGradient"
+      ],
+      "native_calls": [
+        "setForegroundGradient"
+      ],
+      "parsers": [
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": true,
+      "group": "Images, sliders and QR",
+      "summary": "Legacy dedicated slider-gradient attribute; prefer a gradient in foregroundColor."
+    },
+    {
+      "name": "gradientMode",
+      "kind": "attribute",
+      "signature": "gradientMode(self, value)",
+      "line": 1163,
+      "end_line": 1164,
+      "doc": "",
+      "calls": [
+        "parseOptions",
+        "self.guiObject.setGradientMode"
+      ],
+      "native_calls": [
+        "setGradientMode"
+      ],
+      "parsers": [
+        "parseOptions"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "Slider gradient behaviour: legacy or explicit. Check the receiver version before using this newer option."
+    },
+    {
+      "name": "hAlign",
+      "kind": "attribute",
+      "signature": "hAlign(self, value)",
+      "line": 1166,
+      "end_line": 1167,
+      "doc": "",
+      "calls": [
+        "self.horizontalAlignment"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "horizontalAlignment",
+      "no_op": false,
+      "deprecated": false,
+      "group": "Compatibility aliases",
+      "summary": "Compatibility spelling for horizontalAlignment."
+    },
+    {
+      "name": "halign",
+      "kind": "attribute",
+      "signature": "halign(self, value)",
+      "line": 1170,
+      "end_line": 1171,
+      "doc": "",
+      "calls": [
+        "self.horizontalAlignment"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "horizontalAlignment",
+      "no_op": false,
+      "deprecated": false,
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling for horizontalAlignment."
+    },
+    {
+      "name": "headerFont",
+      "kind": "attribute",
+      "signature": "headerFont(self, value)",
+      "line": 1174,
+      "end_line": 1175,
+      "doc": "",
+      "calls": [
+        "parseFont",
+        "self.guiObject.setHeaderFont"
+      ],
+      "native_calls": [
+        "setHeaderFont"
+      ],
+      "parsers": [
+        "parseFont"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Font for configuration/list headers on supporting targets."
+    },
+    {
+      "name": "headerForegroundColor",
+      "kind": "attribute",
+      "signature": "headerForegroundColor(self, value)",
+      "line": 1177,
+      "end_line": 1178,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setHeaderColor"
+      ],
+      "native_calls": [
+        "setHeaderColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Foreground colour of configuration/list headers."
+    },
+    {
+      "name": "horizontalAlignment",
+      "kind": "attribute",
+      "signature": "horizontalAlignment(self, value)",
+      "line": 1180,
+      "end_line": 1181,
+      "doc": "",
+      "calls": [
+        "parseHorizontalAlignment",
+        "self.guiObject.setHAlign"
+      ],
+      "native_calls": [
+        "setHAlign"
+      ],
+      "parsers": [
+        "parseHorizontalAlignment"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Text alignment inside its rectangle: left, center, right or block."
+    },
+    {
+      "name": "ignoreWidgets",
+      "kind": "attribute",
+      "signature": "ignoreWidgets(self, value)",
+      "line": 1183,
+      "end_line": 1184,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Screen metadata for optional widgets; the AttributeParser handler itself is a no-op."
+    },
+    {
+      "name": "includes",
+      "kind": "attribute",
+      "signature": "includes(self, value)",
+      "line": 1186,
+      "end_line": 1187,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Include an element when any listed component exists; the counterpart of excludes."
+    },
+    {
+      "name": "itemAlignment",
+      "kind": "attribute",
+      "signature": "itemAlignment(self, value)",
+      "line": 1189,
+      "end_line": 1190,
+      "doc": "",
+      "calls": [
+        "parseItemAlignment",
+        "self.guiObject.setItemAlignment"
+      ],
+      "native_calls": [
+        "setItemAlignment"
+      ],
+      "parsers": [
+        "parseItemAlignment"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Align list items within the available list rectangle; distinct from text alignment."
+    },
+    {
+      "name": "itemCornerRadius",
+      "kind": "attribute",
+      "signature": "itemCornerRadius(self, value)",
+      "line": 1192,
+      "end_line": 1194,
+      "doc": "",
+      "calls": [
+        "parseRadius",
+        "self.guiObject.setItemCornerRadius"
+      ],
+      "native_calls": [
+        "setItemCornerRadius"
+      ],
+      "parsers": [
+        "parseRadius"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Rounded item background in its normal state."
+    },
+    {
+      "name": "itemCornerRadiusMarked",
+      "kind": "attribute",
+      "signature": "itemCornerRadiusMarked(self, value)",
+      "line": 1196,
+      "end_line": 1198,
+      "doc": "",
+      "calls": [
+        "parseRadius",
+        "self.guiObject.setItemCornerRadiusMarked"
+      ],
+      "native_calls": [
+        "setItemCornerRadiusMarked"
+      ],
+      "parsers": [
+        "parseRadius"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Rounded background for a marked item."
+    },
+    {
+      "name": "itemCornerRadiusMarkedAndSelected",
+      "kind": "attribute",
+      "signature": "itemCornerRadiusMarkedAndSelected(self, value)",
+      "line": 1200,
+      "end_line": 1202,
+      "doc": "",
+      "calls": [
+        "parseRadius",
+        "self.guiObject.setItemCornerRadiusMarkedAndSelected"
+      ],
+      "native_calls": [
+        "setItemCornerRadiusMarkedAndSelected"
+      ],
+      "parsers": [
+        "parseRadius"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Rounded background when the item is both marked and selected."
+    },
+    {
+      "name": "itemCornerRadiusSelected",
+      "kind": "attribute",
+      "signature": "itemCornerRadiusSelected(self, value)",
+      "line": 1204,
+      "end_line": 1206,
+      "doc": "",
+      "calls": [
+        "parseRadius",
+        "self.guiObject.setItemCornerRadiusSelected"
+      ],
+      "native_calls": [
+        "setItemCornerRadiusSelected"
+      ],
+      "parsers": [
+        "parseRadius"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Rounded background of the selected item."
+    },
+    {
+      "name": "itemGradient",
+      "kind": "attribute",
+      "signature": "itemGradient(self, value)",
+      "line": 1208,
+      "end_line": 1209,
+      "doc": "",
+      "calls": [
+        "parseGradient",
+        "self.guiObject.setItemGradient"
+      ],
+      "native_calls": [
+        "setItemGradient"
+      ],
+      "parsers": [
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Background gradient for a normal list item."
+    },
+    {
+      "name": "itemGradientMarked",
+      "kind": "attribute",
+      "signature": "itemGradientMarked(self, value)",
+      "line": 1211,
+      "end_line": 1212,
+      "doc": "",
+      "calls": [
+        "parseGradient",
+        "self.guiObject.setItemGradientMarked"
+      ],
+      "native_calls": [
+        "setItemGradientMarked"
+      ],
+      "parsers": [
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Background gradient for a marked item."
+    },
+    {
+      "name": "itemGradientMarkedAndSelected",
+      "kind": "attribute",
+      "signature": "itemGradientMarkedAndSelected(self, value)",
+      "line": 1214,
+      "end_line": 1215,
+      "doc": "",
+      "calls": [
+        "parseGradient",
+        "self.guiObject.setItemGradientMarkedAndSelected"
+      ],
+      "native_calls": [
+        "setItemGradientMarkedAndSelected"
+      ],
+      "parsers": [
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Background gradient for an item that is both marked and selected."
+    },
+    {
+      "name": "itemGradientSelected",
+      "kind": "attribute",
+      "signature": "itemGradientSelected(self, value)",
+      "line": 1217,
+      "end_line": 1218,
+      "doc": "",
+      "calls": [
+        "parseGradient",
+        "self.guiObject.setItemGradientSelected"
+      ],
+      "native_calls": [
+        "setItemGradientSelected"
+      ],
+      "parsers": [
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Background gradient for the selected list item."
+    },
+    {
+      "name": "itemHeight",
+      "kind": "attribute",
+      "signature": "itemHeight(self, value)",
+      "line": 1220,
+      "end_line": 1222,
+      "doc": "",
+      "calls": [
+        "self.applyVerticalScale",
+        "self.guiObject.setItemHeight"
+      ],
+      "native_calls": [
+        "setItemHeight"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Height of one list entry, scaled vertically."
+    },
+    {
+      "name": "itemSpacing",
+      "kind": "attribute",
+      "signature": "itemSpacing(self, value)",
+      "line": 1224,
+      "end_line": 1227,
+      "doc": "",
+      "calls": [
+        "len",
+        "parsePosition",
+        "self.guiObject.setItemSpacing",
+        "value.split"
+      ],
+      "native_calls": [
+        "setItemSpacing"
+      ],
+      "parsers": [
+        "parsePosition"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Horizontal and vertical gap between list items; one value applies to both axes."
+    },
+    {
+      "name": "itemWidth",
+      "kind": "attribute",
+      "signature": "itemWidth(self, value)",
+      "line": 1229,
+      "end_line": 1231,
+      "doc": "",
+      "calls": [
+        "self.applyHorizontalScale",
+        "self.guiObject.setItemWidth"
+      ],
+      "native_calls": [
+        "setItemWidth"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Width of one list item, scaled horizontally."
+    },
+    {
+      "name": "label",
+      "kind": "attribute",
+      "signature": "label(self, value)",
+      "line": 1233,
+      "end_line": 1234,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Reserved metadata/no-op in AttributeParser; no label is created by this attribute alone."
+    },
+    {
+      "name": "layout",
+      "kind": "attribute",
+      "signature": "layout(self, value)",
+      "line": 1236,
+      "end_line": 1237,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Select panel/stack layout in the structure parser; this setter itself is a no-op."
+    },
+    {
+      "name": "listOrientation",
+      "kind": "attribute",
+      "signature": "listOrientation(self, value)",
+      "line": 1239,
+      "end_line": 1240,
+      "doc": "",
+      "calls": [
+        "parseListOrientation",
+        "self.guiObject.setOrientation"
+      ],
+      "native_calls": [
+        "setOrientation"
+      ],
+      "parsers": [
+        "parseListOrientation"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "List layout: vertical, horizontal or grid; not a slider direction."
+    },
+    {
+      "name": "noWrap",
+      "kind": "attribute",
+      "signature": "noWrap(self, value)",
+      "line": 1242,
+      "end_line": 1243,
+      "doc": "",
+      "calls": [
+        "parseBoolean",
+        "self.wrap"
+      ],
+      "native_calls": [],
+      "parsers": [
+        "parseBoolean"
+      ],
+      "alias": "wrap",
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Legacy wrap alias; prefer wrap=\"noWrap\" or wrap=\"wrap\"."
+    },
+    {
+      "name": "objectTypes",
+      "kind": "attribute",
+      "signature": "objectTypes(self, value)",
+      "line": 1246,
+      "end_line": 1247,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Construction-time component type check: componentName,ClassName[,ClassName]."
+    },
+    {
+      "name": "orientation",
+      "kind": "attribute",
+      "signature": "orientation(self, value)",
+      "line": 1249,
+      "end_line": 1250,
+      "doc": "",
+      "calls": [
+        "parseOrientation",
+        "self.guiObject.setOrientation"
+      ],
+      "native_calls": [
+        "setOrientation"
+      ],
+      "parsers": [
+        "parseOrientation"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "Slider direction: orHorizontal/orLeftToRight, orRightToLeft, orVertical/orTopToBottom, orBottomToTop."
+    },
+    {
+      "name": "OverScan",
+      "kind": "attribute",
+      "signature": "OverScan(self, value)",
+      "line": 1252,
+      "end_line": 1254,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.overScan"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "overScan",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling for overScan."
+    },
+    {
+      "name": "overScan",
+      "kind": "attribute",
+      "signature": "overScan(self, value)",
+      "line": 1256,
+      "end_line": 1257,
+      "doc": "",
+      "calls": [
+        "self.guiObject.setOverscan"
+      ],
+      "native_calls": [
+        "setOverscan"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "Pass the overscan value to a native target implementing setOverscan; this is not global TV calibration."
+    },
+    {
+      "name": "padding",
+      "kind": "attribute",
+      "signature": "padding(self, value)",
+      "line": 1259,
+      "end_line": 1261,
+      "doc": "",
+      "calls": [
+        "eRect",
+        "parsePadding",
+        "self.applyHorizontalScale",
+        "self.applyVerticalScale",
+        "self.guiObject.setPadding"
+      ],
+      "native_calls": [
+        "setPadding"
+      ],
+      "parsers": [
+        "parsePadding"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "One, two or four comma-separated inset values: left,top,right,bottom. Two values repeat as x,y,x,y."
+    },
+    {
+      "name": "pixmap",
+      "kind": "attribute",
+      "signature": "pixmap(self, value)",
+      "line": 1263,
+      "end_line": 1264,
+      "doc": "",
+      "calls": [
+        "parsePixmap",
+        "self.guiObject.setPixmap"
+      ],
+      "native_calls": [
+        "setPixmap"
+      ],
+      "parsers": [
+        "parsePixmap"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "Resolved image path passed to LoadPixmap; PNG transparency is commonly used."
+    },
+    {
+      "name": "pointer",
+      "kind": "attribute",
+      "signature": "pointer(self, value)",
+      "line": 1266,
+      "end_line": 1270,
+      "doc": "",
+      "calls": [
+        "parsePixmap",
+        "parsePosition",
+        "self.guiObject.setPointer",
+        "value.split",
+        "x.strip"
+      ],
+      "native_calls": [
+        "setPointer"
+      ],
+      "parsers": [
+        "parsePixmap",
+        "parsePosition"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "Pointer image and anchor offset for supporting widgets; see the source setter for the colon-separated path/coordinate syntax."
+    },
+    {
+      "name": "position",
+      "kind": "attribute",
+      "signature": "position(self, value)",
+      "line": 1272,
+      "end_line": 1273,
+      "doc": "",
+      "calls": [
+        "ePoint",
+        "isinstance",
+        "parsePosition",
+        "self.guiObject.csize",
+        "self.guiObject.move"
+      ],
+      "native_calls": [
+        "csize",
+        "move"
+      ],
+      "parsers": [
+        "parsePosition"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "x,y relative to the current layout context; centre and arithmetic coordinates are supported."
+    },
+    {
+      "name": "quietZone",
+      "kind": "attribute",
+      "signature": "quietZone(self, value)",
+      "line": 1275,
+      "end_line": 1276,
+      "doc": "",
+      "calls": [
+        "parseInteger",
+        "self.guiObject.setQuietZone"
+      ],
+      "native_calls": [
+        "setQuietZone"
+      ],
+      "parsers": [
+        "parseInteger"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "QR code quiet-zone size; does not add general-purpose label padding."
+    },
+    {
+      "name": "resolution",
+      "kind": "attribute",
+      "signature": "resolution(self, value)",
+      "line": 1278,
+      "end_line": 1279,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "The design coordinate system width,height; readSkin derives scaling from the desktop."
+    },
+    {
+      "name": "scale",
+      "kind": "attribute",
+      "signature": "scale(self, value)",
+      "line": 1281,
+      "end_line": 1282,
+      "doc": "",
+      "calls": [
+        "parseScale",
+        "self.guiObject.setPixmapScale"
+      ],
+      "native_calls": [
+        "setPixmapScale"
+      ],
+      "parsers": [
+        "parseScale"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "Pixmap scaling flags, for example none, scale, keepAspect or centerScaled. Not screen resolution scaling."
+    },
+    {
+      "name": "scaleFlags",
+      "kind": "attribute",
+      "signature": "scaleFlags(self, value)",
+      "line": 1284,
+      "end_line": 1285,
+      "doc": "",
+      "calls": [
+        "self.scale"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "scale",
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "Temporary compatibility route to the pixmap scale flag parser; prefer scale."
+    },
+    {
+      "name": "scrollbarBackgroundColor",
+      "kind": "attribute",
+      "signature": "scrollbarBackgroundColor(self, value)",
+      "line": 1287,
+      "end_line": 1288,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setScrollbarBackgroundColor"
+      ],
+      "native_calls": [
+        "setScrollbarBackgroundColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Solid colour behind the scrollbar handle."
+    },
+    {
+      "name": "scrollbarBackgroundGradient",
+      "kind": "attribute",
+      "signature": "scrollbarBackgroundGradient(self, value)",
+      "line": 1290,
+      "end_line": 1291,
+      "doc": "",
+      "calls": [
+        "parseGradient",
+        "self.guiObject.setScrollbarBackgroundGradient"
+      ],
+      "native_calls": [
+        "setScrollbarBackgroundGradient"
+      ],
+      "parsers": [
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Gradient behind the scrollbar handle on supporting targets."
+    },
+    {
+      "name": "scrollbarBackgroundPicture",
+      "kind": "attribute",
+      "signature": "scrollbarBackgroundPicture(self, value)",
+      "line": 1293,
+      "end_line": 1295,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.scrollbarBackgroundPixmap"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "scrollbarBackgroundPixmap",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarBackgroundPixmap."
+    },
+    {
+      "name": "scrollbarBackgroundPixmap",
+      "kind": "attribute",
+      "signature": "scrollbarBackgroundPixmap(self, value)",
+      "line": 1297,
+      "end_line": 1298,
+      "doc": "",
+      "calls": [
+        "parsePixmap",
+        "self.guiObject.setScrollbarBackgroundPixmap"
+      ],
+      "native_calls": [
+        "setScrollbarBackgroundPixmap"
+      ],
+      "parsers": [
+        "parsePixmap"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Image behind the scrollbar handle."
+    },
+    {
+      "name": "scrollbarbackgroundPixmap",
+      "kind": "attribute",
+      "signature": "scrollbarbackgroundPixmap(self, value)",
+      "line": 1300,
+      "end_line": 1302,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.scrollbarBackgroundPixmap"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "scrollbarBackgroundPixmap",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling of scrollbarBackgroundPixmap."
+    },
+    {
+      "name": "scrollbarBorderColor",
+      "kind": "attribute",
+      "signature": "scrollbarBorderColor(self, value)",
+      "line": 1304,
+      "end_line": 1305,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setScrollbarBorderColor"
+      ],
+      "native_calls": [
+        "setScrollbarBorderColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Scrollbar border colour."
+    },
+    {
+      "name": "scrollbarBorderWidth",
+      "kind": "attribute",
+      "signature": "scrollbarBorderWidth(self, value)",
+      "line": 1307,
+      "end_line": 1308,
+      "doc": "",
+      "calls": [
+        "self.applyHorizontalScale",
+        "self.guiObject.setScrollbarBorderWidth"
+      ],
+      "native_calls": [
+        "setScrollbarBorderWidth"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Scrollbar border thickness, scaled horizontally."
+    },
+    {
+      "name": "scrollbarForegroundColor",
+      "kind": "attribute",
+      "signature": "scrollbarForegroundColor(self, value)",
+      "line": 1310,
+      "end_line": 1311,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setScrollbarForegroundColor"
+      ],
+      "native_calls": [
+        "setScrollbarForegroundColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Scrollbar handle colour."
+    },
+    {
+      "name": "scrollbarForegroundGradient",
+      "kind": "attribute",
+      "signature": "scrollbarForegroundGradient(self, value)",
+      "line": 1313,
+      "end_line": 1314,
+      "doc": "",
+      "calls": [
+        "parseGradient",
+        "self.guiObject.setScrollbarForegroundGradient"
+      ],
+      "native_calls": [
+        "setScrollbarForegroundGradient"
+      ],
+      "parsers": [
+        "parseGradient"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Scrollbar handle gradient."
+    },
+    {
+      "name": "scrollbarForegroundPixmap",
+      "kind": "attribute",
+      "signature": "scrollbarForegroundPixmap(self, value)",
+      "line": 1316,
+      "end_line": 1317,
+      "doc": "",
+      "calls": [
+        "parsePixmap",
+        "self.guiObject.setScrollbarForegroundPixmap"
+      ],
+      "native_calls": [
+        "setScrollbarForegroundPixmap"
+      ],
+      "parsers": [
+        "parsePixmap"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Scrollbar handle image."
+    },
+    {
+      "name": "scrollbarLength",
+      "kind": "attribute",
+      "signature": "scrollbarLength(self, value)",
+      "line": 1319,
+      "end_line": 1320,
+      "doc": "",
+      "calls": [
+        "parseScrollbarLength",
+        "self.guiObject.setScrollbarLength"
+      ],
+      "native_calls": [
+        "setScrollbarLength"
+      ],
+      "parsers": [
+        "parseScrollbarLength"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Scrollbar length: numeric value, full or auto; interpretation is the target widget's."
+    },
+    {
+      "name": "scrollbarMode",
+      "kind": "attribute",
+      "signature": "scrollbarMode(self, value)",
+      "line": 1322,
+      "end_line": 1323,
+      "doc": "",
+      "calls": [
+        "parseScrollbarMode",
+        "self.guiObject.setScrollbarMode"
+      ],
+      "native_calls": [
+        "setScrollbarMode"
+      ],
+      "parsers": [
+        "parseScrollbarMode"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Visibility and side of the scrollbar; showOnDemand, showAlways, showNever and side-specific modes."
+    },
+    {
+      "name": "scrollbarOffset",
+      "kind": "attribute",
+      "signature": "scrollbarOffset(self, value)",
+      "line": 1325,
+      "end_line": 1326,
+      "doc": "",
+      "calls": [
+        "parseInteger",
+        "self.guiObject.setScrollbarOffset"
+      ],
+      "native_calls": [
+        "setScrollbarOffset"
+      ],
+      "parsers": [
+        "parseInteger"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Integer distance/offset passed to the native scrollbar; this handler does not apply screen scaling."
+    },
+    {
+      "name": "scrollbarRadius",
+      "kind": "attribute",
+      "signature": "scrollbarRadius(self, value)",
+      "line": 1328,
+      "end_line": 1330,
+      "doc": "",
+      "calls": [
+        "parseRadius",
+        "self.guiObject.setScrollbarRadius"
+      ],
+      "native_calls": [
+        "setScrollbarRadius"
+      ],
+      "parsers": [
+        "parseRadius"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Rounded scrollbar corners, optionally restricted to named edges."
+    },
+    {
+      "name": "scrollbarScroll",
+      "kind": "attribute",
+      "signature": "scrollbarScroll(self, value)",
+      "line": 1332,
+      "end_line": 1333,
+      "doc": "",
+      "calls": [
+        "parseScrollbarScroll",
+        "self.guiObject.setScrollbarScroll"
+      ],
+      "native_calls": [
+        "setScrollbarScroll"
+      ],
+      "parsers": [
+        "parseScrollbarScroll"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Scrollbar movement granularity: byPage or byLine."
+    },
+    {
+      "name": "scrollbarSliderBorderColor",
+      "kind": "attribute",
+      "signature": "scrollbarSliderBorderColor(self, value)",
+      "line": 1335,
+      "end_line": 1337,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.scrollbarBorderColor"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "scrollbarBorderColor",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarBorderColor."
+    },
+    {
+      "name": "scrollbarSliderBorderWidth",
+      "kind": "attribute",
+      "signature": "scrollbarSliderBorderWidth(self, value)",
+      "line": 1339,
+      "end_line": 1341,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.scrollbarBorderWidth"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "scrollbarBorderWidth",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarBorderWidth."
+    },
+    {
+      "name": "scrollbarSliderForegroundColor",
+      "kind": "attribute",
+      "signature": "scrollbarSliderForegroundColor(self, value)",
+      "line": 1343,
+      "end_line": 1345,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.scrollbarForegroundColor"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "scrollbarForegroundColor",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarForegroundColor."
+    },
+    {
+      "name": "scrollbarSliderPicture",
+      "kind": "attribute",
+      "signature": "scrollbarSliderPicture(self, value)",
+      "line": 1347,
+      "end_line": 1349,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.scrollbarForegroundPixmap"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "scrollbarForegroundPixmap",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarForegroundPixmap."
+    },
+    {
+      "name": "scrollbarSliderPixmap",
+      "kind": "attribute",
+      "signature": "scrollbarSliderPixmap(self, value)",
+      "line": 1351,
+      "end_line": 1353,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.scrollbarForegroundPixmap"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "scrollbarForegroundPixmap",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarForegroundPixmap."
+    },
+    {
+      "name": "scrollbarWidth",
+      "kind": "attribute",
+      "signature": "scrollbarWidth(self, value)",
+      "line": 1355,
+      "end_line": 1356,
+      "doc": "",
+      "calls": [
+        "self.applyHorizontalScale",
+        "self.guiObject.setScrollbarWidth"
+      ],
+      "native_calls": [
+        "setScrollbarWidth"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Scrollbar thickness, scaled horizontally."
+    },
+    {
+      "name": "scrollText",
+      "kind": "attribute",
+      "signature": "scrollText(self, value)",
+      "line": 1358,
+      "end_line": 1359,
+      "doc": "",
+      "calls": [
+        "parseScrollText",
+        "self.guiObject.setScrollText"
+      ],
+      "native_calls": [
+        "setScrollText"
+      ],
+      "parsers": [
+        "parseScrollText"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Scrolling text configuration as comma-separated key=value pairs; direction, delays, repeat, stepSize and mode."
+    },
+    {
+      "name": "secondFont",
+      "kind": "attribute",
+      "signature": "secondFont(self, value)",
+      "line": 1361,
+      "end_line": 1363,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.valueFont"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "valueFont",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Lists and selection",
+      "summary": "Deprecated alias of valueFont for supporting configuration/list targets."
+    },
+    {
+      "name": "secondfont",
+      "kind": "attribute",
+      "signature": "secondfont(self, value)",
+      "line": 1365,
+      "end_line": 1367,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.valueFont"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "valueFont",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling delegating to valueFont; use valueFont in new layouts."
+    },
+    {
+      "name": "seek_pointer",
+      "kind": "attribute",
+      "signature": "seek_pointer(self, value)",
+      "line": 1369,
+      "end_line": 1370,
+      "doc": "",
+      "calls": [
+        "self.seekPointer"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "seekPointer",
+      "no_op": false,
+      "deprecated": false,
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling of seekPointer."
+    },
+    {
+      "name": "seekPointer",
+      "kind": "attribute",
+      "signature": "seekPointer(self, value)",
+      "line": 1373,
+      "end_line": 1377,
+      "doc": "",
+      "calls": [
+        "parsePixmap",
+        "parsePosition",
+        "self.guiObject.setPointer",
+        "value.split",
+        "x.strip"
+      ],
+      "native_calls": [
+        "setPointer"
+      ],
+      "parsers": [
+        "parsePixmap",
+        "parsePosition"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Images, sliders and QR",
+      "summary": "Secondary seek pointer image and anchor offset, for widgets that support it."
+    },
+    {
+      "name": "selection",
+      "kind": "attribute",
+      "signature": "selection(self, value)",
+      "line": 1379,
+      "end_line": 1380,
+      "doc": "",
+      "calls": [
+        "parseBoolean",
+        "self.guiObject.setSelectionEnable"
+      ],
+      "native_calls": [
+        "setSelectionEnable"
+      ],
+      "parsers": [
+        "parseBoolean"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Enable or disable drawing the list selection highlight."
+    },
+    {
+      "name": "selectionDisabled",
+      "kind": "attribute",
+      "signature": "selectionDisabled(self, value)",
+      "line": 1382,
+      "end_line": 1383,
+      "doc": "",
+      "calls": [
+        "parseBoolean",
+        "self.guiObject.setSelectionEnable"
+      ],
+      "native_calls": [
+        "setSelectionEnable"
+      ],
+      "parsers": [
+        "parseBoolean"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Compatibility aliases",
+      "summary": "Legacy inverted selection switch; prefer selection=\"0\" to disable highlighting."
+    },
+    {
+      "name": "selectionPixmap",
+      "kind": "attribute",
+      "signature": "selectionPixmap(self, value)",
+      "line": 1386,
+      "end_line": 1387,
+      "doc": "",
+      "calls": [
+        "parsePixmap",
+        "self.guiObject.setSelectionPixmap"
+      ],
+      "native_calls": [
+        "setSelectionPixmap"
+      ],
+      "parsers": [
+        "parsePixmap"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Image used for the list selection background."
+    },
+    {
+      "name": "selectionZoom",
+      "kind": "attribute",
+      "signature": "selectionZoom(self, value)",
+      "line": 1389,
+      "end_line": 1395,
+      "doc": "",
+      "calls": [
+        "float",
+        "len",
+        "parseInteger",
+        "parseZoom",
+        "self.guiObject.setSelectionZoom",
+        "value.split",
+        "x.strip"
+      ],
+      "native_calls": [
+        "setSelectionZoom"
+      ],
+      "parsers": [
+        "parseInteger",
+        "parseZoom"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Selection enlargement as an integer percentage increment[,mode]: 25 means 1.25 times the normal size. The increment is capped at 500; see parseZoom for the mode."
+    },
+    {
+      "name": "selectionZoomSize",
+      "kind": "attribute",
+      "signature": "selectionZoomSize(self, value)",
+      "line": 1397,
+      "end_line": 1401,
+      "doc": "",
+      "calls": [
+        "len",
+        "parseValuePair",
+        "parseZoom",
+        "self.guiObject.setSelectionZoomSize",
+        "value.split",
+        "x.strip"
+      ],
+      "native_calls": [
+        "setSelectionZoomSize"
+      ],
+      "parsers": [
+        "parseValuePair",
+        "parseZoom"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Explicit enlarged selection width,height[,mode]."
+    },
+    {
+      "name": "separatorLineColor",
+      "kind": "attribute",
+      "signature": "separatorLineColor(self, value)",
+      "line": 1403,
+      "end_line": 1404,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setSeparatorColor"
+      ],
+      "native_calls": [
+        "setSeparatorColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Colour of entry separators in supporting lists."
+    },
+    {
+      "name": "separatorLineSize",
+      "kind": "attribute",
+      "signature": "separatorLineSize(self, value)",
+      "line": 1406,
+      "end_line": 1407,
+      "doc": "",
+      "calls": [
+        "eRect",
+        "parseSeparator",
+        "self.guiObject.setSeparatorSize"
+      ],
+      "native_calls": [
+        "setSeparatorSize"
+      ],
+      "parsers": [
+        "parseSeparator"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Separator geometry: height, top,height or left,top,width,height; -1 has automatic/full-width meaning."
+    },
+    {
+      "name": "shadowColor",
+      "kind": "attribute",
+      "signature": "shadowColor(self, value)",
+      "line": 1409,
+      "end_line": 1410,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setShadowColor"
+      ],
+      "native_calls": [
+        "setShadowColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Colour of the label text shadow."
+    },
+    {
+      "name": "shadowOffset",
+      "kind": "attribute",
+      "signature": "shadowOffset(self, value)",
+      "line": 1412,
+      "end_line": 1413,
+      "doc": "",
+      "calls": [
+        "parsePosition",
+        "self.guiObject.setShadowOffset"
+      ],
+      "native_calls": [
+        "setShadowOffset"
+      ],
+      "parsers": [
+        "parsePosition"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "x,y offset of the text shadow; scaled with the screen."
+    },
+    {
+      "name": "size",
+      "kind": "attribute",
+      "signature": "size(self, value)",
+      "line": 1415,
+      "end_line": 1416,
+      "doc": "",
+      "calls": [
+        "eSize",
+        "isinstance",
+        "parseSize",
+        "self.guiObject.resize"
+      ],
+      "native_calls": [
+        "resize"
+      ],
+      "parsers": [
+        "parseSize"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "width,height of the widget; does not set its text alignment or font size."
+    },
+    {
+      "name": "sliderPixmap",
+      "kind": "attribute",
+      "signature": "sliderPixmap(self, value)",
+      "line": 1418,
+      "end_line": 1420,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.scrollbarForegroundPixmap"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "scrollbarForegroundPixmap",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarForegroundPixmap; this is not the progress-bar foreground."
+    },
+    {
+      "name": "spacing",
+      "kind": "attribute",
+      "signature": "spacing(self, value)",
+      "line": 1422,
+      "end_line": 1423,
+      "doc": "",
+      "calls": [
+        "parseInteger",
+        "self.guiObject.setSpacing"
+      ],
+      "native_calls": [
+        "setSpacing"
+      ],
+      "parsers": [
+        "parseInteger"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Spacing setter for supporting native widgets; a panel also consumes spacing for its layout context."
+    },
+    {
+      "name": "spacingColor",
+      "kind": "attribute",
+      "signature": "spacingColor(self, value)",
+      "line": 1425,
+      "end_line": 1426,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setSpacingColor"
+      ],
+      "native_calls": [
+        "setSpacingColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Colour of spacing in a native widget that supports setSpacingColor."
+    },
+    {
+      "name": "stack",
+      "kind": "attribute",
+      "signature": "stack(self, value)",
+      "line": 1428,
+      "end_line": 1429,
+      "doc": "",
+      "calls": [],
+      "native_calls": [],
+      "parsers": [],
+      "alias": null,
+      "no_op": true,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Reserved structural metadata; the AttributeParser handler itself performs no action."
+    },
+    {
+      "name": "tabWidth",
+      "kind": "attribute",
+      "signature": "tabWidth(self, value)",
+      "line": 1431,
+      "end_line": 1432,
+      "doc": "",
+      "calls": [
+        "parseTabWidth",
+        "self.guiObject.setTabWidth"
+      ],
+      "native_calls": [
+        "setTabWidth"
+      ],
+      "parsers": [
+        "parseTabWidth"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Tab-stop width for supporting text widgets; auto uses the automatic width."
+    },
+    {
+      "name": "tag",
+      "kind": "attribute",
+      "signature": "tag(self, value)",
+      "line": 1434,
+      "end_line": 1435,
+      "doc": "",
+      "calls": [
+        "parseInteger",
+        "self.guiObject.setTag"
+      ],
+      "native_calls": [
+        "setTag"
+      ],
+      "parsers": [
+        "parseInteger"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Integer widget identifier used by native stack/layout machinery."
+    },
+    {
+      "name": "text",
+      "kind": "attribute",
+      "signature": "text(self, value)",
+      "line": 1437,
+      "end_line": 1440,
+      "doc": "",
+      "calls": [
+        "_",
+        "self.guiObject.setText"
+      ],
+      "native_calls": [
+        "setText"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Static text, translated before setText. Python or a renderer may replace it later."
+    },
+    {
+      "name": "textBorderColor",
+      "kind": "attribute",
+      "signature": "textBorderColor(self, value)",
+      "line": 1442,
+      "end_line": 1443,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setTextBorderColor"
+      ],
+      "native_calls": [
+        "setTextBorderColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Explicit colour of the outline around glyphs; different from a rectangle border."
+    },
+    {
+      "name": "textBorderWidth",
+      "kind": "attribute",
+      "signature": "textBorderWidth(self, value)",
+      "line": 1445,
+      "end_line": 1446,
+      "doc": "",
+      "calls": [
+        "self.applyVerticalScale",
+        "self.guiObject.setTextBorderWidth"
+      ],
+      "native_calls": [
+        "setTextBorderWidth"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Explicit glyph-outline thickness, scaled vertically."
+    },
+    {
+      "name": "textOffset",
+      "kind": "attribute",
+      "signature": "textOffset(self, value)",
+      "line": 1448,
+      "end_line": 1450,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.textPadding"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "textPadding",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated route to padding via textPadding; prefer padding."
+    },
+    {
+      "name": "textPadding",
+      "kind": "attribute",
+      "signature": "textPadding(self, value)",
+      "line": 1452,
+      "end_line": 1454,
+      "doc": "",
+      "calls": [
+        "attribDeprecationWarning",
+        "self.padding"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "padding",
+      "no_op": false,
+      "deprecated": true,
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of padding."
+    },
+    {
+      "name": "title",
+      "kind": "attribute",
+      "signature": "title(self, value)",
+      "line": 1456,
+      "end_line": 1459,
+      "doc": "",
+      "calls": [
+        "_",
+        "self.guiObject.setTitle"
+      ],
+      "native_calls": [
+        "setTitle"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Window title; translated with the current interface locale before being applied."
+    },
+    {
+      "name": "transparent",
+      "kind": "attribute",
+      "signature": "transparent(self, value)",
+      "line": 1461,
+      "end_line": 1462,
+      "doc": "",
+      "calls": [
+        "parseBoolean",
+        "self.guiObject.setTransparent"
+      ],
+      "native_calls": [
+        "setTransparent"
+      ],
+      "parsers": [
+        "parseBoolean"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Colour and decoration",
+      "summary": "Boolean: suppress the widget background. This is distinct from the transparency byte in a painted colour."
+    },
+    {
+      "name": "underline",
+      "kind": "attribute",
+      "signature": "underline(self, value)",
+      "line": 1464,
+      "end_line": 1465,
+      "doc": "",
+      "calls": [
+        "parseBoolean",
+        "self.guiObject.setUnderline"
+      ],
+      "native_calls": [
+        "setUnderline"
+      ],
+      "parsers": [
+        "parseBoolean"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Enable or disable underlined label text."
+    },
+    {
+      "name": "vAlign",
+      "kind": "attribute",
+      "signature": "vAlign(self, value)",
+      "line": 1467,
+      "end_line": 1468,
+      "doc": "",
+      "calls": [
+        "self.verticalAlignment"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "verticalAlignment",
+      "no_op": false,
+      "deprecated": false,
+      "group": "Compatibility aliases",
+      "summary": "Compatibility spelling for verticalAlignment."
+    },
+    {
+      "name": "valign",
+      "kind": "attribute",
+      "signature": "valign(self, value)",
+      "line": 1471,
+      "end_line": 1472,
+      "doc": "",
+      "calls": [
+        "self.verticalAlignment"
+      ],
+      "native_calls": [],
+      "parsers": [],
+      "alias": "verticalAlignment",
+      "no_op": false,
+      "deprecated": false,
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling for verticalAlignment."
+    },
+    {
+      "name": "valueFont",
+      "kind": "attribute",
+      "signature": "valueFont(self, value)",
+      "line": 1475,
+      "end_line": 1476,
+      "doc": "",
+      "calls": [
+        "parseFont",
+        "self.guiObject.setValueFont"
+      ],
+      "native_calls": [
+        "setValueFont"
+      ],
+      "parsers": [
+        "parseFont"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Lists and selection",
+      "summary": "Font for configuration values on supporting targets."
+    },
+    {
+      "name": "verticalAlignment",
+      "kind": "attribute",
+      "signature": "verticalAlignment(self, value)",
+      "line": 1478,
+      "end_line": 1479,
+      "doc": "",
+      "calls": [
+        "parseVerticalAlignment",
+        "self.guiObject.setVAlign"
+      ],
+      "native_calls": [
+        "setVAlign"
+      ],
+      "parsers": [
+        "parseVerticalAlignment"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Text alignment inside the widget: top, center/middle or bottom."
+    },
+    {
+      "name": "widgetBorderColor",
+      "kind": "attribute",
+      "signature": "widgetBorderColor(self, value)",
+      "line": 1481,
+      "end_line": 1482,
+      "doc": "",
+      "calls": [
+        "parseColor",
+        "self.guiObject.setWidgetBorderColor"
+      ],
+      "native_calls": [
+        "setWidgetBorderColor"
+      ],
+      "parsers": [
+        "parseColor"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Colour and decoration",
+      "summary": "Explicit rectangular widget-frame colour, including on eLabel."
+    },
+    {
+      "name": "widgetBorderWidth",
+      "kind": "attribute",
+      "signature": "widgetBorderWidth(self, value)",
+      "line": 1484,
+      "end_line": 1485,
+      "doc": "",
+      "calls": [
+        "self.applyVerticalScale",
+        "self.guiObject.setWidgetBorderWidth"
+      ],
+      "native_calls": [
+        "setWidgetBorderWidth"
+      ],
+      "parsers": [],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Colour and decoration",
+      "summary": "Explicit rectangular widget-frame thickness, scaled vertically."
+    },
+    {
+      "name": "wrap",
+      "kind": "attribute",
+      "signature": "wrap(self, value)",
+      "line": 1487,
+      "end_line": 1488,
+      "doc": "",
+      "calls": [
+        "parseWrap",
+        "self.guiObject.setWrap"
+      ],
+      "native_calls": [
+        "setWrap"
+      ],
+      "parsers": [
+        "parseWrap"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Text",
+      "summary": "Text overflow mode: wrap, noWrap or ellipsis; current parser also accepts numeric strings."
+    },
+    {
+      "name": "zPosition",
+      "kind": "attribute",
+      "signature": "zPosition(self, value)",
+      "line": 1490,
+      "end_line": 1491,
+      "doc": "",
+      "calls": [
+        "parseInteger",
+        "self.guiObject.setZPosition"
+      ],
+      "native_calls": [
+        "setZPosition"
+      ],
+      "parsers": [
+        "parseInteger"
+      ],
+      "alias": null,
+      "no_op": false,
+      "deprecated": false,
+      "group": "Layout",
+      "summary": "Integer painting layer among overlapping widgets; larger values are in front."
+    }
+  ],
+  "functions": [
+    {
+      "name": "InitSkins",
+      "kind": "function",
+      "signature": "InitSkins()",
+      "line": 99,
+      "end_line": 175,
+      "doc": "",
+      "summary": "Load emergency, subtitle, primary, display, optional skin parts and user overrides; configure desktop resolution and templates. Startup operation, not a per-widget helper.",
+      "tokens": []
+    },
+    {
+      "name": "loadSkin",
+      "kind": "function",
+      "signature": "loadSkin(filename, scope=SCOPE_SKINS, desktop=getDesktop(GUI_SKIN_ID), screenID=GUI_SKIN_ID)",
+      "line": 180,
+      "end_line": 220,
+      "doc": "",
+      "summary": "Read one XML skin and register its global resources and named screens. Returns True on a readable parsed skin, False otherwise; does not open a screen.",
+      "tokens": []
+    },
+    {
+      "name": "reloadSkins",
+      "kind": "function",
+      "signature": "reloadSkins()",
+      "line": 223,
+      "end_line": 260,
+      "doc": "",
+      "summary": "Reload global skin state and window styles. This is a broad application operation, not needed for opening an isolated example.",
+      "tokens": []
+    },
+    {
+      "name": "loadSkinTemplates",
+      "kind": "function",
+      "signature": "loadSkinTemplates(skinTemplatesFileNames)",
+      "line": 265,
+      "end_line": 283,
+      "doc": "",
+      "summary": "Load component XML template definitions from the supplied filenames.",
+      "tokens": []
+    },
+    {
+      "name": "reloadSkinTemplates",
+      "kind": "function",
+      "signature": "reloadSkinTemplates(clear=False)",
+      "line": 286,
+      "end_line": 296,
+      "doc": "",
+      "summary": "Rebuild component template definitions; clear=True resets previously registered definitions.",
+      "tokens": []
+    },
+    {
+      "name": "addCallback",
+      "kind": "function",
+      "signature": "addCallback(callback)",
+      "line": 299,
+      "end_line": 302,
+      "doc": "",
+      "summary": "Register a callback to be notified when skin loading invokes its callback list.",
+      "tokens": []
+    },
+    {
+      "name": "removeCallback",
+      "kind": "function",
+      "signature": "removeCallback(callback)",
+      "line": 305,
+      "end_line": 308,
+      "doc": "",
+      "summary": "Remove a previously registered skin callback.",
+      "tokens": []
+    },
+    {
+      "name": "getParentSize",
+      "kind": "function",
+      "signature": "getParentSize(object, desktop)",
+      "line": 311,
+      "end_line": 327,
+      "doc": "",
+      "summary": "Find a widget parent's size or use the desktop, for relative coordinate calculations.",
+      "tokens": []
+    },
+    {
+      "name": "skinError",
+      "kind": "function",
+      "signature": "skinError(errorMessage)",
+      "line": 330,
+      "end_line": 331,
+      "doc": "",
+      "summary": "Write a skin error to the Enigma2 log; does not itself raise an exception.",
+      "tokens": []
+    },
+    {
+      "name": "attribDeprecationWarning",
+      "kind": "function",
+      "signature": "attribDeprecationWarning(attribute, replacement)",
+      "line": 334,
+      "end_line": 335,
+      "doc": "",
+      "summary": "Write a deprecated-attribute warning and its replacement to the log.",
+      "tokens": []
+    },
+    {
+      "name": "parseOptions",
+      "kind": "function",
+      "signature": "parseOptions(options, attribute, value, default)",
+      "line": 338,
+      "end_line": 348,
+      "doc": "",
+      "summary": "Look up a string in an allowed-options dictionary; log and return the given default for an invalid value.",
+      "tokens": []
+    },
+    {
+      "name": "parseValuePair",
+      "kind": "function",
+      "signature": "parseValuePair(value, scale, object=None, desktop=None, size=None)",
+      "line": 351,
+      "end_line": 363,
+      "doc": "",
+      "summary": "Parse a comma-separated x,y pair, with variables, axis-specific scaling and optional parent/widget dimensions. Returns a tuple.",
+      "tokens": []
+    },
+    {
+      "name": "parseAlphaTest",
+      "kind": "function",
+      "signature": "parseAlphaTest(value)",
+      "line": 366,
+      "end_line": 372,
+      "doc": "",
+      "summary": "Map off/on/blend to native pixmap alpha flags. Invalid input falls back to off.",
+      "tokens": [
+        "on",
+        "off",
+        "blend"
+      ]
+    },
+    {
+      "name": "parseAnimationMode",
+      "kind": "function",
+      "signature": "parseAnimationMode(value)",
+      "line": 375,
+      "end_line": 386,
+      "doc": "",
+      "summary": "Map window-animation strings to native show/hide flags.",
+      "tokens": [
+        "disable",
+        "off",
+        "offshow",
+        "offhide",
+        "onshow",
+        "onhide",
+        "disable_onshow",
+        "disable_onhide"
+      ]
+    },
+    {
+      "name": "parseBoolean",
+      "kind": "function",
+      "signature": "parseBoolean(attribute, value)",
+      "line": 389,
+      "end_line": 390,
+      "doc": "",
+      "summary": "Return True for 1, the supplied attribute name, enabled, on, true or yes (case-insensitive); other strings are False.",
+      "tokens": []
+    },
+    {
+      "name": "parseColor",
+      "kind": "function",
+      "signature": "parseColor(value, default=16777215)",
+      "line": 393,
+      "end_line": 405,
+      "doc": "",
+      "summary": "Resolve #AARRGGBB or a registered colour name to gRGB; invalid input logs and uses the specified fallback.",
+      "tokens": []
+    },
+    {
+      "name": "parseCoordinate",
+      "kind": "function",
+      "signature": "parseCoordinate(value, parent, size=0, font=None, scale=(1, 1))",
+      "line": 431,
+      "end_line": 512,
+      "doc": "",
+      "summary": "Evaluate one design coordinate with scaling, center/c/e/percent and font-relative terms. Returns an integer, or None for the wildcard. It is not a CSS expression parser.",
+      "tokens": []
+    },
+    {
+      "name": "parseErrorCorrection",
+      "kind": "function",
+      "signature": "parseErrorCorrection(value)",
+      "line": 515,
+      "end_line": 522,
+      "doc": "",
+      "summary": "Map QR recovery-level names to eQRCode constants; default medium.",
+      "tokens": [
+        "low",
+        "medium",
+        "quartile",
+        "high"
+      ]
+    },
+    {
+      "name": "parseFont",
+      "kind": "function",
+      "signature": "parseFont(value, scale=((1, 1), (1, 1)))",
+      "line": 525,
+      "end_line": 551,
+      "doc": "",
+      "summary": "Resolve face/alias and optional ;size to a gFont. Font size is scaled on the vertical axis; an unknown face falls back to Body.",
+      "tokens": []
+    },
+    {
+      "name": "parseFontScale",
+      "kind": "function",
+      "signature": "parseFontScale(value, scale=((1, 1), (1, 1)))",
+      "line": 554,
+      "end_line": 567,
+      "doc": "",
+      "summary": "Parse size;offset or width;offset into a scale mode and vertically scaled offset.",
+      "tokens": []
+    },
+    {
+      "name": "parseGradient",
+      "kind": "function",
+      "signature": "parseGradient(value)",
+      "line": 570,
+      "end_line": 601,
+      "doc": "",
+      "summary": "Parse start[,middle],end,horizontal-or-vertical[,alphaBlend]; return three colours, direction and blending flag.",
+      "tokens": [
+        "horizontal",
+        "vertical"
+      ]
+    },
+    {
+      "name": "parseHorizontalAlignment",
+      "kind": "function",
+      "signature": "parseHorizontalAlignment(value)",
+      "line": 604,
+      "end_line": 611,
+      "doc": "",
+      "summary": "Map left, center, right or block to native text alignment; invalid input defaults to left.",
+      "tokens": [
+        "left",
+        "center",
+        "right",
+        "block"
+      ]
+    },
+    {
+      "name": "parseInteger",
+      "kind": "function",
+      "signature": "parseInteger(value, default=0)",
+      "line": 614,
+      "end_line": 620,
+      "doc": "",
+      "summary": "Convert to int; log and return the supplied default on TypeError or ValueError.",
+      "tokens": []
+    },
+    {
+      "name": "parseItemAlignment",
+      "kind": "function",
+      "signature": "parseItemAlignment(value)",
+      "line": 623,
+      "end_line": 643,
+      "doc": "",
+      "summary": "Map item alignment names to native listbox alignment constants.",
+      "tokens": [
+        "default",
+        "center",
+        "justify",
+        "leftTop",
+        "leftMiddle",
+        "leftBottom",
+        "rightTop",
+        "rightMiddle",
+        "rightBottom",
+        "centerTop",
+        "centerMiddle",
+        "centerBottom",
+        "justifyTop",
+        "justifyMiddle",
+        "justifyBottom",
+        "justifyLeft",
+        "justifyRight"
+      ]
+    },
+    {
+      "name": "parseListOrientation",
+      "kind": "function",
+      "signature": "parseListOrientation(value)",
+      "line": 646,
+      "end_line": 652,
+      "doc": "",
+      "summary": "Map vertical/horizontal/grid to listbox orientation bits; invalid input falls back to vertical.",
+      "tokens": [
+        "vertical",
+        "horizontal",
+        "grid"
+      ]
+    },
+    {
+      "name": "parseOrientation",
+      "kind": "function",
+      "signature": "parseOrientation(value)",
+      "line": 655,
+      "end_line": 665,
+      "doc": "",
+      "summary": "Map slider direction names to orientation and reverse-direction flags.",
+      "tokens": [
+        "orHorizontal",
+        "orLeftToRight",
+        "orRightToLeft",
+        "orVertical",
+        "orTopToBottom",
+        "orBottomToTop"
+      ]
+    },
+    {
+      "name": "parseParameter",
+      "kind": "function",
+      "signature": "parseParameter(value)",
+      "line": 680,
+      "end_line": 697,
+      "doc": "This function is responsible for parsing parameters in the skin, it can parse integers, floats, hex colors, hex integers, named colors, fonts and strings.",
+      "summary": "Convert a parameter token to string, colour integer, hex integer, float, named colour, font list or integer according to its prefix/content.",
+      "tokens": []
+    },
+    {
+      "name": "parsePixmap",
+      "kind": "function",
+      "signature": "parsePixmap(path, desktop)",
+      "line": 700,
+      "end_line": 711,
+      "doc": "",
+      "summary": "Load an existing resolved image path through LoadPixmap; strip a # suffix and log missing or unreadable files. Returns a pixmap or None.",
+      "tokens": []
+    },
+    {
+      "name": "parsePosition",
+      "kind": "function",
+      "signature": "parsePosition(value, scale, object=None, desktop=None, size=None)",
+      "line": 714,
+      "end_line": 715,
+      "doc": "",
+      "summary": "Parse an x,y pair and return an ePoint.",
+      "tokens": []
+    },
+    {
+      "name": "parseRadius",
+      "kind": "function",
+      "signature": "parseRadius(value)",
+      "line": 718,
+      "end_line": 738,
+      "doc": "",
+      "summary": "Parse radius[;edge,edge] into a radius and corner bitmask. Plain radius applies to all corners.",
+      "tokens": [
+        "topLeft",
+        "topRight",
+        "top",
+        "bottomLeft",
+        "bottomRight",
+        "bottom",
+        "left",
+        "right"
+      ]
+    },
+    {
+      "name": "parseScrollbarLength",
+      "kind": "function",
+      "signature": "parseScrollbarLength(value, default)",
+      "line": 741,
+      "end_line": 750,
+      "doc": "",
+      "summary": "Parse a numeric length, full (0) or auto (-1), otherwise return the caller's default.",
+      "tokens": [
+        "full",
+        "auto"
+      ]
+    },
+    {
+      "name": "parseSize",
+      "kind": "function",
+      "signature": "parseSize(value, scale, object=None, desktop=None)",
+      "line": 753,
+      "end_line": 754,
+      "doc": "",
+      "summary": "Parse a width,height pair and return an eSize.",
+      "tokens": []
+    },
+    {
+      "name": "parseTabWidth",
+      "kind": "function",
+      "signature": "parseTabWidth(value, default)",
+      "line": 757,
+      "end_line": 765,
+      "doc": "",
+      "summary": "Parse a numeric tab width or auto (-1), otherwise return the caller's default.",
+      "tokens": [
+        "auto"
+      ]
+    },
+    {
+      "name": "parseScale",
+      "kind": "function",
+      "signature": "parseScale(value)",
+      "line": 768,
+      "end_line": 832,
+      "doc": "",
+      "summary": "Map pixmap scaling/alignment names to native blit flags; preserves numerous compatibility spellings.",
+      "tokens": [
+        "none",
+        "0",
+        "scale",
+        "1",
+        "keepAspect",
+        "leftTop",
+        "leftCenter",
+        "leftMiddle",
+        "leftBottom",
+        "centerTop",
+        "middleTop",
+        "centerScaled",
+        "middleScaled",
+        "centerBottom",
+        "middleBottom",
+        "rightTop",
+        "rightCenter",
+        "rightMiddle",
+        "rightBottom",
+        "scaleKeepAspect",
+        "scaleLeftTop",
+        "scaleLeftCenter",
+        "scaleLeftMiddle",
+        "scaleLeftBottom",
+        "scaleCenterTop",
+        "scaleMiddleTop",
+        "scaleCenter",
+        "scaleMiddle",
+        "scaleCenterBottom",
+        "scaleMiddleBottom",
+        "scaleRightTop",
+        "scaleRightCenter",
+        "scaleRightMiddle",
+        "scaleRightBottom",
+        "moveLeftTop",
+        "moveLeftCenter",
+        "moveLeftMiddle",
+        "moveLeftBottom",
+        "moveCenterTop",
+        "moveMiddleTop",
+        "moveCenter",
+        "moveMiddle",
+        "moveCenterBottom",
+        "moveMiddleBottom",
+        "moveRightTop",
+        "moveRightCenter",
+        "moveRightMiddle",
+        "moveRightBottom",
+        "off",
+        "on",
+        "aspect",
+        "center",
+        "width",
+        "height",
+        "stretch",
+        "fill"
+      ]
+    },
+    {
+      "name": "parseScrollbarMode",
+      "kind": "function",
+      "signature": "parseScrollbarMode(value)",
+      "line": 835,
+      "end_line": 847,
+      "doc": "",
+      "summary": "Map visibility/side names to native listbox scrollbar constants.",
+      "tokens": [
+        "showOnDemand",
+        "showAlways",
+        "showNever",
+        "showLeft",
+        "showLeftOnDemand",
+        "showLeftAlways",
+        "showTopOnDemand",
+        "showTopAlways",
+        "showOnDemandShrink"
+      ]
+    },
+    {
+      "name": "parseScrollbarScroll",
+      "kind": "function",
+      "signature": "parseScrollbarScroll(value)",
+      "line": 850,
+      "end_line": 855,
+      "doc": "",
+      "summary": "Map byPage/byLine to the native scrolling policy.",
+      "tokens": [
+        "byPage",
+        "byLine"
+      ]
+    },
+    {
+      "name": "parseScrollText",
+      "kind": "function",
+      "signature": "parseScrollText(value)",
+      "line": 858,
+      "end_line": 898,
+      "doc": "",
+      "summary": "Parse comma-separated key=value text-scrolling options into direction, delays, repeat, step size and mode.",
+      "tokens": [
+        "left",
+        "right",
+        "top",
+        "bottom",
+        "cached",
+        "bounce",
+        "bounceCached",
+        "roll",
+        "direction",
+        "endDelay",
+        "mode",
+        "repeat",
+        "startDelay",
+        "stepDelay",
+        "stepSize"
+      ]
+    },
+    {
+      "name": "parseSeparator",
+      "kind": "function",
+      "signature": "parseSeparator(attribute, value)",
+      "line": 901,
+      "end_line": 921,
+      "doc": "left, top, width, height\ntop, height\nheight\n\nwidth=-1 -> full width - margin ( default )\ntop=-1 -> center ( default )",
+      "summary": "Expand 1/2/4 separator values into left,top,width,height; supports automatic -1 fields.",
+      "tokens": []
+    },
+    {
+      "name": "parsePadding",
+      "kind": "function",
+      "signature": "parsePadding(attribute, value)",
+      "line": 924,
+      "end_line": 936,
+      "doc": "",
+      "summary": "Expand 1/2/4 integers into left,top,right,bottom. Two values become x,y,x,y; it is not CSS top/right order.",
+      "tokens": []
+    },
+    {
+      "name": "parseVerticalAlignment",
+      "kind": "function",
+      "signature": "parseVerticalAlignment(value)",
+      "line": 939,
+      "end_line": 946,
+      "doc": "",
+      "summary": "Map top, center/middle or bottom to native text alignment; invalid input defaults to center.",
+      "tokens": [
+        "top",
+        "center",
+        "middle",
+        "bottom"
+      ]
+    },
+    {
+      "name": "parseWrap",
+      "kind": "function",
+      "signature": "parseWrap(value)",
+      "line": 949,
+      "end_line": 959,
+      "doc": "",
+      "summary": "Map ellipsis/noWrap/wrap to 2/0/1; otherwise parse an integer with fallback 1.",
+      "tokens": [
+        "ellipsis",
+        "noWrap",
+        "wrap"
+      ]
+    },
+    {
+      "name": "parseZoom",
+      "kind": "function",
+      "signature": "parseZoom(mode, zoomType)",
+      "line": 962,
+      "end_line": 968,
+      "doc": "",
+      "summary": "Map a list selection zoom mode to native listbox constants.",
+      "tokens": [
+        "zoomContent",
+        "moveContent",
+        "ignoreContent"
+      ]
+    },
+    {
+      "name": "collectAttributes",
+      "kind": "function",
+      "signature": "collectAttributes(skinAttributes, node, context, skinPath=None, ignore=(), filenames=frozenset(('pixmap', 'pointer', 'seekPointer', 'seek_pointer', 'backgroundPixmap', 'selectionPixmap', 'sliderPixmap', 'scrollbarBackgroundPixmap', 'scrollbarForegroundPixmap', 'scrollbarbackgroundPixmap', 'scrollbarBackgroundPicture', 'scrollbarSliderPicture')))",
+      "line": 971,
+      "end_line": 1017,
+      "doc": "",
+      "summary": "Resolve XML attributes, filenames, position, size, fonts and layout context before applying them to native objects. Mutates the supplied attribute list.",
+      "tokens": []
+    },
+    {
+      "name": "applyAllAttributes",
+      "kind": "function",
+      "signature": "applyAllAttributes(guiObject, desktop, attributes, scale=((1, 1), (1, 1)))",
+      "line": 1494,
+      "end_line": 1495,
+      "doc": "",
+      "summary": "Construct an AttributeParser for a native object and apply the collected name/value pairs.",
+      "tokens": []
+    },
+    {
+      "name": "loadSingleSkinData",
+      "kind": "function",
+      "signature": "loadSingleSkinData(desktop, screenID, domSkin, pathSkin, scope=SCOPE_GUISKIN)",
+      "line": 1498,
+      "end_line": 1783,
+      "doc": "Loads skin data like colors, windowstyle etc.",
+      "summary": "Process global skin data such as output, includes, colours, fonts, parameters, layouts, subtitle styles and window styles.",
+      "tokens": []
+    },
+    {
+      "name": "reloadWindowStyles",
+      "kind": "function",
+      "signature": "reloadWindowStyles()",
+      "line": 1786,
+      "end_line": 1788,
+      "doc": "",
+      "summary": "Reapply stored window-style definitions.",
+      "tokens": []
+    },
+    {
+      "name": "readSkin",
+      "kind": "function",
+      "signature": "readSkin(screen, skin, names, desktop)",
+      "line": 2300,
+      "end_line": 2742,
+      "doc": "",
+      "summary": "Choose a named or embedded screen, build its layout contexts, connect sources/converters/renderers and collect component attributes. Called by Screen.",
+      "tokens": []
+    },
+    {
+      "name": "findSkinScreen",
+      "kind": "function",
+      "signature": "findSkinScreen(names)",
+      "line": 2750,
+      "end_line": 2757,
+      "doc": "",
+      "summary": "Return the first registered name found in a name or list of names, otherwise None.",
+      "tokens": []
+    },
+    {
+      "name": "findWidgets",
+      "kind": "function",
+      "signature": "findWidgets(name)",
+      "line": 2764,
+      "end_line": 2787,
+      "doc": "",
+      "summary": "Return names of widgets/sources/addon connections from a registered screen, expanding named panels; this is an XML scan, not screen execution.",
+      "tokens": []
+    },
+    {
+      "name": "getcomponentTemplate",
+      "kind": "function",
+      "signature": "getcomponentTemplate(component, name)",
+      "line": 2792,
+      "end_line": 2793,
+      "doc": "",
+      "summary": "Return the registered XML component template for component/name (spelling is case-sensitive).",
+      "tokens": []
+    },
+    {
+      "name": "getcomponentTemplateNames",
+      "kind": "function",
+      "signature": "getcomponentTemplateNames(component)",
+      "line": 2799,
+      "end_line": 2800,
+      "doc": "",
+      "summary": "Return names of registered component templates for a component.",
+      "tokens": []
+    },
+    {
+      "name": "getScrollLabelStyle",
+      "kind": "function",
+      "signature": "getScrollLabelStyle(element)",
+      "line": 2805,
+      "end_line": 2806,
+      "doc": "",
+      "summary": "Return one stored ScrollLabel default by key, or None if absent.",
+      "tokens": []
+    },
+    {
+      "name": "getSkinFactor",
+      "kind": "function",
+      "signature": "getSkinFactor(screen=GUI_SKIN_ID)",
+      "line": 2816,
+      "end_line": 2820,
+      "doc": "",
+      "summary": "Return desktop height divided by 720. Deprecated for OpenATV; prefer the screen resolution attribute for new layouts.",
+      "tokens": []
+    },
+    {
+      "name": "applySkinFactor",
+      "kind": "function",
+      "signature": "applySkinFactor(*d)",
+      "line": 2823,
+      "end_line": 2830,
+      "doc": "Multiply the numeric input by the skin factor\nand return the result as an integer.",
+      "summary": "Legacy helper multiplying numeric arguments by getSkinFactor; returns an int for one argument or tuple for multiple arguments.",
+      "tokens": []
+    }
+  ],
+  "classes": [
+    {
+      "name": "AttributeParser",
+      "kind": "class",
+      "signature": "AttributeParser",
+      "line": 1020,
+      "end_line": 1491,
+      "doc": "",
+      "methods": [
+        {
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, guiObject, desktop, scale=((1, 1), (1, 1)))",
+          "line": 1021,
+          "end_line": 1024,
+          "doc": ""
+        },
+        {
+          "name": "applyAll",
+          "kind": "method",
+          "signature": "applyAll(self, attributes)",
+          "line": 1026,
+          "end_line": 1029,
+          "doc": ""
+        },
+        {
+          "name": "applyOne",
+          "kind": "method",
+          "signature": "applyOne(self, attribute, value)",
+          "line": 1031,
+          "end_line": 1035,
+          "doc": ""
+        },
+        {
+          "name": "applyHorizontalScale",
+          "kind": "method",
+          "signature": "applyHorizontalScale(self, value)",
+          "line": 1037,
+          "end_line": 1038,
+          "doc": ""
+        },
+        {
+          "name": "applyVerticalScale",
+          "kind": "method",
+          "signature": "applyVerticalScale(self, value)",
+          "line": 1040,
+          "end_line": 1041,
+          "doc": ""
+        },
+        {
+          "name": "align",
+          "kind": "method",
+          "signature": "align(self, value)",
+          "line": 1043,
+          "end_line": 1044,
+          "doc": ""
+        },
+        {
+          "name": "alphaBlend",
+          "kind": "method",
+          "signature": "alphaBlend(self, value)",
+          "line": 1046,
+          "end_line": 1047,
+          "doc": ""
+        },
+        {
+          "name": "alphaTest",
+          "kind": "method",
+          "signature": "alphaTest(self, value)",
+          "line": 1049,
+          "end_line": 1050,
+          "doc": ""
+        },
+        {
+          "name": "alphatest",
+          "kind": "method",
+          "signature": "alphatest(self, value)",
+          "line": 1052,
+          "end_line": 1053,
+          "doc": ""
+        },
+        {
+          "name": "animationMode",
+          "kind": "method",
+          "signature": "animationMode(self, value)",
+          "line": 1056,
+          "end_line": 1057,
+          "doc": ""
+        },
+        {
+          "name": "animationPaused",
+          "kind": "method",
+          "signature": "animationPaused(self, value)",
+          "line": 1059,
+          "end_line": 1060,
+          "doc": ""
+        },
+        {
+          "name": "backgroundColor",
+          "kind": "method",
+          "signature": "backgroundColor(self, value)",
+          "line": 1062,
+          "end_line": 1066,
+          "doc": ""
+        },
+        {
+          "name": "backgroundColorEven",
+          "kind": "method",
+          "signature": "backgroundColorEven(self, value)",
+          "line": 1068,
+          "end_line": 1069,
+          "doc": ""
+        },
+        {
+          "name": "backgroundColorOdd",
+          "kind": "method",
+          "signature": "backgroundColorOdd(self, value)",
+          "line": 1071,
+          "end_line": 1072,
+          "doc": ""
+        },
+        {
+          "name": "backgroundColorRows",
+          "kind": "method",
+          "signature": "backgroundColorRows(self, value)",
+          "line": 1074,
+          "end_line": 1076,
+          "doc": ""
+        },
+        {
+          "name": "backgroundColorSelected",
+          "kind": "method",
+          "signature": "backgroundColorSelected(self, value)",
+          "line": 1078,
+          "end_line": 1082,
+          "doc": ""
+        },
+        {
+          "name": "backgroundGradient",
+          "kind": "method",
+          "signature": "backgroundGradient(self, value)",
+          "line": 1084,
+          "end_line": 1086,
+          "doc": ""
+        },
+        {
+          "name": "backgroundGradientSelected",
+          "kind": "method",
+          "signature": "backgroundGradientSelected(self, value)",
+          "line": 1088,
+          "end_line": 1090,
+          "doc": ""
+        },
+        {
+          "name": "backgroundPixmap",
+          "kind": "method",
+          "signature": "backgroundPixmap(self, value)",
+          "line": 1092,
+          "end_line": 1093,
+          "doc": ""
+        },
+        {
+          "name": "base",
+          "kind": "method",
+          "signature": "base(self, value)",
+          "line": 1095,
+          "end_line": 1096,
+          "doc": ""
+        },
+        {
+          "name": "borderColor",
+          "kind": "method",
+          "signature": "borderColor(self, value)",
+          "line": 1098,
+          "end_line": 1099,
+          "doc": ""
+        },
+        {
+          "name": "borderWidth",
+          "kind": "method",
+          "signature": "borderWidth(self, value)",
+          "line": 1101,
+          "end_line": 1102,
+          "doc": ""
+        },
+        {
+          "name": "condition",
+          "kind": "method",
+          "signature": "condition(self, value)",
+          "line": 1104,
+          "end_line": 1105,
+          "doc": ""
+        },
+        {
+          "name": "conditional",
+          "kind": "method",
+          "signature": "conditional(self, value)",
+          "line": 1107,
+          "end_line": 1108,
+          "doc": ""
+        },
+        {
+          "name": "connection",
+          "kind": "method",
+          "signature": "connection(self, value)",
+          "line": 1110,
+          "end_line": 1111,
+          "doc": ""
+        },
+        {
+          "name": "cornerRadius",
+          "kind": "method",
+          "signature": "cornerRadius(self, value)",
+          "line": 1113,
+          "end_line": 1115,
+          "doc": ""
+        },
+        {
+          "name": "enableWrapAround",
+          "kind": "method",
+          "signature": "enableWrapAround(self, value)",
+          "line": 1117,
+          "end_line": 1118,
+          "doc": ""
+        },
+        {
+          "name": "entryFont",
+          "kind": "method",
+          "signature": "entryFont(self, value)",
+          "line": 1120,
+          "end_line": 1121,
+          "doc": ""
+        },
+        {
+          "name": "errorCorrection",
+          "kind": "method",
+          "signature": "errorCorrection(self, value)",
+          "line": 1123,
+          "end_line": 1124,
+          "doc": ""
+        },
+        {
+          "name": "excludes",
+          "kind": "method",
+          "signature": "excludes(self, value)",
+          "line": 1126,
+          "end_line": 1127,
+          "doc": ""
+        },
+        {
+          "name": "flags",
+          "kind": "method",
+          "signature": "flags(self, value)",
+          "line": 1129,
+          "end_line": 1140,
+          "doc": ""
+        },
+        {
+          "name": "font",
+          "kind": "method",
+          "signature": "font(self, value)",
+          "line": 1142,
+          "end_line": 1143,
+          "doc": ""
+        },
+        {
+          "name": "fontScale",
+          "kind": "method",
+          "signature": "fontScale(self, value)",
+          "line": 1145,
+          "end_line": 1148,
+          "doc": ""
+        },
+        {
+          "name": "foregroundColor",
+          "kind": "method",
+          "signature": "foregroundColor(self, value)",
+          "line": 1150,
+          "end_line": 1154,
+          "doc": ""
+        },
+        {
+          "name": "foregroundColorSelected",
+          "kind": "method",
+          "signature": "foregroundColorSelected(self, value)",
+          "line": 1156,
+          "end_line": 1157,
+          "doc": ""
+        },
+        {
+          "name": "foregroundGradient",
+          "kind": "method",
+          "signature": "foregroundGradient(self, value)",
+          "line": 1159,
+          "end_line": 1161,
+          "doc": ""
+        },
+        {
+          "name": "gradientMode",
+          "kind": "method",
+          "signature": "gradientMode(self, value)",
+          "line": 1163,
+          "end_line": 1164,
+          "doc": ""
+        },
+        {
+          "name": "hAlign",
+          "kind": "method",
+          "signature": "hAlign(self, value)",
+          "line": 1166,
+          "end_line": 1167,
+          "doc": ""
+        },
+        {
+          "name": "halign",
+          "kind": "method",
+          "signature": "halign(self, value)",
+          "line": 1170,
+          "end_line": 1171,
+          "doc": ""
+        },
+        {
+          "name": "headerFont",
+          "kind": "method",
+          "signature": "headerFont(self, value)",
+          "line": 1174,
+          "end_line": 1175,
+          "doc": ""
+        },
+        {
+          "name": "headerForegroundColor",
+          "kind": "method",
+          "signature": "headerForegroundColor(self, value)",
+          "line": 1177,
+          "end_line": 1178,
+          "doc": ""
+        },
+        {
+          "name": "horizontalAlignment",
+          "kind": "method",
+          "signature": "horizontalAlignment(self, value)",
+          "line": 1180,
+          "end_line": 1181,
+          "doc": ""
+        },
+        {
+          "name": "ignoreWidgets",
+          "kind": "method",
+          "signature": "ignoreWidgets(self, value)",
+          "line": 1183,
+          "end_line": 1184,
+          "doc": ""
+        },
+        {
+          "name": "includes",
+          "kind": "method",
+          "signature": "includes(self, value)",
+          "line": 1186,
+          "end_line": 1187,
+          "doc": ""
+        },
+        {
+          "name": "itemAlignment",
+          "kind": "method",
+          "signature": "itemAlignment(self, value)",
+          "line": 1189,
+          "end_line": 1190,
+          "doc": ""
+        },
+        {
+          "name": "itemCornerRadius",
+          "kind": "method",
+          "signature": "itemCornerRadius(self, value)",
+          "line": 1192,
+          "end_line": 1194,
+          "doc": ""
+        },
+        {
+          "name": "itemCornerRadiusMarked",
+          "kind": "method",
+          "signature": "itemCornerRadiusMarked(self, value)",
+          "line": 1196,
+          "end_line": 1198,
+          "doc": ""
+        },
+        {
+          "name": "itemCornerRadiusMarkedAndSelected",
+          "kind": "method",
+          "signature": "itemCornerRadiusMarkedAndSelected(self, value)",
+          "line": 1200,
+          "end_line": 1202,
+          "doc": ""
+        },
+        {
+          "name": "itemCornerRadiusSelected",
+          "kind": "method",
+          "signature": "itemCornerRadiusSelected(self, value)",
+          "line": 1204,
+          "end_line": 1206,
+          "doc": ""
+        },
+        {
+          "name": "itemGradient",
+          "kind": "method",
+          "signature": "itemGradient(self, value)",
+          "line": 1208,
+          "end_line": 1209,
+          "doc": ""
+        },
+        {
+          "name": "itemGradientMarked",
+          "kind": "method",
+          "signature": "itemGradientMarked(self, value)",
+          "line": 1211,
+          "end_line": 1212,
+          "doc": ""
+        },
+        {
+          "name": "itemGradientMarkedAndSelected",
+          "kind": "method",
+          "signature": "itemGradientMarkedAndSelected(self, value)",
+          "line": 1214,
+          "end_line": 1215,
+          "doc": ""
+        },
+        {
+          "name": "itemGradientSelected",
+          "kind": "method",
+          "signature": "itemGradientSelected(self, value)",
+          "line": 1217,
+          "end_line": 1218,
+          "doc": ""
+        },
+        {
+          "name": "itemHeight",
+          "kind": "method",
+          "signature": "itemHeight(self, value)",
+          "line": 1220,
+          "end_line": 1222,
+          "doc": ""
+        },
+        {
+          "name": "itemSpacing",
+          "kind": "method",
+          "signature": "itemSpacing(self, value)",
+          "line": 1224,
+          "end_line": 1227,
+          "doc": ""
+        },
+        {
+          "name": "itemWidth",
+          "kind": "method",
+          "signature": "itemWidth(self, value)",
+          "line": 1229,
+          "end_line": 1231,
+          "doc": ""
+        },
+        {
+          "name": "label",
+          "kind": "method",
+          "signature": "label(self, value)",
+          "line": 1233,
+          "end_line": 1234,
+          "doc": ""
+        },
+        {
+          "name": "layout",
+          "kind": "method",
+          "signature": "layout(self, value)",
+          "line": 1236,
+          "end_line": 1237,
+          "doc": ""
+        },
+        {
+          "name": "listOrientation",
+          "kind": "method",
+          "signature": "listOrientation(self, value)",
+          "line": 1239,
+          "end_line": 1240,
+          "doc": ""
+        },
+        {
+          "name": "noWrap",
+          "kind": "method",
+          "signature": "noWrap(self, value)",
+          "line": 1242,
+          "end_line": 1243,
+          "doc": ""
+        },
+        {
+          "name": "objectTypes",
+          "kind": "method",
+          "signature": "objectTypes(self, value)",
+          "line": 1246,
+          "end_line": 1247,
+          "doc": ""
+        },
+        {
+          "name": "orientation",
+          "kind": "method",
+          "signature": "orientation(self, value)",
+          "line": 1249,
+          "end_line": 1250,
+          "doc": ""
+        },
+        {
+          "name": "OverScan",
+          "kind": "method",
+          "signature": "OverScan(self, value)",
+          "line": 1252,
+          "end_line": 1254,
+          "doc": ""
+        },
+        {
+          "name": "overScan",
+          "kind": "method",
+          "signature": "overScan(self, value)",
+          "line": 1256,
+          "end_line": 1257,
+          "doc": ""
+        },
+        {
+          "name": "padding",
+          "kind": "method",
+          "signature": "padding(self, value)",
+          "line": 1259,
+          "end_line": 1261,
+          "doc": ""
+        },
+        {
+          "name": "pixmap",
+          "kind": "method",
+          "signature": "pixmap(self, value)",
+          "line": 1263,
+          "end_line": 1264,
+          "doc": ""
+        },
+        {
+          "name": "pointer",
+          "kind": "method",
+          "signature": "pointer(self, value)",
+          "line": 1266,
+          "end_line": 1270,
+          "doc": ""
+        },
+        {
+          "name": "position",
+          "kind": "method",
+          "signature": "position(self, value)",
+          "line": 1272,
+          "end_line": 1273,
+          "doc": ""
+        },
+        {
+          "name": "quietZone",
+          "kind": "method",
+          "signature": "quietZone(self, value)",
+          "line": 1275,
+          "end_line": 1276,
+          "doc": ""
+        },
+        {
+          "name": "resolution",
+          "kind": "method",
+          "signature": "resolution(self, value)",
+          "line": 1278,
+          "end_line": 1279,
+          "doc": ""
+        },
+        {
+          "name": "scale",
+          "kind": "method",
+          "signature": "scale(self, value)",
+          "line": 1281,
+          "end_line": 1282,
+          "doc": ""
+        },
+        {
+          "name": "scaleFlags",
+          "kind": "method",
+          "signature": "scaleFlags(self, value)",
+          "line": 1284,
+          "end_line": 1285,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarBackgroundColor",
+          "kind": "method",
+          "signature": "scrollbarBackgroundColor(self, value)",
+          "line": 1287,
+          "end_line": 1288,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarBackgroundGradient",
+          "kind": "method",
+          "signature": "scrollbarBackgroundGradient(self, value)",
+          "line": 1290,
+          "end_line": 1291,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarBackgroundPicture",
+          "kind": "method",
+          "signature": "scrollbarBackgroundPicture(self, value)",
+          "line": 1293,
+          "end_line": 1295,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarBackgroundPixmap",
+          "kind": "method",
+          "signature": "scrollbarBackgroundPixmap(self, value)",
+          "line": 1297,
+          "end_line": 1298,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarbackgroundPixmap",
+          "kind": "method",
+          "signature": "scrollbarbackgroundPixmap(self, value)",
+          "line": 1300,
+          "end_line": 1302,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarBorderColor",
+          "kind": "method",
+          "signature": "scrollbarBorderColor(self, value)",
+          "line": 1304,
+          "end_line": 1305,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarBorderWidth",
+          "kind": "method",
+          "signature": "scrollbarBorderWidth(self, value)",
+          "line": 1307,
+          "end_line": 1308,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarForegroundColor",
+          "kind": "method",
+          "signature": "scrollbarForegroundColor(self, value)",
+          "line": 1310,
+          "end_line": 1311,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarForegroundGradient",
+          "kind": "method",
+          "signature": "scrollbarForegroundGradient(self, value)",
+          "line": 1313,
+          "end_line": 1314,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarForegroundPixmap",
+          "kind": "method",
+          "signature": "scrollbarForegroundPixmap(self, value)",
+          "line": 1316,
+          "end_line": 1317,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarLength",
+          "kind": "method",
+          "signature": "scrollbarLength(self, value)",
+          "line": 1319,
+          "end_line": 1320,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarMode",
+          "kind": "method",
+          "signature": "scrollbarMode(self, value)",
+          "line": 1322,
+          "end_line": 1323,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarOffset",
+          "kind": "method",
+          "signature": "scrollbarOffset(self, value)",
+          "line": 1325,
+          "end_line": 1326,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarRadius",
+          "kind": "method",
+          "signature": "scrollbarRadius(self, value)",
+          "line": 1328,
+          "end_line": 1330,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarScroll",
+          "kind": "method",
+          "signature": "scrollbarScroll(self, value)",
+          "line": 1332,
+          "end_line": 1333,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarSliderBorderColor",
+          "kind": "method",
+          "signature": "scrollbarSliderBorderColor(self, value)",
+          "line": 1335,
+          "end_line": 1337,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarSliderBorderWidth",
+          "kind": "method",
+          "signature": "scrollbarSliderBorderWidth(self, value)",
+          "line": 1339,
+          "end_line": 1341,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarSliderForegroundColor",
+          "kind": "method",
+          "signature": "scrollbarSliderForegroundColor(self, value)",
+          "line": 1343,
+          "end_line": 1345,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarSliderPicture",
+          "kind": "method",
+          "signature": "scrollbarSliderPicture(self, value)",
+          "line": 1347,
+          "end_line": 1349,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarSliderPixmap",
+          "kind": "method",
+          "signature": "scrollbarSliderPixmap(self, value)",
+          "line": 1351,
+          "end_line": 1353,
+          "doc": ""
+        },
+        {
+          "name": "scrollbarWidth",
+          "kind": "method",
+          "signature": "scrollbarWidth(self, value)",
+          "line": 1355,
+          "end_line": 1356,
+          "doc": ""
+        },
+        {
+          "name": "scrollText",
+          "kind": "method",
+          "signature": "scrollText(self, value)",
+          "line": 1358,
+          "end_line": 1359,
+          "doc": ""
+        },
+        {
+          "name": "secondFont",
+          "kind": "method",
+          "signature": "secondFont(self, value)",
+          "line": 1361,
+          "end_line": 1363,
+          "doc": ""
+        },
+        {
+          "name": "secondfont",
+          "kind": "method",
+          "signature": "secondfont(self, value)",
+          "line": 1365,
+          "end_line": 1367,
+          "doc": ""
+        },
+        {
+          "name": "seek_pointer",
+          "kind": "method",
+          "signature": "seek_pointer(self, value)",
+          "line": 1369,
+          "end_line": 1370,
+          "doc": ""
+        },
+        {
+          "name": "seekPointer",
+          "kind": "method",
+          "signature": "seekPointer(self, value)",
+          "line": 1373,
+          "end_line": 1377,
+          "doc": ""
+        },
+        {
+          "name": "selection",
+          "kind": "method",
+          "signature": "selection(self, value)",
+          "line": 1379,
+          "end_line": 1380,
+          "doc": ""
+        },
+        {
+          "name": "selectionDisabled",
+          "kind": "method",
+          "signature": "selectionDisabled(self, value)",
+          "line": 1382,
+          "end_line": 1383,
+          "doc": ""
+        },
+        {
+          "name": "selectionPixmap",
+          "kind": "method",
+          "signature": "selectionPixmap(self, value)",
+          "line": 1386,
+          "end_line": 1387,
+          "doc": ""
+        },
+        {
+          "name": "selectionZoom",
+          "kind": "method",
+          "signature": "selectionZoom(self, value)",
+          "line": 1389,
+          "end_line": 1395,
+          "doc": ""
+        },
+        {
+          "name": "selectionZoomSize",
+          "kind": "method",
+          "signature": "selectionZoomSize(self, value)",
+          "line": 1397,
+          "end_line": 1401,
+          "doc": ""
+        },
+        {
+          "name": "separatorLineColor",
+          "kind": "method",
+          "signature": "separatorLineColor(self, value)",
+          "line": 1403,
+          "end_line": 1404,
+          "doc": ""
+        },
+        {
+          "name": "separatorLineSize",
+          "kind": "method",
+          "signature": "separatorLineSize(self, value)",
+          "line": 1406,
+          "end_line": 1407,
+          "doc": ""
+        },
+        {
+          "name": "shadowColor",
+          "kind": "method",
+          "signature": "shadowColor(self, value)",
+          "line": 1409,
+          "end_line": 1410,
+          "doc": ""
+        },
+        {
+          "name": "shadowOffset",
+          "kind": "method",
+          "signature": "shadowOffset(self, value)",
+          "line": 1412,
+          "end_line": 1413,
+          "doc": ""
+        },
+        {
+          "name": "size",
+          "kind": "method",
+          "signature": "size(self, value)",
+          "line": 1415,
+          "end_line": 1416,
+          "doc": ""
+        },
+        {
+          "name": "sliderPixmap",
+          "kind": "method",
+          "signature": "sliderPixmap(self, value)",
+          "line": 1418,
+          "end_line": 1420,
+          "doc": ""
+        },
+        {
+          "name": "spacing",
+          "kind": "method",
+          "signature": "spacing(self, value)",
+          "line": 1422,
+          "end_line": 1423,
+          "doc": ""
+        },
+        {
+          "name": "spacingColor",
+          "kind": "method",
+          "signature": "spacingColor(self, value)",
+          "line": 1425,
+          "end_line": 1426,
+          "doc": ""
+        },
+        {
+          "name": "stack",
+          "kind": "method",
+          "signature": "stack(self, value)",
+          "line": 1428,
+          "end_line": 1429,
+          "doc": ""
+        },
+        {
+          "name": "tabWidth",
+          "kind": "method",
+          "signature": "tabWidth(self, value)",
+          "line": 1431,
+          "end_line": 1432,
+          "doc": ""
+        },
+        {
+          "name": "tag",
+          "kind": "method",
+          "signature": "tag(self, value)",
+          "line": 1434,
+          "end_line": 1435,
+          "doc": ""
+        },
+        {
+          "name": "text",
+          "kind": "method",
+          "signature": "text(self, value)",
+          "line": 1437,
+          "end_line": 1440,
+          "doc": ""
+        },
+        {
+          "name": "textBorderColor",
+          "kind": "method",
+          "signature": "textBorderColor(self, value)",
+          "line": 1442,
+          "end_line": 1443,
+          "doc": ""
+        },
+        {
+          "name": "textBorderWidth",
+          "kind": "method",
+          "signature": "textBorderWidth(self, value)",
+          "line": 1445,
+          "end_line": 1446,
+          "doc": ""
+        },
+        {
+          "name": "textOffset",
+          "kind": "method",
+          "signature": "textOffset(self, value)",
+          "line": 1448,
+          "end_line": 1450,
+          "doc": ""
+        },
+        {
+          "name": "textPadding",
+          "kind": "method",
+          "signature": "textPadding(self, value)",
+          "line": 1452,
+          "end_line": 1454,
+          "doc": ""
+        },
+        {
+          "name": "title",
+          "kind": "method",
+          "signature": "title(self, value)",
+          "line": 1456,
+          "end_line": 1459,
+          "doc": ""
+        },
+        {
+          "name": "transparent",
+          "kind": "method",
+          "signature": "transparent(self, value)",
+          "line": 1461,
+          "end_line": 1462,
+          "doc": ""
+        },
+        {
+          "name": "underline",
+          "kind": "method",
+          "signature": "underline(self, value)",
+          "line": 1464,
+          "end_line": 1465,
+          "doc": ""
+        },
+        {
+          "name": "vAlign",
+          "kind": "method",
+          "signature": "vAlign(self, value)",
+          "line": 1467,
+          "end_line": 1468,
+          "doc": ""
+        },
+        {
+          "name": "valign",
+          "kind": "method",
+          "signature": "valign(self, value)",
+          "line": 1471,
+          "end_line": 1472,
+          "doc": ""
+        },
+        {
+          "name": "valueFont",
+          "kind": "method",
+          "signature": "valueFont(self, value)",
+          "line": 1475,
+          "end_line": 1476,
+          "doc": ""
+        },
+        {
+          "name": "verticalAlignment",
+          "kind": "method",
+          "signature": "verticalAlignment(self, value)",
+          "line": 1478,
+          "end_line": 1479,
+          "doc": ""
+        },
+        {
+          "name": "widgetBorderColor",
+          "kind": "method",
+          "signature": "widgetBorderColor(self, value)",
+          "line": 1481,
+          "end_line": 1482,
+          "doc": ""
+        },
+        {
+          "name": "widgetBorderWidth",
+          "kind": "method",
+          "signature": "widgetBorderWidth(self, value)",
+          "line": 1484,
+          "end_line": 1485,
+          "doc": ""
+        },
+        {
+          "name": "wrap",
+          "kind": "method",
+          "signature": "wrap(self, value)",
+          "line": 1487,
+          "end_line": 1488,
+          "doc": ""
+        },
+        {
+          "name": "zPosition",
+          "kind": "method",
+          "signature": "zPosition(self, value)",
+          "line": 1490,
+          "end_line": 1491,
+          "doc": ""
+        }
+      ],
+      "summary": "Dispatches collected XML attribute names to native GUI methods; it is a shared dispatcher, not a guarantee that every widget supports every attribute."
+    },
+    {
+      "name": "additionalWidget",
+      "kind": "class",
+      "signature": "additionalWidget",
+      "line": 1791,
+      "end_line": 1793,
+      "doc": "",
+      "methods": [
+        {
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self)",
+          "line": 1792,
+          "end_line": 1793,
+          "doc": ""
+        }
+      ],
+      "summary": "Internal holder for a decorative native widget and its skin attributes."
+    },
+    {
+      "name": "ComponentTemplates",
+      "kind": "class",
+      "signature": "ComponentTemplates",
+      "line": 1796,
+      "end_line": 1834,
+      "doc": "",
+      "methods": [
+        {
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self)",
+          "line": 1797,
+          "end_line": 1800,
+          "doc": ""
+        },
+        {
+          "name": "add",
+          "kind": "method",
+          "signature": "add(self, template, fileName)",
+          "line": 1802,
+          "end_line": 1815,
+          "doc": ""
+        },
+        {
+          "name": "clear",
+          "kind": "method",
+          "signature": "clear(self)",
+          "line": 1817,
+          "end_line": 1820,
+          "doc": ""
+        },
+        {
+          "name": "get",
+          "kind": "method",
+          "signature": "get(self, component, name)",
+          "line": 1822,
+          "end_line": 1823,
+          "doc": ""
+        },
+        {
+          "name": "names",
+          "kind": "method",
+          "signature": "names(self, component)",
+          "line": 1825,
+          "end_line": 1828,
+          "doc": ""
+        },
+        {
+          "name": "isChanged",
+          "kind": "method",
+          "signature": "isChanged(self)",
+          "line": 1830,
+          "end_line": 1834,
+          "doc": ""
+        }
+      ],
+      "summary": "Stores and retrieves component XML templates and tracks changes."
+    },
+    {
+      "name": "SizeTuple",
+      "kind": "class",
+      "signature": "SizeTuple",
+      "line": 1843,
+      "end_line": 1851,
+      "doc": "",
+      "methods": [
+        {
+          "name": "__str__",
+          "kind": "method",
+          "signature": "__str__(self)",
+          "line": 1844,
+          "end_line": 1845,
+          "doc": ""
+        },
+        {
+          "name": "split",
+          "kind": "method",
+          "signature": "split(self, *args)",
+          "line": 1847,
+          "end_line": 1848,
+          "doc": ""
+        },
+        {
+          "name": "strip",
+          "kind": "method",
+          "signature": "strip(self, *args)",
+          "line": 1850,
+          "end_line": 1851,
+          "doc": ""
+        }
+      ],
+      "summary": "Tuple adapter used for already-parsed coordinates while retaining string-like methods expected by skin code."
+    },
+    {
+      "name": "SkinContext",
+      "kind": "class",
+      "signature": "SkinContext",
+      "line": 1854,
+      "end_line": 1918,
+      "doc": "",
+      "methods": [
+        {
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, parent=None, pos=None, size=None, font=None)",
+          "line": 1855,
+          "end_line": 1874,
+          "doc": ""
+        },
+        {
+          "name": "__str__",
+          "kind": "method",
+          "signature": "__str__(self)",
+          "line": 1877,
+          "end_line": 1878,
+          "doc": ""
+        },
+        {
+          "name": "parse",
+          "kind": "method",
+          "signature": "parse(self, pos, size, font)",
+          "line": 1880,
+          "end_line": 1918,
+          "doc": ""
+        }
+      ],
+      "summary": "Layout origin, available size, scale and font context; edge-docked children can consume available space."
+    },
+    {
+      "name": "SkinContextStack",
+      "kind": "class",
+      "signature": "SkinContextStack",
+      "line": 1923,
+      "end_line": 1954,
+      "doc": "",
+      "methods": [
+        {
+          "name": "parse",
+          "kind": "method",
+          "signature": "parse(self, pos, size, font)",
+          "line": 1924,
+          "end_line": 1954,
+          "doc": ""
+        }
+      ],
+      "summary": "Layout context that places children without consuming the available parent rectangle."
+    },
+    {
+      "name": "SkinContextVertical",
+      "kind": "class",
+      "signature": "SkinContextVertical",
+      "line": 1957,
+      "end_line": 2008,
+      "doc": "",
+      "methods": [
+        {
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, parent=None, pos=None, size=None, font=None)",
+          "line": 1958,
+          "end_line": 1962,
+          "doc": ""
+        },
+        {
+          "name": "parse",
+          "kind": "method",
+          "signature": "parse(self, pos, size, font)",
+          "line": 1964,
+          "end_line": 2008,
+          "doc": ""
+        }
+      ],
+      "summary": "Context for vertically arranged content and its remaining space."
+    },
+    {
+      "name": "SkinContextHorizontal",
+      "kind": "class",
+      "signature": "SkinContextHorizontal",
+      "line": 2011,
+      "end_line": 2062,
+      "doc": "",
+      "methods": [
+        {
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, parent=None, pos=None, size=None, font=None)",
+          "line": 2012,
+          "end_line": 2016,
+          "doc": ""
+        },
+        {
+          "name": "parse",
+          "kind": "method",
+          "signature": "parse(self, pos, size, font)",
+          "line": 2018,
+          "end_line": 2062,
+          "doc": ""
+        }
+      ],
+      "summary": "Context for horizontally arranged content and its remaining space."
+    },
+    {
+      "name": "TemplateParser",
+      "kind": "class",
+      "signature": "TemplateParser",
+      "line": 2065,
+      "end_line": 2289,
+      "doc": "",
+      "methods": [
+        {
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, debug=False)",
+          "line": 2066,
+          "end_line": 2075,
+          "doc": ""
+        },
+        {
+          "name": "resolveColor",
+          "kind": "method",
+          "signature": "resolveColor(self, color)",
+          "line": 2077,
+          "end_line": 2089,
+          "doc": ""
+        },
+        {
+          "name": "resolvePixmap",
+          "kind": "method",
+          "signature": "resolvePixmap(self, pixmap)",
+          "line": 2091,
+          "end_line": 2098,
+          "doc": ""
+        },
+        {
+          "name": "readTemplate",
+          "kind": "method",
+          "signature": "readTemplate(self, templateName)",
+          "line": 2100,
+          "end_line": 2101,
+          "doc": ""
+        },
+        {
+          "name": "getGradient",
+          "kind": "method",
+          "signature": "getGradient(self, foregroundGradient, foregroundGradientSelected)",
+          "line": 2103,
+          "end_line": 2126,
+          "doc": ""
+        },
+        {
+          "name": "collectColors",
+          "kind": "method",
+          "signature": "collectColors(self, attributes, widgetColors=None)",
+          "line": 2128,
+          "end_line": 2135,
+          "doc": ""
+        },
+        {
+          "name": "collectAttributes",
+          "kind": "method",
+          "signature": "collectAttributes(self, node, context, ignore=(), excludeItemIndexes=None, includeItemIndexes=None)",
+          "line": 2137,
+          "end_line": 2227,
+          "doc": ""
+        },
+        {
+          "name": "processPanel",
+          "kind": "method",
+          "signature": "processPanel(self, widget, context, excludeItemIndexes=None, includeItemIndexes=None)",
+          "line": 2229,
+          "end_line": 2286,
+          "doc": ""
+        },
+        {
+          "name": "processNone",
+          "kind": "method",
+          "signature": "processNone(self, widget, context)",
+          "line": 2288,
+          "end_line": 2289,
+          "doc": ""
+        }
+      ],
+      "summary": "Internal parser for list/content XML templates. Listed for discovery; full list-template tutorials belong to a later chapter."
+    },
+    {
+      "name": "SkinError",
+      "kind": "class",
+      "signature": "SkinError",
+      "line": 2292,
+      "end_line": 2297,
+      "doc": "",
+      "methods": [
+        {
+          "name": "__init__",
+          "kind": "method",
+          "signature": "__init__(self, errorMessage)",
+          "line": 2293,
+          "end_line": 2294,
+          "doc": ""
+        },
+        {
+          "name": "__str__",
+          "kind": "method",
+          "signature": "__str__(self)",
+          "line": 2296,
+          "end_line": 2297,
+          "doc": ""
+        }
+      ],
+      "summary": "Skin-processing exception type whose message can include the configured skin context."
+    }
+  ],
+  "components": [
+    {
+      "name": "Boolean",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/Boolean.py",
+      "line": 13,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "boolean"
+      ],
+      "sha256": "a164b0226e8d8ffbab339aac629e811b21f941a25d406402efff34a289f814a7"
+    },
+    {
+      "name": "CanvasSource",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/CanvasSource.py",
+      "line": 4,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "drawlist"
+      ],
+      "sha256": "4c8e251b3c5f8e96d5fcf432cb6afae71265378a7f959fc89f630083924b4aa9"
+    },
+    {
+      "name": "Clock",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/Clock.py",
+      "line": 9,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "time"
+      ],
+      "sha256": "28644ff8e468d087fca7bbbc307b9b93b38a6434490e331704af0f7bc246b4c7"
+    },
+    {
+      "name": "Config",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/Config.py",
+      "line": 4,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "config"
+      ],
+      "sha256": "26cf6b2f706147016a5e04b14fc23b205bf7a8ee86d416db1fc3a0195b34d5fa"
+    },
+    {
+      "name": "CurrentService",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/CurrentService.py",
+      "line": 9,
+      "bases": [
+        "PerServiceBase",
+        "Source"
+      ],
+      "properties": [
+        "service",
+        "isDVBI",
+        "serviceref",
+        "currentBouquetName"
+      ],
+      "sha256": "6bdc7ca23f90da97b9d3544605538e2e088e691078b2a569d3ab3c8be9cdafc4"
+    },
+    {
+      "name": "Event",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/Event.py",
+      "line": 4,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "event"
+      ],
+      "sha256": "27351a555c8fdb1002b25e6341c9a1a8c26190b100f8cc0f74d1013c7cebf2c2"
+    },
+    {
+      "name": "EventInfo",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/EventInfo.py",
+      "line": 87,
+      "bases": [
+        "PerServiceBase",
+        "Source"
+      ],
+      "properties": [
+        "event"
+      ],
+      "sha256": "41f21f6f45e481f401a4542d2df9f62844e419414177692d082fa49456424a67"
+    },
+    {
+      "name": "FrontendInfo",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/FrontendInfo.py",
+      "line": 9,
+      "bases": [
+        "Source",
+        "PerServiceBase"
+      ],
+      "properties": [],
+      "sha256": "b036c1a357429483d3cfa800147ccb2a58777fc0af73762aa6a5b3ad36ef4578"
+    },
+    {
+      "name": "FrontendStatus",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/FrontendStatus.py",
+      "line": 5,
+      "bases": [
+        "Source"
+      ],
+      "properties": [],
+      "sha256": "4e024ca164917367daed94f88961afb6f85b255ff1d00fa2c56c0580ef6dc8e5"
+    },
+    {
+      "name": "HbbtvApplication",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/HbbtvApplication.py",
+      "line": 5,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "boolean",
+        "name"
+      ],
+      "sha256": "4ca2a2189dc8860d06fc4860d271fa954535d0615d65a86a0dfaefa31a062438"
+    },
+    {
+      "name": "List",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/List.py",
+      "line": 5,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "list",
+        "current",
+        "index",
+        "template",
+        "mode",
+        "style",
+        "indexNames",
+        "visible"
+      ],
+      "sha256": "2202ca985b741f4746a90506c7f5b362034b6bd8b8436acac567d5e958d065e1"
+    },
+    {
+      "name": "Progress",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/Progress.py",
+      "line": 4,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "value"
+      ],
+      "sha256": "70cea2a06585fe8d5a97a27545b1b75278da2a78ebf26213eb45e85aa165ece9"
+    },
+    {
+      "name": "RdsDecoder",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/RdsDecoder.py",
+      "line": 8,
+      "bases": [
+        "PerServiceBase",
+        "Source"
+      ],
+      "properties": [
+        "decoder"
+      ],
+      "sha256": "88f590a85e9d88d9bffe75785232a57a3baccd45fae3abcc243650d55f352207"
+    },
+    {
+      "name": "RecordState",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/RecordState.py",
+      "line": 6,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "boolean",
+        "value"
+      ],
+      "sha256": "660c5ca3f4d63e7ae654bc02b213eb9ab7f30b8d2e11ca6f033cf8c4eba9df52"
+    },
+    {
+      "name": "ServiceEvent",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/ServiceEvent.py",
+      "line": 7,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "event",
+        "info"
+      ],
+      "sha256": "bba388e0230e6de58e91a8e3c0554a957ce0d53486fd0ee031fc4d9aca0cb8b2"
+    },
+    {
+      "name": "ServiceList",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/ServiceList.py",
+      "line": 6,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "list",
+        "root"
+      ],
+      "sha256": "cf249e05b33943b37e5d2c20ee12c4570d107fe3cf5339c98e9047965dc3406e"
+    },
+    {
+      "name": "Source",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/Source.py",
+      "line": 4,
+      "bases": [
+        "Element"
+      ],
+      "properties": [],
+      "sha256": "7803fe01e02f64972709f1968d691e29d27878fc0dc7f115f78059b5a0b97572"
+    },
+    {
+      "name": "StaticText",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/StaticText.py",
+      "line": 4,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "text",
+        "boolean"
+      ],
+      "sha256": "4143bc5f432c142f8d650a9eae3acaa05b9674948731b7c58017c5ad85962c42"
+    },
+    {
+      "name": "StreamService",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/StreamService.py",
+      "line": 9,
+      "bases": [
+        "Source"
+      ],
+      "properties": [
+        "service"
+      ],
+      "sha256": "93a631af92bf50b8500daef91bd8d2a3e1182c4048ab7a02d84761639c881908"
+    },
+    {
+      "name": "TunerInfo",
+      "category": "Sources",
+      "path": "lib/python/Components/Sources/TunerInfo.py",
+      "line": 6,
+      "bases": [
+        "Source"
+      ],
+      "properties": [],
+      "sha256": "30031ed39f898cbd5ea9f2cc64591f3f2e60679bca9085114029dbefb2710004"
+    },
+    {
+      "name": "AnalogClock",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/AnalogClock.py",
+      "line": 9,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "975af0268e575d3be004026683cd8c4ce90876eb27c3cae18a30526f82ceb502"
+    },
+    {
+      "name": "ChannelNumbers",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ChannelNumbers.py",
+      "line": 5,
+      "bases": [],
+      "properties": [],
+      "sha256": "4d1236e1bce7a9e06227f896606a3d5bb95cf3506862daa22e736e8fcb5a0c44"
+    },
+    {
+      "name": "ClientsStreaming",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ClientsStreaming.py",
+      "line": 11,
+      "bases": [
+        "Converter",
+        "Poll"
+      ],
+      "properties": [
+        "boolean",
+        "text"
+      ],
+      "sha256": "763034b3e8e7a089b7fc996774093d47d61a9a1e7a0b75b131a34b20ea1c5286"
+    },
+    {
+      "name": "ClockToText",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ClockToText.py",
+      "line": 7,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "6afc34aa1d14069ec990f75b3deec59a3440a00e3f5a33f553c9d8842858449d"
+    },
+    {
+      "name": "Combine",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/Combine.py",
+      "line": 5,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "value"
+      ],
+      "sha256": "877dbb0d9302b84c8f6f128c7434b31ab393be6a5c7def83042823641404b1bc"
+    },
+    {
+      "name": "ConditionalShowHide",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ConditionalShowHide.py",
+      "line": 6,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [],
+      "sha256": "34dd484923ed0ab80011cee10a0da12c64185455b2a78a7904970e57dafd0856"
+    },
+    {
+      "name": "ConfigEntryTest",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ConfigEntryTest.py",
+      "line": 6,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "boolean"
+      ],
+      "sha256": "f3489af2295c6013d95e21b47df667afd69d905ad851a8dd358960d89c94f80b"
+    },
+    {
+      "name": "ConfigEntryTestVisible",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ConfigEntryTestVisible.py",
+      "line": 5,
+      "bases": [
+        "ConfigEntryTest"
+      ],
+      "properties": [],
+      "sha256": "b1498ed33c8a41aee7868a3b8c078913de8ab344edc75bad65dc2926a59c2dfb"
+    },
+    {
+      "name": "Converter",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/Converter.py",
+      "line": 4,
+      "bases": [
+        "Element"
+      ],
+      "properties": [],
+      "sha256": "968f9534c18ca58c32af3c0618126bfd88de1087fd21af42d065cd918d83728f"
+    },
+    {
+      "name": "ConverterRotator",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ConverterRotator.py",
+      "line": 13,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "ce76bff976759d5cdfb5788254388a732e1c2f9c922562abefefae33c97a7aab"
+    },
+    {
+      "name": "CryptoInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/CryptoInfo.py",
+      "line": 8,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "af97d8f8011cbb93364bf2670a6a4962e964e7e5a773d73ff731267879d6f8c2"
+    },
+    {
+      "name": "EGAnalogic",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/EGAnalogic.py",
+      "line": 8,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "value"
+      ],
+      "sha256": "0f2a552c0c615634018517b96beb97b68f93dabeb5caa9b238c19093f5e4c5d9"
+    },
+    {
+      "name": "EtAnalogClock",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/EtAnalogClock.py",
+      "line": 4,
+      "bases": [
+        "AnalogClock"
+      ],
+      "properties": [],
+      "sha256": "c6f1579304a14103d426ff407432e90d576b838a53199fc0ce032dc6d25c1e15"
+    },
+    {
+      "name": "EventInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/EventInfo.py",
+      "line": 157,
+      "bases": [
+        "Converter",
+        "Poll"
+      ],
+      "properties": [
+        "boolean",
+        "text",
+        "time",
+        "value"
+      ],
+      "sha256": "664df79518d0dc510cd4bc5b8d7f565c5b197256ddd5099748cfd3fe510f3d73"
+    },
+    {
+      "name": "EventName",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/EventName.py",
+      "line": 4,
+      "bases": [
+        "EventInfo"
+      ],
+      "properties": [],
+      "sha256": "e0a761dc70d3d3c9d29ce4ab27df49b7bb681fd84a440c3b3ef57be921a2ba57"
+    },
+    {
+      "name": "EventTime",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/EventTime.py",
+      "line": 4,
+      "bases": [
+        "EventInfo"
+      ],
+      "properties": [],
+      "sha256": "c090db00e58148c7f4eb9a2717c9eaadd5ea3bfddc03219f7d8d85d6d203238e"
+    },
+    {
+      "name": "ExtendedServiceInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ExtendedServiceInfo.py",
+      "line": 11,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "53ade1c7b505c32cc1b3555daf8de02e01a498858078caf7cfb51410c84d6af1"
+    },
+    {
+      "name": "ExtremeInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ExtremeInfo.py",
+      "line": 9,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "boolean",
+        "text"
+      ],
+      "sha256": "f6a59302ee29e9c8c6a449a5ef5683876dca0bd780bd8ea08acdd9da2197f5e1"
+    },
+    {
+      "name": "FrontendInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/FrontendInfo.py",
+      "line": 10,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "boolean",
+        "text",
+        "value"
+      ],
+      "sha256": "e00af0e9e85cb215cf7bf3d8bbeaf26336db856c3ad2dcf9e912e8e4d524a3e4"
+    },
+    {
+      "name": "HbbtvApplicationInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/HbbtvApplicationInfo.py",
+      "line": 5,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "dd6b9b3143a5694e3e75670d6d19554a7937df0b3543d2121493519a13b7a391"
+    },
+    {
+      "name": "MenuEntryCompare",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/MenuEntryCompare.py",
+      "line": 5,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "boolean"
+      ],
+      "sha256": "3c9d569f6a4398709d5f94c1bfaa921d43b2a29f6bb53243d9088298e0dc73e8"
+    },
+    {
+      "name": "MovieInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/MovieInfo.py",
+      "line": 10,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "015b923e3b1bf748fe9173182a4bdb14efaf5ab6f65a94649a5b238e63a32652"
+    },
+    {
+      "name": "MovieReference",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/MovieReference.py",
+      "line": 16,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "daabbd958788eaa463534e607b3400e4e627e3f464b2756d32aa86dda01e753d"
+    },
+    {
+      "name": "PliExtraInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/PliExtraInfo.py",
+      "line": 39,
+      "bases": [
+        "Converter",
+        "Poll"
+      ],
+      "properties": [
+        "boolean",
+        "text"
+      ],
+      "sha256": "29786aac5192a139c4dde56c083b3818a630de0850f88e4cadd11598ef46b729"
+    },
+    {
+      "name": "Poll",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/Poll.py",
+      "line": 4,
+      "bases": [],
+      "properties": [
+        "poll_interval",
+        "poll_enabled"
+      ],
+      "sha256": "396b53bb9fc28e33d6d3fd126b4bd56d8dff7bf22785b939053777be1ed96fc0"
+    },
+    {
+      "name": "ProgressToText",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ProgressToText.py",
+      "line": 5,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "f14a39e00d1e9800c55b247b29ff42544884d350e8696fb9675721c56011fb65"
+    },
+    {
+      "name": "pstrCnvrt",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/pstrCnvrt.py",
+      "line": 13,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "f8f9e9510718ff144a5bf6914719c049513ea6948fa66b0ba8c1bf31747abe9e"
+    },
+    {
+      "name": "RdsInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/RdsInfo.py",
+      "line": 7,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "boolean",
+        "text"
+      ],
+      "sha256": "c5d37574cf0e6fa1799801a82a1adc9c746eb803e99876197cda8021497c90c7"
+    },
+    {
+      "name": "RemainingToText",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/RemainingToText.py",
+      "line": 8,
+      "bases": [
+        "Converter",
+        "Poll"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "e8e881c1f95e662f7e823203676dab8f51f6e8bc9bd7ec0f7d7e889c16ac36a5"
+    },
+    {
+      "name": "RemoteControlInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/RemoteControlInfo.py",
+      "line": 19,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text",
+        "value",
+        "boolean"
+      ],
+      "sha256": "74fd1ee79f86550e523998590de5912f39cf7606965497427eafabb842c0e50b"
+    },
+    {
+      "name": "SCServicePosition",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/SCServicePosition.py",
+      "line": 10,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "cutlist",
+        "length",
+        "position",
+        "text",
+        "value"
+      ],
+      "sha256": "d4837b22bb05bfadd2b640aa16abc12b0f7031ff20c7c6727f3355746ce79e89"
+    },
+    {
+      "name": "SensorToText",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/SensorToText.py",
+      "line": 4,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "ba29e35bbc42703f33e3f81dc627ca8d0c5287d73a50941aa6ed12674f57b28a"
+    },
+    {
+      "name": "ServiceInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ServiceInfo.py",
+      "line": 13,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "boolean",
+        "text",
+        "value"
+      ],
+      "sha256": "618ee37a04ccc597ba977e7c5535c829e35c75b9484cca83f94e11df5d1dc2aa"
+    },
+    {
+      "name": "ServiceName",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ServiceName.py",
+      "line": 13,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "30b6789b04812278310fb01f06464c84acaae3ce3879c31b49953afea7154a05"
+    },
+    {
+      "name": "ServiceName2",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ServiceName2.py",
+      "line": 33,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "18224247b66027b9832212f13133c117dd47e8babdd94bb2eef829d008fb9786"
+    },
+    {
+      "name": "ServiceOrbitalPosition",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ServiceOrbitalPosition.py",
+      "line": 8,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "5d914b0bfed9d53a1c617c517591a63bef7ef89dde3e4cb61208ae0b7c9a58d2"
+    },
+    {
+      "name": "ServicePosition",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ServicePosition.py",
+      "line": 11,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "cutlist",
+        "length",
+        "position",
+        "text",
+        "value"
+      ],
+      "sha256": "579e7223db4c3b371b236c82fb6ee0925cb3fa9b3536c3e940f38e0f87a91350"
+    },
+    {
+      "name": "ServiceTime",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ServiceTime.py",
+      "line": 7,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "time"
+      ],
+      "sha256": "3817ac77842996e0f7925a431161964bd6b146aeeaf355b3d87d73a879da98de"
+    },
+    {
+      "name": "SmartInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/SmartInfo.py",
+      "line": 10,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "e3c53ae8414338558465ff70394104f8bab9d6f9d7a5749a47751c4ab41e5eec"
+    },
+    {
+      "name": "StaticMultiList",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/StaticMultiList.py",
+      "line": 6,
+      "bases": [
+        "StringList"
+      ],
+      "properties": [],
+      "sha256": "daff91fc761458365a3d944679dd4badaee707839f6995011c92086351e8c5c6"
+    },
+    {
+      "name": "StaticText",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/StaticText.py",
+      "line": 4,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [],
+      "sha256": "b642197f8efdca269d32b7ff0acac634b36818ae22a0bc02842ae1e48755e30d"
+    },
+    {
+      "name": "Streaming",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/Streaming.py",
+      "line": 11,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "aaa019227d1499cdc33f48d3e8471e346d5049e70c2dd3f69d722f69392dbf01"
+    },
+    {
+      "name": "Streaming2",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/Streaming2.py",
+      "line": 11,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "f395432e9bc681b09229b53037374f424d476ee6fe904aa83e592d8bdab35ee7"
+    },
+    {
+      "name": "StringList",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/StringList.py",
+      "line": 7,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "current",
+        "index"
+      ],
+      "sha256": "5e1fd034f773d61756eee2b623e2499646fb2369f68753e572fbc81744a57d46"
+    },
+    {
+      "name": "StringListSelection",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/StringListSelection.py",
+      "line": 5,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "f859449aa8fb2e59c607c6d933b06b0d025157f9e7c72bd8eaba5c135c2c8e16"
+    },
+    {
+      "name": "TemplatedMultiContent",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/TemplatedMultiContent.py",
+      "line": 6,
+      "bases": [
+        "StringList"
+      ],
+      "properties": [],
+      "sha256": "dc672cc76888f8a38bad0cbc08eb586d33b66b402c12916261e82bc45392a02f"
+    },
+    {
+      "name": "TextCase",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/TextCase.py",
+      "line": 5,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "2892565e6207fad42c574000ca12581d1c97c94d824e1c6ed6936aa599c8d911"
+    },
+    {
+      "name": "TrackInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/TrackInfo.py",
+      "line": 8,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "9093a815f9d2690230de6008e3978c5fbf432a516610cdde1f885d58cb127e3d"
+    },
+    {
+      "name": "TransponderInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/TransponderInfo.py",
+      "line": 9,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "boolean",
+        "text"
+      ],
+      "sha256": "7c102d8c4f9ae95de34dd4a3dfea3dbf37c8230d51ec38cf78b45552d0650d2b"
+    },
+    {
+      "name": "TunerInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/TunerInfo.py",
+      "line": 6,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "boolean",
+        "text",
+        "value"
+      ],
+      "sha256": "71cc679292fe8d993579c5723b8150c7758eeef68de68a2888f64a8155420702"
+    },
+    {
+      "name": "ValueBitTest",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ValueBitTest.py",
+      "line": 5,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "boolean"
+      ],
+      "sha256": "099656838689c201645e3dc66fe303d8281c2f81ce55822a65c3fdfff77a625b"
+    },
+    {
+      "name": "ValueRange",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ValueRange.py",
+      "line": 5,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "boolean"
+      ],
+      "sha256": "802c6a41bdb14b0303dc239139d6b00e6d0d13bca222ff9e9f51633341072ee0"
+    },
+    {
+      "name": "ValueToPixmap",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/ValueToPixmap.py",
+      "line": 8,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "pixmap"
+      ],
+      "sha256": "83da489bd2c31f6761fa76be6a85efaff95c00a5cb6283fed4e6a08f78e3a05e"
+    },
+    {
+      "name": "VAudioInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/VAudioInfo.py",
+      "line": 8,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "0080f1a5e5ee5adba87a4bef1a29dee711945df6f2424814425c6b959961df37"
+    },
+    {
+      "name": "VExtraNumText",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/VExtraNumText.py",
+      "line": 23,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text",
+        "value"
+      ],
+      "sha256": "974daea7f2a703e58123f370233d9a62ec1e2e48dc17fa79c441aa12f7b84604"
+    },
+    {
+      "name": "VfdDisplay",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/VfdDisplay.py",
+      "line": 11,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "dcc62b895bebfa80569719efec077908b0298be6a765e79b0093c332420384c6"
+    },
+    {
+      "name": "VNetSpeedInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/VNetSpeedInfo.py",
+      "line": 22,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "bb2a02cf6573bf91ae1bd99e92ca574890e36c5dd2998c98b2dac3b578936110"
+    },
+    {
+      "name": "VServiceInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/VServiceInfo.py",
+      "line": 7,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "boolean",
+        "text",
+        "value"
+      ],
+      "sha256": "ea0ae9776b79e0b67d9c47a1b95c04c08893b6aebc9bdaa5df2fdd2fd88bcff8"
+    },
+    {
+      "name": "VServiceOrbitalPosition",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/VServiceOrbitalPosition.py",
+      "line": 7,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "bfbb47fea3723d0ecd8d33433424436c7fe8dda79844f35a21adcb04849d8fe1"
+    },
+    {
+      "name": "VtiInfo",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/VtiInfo.py",
+      "line": 9,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "boolean",
+        "text"
+      ],
+      "sha256": "4111d7804ccf8abb288cb3e10a05ee1576b22dbf35945499904e97265e188d69"
+    },
+    {
+      "name": "VtiTempFan",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/VtiTempFan.py",
+      "line": 6,
+      "bases": [
+        "Poll",
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "fb4d7741f3f98c0661c590fb4301dedbd0104dabbeb3a9aa361f234ca623fbf1"
+    },
+    {
+      "name": "VWeather",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/VWeather.py",
+      "line": 32,
+      "bases": [
+        "Converter"
+      ],
+      "properties": [
+        "text"
+      ],
+      "sha256": "2f56eb27f127ff8630893c6826bb0bfcb4e42a272fdd61486a937487de86b961"
+    },
+    {
+      "name": "XmlMultiContent",
+      "category": "Converter",
+      "path": "lib/python/Components/Converter/XmlMultiContent.py",
+      "line": 205,
+      "bases": [
+        "StringList",
+        "MultiContentTemplateParser"
+      ],
+      "properties": [],
+      "sha256": "f169ce96028ce5ff9f26f6cbfd2a302add48f47ce14f762f02ae0479756784da"
+    },
+    {
+      "name": "AnalogClockLCD",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/AnalogClockLCD.py",
+      "line": 10,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "8394fdb40bd67952dd4f0261992deb99d7011ab82a6dedd6dcd9f3f93651ddfe"
+    },
+    {
+      "name": "AudioIcon",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/AudioIcon.py",
+      "line": 7,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "871dcaa014859c66e06d1ca213995c634c6ce9edd7eec7744028ac8c7dcf9b4b"
+    },
+    {
+      "name": "Canvas",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/Canvas.py",
+      "line": 5,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "a21cb4afe227aa2e3740c71e8096f90534a4e5a8f0b3d9331ed5b9d834a291bc"
+    },
+    {
+      "name": "ChannelNumber",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/ChannelNumber.py",
+      "line": 6,
+      "bases": [
+        "Renderer",
+        "VariableText"
+      ],
+      "properties": [],
+      "sha256": "0a0b967b22513f1a560aa6e8b580f4c286bae5d3dd6774b55addfc777dd35749"
+    },
+    {
+      "name": "CiModuleControl",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/CiModuleControl.py",
+      "line": 10,
+      "bases": [
+        "Renderer",
+        "VariableText"
+      ],
+      "properties": [],
+      "sha256": "5c3964f6d4214ff001801bb7ead03182870a999885493dee1835c31809133323"
+    },
+    {
+      "name": "Cover",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/Cover.py",
+      "line": 9,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "21e9a5fb8b532e5a96842b4387a2290ae696f66842ca3289bd26d2941d8d00e2"
+    },
+    {
+      "name": "EGclock",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/EGclock.py",
+      "line": 6,
+      "bases": [
+        "VariableValue",
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "97e0451be3ea7737d23a2d2606d298f38ae2adf62fed695596a8b4ef0dac995c"
+    },
+    {
+      "name": "EtAnalogClockLCD",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/EtAnalogClockLCD.py",
+      "line": 4,
+      "bases": [
+        "AnalogClockLCD"
+      ],
+      "properties": [],
+      "sha256": "0f8eedeac70d9f8576b05cb7e9b9d2aa75e400006a46d692347e8c25f5b7c530"
+    },
+    {
+      "name": "FixedLabel",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/FixedLabel.py",
+      "line": 5,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "6224312f055397d04434e171341278d85bf1358c007688cc14a5724e7957a371"
+    },
+    {
+      "name": "FrontpanelLed",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/FrontpanelLed.py",
+      "line": 6,
+      "bases": [
+        "Element"
+      ],
+      "properties": [],
+      "sha256": "953c5c5f1f3c08bbc730bc9c7b8984d564c5a38e58de36af87ea383bc3247c6f"
+    },
+    {
+      "name": "Label",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/Label.py",
+      "line": 6,
+      "bases": [
+        "VariableText",
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "5bc63df4efad3b38a3a77afcdcb8e2968eee23202782f4c6692393622c3968cb"
+    },
+    {
+      "name": "LcdPicon",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/LcdPicon.py",
+      "line": 123,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "432c61ab0d72095a8fca67f6641075e29f4ded15a3dc9b6773f6ede4f628dafb"
+    },
+    {
+      "name": "Listbox",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/Listbox.py",
+      "line": 14,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [
+        "wrapAround",
+        "content",
+        "selectionEnabled",
+        "index",
+        "scrollbarMode"
+      ],
+      "sha256": "a0ca8c77f5d6491e2779b5970d9dce4f2fca7e76e28c34d26e01fe5c59f19342"
+    },
+    {
+      "name": "NextEpgInfo",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/NextEpgInfo.py",
+      "line": 7,
+      "bases": [
+        "Renderer",
+        "VariableText"
+      ],
+      "properties": [],
+      "sha256": "1062c4c7549f5ad917078c75fd46362450965cf433956f8ec08cd562db5581e2"
+    },
+    {
+      "name": "NextEvent",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/NextEvent.py",
+      "line": 31,
+      "bases": [
+        "Renderer",
+        "VariableText"
+      ],
+      "properties": [],
+      "sha256": "832fb20f9ee380e064f1b5495b0da0edaa2d1ff15d4d354e911c6c078890bc99"
+    },
+    {
+      "name": "NextEvents",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/NextEvents.py",
+      "line": 7,
+      "bases": [
+        "VariableText",
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "d92bc0def0bf9128a32f7973bf8054b822a87bf4c92125d24b3e7475f5f99684"
+    },
+    {
+      "name": "Picon",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/Picon.py",
+      "line": 148,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "8e74213d5303ef8fb22567d8e6ac2eecbccba05856a1a4ab6e2cf84d908a28db"
+    },
+    {
+      "name": "PiconBg",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/PiconBg.py",
+      "line": 7,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "a2317703bb9767d811d78dfac49c8c9e80774df972906a6bc89479fcd4eda989"
+    },
+    {
+      "name": "Pig",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/Pig.py",
+      "line": 8,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "c2a58ee22712e80b41d74b80bbee66d99ddc254f99276847d90d0c08ffff85eb"
+    },
+    {
+      "name": "Pixmap",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/Pixmap.py",
+      "line": 7,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "a65109f4491a06a874fb5597132492df7bf43fdf4286e648624f5760230e9c33"
+    },
+    {
+      "name": "PositionGauge",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/PositionGauge.py",
+      "line": 5,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [
+        "position",
+        "length",
+        "cutlist",
+        "seek_pointer_enabled",
+        "seek_pointer_position"
+      ],
+      "sha256": "61d56e116e4ef93dfd14ad096c5f04b2d15e0afef5049cf1ad4ebfaac68218d2"
+    },
+    {
+      "name": "PrimeTime",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/PrimeTime.py",
+      "line": 11,
+      "bases": [
+        "Renderer",
+        "VariableText"
+      ],
+      "properties": [],
+      "sha256": "c3f801db5fb34233c0e21749cb1e3ba16112cbc97b6636f096668b2cfcaa36ca"
+    },
+    {
+      "name": "Progress",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/Progress.py",
+      "line": 6,
+      "bases": [
+        "VariableValue",
+        "Renderer"
+      ],
+      "properties": [
+        "range"
+      ],
+      "sha256": "58bd1d4dc6ff8f5b93d6f75c294a86fa3a86af314527afbff2ea8bc256ce7edd"
+    },
+    {
+      "name": "pstrRndr",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/pstrRndr.py",
+      "line": 9,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "c9e7f60b03e3352c8715dce7418f5b7f8280b4074770e6e52a5a007667f998af"
+    },
+    {
+      "name": "QRCode",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/QRCode.py",
+      "line": 7,
+      "bases": [
+        "VariableText",
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "ef3d061e526a290cd6cb85a7a66678a13837556a6b5dcc289206db9a87f21292"
+    },
+    {
+      "name": "RatingIconLabel",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/RatingIconLabel.py",
+      "line": 8,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "0df1fd10bc0f7f096d0e6169b3c346a4611ae7251c6b0e8aa52269f6cfcffebd"
+    },
+    {
+      "name": "Rectangle",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/Rectangle.py",
+      "line": 5,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "7633aaca462b1b9aea30b3d1bf92b934e1ecad35d1cfc4f871b39facd42e19a9"
+    },
+    {
+      "name": "Renderer",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/Renderer.py",
+      "line": 5,
+      "bases": [
+        "GUIComponent",
+        "Element"
+      ],
+      "properties": [],
+      "sha256": "85db7384e4e9432cf2028f5802e1e9e6241f0a2cdad729e815f7374d94f10f30"
+    },
+    {
+      "name": "RollerCharLCD",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/RollerCharLCD.py",
+      "line": 8,
+      "bases": [
+        "VariableText",
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "6cc52b625e8faea4fa3cac145e2a8148854087416b94f68ee624a9b8c78d88fa"
+    },
+    {
+      "name": "RollerCharLCDLong",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/RollerCharLCDLong.py",
+      "line": 7,
+      "bases": [
+        "VariableText",
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "2900e1c18027b9ef2eb8a00d5840894c5d67686c9b0b898891d8d72aaaeec62f"
+    },
+    {
+      "name": "RunningText",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/RunningText.py",
+      "line": 56,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "cb71528f96e33b6754bef01f6d9b17167079aeb2271f3327f912e2c3ff570fe5"
+    },
+    {
+      "name": "SingleEpgList",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/SingleEpgList.py",
+      "line": 7,
+      "bases": [
+        "Renderer",
+        "VariableText"
+      ],
+      "properties": [],
+      "sha256": "66167e38180c8d10669cf96236d2dc4a930eb41ac9cd25a8629daf7eec8aae03"
+    },
+    {
+      "name": "VideoSize",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/VideoSize.py",
+      "line": 10,
+      "bases": [
+        "Renderer",
+        "VariableText"
+      ],
+      "properties": [],
+      "sha256": "d250297e924bbdaa656556fe5f831405ff434e833be7aa63ba566de90210c815"
+    },
+    {
+      "name": "VolumeText",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/VolumeText.py",
+      "line": 30,
+      "bases": [
+        "Renderer",
+        "VariableText"
+      ],
+      "properties": [],
+      "sha256": "e767c5b1f05ff0cd67153ba4d4ff61f5c3d916ac71318ea0d15f3a92ccfad3a3"
+    },
+    {
+      "name": "VReference",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/VReference.py",
+      "line": 23,
+      "bases": [
+        "VariableText",
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "71c1c1077c5dea858bae2fb27e70c32d8c279e447f1d7cbaafdd55dd4c332bd6"
+    },
+    {
+      "name": "VRunningText",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/VRunningText.py",
+      "line": 34,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "9d2b47c6bcffed680dadfc62c83d5bb2106b717dac55cab8f1966347b2514317"
+    },
+    {
+      "name": "VtiEmuInfo",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/VtiEmuInfo.py",
+      "line": 8,
+      "bases": [
+        "VariableText",
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "4548e6ab8bba46e28cd5de8fce743e3dce0b8e4785fe8f5a2e34dd06427c840c"
+    },
+    {
+      "name": "VtiImageVersion",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/VtiImageVersion.py",
+      "line": 7,
+      "bases": [
+        "VariableText",
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "b5a4fb935fa0b44275a327e4edf00ad46a9536a2237dd421f609c5c3bfddad90"
+    },
+    {
+      "name": "VVolumeText",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/VVolumeText.py",
+      "line": 5,
+      "bases": [
+        "VolumeText"
+      ],
+      "properties": [],
+      "sha256": "0c281a308e840569abbb8dc76580f7061eb192b1ad4574a4427c273f04931d0e"
+    },
+    {
+      "name": "VWatches",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/VWatches.py",
+      "line": 24,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "b786bd5fab6be968df9526c2fc10ab1dd979bff63498cffcfa61ec7b63b239f7"
+    },
+    {
+      "name": "VWeatherUpdater",
+      "category": "Renderer",
+      "path": "lib/python/Components/Renderer/VWeatherUpdater.py",
+      "line": 6,
+      "bases": [
+        "Renderer"
+      ],
+      "properties": [],
+      "sha256": "d840eb35f4587847a7c2b21a3ca27e0b867c302970585f9e02bf277006a84a22"
+    }
+  ]
+}

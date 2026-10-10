@@ -1,0 +1,48 @@
+---
+title: Labels, fonts, alignment and wrapping
+description: Compare horizontalAlignment, verticalAlignment, font sizes, wrap, noWrap and ellipsis with native Enigma2 screenshots and XML.
+---
+import DeveloperContent from '../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/text.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+## Align the text, not the widget
+
+`position` places the widget. `horizontalAlignment` and `verticalAlignment` place text inside that widget. Use the full canonical names in new examples; `halign` and `valign` remain compatibility spellings.
+
+<SkinExample id="alignment" alt="Three horizontal and three vertical text alignments in identical native label rectangles" caption="Each row uses identical widget sizes. Only the named alignment value changes." />
+
+`horizontalAlignment` accepts `left`, `center`, `right` and `block`. `verticalAlignment` accepts `top`, `center`, `middle` (an alias of center) and `bottom`. Alignment is visible only when there is spare space inside the widget.
+
+## Choose a font and enough space
+
+`font="Regular;28"` selects a registered font face or alias and a design size. It does not point to `Regular.ttf`. A skin registers additional faces in `<fonts>` and may define aliases such as `Body`. Actual glyph metrics depend on the font file.
+
+<SkinExample id="fonts" alt="The same native label rendered at Regular sizes 22, 32 and 44" caption="Increasing font size uses more horizontal and vertical space. These examples keep the text rectangle large enough to show the change." />
+
+Leave room for accents, descenders and multiple lines. Test real display text rather than relying only on a numeric font size. Unknown faces fall back through `parseFont()` and produce a log message; a silent visual difference may therefore be a missing font.
+
+`fontScale` offers native label adjustment modes such as `size;-4` and `width;-4`. This is separate from screen-resolution scaling. Do not use automatic shrinking to compensate for a consistently undersized layout.
+
+## Decide what happens to long text
+
+<SkinExample id="wrapping" alt="The same long sentence clipped, wrapped over lines, and truncated with an ellipsis" caption="noWrap clips the long line, wrap uses additional lines, and ellipsis marks that text has been omitted." />
+
+| Attribute | Use |
+| --- | --- |
+| `wrap="wrap"` | Descriptions or explanations with enough height for multiple lines |
+| `wrap="noWrap"` | Deliberately single-line content where clipping is acceptable |
+| `wrap="ellipsis"` | A short single-line summary with an indication of missing text |
+| `padding="12,8,12,8"` | Insets in **left, top, right, bottom** order; not CSS order |
+| `shadowOffset="2,2"` / `shadowColor` | Offset shadow behind the glyphs |
+| `textBorderWidth="1"` / `textBorderColor` | Explicit glyph outline |
+| `widgetBorderWidth` / `widgetBorderColor` | Border around the widget rectangle |
+
+The generic `borderWidth`/`borderColor` setters are overridden by `eLabel` to affect its text outline in this revision. Use the explicit `textBorder*` or `widgetBorder*` names to state your intention.
+
+Scrolling text is configured with `scrollText`, for example `direction=left,startDelay=1500,stepDelay=40,stepSize=2`. It is a time-dependent effect, so the static gallery does not demonstrate its movement. See the [parser reference](../api/functions/#functions-parseScrollText) for its option keys and verify the result on a receiver.
+
+</DeveloperContent>

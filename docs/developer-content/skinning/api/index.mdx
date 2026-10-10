@@ -1,0 +1,71 @@
+---
+title: skin.py API reference
+description: Search 125 XML attribute handlers, 54 module functions, 10 classes and the source/converter/renderer catalogue from a pinned OpenATV Enigma2 source revision.
+---
+
+This reference is extracted from OpenATV's `lib/python/skin.py` and annotated for skinners. The **Enigma2 source snapshot defines the documented API**. Internal Python interfaces can change in future revisions.
+
+## Find a name
+
+| Reference | Contents | Try searching for |
+| --- | --- | --- |
+| [XML attributes](./attributes/) | All 125 `AttributeParser` attribute handlers, with purpose, aliases, native setters and parser links | `zPosition`, `alphaTest`, `padding`, `widgetBorderWidth` |
+| [Functions and value parsers](./functions/) | All 54 top-level functions, signatures and extracted option tokens | `parseColor`, `parseCoordinate`, `readSkin` |
+| [Classes and their methods](./classes/) | All 10 top-level classes and links to their declared methods | `SkinContext`, `AttributeParser`, `TemplateParser` |
+| [Source / converter / renderer catalogue](./components/) | 124 matching module classes from those three source folders | `StaticText`, `ClockToText`, `Label` |
+
+Each page has a local filter. It matches names and explanations without a server request. Clear the filter to show all entries. The handbook search above also indexes these entries in both native language routes; English technical names work in either edition. Every entry links directly to its implementation at the recorded commit.
+
+## XML structure is separate from attribute dispatch
+
+`AttributeParser` is only one part of the engine. Some names are consumed by `readSkin()` or the global loader before any native widget setter runs:
+
+| Name or element | What interprets it |
+| --- | --- |
+| `<skin>` | Root of a skin resource file |
+| `<screen name="…">` | Registers a named screen; Python's `skinName` selects it |
+| `id` on a screen/output | Selects the GUI or display ID; TV OSD normally uses ID 0 |
+| `<widget name="…">` | Binds an existing Python GUI component |
+| `<widget source="…" render="…">` | Resolves a source and instantiates its renderer |
+| `<convert type="…">arguments</convert>` | Adds a converter with class-specific arguments |
+| `<widget addon="…" connection="…">` | Instantiates a GUI addon connected to named components |
+| `<eLabel>`, `<ePixmap>`, `<eRectangle>` | Creates additional decorative native widgets |
+| `<panel>` | Changes a layout context and/or includes a named definition |
+| `<eStack>` | Creates a native stack widget with its own layout behaviour |
+| `condition`, `conditional`, `includes`, `excludes`, `objectTypes` | Filters elements while the screen is constructed |
+
+Structural names such as `name`, `source`, `render` and `type` are therefore not missing native setters. They belong to a different parsing stage. A no-op attribute handler can mean the value was already consumed elsewhere; it does not establish a new native capability.
+
+## Global skin resources
+
+`loadSingleSkinData()` handles `output`, `include`, `switchpixmap`, `colors`, `fonts` (including aliases), `parameters`, image mappings for `screens`/`menus`/`setups`, `constant-widgets`, `layouts`, `variables`, `subtitles`, `windowstyle` and `margin`.
+
+These sections configure shared resources or defaults. They are not arbitrary child widgets. For example:
+
+```xml
+<skin>
+  <colors>
+    <color name="LabText" value="#00FFFFFF" />
+  </colors>
+  <variables>
+    <variable name="LabMargin" value="24,24" />
+  </variables>
+  <fonts>
+    <alias name="LabBody" font="Regular" size="26" height="32" width="18" />
+  </fonts>
+</skin>
+```
+
+The `Regular` face must already be registered. Font alias `width`/`height` are layout metrics; they do not measure every string. Variables are expanded only by the parsers that support them. A variable is not a general XML macro.
+
+## Read an entry correctly
+
+An attribute entry lists the native methods that its handler calls. The target must actually implement them. `itemHeight` belongs to suitable list content; it is not useful on an `ePixmap` just because the central parser recognises the name.
+
+Parser fallback values in this reference apply **when that parser receives an invalid value**. They are not necessarily the default appearance when the attribute is omitted; native widget defaults and the active window style also matter.
+
+The reference records all function signatures and class method names, including internal helpers. Prefer `Screen`, GUI components and supported skin XML for ordinary layouts. Importing `skin.py` in a desktop Python interpreter is not a standalone validation method: it requires a running Enigma2 environment.
+
+## Version and maintenance
+
+See [verification](../verification/) for the exact source hash and receiver capture scope. Catalogue generation parses the Python AST without importing the receiver modules. Human-written explanations accompany the extracted names, signatures, locations and tokens. A changed source inventory fails generation until its new entries receive explanations.

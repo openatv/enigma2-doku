@@ -7,12 +7,13 @@
   "engines": { "node": ">=24.0.0" },
   "scripts": {
     "dev": "node node_modules/astro/bin/astro.mjs dev --host 127.0.0.1",
-    "build": "node node_modules/astro/bin/astro.mjs build && node scripts/verify-build.mjs && node scripts/verify-search.mjs",
+    "build": "node scripts/sync-developers.mjs --check && node node_modules/astro/bin/astro.mjs build && node scripts/verify-build.mjs && node scripts/verify-search.mjs",
     "preview": "node node_modules/astro/bin/astro.mjs preview --host 127.0.0.1",
     "check": "node node_modules/astro/bin/astro.mjs check",
     "size": "node scripts/check-size.mjs",
     "size:pages": "node scripts/check-size.mjs --pages",
     "catalog:import": "python scripts/import-settings.py ../enigma2",
+    "developers:sync": "node scripts/sync-developers.mjs",
     "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {

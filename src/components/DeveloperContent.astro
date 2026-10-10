@@ -1,0 +1,14 @@
+---
+// English content is intentionally shared by both native handbook routes.
+// Keep the surrounding page locale for its navigation and Pagefind index.
+---
+<div lang="en" class="developer-content">
+  <aside class="developer-language" data-pagefind-ignore>
+    Developer documentation is maintained in English in both handbook editions.
+    Use the translation menu for another language. Code and receiver screenshots remain in English.
+  </aside>
+  <slot />
+</div>
+<style>
+  .developer-language { padding: .8rem 1rem; margin: 0 0 1.5rem; border-inline-start: 3px solid var(--sl-color-text-accent); background: var(--sl-color-accent-low); border-radius: .25rem; font-size: .875rem; }
+</style>

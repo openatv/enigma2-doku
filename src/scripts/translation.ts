@@ -1,4 +1,4 @@
-import { languages, isTranslationLanguage, cleanBase, languageUrl, localePath, requestedLanguage, resetCookies, translationParam } from '../lib/translation.mjs';
+import { languages, isTranslationLanguage, isDeveloperPath, cleanBase, languageUrl, localePath, requestedLanguage, resetCookies, translationParam } from '../lib/translation.mjs';
 
 declare global {
   interface Window {
@@ -37,7 +37,7 @@ function initialize(base: string) {
   document.querySelectorAll<HTMLSelectElement>('[data-machine-language]').forEach(select => {
     select.value = target || '';
     select.addEventListener('change', () => {
-      if (!isTranslationLanguage(select.value)) return;
+      if (!isTranslationLanguage(select.value, isDeveloperPath(location.pathname))) return;
       remember(select.value);
       // A full English document load selects English screenshots before Google runs.
       clearGoogle();
@@ -142,7 +142,7 @@ function initialize(base: string) {
       if (![...combo.options].some(option => option.value === target)) throw new Error('Language unavailable');
       // Explicitly override any source/target inherited from another Google widget.
       document.cookie = `googtrans=/en/${target}; Path=${cleanBase(base)}; SameSite=Lax${location.protocol === 'https:' ? '; Secure' : ''}`;
-      if (status) status.textContent = `Automatic translation from English: ${languages[target as keyof typeof languages]}`;
+      if (status) status.textContent = `Automatic translation from English: ${target === 'de' ? 'Deutsch' : languages[target as keyof typeof languages]}`;
       combo.value = target!;
       combo.dispatchEvent(new Event('change', { bubbles: true }));
       await waitForTranslation(target!);
@@ -170,6 +170,10 @@ function waitForTranslation(language: string): Promise<void> {
         main.lang = language;
         main.dir = root.classList.contains('translated-rtl') ? 'rtl' : 'ltr';
       }
+      document.querySelectorAll<HTMLElement>('.developer-content').forEach(content => {
+        content.lang = language;
+        content.dir = main?.dir || 'ltr';
+      });
       resolve();
     }
     observer.observe(root, { attributes: true, attributeFilter: ['lang', 'class'] });

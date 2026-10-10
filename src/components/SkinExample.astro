@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import { Code } from '@astrojs/starlight/components';
+import type { ImageMetadata } from 'astro';
+interface Props { id: string; alt: string; caption: string; }
+const { id, alt, caption } = Astro.props;
+const images = import.meta.glob<{ default: ImageMetadata }>('../assets/developers/skinning/*.png', { eager: true });
+const xmls = import.meta.glob<string>('../../examples/skinning/HandbookSkinLab/screens/*.xml', { eager: true, query: '?raw', import: 'default' });
+const source = images[`../assets/developers/skinning/${id}.png`]?.default;
+const xml = xmls[`../../examples/skinning/HandbookSkinLab/screens/${id}.xml`];
+if (!source || !xml) throw new Error(`Skin example missing: ${id}`);
+const excerpt = xml.split('<!-- example:start -->')[1]?.split('<!-- example:end -->')[0]?.trim();
+if (!excerpt) throw new Error(`Skin example markers missing: ${id}`);
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<figure class="skin-example">
+  <a href={source.src} target="_blank" rel="noopener"><Image src={source} alt={alt} widths={[640, 960, 1280]} sizes="(min-width: 72rem) 52rem, 100vw" format="webp" quality={90} loading="lazy" /></a>
+  <figcaption>{caption} Native Enigma2 OSD capture, English interface; no television video. <a href={source.src} target="_blank" rel="noopener">Open original ↗</a></figcaption>
+</figure>
+<p><strong>XML used for this result</strong> (inside the complete example screen):</p>
+<div translate="no"><Code code={excerpt} lang="xml" /></div>
+<p><a href={`${base}/downloads/skinning/HandbookSkinLab/screens/${id}.xml`} download>Download complete {id}.xml</a> · <a href={`${base}/downloads/skinning/HandbookSkinLab.zip`} download>Download all examples and the test plugin</a></p>
+<style>
+  .skin-example { margin: 1.4rem 0; }
+  .skin-example img { display: block; width: 100%; height: auto; border: 1px solid var(--sl-color-gray-5); border-radius: .4rem; }
+  figcaption { margin-top: .7rem; font-size: .875rem; color: var(--sl-color-gray-2); }
+</style>

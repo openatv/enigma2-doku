@@ -1,0 +1,45 @@
+---
+title: Source version and verified examples
+description: Provenance and limits of the English skinning foundation, source-derived skin.py catalogue and twelve native OpenATV screenshots.
+---
+
+## Source snapshot
+
+The Enigma2 source snapshot is the technical reference for this handbook. The receiver supplies illustrative screenshots; its installation does not define the documented feature set.
+
+The API catalogue uses [OpenATV Enigma2 commit f4135659cb](https://github.com/openatv/enigma2/tree/f4135659cb5ee225efd84db1a944b5f72fa6b2a0). Every API entry links to a line at that revision. The catalogue stores the full commit and SHA-256 of `lib/python/skin.py`, plus the hashes of indexed component modules.
+
+The accompanying explanations were checked against `skin.py`, `Screens/Screen.py`, `Tools/Directories.py`, the relevant component classes and native widget headers. Native capabilities vary by concrete class; the central attribute list is not a list of attributes valid on every widget.
+
+## Native screenshot scope
+
+Twelve example screens were rendered on a test receiver with **OpenATV 8.0.1, image build 20261009**, an Enigma2 version string of **2026-10-10**, English (`en_US`) and an **OSD of 1280 × 720**. The documentation examples declare the same design resolution.
+
+| Example | What was visually checked |
+| --- | --- |
+| `hello` | Static XML label plus named Python GUI component |
+| `coordinates` | Explicit, centred and right-relative child positions |
+| `alignment` | Left/centre/right and top/centre/bottom text alignment |
+| `wrapping` | Clipping, wrapping and ellipsis |
+| `fonts` | Three font sizes with adequate label geometry |
+| `colors` | Opaque, half-transparent and transparent blended rectangles |
+| `layers` | Reversed overlap after changing zPosition |
+| `pixmaps` | Original size, distortion under stretch, preserved aspect ratio |
+| `panels` | Local child coordinates in two different panel origins |
+| `data` | Shared StaticText plus ClockToText duration formatting |
+| `borders` | Square/rounded frame and vertical gradient |
+| `progress` | Label background painting versus transparent background |
+
+Images are native `grab -o -d -p` captures with no TV video plane. The same English image is used in both native handbook routes. These are demonstrations created by the handbook's example plugin, not screenshots of the active skin's production menus.
+
+The shipped capture manifest binds each PNG to its exact XML hash. Visual review checks are recorded separately from successful capture execution. Font rendering and available newer attributes may differ in another image. No claim is made that all 125 attributes or every indexed converter was visually tested.
+
+## Rebuilding the documentation
+
+The repository keeps one editorial source under `docs/developer-content/`. `node scripts/sync-developers.mjs` writes the matching DE/EN routes and downloadable example files. CI verifies that those mirrors match their source. Both search indexes include the English developer content.
+
+`python scripts/import-skin-api.py ../enigma2` rebuilds the catalogue from a clean `skin.py` checkout. New names require explanatory metadata in `data/skin-api-notes.json`; normal website builds use the committed catalogue and do not need an Enigma2 checkout or a receiver.
+
+## Future units
+
+The next units can build on these contracts to explain InfoBar, ChannelSelection, ChoiceBox and richer list/template layouts. They should add separate working examples and captures, retaining this introductory unit as the shared foundation.

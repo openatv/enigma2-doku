@@ -1,0 +1,31 @@
+---
+title: Developers
+description: Build on OpenATV Enigma2. English developer documentation, beginning with skinning foundations and the skin.py reference.
+---
+import DeveloperContent from '../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../components/SkinExample.astro';
+import SkinApi from '../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/index.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+This part of the OpenATV handbook is for developers. It starts with **skinning**: how Python screens, XML layouts and native Enigma2 widgets produce the interface on a receiver.
+
+All developer chapters are written in English and appear unchanged in both handbook editions. The global search includes them in both editions. In **More languages**, choose **Deutsch — automatic** to translate this English section into German, or select another language. Screenshots and code remain English.
+
+## Start with skinning
+
+1. [How an Enigma2 skin works](./skinning/): the screen-to-pixels path.
+2. [Files, paths and loading order](./skinning/files/): where the pieces live and which definition wins.
+3. [Your first screen](./skinning/first-screen/): a complete small Python/XML example.
+4. [Positions and resolution](./skinning/coordinates/), [text and fonts](./skinning/text/), [colours and layers](./skinning/colours/), [pixmaps](./skinning/pixmaps/) and [panels](./skinning/panels/): change one attribute and inspect the actual receiver result.
+5. [Sources, converters and renderers](./skinning/data-flow/): connect data to a visible widget.
+6. [Search the skin.py API](./skinning/api/): attributes, value parsers, loading helpers and classes, with links into the pinned source.
+
+## Scope of this first unit
+
+The examples use deliberately small, independent screens. They teach the shared Enigma2 skin engine without depending on a particular receiver model, channel, recording or network configuration.
+
+InfoBar, ChannelSelection, ChoiceBox, list templates and other screen-specific recipes will follow in later units. Their names may already appear in the source index; a searchable name is not a claim that its complete API is taught here.
+
+</DeveloperContent>

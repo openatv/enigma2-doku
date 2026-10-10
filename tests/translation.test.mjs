@@ -2,6 +2,20 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { languageUrl, localePath, requestedLanguage, resetCookies, isTranslationLanguage } from '../src/lib/translation.mjs';
 
+test('English developer chapters allow German machine translation without changing native handbook pages', () => {
+  for (const base of ['/', '/enigma2-doku/']) {
+    const prefix = base.replace(/\/$/, '');
+    const original = `https://docs.example.org${prefix}/de/developers/skinning/text/`;
+    const translated = languageUrl(original, 'en', base, 'de');
+    assert.equal(translated.pathname, `${prefix}/en/developers/skinning/text/`);
+    assert.equal(translated.search, '?translate=de');
+    assert.equal(requestedLanguage(translated, null), 'de');
+    assert.equal(requestedLanguage(new URL(original), 'de'), 'de');
+    assert.equal(requestedLanguage(new URL(`https://docs.example.org${prefix}/en/epg/grundlagen/`), 'de'), null);
+    assert.equal(languageUrl(translated, 'de', base).search, '');
+  }
+});
+
 test('extra languages always open the matching English chapter under either hosting base', () => {
   for (const base of ['/', '/enigma2-doku', '/handbook/']) {
     const prefix = base.replace(/\/$/, '');

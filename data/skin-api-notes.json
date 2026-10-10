@@ -1,0 +1,700 @@
+{
+  "attributes": {
+    "align": {
+      "group": "Layout",
+      "summary": "Stack alignment passed to setAlign; this is an engine-facing value, not text alignment."
+    },
+    "animationMode": {
+      "group": "Layout",
+      "summary": "Control window show/hide animation; off disables both directions."
+    },
+    "animationPaused": {
+      "group": "Layout",
+      "summary": "Reserved no-op in this revision; it does not pause an animation."
+    },
+    "base": {
+      "group": "Layout",
+      "summary": "Reserved no-op in AttributeParser; do not expect a visible effect from this setter."
+    },
+    "condition": {
+      "group": "Layout",
+      "summary": "Construction-time condition evaluated by readSkin for supported config/BoxInfo expressions, not a live visibility binding."
+    },
+    "conditional": {
+      "group": "Layout",
+      "summary": "Include an element when at least one named component exists in the screen; processed by readSkin."
+    },
+    "connection": {
+      "group": "Layout",
+      "summary": "Names the component connections for a GUI addon; readSkin consumes this before attribute application."
+    },
+    "excludes": {
+      "group": "Layout",
+      "summary": "Skip an element when any listed component exists; processed while building the screen."
+    },
+    "flags": {
+      "group": "Layout",
+      "summary": "Comma-separated eWindow flags, for example wfNoBorder; belongs on a screen/window."
+    },
+    "ignoreWidgets": {
+      "group": "Layout",
+      "summary": "Screen metadata for optional widgets; the AttributeParser handler itself is a no-op."
+    },
+    "includes": {
+      "group": "Layout",
+      "summary": "Include an element when any listed component exists; the counterpart of excludes."
+    },
+    "label": {
+      "group": "Layout",
+      "summary": "Reserved metadata/no-op in AttributeParser; no label is created by this attribute alone."
+    },
+    "layout": {
+      "group": "Layout",
+      "summary": "Select panel/stack layout in the structure parser; this setter itself is a no-op."
+    },
+    "objectTypes": {
+      "group": "Layout",
+      "summary": "Construction-time component type check: componentName,ClassName[,ClassName]."
+    },
+    "position": {
+      "group": "Layout",
+      "summary": "x,y relative to the current layout context; centre and arithmetic coordinates are supported."
+    },
+    "resolution": {
+      "group": "Layout",
+      "summary": "The design coordinate system width,height; readSkin derives scaling from the desktop."
+    },
+    "size": {
+      "group": "Layout",
+      "summary": "width,height of the widget; does not set its text alignment or font size."
+    },
+    "spacing": {
+      "group": "Layout",
+      "summary": "Spacing setter for supporting native widgets; a panel also consumes spacing for its layout context."
+    },
+    "spacingColor": {
+      "group": "Layout",
+      "summary": "Colour of spacing in a native widget that supports setSpacingColor."
+    },
+    "stack": {
+      "group": "Layout",
+      "summary": "Reserved structural metadata; the AttributeParser handler itself performs no action."
+    },
+    "tag": {
+      "group": "Layout",
+      "summary": "Integer widget identifier used by native stack/layout machinery."
+    },
+    "title": {
+      "group": "Layout",
+      "summary": "Window title; translated with the current interface locale before being applied."
+    },
+    "zPosition": {
+      "group": "Layout",
+      "summary": "Integer painting layer among overlapping widgets; larger values are in front."
+    },
+    "font": {
+      "group": "Text",
+      "summary": "Registered font face or alias and size, for example Regular;28. It is not a font file path."
+    },
+    "fontScale": {
+      "group": "Text",
+      "summary": "Automatic label font adjustment: size;offset or width;offset (default offset -4)."
+    },
+    "foregroundColor": {
+      "group": "Text",
+      "summary": "Text/foreground colour. A gradient value is supported only by the slider foreground path."
+    },
+    "horizontalAlignment": {
+      "group": "Text",
+      "summary": "Text alignment inside its rectangle: left, center, right or block."
+    },
+    "noWrap": {
+      "group": "Text",
+      "summary": "Legacy wrap alias; prefer wrap=\"noWrap\" or wrap=\"wrap\"."
+    },
+    "padding": {
+      "group": "Text",
+      "summary": "One, two or four comma-separated inset values: left,top,right,bottom. Two values repeat as x,y,x,y."
+    },
+    "scrollText": {
+      "group": "Text",
+      "summary": "Scrolling text configuration as comma-separated key=value pairs; direction, delays, repeat, stepSize and mode."
+    },
+    "shadowColor": {
+      "group": "Text",
+      "summary": "Colour of the label text shadow."
+    },
+    "shadowOffset": {
+      "group": "Text",
+      "summary": "x,y offset of the text shadow; scaled with the screen."
+    },
+    "tabWidth": {
+      "group": "Text",
+      "summary": "Tab-stop width for supporting text widgets; auto uses the automatic width."
+    },
+    "text": {
+      "group": "Text",
+      "summary": "Static text, translated before setText. Python or a renderer may replace it later."
+    },
+    "textBorderColor": {
+      "group": "Text",
+      "summary": "Explicit colour of the outline around glyphs; different from a rectangle border."
+    },
+    "textBorderWidth": {
+      "group": "Text",
+      "summary": "Explicit glyph-outline thickness, scaled vertically."
+    },
+    "underline": {
+      "group": "Text",
+      "summary": "Enable or disable underlined label text."
+    },
+    "verticalAlignment": {
+      "group": "Text",
+      "summary": "Text alignment inside the widget: top, center/middle or bottom."
+    },
+    "wrap": {
+      "group": "Text",
+      "summary": "Text overflow mode: wrap, noWrap or ellipsis; current parser also accepts numeric strings."
+    },
+    "alphaBlend": {
+      "group": "Colour and decoration",
+      "summary": "Enable native widget background/border alpha blending where supported; useful for overlaying translucent rectangles."
+    },
+    "backgroundColor": {
+      "group": "Colour and decoration",
+      "summary": "Solid #AARRGGBB/named colour, or gradient specification start[,middle],end,direction[,alphaBlend]."
+    },
+    "borderColor": {
+      "group": "Colour and decoration",
+      "summary": "Generic border setter. On eLabel this currently changes the text outline; use widgetBorderColor for a rectangle border."
+    },
+    "borderWidth": {
+      "group": "Colour and decoration",
+      "summary": "Generic border width. On eLabel this currently changes glyph outlines; use widgetBorderWidth for the widget frame."
+    },
+    "cornerRadius": {
+      "group": "Colour and decoration",
+      "summary": "Corner radius, optionally followed by a semicolon and edge names, e.g. 24;topLeft,topRight."
+    },
+    "transparent": {
+      "group": "Colour and decoration",
+      "summary": "Boolean: suppress the widget background. This is distinct from the transparency byte in a painted colour."
+    },
+    "widgetBorderColor": {
+      "group": "Colour and decoration",
+      "summary": "Explicit rectangular widget-frame colour, including on eLabel."
+    },
+    "widgetBorderWidth": {
+      "group": "Colour and decoration",
+      "summary": "Explicit rectangular widget-frame thickness, scaled vertically."
+    },
+    "alphaTest": {
+      "group": "Images, sliders and QR",
+      "summary": "Pixmap transparency: off, on (alpha test), or blend (smooth alpha blending)."
+    },
+    "backgroundPixmap": {
+      "group": "Images, sliders and QR",
+      "summary": "Background image for a native target implementing setBackgroundPixmap; not universal to all widgets."
+    },
+    "errorCorrection": {
+      "group": "Images, sliders and QR",
+      "summary": "QR code recovery level: low, medium, quartile or high."
+    },
+    "foregroundGradient": {
+      "group": "Images, sliders and QR",
+      "summary": "Legacy dedicated slider-gradient attribute; prefer a gradient in foregroundColor."
+    },
+    "gradientMode": {
+      "group": "Images, sliders and QR",
+      "summary": "Slider gradient behaviour: legacy or explicit. Check the receiver version before using this newer option."
+    },
+    "orientation": {
+      "group": "Images, sliders and QR",
+      "summary": "Slider direction: orHorizontal/orLeftToRight, orRightToLeft, orVertical/orTopToBottom, orBottomToTop."
+    },
+    "overScan": {
+      "group": "Images, sliders and QR",
+      "summary": "Pass the overscan value to a native target implementing setOverscan; this is not global TV calibration."
+    },
+    "pixmap": {
+      "group": "Images, sliders and QR",
+      "summary": "Resolved image path passed to LoadPixmap; PNG transparency is commonly used."
+    },
+    "pointer": {
+      "group": "Images, sliders and QR",
+      "summary": "Pointer image and anchor offset for supporting widgets; see the source setter for the colon-separated path/coordinate syntax."
+    },
+    "quietZone": {
+      "group": "Images, sliders and QR",
+      "summary": "QR code quiet-zone size; does not add general-purpose label padding."
+    },
+    "scale": {
+      "group": "Images, sliders and QR",
+      "summary": "Pixmap scaling flags, for example none, scale, keepAspect or centerScaled. Not screen resolution scaling."
+    },
+    "scaleFlags": {
+      "group": "Images, sliders and QR",
+      "summary": "Temporary compatibility route to the pixmap scale flag parser; prefer scale."
+    },
+    "seekPointer": {
+      "group": "Images, sliders and QR",
+      "summary": "Secondary seek pointer image and anchor offset, for widgets that support it."
+    },
+    "backgroundColorEven": {
+      "group": "Lists and selection",
+      "summary": "Solid colour for alternating even list rows; gradients are not accepted here."
+    },
+    "backgroundColorOdd": {
+      "group": "Lists and selection",
+      "summary": "Solid base/odd-row list background; gradients are not accepted here."
+    },
+    "backgroundColorSelected": {
+      "group": "Lists and selection",
+      "summary": "Selected row background, as solid colour or a gradient specification."
+    },
+    "enableWrapAround": {
+      "group": "Lists and selection",
+      "summary": "Allow list navigation to wrap from the final entry to the first and back."
+    },
+    "entryFont": {
+      "group": "Lists and selection",
+      "summary": "Font for configuration entry labels on native targets supporting it."
+    },
+    "foregroundColorSelected": {
+      "group": "Lists and selection",
+      "summary": "Foreground/text colour for selected list entries."
+    },
+    "headerFont": {
+      "group": "Lists and selection",
+      "summary": "Font for configuration/list headers on supporting targets."
+    },
+    "headerForegroundColor": {
+      "group": "Lists and selection",
+      "summary": "Foreground colour of configuration/list headers."
+    },
+    "itemAlignment": {
+      "group": "Lists and selection",
+      "summary": "Align list items within the available list rectangle; distinct from text alignment."
+    },
+    "itemCornerRadius": {
+      "group": "Lists and selection",
+      "summary": "Rounded item background in its normal state."
+    },
+    "itemCornerRadiusMarked": {
+      "group": "Lists and selection",
+      "summary": "Rounded background for a marked item."
+    },
+    "itemCornerRadiusMarkedAndSelected": {
+      "group": "Lists and selection",
+      "summary": "Rounded background when the item is both marked and selected."
+    },
+    "itemCornerRadiusSelected": {
+      "group": "Lists and selection",
+      "summary": "Rounded background of the selected item."
+    },
+    "itemGradient": {
+      "group": "Lists and selection",
+      "summary": "Background gradient for a normal list item."
+    },
+    "itemGradientMarked": {
+      "group": "Lists and selection",
+      "summary": "Background gradient for a marked item."
+    },
+    "itemGradientMarkedAndSelected": {
+      "group": "Lists and selection",
+      "summary": "Background gradient for an item that is both marked and selected."
+    },
+    "itemGradientSelected": {
+      "group": "Lists and selection",
+      "summary": "Background gradient for the selected list item."
+    },
+    "itemHeight": {
+      "group": "Lists and selection",
+      "summary": "Height of one list entry, scaled vertically."
+    },
+    "itemSpacing": {
+      "group": "Lists and selection",
+      "summary": "Horizontal and vertical gap between list items; one value applies to both axes."
+    },
+    "itemWidth": {
+      "group": "Lists and selection",
+      "summary": "Width of one list item, scaled horizontally."
+    },
+    "listOrientation": {
+      "group": "Lists and selection",
+      "summary": "List layout: vertical, horizontal or grid; not a slider direction."
+    },
+    "scrollbarBackgroundColor": {
+      "group": "Lists and selection",
+      "summary": "Solid colour behind the scrollbar handle."
+    },
+    "scrollbarBackgroundGradient": {
+      "group": "Lists and selection",
+      "summary": "Gradient behind the scrollbar handle on supporting targets."
+    },
+    "scrollbarBackgroundPixmap": {
+      "group": "Lists and selection",
+      "summary": "Image behind the scrollbar handle."
+    },
+    "scrollbarBorderColor": {
+      "group": "Lists and selection",
+      "summary": "Scrollbar border colour."
+    },
+    "scrollbarBorderWidth": {
+      "group": "Lists and selection",
+      "summary": "Scrollbar border thickness, scaled horizontally."
+    },
+    "scrollbarForegroundColor": {
+      "group": "Lists and selection",
+      "summary": "Scrollbar handle colour."
+    },
+    "scrollbarForegroundGradient": {
+      "group": "Lists and selection",
+      "summary": "Scrollbar handle gradient."
+    },
+    "scrollbarForegroundPixmap": {
+      "group": "Lists and selection",
+      "summary": "Scrollbar handle image."
+    },
+    "scrollbarLength": {
+      "group": "Lists and selection",
+      "summary": "Scrollbar length: numeric value, full or auto; interpretation is the target widget's."
+    },
+    "scrollbarMode": {
+      "group": "Lists and selection",
+      "summary": "Visibility and side of the scrollbar; showOnDemand, showAlways, showNever and side-specific modes."
+    },
+    "scrollbarOffset": {
+      "group": "Lists and selection",
+      "summary": "Integer distance/offset passed to the native scrollbar; this handler does not apply screen scaling."
+    },
+    "scrollbarRadius": {
+      "group": "Lists and selection",
+      "summary": "Rounded scrollbar corners, optionally restricted to named edges."
+    },
+    "scrollbarScroll": {
+      "group": "Lists and selection",
+      "summary": "Scrollbar movement granularity: byPage or byLine."
+    },
+    "scrollbarWidth": {
+      "group": "Lists and selection",
+      "summary": "Scrollbar thickness, scaled horizontally."
+    },
+    "secondFont": {
+      "group": "Lists and selection",
+      "summary": "Deprecated alias of valueFont for supporting configuration/list targets."
+    },
+    "selection": {
+      "group": "Lists and selection",
+      "summary": "Enable or disable drawing the list selection highlight."
+    },
+    "selectionPixmap": {
+      "group": "Lists and selection",
+      "summary": "Image used for the list selection background."
+    },
+    "selectionZoom": {
+      "group": "Lists and selection",
+      "summary": "Selection enlargement as an integer percentage increment[,mode]: 25 means 1.25 times the normal size. The increment is capped at 500; see parseZoom for the mode."
+    },
+    "selectionZoomSize": {
+      "group": "Lists and selection",
+      "summary": "Explicit enlarged selection width,height[,mode]."
+    },
+    "separatorLineColor": {
+      "group": "Lists and selection",
+      "summary": "Colour of entry separators in supporting lists."
+    },
+    "separatorLineSize": {
+      "group": "Lists and selection",
+      "summary": "Separator geometry: height, top,height or left,top,width,height; -1 has automatic/full-width meaning."
+    },
+    "valueFont": {
+      "group": "Lists and selection",
+      "summary": "Font for configuration values on supporting targets."
+    },
+    "alphatest": {
+      "group": "Compatibility aliases",
+      "summary": "Compatibility spelling for alphaTest. Use the canonical camel-case name in new examples."
+    },
+    "backgroundColorRows": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of backgroundColorEven."
+    },
+    "backgroundGradient": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated dedicated gradient attribute; use a gradient value in backgroundColor."
+    },
+    "backgroundGradientSelected": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated dedicated selected-row gradient attribute; use backgroundColorSelected."
+    },
+    "hAlign": {
+      "group": "Compatibility aliases",
+      "summary": "Compatibility spelling for horizontalAlignment."
+    },
+    "halign": {
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling for horizontalAlignment."
+    },
+    "OverScan": {
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling for overScan."
+    },
+    "scrollbarBackgroundPicture": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarBackgroundPixmap."
+    },
+    "scrollbarbackgroundPixmap": {
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling of scrollbarBackgroundPixmap."
+    },
+    "scrollbarSliderBorderColor": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarBorderColor."
+    },
+    "scrollbarSliderBorderWidth": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarBorderWidth."
+    },
+    "scrollbarSliderForegroundColor": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarForegroundColor."
+    },
+    "scrollbarSliderPicture": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarForegroundPixmap."
+    },
+    "scrollbarSliderPixmap": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarForegroundPixmap."
+    },
+    "secondfont": {
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling delegating to valueFont; use valueFont in new layouts."
+    },
+    "seek_pointer": {
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling of seekPointer."
+    },
+    "selectionDisabled": {
+      "group": "Compatibility aliases",
+      "summary": "Legacy inverted selection switch; prefer selection=\"0\" to disable highlighting."
+    },
+    "sliderPixmap": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of scrollbarForegroundPixmap; this is not the progress-bar foreground."
+    },
+    "textOffset": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated route to padding via textPadding; prefer padding."
+    },
+    "textPadding": {
+      "group": "Compatibility aliases",
+      "summary": "Deprecated alias of padding."
+    },
+    "vAlign": {
+      "group": "Compatibility aliases",
+      "summary": "Compatibility spelling for verticalAlignment."
+    },
+    "valign": {
+      "group": "Compatibility aliases",
+      "summary": "Legacy spelling for verticalAlignment."
+    }
+  },
+  "functions": {
+    "InitSkins": {
+      "summary": "Load emergency, subtitle, primary, display, optional skin parts and user overrides; configure desktop resolution and templates. Startup operation, not a per-widget helper."
+    },
+    "loadSkin": {
+      "summary": "Read one XML skin and register its global resources and named screens. Returns True on a readable parsed skin, False otherwise; does not open a screen."
+    },
+    "reloadSkins": {
+      "summary": "Reload global skin state and window styles. This is a broad application operation, not needed for opening an isolated example."
+    },
+    "loadSkinTemplates": {
+      "summary": "Load component XML template definitions from the supplied filenames."
+    },
+    "reloadSkinTemplates": {
+      "summary": "Rebuild component template definitions; clear=True resets previously registered definitions."
+    },
+    "addCallback": {
+      "summary": "Register a callback to be notified when skin loading invokes its callback list."
+    },
+    "removeCallback": {
+      "summary": "Remove a previously registered skin callback."
+    },
+    "getParentSize": {
+      "summary": "Find a widget parent's size or use the desktop, for relative coordinate calculations."
+    },
+    "skinError": {
+      "summary": "Write a skin error to the Enigma2 log; does not itself raise an exception."
+    },
+    "attribDeprecationWarning": {
+      "summary": "Write a deprecated-attribute warning and its replacement to the log."
+    },
+    "parseOptions": {
+      "summary": "Look up a string in an allowed-options dictionary; log and return the given default for an invalid value."
+    },
+    "parseValuePair": {
+      "summary": "Parse a comma-separated x,y pair, with variables, axis-specific scaling and optional parent/widget dimensions. Returns a tuple."
+    },
+    "parseAlphaTest": {
+      "summary": "Map off/on/blend to native pixmap alpha flags. Invalid input falls back to off."
+    },
+    "parseAnimationMode": {
+      "summary": "Map window-animation strings to native show/hide flags."
+    },
+    "parseBoolean": {
+      "summary": "Return True for 1, the supplied attribute name, enabled, on, true or yes (case-insensitive); other strings are False."
+    },
+    "parseColor": {
+      "summary": "Resolve #AARRGGBB or a registered colour name to gRGB; invalid input logs and uses the specified fallback."
+    },
+    "parseCoordinate": {
+      "summary": "Evaluate one design coordinate with scaling, center/c/e/percent and font-relative terms. Returns an integer, or None for the wildcard. It is not a CSS expression parser."
+    },
+    "parseErrorCorrection": {
+      "summary": "Map QR recovery-level names to eQRCode constants; default medium."
+    },
+    "parseFont": {
+      "summary": "Resolve face/alias and optional ;size to a gFont. Font size is scaled on the vertical axis; an unknown face falls back to Body."
+    },
+    "parseFontScale": {
+      "summary": "Parse size;offset or width;offset into a scale mode and vertically scaled offset."
+    },
+    "parseGradient": {
+      "summary": "Parse start[,middle],end,horizontal-or-vertical[,alphaBlend]; return three colours, direction and blending flag."
+    },
+    "parseHorizontalAlignment": {
+      "summary": "Map left, center, right or block to native text alignment; invalid input defaults to left."
+    },
+    "parseInteger": {
+      "summary": "Convert to int; log and return the supplied default on TypeError or ValueError."
+    },
+    "parseItemAlignment": {
+      "summary": "Map item alignment names to native listbox alignment constants."
+    },
+    "parseListOrientation": {
+      "summary": "Map vertical/horizontal/grid to listbox orientation bits; invalid input falls back to vertical."
+    },
+    "parseOrientation": {
+      "summary": "Map slider direction names to orientation and reverse-direction flags."
+    },
+    "parseParameter": {
+      "summary": "Convert a parameter token to string, colour integer, hex integer, float, named colour, font list or integer according to its prefix/content."
+    },
+    "parsePixmap": {
+      "summary": "Load an existing resolved image path through LoadPixmap; strip a # suffix and log missing or unreadable files. Returns a pixmap or None."
+    },
+    "parsePosition": {
+      "summary": "Parse an x,y pair and return an ePoint."
+    },
+    "parseRadius": {
+      "summary": "Parse radius[;edge,edge] into a radius and corner bitmask. Plain radius applies to all corners."
+    },
+    "parseScrollbarLength": {
+      "summary": "Parse a numeric length, full (0) or auto (-1), otherwise return the caller's default."
+    },
+    "parseSize": {
+      "summary": "Parse a width,height pair and return an eSize."
+    },
+    "parseTabWidth": {
+      "summary": "Parse a numeric tab width or auto (-1), otherwise return the caller's default."
+    },
+    "parseScale": {
+      "summary": "Map pixmap scaling/alignment names to native blit flags; preserves numerous compatibility spellings."
+    },
+    "parseScrollbarMode": {
+      "summary": "Map visibility/side names to native listbox scrollbar constants."
+    },
+    "parseScrollbarScroll": {
+      "summary": "Map byPage/byLine to the native scrolling policy."
+    },
+    "parseScrollText": {
+      "summary": "Parse comma-separated key=value text-scrolling options into direction, delays, repeat, step size and mode."
+    },
+    "parseSeparator": {
+      "summary": "Expand 1/2/4 separator values into left,top,width,height; supports automatic -1 fields."
+    },
+    "parsePadding": {
+      "summary": "Expand 1/2/4 integers into left,top,right,bottom. Two values become x,y,x,y; it is not CSS top/right order."
+    },
+    "parseVerticalAlignment": {
+      "summary": "Map top, center/middle or bottom to native text alignment; invalid input defaults to center."
+    },
+    "parseWrap": {
+      "summary": "Map ellipsis/noWrap/wrap to 2/0/1; otherwise parse an integer with fallback 1."
+    },
+    "parseZoom": {
+      "summary": "Map a list selection zoom mode to native listbox constants."
+    },
+    "collectAttributes": {
+      "summary": "Resolve XML attributes, filenames, position, size, fonts and layout context before applying them to native objects. Mutates the supplied attribute list."
+    },
+    "applyAllAttributes": {
+      "summary": "Construct an AttributeParser for a native object and apply the collected name/value pairs."
+    },
+    "loadSingleSkinData": {
+      "summary": "Process global skin data such as output, includes, colours, fonts, parameters, layouts, subtitle styles and window styles."
+    },
+    "reloadWindowStyles": {
+      "summary": "Reapply stored window-style definitions."
+    },
+    "readSkin": {
+      "summary": "Choose a named or embedded screen, build its layout contexts, connect sources/converters/renderers and collect component attributes. Called by Screen."
+    },
+    "findSkinScreen": {
+      "summary": "Return the first registered name found in a name or list of names, otherwise None."
+    },
+    "findWidgets": {
+      "summary": "Return names of widgets/sources/addon connections from a registered screen, expanding named panels; this is an XML scan, not screen execution."
+    },
+    "getcomponentTemplate": {
+      "summary": "Return the registered XML component template for component/name (spelling is case-sensitive)."
+    },
+    "getcomponentTemplateNames": {
+      "summary": "Return names of registered component templates for a component."
+    },
+    "getScrollLabelStyle": {
+      "summary": "Return one stored ScrollLabel default by key, or None if absent."
+    },
+    "getSkinFactor": {
+      "summary": "Return desktop height divided by 720. Deprecated for OpenATV; prefer the screen resolution attribute for new layouts."
+    },
+    "applySkinFactor": {
+      "summary": "Legacy helper multiplying numeric arguments by getSkinFactor; returns an int for one argument or tuple for multiple arguments."
+    }
+  },
+  "classes": {
+    "AttributeParser": {
+      "summary": "Dispatches collected XML attribute names to native GUI methods; it is a shared dispatcher, not a guarantee that every widget supports every attribute."
+    },
+    "additionalWidget": {
+      "summary": "Internal holder for a decorative native widget and its skin attributes."
+    },
+    "ComponentTemplates": {
+      "summary": "Stores and retrieves component XML templates and tracks changes."
+    },
+    "SizeTuple": {
+      "summary": "Tuple adapter used for already-parsed coordinates while retaining string-like methods expected by skin code."
+    },
+    "SkinContext": {
+      "summary": "Layout origin, available size, scale and font context; edge-docked children can consume available space."
+    },
+    "SkinContextStack": {
+      "summary": "Layout context that places children without consuming the available parent rectangle."
+    },
+    "SkinContextVertical": {
+      "summary": "Context for vertically arranged content and its remaining space."
+    },
+    "SkinContextHorizontal": {
+      "summary": "Context for horizontally arranged content and its remaining space."
+    },
+    "TemplateParser": {
+      "summary": "Internal parser for list/content XML templates. Listed for discovery; full list-template tutorials belong to a later chapter."
+    },
+    "SkinError": {
+      "summary": "Skin-processing exception type whose message can include the configured skin context."
+    }
+  }
+}

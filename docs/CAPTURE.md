@@ -359,3 +359,21 @@ Alle neuen Originalbilder wurden visuell geprüft. Zwei Tests sichern die getren
 Die sechs neuen Verkabelungsszenarien werden mit `python scripts/create-fbc-diagrams.py` als zwölf DE/EN-SVGs reproduziert. Sie erläutern ein/zwei Universal-Kabel, eine Unicable-Zuführung mit acht UBs, getrennte feste SAT-Positionen, eine separate Motorantenne und Kabel-FBC. Dies sind schematische Signalwege, keine behaupteten Hardwaretests dieser Anlagen.
 
 Quellrevision, Dateihashes, Beispiel-SCR-Tabelle und Prüfumfang: `data/fbc-wifi-coverage.json`. Die Konfigurationsserie benötigt keinen angeschlossenen SAT-Empfang; WLAN-Verbindungsaufbau und Profilwechsel sind in dieser Serie nicht funktional nachgewiesen. Die gesonderte Beschreibung von WPA3-Enterprise bleibt eine Begriffserklärung ohne Unternehmens-Setup-Anleitung.
+
+## Entwicklerbereich: englische Skinning-Beispiele
+
+Die zwölf Grundlagenbeispiele verwenden das eigenständige Plugin unter `examples/skinning/HandbookSkinLab/`. Installation, Bedienung und das lokale Anfrageformat für Serienaufnahmen stehen im Entwicklerkapitel `docs/developer-content/skinning/lab.mdx`. Das Plugin zeigt eigene XML-Bildschirme mit synthetischen Daten; es ersetzt keinen aktiven Skin. Die Beispiele werden auf Englisch aufgenommen und in beiden Sprachrouten mit demselben Bild verwendet.
+
+`grab -o -d -p` erfasst ausschließlich die OSD-Ebene. Vor der Freigabe jedes Motiv auf lesbare Beschriftungen, den erklärten visuellen Effekt und fehlendes TV-Video prüfen. Der Serienhelfer protokolliert Szene, Sprache, Größe sowie PNG- und XML-Hashes in `manifest.json`. Die zwölf PNGs und dieses Manifest bleiben zunächst in einem privaten Aufnahmeverzeichnis.
+
+```sh
+python scripts/import-skin-lab-captures.py .capture-private/skin-lab --reviewed --image-version 8.0.1 --image-build 20261009
+python scripts/package-skin-lab.py
+node scripts/sync-developers.mjs
+```
+
+Die Imagewerte im Befehl müssen der tatsächlichen Aufnahme entsprechen. `--reviewed` bestätigt die vorausgegangene Sichtprüfung und darf nicht allein aufgrund eines erfolgreichen Aufnahmelaufs verwendet werden. Der Import prüft zunächst die komplette Serie, die erlaubten Szenen, Bildabmessungen und Hashes gegen die aktuellen XML-Beispiele. Erst danach werden Bilder nach `src/assets/developers/skinning/` und die Provenienz nach `data/skin-lab-captures.json` übernommen. Änderungen an einem gezeigten XML-Beispiel erfordern eine neue passende Aufnahme.
+
+Das Paketwerkzeug erzeugt das reproduzierbare Plugin-ZIP und das öffentliche Aufnahmemanifest unter `public/downloads/skinning/`. Der Synchronisierer aktualisiert die einzelnen Beispieldateien sowie die englischen Kapitel in beiden Sprachrouten. `node scripts/sync-developers.mjs --check` prüft diese Kopien. Der Website-Build benötigt keinen Receiver.
+
+Freigegebener Stand vom 10.10.2026: zwölf englische native PNGs, zusammen mit den bisherigen Serien 524 native Bilder. Die Skin-Lab-Aufnahmen sind OSD-Beispiele; sie gehören weder zur Bootlogo-Menüserie noch zu den Sender-/EPG-Aufnahmen. Die API-Referenz richtet sich nach dem festgehaltenen Enigma2-Quellstand. Die Beispielbilder dokumentieren zwölf ausgewählte Effekte und keinen vollständigen visuellen Test aller API-Einträge.

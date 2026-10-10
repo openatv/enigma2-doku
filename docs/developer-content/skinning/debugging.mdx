@@ -1,0 +1,39 @@
+---
+title: Skin debugging and common mistakes
+description: Diagnose missing widgets, unknown converters, invisible labels, bad image paths, incorrect alpha and doubled scaling in OpenATV skins.
+---
+
+## Read the error in its context
+
+Enable the normal Enigma2 debug log and look for `[Skin]` messages, the screen name and the reported object type. See [logs and diagnostics](../../../hilfe/logs-diagnose/) for log locations and GUI options. A parser can log an error and use a fallback, so a screen opening successfully is not enough to prove every attribute worked.
+
+| Symptom | First check |
+| --- | --- |
+| Component with name … not found | XML `name` must match the Python `self[...]` GUI component exactly |
+| Source … not found | The screen must register that source, or expose the requested related screen |
+| Converter or renderer not found | Correct case, module/class name and installed package |
+| Attribute error for an object type | The native widget may not implement the handler's setter |
+| An expected Label is invisible | Size, position, foreground/background colours and `zPosition`; decoration may cover it |
+| Text is clipped | Rectangle height/width, font metrics, padding and wrapping mode |
+| Image is missing | Resolved path, filename case, image format and read permissions |
+| A circle becomes an ellipse | Stretch scaling; compare `scale` with `centerScaled` |
+| A colour looks unexpectedly transparent | Enigma2 XML alpha uses 00 opaque / FF transparent |
+| FHD layout is too large | Coordinates may have been manually scaled as well as scaled by `resolution` |
+| The edited layout has no effect | A later user override may win, or a skin configuration plugin may regenerate the file |
+| Python change has no effect | The old module is still imported; restart the GUI after saving |
+
+## Validate without pretending to run Enigma2
+
+An ordinary XML parser can catch unmatched tags and malformed attributes:
+
+```sh
+python3 -c "import xml.etree.ElementTree as E; E.parse('example.xml')"
+```
+
+It cannot prove that `source`, `name`, converter arguments or native setters exist. Run the isolated example on the receiver, read the log, then inspect the actual screenshot. The supplied catalogue generator parses Python source with `ast`; it does not import `skin.py` into desktop Python.
+
+## Make examples reproducible
+
+Keep the XML, its Python component definitions and assets together. Record the source revision, image build and capture resolution. Use fixed sample data when the visual lesson does not need live service data. Change one property at a time for comparisons.
+
+If a main skin becomes unusable, use a known working skin or remove only your own override through SSH while the GUI is stopped. Keep a copy of that override first. Do not replace the entire settings file or factory-reset a receiver just to debug a small XML layout.

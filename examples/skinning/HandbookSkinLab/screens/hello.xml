@@ -1,0 +1,12 @@
+<screen name="HandbookSkinLab_hello" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,32" font="Regular;22" text="OpenATV / Developer / Skin Lab" foregroundColor="#005BD4EC" backgroundColor="#00101928" />
+  <eLabel position="48,70" size="1184,52" font="Regular;36" text="Screen, static label and Python widget" foregroundColor="#00FFFFFF" backgroundColor="#00101928" />
+  <eLabel position="48,130" size="1184,58" font="Regular;23" text="The XML chooses the layout. Python provides the component and its text." foregroundColor="#00BDCADA" backgroundColor="#00101928" />
+  <!-- example:start -->
+  <eRectangle position="48,218" size="1184,340" backgroundColor="#001E3048" />
+  <eLabel position="80,244" size="1080,46" font="Regular;24" text="Static XML text: eLabel" foregroundColor="#00FFFFFF" backgroundColor="#001E3048" />
+  <widget name="greeting" position="80,320" size="1080,68" font="Regular;38" foregroundColor="#005BD4EC" backgroundColor="#001E3048" zPosition="1" />
+  <eLabel position="80,446" size="1080,60" font="Regular;24" text='name="greeting" matches self["greeting"] in Python.' foregroundColor="#00FFFFFF" backgroundColor="#001E3048" />
+  <!-- example:end -->
+  <eLabel position="48,664" size="1184,32" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" backgroundColor="#00101928" />
+</screen>

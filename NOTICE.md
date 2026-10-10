@@ -122,3 +122,9 @@ Die 16 SVG-Verkabelungsbilder wurden für dieses Handbuch neu erstellt und gehö
 ## Ergänzung: Bedienung / Oberfläche
 
 Die 28 zusätzlichen nativen Enigma2-Aufnahmen (DE/EN, `ui-*`) stammen aus der autorisierten OpenATV-Testumgebung und wurden mit gestoppter Wiedergabe/Bootlogo aufgenommen. Formularbeispiele sind als ungespeichert gekennzeichnet. Bestehende Infobar-, Skin-, Menü- und Kanallistenbilder werden weiterverwendet. Die ergänzenden Beschreibungen beruhen auf den in `data/usage-gui-coverage.json` dokumentierten OpenATV-Quellen; deren bestehende Lizenzen bleiben maßgeblich.
+
+## Developer skinning examples
+
+The new English skinning tutorials, XML examples and geometric test artwork were created for this handbook. The API catalogue records names, signatures and source locations from OpenATV Enigma2 commit `f4135659cb5ee225efd84db1a944b5f72fa6b2a0`; it links to that implementation and adds original explanatory text. It does not bundle Enigma2 itself or third-party skin fonts/artwork.
+
+The standalone Python example plugin `examples/skinning/HandbookSkinLab/` carries its own `GPL-3.0-only` identifiers. This licence also applies to its downloadable Python copies. The XML/tutorial content and original test artwork follow this repository's GPL-2.0 licence. Native screenshots show this example plugin rendering synthetic data through Enigma2; they contain no television video frames.

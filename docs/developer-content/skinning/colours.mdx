@@ -1,0 +1,32 @@
+---
+title: Colours, transparency, layers and borders
+description: Enigma2 #AARRGGBB alpha, transparent versus alphaBlend, zPosition, widget borders, cornerRadius and gradient examples.
+---
+
+## Enigma2 colour notation
+
+Use a registered colour name or `#AARRGGBB`. In Enigma2 colour strings, the alpha byte represents **transparency**: `00` is opaque and `FF` is fully transparent. `#00FFFFFF` is opaque white; `#00000000` is opaque black. This is different from many web graphics APIs.
+
+<SkinExample id="colors" alt="Opaque, half-transparent and fully transparent blue rectangles over a gold background" caption="All three inner rectangles use the same RGB colour and alphaBlend=1. Only the AA byte changes. The gold lower layer becomes increasingly visible." />
+
+`alphaBlend="1"` enables native widget blending in the illustrated rectangle case. It matters when a partly transparent shape should mix with an already drawn OSD layer. The result can also depend on the particular widget and painting path.
+
+## Suppressing a label background
+
+`transparent="1"` tells the widget not to paint its usual background. It does not make its text disappear and is not a replacement for every colour-alpha or pixmap-alpha setting.
+
+<SkinExample id="progress" alt="An opaque label background compared with a label whose background is suppressed" caption="The first label paints a lighter rectangle. The second shows the underlying blue panel through its background while keeping the text." />
+
+## Overlapping widgets
+
+<SkinExample id="layers" alt="The cyan rectangle behind a gold rectangle at zPosition 0 and in front at zPosition 2" caption="Gold stays at zPosition=1. Changing cyan from 0 to 2 reverses the visible overlap." />
+
+Set explicit `zPosition` values when a dynamic widget must appear over decoration. Do not depend on XML order alone: GUI components, renderers and additional decorative widgets are created through different paths. A higher layer does not move a widget or increase its size.
+
+## Borders, corners and gradients
+
+<SkinExample id="borders" alt="Square and rounded bordered rectangles, followed by a rounded vertical gradient" caption="The first two eRectangle elements compare cornerRadius=0 and 32. The third uses the canonical backgroundColor gradient syntax." />
+
+Gradient syntax is `startColour[,middleColour],endColour,direction[,alphaBlend]`. Direction is `horizontal` or `vertical`; the optional final flag enables blending. A solid background and a gradient can both use `backgroundColor` in this source revision. `backgroundGradient` remains a deprecated alias.
+
+`cornerRadius="24;topLeft,topRight"` restricts rounding to the named corners; plain `24` applies it to all corners. The attribute reference links to `parseRadius()` for the exact edge tokens. Avoid treating decoration attributes as universal: the native target must implement their setters.

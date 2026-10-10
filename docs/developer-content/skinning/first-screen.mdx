@@ -1,0 +1,61 @@
+---
+title: Your first screen, widget and label
+description: Build a small Enigma2 Screen with a named Label, static eLabel decoration, an ActionMap and an embedded XML layout.
+---
+
+## The screen is the owner
+
+A Python `Screen` owns the components and closes them when the dialog ends. The XML supplies geometry and styling. This complete small class illustrates the contract:
+
+```python
+from Components.ActionMap import ActionMap
+from Components.Label import Label
+from Screens.Screen import Screen
+
+class MyHello(Screen):
+    skin = """
+    <screen name="MyHello" position="center,center" size="700,240"
+            resolution="1280,720" title="Hello OpenATV">
+        <eLabel position="30,20" size="640,50" font="Regular;26"
+                text="Static text from XML" />
+        <widget name="greeting" position="30,90" size="640,60"
+                font="Regular;32" foregroundColor="#005BD4EC" />
+    </screen>
+    """
+
+    def __init__(self, session):
+        Screen.__init__(self, session)
+        self["greeting"] = Label("Hello from Python")
+        self["actions"] = ActionMap(["OkCancelActions"], {
+            "ok": self.close,
+            "cancel": self.close,
+        }, -1)
+```
+
+An existing plugin opens it with `session.open(MyHello)`. A screen class alone is not automatically an entry in the Plugins menu; that requires a `PluginDescriptor`. The downloadable [Skin Lab](../lab/) supplies the registration and capture tooling.
+
+## What each part does
+
+| Part | Meaning |
+| --- | --- |
+| `Screen.__init__(self, session)` | Initialises the screen before adding components |
+| `self["greeting"]` | Registers the GUI component with exactly that case-sensitive name |
+| `<widget name="greeting">` | Styles the registered `Label`; it does not instantiate the Python Label |
+| `<eLabel text="…">` | Creates static decoration directly from XML |
+| `ActionMap` | Connects action names to Python callbacks; no visible widget is needed for it |
+| `self.close` | Returns control to the previous screen through the session |
+| `self.skinName` | Name or ordered list of names used to find an external skin layout; defaults to the class name |
+
+## Native result
+
+The teaching screen below adds a neutral frame around the same named/static-label contrast. Its downloadable XML is the exact layout used for this image.
+
+<SkinExample id="hello" alt="Static XML label and a larger cyan Hello from Python label on the native receiver" caption="A decorative label and a Python component share the screen. The Python widget uses an explicit foreground layer above the decorative rectangle." />
+
+## Lifecycle and updates
+
+Create components in `__init__`. Their native `.instance` is not guaranteed to exist there. Use `onLayoutFinish` for work requiring final native geometry, and clean up owned timers or subscriptions on close.
+
+Change a GUI Label with `self["greeting"].setText("Updated text")`. For a `StaticText` source, assign `.text`; its notification informs connected renderers. Avoid writing directly to a native instance when the Python component already exposes the operation.
+
+If a visible GUI component is created in Python but not represented in the selected skin layout, the engine can reject the screen with an unused-component error. Conversely, a `name` that Python never creates cannot be skinned. Start from the screen's actual component definitions.

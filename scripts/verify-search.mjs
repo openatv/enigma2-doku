@@ -24,6 +24,18 @@ globalThis.fetch = async input => {
   return new Response(body, { status: 200, headers: { 'content-type': file.endsWith('.json') ? 'application/json' : 'application/octet-stream' } });
 };
 const checks = [
+  ...['de', 'en'].flatMap(lang => [
+    [lang, 'skinning', `/${lang}/developers/skinning/`],
+    [lang, 'zPosition', `/${lang}/developers/skinning/colours/`],
+    [lang, 'alphaTest', `/${lang}/developers/skinning/api/attributes/`],
+    [lang, 'widgetBorderWidth', `/${lang}/developers/skinning/api/attributes/`],
+    [lang, 'parseCoordinate', `/${lang}/developers/skinning/api/functions/`],
+    [lang, 'SkinContext', `/${lang}/developers/skinning/api/classes/`],
+    [lang, 'ClockToText', `/${lang}/developers/skinning/data-flow/`],
+    [lang, 'StaticText', `/${lang}/developers/skinning/api/components/`],
+    [lang, 'centerScaled', `/${lang}/developers/skinning/pixmaps/`],
+    [lang, 'ellipsis', `/${lang}/developers/skinning/text/`],
+  ]),
   ['de', 'FBC', '/de/tuner/fbc-sat/'],
   ['de', 'Root', '/de/tuner/fbc-sat/'],
   ['de', 'Universal', '/de/tuner/fbc-sat-universal/'],
