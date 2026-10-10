@@ -19,7 +19,7 @@ Download the ZIP from any [illustrated example](../first-screen/). Extract its `
 /usr/lib/enigma2/python/Plugins/Extensions/HandbookSkinLab/
 ```
 
-The folder must directly contain `__init__.py`, `plugin.py`, `screens/` and `assets/`. Restart the GUI once after installing the new plugin, at a time when no recordings or other receiver work will be interrupted. Open **Plugins → Handbook Skin Lab**. LEFT/RIGHT moves between the twelve examples; OK or EXIT closes the screen.
+The folder must directly contain `__init__.py`, `plugin.py`, `advanced.py`, `panels.xml`, `screens/` and `assets/`. Restart the GUI once after installing the new plugin, at a time when no recordings or other receiver work will be interrupted. Open **Plugins → Handbook Skin Lab**. LEFT/RIGHT moves between the 21 examples (twelve foundations and nine [advanced scenes](../advanced/examples/)); OK or EXIT closes the screen.
 
 ## Change one thing
 
@@ -56,7 +56,7 @@ mv /tmp/handbook-skin-lab/request.tmp /tmp/handbook-skin-lab/request.json
 
 The service requires an English locale and refuses unknown IDs or an already-open unrelated dialog. It opens each requested example, uses native `grab`, closes the example, and returns to the original dialog. Do not operate the remote while a batch is running. PNGs and `manifest.json` appear in the same temporary directory.
 
-The manifest records the Enigma2 version string, locale, desktop dimensions, image hashes and hashes of the XML files used. A `complete` manifest means the requested captures finished; visual review is still necessary before publishing. Temporary files disappear at reboot.
+The manifest records the Enigma2 version string, locale, desktop dimensions, image hashes, hashes of the XML files used and shared Python/panel/asset hashes. A `complete` manifest means the requested captures finished; visual review is still necessary before publishing. Temporary files disappear at reboot.
 
 ## Remove the lab
 

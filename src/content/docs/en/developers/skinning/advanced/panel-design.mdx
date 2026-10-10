@@ -1,0 +1,84 @@
+---
+title: Build a reusable screen design with panels
+description: Share headers, footers and information groups between different screens using named panels and an explicit source contract.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/advanced/panel-design.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+Named panels let a skin keep one definition of a recurring layout. A shared header can establish the same title position, font, accent colour and padding across a channel list, library and detail page. Changing that definition updates each screen that includes it.
+
+## Define the reusable part once
+
+A named screen can serve as a panel definition without being opened as an independent Python screen. Here is the lab's shared header and footer:
+
+```xml
+<skin>
+  <screen name="HandbookLabHeader" resolution="1280,720">
+    <eRectangle position="0,0" size="1184,76"
+                backgroundColor="#00263850" />
+    <widget source="pageTitle" render="Label"
+            position="24,16" size="1136,46" font="Regular;30"
+            foregroundColor="#005BD4EC" transparent="1" zPosition="2" />
+  </screen>
+  <screen name="HandbookLabFooter" resolution="1280,720">
+    <eRectangle position="0,0" size="1184,56"
+                backgroundColor="#00263850" />
+    <widget source="keyHint" render="Label"
+            position="24,10" size="1136,36" font="Regular;22"
+            foregroundColor="#00FFFFFF" transparent="1" zPosition="2" />
+  </screen>
+</skin>
+```
+
+Put definitions in the skin's loaded XML files. A panel file that exists on disk but is never loaded contributes no named screens. Use a prefix to avoid collisions with another plugin or skin part.
+
+## Establish a source contract
+
+Both example owners provide the same local source names with different values:
+
+```python
+self["pageTitle"] = StaticText("Library")
+self["keyHint"] = StaticText("OK: open  /  EXIT: close")
+```
+
+The detail screen instead supplies `Programme details` and its own button hint. The panel reads the owning screen's namespace; it does not create a private Python screen, action map or separate source dictionary. Named GUI components inside a shared panel have the same constraint: each owner must supply those names with suitable types.
+
+## Reuse it in two screens
+
+<SkinExample id="panel-list" alt="Native library example using a shared blue title header and footer around three list entries" caption="The library body supplies its own content while the common header and footer come from panels.xml." />
+
+<SkinExample id="panel-detail" alt="Native detail example using the same header and footer with different title and button text" caption="The detail body differs, but the panel definitions and source names are unchanged. The full plugin ZIP includes panels.xml." />
+
+With explicit `position` and `size` on the panel call, child coordinates are relative to that include context. The size defines the available layout context; it does **not** automatically stretch every fixed coordinate of the referenced design. To support another width, write the panel with suitable relative positioning or maintain a clearly defined resolution variant.
+
+## Organise a complete skin
+
+Useful reusable parts include headers, coloured-button footers, service identity, event details, status strips and background frames. Keep each part cohesive and give it a documented contract: required source/component names, expected area, font aliases and asset paths.
+
+A practical layout can be organised as follows:
+
+```text
+skin.xml                  colours, fonts, common panels, screen definitions
+skinTemplates.xml         modern channel-list item styles
+mySkin/skin_*.xml          optional loaded skin parts
+fonts/                    fonts shipped with this skin, if any
+images/                   suitable raster/vector assets
+```
+
+These are organisational choices, not a requirement to use those exact subdirectory names. The [file-loading chapter](../../files/) explains which locations Enigma2 actually loads and how paths are resolved.
+
+## What panels make faster
+
+They reduce duplicated XML, repeated edits and the time needed to build consistent screens. They do not promise a faster frame rate or fewer native widgets: the panel's children are expanded into each owner, and their sources/renderers still update normally. A very large panel included everywhere can add unnecessary work.
+
+Avoid circular panel references, duplicate named widgets within one owner, and implicit dependencies on a component that only one screen creates. A common source can feed multiple renderer widgets; a single named GUI component should not be placed repeatedly as though each placement created another object.
+
+Normal screen panels and service-list template panels use different parsers. Reuse the design idea across both, while writing each in the correct XML vocabulary.
+
+Source: [readSkin/processPanel](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/skin.py#L2644), [screen ownership](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/Screens/Screen.py).
+
+</DeveloperContent>

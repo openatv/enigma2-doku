@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 import subprocess
 import time
+import traceback
 
 from enigma import eTimer, getDesktop, getEnigmaVersionString
 from Components.ActionMap import ActionMap
@@ -21,7 +22,9 @@ from Screens.Screen import Screen
 HERE = Path(__file__).parent
 ROOT = Path('/tmp/handbook-skin-lab')
 SCENES = ('hello', 'coordinates', 'alignment', 'wrapping', 'fonts', 'colors',
-          'layers', 'pixmaps', 'panels', 'data', 'borders', 'progress')
+          'layers', 'pixmaps', 'panels', 'data', 'borders', 'progress',
+          'infobar', 'signals', 'service-legacy', 'service-rows', 'service-grid',
+          'panel-list', 'panel-detail', 'icon-fonts', 'icon-states')
 
 
 class ExampleDuration(Source):
@@ -43,6 +46,9 @@ class HandbookSkinExample(Screen):
         if scene == 'data':
             self['message'] = StaticText('One source, two renderers')
             self['duration'] = ExampleDuration()
+        if scene in SCENES[12:]:
+            from .advanced import configure
+            configure(self, scene)
         self['actions'] = ActionMap(['OkCancelActions', 'DirectionActions'], {
             'cancel': self.close, 'ok': self.close,
             'left': lambda: self.close(-1), 'right': lambda: self.close(1),
@@ -88,7 +94,7 @@ class CaptureService:
             self.process = None
             if self.report is None:
                 self.report = {}
-            self.report.update(status='failed', error=str(error))
+            self.report.update(status='failed', error=str(error), traceback=traceback.format_exc())
             self.write('manifest.json', self.report)
             self.state = 'idle'
             if self.screen is not None and self.session.current_dialog is self.screen and self.session.in_exec:
@@ -112,10 +118,13 @@ class CaptureService:
             if not config.misc.locale.value.startswith('en_'):
                 raise ValueError('English receiver locale required')
             import skin
-            self.report = dict(schema=1, status='running', locale=config.misc.locale.value,
+            self.report = dict(schema=2, status='running', locale=config.misc.locale.value,
                                enigma=getEnigmaVersionString(), skin=config.skin.primary_skin.value,
                                desktop=[getDesktop(0).size().width(), getDesktop(0).size().height()],
                                attributes=[n for n in dir(skin.AttributeParser) if not n.startswith('_')],
+                               dependencies={str(p.relative_to(HERE)): sha256(p.read_bytes()).hexdigest()
+                                             for p in sorted(HERE.rglob('*'))
+                                             if p.is_file() and (p.suffix == '.py' or p.name == 'panels.xml' or p.parent.name == 'assets')},
                                captures=[])
             self.queue = list(scenes)
             self.base = self.session.current_dialog
@@ -184,6 +193,6 @@ def session_start(reason, session=None, **kwargs):
 
 
 def Plugins(**kwargs):
-    return [PluginDescriptor(name='Handbook Skin Lab', description='OpenATV skinning foundations: left/right to browse, EXIT to close',
+    return [PluginDescriptor(name='Handbook Skin Lab', description='OpenATV skinning examples: left/right to browse, EXIT to close',
                              where=PluginDescriptor.WHERE_PLUGINMENU, fnc=browse),
             PluginDescriptor(where=PluginDescriptor.WHERE_SESSIONSTART, fnc=session_start)]

@@ -1,0 +1,66 @@
+---
+title: MultiPixmap state icons using font glyphs
+description: Use iconFont, iconGlyphs and iconColors on a named MultiPixmap while preserving setPixmapNum state indices and the existing Python owner.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/advanced/icon-states.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+`MultiPixmap` normally selects one of several pixmaps by index. In the pinned OpenATV source it can instead create an `eLabel` for one named widget when `iconFont` and a valid `iconGlyphs` list are supplied. The owner can continue calling `setPixmapNum(index)`.
+
+## Keep the Python state contract
+
+```python
+self["connectionState"] = MultiPixmap()
+
+# Call after widget creation, for example in a bound onLayoutFinish method:
+self["connectionState"].setPixmapNum(0)
+```
+
+The meaning of index 0, 1 or 2 belongs to the Python owner. A skin must preserve that order when replacing its pixmap list with glyphs. Changing the glyph order changes the displayed meaning of the existing state machine.
+
+```xml
+<widget name="connectionState" position="20,20" size="100,100"
+        iconFont="enigma2icons;72"
+        iconGlyphs="0xEA77,0xEA78,0xEA79"
+        iconColors="#0078DFAD,#00F3C86A,#0099ADCA"
+        horizontalAlignment="center" verticalAlignment="center"
+        transparent="1" />
+```
+
+The lab creates three independent `MultiPixmap` objects with the same definition and selects indices 0, 1 and 2, so every state is visible in one image.
+
+<SkinExample id="icon-states" alt="Three native MultiPixmap widgets rendered as green connected, amber problem and grey disabled Wi-Fi glyphs" caption="The three states are explicit fixtures. They do not report the test receiver's network connection." />
+
+## Attribute reference
+
+| Attribute | Contract |
+| --- | --- |
+| `iconFont` | Font alias and size, for example `enigma2icons;72` |
+| `iconGlyphs` | Comma-separated Unicode integers parsed with base detection; use `0xEA77` or decimal values |
+| `iconColors` | Optional comma-separated colour list, exactly one colour per glyph |
+
+Both `iconFont` and `iconGlyphs` are needed for glyph mode. `iconGlyphs` uses numbers, not the literal characters from `&#xEA77;`. Invalid code points (including surrogate values) reject glyph mode and leave the pixmap path available. A colour-list length mismatch uses the widget's foreground colour instead of per-state colours. An absent glyph in an otherwise valid font is a separate font/content problem; it is not detected by validating the integer.
+
+In glyph mode the component consumes these specialised attributes, removes pixmap/scaling attributes and applies the selected font to a label. Therefore `scale="1"` is not how a glyph is resized; change the font size and label geometry. A standard `Pixmap` renderer does not automatically acquire this `MultiPixmap` interface.
+
+## Migrating an existing widget
+
+1. Find the Python object's actual class and every `setPixmapNum()` call.
+2. Write down the state order and include every index the owner can select.
+3. Map each state to a meaningful glyph and colour, preserving its meaning.
+4. Add the font attributes to that named widget in the skin.
+5. Exercise all states, including transitions, and verify label size/alignment.
+
+If you retain `pixmaps` as fallback, ensure the files still exist and match the same state order. A fallback declaration is not proof of compatibility with arbitrary older builds. The documented source and its component implementation define this interface.
+
+## Hook-specific styling
+
+Specialised component options such as these are handled before the central `AttributeParser`; that is why `iconGlyphs` is not one of the general 125 screen attributes. The same principle applies to the classic list's `serviceNameFont` and the modern template's `index` fields: inspect the component that owns the widget.
+
+Source: [MultiPixmap glyph handling](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/Components/Pixmap.py#L145).
+
+</DeveloperContent>

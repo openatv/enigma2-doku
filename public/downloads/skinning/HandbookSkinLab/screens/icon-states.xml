@@ -1,0 +1,15 @@
+<screen name="HandbookSkinLab_icon-states" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,32" font="Regular;22" text="OpenATV / Developer / Advanced Skin Lab" foregroundColor="#005BD4EC" transparent="1" zPosition="2" />
+  <eLabel position="48,70" size="1184,52" font="Regular;36" text="MultiPixmap: state images become font glyphs" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" />
+  <eLabel position="48,130" size="1184,60" font="Regular;23" text="Same Python component and state indices. Widget-local iconFont / iconGlyphs / iconColors." foregroundColor="#00BDCADA" transparent="1" zPosition="2" />
+  <!-- example:start -->
+  <eRectangle position="48,224" size="380,312" backgroundColor="#001C2B40" zPosition="0" cornerRadius="16"/>
+  <widget name="state0" position="76,260" size="324,168" iconFont="enigma2icons;112" iconGlyphs="0xEA77,0xEA78,0xEA79" iconColors="#0078DFAD,#00F3C86A,#0099ADCA" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="2" />
+<eLabel position="68,456" size="340,52" font="Regular;26" text="0 / connected" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" horizontalAlignment="center"/><eRectangle position="448,224" size="380,312" backgroundColor="#001C2B40" zPosition="0" cornerRadius="16"/>
+  <widget name="state1" position="476,260" size="324,168" iconFont="enigma2icons;112" iconGlyphs="0xEA77,0xEA78,0xEA79" iconColors="#0078DFAD,#00F3C86A,#0099ADCA" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="2" />
+<eLabel position="468,456" size="340,52" font="Regular;26" text="1 / problem" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" horizontalAlignment="center"/><eRectangle position="848,224" size="380,312" backgroundColor="#001C2B40" zPosition="0" cornerRadius="16"/>
+  <widget name="state2" position="876,260" size="324,168" iconFont="enigma2icons;112" iconGlyphs="0xEA77,0xEA78,0xEA79" iconColors="#0078DFAD,#00F3C86A,#0099ADCA" horizontalAlignment="center" verticalAlignment="center" transparent="1" zPosition="2" />
+<eLabel position="868,456" size="340,52" font="Regular;26" text="2 / disabled" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" horizontalAlignment="center"/><eLabel position="48,574" size="1184,52" font="Regular;25" text="MultiPixmap.setPixmapNum(index) selects a glyph and its matching colour." foregroundColor="#00BDCADA" transparent="1" zPosition="2" />
+  <!-- example:end -->
+  <eLabel position="48,664" size="1184,32" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" transparent="1" zPosition="2" />
+</screen>

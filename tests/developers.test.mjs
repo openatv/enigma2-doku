@@ -19,10 +19,10 @@ test('native developer examples bind each reviewed image to its exact executable
   assert.equal(manifest.reviewed, true);
   assert.equal(manifest.backend, 'grab -o -d -p');
   assert.match(manifest.locale, /^en_/);
-  assert.equal(manifest.captures.length, 12);
+  assert.equal(manifest.captures.length, 21);
   const ids = new Set();
   for (const item of manifest.captures) {
-    assert.match(item.id, /^[a-z]+$/);
+    assert.match(item.id, /^[a-z]+(?:-[a-z]+)*$/);
     assert.ok(!ids.has(item.id)); ids.add(item.id);
     assert.equal(item.language, 'en');
     assert.ok(item.review.includes('visually reviewed'));
@@ -37,6 +37,28 @@ test('native developer examples bind each reviewed image to its exact executable
   }
   const images = await readdir(new URL('src/assets/developers/skinning/', root));
   assert.deepEqual(images.sort(), [...ids].map(id => `${id}.png`).sort());
+  assert.equal(manifest.schema, 2);
+  assert.ok(Object.hasOwn(manifest.dependencies, 'advanced.py'));
+  assert.ok(Object.hasOwn(manifest.dependencies, 'panels.xml'));
+  for (const [file, expected] of Object.entries(manifest.dependencies)) {
+    assert.match(file, /^[a-zA-Z0-9_./-]+$/);
+    assert.ok(!file.includes('..'));
+    assert.equal(hash(await read(`examples/skinning/HandbookSkinLab/${file}`)), expected, `Shared dependency changed: ${file}`);
+  }
+});
+
+test('advanced source contracts have a matching revision and searchable field coverage', async () => {
+  const advanced = await json('data/skin-advanced-source.json');
+  const foundation = await json('data/skin-api.json');
+  assert.equal(advanced.revision, foundation.revision);
+  assert.equal(advanced.files.length, 26);
+  for (const file of advanced.files) assert.match(file.sha256, /^[0-9a-f]{64}$/);
+  const legacy = (await read('docs/developer-content/skinning/advanced/channel-classic.mdx')).toString();
+  for (const attribute of advanced.legacy_attributes) assert.ok(legacy.includes(attribute), attribute);
+  const modern = (await read('docs/developer-content/skinning/advanced/template-reference.mdx')).toString();
+  for (const field of [...Object.keys(advanced.service_indexes), ...Object.keys(advanced.event_indexes)]) assert.ok(modern.includes(field), field);
+  const icons = (await read('docs/developer-content/skinning/advanced/icon-fonts.mdx')).toString();
+  for (const glyph of Object.keys(advanced.icon_font.glyphs)) assert.ok(icons.includes(glyph), glyph);
 });
 
 test('API snapshot is pinned, explained, unique and has resolvable parser and alias references', async () => {

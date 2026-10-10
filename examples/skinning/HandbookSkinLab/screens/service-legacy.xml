@@ -1,0 +1,12 @@
+<screen name="HandbookSkinLab_service-legacy" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,32" font="Regular;22" text="OpenATV / Developer / Advanced Skin Lab" foregroundColor="#005BD4EC" transparent="1" zPosition="2" />
+  <eLabel position="48,70" size="1184,52" font="Regular;36" text="Classic list: native ServiceListLegacy" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" />
+  <eLabel position="48,130" size="1184,60" font="Regular;23" text="Six in-memory sample services. No channels are saved or tuned." foregroundColor="#00BDCADA" transparent="1" zPosition="2" />
+  <!-- example:start -->
+  
+  <widget name="list" position="48,214" size="1184,388" backgroundColor="#001C2B40" foregroundColor="#00FFFFFF" backgroundColorSelected="#00364E69" foregroundColorSelected="#005BD4EC" serviceNameFont="Regular;24" serviceInfoFont="Regular;20" serviceNumberFont="Regular;22" colorServiceDescription="#00BDCADA" foregroundColorServiceNotAvail="#00FFFFFF" fieldMargins="18" listMarginLeft="14" listMarginRight="14" scrollbarMode="showNever" />
+  <eLabel position="48,616" size="1184,34" font="Regular;21" text="The native legacy component places fields; list options also affect its geometry." foregroundColor="#00F3C86A" transparent="1" zPosition="2" />
+
+  <!-- example:end -->
+  <eLabel position="48,664" size="1184,32" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" transparent="1" zPosition="2" />
+</screen>

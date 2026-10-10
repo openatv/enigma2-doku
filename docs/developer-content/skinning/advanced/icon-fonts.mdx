@@ -1,0 +1,65 @@
+---
+title: Icon fonts instead of suitable pixmap assets
+description: Render scalable single-colour icons with the built-in enigma2icons font; understand Unicode, font metrics, colours and custom font registration.
+---
+
+An icon font stores symbols as glyphs. An Enigma2 label draws a chosen Unicode character using a font alias, size and foreground colour. This works well for simple status, navigation and action symbols that should match the skin's colour palette.
+
+## The built-in enigma2icons font
+
+The source's skin initialisation registers `enigma2icons.ttf` as `enigma2icons` when the font file is installed. The following code points are verified against the font in the pinned source revision and the corresponding core usage:
+
+| Code point | Glyph in this font |
+| --- | --- |
+| `U+E914` | `check_circle` |
+| `U+E918` | `cancel` |
+| `U+E9FE` | `wifi_device` |
+| `U+EA5A` | `lan` |
+| `U+EA68` | `cloud` |
+| `U+EA77` | `signal_wifi_4_bar` |
+| `U+EA78` | `signal_wifi_bad` |
+| `U+EA79` | `signal_wifi_off` |
+
+These are Private Use Area code points. Their meaning comes from **this font**, not from a universal Unicode icon standard. The same number in another font can produce an unrelated glyph or nothing at all.
+
+<SkinExample id="icon-fonts" alt="Native check-circle glyph rendered in three sizes and colours, followed by Wi-Fi, LAN, cloud and cancel icons" caption="The same glyph changes size and colour through label attributes. All examples use the receiver's installed enigma2icons font; no font is bundled in the lab download." />
+
+## XML and Python notation
+
+```xml
+<eLabel position="20,20" size="80,80"
+        font="enigma2icons;56" text="&#xE914;"
+        foregroundColor="#0078DFAD" transparent="1"
+        horizontalAlignment="center" verticalAlignment="center" />
+```
+
+`&#xE914;` is an XML numeric character reference. In Python the equivalent is `"\uE914"` or `chr(0xE914)`. Writing the six visible characters `\uE914` into an XML `text` attribute does not use Python's string escape rules. A code point also needs the matching `font` alias; `Regular` is not a substitute for `enigma2icons`.
+
+For a source-driven icon, use a source that supplies the glyph as text with `render="Label"`. For a fixed glyph controlled only by a boolean visibility chain, use `render="FixedLabel"` plus `ConditionalShowHide`, as in the [InfoBar status chapter](../infobar-sensors/).
+
+## Registering a skin's own font
+
+```xml
+<fonts>
+  <font filename="MySkin/fonts/MyIcons.ttf" name="MySkinIcons" scale="100" />
+</fonts>
+```
+
+This is a registration example: ship the actual font at the resolved location and use an appropriate licence. The alias `MySkinIcons` is then used in `font="MySkinIcons;40"`. Keep aliases unique and do not replace the normal text font or mark an icon font as a general replacement font. A replacement icon font can interfere with text fallback.
+
+A font's em size, ascender, descender and side bearings affect visual placement. `font="...;48"` does not guarantee a 48 × 48 ink rectangle. Allow adequate label height, centre within a clear box and inspect at HD/FHD/WQHD design scales. Small symbols may need a different optical size from neighbouring text even when both use the same nominal point size.
+
+## When to keep a pixmap
+
+| Icon font fits | Pixmap or artwork fits |
+| --- | --- |
+| Single-colour status and action symbols | Multicolour station logos/picons |
+| Recolouring through `foregroundColor` | Posters, cover images and photos |
+| A consistent family at several sizes | Detailed artwork with per-pixel colour/transparency |
+| Many small monochrome symbols | A small number of assets whose appearance must match an exact raster design |
+
+Font glyphs are still rasterised when drawn. They can reduce the number of image files and make colour variants easier to maintain, but “font” does not automatically mean lower memory use or faster rendering. Test actual sizes, visual quality and screen behaviour. This path does not imply browser-like emoji or colour-font support.
+
+Core components such as choice lists, file lists, movie lists and the virtual keyboard also have specialised icon-font hooks. Their contracts differ from an ordinary label. The next chapter covers the particularly useful [MultiPixmap state-icon option](../icon-states/).
+
+Source: [font registration](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/skin.py#L173), [source font](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/data/fonts/enigma2icons.ttf), [network glyph usage](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/Screens/NetworkSetup.py).

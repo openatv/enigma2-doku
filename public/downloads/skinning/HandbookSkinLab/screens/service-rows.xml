@@ -1,0 +1,32 @@
+<screen name="HandbookSkinLab_service-rows" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,32" font="Regular;22" text="OpenATV / Developer / Advanced Skin Lab" foregroundColor="#005BD4EC" transparent="1" zPosition="2" />
+  <eLabel position="48,70" size="1184,52" font="Regular;36" text="Modern list: compact rows" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" />
+  <eLabel position="48,130" size="1184,60" font="Regular;23" text="The same six sample services and native ServiceList; geometry comes from the XML template." foregroundColor="#00BDCADA" transparent="1" zPosition="2" />
+  <!-- example:start -->
+  
+  <widget name="list" position="48,214" size="1184,360" backgroundColor="#00101928" foregroundColor="#00FFFFFF" backgroundColorSelected="#00101928" foregroundColorSelected="#005BD4EC" scrollbarMode="showNever">
+    <templates>
+      <template component="serviceList" name="HandbookVertical" fonts="Regular;24,Regular;20">
+        <mode name="services" itemWidth="1184" itemHeight="58" orientation="vertical">
+          <rectangle position="4,4" size="1176,50" foregroundColor="#001C2B40" foregroundColorSelected="#00364E69" cornerRadius="10" />
+          <text index="ServiceName" position="20,12" size="560,34" font="0" foregroundColor="#00FFFFFF" foregroundColorSelected="#005BD4EC" wrap="ellipsis" />
+          <text position="660,14" size="490,30" font="1" text="Compact row / sample service" foregroundColor="#00BDCADA" />
+        </mode>
+<mode name="bouquets" itemWidth="1184" itemHeight="58" orientation="vertical">
+          <rectangle position="4,4" size="1176,50" foregroundColor="#001C2B40" foregroundColorSelected="#00364E69" cornerRadius="10" />
+          <text index="ServiceName" position="20,12" size="560,34" font="0" foregroundColor="#00FFFFFF" foregroundColorSelected="#005BD4EC" wrap="ellipsis" />
+          <text position="660,14" size="490,30" font="1" text="Compact row / sample service" foregroundColor="#00BDCADA" />
+        </mode>
+<mode name="other" itemWidth="1184" itemHeight="58" orientation="vertical">
+          <rectangle position="4,4" size="1176,50" foregroundColor="#001C2B40" foregroundColorSelected="#00364E69" cornerRadius="10" />
+          <text index="EntryName" position="20,12" size="560,34" font="0" foregroundColor="#00FFFFFF" foregroundColorSelected="#005BD4EC" wrap="ellipsis" />
+          <text position="660,14" size="490,30" font="1" text="Compact row / sample service" foregroundColor="#00BDCADA" />
+        </mode>
+      </template>
+    </templates>
+  </widget>
+  <eLabel position="48,600" size="1184,44" font="Regular;23" text="orientation=&quot;vertical&quot;   itemWidth=&quot;1184&quot;   itemHeight=&quot;58&quot;" foregroundColor="#00F3C86A" transparent="1" zPosition="2" />
+
+  <!-- example:end -->
+  <eLabel position="48,664" size="1184,32" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" transparent="1" zPosition="2" />
+</screen>

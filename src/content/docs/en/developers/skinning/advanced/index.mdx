@@ -1,0 +1,42 @@
+---
+title: Advanced skinning — from InfoBar to reusable designs
+description: Build on the foundations with InfoBar data chains, classic and modern channel lists, templates, reusable panels and icon fonts.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/advanced/index.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+This unit turns the [skinning foundations](../) into working screen designs. Follow the chapters in order: the InfoBar makes data flow visible; the channel list introduces specialised components and templates; panels organise a larger skin; icon fonts replace suitable image assets.
+
+## Learning path
+
+| Step | What you will build and understand |
+| --- | --- |
+| [InfoBar anatomy](./infobar/) | Screen ownership, named widgets and session sources |
+| [InfoBar data chains](./infobar-pipeline/) | One event rendered as a title, duration and progress bar |
+| [Signals and status](./infobar-sensors/) | Text, numeric and boolean contracts; unavailable values |
+| [Classic channel list](./channel-classic/) | The legacy native list and its component attributes |
+| [Modern channel templates](./channel-templates/) | XML row definitions, modes, fonts and item geometry |
+| [Screen and widget styles](./channel-styles/) | Whole-screen variants, compact rows, cards and user options |
+| [Template field reference](./template-reference/) | Service fields, EPG indexes, states and template attributes |
+| [Reusable screen design](./panel-design/) | Shared header/footer panels used by different owners |
+| [Icon fonts](./icon-fonts/) | Font registration, Unicode glyphs, colours and sizes |
+| [State icons with MultiPixmap](./icon-states/) | Keep state indexes while replacing PNGs with glyphs |
+| [Examples and verification](./examples/) | What the receiver examples demonstrate and how to run them |
+
+## Source first, then a visible result
+
+The source revision pinned in the [API reference](../api/) remains the technical reference. Each chapter distinguishes production screen contracts from the lab's explicit fixture data. A fixture is a small controlled input: it makes an example repeatable without tuning a channel, writing a bouquet or requiring a live broadcast.
+
+The nine additional native OSD images use the same downloadable **Handbook Skin Lab** as the foundations. The plugin does not select a new main skin. The examples are English in both handbook editions, and the automatic translation menu can translate their explanations.
+
+## Keep these three boundaries clear
+
+- **Screen versus component:** the Python screen owns the objects; XML styles the objects that exist.
+- **Source versus presentation:** a source exposes data and changes; a converter derives a particular value; a renderer paints it.
+- **General XML versus specialised templates:** a `ServiceList` row template uses its own parser. Its fields are not arbitrary screen widgets.
+
+</DeveloperContent>

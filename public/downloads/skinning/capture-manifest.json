@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "status": "complete",
   "locale": "en_US",
   "enigma": "2026-10-10",
@@ -139,6 +139,15 @@
     "wrap",
     "zPosition"
   ],
+  "dependencies": {
+    "__init__.py": "005968a953091e26becb75148418187a7737a57731485eec99d23fc07a6677b9",
+    "advanced.py": "56747ca47811e9b22849018e63e43a2b801bb86d2cab57d2c5b7222aecc029ab",
+    "assets/pattern.png": "5fdf2df6d9033a8cbc7559895c6e1606d3a0624aab7ab86cc43ba5db0d18517b",
+    "assets/pattern.svg": "2a7197589e316482c13916489fd3a5c4508ebf27d890da2473252c1076aeb3b6",
+    "panels.xml": "92551ff78b4327f2ca26efe61c65bbb2d1466feae3688691e57369a6f69e3626",
+    "plugin.py": "a86e7811166113ddc17e7bdd5df351be569b204afe89a0283786d99a1b63c5a2",
+    "screens/panels.xml": "24025079cf9861d3fe9770575ebe7189369db333dfd3a5d9f1b414d15b294f80"
+  },
   "captures": [
     {
       "id": "hello",
@@ -147,7 +156,7 @@
       "xml_sha256": "467639d3f157405547094bd641a8ecb6c45669a26a7c21c0155f2c6bd9b82015",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:05Z",
+      "captured_at": "2026-10-10T11:14:31Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -158,7 +167,7 @@
       "xml_sha256": "9f2b7e468f1b608820b17ad2b8a407ff5c75e2799b206a63cded641b532b2139",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:08Z",
+      "captured_at": "2026-10-10T11:14:34Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -169,7 +178,7 @@
       "xml_sha256": "7ea8ba3bb0ca2cdfdd76bef48052af959248f0960bf6c8118f543ca9d066d147",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:12Z",
+      "captured_at": "2026-10-10T11:14:38Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -180,7 +189,7 @@
       "xml_sha256": "1d3fe85432d578dd04cfca25eb34ff221be074c4efc60bd50b0d74c44b14a71f",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:15Z",
+      "captured_at": "2026-10-10T11:14:41Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -191,7 +200,7 @@
       "xml_sha256": "37bed4bcff1e551c14260897281b728c533c16fc0f2bbc5995e15748fa9ec773",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:19Z",
+      "captured_at": "2026-10-10T11:14:45Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -202,7 +211,7 @@
       "xml_sha256": "ee8ec583ff43fe607cf4e833155131ecc7275bf09bcd4553ced1e8149c0b031b",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:22Z",
+      "captured_at": "2026-10-10T11:14:48Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -213,7 +222,7 @@
       "xml_sha256": "1c7d3b679b6cd73d10058523bb73f7749a4ea4763babe6499b4f0db705f64cec",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:26Z",
+      "captured_at": "2026-10-10T11:14:52Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -224,7 +233,7 @@
       "xml_sha256": "aa188b1d82db4de859825868b203920524a1f368af0abd65b3fb3e95c71f5bdd",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:29Z",
+      "captured_at": "2026-10-10T11:14:55Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -235,7 +244,7 @@
       "xml_sha256": "24025079cf9861d3fe9770575ebe7189369db333dfd3a5d9f1b414d15b294f80",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:33Z",
+      "captured_at": "2026-10-10T11:14:59Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -246,7 +255,7 @@
       "xml_sha256": "fe837f81446ca8feb3b92c7590350b2e56e346d3d8c4e06c9344edfdf4719720",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:36Z",
+      "captured_at": "2026-10-10T11:15:02Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -257,7 +266,7 @@
       "xml_sha256": "b4831e9ffe1aed02ee97f0050261ed94097e307a4683c31d2baed430a77d814a",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:40Z",
+      "captured_at": "2026-10-10T11:15:06Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     },
@@ -268,7 +277,106 @@
       "xml_sha256": "276f3b7c7e4c1f1b4539acd20670d632626374bc89459d11abce4216b95c7b5e",
       "width": 1280,
       "height": 720,
-      "captured_at": "2026-10-10T10:48:43Z",
+      "captured_at": "2026-10-10T11:15:09Z",
+      "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
+      "language": "en"
+    },
+    {
+      "id": "infobar",
+      "file": "infobar.png",
+      "sha256": "37b9c0177ee770e08b2aa1cdf7c58e142b9594fd71e9082dc90b22e7e38b35d5",
+      "xml_sha256": "ba9ff75a83b59b6b368ea8296ca01514db8799e251bf73c654ef44286b58e6b6",
+      "width": 1280,
+      "height": 720,
+      "captured_at": "2026-10-10T11:15:13Z",
+      "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
+      "language": "en"
+    },
+    {
+      "id": "signals",
+      "file": "signals.png",
+      "sha256": "d870b4499e05865d366647fe92a7eef6e45e8fd60f7e896f631e2efb291abe2a",
+      "xml_sha256": "ce4c9ccc07b071e20ac00dbf30ce6a74dcdd3bee75270a3a8f0e9fd15c57ab3b",
+      "width": 1280,
+      "height": 720,
+      "captured_at": "2026-10-10T11:15:16Z",
+      "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
+      "language": "en"
+    },
+    {
+      "id": "service-legacy",
+      "file": "service-legacy.png",
+      "sha256": "bb78b10c00fa490ee60e2d1c87f20d10b8b3613005c7ffe712bea25864c25f29",
+      "xml_sha256": "10cbd131c3238124c74f0ef7c7a0620ced5f5186e26723abe0d5e88f046d168a",
+      "width": 1280,
+      "height": 720,
+      "captured_at": "2026-10-10T11:15:20Z",
+      "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
+      "language": "en"
+    },
+    {
+      "id": "service-rows",
+      "file": "service-rows.png",
+      "sha256": "38a2ab4e11ba226cefdc31b52e1e3d6f92a46d4f91529763d7b77d4ccee56529",
+      "xml_sha256": "0118f528757e85e262e7e39748aa4fc9946342daff294c39615788ebbcf5d07f",
+      "width": 1280,
+      "height": 720,
+      "captured_at": "2026-10-10T11:15:23Z",
+      "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
+      "language": "en"
+    },
+    {
+      "id": "service-grid",
+      "file": "service-grid.png",
+      "sha256": "7840003eb120c6f9266540ba6f6eca6b0e1640cdb23986410d2459f4f8440b18",
+      "xml_sha256": "9d63b981af377492e302dec7852ea55c4fa30ab1e504c0ec5791383718a3197d",
+      "width": 1280,
+      "height": 720,
+      "captured_at": "2026-10-10T11:15:27Z",
+      "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
+      "language": "en"
+    },
+    {
+      "id": "panel-list",
+      "file": "panel-list.png",
+      "sha256": "45ffa49678cbd6f94247c7dd938c5bcb7601e0124636c50b508d7c01726f02f6",
+      "xml_sha256": "12a2874dace910154f2dd33ea3a74e69760f2e1aaa2d99af65b72111bbcf4026",
+      "width": 1280,
+      "height": 720,
+      "captured_at": "2026-10-10T11:15:30Z",
+      "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
+      "language": "en"
+    },
+    {
+      "id": "panel-detail",
+      "file": "panel-detail.png",
+      "sha256": "c7dac33ba1a69faa59b102770e928cf8fc01cd49b584d66a16daa5df2e1b5ab9",
+      "xml_sha256": "8aedf827e42efa9c379b5c8fc925bf109ecd3a3361689d92d53bfaf038ca019a",
+      "width": 1280,
+      "height": 720,
+      "captured_at": "2026-10-10T11:15:34Z",
+      "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
+      "language": "en"
+    },
+    {
+      "id": "icon-fonts",
+      "file": "icon-fonts.png",
+      "sha256": "8211623634c34444fe112f2e7dd20b80fc6544d94fbc35e5b3408a7fa2f1e2d0",
+      "xml_sha256": "b99103aa20cf24c3d4b3386890b6c12f91a23927d06929c04c17571a23e88224",
+      "width": 1280,
+      "height": 720,
+      "captured_at": "2026-10-10T11:15:37Z",
+      "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
+      "language": "en"
+    },
+    {
+      "id": "icon-states",
+      "file": "icon-states.png",
+      "sha256": "65bd71eafbb0c61b6638f9a5601b6d868fb1a4f76c071a964aededc92155324d",
+      "xml_sha256": "20fe813004412a200c06ea4eaf00a679d9d698e6e60c3c9cc78605a7035c59de",
+      "width": 1280,
+      "height": 720,
+      "captured_at": "2026-10-10T11:15:41Z",
       "review": "Native image visually reviewed: layout, demonstrated effect, English labels and no television video.",
       "language": "en"
     }
@@ -279,5 +387,5 @@
   },
   "backend": "grab -o -d -p",
   "reviewed": true,
-  "scope": "Twelve independent foundation examples; API catalogue coverage does not imply all attributes were visually tested."
+  "scope": "Twelve foundation examples and nine advanced examples with fixture data; API catalogue coverage does not imply all attributes were visually tested."
 }

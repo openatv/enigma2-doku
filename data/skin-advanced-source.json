@@ -1,0 +1,200 @@
+{
+  "revision": "f4135659cb5ee225efd84db1a944b5f72fa6b2a0",
+  "files": [
+    {
+      "path": "lib/python/skin.py",
+      "sha256": "362f23f6326e83d24c371c677871f87f49673c70ca9660b898b7fe0dc14e3f8c"
+    },
+    {
+      "path": "lib/python/Screens/SessionGlobals.py",
+      "sha256": "9d971819e91ba17748e76a7bcbac8e40e7f37e626cc0923ca0acf9aba954699e"
+    },
+    {
+      "path": "lib/python/Screens/InfoBar.py",
+      "sha256": "ef4328e44967c7fa325c401b20275430db34fa5bde17413346e03c3d70bb63e3"
+    },
+    {
+      "path": "lib/python/Screens/InfoBarGenerics.py",
+      "sha256": "bbcb7909b76e67a53dba0cb8d2a9e39aeac0bcede5bc12052e9500123b0c1c6c"
+    },
+    {
+      "path": "lib/python/Screens/ChannelSelection.py",
+      "sha256": "e2d7af6ac4e428717f7089ab2108ba6c08dcb8336d7eca1702118b5fd80761d9"
+    },
+    {
+      "path": "lib/python/Screens/Screen.py",
+      "sha256": "bfefb330625b0307f8473a1b3263f8883ff7a4fa29f135df81e4ab90adfa7e3e"
+    },
+    {
+      "path": "lib/python/Components/UsageConfig.py",
+      "sha256": "ebbb3b70f600102ba03e452805ae4fd37e11ad214b64ebb72a05db2d9ec297d1"
+    },
+    {
+      "path": "lib/python/Components/ServiceList.py",
+      "sha256": "e97387baa87ccf5c134a95ee9103ea3115ee3e16a25c3ec1a903e8afb30636b9"
+    },
+    {
+      "path": "lib/python/Components/Pixmap.py",
+      "sha256": "26c650a7f1d5b336ccd3ffcb312cb91716108a22ba0ccbbdd5aa316ea7c77797"
+    },
+    {
+      "path": "lib/python/Components/Element.py",
+      "sha256": "f743d337938bc6de766e4361e10599c9d106a6279bcc72eebd883bb7241615da"
+    },
+    {
+      "path": "lib/python/Components/Sources/FrontendStatus.py",
+      "sha256": "4e024ca164917367daed94f88961afb6f85b255ff1d00fa2c56c0580ef6dc8e5"
+    },
+    {
+      "path": "lib/python/Components/Sources/FrontendInfo.py",
+      "sha256": "b036c1a357429483d3cfa800147ccb2a58777fc0af73762aa6a5b3ad36ef4578"
+    },
+    {
+      "path": "lib/python/Components/Sources/CurrentService.py",
+      "sha256": "6bdc7ca23f90da97b9d3544605538e2e088e691078b2a569d3ab3c8be9cdafc4"
+    },
+    {
+      "path": "lib/python/Components/Sources/EventInfo.py",
+      "sha256": "41f21f6f45e481f401a4542d2df9f62844e419414177692d082fa49456424a67"
+    },
+    {
+      "path": "lib/python/Components/Sources/RecordState.py",
+      "sha256": "660c5ca3f4d63e7ae654bc02b213eb9ab7f30b8d2e11ca6f033cf8c4eba9df52"
+    },
+    {
+      "path": "lib/python/Components/Converter/EventInfo.py",
+      "sha256": "664df79518d0dc510cd4bc5b8d7f565c5b197256ddd5099748cfd3fe510f3d73"
+    },
+    {
+      "path": "lib/python/Components/Converter/ServiceInfo.py",
+      "sha256": "618ee37a04ccc597ba977e7c5535c829e35c75b9484cca83f94e11df5d1dc2aa"
+    },
+    {
+      "path": "lib/python/Components/Converter/ServiceName.py",
+      "sha256": "30b6789b04812278310fb01f06464c84acaae3ce3879c31b49953afea7154a05"
+    },
+    {
+      "path": "lib/python/Components/Converter/FrontendInfo.py",
+      "sha256": "e00af0e9e85cb215cf7bf3d8bbeaf26336db856c3ad2dcf9e912e8e4d524a3e4"
+    },
+    {
+      "path": "lib/python/Components/Converter/ClockToText.py",
+      "sha256": "6afc34aa1d14069ec990f75b3deec59a3440a00e3f5a33f553c9d8842858449d"
+    },
+    {
+      "path": "lib/python/Components/Converter/ConditionalShowHide.py",
+      "sha256": "34dd484923ed0ab80011cee10a0da12c64185455b2a78a7904970e57dafd0856"
+    },
+    {
+      "path": "lib/python/Components/Renderer/Label.py",
+      "sha256": "5bc63df4efad3b38a3a77afcdcb8e2968eee23202782f4c6692393622c3968cb"
+    },
+    {
+      "path": "lib/python/Components/Renderer/FixedLabel.py",
+      "sha256": "6224312f055397d04434e171341278d85bf1358c007688cc14a5724e7957a371"
+    },
+    {
+      "path": "lib/python/Components/Renderer/Progress.py",
+      "sha256": "58bd1d4dc6ff8f5b93d6f75c294a86fa3a86af314527afbff2ea8bc256ce7edd"
+    },
+    {
+      "path": "lib/python/Components/Renderer/Picon.py",
+      "sha256": "8e74213d5303ef8fb22567d8e6ac2eecbccba05856a1a4ab6e2cf84d908a28db"
+    },
+    {
+      "path": "data/fonts/enigma2icons.ttf",
+      "sha256": "7b48d73c7b533134b3f74a88b144efe0250ef1a2d324c78fe25f704a0fa995fc"
+    }
+  ],
+  "service_indexes": {
+    "Number": 0,
+    "ServiceName": 1,
+    "EntryName": 1,
+    "MarkerName": 1,
+    "FolderName": 1,
+    "Picon": 2,
+    "ServiceTypeImage": 3,
+    "ServiceTypeName": 4,
+    "RecordingIndicator": 5,
+    "CryptoImage": 6,
+    "ProviderName": 7,
+    "FolderImage": 8,
+    "MarkerImage": 9,
+    "ServiceResolutionImage": 10,
+    "IsInBouquetImage": 11,
+    "Progress": 50,
+    "ProgressText": 51,
+    "Remain": 52,
+    "RemainDuration": 53,
+    "Elapsed": 54,
+    "ElapsedDuration": 55,
+    "ElapsedRemainDuration": 56
+  },
+  "event_indexes": {
+    "Title": 1,
+    "ShortDescription": 2,
+    "ExtendedDescription": 3,
+    "StartTime": 4,
+    "EndTime": 5,
+    "StartEndTime": 6,
+    "Duration": 7,
+    "StartTimeDuration": 8,
+    "StartTimeEndTimeDuration": 9,
+    "Description": 10,
+    "Image": 11,
+    "ImageOrPicon": 12
+  },
+  "legacy_attributes": [
+    "foregroundColorMarked",
+    "foregroundColorMarkedSelected",
+    "backgroundColorMarked",
+    "backgroundColorMarkedSelected",
+    "foregroundColorServiceNotAvail",
+    "foregroundColorEvent",
+    "colorServiceDescription",
+    "foregroundColorEventSelected",
+    "colorServiceDescriptionSelected",
+    "foregroundColorEventborder",
+    "foregroundColorEventborderSelected",
+    "colorEventProgressbar",
+    "colorEventProgressbarSelected",
+    "colorEventProgressbarBorder",
+    "colorEventProgressbarBorderSelected",
+    "colorServiceRecorded",
+    "colorServicePseudoRecorded",
+    "colorServiceStreamed",
+    "colorFallbackItem",
+    "colorServiceSelectedFallback",
+    "colorServiceDescriptionFallback",
+    "colorServiceDescriptionSelectedFallback",
+    "colorServiceRecording",
+    "colorServiceWithAdvertisment",
+    "picServiceEventProgressbar",
+    "serviceItemHeight",
+    "serviceNameFont",
+    "serviceInfoFont",
+    "serviceNumberFont",
+    "progressInfoFont",
+    "progressbarHeight",
+    "progressbarBorderWidth",
+    "progressBarWidth",
+    "fieldMargins",
+    "listMarginRight",
+    "listMarginLeft",
+    "nonplayableMargins",
+    "itemsDistances"
+  ],
+  "icon_font": {
+    "alias": "enigma2icons",
+    "glyphs": {
+      "E914": "check_circle",
+      "E918": "cancel",
+      "E9FE": "wifi_device",
+      "EA5A": "lan",
+      "EA68": "cloud",
+      "EA77": "signal_wifi_4_bar",
+      "EA78": "signal_wifi_bad",
+      "EA79": "signal_wifi_off"
+    }
+  }
+}

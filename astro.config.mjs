@@ -1,12 +1,13 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import settingSearchAliases from './scripts/setting-search-aliases.mjs';
 
 export default defineConfig({
   site: process.env.SITE_URL || 'https://openatv.github.io',
   base: process.env.BASE_PATH || '/enigma2-doku',
   output: 'static',
   trailingSlash: 'always',
-  integrations: [starlight({
+  integrations: [settingSearchAliases(), starlight({
     title: { de: 'OpenATV Handbuch', en: 'OpenATV Handbook' },
     description: 'Enigma2 verstehen. Einstellungen finden. Schritt für Schritt einrichten.',
     logo: { src: './src/assets/openatv-logo.png', alt: 'OpenATV', replacesTitle: true },
@@ -291,6 +292,20 @@ export default defineConfig({
           { slug: 'developers/skinning/lab', label: 'Run the Skin Lab' },
           { slug: 'developers/skinning/debugging', label: 'Debugging' },
           { slug: 'developers/skinning/verification', label: 'Sources & verification' },
+        ] },
+        { label: 'Advanced skinning', collapsed: true, items: [
+          { slug: 'developers/skinning/advanced', label: 'Learning path' },
+          { slug: 'developers/skinning/advanced/infobar', label: 'InfoBar anatomy' },
+          { slug: 'developers/skinning/advanced/infobar-pipeline', label: 'InfoBar data chains' },
+          { slug: 'developers/skinning/advanced/infobar-sensors', label: 'Signals & status' },
+          { slug: 'developers/skinning/advanced/channel-classic', label: 'Classic channel list' },
+          { slug: 'developers/skinning/advanced/channel-templates', label: 'Modern list templates' },
+          { slug: 'developers/skinning/advanced/channel-styles', label: 'Screen styles, rows & grids' },
+          { slug: 'developers/skinning/advanced/template-reference', label: 'Template field reference' },
+          { slug: 'developers/skinning/advanced/panel-design', label: 'Reusable panel design' },
+          { slug: 'developers/skinning/advanced/icon-fonts', label: 'Icon fonts' },
+          { slug: 'developers/skinning/advanced/icon-states', label: 'MultiPixmap state icons' },
+          { slug: 'developers/skinning/advanced/examples', label: 'Examples & verification' },
         ] },
         { label: 'skin.py API', collapsed: true, items: [
           { slug: 'developers/skinning/api', label: 'API overview & XML structure' },

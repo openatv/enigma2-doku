@@ -1,0 +1,64 @@
+---
+title: InfoBar anatomy and ownership
+description: Understand the InfoBar screen, its Python components, session sources, local sources and the boundary between behaviour and skin layout.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/advanced/infobar.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+The InfoBar is a useful first real screen because it combines many kinds of data: the current service, current and next event, time, reception status, recording state and service capabilities. What looks like one information panel is a group of independent widgets.
+
+## Start with the owner
+
+`Screens/InfoBar.py` defines the Python `InfoBar` class. Its mixins in `InfoBarGenerics.py` supply behaviour such as showing/hiding, service navigation and related information views. Skin XML defines the layout of `InfoBar`; it does not implement these actions or create missing Python components.
+
+Keep the screen's existing contract when adapting a production skin. A named widget such as `name="key_red"` refers to an object created by the Python owner. A widget using `source="session.CurrentService"` instead constructs a renderer chain from a session source.
+
+```xml
+<!-- Fragment for an existing InfoBar screen, not a complete replacement skin. -->
+<widget source="session.CurrentService" render="Label"
+        position="40,24" size="850,48" font="Regular;30"
+        foregroundColor="#00FFFFFF" transparent="1">
+  <convert type="ServiceName">Name</convert>
+</widget>
+```
+
+The source prefix is meaningful. `session.CurrentService` is resolved through the session's shared screen; `Service` would look up the local owner. Those names are not interchangeable.
+
+## Session data available to an InfoBar
+
+`SessionGlobals` creates the following shared sources. A source's class determines which properties a converter may read.
+
+| Source | Supplies | Typical presentation |
+| --- | --- | --- |
+| `session.CurrentService` | Current playable service, its information and reference | Name, provider, video information, capability icons, picon |
+| `session.Event_Now` | Current event | Programme title, description, elapsed/remaining time, progress |
+| `session.Event_Next` | Next event | Next title, start time and duration |
+| `session.CurrentTime` | Clock time | `ClockToText` → `Label` |
+| `session.FrontendStatus` | SNR, SNR dB, AGC, BER and lock | `FrontendInfo` → text, bar or visibility |
+| `session.FrontendInfo` | Frontend identity and tuner usage information | Tuner type, slot and tuner status text |
+| `session.TunerInfo` | Tuner use information | A compatible tuner-state converter/renderer |
+| `session.RecordState` | Recording state | Recording indicator with conditional visibility |
+| `session.Standby` | Standby boolean | State-dependent display elements |
+| `session.VideoPicture` | Shared video-picture source | Dedicated video presentation, where the screen requires it |
+
+The last source is not needed for the handbook's OSD examples. Their background is painted by the example screen and contains no television video.
+
+## Organise the layout by information
+
+A practical structure is a service header, a current-event block, a smaller next-event block and a compact status strip. Keep title and description boxes wide enough for long translations and event names. Choose what can disappear when information is unavailable; do not reserve the largest area for a rarely available sensor.
+
+Use a local coordinate system or a [named panel](../panel-design/) for each coherent group. Put background rectangles below text with `zPosition`. `transparent="1"` controls label background painting; it is not an instruction to make text invisible.
+
+## Related InfoBars are separate contracts
+
+Second InfoBar, simple/lite InfoBar, movie playback information and event views may reuse panels and session sources, but each has its own owner and component set. Copying the complete `InfoBar` XML into another screen does not establish that contract. Check the screen's `self[...]` definitions and `skinName` selection first, then share only compatible layout groups.
+
+Continue with [one event, several converter chains](../infobar-pipeline/).
+
+Source: [InfoBar](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/Screens/InfoBar.py), [InfoBar mixins](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/Screens/InfoBarGenerics.py), [SessionGlobals](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/Screens/SessionGlobals.py).
+
+</DeveloperContent>

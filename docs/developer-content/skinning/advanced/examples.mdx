@@ -1,0 +1,45 @@
+---
+title: Advanced examples, source coverage and verification
+description: Run the nine additional native Skin Lab scenes, understand fixture boundaries, and locate the source files and capture provenance.
+---
+
+The [Handbook Skin Lab installation guide](../../lab/) applies to this unit as well. The download contains **21 scenes**: twelve foundations followed by nine advanced examples. LEFT/RIGHT browses the scenes; OK/EXIT closes them. All examples paint a neutral OSD background, and captures use `grab -o -d -p` without the television video plane.
+
+## What each new scene exercises
+
+| Scene ID | Native implementation used | Controlled input |
+| --- | --- | --- |
+| `infobar` | EventInfo, ClockToText, FrontendInfo, ConditionalShowHide, Label, FixedLabel and Progress | Synthetic event, service text, signal and recording boolean |
+| `signals` | FrontendInfo text/value/boolean outputs and conditional labels | One source with values, one with unavailable values |
+| `service-legacy` | ServiceListLegacy / eListboxServiceContent | Six in-memory sample service references |
+| `service-rows` | ServiceList / native service-list content / XML template parser | The same six references, compact-row template |
+| `service-grid` | The same modern implementation | The same six references, card-grid template |
+| `panel-list` | Normal named panel expansion | Library owner supplying shared title/hint sources |
+| `panel-detail` | The same two named panels | Detail owner supplying different values |
+| `icon-fonts` | Native eLabel and installed enigma2icons font | Verified glyph code points, sizes and colours |
+| `icon-states` | MultiPixmap's glyph path | Explicit state indexes 0, 1 and 2 |
+
+The service-list examples do not write bouquets or lamedb and never zap. The classic example fixes row height at 60 pixels for readability. The modern examples use a local information adapter with explicit playable/unencrypted fixture states. They demonstrate native component and template rendering, not a test of every real-service/EPG/recording state. The InfoBar is an independent teaching screen, not a replacement of the receiver's live InfoBar.
+
+## Files to study
+
+- `screens/*.xml`: exact screen XML shown below each native image.
+- `advanced.py`: fixture sources, native list construction, state selection and scoped template/panel registration.
+- `panels.xml`: the two shared screen-panel definitions.
+- `plugin.py`: screen creation, browsing and the local capture service.
+
+The list helper temporarily inserts only the example template into a copied registry while the native parser runs. It restores the original registry synchronously. Panel examples register only their own names and restore them when the example closes. No global channel-list style preference is changed. These are lab isolation mechanisms; production skins use the normal skin and template loading paths.
+
+The native `Screen` implementation expects bound methods or code strings in `onLayoutFinish`; the lab uses bound methods for list population and state selection. Keep this lifecycle detail in mind when adapting the downloadable Python examples.
+
+## Source reference
+
+The unit uses the same Enigma2 revision as the [foundation API](../../verification/): `f4135659cb5ee225efd84db1a944b5f72fa6b2a0`. `data/skin-advanced-source.json` records 26 source/font file hashes, both service-list index mappings, all 38 specialised legacy attribute handlers and the eight demonstrated font glyphs.
+
+`python scripts/import-skin-advanced.py ../enigma2` updates that record from a clean checkout and requires it to match the foundation API revision. It parses source; it does not execute Enigma2 on the build machine. The website uses the committed result and needs no receiver or source checkout during a normal build.
+
+## Image provenance
+
+The shared capture manifest identifies each image, XML hash, native dimensions, locale and Enigma2 version. The extended manifest also records shared Python, panel and asset hashes, so changing a helper or shared panel cannot silently leave an old image presented as its verified result. The normal [capture/import workflow](../../verification/) and visual review remain required.
+
+Production checks should additionally cover navigation, long names, missing EPG, optional picons/numbers, marker/folder entries, state colour combinations and the intended display resolutions. The nine teaching images establish the stated examples; they do not imply that every possible receiver state was exercised.

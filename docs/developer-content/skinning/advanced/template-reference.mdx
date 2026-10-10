@@ -1,0 +1,94 @@
+---
+title: serviceList template fields and drawing attributes
+description: Searchable reference to service indexes, event suffixes, state colours, template elements and local layout groups in the modern channel list.
+---
+
+This reference describes `ServiceListTemplateParser` and the associated modern entry builder. It complements the general [skin.py attribute catalogue](../../api/attributes/); it is not the same attribute namespace. Search for exact XML names such as `ImageOrPicon1`, `EntryName` or `foregroundColorMarkedAndSelected`.
+
+## Service and state fields
+
+| `index` | Element / purpose |
+| --- | --- |
+| `Number` | `text`: service number, when the current context and user preferences provide it |
+| `ServiceName` | `text`: service name |
+| `EntryName` | `text`: generic entry name in `other` mode |
+| `MarkerName`, `FolderName` | `text`: explicit marker/folder name variants |
+| `Picon` | `pixmap`: service picon, subject to picon visibility and ratio settings |
+| `ServiceTypeImage` | `pixmap`: service-type image |
+| `RecordingIndicator` | `pixmap`: recording/streaming/pseudo-recording indicator when configured |
+| `CryptoImage` | `pixmap`: encryption flag image when enabled and relevant |
+| `FolderImage`, `MarkerImage` | `pixmap`: folder/marker decoration |
+| `ServiceResolutionImage` | `pixmap`: service-resolution image when available |
+| `IsInBouquetImage` | `pixmap`: bouquet-membership state |
+| `Progress` | `progress`: current-event completion |
+| `ProgressText` | `text`: current-event percentage |
+| `Remain`, `RemainDuration` | `text`: remaining time, with optional total duration |
+| `Elapsed`, `ElapsedDuration` | `text`: elapsed time, with optional total duration |
+| `ElapsedRemainDuration` | `text`: combined elapsed/remaining/duration display |
+
+The parser also declares `ServiceTypeName` and `ProviderName`. In this source snapshot the text-entry builder has no dedicated output branch for those two indexes. Use the implemented image/name fields in row templates, or place a suitable source/converter-driven provider label outside the list. A declared index alone is not proof of a rendered field.
+
+## Event fields and suffixes
+
+Append a **single event number** to these base names: `1` is the first/current event returned for the service, `2` the next, and so on through the parser's single-digit suffix range. `P` selects the configured primetime event. Examples: `Title1`, `Title2`, `StartTime1`, `DescriptionP`, `ImageOrPicon1`.
+
+| Base name | Purpose |
+| --- | --- |
+| `Title` | Event title |
+| `ShortDescription` | Short event description |
+| `ExtendedDescription` | Extended description |
+| `Description` | Combined description presentation |
+| `StartTime`, `EndTime`, `StartEndTime` | Event boundary times |
+| `Duration` | Event duration |
+| `StartTimeDuration`, `StartTimeEndTimeDuration` | Combined time displays |
+| `Image` | Optional event image from a registered image provider |
+| `ImageOrPicon` | Event image with an existing service picon as fallback |
+
+Use `text` for the textual fields and `pixmap` for the last two. Event queries depend on the mode, event availability and the builder's query window; declaring `Title9` does not guarantee nine populated events. Primetime uses the configured EPG primetime hour/minute. `ImageOrPicon` does not invent a missing picon or a poster, and the core's default implementation has no event-image provider. An add-on such as a compatible media-database integration must register one.
+
+## Common item attributes
+
+| Attribute | Meaning |
+| --- | --- |
+| `position`, `size` | Item-local geometry; within a template panel, use that panel's coordinates |
+| `index` | Named field selected by this component's parser |
+| `font` | Zero-based index into the template's comma-separated `fonts` table |
+| `text` | Static teaching/decorative text; does not read a source |
+| `horizontalAlignment` | `left`, `center`, `right` or `block` |
+| `verticalAlignment` | `top`, `center`/`middle` or `bottom` |
+| `wrap` | `noWrap`/`off`/`0`, `wrap`/`on`/`1`, or `ellipsis` |
+| `flags` | Comma-separated text flags including `blend`, `underline` and `scroll` |
+| `foregroundColor`, `backgroundColor` | Normal drawing colours; interpretation depends on the element type |
+| `foregroundColorSelected`, `backgroundColorSelected` | Selected state colours |
+| `foregroundColorMarked`, `backgroundColorMarked` | Marked state colours |
+| `foregroundColorMarkedAndSelected`, `backgroundColorMarkedAndSelected` | Marked and selected together |
+| `borderWidth`, `borderColor`, `borderColorSelected` | Borders for supported rectangle/progress drawing operations |
+| `cornerRadius` | Rounded corners for supported drawing operations |
+| `foregroundGradient`, `foregroundGradientSelected` | Gradients for supported rectangle/progress drawing operations |
+| `alpha` | Pixmap operation: `blend`, `test`, or ordinary pixmap drawing |
+| `scale` | Pixmap scaling flags handled by the shared scale parser |
+| `conditional` | Evaluated condition while collecting template items; trusted skin code, not a live subscription |
+
+For a template **rectangle**, the entry builder uses `foregroundColor` as its fill colour. This differs from a normal screen `<eRectangle backgroundColor="...">`. Likewise, template pixmaps use `alpha="blend"`; ordinary screen pixmaps commonly use `alphatest="blend"`. Do not translate XML by matching visual appearance alone.
+
+State colours can be supplied on modes/items, with the component's defaults as fallback. Modern widget-level `recordColor`, `streamColor`, `pseudoColor`, `serviceNotAvailColor`, `fallbackColor` and their `Selected` equivalents provide additional service-state colours. The configured recording-indicator mode decides whether recording state is conveyed as an icon or text colouring.
+
+## Template panels and optional fields
+
+```xml
+<panel position="0,0" size="900,58" layout="horizontal" spacing="12">
+  <text index="Number" position="left" size="70,40" font="0" />
+  <text index="ServiceName" position="left" size="800,40" font="0"
+        foregroundColor="#00FFFFFF" wrap="ellipsis" />
+</panel>
+```
+
+A template panel groups `text`, `pixmap`, `progress`, `rectangle` and nested template panels. It is processed by `TemplateParser.processPanel`, which is separate from normal screen-panel expansion. It does not resolve a named `<screen>` through `domScreens`; use the [screen-panel mechanism](../panel-design/) for shared full-screen furniture.
+
+The parser excludes user-disabled fields before collecting their geometry. Check all relevant combinations of numbers, picons, type/crypto icons and recording indicators. `autoFit` supports measured redistribution between particular text fields, and horizontal groups have `autoGrow` handling; these are specialised layout paths, not a browser-style automatic grid. Begin with explicit sizes and test each optional-field combination before adding them.
+
+## Selection is not the only state
+
+The native list supplies a status bitmask to `buildEntry`: selected, marked, marker, playable, recording, streaming, pseudo-recording, folder and bouquet membership. XML drawing items are chosen and coloured from these states. A renderer reading `session.CurrentService` is outside this per-row state model; it cannot replace a row's selected/recorded logic.
+
+Source: [complete service-list parser and entry builder](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/Components/ServiceList.py), [template attribute and panel parsing](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/skin.py#L2064). The repository records the extracted index dictionaries and specialised legacy attributes in `data/skin-advanced-source.json`.

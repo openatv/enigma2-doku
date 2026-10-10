@@ -1,0 +1,10 @@
+<skin>
+  <screen name="HandbookLabHeader" resolution="1280,720">
+    <eRectangle position="0,0" size="1184,76" backgroundColor="#00263850" />
+    <widget source="pageTitle" render="Label" position="24,16" size="1136,46" font="Regular;30" foregroundColor="#005BD4EC" transparent="1" zPosition="2" />
+  </screen>
+  <screen name="HandbookLabFooter" resolution="1280,720">
+    <eRectangle position="0,0" size="1184,56" backgroundColor="#00263850" />
+    <widget source="keyHint" render="Label" position="24,10" size="1136,36" font="Regular;22" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" />
+  </screen>
+</skin>

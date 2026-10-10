@@ -1,7 +1,7 @@
 """Import an entire reviewed English Skin Lab run, binding PNGs to current XML.
 
 Usage: python scripts/import-skin-lab-captures.py RUN_DIR --reviewed
-RUN_DIR must contain the receiver manifest.json and its twelve native PNGs.
+RUN_DIR must contain the receiver manifest.json and every native scene PNG.
 Use --reviewed only after visually checking each image and demonstrated effect.
 """
 import argparse
@@ -25,6 +25,14 @@ manifest = json.loads((args.run/'manifest.json').read_text())
 if manifest['status'] != 'complete' or not manifest['locale'].startswith('en_'):
     raise SystemExit('Expected a complete capture with English receiver locale')
 items = manifest['captures']
+dependencies = manifest.get('dependencies', {})
+expected_dependencies = {str(p.relative_to(lab)).replace('\\','/'):p for p in lab.rglob('*')
+                         if p.is_file() and (p.suffix=='.py' or p.name=='panels.xml' or p.parent.name=='assets')}
+if set(dependencies) != set(expected_dependencies):
+    raise SystemExit('Missing or unexpected shared example dependencies')
+for name, path in expected_dependencies.items():
+    if hashlib.sha256(path.read_bytes()).hexdigest() != dependencies[name]:
+        raise SystemExit('Shared dependency changed; recapture: '+name)
 if len(items) != len(scenes) or {i['id'] for i in items} != set(scenes):
     raise SystemExit('Missing, duplicated or unknown scenes')
 for item in items:
@@ -44,6 +52,6 @@ for item in items:
     item['review']='Native image visually reviewed: layout, demonstrated effect, English labels and no television video.'
     item['language']='en'
 manifest.update(image=dict(version=args.image_version,build=args.image_build),backend='grab -o -d -p',reviewed=True,
-                scope='Twelve independent foundation examples; API catalogue coverage does not imply all attributes were visually tested.')
+                scope='Twelve foundation examples and nine advanced examples with fixture data; API catalogue coverage does not imply all attributes were visually tested.')
 (root/'data/skin-lab-captures.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')
 print(f'Imported {len(items)} reviewed English examples for both handbook routes.')

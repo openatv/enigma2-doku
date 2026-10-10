@@ -25,6 +25,19 @@ globalThis.fetch = async input => {
 };
 const checks = [
   ...['de', 'en'].flatMap(lang => [
+    [lang, 'SessionGlobals', `/${lang}/developers/skinning/advanced/infobar/`],
+    [lang, 'converter chains', `/${lang}/developers/skinning/advanced/infobar-pipeline/`],
+    [lang, 'SNRdB', `/${lang}/developers/skinning/advanced/infobar-sensors/`],
+    [lang, 'serviceItemHeight', `/${lang}/developers/skinning/advanced/channel-classic/`],
+    [lang, 'Title1', `/${lang}/developers/skinning/advanced/channel-templates/`],
+    [lang, 'skinUserTemplates', `/${lang}/developers/skinning/advanced/channel-styles/`],
+    [lang, 'ImageOrPicon1', `/${lang}/developers/skinning/advanced/template-reference/`],
+    [lang, 'HandbookLabHeader', `/${lang}/developers/skinning/advanced/panel-design/`],
+    [lang, 'enigma2icons', `/${lang}/developers/skinning/advanced/icon-fonts/`],
+    [lang, 'iconGlyphs', `/${lang}/developers/skinning/advanced/icon-states/`],
+    [lang, 'onLayoutFinish', `/${lang}/developers/skinning/advanced/examples/`],
+  ]),
+  ...['de', 'en'].flatMap(lang => [
     [lang, 'skinning', `/${lang}/developers/skinning/`],
     [lang, 'zPosition', `/${lang}/developers/skinning/colours/`],
     [lang, 'alphaTest', `/${lang}/developers/skinning/api/attributes/`],

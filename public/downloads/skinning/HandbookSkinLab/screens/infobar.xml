@@ -1,0 +1,33 @@
+<screen name="HandbookSkinLab_infobar" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,32" font="Regular;22" text="OpenATV / Developer / Advanced Skin Lab" foregroundColor="#005BD4EC" transparent="1" zPosition="2" />
+  <eLabel position="48,70" size="1184,52" font="Regular;36" text="InfoBar: several views of the same event" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" />
+  <eLabel position="48,130" size="1184,60" font="Regular;23" text="Synthetic service and event data. Native EventInfo, FrontendInfo and display renderers." foregroundColor="#00BDCADA" transparent="1" zPosition="2" />
+  <!-- example:start -->
+  
+  <eRectangle position="48,220" size="1184,344" backgroundColor="#001C2B40" zPosition="0" cornerRadius="18"/>
+  <widget source="demoService" render="Label" position="76,242" size="900,48" font="Regular;30" foregroundColor="#005BD4EC" transparent="1" zPosition="2" />
+  <widget source="demoRecording" render="FixedLabel" position="1090,248" size="110,44" font="Regular;24" text="REC" foregroundColor="#00FF7474" transparent="1" zPosition="2">
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="demoEvent" render="Label" position="76,304" size="1120,48" font="Regular;32" foregroundColor="#00FFFFFF" transparent="1" zPosition="2">
+    <convert type="EventInfo">Name</convert>
+  </widget>
+  <widget source="demoEvent" render="Label" position="76,358" size="1120,36" font="Regular;22" foregroundColor="#00BDCADA" transparent="1" zPosition="2">
+    <convert type="EventInfo">ShortDescription</convert>
+  </widget>
+  <widget source="demoEvent" render="Progress" position="76,416" size="850,18" foregroundColor="#005BD4EC" backgroundColor="#00344760" borderWidth="0" zPosition="2">
+    <convert type="EventInfo">Progress</convert>
+  </widget>
+  <widget source="demoEvent" render="Label" position="962,403" size="230,46" font="Regular;24" foregroundColor="#00FFFFFF" transparent="1" zPosition="2">
+    <convert type="EventInfo">Duration</convert>
+    <convert type="ClockToText">AsLength</convert>
+  </widget>
+  <widget source="demoNext" render="Label" position="76,466" size="940,40" font="Regular;24" foregroundColor="#00FFFFFF" transparent="1" zPosition="2" />
+  <widget source="demoSignal" render="Label" position="1080,466" size="124,40" font="Regular;24" foregroundColor="#005BD4EC" transparent="1" zPosition="2">
+    <convert type="FrontendInfo">SNR</convert>
+  </widget>
+  <eLabel position="76,580" size="1120,45" font="Regular;24" text="Event source → Name / Progress / Duration → Label / Progress" foregroundColor="#00F3C86A" transparent="1" zPosition="2" />
+
+  <!-- example:end -->
+  <eLabel position="48,664" size="1184,32" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" transparent="1" zPosition="2" />
+</screen>
