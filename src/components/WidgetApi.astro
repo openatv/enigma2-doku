@@ -1,0 +1,117 @@
+---
+import api from '../../data/widget-api.json';
+import skin from '../../data/skin-api.json';
+interface Props { kind: 'native' | 'renderers' | 'converters' | 'components'; }
+const { kind } = Astro.props;
+const entries: any[] = api[kind];
+const labels = { native: 'native widgets', renderers: 'renderer classes', converters: 'converter-folder classes', components: 'GUI component classes' };
+const attributes = new Map(skin.attributes.map(a => [a.name, a]));
+const native = new Map(api.native.map(a => [a.name, a]));
+const sourceURL = (path: string, line: number) => `${api.repository}/blob/${api.revision}/${path}#L${line}`;
+const entryID = (entry: any) => kind === 'native' ? entry.name : entry.id.replaceAll('.', '-');
+---
+<section class="widget-api" data-widget-api>
+  <div class="api-filter" data-pagefind-ignore>
+    <label for={`widget-filter-${kind}`}>Filter {labels[kind]} by class, attribute, property or method</label>
+    <input id={`widget-filter-${kind}`} type="search" data-widget-filter placeholder="For example: eLabel, pixmaps, boolean…" autocomplete="off" />
+    <p data-widget-count role="status" aria-live="polite">{entries.length} entries</p>
+  </div>
+  <p class="source-note">Source snapshot <a href={sourceURL('lib/python/skin.py', 1)}>{api.revision.slice(0, 10)}</a>. Counts include aliases, exclude structural XML names and do not count Python properties as XML attributes.</p>
+  <nav aria-label={`${labels[kind]} quick index`} class="quick-index">
+    {entries.map(entry => <a href={`#${entryID(entry)}`}><code translate="no">{entry.name}</code>{kind === 'native' ? ` (${entry.attributes.length})` : ''}</a>)}
+  </nav>
+  {entries.map(entry => (
+    <section class="api-card" id={entryID(entry)} data-widget-entry>
+      <h3><a href={`#${entryID(entry)}`}><code translate="no">{entry.name}</code></a></h3>
+      {entry.summary && <p>{entry.summary}</p>}
+      {entry.doc && !entry.summary && <p>{entry.doc}</p>}
+      <p class="source-note"><a href={sourceURL(entry.path, entry.line)}><code translate="no">{entry.path}</code>, line {entry.line} ↗</a></p>
+      {kind === 'native' ? <>
+        <p><strong>{entry.attributes.length} central XML attribute names</strong>, including aliases. Inherits {entry.bases.length ? <code translate="no">{entry.bases.join(', ')}</code> : 'no other widget'}. Appearance also depends on the Python component and content.</p>
+        <details open={entry.name === 'eLabel'}>
+          <summary>Attributes, meaning and supported value variants ({entry.attributes.length})</summary>
+          <div class="table-scroll" tabindex="0" role="region" aria-label={`${entry.name} attributes`}>
+            <table><thead><tr><th>XML attribute</th><th>Meaning / syntax</th><th>Native dispatch</th></tr></thead><tbody>
+              {entry.attributes.map((item: any) => {
+                const attr: any = attributes.get(item.name);
+                return <tr>
+                  <td><a href={`../attributes/#attributes-${item.name}`}><code translate="no">{item.name}</code></a>{attr.alias && <small>Delegates to <code translate="no">{attr.alias}</code></small>}{attr.deprecated && <small>Deprecated spelling</small>}</td>
+                  <td>{attr.summary}{item.note && <p><strong>{item.note}</strong></p>}{attr.parsers?.length > 0 && <p>Syntax: {attr.parsers.map((parser: string, i: number) => <>{i ? ', ' : ''}<a href={`../functions/#functions-${parser}`}><code translate="no">{parser}</code></a></>)}</p>}</td>
+                  <td>{item.variants.map((variant: any) => <p>{variant.value}: {variant.calls.map((call: string, i: number) => <>{i ? ', ' : ''}<a href={sourceURL(entry.methods[call].path, entry.methods[call].line)}><code translate="no">{call}</code></a></>)}</p>)}</td>
+                </tr>;
+              })}
+            </tbody></table>
+          </div>
+        </details>
+        <details><summary>Public native methods, including inherited declarations ({Object.keys(entry.methods).length})</summary>
+          <ul>{Object.values(entry.methods).map((method: any) => <li><a href={sourceURL(method.path, method.line)}><code translate="no">{method.signature}</code></a> — {method.owner}</li>)}</ul>
+        </details>
+      </> : <>
+        <p>Class: <code translate="no">{entry.id}</code>. Bases: <code translate="no">{entry.base_names.join(', ') || 'none'}</code>.</p>
+        {kind !== 'converters' && <p>{entry.widget ? <>Native root: <a href={`../widgets/#${entry.widget}`}><code translate="no">{entry.widget}</code></a> ({native.get(entry.widget)?.attributes.length ?? 'see source'} central attribute names).</> : entry.created_widgets.length ? <>Created by <code translate="no">createWidget()</code>: {entry.created_widgets.map((name: string, i: number) => <>{i ? ', ' : ''}<a href={`../widgets/#${name}`}><code translate="no">{name}</code></a></>)}. The constructor may choose a widget by mode.</> : <>No single <code translate="no">GUI_WIDGET</code> declaration. Inspect the construction contract below; this can be a base/helper, composite or non-visual class.</>}</p>}
+        {kind === 'converters' && <p>{entry.is_converter ? 'Inherits Converter.' : 'Helper: does not inherit Converter.'} {entry.is_base ? 'Use a concrete implementation for a skin chain.' : 'Constructor arguments belong inside <convert>; they are not widget attributes.'}</p>}
+        {kind !== 'converters' && <p>Names explicitly handled in this class's <code translate="no">applySkin</code>: <strong>{entry.custom_attributes.length}</strong>. {entry.custom_attributes.length > 0 ? <code translate="no">{entry.custom_attributes.join(', ')}</code> : 'No named comparisons or local-handler dispatch found here; check inherited handling below.'} These can override central meanings.</p>}
+        {entry.inherited_attribute_handlers.length > 0 && <details><summary>Inherited Python attribute handlers</summary><ul>{entry.inherited_attribute_handlers.map((parent: any) => <li><code translate="no">{parent.owner}</code>: <code translate="no">{parent.names.join(', ')}</code></li>)}</ul><p>Inheritance does not mean every branch calls every base handler. The applySkin implementations below show delegation and precedence.</p></details>}
+        {['renderers', 'converters'].includes(kind) && <>
+          <p>Direct upstream accesses declared here: <code translate="no">{entry.source_reads.join(', ') || 'none'}</code>. Attribute probes: <code translate="no">{entry.source_probes.join(', ') || 'none'}</code>. These are source-code accesses, not a claim that every property is required in every mode.</p>
+          {entry.inherited_source_reads.length > 0 && <details><summary>Upstream accesses in base classes</summary><ul>{entry.inherited_source_reads.map((parent: any) => <li><code translate="no">{parent.owner}</code>: accesses <code translate="no">{parent.reads.join(', ') || 'none'}</code>; probes <code translate="no">{parent.probes.join(', ') || 'none'}</code>.</li>)}</ul></details>}
+        </>}
+        <details><summary>Effective Python properties ({Object.keys(entry.effective_properties).length}) and value/range constants</summary>
+          <p>These are Python descriptors, including inherited ones. Their usefulness as renderer outputs depends on the selected mode. Internal properties such as <code translate="no">suspended</code> manage lifecycle.</p>
+          <ul>{Object.entries(entry.effective_properties).map(([name, prop]: [string, any]) => <li><code translate="no">{name}</code> = <code translate="no">{prop.value}</code> — <a href={sourceURL(prop.path, prop.line)}>{prop.owner}</a></li>)}</ul>
+          {Object.entries(entry.effective_values).map(([name, prop]: [string, any]) => <p><code translate="no">{name} = {prop.value}</code> — <a href={sourceURL(prop.path, prop.line)}>{prop.owner}</a></p>)}
+        </details>
+        <details><summary>Arguments, defaults and skin parsing — exact implementation</summary>
+          <p>Read the selected class first, then any base constructor or applySkin it calls. This preserves separators, defaults, validation and conditional behaviour. It is source code for reference, not a desktop Python example.</p>
+          {Object.keys(entry.values).length > 0 && <details><summary>Class-level constants and option maps</summary><pre translate="no"><code>{Object.entries(entry.values).map(([name, value]) => `${name} = ${value}`).join('\n')}</code></pre></details>}
+          {entry.contracts.map((contract: any) => <details><summary><code translate="no">{contract.owner.split('.').slice(-1)[0]}.{contract.signature}</code></summary><p><a href={sourceURL(contract.path, contract.line)}>Implementation, line {contract.line} ↗</a></p><pre translate="no"><code>{contract.code}</code></pre></details>)}
+        </details>
+        <details><summary>Declared methods ({entry.methods.length}) and inherited methods ({entry.inherited_methods.length})</summary>
+          <ul>{entry.methods.map((method: any) => <li><a href={sourceURL(entry.path, method.line)}><code translate="no">{method.signature}</code></a>{method.doc && ` — ${method.doc}`}</li>)}</ul>
+          <h4>Inherited methods</h4><ul>{entry.inherited_methods.map((method: any) => <li><a href={sourceURL(method.path, method.line)}><code translate="no">{method.signature}</code></a> — <code translate="no">{method.owner}</code></li>)}</ul>
+        </details>
+      </>}
+    </section>
+  ))}
+  <p data-widget-empty hidden>No matching class. Clear the filter or use the handbook search.</p>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-widget-api]').forEach(root => {
+    const input = root.querySelector<HTMLInputElement>('[data-widget-filter]')!;
+    const entries = [...root.querySelectorAll<HTMLElement>('[data-widget-entry]')];
+    const text = entries.map(entry => entry.textContent?.toLocaleLowerCase() || '');
+    const update = () => {
+      const words = input.value.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+      let count = 0;
+      entries.forEach((entry, i) => { entry.hidden = !words.every(word => text[i].includes(word)); if (!entry.hidden) count++; });
+      root.querySelector('[data-widget-count]')!.textContent = `${count} of ${entries.length} entries`;
+      (root.querySelector('[data-widget-empty]') as HTMLElement).hidden = count !== 0;
+    };
+    input.addEventListener('input', update);
+    root.querySelectorAll<HTMLAnchorElement>('.quick-index a').forEach(link => link.addEventListener('click', () => { input.value = ''; update(); }));
+    window.addEventListener('hashchange', () => { input.value = ''; update(); });
+  });
+</script>
+<style>
+  .widget-api, .api-card, details { min-width: 0; }
+  .api-filter { padding: 1rem; border: 1px solid var(--sl-color-gray-5); background: var(--sl-color-bg-sidebar); border-radius: .5rem; }
+  label { display: block; font-weight: 600; }
+  input { width: 100%; box-sizing: border-box; padding: .65rem; margin-top: .5rem; border: 1px solid var(--sl-color-gray-3); background: var(--sl-color-bg); color: var(--sl-color-text); border-radius: .3rem; font: inherit; }
+  .quick-index { display: flex; flex-wrap: wrap; gap: .35rem .8rem; margin-block: 1rem; }
+  .api-card { padding: 1rem; margin-block: 1.5rem; border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; scroll-margin-top: 6rem; }
+  h3 { margin-top: 0; }
+  .source-note, small { font-size: .875rem; }
+  small { display: block; margin-top: .4rem; }
+  .table-scroll { overflow-x: auto; max-width: 100%; }
+  table { min-width: 650px; font-size: .875rem; }
+  td { vertical-align: top; }
+  td p { margin-block: .5rem; }
+  td code { white-space: nowrap; }
+  pre { overflow-x: auto; max-width: 100%; font-size: .8rem; tab-size: 4; }
+  code { overflow-wrap: anywhere; }
+  pre code { overflow-wrap: normal; }
+  summary { cursor: pointer; overflow-wrap: anywhere; }
+  details { margin-block: .85rem; }
+  details details { padding-left: .5rem; border-left: 2px solid var(--sl-color-gray-5); }
+  [hidden] { display: none; }
+</style>

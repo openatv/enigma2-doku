@@ -318,8 +318,13 @@ export default defineConfig({
           { slug: 'developers/skinning/network/migration', label: 'Port an existing skin' },
           { slug: 'developers/skinning/network/examples', label: 'Examples & sources' },
         ] },
-        { label: 'skin.py API', collapsed: true, items: [
+        { label: 'Skin & component API', collapsed: true, items: [
           { slug: 'developers/skinning/api', label: 'API overview & XML structure' },
+          { slug: 'developers/skinning/api/widgets', label: 'Attributes per widget' },
+          { slug: 'developers/skinning/api/renderers', label: 'Renderer API' },
+          { slug: 'developers/skinning/api/converters', label: 'Converter API' },
+          { slug: 'developers/skinning/api/gui-components', label: 'Named GUI components' },
+          { slug: 'developers/skinning/api/contracts', label: 'API recipes & arguments' },
           { slug: 'developers/skinning/api/attributes', label: '125 XML attributes' },
           { slug: 'developers/skinning/api/functions', label: '54 functions & parsers' },
           { slug: 'developers/skinning/api/classes', label: '10 classes & methods' },

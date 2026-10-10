@@ -25,6 +25,18 @@ globalThis.fetch = async input => {
 };
 const checks = [
   ...['de', 'en'].flatMap(lang => [
+    [lang, 'attributes per native widget', `/${lang}/developers/skinning/api/widgets/`],
+    [lang, 'ePixmap', `/${lang}/developers/skinning/api/widgets/`],
+    [lang, 'RunningText', `/${lang}/developers/skinning/api/renderers/`],
+    [lang, 'RatingIconLabel', `/${lang}/developers/skinning/api/renderers/`],
+    [lang, 'ClockToText', `/${lang}/developers/skinning/api/converters/`],
+    [lang, 'EventTime', `/${lang}/developers/skinning/api/converters/`],
+    [lang, 'ScrollLabel', `/${lang}/developers/skinning/api/gui-components/`],
+    [lang, 'ServiceListLegacy', `/${lang}/developers/skinning/api/gui-components/`],
+    [lang, 'ValueRange', `/${lang}/developers/skinning/api/contracts/`],
+    [lang, 'WithSeconds', `/${lang}/developers/skinning/api/contracts/`],
+  ]),
+  ...['de', 'en'].flatMap(lang => [
     [lang, 'network skinning', `/${lang}/developers/skinning/network/`],
     [lang, 'NetworkLogScreen', `/${lang}/developers/skinning/network/screen-contracts/`],
     [lang, 'XmlMultiContent', `/${lang}/developers/skinning/network/list-templates/`],

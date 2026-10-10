@@ -1,0 +1,51 @@
+---
+title: Named GUI component API
+description: Native widgets, constructors, methods and custom skin attributes for the 55 GUIComponent subclasses and helpers in the core Components tree.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+import WidgetApi from '../../../../../../components/WidgetApi.astro';
+
+{/* Generated from docs/developer-content/skinning/api/gui-components.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+`<widget name="status" … />` skins an object already created by the screen's Python code. The XML name does not tell you its class. Find the assignment, for example `self["status"] = Label("Ready")`, then look up that Python component here.
+
+```python
+from Components.Label import Label
+from Components.MenuList import MenuList
+
+self["status"] = Label("Ready")
+self["choices"] = MenuList(["One", "Two", "Three"])
+```
+
+```xml
+<widget name="status" position="24,24" size="400,40"
+        font="Regular;28" foregroundColor="#00FFFFFF" />
+<widget name="choices" position="24,84" size="400,210"
+        itemHeight="42" enableWrapAround="1" />
+```
+
+Here `Label` uses `eLabel`, while `MenuList` uses `eListbox`. The string-list content supplies the rows. Adding a renderer-style `<convert>` chain does not turn a named GUI component into a source.
+
+## Why the native class alone is insufficient
+
+| Component | Skinning consequence |
+| --- | --- |
+| `Input` | `createWidget()` returns `eLabel`; do not use the native `eInput` attribute list just because of the Python name. |
+| `TunerInfo` | `createWidget()` chooses a label or slider according to the constructor mode. |
+| `ScrollLabel` | Creates multiple labels and a scrollbar; its own `applySkin` distributes attributes. |
+| `ServiceListLegacy` | Adds service fonts, event colours and progress-bar attributes beyond native listbox styling. |
+| `ServiceList` | Modern list configuration and templates; its own contract differs from the legacy component. |
+| Addons such as `ScreenButtonsBar` | Consume layout, button, font and spacing options while building list content. |
+
+The catalogue includes **55 core GUI-component classes and helpers**, excluding the separately listed renderers. Plugins can add their own classes and `applySkin` handlers; those are outside this core-source inventory. A screen-local GUI class also needs its own contract. Helper classes without a concrete native widget are retained so inheritance remains understandable.
+
+## GUI component catalogue
+
+<WidgetApi kind="components" />
+
+For the list-specific rendering APIs, continue with [classic service lists](../../advanced/channel-classic/), [modern channel templates](../../advanced/channel-templates/) and [network list templates](../../network/list-templates/). A tuple field index in a template is data binding, not an attribute on the outer listbox.
+
+</DeveloperContent>

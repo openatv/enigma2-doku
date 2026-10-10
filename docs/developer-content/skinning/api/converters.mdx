@@ -1,0 +1,37 @@
+---
+title: Converter API — arguments, properties and methods
+description: Search the 63 converter-folder classes with constructors, option maps, source accesses, output properties, inheritance and methods.
+---
+
+A converter transforms data or affects downstream behaviour. It has **no native widget** and therefore no `position`, `size`, `font` or `backgroundColor` XML attributes. Its argument string is the text inside `<convert>`:
+
+```xml
+<widget source="global.CurrentTime" render="Label"
+        position="24,24" size="250,40" font="Regular;28">
+  <convert type="ClockToText">WithSeconds</convert>
+</widget>
+```
+
+`ClockToText` receives `WithSeconds` in its constructor and reads upstream `time`; `Label` receives the converter's `text`. `font` belongs to the Label widget. The [contract recipes](../contracts/) cover formatting, visibility, progress and list content.
+
+## What this API records
+
+The catalogue covers **63 matching module classes** in `Components/Converter`, including the base `Converter` and helper `Poll`. It records the constructor's actual parsing code, class option maps, declared methods, inherited methods and effective properties. No converter code is executed to build the handbook.
+
+The source-access list is a static reading aid. It includes methods as well as properties, and optional probes are identified separately. It is **not** a promise that all those inputs or outputs apply in every mode. For example, `FrontendInfo` has `text`, `boolean` and `value`, but a lock-status mode is intended for a boolean consumer, while SNR can feed a progress renderer.
+
+Arguments are class-specific: one converter accepts a single exact token, another comma-separated flags, another a format string, and a template converter may parse a whole expression. There is no universal converter-argument schema. The embedded constructor is the exact syntax reference; the recipes explain the common patterns in prose.
+
+## Converter catalogue
+
+<WidgetApi kind="converters" />
+
+## Properties are not all display outputs
+
+`text`, `boolean`, `value`, `range`, `pixmap`, `time`, `content` and `list` are common data contracts. A given converter may expose only some of them. Properties such as `suspended` belong to the Element lifecycle and should not be selected as displayed values merely because they appear in the API list.
+
+`ConditionalShowHide` illustrates another case: it reads a boolean, changes downstream visibility and forwards other requests upstream. It is useful between a boolean-producing converter and a fixed-label/rectangle renderer. It does not manufacture a useful text label for every boolean source.
+
+`Poll` supplies scheduled updates as a mixin. Its presence in the Converter directory does not make `<convert type="Poll">…</convert>` a valid standalone conversion. Likewise, a source module named `StaticText` and a converter named `StaticText` live in different namespaces; select the intended class.
+
+Inherited implementations matter: `EventTime` delegates to `EventInfo`; inspect that constructor and its properties. The catalogue includes base contracts so a small compatibility subclass does not appear to have an empty API.

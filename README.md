@@ -94,11 +94,13 @@ Für den Standardworkflow sind kein persönlicher Zugriffstoken, keine FTP-Zugan
 
 ## Änderungen an Inhalten
 
-Der Entwicklerbereich wird absichtlich nur auf Englisch gepflegt: **39 Kapitel** unter `docs/developer-content/`, gespiegelt nach DE und EN. Mit `pnpm developers:sync` werden die Artikel und einzelnen Beispiel-Downloads aktualisiert; `pnpm build` prüft die Synchronität. Neue Entwicklerartikel brauchen einen passenden Eintrag in der Sidebar.
+Der Entwicklerbereich wird absichtlich nur auf Englisch gepflegt: **44 Kapitel** unter `docs/developer-content/`, gespiegelt nach DE und EN. Mit `pnpm developers:sync` werden die Artikel und einzelnen Beispiel-Downloads aktualisiert; `pnpm build` prüft die Synchronität. Neue Entwicklerartikel brauchen einen passenden Eintrag in der Sidebar.
 
 Die Skinning-Grundlagen enthalten zwölf echte OSD-Aufnahmen und ein isoliertes Beispielplugin in `examples/skinning/HandbookSkinLab/`. Bild- und XML-Prüfsummen stehen in `data/skin-lab-captures.json`. Nach Änderungen an einem gezeigten XML-Beispiel muss dessen Bild erneut aufgenommen und geprüft werden. Aufnahme und geprüfter Import mit `scripts/import-skin-lab-captures.py` sind in [CAPTURE.md](docs/CAPTURE.md) beschrieben. `python scripts/package-skin-lab.py` erstellt das deterministische Download-ZIP. Die API-Referenz wird mit `python scripts/import-skin-api.py ../enigma2` aus einem sauberen Quellstand und redaktionellen Erklärungen in `data/skin-api-notes.json` erzeugt. Der normale Build benötigt weder Receiver noch Enigma2-Checkout.
 
 Im Entwicklerbereich enthält die automatische Sprachauswahl zusätzlich **Deutsch — automatic**. Die normale DE-Handbuchfassung bleibt unverändert eine native Übersetzung. Beide Suchindizes finden die englischen Entwicklerbegriffe.
+
+Die Widget-/Komponenten-API ergänzt fünf Kapitel: Attribute pro nativer Widgetklasse (16 Klassen), Renderer (41), Converter (63), benannte GUI-Komponenten einschließlich Helfern (55) und erklärte Datenketten. `python scripts/import-widget-api.py ../enigma2` erzeugt `data/widget-api.json` mit Quellhashes, Vererbung, Attributzuordnung, Methoden, Properties sowie originalen Konstruktor-/applySkin-Auszügen. `data/widget-api-notes.json` enthält redaktionelle Erläuterungen. Native Attributzahlen umfassen Aliasse, aber weder strukturelle XML-Namen noch zusätzliche Python-Handler. Slider-/Listenorientierung und Farb-/Gradientenvarianten werden getrennt ausgewertet.
 
 Die zwölf Kapitel zur erweiterten Skin-Entwicklung ergänzen InfoBar-Datenketten, Sensoren, klassische und moderne Senderlisten, Templates/Stile, wiederverwendbare Panels und Icon-Fonts einschließlich der MultiPixmap-Glyphenoption. Neun zusätzliche native Beispiele erweitern das Lab auf 21 Szenen. `python scripts/import-skin-advanced.py ../enigma2` aktualisiert die 26 Quell-/Fontnachweise und die spezialisierten Senderlistenfelder. Beispielwerte und lokale Adapter stehen in `advanced.py`; sie verändern keine Senderlisten- oder Skin-Einstellungen.
 
@@ -122,7 +124,7 @@ Nach einem Import den Diff prüfen, neue oder geänderte Optionen redaktionell b
 
 ## Platzbedarf und Apache2
 
-`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Die Website enthält die freigegebenen Original-PNGs zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der Build mit 328 Inhalten je Sprache einschließlich des Entwicklerbereichs belegt rund 313 MB, etwa 31,3 Prozent des Budgets.
+`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Die Website enthält die freigegebenen Original-PNGs zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der Build mit 333 Inhalten je Sprache einschließlich des Entwicklerbereichs belegt rund 323 MB, etwa 32,3 Prozent des Budgets.
 
 Qualifizierte Inline-Code-Namen wie `config.plugins.umbra.color_recording` erhalten beim Build einen zusätzlichen Suchalias für den letzten Namensbestandteil. Der sichtbare Code bleibt unverändert. `scripts/setting-search-aliases.mjs` verwendet dazu den nativen Sätteri-AST-Hook und Pagefind-Indexattribute.
 

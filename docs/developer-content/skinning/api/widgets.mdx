@@ -1,0 +1,48 @@
+---
+title: Attributes per native widget
+description: All central XML attributes per eLabel, ePixmap, eListbox, eSlider and the other native widgets, with counts, value parsers, inheritance and native API links.
+---
+
+A `<widget>` has no universal fixed set of visual attributes. Its Python component or renderer chooses a native class, and that class determines which setters exist. This reference lists **all applicable central `AttributeParser` names for each of the 16 native widget classes in the source snapshot**, including inherited setters and aliases.
+
+For example, `eLabel` has **39** applicable central names, `ePixmap` **23**, `eListbox` **83** and `eSlider` **44**. These are counts of recognised attribute **names**, not counts of independent visual features. An alias and its preferred spelling both count. `backgroundColor` counts once even when it accepts both a solid colour and a gradient.
+
+## Find the widget behind the XML
+
+| Your XML | Where to look |
+| --- | --- |
+| `<eLabel … />` | `eLabel` below |
+| `<ePixmap … />` | `ePixmap` below |
+| `<eRectangle … />` | `eRectangle` below |
+| `<widget source="…" render="Label" … />` | [Label renderer](../renderers/#Components-Renderer-Label-Label), then `eLabel` |
+| `<widget source="…" render="Progress" … />` | [Progress renderer](../renderers/#Components-Renderer-Progress-Progress), then `eSlider` |
+| `<widget name="…" … />` | The screen's Python assignment, then [GUI components](../gui-components/) |
+| `<screen …>` | `eWindow` for central visual attributes; `readSkin` also consumes screen structure |
+
+`name`, `source`, `render`, `addon` and converter `type` belong to XML construction, so they do not appear in these counts. The [API overview](../) explains that stage. `layout` on an `eStack` is another structural setting: the loader selects its horizontal/vertical layout before applying the remaining attributes.
+
+## How to read the tables
+
+Each row gives the meaning, a link to the value parser and the actual native setter. **Only the listed value variants are supported.** A label accepts a solid `foregroundColor`; it has no `setForegroundGradient`. A slider accepts both. A recognised method does not guarantee that content is present or that a renderer leaves the value unchanged after the next update.
+
+Use `listOrientation` on a native listbox and `orientation` on a slider. Both classes have a method called `setOrientation`, but the enums and argument counts differ. Component-specific parsers can deliberately reuse a name: an addon with its own `orientation` handler follows that addon's API.
+
+The count excludes no-op `AttributeParser` handlers such as `condition`, `layout` and `animationPaused`. Some are interpreted earlier; others have no visual effect. It also excludes extra options consumed by Python, such as a Pixmap renderer's `pixmaps` or RunningText's `options`. Consult the [renderer API](../renderers/) or [named-component API](../gui-components/) for those.
+
+## Widget catalogue
+
+<WidgetApi kind="native" />
+
+## Attributes that look similar but behave differently
+
+| Attribute | Distinction |
+| --- | --- |
+| `borderColor`, `borderWidth` | On `eLabel` and its subclasses these address the text outline. On other classes they use that class's border implementation. |
+| `widgetBorderColor`, `widgetBorderWidth` | Explicit widget border, including on a label. |
+| `alphaTest` | Pixmap/text raster handling where supported; not the same as widget `alphaBlend`. |
+| `transparent` | Controls widget background behaviour. It does not turn an opaque image file into an image with alpha. |
+| `text` | Sets initial label content; a renderer can replace it from `source.text`. |
+| `font` | Label or supported list font. A Canvas drawing command supplies its own font rather than using a native `font` XML attribute. |
+| `position`, `size` | Geometry of this widget, not the row indexes or geometry inside a MultiContent template. |
+
+For visual comparisons, use the captured [text examples](../../text/), [colour/layer examples](../../colours/), [image examples](../../pixmaps/) and [InfoBar progress examples](../../advanced/infobar-pipeline/). The tables describe API support; the examples show how selected values actually render.

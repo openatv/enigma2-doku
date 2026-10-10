@@ -1,0 +1,115 @@
+---
+title: API recipes and argument syntax
+description: Practical renderer and converter contracts for text, time, progress, visibility, pixmaps and lists, with XML examples and mode-specific rules.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/api/contracts.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+Start with the source, choose the converter output you need, then choose a renderer that consumes it. Finally apply the renderer's native and custom attributes. All names and examples here refer to the [recorded source snapshot](../); they are case-sensitive.
+
+## ClockToText: time to a label
+
+```xml
+<widget source="global.CurrentTime" render="Label"
+        position="24,24" size="320,42" font="Regular;28"
+        horizontalAlignment="right" verticalAlignment="center">
+  <convert type="ClockToText">Format:%H:%M:%S</convert>
+</widget>
+```
+
+The source supplies Unix time in seconds. `ClockToText` exposes `text`; Label displays it. `Format:` consumes a `strftime` format, so this example shows hours, minutes and seconds. Built-in `Default`, `WithSeconds`, `Date`, `AsLength`, `AsLengthHours`, `AsLengthSeconds`, `InMinutes` and the other named formats are listed in its `TIME_OPTIONS` map.
+
+`Default` and several named time/date modes follow the user's Enigma2 formatting settings. `AsLength` formats a duration rather than a wall-clock date. A tuple-valued source can be formatted with several formats and joined with `Separator:`. Default tokenisation accepts semicolons and, unless the whole argument starts with `Format`, replaces commas with semicolons. `Parse:` selects another delimiter. Use the [exact constructor](../converters/#Components-Converter-ClockToText-ClockToText) when combining formats containing punctuation.
+
+## FrontendInfo: choose the output for the mode
+
+```xml
+<widget source="session.FrontendStatus" render="Label"
+        position="24,80" size="280,42" font="Regular;28">
+  <convert type="FrontendInfo">SNRdB</convert>
+</widget>
+<widget source="session.FrontendStatus" render="Progress"
+        position="24,132" size="280,16"
+        orientation="horizontal" foregroundColor="#0000C080"
+        backgroundColor="#00303030" borderWidth="0">
+  <convert type="FrontendInfo">SNR</convert>
+</widget>
+```
+
+The first chain needs text. The second needs numeric `value` and `range`; this converter declares a range of 65536. It does not pass its formatted percent string to Progress. `SNRdB` needs a frontend that provides that measurement. No signal or missing driver data may produce an empty/fallback display.
+
+Simple constructor modes include `AGC`, `BER`, `NUMBER`, `SNR`, `SNRStream`, `SNRdB` and `TYPE`. `LOCK` selects lock handling through the default branch. `STRING` and `TUNERS` are structured forms; `REC_n` selects a recording tuner. Their positional arguments are documented by the constructor comments and defaults. Do not use a lock mode with Label merely because the class also has a `text` property: its text accessor rejects lock/slot-number modes.
+
+## ConditionalShowHide: boolean to visibility
+
+```xml
+<widget source="session.FrontendStatus" render="FixedLabel"
+        text="No tuner lock" position="24,170" size="360,42"
+        font="Regular;28" foregroundColor="#00FFCC66">
+  <convert type="FrontendInfo">LOCK</convert>
+  <convert type="ConditionalShowHide">Invert</convert>
+</widget>
+```
+
+`FrontendInfo` supplies `boolean`. `Invert` makes the fixed label visible when that value is false. FixedLabel preserves the XML text. The visibility converter supports `Blink`, `Invert` and a numeric blink interval in milliseconds; commas and semicolons separate tokens. For example, `Invert,Blink,500` combines inversion and blinking. Without `Blink`, an interval has no blinking effect. In this implementation the default interval is 500 ms.
+
+## ServicePosition: one data source, different presentations
+
+```xml
+<widget source="session.CurrentService" render="Label"
+        position="24,224" size="420,42" font="Regular;28">
+  <convert type="ServicePosition">Position,ShowHours</convert>
+</widget>
+<widget source="session.CurrentService" render="Progress"
+        position="24,276" size="420,16" orientation="horizontal"
+        foregroundColor="#0000ADEF" backgroundColor="#00303030">
+  <convert type="ServicePosition">Position</convert>
+</widget>
+```
+
+This needs a playable service with a working seek interface, normally a recording or seekable media item. Ordinary live TV is not a useful demonstration of elapsed file position. The converter's native seek units are 90 kHz ticks; its `text` formats them and its `value` normalises progress against `range = 10000`.
+
+The first comma-separated token selects `Length`, `Position`, `Remaining`, `Gauge`, `Summary`, `EndTime` or one of the defined `VFD…` modes. Optional tokens include `Negate`, `Detailed`, `ShowHours`, `ShowNoSeconds`, `ShowNoSeconds2`, `OnlyMinute` and `7segment`. They do not all affect every mode. User time-display settings also influence the final text. `Gauge` is intended for position/cut-list presentation, while Progress consumes the numeric pair. Inspect the [mode branches](../converters/#Components-Converter-ServicePosition-ServicePosition) before mixing flags.
+
+## Pixmap: image data versus an image index
+
+```xml
+<widget source="StatusIndex" render="Pixmap"
+        pixmaps="icons/off.png,icons/on.png"
+        position="24,320" size="48,48" alphaTest="blend" />
+```
+
+The screen must create `StatusIndex` with text `"0"` or `"1"`, and the skin must provide both files. The extra `pixmaps` attribute belongs to the renderer; it is not the native singular `pixmap` attribute. An invalid/non-numeric text falls back to index zero; an out-of-range numeric index clears the image. If the source also supplies `pixmap`, the renderer can use that instead.
+
+Alternatively, `ValueToPixmap` with `Path` reads upstream text as an image path and exposes `pixmap`. Its other supported mode is `LanguageCode`, which resolves country artwork. The [Pixmap renderer API](../renderers/#Components-Renderer-Pixmap-Pixmap) and [converter API](../converters/#Components-Converter-ValueToPixmap-ValueToPixmap) show both sides.
+
+## Small converters have different grammars too
+
+| Converter | Arguments and effect |
+| --- | --- |
+| `TextCase` | `ToLower` selects lower case; the other branch selects upper case (conventionally `ToUpper`). Reads `source.getText()` and exposes `text`; a text property alone does not establish that method. |
+| `ValueRange` | Exactly two comma-separated integers, such as `20,80`; exposes whether `source.value` falls within the inclusive interval. Reversed limits select the outside region, including the two boundaries. |
+| `ValueBitTest` | Integer mask; tests the upstream numeric value with a bit operation and exposes `boolean`. |
+| `EventTime` | Delegates to EventInfo; follow its inherited mode/argument contract. |
+
+## Listbox: content, rows and styles
+
+Listbox expects native `content`, not an arbitrary tuple list on its own. A Source.List can feed `XmlMultiContent`, which builds that content from XML templates. The renderer then displays it and reports selection changes upstream. Three distinct option sets participate:
+
+1. Outer listbox attributes: position, size, scrolling, selection and item layout.
+2. Converter/template settings: fonts, templates, styles and row field indexes.
+3. The actual row schema supplied by the screen's source.
+
+Use the complete [network template examples](../../network/list-templates/) and [channel-list templates](../../advanced/channel-templates/) rather than guessing indexes from a visually similar list. `TemplatedMultiContent` also exists, but its Python-expression templates are executable configuration; XML templates use a different format.
+
+## A quick debugging sequence
+
+Find the screen's real source/component name. Confirm the renderer's native class, then check its custom `applySkin`. Follow each converter from its constructor mode to the property consumed downstream. Check the Enigma2 log for unknown attributes or missing source properties. Finally compare the [captured SkinLab examples](../../lab/) with the exact XML used for them.
+
+The [widget tables](../widgets/) help distinguish an unknown name from a name that exists only on another native class. They also prevent a subtle error: two classes exposing a similarly named C++ setter do not necessarily accept the same XML syntax.
+
+</DeveloperContent>

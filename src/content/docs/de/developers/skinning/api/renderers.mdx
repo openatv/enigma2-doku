@@ -1,0 +1,58 @@
+---
+title: Renderer API — widgets, attributes and inputs
+description: Search all 41 renderer-folder classes, native widgets, extra skin attributes, source inputs, Python properties, methods and exact applySkin implementations.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+import WidgetApi from '../../../../../../components/WidgetApi.astro';
+
+{/* Generated from docs/developer-content/skinning/api/renderers.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+A renderer connects an upstream source or converter to a visual object. `render="Label"` selects `Components.Renderer.Label.Label`; its `GUI_WIDGET = eLabel` supplies the native attributes. A renderer can additionally consume its own XML options before passing the remaining attributes to `skin.py`.
+
+This catalogue covers the **41 matching module classes** in `Components/Renderer`, including the `Renderer` base and the non-visual `FrontpanelLed`. Presence in that directory does not make a class an OSD widget: front-panel control has a different lifecycle, and some implementations depend on optional packages or receiver capabilities.
+
+## The common contract
+
+| Interface | Purpose |
+| --- | --- |
+| `connect(source)` | Attaches the upstream Element; normal skin construction does this. |
+| `GUI_WIDGET` / `createWidget(parent)` | Selects or creates the native widget. |
+| `postWidgetCreate(instance)` | Initialises the instance, callbacks or content after creation. |
+| `applySkin(desktop, parent)` | Consumes component options and applies remaining visual attributes. |
+| `changed(what)` | Responds to source updates; handle clear events as well as normal changes. |
+| `onShow()` / `onHide()` | Resume/suspend updates through the Element lifecycle. |
+| `preWidgetRemove(instance)` | Disconnects widget callbacks before removal. |
+
+These are Python methods, not XML attribute names. The catalogue includes their exact signatures and inherited methods. Do not create a second native widget from `changed()`; updates should modify the existing instance.
+
+## Common data contracts
+
+| Renderer | Upstream data | Extra configuration |
+| --- | --- | --- |
+| `Label` | `text` | Native `eLabel` attributes |
+| `FixedLabel` | Can participate in visibility changes | XML `text` remains fixed |
+| `Progress` | `value` and `range` | Native `eSlider` attributes |
+| `Pixmap` | `pixmap`, or numeric `text` for an image list | `pixmaps="off.png,on.png"` uses zero-based indexes |
+| `Listbox` | Native `content`; selection callbacks | Often supplied by `XmlMultiContent` / `TemplatedMultiContent` |
+| `Canvas` | `drawlist` instructions | Drawing commands carry their own text/font/colour data |
+| `PositionGauge` | Playback length, position and cut-list data | `pointer`, `seekPointer` and native gauge attributes |
+| `RunningText` | `text` | A viewport plus child label; custom `options` and text styling |
+
+The [API recipes](../contracts/) show complete chains and explain why an exposed property does not necessarily work in every converter mode.
+
+## Renderer catalogue
+
+Expand **Arguments, defaults and skin parsing** for the exact constructor and `applySkin` code, including base implementations. The extra-attribute list is extracted from explicit comparisons, `match` branches and local-handler dispatch. Nested sub-options, for example the comma-separated contents of `options`, are shown in the parsing code; they are not separate widget attributes.
+
+<WidgetApi kind="renderers" />
+
+## Inheritance and overrides
+
+Use the native table as the starting point, then read the renderer's handling. For example, RunningText's native root is `eWidget`, but its `font`, `halign`, `valign`, shadow and movement options configure an internal label. Copying the `eWidget` count alone would omit those options. Conversely, copying all `eLabel` attributes into RunningText assumes forwarding that its implementation may not provide.
+
+The parser code also settles defaults and precedence. A supplied `Pixmap.source.pixmap` can replace an image chosen from `pixmaps`. `Label.changed()` replaces the XML text. Attributes are case-sensitive unless a particular parser explicitly normalises them.
+
+</DeveloperContent>

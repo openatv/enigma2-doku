@@ -1,6 +1,6 @@
 ---
-title: skin.py API reference
-description: Search 125 XML attribute handlers, 54 module functions, 10 classes and the source/converter/renderer catalogue from a pinned OpenATV Enigma2 source revision.
+title: Skin, widget, renderer and converter API
+description: Attributes per widget, renderer and converter contracts, named GUI components and the complete skin.py reference from a pinned OpenATV Enigma2 source revision.
 ---
 import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
 import SkinExample from '../../../../../../components/SkinExample.astro';
@@ -15,6 +15,11 @@ This reference is extracted from OpenATV's `lib/python/skin.py` and annotated fo
 
 | Reference | Contents | Try searching for |
 | --- | --- | --- |
+| [Attributes per widget](./widgets/) | 16 native classes, each with its complete applicable central attribute list, counts and native API | `eLabel`, `ePixmap`, `eListbox`, `eSlider` |
+| [Renderer API](./renderers/) | 41 module classes: native widgets, extra attributes, input contracts, constructors and methods | `RunningText`, `pixmaps`, `Progress` |
+| [Converter API](./converters/) | 63 module classes: argument parsing, option maps, properties, inheritance and methods | `FrontendInfo`, `ServicePosition`, `EventTime` |
+| [Named GUI components](./gui-components/) | 55 core GUI component classes and helpers, including composite widgets and addons | `ScrollLabel`, `Input`, `ServiceListLegacy` |
+| [API recipes](./contracts/) | Explained XML chains and class-specific argument syntax | `WithSeconds`, `ConditionalShowHide`, `ValueRange` |
 | [XML attributes](./attributes/) | All 125 `AttributeParser` attribute handlers, with purpose, aliases, native setters and parser links | `zPosition`, `alphaTest`, `padding`, `widgetBorderWidth` |
 | [Functions and value parsers](./functions/) | All 54 top-level functions, signatures and extracted option tokens | `parseColor`, `parseCoordinate`, `readSkin` |
 | [Classes and their methods](./classes/) | All 10 top-level classes and links to their declared methods | `SkinContext`, `AttributeParser`, `TemplateParser` |
@@ -66,7 +71,7 @@ The `Regular` face must already be registered. Font alias `width`/`height` are l
 
 ## Read an entry correctly
 
-An attribute entry lists the native methods that its handler calls. The target must actually implement them. `itemHeight` belongs to suitable list content; it is not useful on an `ePixmap` just because the central parser recognises the name.
+An attribute entry lists the native methods that its handler calls. The [per-widget tables](./widgets/) resolve those methods through native inheritance and distinguish value branches and overloads. `itemHeight` is applicable to a listbox; it is not an `ePixmap` attribute just because the central parser recognises the name. Python components can consume additional attributes or reinterpret central names before dispatch.
 
 Parser fallback values in this reference apply **when that parser receives an invalid value**. They are not necessarily the default appearance when the attribute is omitted; native widget defaults and the active window style also matter.
 
@@ -74,6 +79,6 @@ The reference records all function signatures and class method names, including 
 
 ## Version and maintenance
 
-See [verification](../verification/) for the exact source hash and receiver capture scope. Catalogue generation parses the Python AST without importing the receiver modules. Human-written explanations accompany the extracted names, signatures, locations and tokens. A changed source inventory fails generation until its new entries receive explanations.
+See [verification](../verification/) for the exact source hash and receiver capture scope. The skin.py catalogue parses Python AST; the widget catalogue also reads native C++ public declarations and resolves inheritance. Neither executes receiver modules or converter expressions. Human-written explanations accompany the catalogues; exact constructor/applySkin excerpts retain class-specific argument syntax and defaults.
 
 </DeveloperContent>

@@ -1,0 +1,72 @@
+{
+  "native": {
+    "eWidget": "Base widget: geometry, background, borders, transparency and stacking. It does not implement text, pixmap or list content.",
+    "eLabel": "Text label with font, alignment, wrapping, outline, shadow and text scrolling. borderColor/borderWidth address the text outline; use widgetBorderColor/widgetBorderWidth for the rectangular widget border.",
+    "eButton": "Native button derived from eLabel. It inherits the label attributes. Remote-control actions are connected in Python, not by a skin attribute.",
+    "eCanvas": "Pixmap-derived drawing surface. A Canvas renderer consumes drawing instructions; font and text for those instructions are not eCanvas XML attributes.",
+    "eGauge": "Native analogue gauge used by clock renderers. The Python renderer supplies values; the XML parser supplies geometry and the supported image attributes.",
+    "eInput": "Native input widget. This is distinct from the commonly used Python Components.Input.Input, whose createWidget returns eLabel. Look up the actual component before selecting attributes.",
+    "eListbox": "List viewport and selection control. Row content may be string, configuration, service or MultiContent data. Row-template attributes and component-specific attributes are additional contracts.",
+    "ePixmap": "Image widget: pixmap, scaling and alpha test/blending, plus base widget appearance. No font or text alignment attributes.",
+    "ePositionGauge": "Playback position and seek/cut marker widget. pointer and seekPointer use filename:x,y syntax; the source/renderer supplies playback and cut-list values.",
+    "eQRCode": "QR-code widget. text supplies the encoded payload; errorCorrection, quietZone and colour/spacing options determine the generated symbol.",
+    "eRectangle": "Decorative rectangle. Uses the base widget background, gradient, corner and border attributes.",
+    "eSlider": "Progress or slider widget. Supports foreground/background images and gradients and the two-argument slider orientation parser. Several scrollbar names are compatibility mappings.",
+    "eStack": "Layout container whose children use align. Geometry and appearance are inherited from eWidget; it is not a text label or listbox.",
+    "eSubtitleWidget": "Native subtitle display surface. DVB/teletext subtitle styles are configured by the subtitle skin resources; they are not arbitrary label attributes on this widget.",
+    "eVideoWidget": "Native video plane wrapper derived from eLabel. Inherited label methods exist, but video placement/decoder behaviour is controlled by Pig or VideoWindow and the receiver driver.",
+    "eWindow": "Screen window. Adds title, window flags and animation mode to the base widget. Use these on the screen rather than on a Label renderer."
+  },
+  "attribute_exceptions": {
+    "eLabel.alphaTest": "For eLabel and its subclasses, both on and blend enable text blending: setAlphatest maps any positive mode to the same boolean. The three-way pixmap distinction does not apply here.",
+    "eSlider.scrollbarBackgroundColor": "The implementation delegates to setBackgroundColor; this is a compatibility name for the slider background.",
+    "eLabel.borderColor": "Overrides the base implementation: colours the text outline. widgetBorderColor colours the widget rectangle.",
+    "eLabel.borderWidth": "Overrides the base implementation: text outline width. widgetBorderWidth sets the widget rectangle border.",
+    "eButton.borderColor": "Inherited eLabel override: text outline, not the widget rectangle.",
+    "eButton.borderWidth": "Inherited eLabel override: text outline, not the widget rectangle.",
+    "eVideoWidget.borderColor": "Inherited eLabel override: text outline, not the video-plane border.",
+    "eVideoWidget.borderWidth": "Inherited eLabel override: text outline, not the video-plane border."
+  },
+  "renderers": {
+    "Label": "Displays upstream text. The renderer applies eLabel attributes and refreshes its text when the source changes.",
+    "FixedLabel": "Keeps the XML label text while participating in a source/converter chain, for example for conditional visibility.",
+    "Pixmap": "Displays an upstream pixmap, or chooses from the comma-separated pixmaps attribute using numeric source text. A source pixmap can take precedence.",
+    "Progress": "Displays source value within source range, with clamping and an empty-value fallback. Uses eSlider attributes.",
+    "Listbox": "Displays native list content provided upstream, commonly by XmlMultiContent or TemplatedMultiContent. It also propagates selection changes to the source.",
+    "Canvas": "Replays upstream drawlist instructions into an eCanvas; drawing commands have their own arguments.",
+    "RunningText": "Composite renderer: an eWidget viewport contains an eLabel. applySkin consumes font, text appearance and movement options before forwarding remaining attributes. Its effective options exceed the eWidget table.",
+    "VRunningText": "Canvas-based moving text renderer with its own applySkin options. Do not assume it accepts exactly the same options as RunningText.",
+    "Picon": "Resolves service picons and updates an ePixmap. Path and sizing decisions in applySkin supplement the native image attributes.",
+    "Pig": "Places a live video plane using eVideoWidget. Decoder/PiP behaviour depends on Python configuration and hardware. Use OSD-only captures for documentation examples.",
+    "PositionGauge": "Binds playback length, position and cutlist to ePositionGauge, including seek position updates.",
+    "QRCode": "Renders upstream text as a QR code using eQRCode attributes.",
+    "Rectangle": "Draws a decorative rectangle within a renderer chain, including conditional visibility.",
+    "FrontpanelLed": "Controls a front-panel LED rather than drawing an OSD widget. Its constructor accepts LED index, patterns and a boolean-mode flag. It has no GUIComponent/applySkin lifecycle.",
+    "Renderer": "Base class connecting GUIComponent lifecycle to the Element source graph. Use a concrete renderer in XML."
+  },
+  "converters": {
+    "Converter": "Base Element subclass storing the argument string. Concrete converters expose properties or affect downstream elements.",
+    "Poll": "Polling helper mixed into converters. Poll does not inherit Converter and is not a standalone XML converter.",
+    "ClockToText": "Formats upstream time (seconds or a tuple) as text. Built-in formats are in TIME_OPTIONS; Format:, Separator: and Parse: modify formatting and tokenisation.",
+    "ServicePosition": "Converts the current playable service's seek interface to time text or gauge values. First argument selects the mode; subsequent comma-separated flags modify formatting.",
+    "EventTime": "Compatibility subclass of EventInfo. Its constructor and properties are inherited from EventInfo; inspect that base contract for available modes.",
+    "EventInfo": "Extracts event text, timing, progress and metadata. The selected constructor mode determines which output properties are meaningful.",
+    "FrontendInfo": "Converts frontend measurements and tuner status to text, boolean or value/range. Not every mode supports every output property; see the mode-specific assertions and recipes.",
+    "ConditionalShowHide": "Controls downstream visibility from source.boolean, optionally inverted or blinking. It forwards other attribute requests upstream and is not simply a boolean-to-text conversion.",
+    "TemplatedMultiContent": "Builds native list content from Python-expression templates. This is executable skin configuration; use templates from trusted sources.",
+    "XmlMultiContent": "Builds native list content from XML templates, styles and row field indexes. Read the list-template chapter for row contracts and matching source data.",
+    "ServiceName": "Formats service name/reference/provider information according to its constructor mode.",
+    "ServiceInfo": "Provides selected service information as text, booleans or numeric properties. Match the chosen mode to the renderer's expected input.",
+    "TextCase": "Changes the case of upstream text using its selected mode.",
+    "ValueToPixmap": "Maps upstream data to a pixmap according to its constructor mode, for an image renderer.",
+    "ValueRange": "Tests an upstream value against constructor-supplied numeric limits and exposes a boolean.",
+    "ValueBitTest": "Tests a bitmask against upstream value and exposes a boolean."
+  },
+  "components": {
+    "ScrollLabel": "Composite scrollable text component. GUIcreate builds labels and a slider; applySkin distributes options between them. A single GUI_WIDGET/native-attribute union would be misleading.",
+    "Input": "Python text-input component using VariableText and GUIComponent. createWidget returns eLabel; it is not the native eInput class.",
+    "ServiceList": "Service-list component with legacy appearance options and modern templates. Its applySkin handles additional service-specific attributes before forwarding native list options.",
+    "ConfigList": "Configuration-entry list. Native list styling and row fonts work with configuration content; editable values and actions are supplied by Python.",
+    "GUIComponent": "Base lifecycle for named Python widgets: GUIcreate, applySkin, postWidgetCreate and preWidgetRemove. Instantiate concrete subclasses for actual screen content."
+  }
+}

@@ -43,3 +43,13 @@ The repository keeps one editorial source under `docs/developer-content/`. `node
 ## Advanced unit
 
 The [advanced unit](../advanced/) adds InfoBar data chains, classic and modern ChannelSelection, template fields, reusable panel designs and icon fonts. Its nine additional native scenes share the same lab download and capture manifest. ChoiceBox and further specialised screens can build on these units later.
+
+## Widget and component API derivation
+
+`python scripts/import-widget-api.py ../enigma2` builds `data/widget-api.json` from the same clean source revision. It records 16 native widget classes, 41 matching renderer-folder classes, 63 matching converter-folder classes and 55 other core GUIComponent classes/helpers. The inventory includes base classes and non-visual helpers, which are identified separately from normal XML renderers/converters.
+
+Native attribute counts are derived from all central handlers, public native setters and inherited declarations. Alternative solid/gradient dispatch and the incompatible list/slider orientation signatures are treated explicitly. Aliases count as names; no-op handlers and structural names do not. Native declarations establish API availability, not visual results for every value/content combination.
+
+Python AST extraction records constructors, applySkin, creation methods, properties, source accesses and method signatures. C3 inheritance supplies inherited properties and methods. Attribute comparisons, match branches and legacy local-function dispatch expose Python-handled names; the full parsing code also documents nested and dynamic options. A source-access list is not a universal required-input schema.
+
+The snapshot stores SHA-256 hashes of its indexed files. The catalogue can be rebuilt without importing Enigma2; normal website builds consume the committed JSON. These API additions reuse the existing native visual examples and do not claim new receiver tests for every indexed method or attribute.
