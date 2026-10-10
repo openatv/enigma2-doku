@@ -5,14 +5,21 @@ English OpenATV Enigma2 skinning examples. Copy this directory to
 then open **Plugins → Handbook Skin Lab**. LEFT/RIGHT changes examples;
 OK/EXIT closes the screen. No active-skin settings are replaced.
 
-There are 21 scenes: twelve foundations and nine advanced examples for InfoBar
-data flow, classic/modern service lists, shared panels and icon fonts. The
+There are 27 scenes: twelve foundations, nine advanced examples for InfoBar
+data flow, classic/modern service lists, shared panels and icon fonts, plus six
+network scenes for mixed rows, focus, profiles, shares, mounts and test states. The
 advanced scenes need the source interfaces documented in the handbook.
 `advanced.py` contains fixture sources and native list helpers; `panels.xml`
 contains the shared header/footer. Modern list fixtures are explicitly playable
 and unencrypted; the classic list fixes a readable teaching row height. These
 states are not measurements of the receiver or its reception equipment.
 The icon examples use the installed `enigma2icons` font; no font is bundled.
+
+`network.py` supplies fictional data using the source index maps in
+`assets/network-contracts.json`. The network XML uses the pinned native child
+templates within a teaching frame. These examples perform no scan, activation,
+mount, discovery or credential access. Overview state colours are fixture
+values; the production owner reads them from the template's colours attribute.
 
 The XML files are re-read when opening each example. Python changes need a GUI
 restart. Each screen uses a 1280×720 design grid and synthetic data.

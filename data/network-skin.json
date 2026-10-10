@@ -1,0 +1,522 @@
+{
+  "revision": "f4135659cb5ee225efd84db1a944b5f72fa6b2a0",
+  "files": [
+    {
+      "path": "lib/python/Screens/NetworkSetup.py",
+      "sha256": "5a995fdf9f2b152518111de1958e170d420cae159c60e5bdfad8c1171a8ec204"
+    },
+    {
+      "path": "lib/python/Screens/NetworkMounts.py",
+      "sha256": "ae1771432e3d4734bc3869323b93e15c46e71ec651fb7440a923f704e46f0263"
+    },
+    {
+      "path": "lib/python/Screens/NetworkServices.py",
+      "sha256": "6e8707d2468b92cf8679e1efd2a394bb336eb04ff6248ea2aad7c41d07f5a604"
+    },
+    {
+      "path": "lib/python/Screens/RestartNetwork.py",
+      "sha256": "64b40515cf4691e73a48a42af9f8b18b4da3dc3a05e2e315b30156ffd6176641"
+    },
+    {
+      "path": "lib/python/Screens/Setup.py",
+      "sha256": "b68ec1bcfc16f0318e91d358b252dd0a28832bdea7ed535d6d1509466e67d1b9"
+    },
+    {
+      "path": "lib/python/Screens/Information.py",
+      "sha256": "b686a3482daca002f6f31309de4874291b797272f516b2aa1e814660693aa4f3"
+    },
+    {
+      "path": "lib/python/skin.py",
+      "sha256": "362f23f6326e83d24c371c677871f87f49673c70ca9660b898b7fe0dc14e3f8c"
+    },
+    {
+      "path": "lib/python/Components/Sources/List.py",
+      "sha256": "2202ca985b741f4746a90506c7f5b362034b6bd8b8436acac567d5e958d065e1"
+    },
+    {
+      "path": "lib/python/Components/Converter/XmlMultiContent.py",
+      "sha256": "f169ce96028ce5ff9f26f6cbfd2a302add48f47ce14f762f02ae0479756784da"
+    },
+    {
+      "path": "lib/python/Components/Renderer/Listbox.py",
+      "sha256": "a0ca8c77f5d6491e2779b5970d9dce4f2fca7e76e28c34d26e01fe5c59f19342"
+    },
+    {
+      "path": "lib/python/Components/NetworkManager.py",
+      "sha256": "eb2675bcc673cb98bda9040667e02d0ab6151db0e6994e9af9b869619b409183"
+    },
+    {
+      "path": "lib/python/Components/ConfigList.py",
+      "sha256": "524cabca87d9e17264b20fc458a3572cbf667727ecfdd96e176baf7b602222c3"
+    },
+    {
+      "path": "lib/gui/elistboxcontent.cpp",
+      "sha256": "7f3ccd4054a864bd295ca0c52b16d3ab3ef4451d5ad0d8787772461efc80c87e"
+    },
+    {
+      "path": "lib/gui/elistbox.cpp",
+      "sha256": "48a68e5bdc77eb522eca5ac0fdf6d3c4dbd50da65c5c1307a312a90276414d88"
+    },
+    {
+      "path": "data/setup.xml",
+      "sha256": "80f5e6380d0bc9036859349ce68b7151c70f9fe6cd15ac7c51ad21ee9eabb178"
+    },
+    {
+      "path": "lib/python/Screens/Processing.py",
+      "sha256": "6c8d631e6f17b5e298f55516a5977c6f70de897035e387d31d79e9d2d9b396c1"
+    }
+  ],
+  "screens": [
+    {
+      "name": "NetworkOverview",
+      "path": "lib/python/Screens/NetworkSetup.py",
+      "line": 92,
+      "bases": [
+        "Screen",
+        "ProtectedScreen"
+      ],
+      "setup": null,
+      "components": {
+        "savedLabel": "StaticText",
+        "key_red": "StaticText",
+        "key_green": "StaticText",
+        "key_yellow": "StaticText",
+        "key_blue": "StaticText",
+        "key_menu": "StaticText",
+        "key_info": "StaticText",
+        "adapterList": "List",
+        "savedList": "List",
+        "actions": "HelpableActionMap"
+      },
+      "lists": {
+        "adapterList": {
+          "Reserved_for_rowTemplate": 0,
+          "AdapterGlyph": 1,
+          "AdapterName": 2,
+          "AdapterType": 3,
+          "StatusText": 4,
+          "StatusColor": 5,
+          "StatusColorSelected": 6,
+          "MAC": 7,
+          "IPAddress": 8,
+          "Gateway": 9,
+          "Speed": 10,
+          "InternetGlyph": 11,
+          "ConnectionText": 12
+        },
+        "savedList": {
+          "Reserved_for_rowTemplate": 0,
+          "SSID": 1,
+          "BSSID": 2,
+          "Frequency": 3,
+          "Channel": 4,
+          "Encryption": 5,
+          "StatusText": 6,
+          "StatusGlyph": 7,
+          "StatusColor": 8,
+          "StatusColorSelected": 9
+        }
+      },
+      "xml": "<screen name=\"NetworkOverview\" title=\"Network Overview\" position=\"center,center\" size=\"1100,540\" resolution=\"1280,720\">\n\t\t<widget source=\"adapterList\" render=\"Listbox\" position=\"10,10\" size=\"e-20,250\">\n\t\t\t<template name=\"Default\" colors=\"#0000CC00,#00CC0000,#00CCCCCC,#00003300,#00330000,#00333333\" fonts=\"Regular;25,enigma2icons;38,Regular;24,Regular;18,enigma2icons;20,Regular;16\" itemHeight=\"50\">\n\t\t\t\t<rowtemplate>\n\t\t\t\t\t<text index=\"AdapterName\" position=\"0,0\" size=\"250,50\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"StatusText\" position=\"270,0\" size=\"170,50\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"MAC\" position=\"440,0\" size=\"180,50\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"IPAddress\" position=\"620,0\" size=\"160,50\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Gateway\" position=\"780,0\" size=\"160,50\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Speed\" position=\"940,0\" size=\"140,50\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t</rowtemplate>\n\t\t\t\t<rowtemplate>\n\t\t\t\t\t<text index=\"AdapterGlyph\" position=\"0,6\" size=\"48,38\" font=\"1\" horizontalAlignment=\"center\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"AdapterName\" position=\"60,0\" size=\"170,28\" font=\"2\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"AdapterType\" position=\"60,28\" size=\"170,22\" font=\"3\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"InternetGlyph\" position=\"230,0\" size=\"40,50\" font=\"4\" horizontalAlignment=\"center\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"StatusText\" position=\"270,0\" size=\"170,25\" font=\"3\" foregroundColor=\"+StatusColor\" foregroundColorSelected=\"+StatusColorSelected\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"ConnectionText\" position=\"270,25\" size=\"150,25\" font=\"5\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"MAC\" position=\"440,0\" size=\"180,50\" font=\"3\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"IPAddress\" position=\"620,0\" size=\"160,50\" font=\"3\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Gateway\" position=\"780,0\" size=\"160,50\" font=\"3\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Speed\" position=\"940,0\" size=\"140,50\" font=\"3\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t</rowtemplate>\n\t\t\t</template>\n\t\t</widget>\n\t\t<widget source=\"savedLabel\" render=\"Label\" position=\"10,270\" size=\"e-20,25\" foregroundColor=\"gray\" padding=\"10,0\" verticalAlignment=\"center\" widgetBorderColor=\"gray\" widgetBorderWidth=\"1\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"savedList\" render=\"Listbox\" position=\"10,305\" size=\"e-20,175\">\n\t\t\t<template name=\"Default\" colors=\"#0000CC00,#00CC0000,#00CCCCCC,#00003300,#00330000,#00333333\" fonts=\"Regular;25,Regular;20,enigma2icons;25\" itemHeight=\"35\">\n\t\t\t\t<rowtemplate>\n\t\t\t\t\t<text index=\"SSID\" position=\"0,0\" size=\"250,35\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"StatusText\" position=\"250,0\" size=\"100,35\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"BSSID\" position=\"350,0\" size=\"210,35\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Frequency\" position=\"560,0\" size=\"140,35\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Channel\" position=\"700,0\" size=\"120,35\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Encryption\" position=\"820,0\" size=\"260,35\" font=\"0\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t</rowtemplate>\n\t\t\t\t<rowtemplate>\n\t\t\t\t\t<text index=\"SSID\" position=\"0,0\" size=\"250,35\" font=\"1\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"StatusGlyph\" position=\"250,0\" size=\"100,35\" font=\"2\" foregroundColor=\"+StatusColor\" foregroundColorSelected=\"+StatusColorSelected\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"BSSID\" position=\"350,0\" size=\"210,35\" font=\"1\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Frequency\" position=\"560,0\" size=\"140,35\" font=\"1\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Channel\" position=\"700,0\" size=\"120,35\" font=\"1\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Encryption\" position=\"820,0\" size=\"260,35\" font=\"1\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t</rowtemplate>\n\t\t\t</template>\n\t\t</widget>\n\t\t<widget source=\"key_red\" render=\"Label\" position=\"10,e-50\" size=\"180,40\" backgroundColor=\"key_red\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_green\" render=\"Label\" position=\"200,e-50\" size=\"180,40\" backgroundColor=\"key_green\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_yellow\" render=\"Label\" position=\"390,e-50\" size=\"180,40\" backgroundColor=\"key_yellow\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_blue\" render=\"Label\" position=\"580,e-50\" size=\"180,40\" backgroundColor=\"key_blue\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_menu\" render=\"Label\" position=\"e-300,e-50\" size=\"90,40\" backgroundColor=\"key_back\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_info\" render=\"Label\" position=\"e-200,e-50\" size=\"90,40\" backgroundColor=\"key_back\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_help\" render=\"Label\" position=\"e-100,e-50\" size=\"90,40\" backgroundColor=\"key_back\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t</screen>"
+    },
+    {
+      "name": "NetworkAdapterSetup",
+      "path": "lib/python/Screens/NetworkSetup.py",
+      "line": 798,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "NetworkAdapter",
+      "components": {
+        "key_info": "StaticText",
+        "infoActions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkWiFiSetup",
+      "path": "lib/python/Screens/NetworkSetup.py",
+      "line": 907,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "NetworkWiFi",
+      "components": {
+        "key_info": "StaticText",
+        "infoActions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkInformation",
+      "path": "lib/python/Screens/NetworkSetup.py",
+      "line": 1006,
+      "bases": [
+        "InformationNetwork"
+      ],
+      "setup": null,
+      "components": {},
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkWiFiScan",
+      "path": "lib/python/Screens/NetworkSetup.py",
+      "line": 1065,
+      "bases": [
+        "Screen"
+      ],
+      "setup": null,
+      "components": {
+        "list": "List",
+        "description": "Label",
+        "key_red": "StaticText",
+        "key_green": "StaticText",
+        "key_yellow": "StaticText",
+        "actions": "HelpableActionMap"
+      },
+      "lists": {
+        "list": {
+          "Name": 0,
+          "SSID": 1,
+          "BSSID": 2,
+          "Glyph": 3,
+          "Strength": 4,
+          "Percentage": 5,
+          "dBm": 6,
+          "Encryption": 7,
+          "ChannelFrequency": 8,
+          "Channel": 9,
+          "Frequency": 10
+        }
+      },
+      "xml": "<screen name=\"NetworkWiFiScan\" title=\"Wi-Fi Scan\" position=\"center,center\" size=\"1120,455\" resolution=\"1280,720\">\n\t\t<widget source=\"list\" render=\"Listbox\" position=\"10,10\" size=\"e-20,e-105\">\n\t\t\t<template name=\"Default\" fonts=\"Regular;22,Regular;20,enigma2icons;20\" itemHeight=\"35\">\n\t\t\t\t<mode name=\"default\">\n\t\t\t\t\t<panel position=\"0,0\" size=\"e,e\" layout=\"horizontal\">\n\t\t\t\t\t\t<text index=\"Name\" position=\"left\" size=\"450,35\" flags=\"scroll\" font=\"0\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t\t<text index=\"Glyph\" position=\"left\" size=\"30,35\" font=\"2\" horizontalAlignment=\"center\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t\t<text index=\"Percentage\" position=\"left\" size=\"65,35\" font=\"1\" horizontalAlignment=\"right\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t\t<text index=\"dBm\" position=\"left\" size=\"100,35\" font=\"1\" horizontalAlignment=\"right\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t\t<text index=\"Encryption\" position=\"left\" size=\"245,35\" font=\"1\" horizontalAlignment=\"center\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t\t<text index=\"Channel\" position=\"left\" size=\"80,35\" font=\"1\" horizontalAlignment=\"center\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t\t<text index=\"Frequency\" position=\"right\" size=\"130,35\" font=\"1\" horizontalAlignment=\"right\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t</panel>\n\t\t\t\t</mode>\n\t\t\t</template>\n\t\t</widget>\n\t\t<widget name=\"description\" position=\"10,e-85\" size=\"e-20,25\" padding=\"5,0\" verticalAlignment=\"center\" widgetBorderColor=\"gray\" widgetBorderWidth=\"1\" />\n\t\t<widget source=\"key_red\" render=\"Label\" position=\"10,e-50\" size=\"180,40\" backgroundColor=\"key_red\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_green\" render=\"Label\" position=\"200,e-50\" size=\"180,40\" backgroundColor=\"key_green\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_yellow\" render=\"Label\" position=\"390,e-50\" size=\"180,40\" backgroundColor=\"key_yellow\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_help\" render=\"Label\" position=\"e-100,e-50\" size=\"90,40\" backgroundColor=\"key_back\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t</screen>"
+    },
+    {
+      "name": "NetworkWiFiActivator",
+      "path": "lib/python/Screens/NetworkSetup.py",
+      "line": 1433,
+      "bases": [
+        "Screen"
+      ],
+      "setup": null,
+      "components": {
+        "status": "Label",
+        "key_red": "StaticText",
+        "actions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": "<screen name=\"NetworkWiFiActivator\" title=\"Wi-Fi Activator\" position=\"center,center\" size=\"700,220\" resolution=\"1280,720\">\n\t\t<widget name=\"status\" position=\"10,10\" size=\"e-20,e-80\" font=\"Regular;20\" horizontalAlignment=\"center\" verticalAlignment=\"center\" />\n\t\t<widget source=\"key_red\" render=\"Label\" position=\"10,e-50\" size=\"180,40\" backgroundColor=\"key_red\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t</screen>"
+    },
+    {
+      "name": "NetworkTest",
+      "path": "lib/python/Screens/NetworkSetup.py",
+      "line": 1590,
+      "bases": [
+        "Screen"
+      ],
+      "setup": null,
+      "components": {
+        "key_red": "StaticText",
+        "key_green": "StaticText",
+        "list": "List",
+        "actions": "HelpableActionMap"
+      },
+      "lists": {
+        "list": {
+          "Glyph": 0,
+          "Label": 1,
+          "Result": 2,
+          "Detail": 3,
+          "Color": 4
+        }
+      },
+      "xml": "<screen name=\"NetworkTest\" title=\"Network Test\" position=\"center,center\" size=\"830,280\" resolution=\"1280,720\">\n\t\t<widget source=\"list\" render=\"Listbox\" position=\"10,10\" size=\"e-20,e-60\" scrollbarMode=\"showNever\" selection=\"false\">\n\t\t\t<template name=\"Default\" fonts=\"enigma2icons;25,Regular;25\" itemHeight=\"35\">\n\t\t\t\t<mode name=\"default\">\n\t\t\t\t\t<text index=\"Glyph\" position=\"0,0\" size=\"35,35\" font=\"0\" foregroundColor=\"+Color\" foregroundColorSelected=\"+Color\" horizontalAlignment=\"center\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Label\" position=\"60,0\" size=\"200,35\" font=\"1\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Result\" position=\"260,0\" size=\"250,35\" font=\"1\" foregroundColor=\"+Color\" foregroundColorSelected=\"+Color\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Detail\" position=\"510,0\" size=\"300,35\" font=\"1\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t</mode>\n\t\t\t</template>\n\t\t</widget>\n\t\t<widget source=\"key_red\" render=\"Label\" position=\"10,e-50\" size=\"180,40\" backgroundColor=\"key_red\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_green\" render=\"Label\" position=\"200,e-50\" size=\"180,40\" backgroundColor=\"key_green\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_help\" render=\"Label\" position=\"e-100,e-50\" size=\"90,40\" backgroundColor=\"key_back\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t</screen>"
+    },
+    {
+      "name": "DNSSettings",
+      "path": "lib/python/Screens/NetworkSetup.py",
+      "line": 1763,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "DNS",
+      "components": {
+        "key_yellow": "StaticText",
+        "key_blue": "StaticText",
+        "moveActions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkMountsOverview",
+      "path": "lib/python/Screens/NetworkMounts.py",
+      "line": 24,
+      "bases": [
+        "Screen"
+      ],
+      "setup": null,
+      "components": {
+        "mountList": "List",
+        "key_red": "StaticText",
+        "key_green": "StaticText",
+        "key_yellow": "StaticText",
+        "key_menu": "StaticText",
+        "actions": "HelpableActionMap"
+      },
+      "lists": {
+        "mountList": {
+          "ShareName": 0,
+          "Server": 1,
+          "RemotePath": 2,
+          "Protocol": 3,
+          "Mode": 4,
+          "Mounted": 5,
+          "Active": 6,
+          "Description": 7
+        }
+      },
+      "xml": "<screen name=\"NetworkMountsOverview\" title=\"Network Mounts Overview\" position=\"center,center\" size=\"970,370\" resolution=\"1280,720\">\n\t\t<widget source=\"mountList\" render=\"Listbox\" position=\"10,10\" size=\"e-20,e-70\">\n\t\t\t<templates>\n\t\t\t\t<template name=\"Default\" fonts=\"Regular;22,Regular;17\" itemHeight=\"50\">\n\t\t\t\t\t<mode name=\"default\">\n\t\t\t\t\t\t<text index=\"ShareName\" position=\"0,0\" size=\"550,27\" font=\"0\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t\t<text index=\"Description\" position=\"20,27\" size=\"530,23\" font=\"1\" padding=\"5,0\" foregroundColor=\"gray\" verticalAlignment=\"center\" />\n\t\t\t\t\t\t<text index=\"Mounted\" position=\"550,0\" size=\"150,50\" font=\"0\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t\t<text index=\"Active\" position=\"700,0\" size=\"150,50\" font=\"0\" horizontalAlignment=\"right\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t</mode>\n\t\t\t\t</template>\n\t\t\t</templates>\n\t\t</widget>\n\t\t<widget source=\"key_red\" render=\"Label\" position=\"10,e-50\" size=\"180,40\" backgroundColor=\"key_red\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_green\" render=\"Label\" position=\"200,e-50\" size=\"180,40\" backgroundColor=\"key_green\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_yellow\" render=\"Label\" position=\"390,e-50\" size=\"180,40\" backgroundColor=\"key_yellow\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_menu\" render=\"Label\" position=\"e-200,e-50\" size=\"90,40\" backgroundColor=\"key_back\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_help\" render=\"Label\" position=\"e-100,e-50\" size=\"90,40\" backgroundColor=\"key_back\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t</screen>"
+    },
+    {
+      "name": "NetworkMountsSummary",
+      "path": "lib/python/Screens/NetworkMounts.py",
+      "line": 295,
+      "bases": [
+        "ScreenSummary"
+      ],
+      "setup": null,
+      "components": {
+        "entry": "StaticText",
+        "value": "StaticText"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkMountSetup",
+      "path": "lib/python/Screens/NetworkMounts.py",
+      "line": 316,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "NetworkMounts",
+      "components": {},
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkShares",
+      "path": "lib/python/Screens/NetworkMounts.py",
+      "line": 434,
+      "bases": [
+        "Screen"
+      ],
+      "setup": null,
+      "components": {
+        "list": "List",
+        "description": "Label",
+        "key_red": "StaticText",
+        "key_green": "StaticText",
+        "key_yellow": "StaticText",
+        "key_menu": "StaticText",
+        "actions": "HelpableActionMap"
+      },
+      "lists": {
+        "list": {
+          "Reserved_for_rowTemplate": 0,
+          "Glyph": 1,
+          "GlyphColor": 2,
+          "IPAddress": 3,
+          "Type": 4,
+          "Name": 5,
+          "LocalPath": 6,
+          "Description": 7,
+          "Username": 8,
+          "NameUsername": 9,
+          "Data": 10
+        }
+      },
+      "xml": "<screen name=\"NetworkShares\" title=\"Network Shares Browser\" position=\"center,center\" size=\"1100,505\" resolution=\"1280,720\">\n\t\t<widget source=\"list\" render=\"Listbox\" position=\"10,10\" size=\"e-20,e-105\">\n\t\t\t<template name=\"Default\" fonts=\"enigma2icons;40,Regular;25,enigma2icons;25,Regular;20\" itemHeight=\"50\">\n\t\t\t\t<rowtemplate>\n\t\t\t\t\t<text index=\"Glyph\" position=\"0,0\" size=\"50,50\" font=\"0\" horizontalAlignment=\"center\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"IPAddress\" position=\"60,0\" size=\"220,50\" font=\"1\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Name\" position=\"280,0\" size=\"550,50\" font=\"1\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Username\" position=\"830,0\" size=\"250,50\" font=\"1\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t</rowtemplate>\n\t\t\t\t<rowtemplate>\n\t\t\t\t\t<text index=\"Glyph\" position=\"60,0\" size=\"40,50\" font=\"2\" foregroundColor=\"+GlyphColor\" horizontalAlignment=\"center\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Type\" position=\"100,0\" size=\"80,50\" font=\"3\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Name\" position=\"180,0\" size=\"230,50\" font=\"3\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"Description\" position=\"410,0\" size=\"670,25\" font=\"3\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t\t<text index=\"LocalPath\" position=\"430,25\" size=\"650,25\" font=\"3\" foregroundColor=\"gray\" padding=\"5,0\" verticalAlignment=\"center\" />\n\t\t\t\t</rowtemplate>\n\t\t\t</template>\n\t\t</widget>\n\t\t<widget name=\"description\" position=\"10,e-85\" size=\"e-20,25\" font=\"Regular;20\" padding=\"5,0\" verticalAlignment=\"center\" widgetBorderColor=\"gray\" widgetBorderWidth=\"1\" />\n\t\t<widget source=\"key_red\" render=\"Label\" position=\"10,e-50\" size=\"180,40\" backgroundColor=\"key_red\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_green\" render=\"Label\" position=\"200,e-50\" size=\"180,40\" backgroundColor=\"key_green\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_yellow\" render=\"Label\" position=\"390,e-50\" size=\"180,40\" backgroundColor=\"key_yellow\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_menu\" render=\"Label\" position=\"e-200,e-50\" size=\"90,40\" backgroundColor=\"key_back\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t\t<widget source=\"key_help\" render=\"Label\" position=\"e-100,e-50\" size=\"90,40\" backgroundColor=\"key_back\" font=\"Regular;20\" foregroundColor=\"key_text\" horizontalAlignment=\"center\" wrap=\"off\" verticalAlignment=\"center\">\n\t\t\t<convert type=\"ConditionalShowHide\" />\n\t\t</widget>\n\t</screen>"
+    },
+    {
+      "name": "NetworkCredentials",
+      "path": "lib/python/Screens/NetworkMounts.py",
+      "line": 886,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "NetworkCredentials",
+      "components": {},
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkServicesSetup",
+      "path": "lib/python/Screens/NetworkServices.py",
+      "line": 49,
+      "bases": [
+        "Setup",
+        "NetworkDaemons"
+      ],
+      "setup": "NetworkServicesSetup",
+      "components": {
+        "key_yellow": "StaticText",
+        "key_blue": "StaticText",
+        "startStopActions": "HelpableActionMap",
+        "showLogActions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkInadynSetup",
+      "path": "lib/python/Screens/NetworkServices.py",
+      "line": 219,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "NetworkInadynSetup",
+      "components": {},
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkuShareSetup",
+      "path": "lib/python/Screens/NetworkServices.py",
+      "line": 300,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "NetworkuShareSetup",
+      "components": {
+        "key_yellow": "StaticText",
+        "selectSharesActions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "uShareSelection",
+      "path": "lib/python/Screens/NetworkServices.py",
+      "line": 411,
+      "bases": [
+        "Screen"
+      ],
+      "setup": null,
+      "components": {
+        "key_red": "StaticText",
+        "key_green": "StaticText",
+        "key_yellow": "StaticText",
+        "checkList": "self.filelist",
+        "actions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkMiniDLNASetup",
+      "path": "lib/python/Screens/NetworkServices.py",
+      "line": 466,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "NetworkMiniDLNASetup",
+      "components": {
+        "key_yellow": "StaticText",
+        "selectSharesActions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkNFSSetup",
+      "path": "lib/python/Screens/NetworkServices.py",
+      "line": 571,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "NetworkNFS",
+      "components": {
+        "key_yellow": "StaticText",
+        "exportsActions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkSambaSetup",
+      "path": "lib/python/Screens/NetworkServices.py",
+      "line": 711,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "NetworkSamba",
+      "components": {},
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkPassword",
+      "path": "lib/python/Screens/NetworkServices.py",
+      "line": 763,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "Password",
+      "components": {
+        "key_yellow": "StaticText",
+        "passwordActions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkLogScreen",
+      "path": "lib/python/Screens/NetworkServices.py",
+      "line": 829,
+      "bases": [
+        "Screen"
+      ],
+      "setup": null,
+      "components": {
+        "infotext": "ScrollLabel",
+        "actions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "NetworkZeroTierSetup",
+      "path": "lib/python/Screens/NetworkServices.py",
+      "line": 872,
+      "bases": [
+        "Setup"
+      ],
+      "setup": "NetworkZeroTier",
+      "components": {
+        "key_yellow": "StaticText",
+        "key_blue": "StaticText",
+        "zerotierActions": "HelpableActionMap"
+      },
+      "lists": {},
+      "xml": null
+    },
+    {
+      "name": "RestartNetwork",
+      "path": "lib/python/Screens/RestartNetwork.py",
+      "line": 21,
+      "bases": [
+        "Screen",
+        "ProtectedScreen"
+      ],
+      "setup": null,
+      "components": {},
+      "lists": {},
+      "xml": "<screen name=\"RestartNetwork\" position=\"center,center\" size=\"0,0\" flags=\"wfNoBorder\" />"
+    }
+  ]
+}

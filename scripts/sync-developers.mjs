@@ -13,7 +13,7 @@ for (const source of (await walk(canonical)).filter(file => file.endsWith('.mdx'
   if (!match) throw new Error(`Missing frontmatter: ${relative}`);
   for (const locale of ['de', 'en']) {
     const target = path.join(root, 'src/content/docs', locale, 'developers', relative);
-    const imports = ['DeveloperContent', 'SkinExample', 'SkinApi'].map(name => {
+    const imports = ['DeveloperContent', 'SkinExample', 'SkinApi', ...(match[2].includes('<NetworkSkinReference') ? ['NetworkSkinReference'] : [])].map(name => {
       const location = path.relative(path.dirname(target), path.join(root, 'src/components', `${name}.astro`)).split(path.sep).join('/');
       return `import ${name} from '${location}';`;
     }).join('\n');

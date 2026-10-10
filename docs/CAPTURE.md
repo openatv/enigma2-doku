@@ -382,3 +382,11 @@ Freigegebener Stand vom 10.10.2026: zwölf englische native PNGs, zusammen mit d
 Das Skin Lab enthält zusätzlich neun Szenen: `infobar`, `signals`, `service-legacy`, `service-rows`, `service-grid`, `panel-list`, `panel-detail`, `icon-fonts` und `icon-states`. Alle 21 Szenen werden gemeinsam aufgenommen. `advanced.py` liefert ausdrücklich synthetische Events, Signalwerte und lokale Listen; die Beispiele belegen Darstellung und Datenverträge, keinen Live-Empfang.
 
 Manifest-Schema 2 bindet neben XML und PNG auch die gemeinsam verwendeten Python-Dateien, `panels.xml` und Assets über SHA-256. Nach Änderungen an gemeinsamen Abhängigkeiten die vollständige Serie erneut aufnehmen. `scripts/import-skin-lab-captures.py` lehnt abweichende oder unvollständige Abhängigkeiten ab. Erst nach visueller Prüfung importieren, anschließend `scripts/package-skin-lab.py` und `scripts/sync-developers.mjs` ausführen. Die Aufnahmen verwenden weiterhin ausschließlich `grab -o -d -p`.
+
+## Netzwerk-Skin-Beispiele ab OpenATV 8.0
+
+Weitere sechs Szenen ergänzen das Lab auf 27: `network-overview`, `network-profiles`, `network-wifi`, `network-shares`, `network-mounts`, `network-test`. Ihre nativen Listentemplates stammen aus `data/network-skin.json`; `scripts/build-network-skin-examples.py` erzeugt die XMLs samt `assets/network-contracts.json`. Nur der Beispielrahmen, Widgetgeometrie, Überschriftfont und Farben werden angepasst.
+
+`network.py` erzeugt fiktive Daten und besitzt keine Verbindung zu Netzwerkmanager, Scans, Mounts oder Zugangsdaten. Auch diese Python-/Asset-Dateien sind vom Manifest abgedeckt. Beispielbilder zeigen native Darstellung, keine erfolgreiche WLAN-Verbindung, NAS-Erreichbarkeit oder Diagnose. Nach einer Änderung an diesen gemeinsamen Dateien erneut alle 27 Szenen aufnehmen und prüfen. Die sechs neuen Motive enthalten ausschließlich OSD und fiktive Identitäten.
+
+Textdateien im Lab müssen vor Aufnahme **LF-Zeilenenden** verwenden, wie `.gitattributes` es für Git festlegt. Andernfalls verändert die Git-Normalisierung die XML-/Abhängigkeitsbytes gegenüber dem Receiver und die Hashprüfung schlägt nach dem Checkout fehl. Import und Tests prüfen deshalb LF ausdrücklich; der Netzwerk-Generator schreibt LF auch unter Windows. PNGs bleiben unverändert binär.

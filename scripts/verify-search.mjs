@@ -25,6 +25,19 @@ globalThis.fetch = async input => {
 };
 const checks = [
   ...['de', 'en'].flatMap(lang => [
+    [lang, 'network skinning', `/${lang}/developers/skinning/network/`],
+    [lang, 'NetworkLogScreen', `/${lang}/developers/skinning/network/screen-contracts/`],
+    [lang, 'XmlMultiContent', `/${lang}/developers/skinning/network/list-templates/`],
+    [lang, 'Reserved_for_rowTemplate', `/${lang}/developers/skinning/network/overview/`],
+    [lang, 'StatusColorSelected', `/${lang}/developers/skinning/network/overview/`],
+    [lang, 'ChannelFrequency', `/${lang}/developers/skinning/network/wifi/`],
+    [lang, 'NameUsername', `/${lang}/developers/skinning/network/shares-mounts/`],
+    [lang, 'SetupNetworkAdapter', `/${lang}/developers/skinning/network/setup-dialogs/`],
+    [lang, 'Processing', `/${lang}/developers/skinning/network/setup-dialogs/`],
+    [lang, 'Port network skin', `/${lang}/developers/skinning/network/migration/`],
+    [lang, 'network-contracts', `/${lang}/developers/skinning/network/examples/`],
+  ]),
+  ...['de', 'en'].flatMap(lang => [
     [lang, 'SessionGlobals', `/${lang}/developers/skinning/advanced/infobar/`],
     [lang, 'converter chains', `/${lang}/developers/skinning/advanced/infobar-pipeline/`],
     [lang, 'SNRdB', `/${lang}/developers/skinning/advanced/infobar-sensors/`],

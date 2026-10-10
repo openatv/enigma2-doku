@@ -1,0 +1,24 @@
+<screen name="HandbookSkinLab_network-wifi" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,40" font="Regular;23" text="OpenATV / Developer / Network Skin Lab" foregroundColor="#005BD4EC" transparent="1" />
+  <eLabel position="48,70" size="1184,52" font="Regular;34" text="Wi-Fi scan: named fields and a row panel" foregroundColor="#00FFFFFF" transparent="1" />
+  <eLabel position="48,132" size="1184,40" font="Regular;23" text="Controlled example data. Native List source, XmlMultiContent and Listbox rendering." foregroundColor="#00BDCADA" transparent="1" />
+  <!-- example:start -->
+  <widget source="list" render="Listbox" position="48,205" size="1184,350" foregroundColor="#00FFFFFF" backgroundColor="#001C2B40" foregroundColorSelected="#00FFFFFF" backgroundColorSelected="#00344E70">
+    <template name="Default" fonts="Regular;22,Regular;20,enigma2icons;20" itemHeight="35">
+      <mode name="default">
+        <panel position="0,0" size="e,e" layout="horizontal">
+          <text index="Name" position="left" size="450,35" flags="scroll" font="0" padding="5,0" verticalAlignment="center" />
+          <text index="Glyph" position="left" size="30,35" font="2" horizontalAlignment="center" padding="5,0" verticalAlignment="center" />
+          <text index="Percentage" position="left" size="65,35" font="1" horizontalAlignment="right" padding="5,0" verticalAlignment="center" />
+          <text index="dBm" position="left" size="100,35" font="1" horizontalAlignment="right" padding="5,0" verticalAlignment="center" />
+          <text index="Encryption" position="left" size="245,35" font="1" horizontalAlignment="center" padding="5,0" verticalAlignment="center" />
+          <text index="Channel" position="left" size="80,35" font="1" horizontalAlignment="center" padding="5,0" verticalAlignment="center" />
+          <text index="Frequency" position="right" size="130,35" font="1" horizontalAlignment="right" padding="5,0" verticalAlignment="center" />
+        </panel>
+      </mode>
+    </template>
+  </widget>
+  <!-- example:end -->
+  <eLabel position="48,602" size="1184,40" font="Regular;21" text="Name includes BSSID; SSID and BSSID also exist separately. These are fictional networks." foregroundColor="#00F3C86A" transparent="1" />
+  <eLabel position="48,664" size="1184,40" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" transparent="1" />
+</screen>

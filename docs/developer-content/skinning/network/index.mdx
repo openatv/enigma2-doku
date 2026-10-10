@@ -1,0 +1,31 @@
+---
+title: Skinning for OpenATV 8.0 — the network screens
+description: A detailed developer guide to the current network screens, named list fields, row templates, state colours, Wi-Fi profiles, mounts and Setup fallbacks.
+---
+
+The network area is a substantial skinning example in OpenATV 8.0. It combines two independently focused lists, mixed row layouts, icon glyphs, dynamic colours, configuration forms and asynchronous status changes. Work through the [advanced skinning unit](../advanced/) first; this unit then applies those concepts to the current network screen contracts.
+
+The [pinned source revision](../api/) is the reference throughout. The chapters explain how to build these screens and how to port an existing skin to their current component and data contracts.
+
+## Read in this order
+
+| Chapter | What it explains |
+| --- | --- |
+| [Screen map and ownership](./screen-contracts/) | All 24 network screen classes, names, components and inherited contracts |
+| [The XML list pipeline](./list-templates/) | `List`, `XmlMultiContent`, `Listbox`, named indexes, modes and `rowtemplate` |
+| [Network overview](./overview/) | `adapterList`, `savedList`, fixed headers, focus and the three/six-colour palette |
+| [Wi-Fi layouts](./wifi/) | Saved profiles, scan columns, glyphs, long SSIDs and activation feedback |
+| [Shares and mounts](./shares-mounts/) | Host/share rows, credentials labels, configured mounts and current state |
+| [Forms, tests and auxiliary screens](./setup-dialogs/) | Setup lookup, services, DNS, information, logs and restart progress |
+| [Porting an existing skin](./migration/) | Practical replacement strategy and a test matrix |
+| [Examples and source reference](./examples/) | Six native examples, downloadable code and source coverage |
+
+## What changes for a skinner
+
+The main overview is `NetworkOverview`. Its data comes from the Python network manager and is packaged into named tuple fields. A skin draws those fields; it does not poll a network interface itself. The same layout accommodates Ethernet, Wi-Fi and VPN rows. Saved Wi-Fi connections form a second list for the selected wireless adapter.
+
+Instead of fixed image filenames for every state, the current built-in layouts use the `enigma2icons` font. Instead of assuming one row shape throughout a list, the overview and share browser use a row selector at tuple position zero. Header rows and ordinary rows can therefore occupy the same list while drawing different fields.
+
+These network templates use **generic `XmlMultiContent`**, not the channel list's specialised `ServiceListTemplateParser`. Both use XML, but their field names, colour handling and component ownership differ. Reusing the channel-list XML unchanged will not create a network layout.
+
+The six illustrations use the native receiver renderer with controlled example data. They demonstrate layout and state presentation without changing adapters, scanning neighbouring networks or exposing saved credentials. The [user-facing network chapter](../../../netzwerk/) remains the place for connection and server configuration instructions.

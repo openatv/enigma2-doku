@@ -24,7 +24,9 @@ ROOT = Path('/tmp/handbook-skin-lab')
 SCENES = ('hello', 'coordinates', 'alignment', 'wrapping', 'fonts', 'colors',
           'layers', 'pixmaps', 'panels', 'data', 'borders', 'progress',
           'infobar', 'signals', 'service-legacy', 'service-rows', 'service-grid',
-          'panel-list', 'panel-detail', 'icon-fonts', 'icon-states')
+          'panel-list', 'panel-detail', 'icon-fonts', 'icon-states',
+          'network-overview', 'network-profiles', 'network-wifi', 'network-shares',
+          'network-mounts', 'network-test')
 
 
 class ExampleDuration(Source):
@@ -46,8 +48,11 @@ class HandbookSkinExample(Screen):
         if scene == 'data':
             self['message'] = StaticText('One source, two renderers')
             self['duration'] = ExampleDuration()
-        if scene in SCENES[12:]:
+        if scene in SCENES[12:21]:
             from .advanced import configure
+            configure(self, scene)
+        if scene in SCENES[21:]:
+            from .network import configure
             configure(self, scene)
         self['actions'] = ActionMap(['OkCancelActions', 'DirectionActions'], {
             'cancel': self.close, 'ok': self.close,

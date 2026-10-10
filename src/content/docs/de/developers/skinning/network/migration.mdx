@@ -1,0 +1,68 @@
+---
+title: Port an existing network skin to the current OpenATV source
+description: A practical migration sequence and detailed test matrix for network screen contracts, list templates, palettes, focus and inherited forms.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/network/migration.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+## A repeatable migration sequence
+
+1. **Identify the owner.** Start with the [screen map](../screen-contracts/) and the current Python class. Match the selected skin name and fallback sequence; do not assume an old adapter-selection screen still owns the same components.
+2. **Make the current contract work first.** Copy the corresponding built-in fallback from this guide into a development skin. Keep source/component names, template names, selector order and all required regions.
+3. **Set a design resolution.** Use the existing skin's resolution convention. Resize the outer screen and lists before changing fonts and individual row elements. List-local coordinates scale with their template context.
+4. **Redesign one list at a time.** In `NetworkOverview`, finish the adapter header/data rows, then the saved-profile header/data rows. Retain both lists and the heading even when a particular test receiver has no wireless adapter.
+5. **Apply colours and glyphs.** Define legible normal and selected states. Register the existing icon font alias and verify the actual Unicode points. Use the [icon-font chapter](../../advanced/icon-fonts/) for font registration and fallback considerations.
+6. **Share only compatible structure.** Move common decoration, title regions and guarded key captions into panels. Keep screen-specific list templates and field names with the correct owner.
+7. **Exercise dynamic behaviour.** Check selection changes, empty captions, asynchronous updates, long text and empty results. A still screenshot alone does not establish action behaviour.
+8. **Check logs and retain a recovery route.** Use a test skin/plugin and keep the normal working skin available. XML parse errors, missing sources and unknown index names point to different stages of the pipeline.
+
+## What can be reused
+
+| Reusable design element | Contract that still needs an individual implementation |
+| --- | --- |
+| Background, title and footer geometry | Each screen's source names and key availability |
+| Palette and font choices | The meaning/order of each owner's colour fields |
+| Row spacing and indentation rules | `adapterList`, `savedList`, scan, share and mount indexes |
+| Shared Setup panel structure | Mandatory `config`, `footnote`, `description` and editing helpers |
+| Icon font resource | Glyph semantics and normal/selected state colours |
+
+In particular, the overview's two row templates cannot be substituted for the scan's `default` mode. A selector of zero means an unselectable header in the overview, but an interactive host in `NetworkShares`. These behaviours belong to Python, not to a universal XML convention.
+
+## Test matrix for a production skin
+
+| Area | States to inspect | What to check |
+| --- | --- | --- |
+| Adapters | Ethernet linked/unplugged/disabled, Wi-Fi connected/disconnected, VPN rows | Type/name separation, status, address placeholders, optional internet glyph |
+| Focus | Upper list, lower list, return to upper | Exactly the focused list has a selection highlight; inactive state text remains visible |
+| Saved profiles | None, one, many; connected, enabled-only, disabled | Heading behaviour, locked header, glyph meaning and scrolling |
+| Colours | Selected/unselected on light and dark surfaces | Three/six palette order and contrast; no false success/error colour |
+| Scan | Scanning, empty, weak/strong signal, long SSID and BSSID | Correct fields, non-overlapping columns, description and action captions |
+| Shares | Collapsed/expanded hosts, NFS/CIFS, comments, guest/named identity | Correct row type and indentation; no duplicated username or private data |
+| Mounts | Enabled+mounted, enabled+unmounted, disabled | Independent `Mounted` and `Active` meanings; long path handling |
+| Forms | DHCP/manual, security-dependent fields, editable values | Full config editor, text input, footnote, descriptions and conditional keys |
+| Diagnostics | Success, failure, skipped, busy | Distinguishable glyphs and readable result text |
+| Auxiliary | Information, daemon log, restart, front-panel summary | Correct named ScrollLabels, shared Processing, suitable summary geometry |
+| Resolutions | Every resolution your skin ships | Font sizes, row heights, column widths and reserved key-bar space |
+
+The handbook's [lab examples](../examples/) cover representative rendering contracts with controlled data. The matrix above is a production-skin checklist, not a claim that every receiver/connection combination has been exercised for this chapter.
+
+## Typical layout errors
+
+| Symptom | Inspect first |
+| --- | --- |
+| Missing-source error | `source=` versus `name=`, exact spelling and Python owner |
+| Row text in the wrong columns | Wrong screen's `indexNames` or copied positional numbers |
+| Headers drawn like adapters | Reordered `rowtemplate` definitions |
+| Empty template / unknown mode | `Default` template and `default` style casing |
+| Coloured states always white | Missing `+StatusColor` / `+StatusColorSelected` consumers |
+| Colour override has no effect | Whether this owner reads `additionalTemplateAttributes.colors` |
+| Scan progress bar not working | Formatted `Percentage` text was used as a numeric value |
+| Glyphs are boxes | Wrong font alias, missing glyph or unsupported code point |
+| Shared footer causes failures | An optional source needs a `conditional` guard |
+| Restart design never appears | The visible overlay is `Processing`, not the `DUMMY` wrapper |
+
+</DeveloperContent>

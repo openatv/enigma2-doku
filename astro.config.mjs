@@ -307,6 +307,17 @@ export default defineConfig({
           { slug: 'developers/skinning/advanced/icon-states', label: 'MultiPixmap state icons' },
           { slug: 'developers/skinning/advanced/examples', label: 'Examples & verification' },
         ] },
+        { label: 'OpenATV 8.0 network skinning', collapsed: true, items: [
+          { slug: 'developers/skinning/network', label: 'Learning path' },
+          { slug: 'developers/skinning/network/screen-contracts', label: 'Screen map & ownership' },
+          { slug: 'developers/skinning/network/list-templates', label: 'XML list pipeline' },
+          { slug: 'developers/skinning/network/overview', label: 'Overview, focus & colours' },
+          { slug: 'developers/skinning/network/wifi', label: 'Wi-Fi profiles & scan' },
+          { slug: 'developers/skinning/network/shares-mounts', label: 'Shares & mounts' },
+          { slug: 'developers/skinning/network/setup-dialogs', label: 'Forms, tests & progress' },
+          { slug: 'developers/skinning/network/migration', label: 'Port an existing skin' },
+          { slug: 'developers/skinning/network/examples', label: 'Examples & sources' },
+        ] },
         { label: 'skin.py API', collapsed: true, items: [
           { slug: 'developers/skinning/api', label: 'API overview & XML structure' },
           { slug: 'developers/skinning/api/attributes', label: '125 XML attributes' },

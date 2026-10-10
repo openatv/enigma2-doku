@@ -1,0 +1,90 @@
+---
+title: Network list templates — named fields and mixed rows
+description: Trace List through the automatic XmlMultiContent converter into Listbox; distinguish template names, modes, row selectors and dynamic colours.
+---
+
+## The rendering path
+
+```text
+Network screen constructs tuples and an indexNames mapping
+    → Components.Sources.List
+    → XmlMultiContent (inserted by skin.py for the nested template)
+    → eListboxPythonMultiContent
+    → Listbox renderer / native eListbox
+```
+
+Put a `<template>` directly inside a source widget, or wrap the same definitions in `<templates>`. `skin.py` recognises both forms. It passes the XML, widget geometry and scale to `XmlMultiContent` and connects the converter automatically. Do not add `<convert type="XmlMultiContent">` manually: its constructor expects internal parser arguments, not converter text.
+
+## Three different selectors
+
+| Selector | Meaning | Default / example |
+| --- | --- | --- |
+| `List.template` | Which named `<template>` definition to use | `Default` (capital D) |
+| `List.style` | Which `<mode>` within that template to use | `default` (lower-case d) |
+| Row tuple item `0`, when row templates exist | Which `<rowtemplate>` to draw for this individual row | `0` = header, `1` = adapter/profile in the overview |
+
+These selectors are case-sensitive. A network screen that leaves its source template at `Default` will not select a template renamed `MyNetwork` merely because it exists in XML.
+
+A template without explicit `<mode>` children uses its own drawing children as an implicit `default` mode. With explicit modes, supply the one the owner actually selects. Row templates form a different path: individual rows select their shape by the first tuple item. Their order in XML is the numeric selector order. All row templates in that template share the same item width and height; a per-row `itemHeight` override is not supported by this path.
+
+## Named indexes are the screen's interface
+
+```python
+self["list"] = List([], indexNames={
+    "Reserved_for_rowTemplate": 0,
+    "Name": 1,
+    "State": 2,
+    "StateColor": 3,
+})
+self["list"].setList([
+    (0, "Adapter", "State", None),
+    (1, "eth0", "Connected", 0x0078DFAD),
+])
+```
+
+```xml
+<widget source="list" render="Listbox" position="20,20" size="800,200">
+  <template name="Default" fonts="Regular;24" itemHeight="50">
+    <rowtemplate>
+      <text index="Name" position="0,0" size="350,50" font="0" />
+      <text index="State" position="350,0" size="450,50" font="0" />
+    </rowtemplate>
+    <rowtemplate>
+      <text index="Name" position="0,0" size="350,50" font="0" />
+      <text index="State" position="350,0" size="450,50" font="0"
+          foregroundColor="+StateColor" foregroundColorSelected="+StateColor" />
+    </rowtemplate>
+  </template>
+</widget>
+```
+
+This compact illustration defines its own Python owner. For a production network screen, use that screen's exact field names instead. Named indexes avoid hard-coding tuple numbers in a skin, but they cannot invent new values. Private trailing objects are for the screen's actions; do not render them as text.
+
+## Geometry and drawing attributes
+
+| Item | What it controls |
+| --- | --- |
+| Widget `position`, `size` | Where the whole list lives in its screen |
+| Template `itemWidth`, `itemHeight` | Row dimensions before resolution scaling; the parser obtains a missing width from the widget |
+| Template `fonts="Regular;24,enigma2icons;28"` | Indexed font array; child `font="0"` is Regular, `font="1"` is the icon font |
+| Child `position`, `size` | Coordinates inside each row, not inside the screen |
+| `<panel layout="horizontal">` | Row-local layout context; `left`/`right` consume space within that panel |
+| `padding`, `horizontalAlignment`, `verticalAlignment`, `wrap` | Text placement and clipping/wrapping within the child's box |
+| `foregroundColor`, `foregroundColorSelected` | Normal/selected text or progress colours |
+| `backgroundColor`, `backgroundColorSelected` | Backgrounds, including the fill of a **generic XmlMultiContent rectangle** |
+| `+FieldName` in a supported colour attribute | Read a packed colour from the current row field |
+| `textBorderWidth`, `textBorderColor` | Outline around text glyphs, distinct from the element frame |
+
+The generic rectangle fill uses `backgroundColor`; the specialised [service-list rectangle](../../advanced/template-reference/) uses `foregroundColor`. This is a practical reason to identify the parser before copying an example.
+
+`+StatusColor` is a row-field reference, not a named skin colour. A normal named colour such as `gray` resolves through the skin's colour table. Font glyph fields contain Unicode text, so draw them with `enigma2icons`; passing them to a pixmap element does not turn them into an image filename.
+
+## Updates, headers and optional features
+
+The owner calls `setList()` for a rebuilt list and `updateEntry()` for an individual changed row. `XmlMultiContent.entry_changed()` updates the native content before repainting. A skin should not replace that notification chain with a timer just to refresh status text.
+
+The overview locks the first row with `setLockFirstRow(True)` and uses a native selectability function to reject its header. These are Python decisions after layout creation. A visually grey first row is not automatically fixed or non-selectable.
+
+Unknown template attributes are exposed as `additionalTemplateAttributes`; they do nothing unless the owner reads them. `NetworkOverview` explicitly reads `colors`. Likewise, the parser records a text `format` in `templateDataFormats`, but the network owners documented here do not consume that mapping. Do not advertise arbitrary `format` expressions as working network fields.
+
+Use [screen panels](../../advanced/panel-design/) for shared screen structure. A panel inside a list template belongs to the template parser and is not a reference to an arbitrary global screen panel.

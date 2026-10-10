@@ -19,7 +19,7 @@ test('native developer examples bind each reviewed image to its exact executable
   assert.equal(manifest.reviewed, true);
   assert.equal(manifest.backend, 'grab -o -d -p');
   assert.match(manifest.locale, /^en_/);
-  assert.equal(manifest.captures.length, 21);
+  assert.equal(manifest.captures.length, 27);
   const ids = new Set();
   for (const item of manifest.captures) {
     assert.match(item.id, /^[a-z]+(?:-[a-z]+)*$/);
@@ -40,11 +40,32 @@ test('native developer examples bind each reviewed image to its exact executable
   assert.equal(manifest.schema, 2);
   assert.ok(Object.hasOwn(manifest.dependencies, 'advanced.py'));
   assert.ok(Object.hasOwn(manifest.dependencies, 'panels.xml'));
+  assert.ok(Object.hasOwn(manifest.dependencies, 'network.py'));
+  assert.ok(Object.hasOwn(manifest.dependencies, 'assets/network-contracts.json'));
   for (const [file, expected] of Object.entries(manifest.dependencies)) {
     assert.match(file, /^[a-zA-Z0-9_./-]+$/);
     assert.ok(!file.includes('..'));
     assert.equal(hash(await read(`examples/skinning/HandbookSkinLab/${file}`)), expected, `Shared dependency changed: ${file}`);
   }
+});
+
+test('network screen contracts preserve the pinned source and named list indexes', async () => {
+  const network = await json('data/network-skin.json');
+  const foundation = await json('data/skin-api.json');
+  assert.equal(network.revision, foundation.revision);
+  assert.equal(network.screens.length, 24);
+  assert.equal(network.files.length, 16);
+  for (const file of network.files) assert.match(file.sha256, /^[0-9a-f]{64}$/);
+  const fixture = await json('examples/skinning/HandbookSkinLab/assets/network-contracts.json');
+  let lists = 0;
+  for (const screen of network.screens) {
+    if (Object.keys(screen.lists).length) assert.deepEqual(fixture[screen.name], screen.lists);
+    for (const fields of Object.values(screen.lists)) {
+      lists++;
+      assert.deepEqual(Object.values(fields).sort((a,b) => a-b), Array.from({length:Object.keys(fields).length}, (_,i) => i));
+    }
+  }
+  assert.equal(lists, 6);
 });
 
 test('advanced source contracts have a matching revision and searchable field coverage', async () => {

@@ -1,0 +1,56 @@
+<screen name="HandbookSkinLab_network-overview" position="0,0" size="1280,720" resolution="1280,720" flags="wfNoBorder" backgroundColor="#00101928" animationMode="off">
+  <eLabel position="48,24" size="1184,40" font="Regular;23" text="OpenATV / Developer / Network Skin Lab" foregroundColor="#005BD4EC" transparent="1" />
+  <eLabel position="48,70" size="1184,52" font="Regular;34" text="Network overview: adapter focus" foregroundColor="#00FFFFFF" transparent="1" />
+  <eLabel position="48,132" size="1184,40" font="Regular;23" text="Controlled example data. Native List source, XmlMultiContent and Listbox rendering." foregroundColor="#00BDCADA" transparent="1" />
+  <!-- example:start -->
+  <widget source="adapterList" render="Listbox" position="48,205" size="1184,150" foregroundColor="#00FFFFFF" backgroundColor="#001C2B40" foregroundColorSelected="#00FFFFFF" backgroundColorSelected="#00344E70">
+    <template name="Default" colors="#0078DFAD,#00FF7474,#0099ADCA,#00B5FFDA,#00FFC5C5,#00DAE4F2" fonts="Regular;25,enigma2icons;38,Regular;24,Regular;18,enigma2icons;20,Regular;16" itemHeight="50">
+      <rowtemplate>
+        <text index="AdapterName" position="0,0" size="250,50" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+        <text index="StatusText" position="270,0" size="170,50" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+        <text index="MAC" position="440,0" size="180,50" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+        <text index="IPAddress" position="620,0" size="160,50" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+        <text index="Gateway" position="780,0" size="160,50" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+        <text index="Speed" position="940,0" size="140,50" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+      </rowtemplate>
+      <rowtemplate>
+        <text index="AdapterGlyph" position="0,6" size="48,38" font="1" horizontalAlignment="center" padding="5,0" verticalAlignment="center" />
+        <text index="AdapterName" position="60,0" size="170,28" font="2" padding="5,0" verticalAlignment="center" />
+        <text index="AdapterType" position="60,28" size="170,22" font="3" padding="5,0" verticalAlignment="center" />
+        <text index="InternetGlyph" position="230,0" size="40,50" font="4" horizontalAlignment="center" padding="5,0" verticalAlignment="center" />
+        <text index="StatusText" position="270,0" size="170,25" font="3" foregroundColor="+StatusColor" foregroundColorSelected="+StatusColorSelected" padding="5,0" verticalAlignment="center" />
+        <text index="ConnectionText" position="270,25" size="150,25" font="5" padding="5,0" verticalAlignment="center" />
+        <text index="MAC" position="440,0" size="180,50" font="3" padding="5,0" verticalAlignment="center" />
+        <text index="IPAddress" position="620,0" size="160,50" font="3" padding="5,0" verticalAlignment="center" />
+        <text index="Gateway" position="780,0" size="160,50" font="3" padding="5,0" verticalAlignment="center" />
+        <text index="Speed" position="940,0" size="140,50" font="3" padding="5,0" verticalAlignment="center" />
+      </rowtemplate>
+    </template>
+  </widget>
+  <widget source="savedLabel" render="Label" position="48,390" size="1184,34" foregroundColor="#00FFFFFF" padding="10,0" verticalAlignment="center" widgetBorderColor="gray" widgetBorderWidth="1" font="Regular;20" backgroundColor="#001C2B40" foregroundColorSelected="#00FFFFFF" backgroundColorSelected="#00344E70">
+    <convert type="ConditionalShowHide" />
+  </widget>
+  <widget source="savedList" render="Listbox" position="48,438" size="1184,140" foregroundColor="#00FFFFFF" backgroundColor="#001C2B40" foregroundColorSelected="#00FFFFFF" backgroundColorSelected="#00344E70">
+    <template name="Default" colors="#0078DFAD,#00FF7474,#0099ADCA,#00B5FFDA,#00FFC5C5,#00DAE4F2" fonts="Regular;25,Regular;20,enigma2icons;25" itemHeight="35">
+      <rowtemplate>
+        <text index="SSID" position="0,0" size="250,35" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+        <text index="StatusText" position="250,0" size="100,35" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+        <text index="BSSID" position="350,0" size="210,35" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+        <text index="Frequency" position="560,0" size="140,35" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+        <text index="Channel" position="700,0" size="120,35" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+        <text index="Encryption" position="820,0" size="260,35" font="0" foregroundColor="gray" padding="5,0" verticalAlignment="center" />
+      </rowtemplate>
+      <rowtemplate>
+        <text index="SSID" position="0,0" size="250,35" font="1" padding="5,0" verticalAlignment="center" />
+        <text index="StatusGlyph" position="250,0" size="100,35" font="2" foregroundColor="+StatusColor" foregroundColorSelected="+StatusColorSelected" padding="5,0" verticalAlignment="center" />
+        <text index="BSSID" position="350,0" size="210,35" font="1" padding="5,0" verticalAlignment="center" />
+        <text index="Frequency" position="560,0" size="140,35" font="1" padding="5,0" verticalAlignment="center" />
+        <text index="Channel" position="700,0" size="120,35" font="1" padding="5,0" verticalAlignment="center" />
+        <text index="Encryption" position="820,0" size="260,35" font="1" padding="5,0" verticalAlignment="center" />
+      </rowtemplate>
+    </template>
+  </widget>
+  <!-- example:end -->
+  <eLabel position="48,602" size="1184,40" font="Regular;21" text="Header is rowtemplate 0; data is rowtemplate 1. Selection belongs to adapterList." foregroundColor="#00F3C86A" transparent="1" />
+  <eLabel position="48,664" size="1184,40" font="Regular;20" text="LEFT / RIGHT: examples     EXIT: close     Design grid: 1280 x 720" foregroundColor="#0099ADCA" transparent="1" />
+</screen>

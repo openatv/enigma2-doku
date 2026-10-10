@@ -1,0 +1,57 @@
+---
+title: Network shares and mounts — two different list contracts
+description: Skin host/share row templates and the configured-mount list without confusing discovery, credentials, enabled state and mounted state.
+---
+
+
+The share browser discovers servers and exported folders. The mount overview lists saved mount definitions and their current mount state. They have separate Python owners and different tuple layouts.
+
+## NetworkShares: host and share rows
+
+<SkinExample id="network-shares" alt="Native share-browser list with two fictional hosts and indented NFS and CIFS shares" caption="Two row templates create a host/share hierarchy. Different indentation and font sizes make the hierarchy visible without turning it into separate lists." />
+
+`NetworkShares` uses `list`, plus a named `description` Label and contextual key sources. Position zero selects the row template: `0` is a host, `1` is a share. Unlike the overview's header, a host row is a selectable item that can expand or collapse. Do not apply the overview's “selector zero is non-selectable” rule here.
+
+| Field | Host row | Share row |
+| --- | --- | --- |
+| `Glyph` | Host glyph | Mounted/not-mounted glyph |
+| `GlyphColor` | Unused by the built-in host drawing | Colour supplied for the mount state |
+| `IPAddress` | Server address | Not the share name |
+| `Type` | — | NFS or CIFS |
+| `Name` | Hostname | Share name |
+| `LocalPath` | — | Configured local path where available |
+| `Description` | — | Share description/comment where available |
+| `Username` | Separate credential identity caption, for example `(guest)` | — |
+| `NameUsername` | Combined hostname and username for a compact layout | — |
+| `Data` | Internal action data | Internal action data |
+
+Display either `Name` plus `Username`, or the combined `NameUsername`, according to the space you allocate. Showing all three duplicates the identity. Never render `Data` as a string; it is not a label and may carry implementation details.
+
+The host glyph is `EA6D`; mounted uses `E914`, not-mounted uses `E918`. The owner intentionally uses an idle colour for an unconfigured/not-mounted share. A red cross can otherwise suggest an error when a discovered folder simply has not been configured. Preserve the distinction in text or colour.
+
+`foregroundColor="+GlyphColor"` reads the row colour. Add a suitable selected colour rule if your design's selection background reduces contrast. The screen supplies only `GlyphColor`, so inventing `GlyphColorSelected` in this template will not add another data field.
+
+<NetworkSkinReference screen="NetworkShares" xml />
+
+## NetworkMountsOverview: configured mount state
+
+<SkinExample id="network-mounts" alt="Native configured-mount list showing mounted and enabled as separate columns" caption="An enabled definition can be currently unmounted, particularly with on-demand mounting. The two columns communicate different states." />
+
+This screen supplies `mountList` with a normal `default` mode. Tuple position zero is already `ShareName`: there is no row-template selector. The public fields are `ShareName`, `Server`, `RemotePath`, `Protocol`, `Mode`, `Mounted`, `Active` and `Description`.
+
+- `Mounted` describes whether the repository currently sees that mount as mounted.
+- `Active` describes whether the saved definition is enabled.
+- `Mode` is the mount method; it is not the XML list style.
+- `Description` is preformatted server/path and protocol/method text. A skin may instead arrange the separate fields if it needs a different hierarchy.
+
+The private mount object follows at position 8. Preserve action ownership: selecting a row edits its definition, while the yellow caption follows mount/unmount availability. The skin must not decide that an enabled definition is already mounted.
+
+Long server names and paths need either adequate second-line space or a deliberate truncation strategy. Keep the current-state columns readable independently of the filename length. Test an empty mount list as well as several definitions.
+
+<NetworkSkinReference screen="NetworkMountsOverview" xml />
+
+## Editing and credentials
+
+`NetworkMountSetup` uses Setup key `NetworkMounts`; `NetworkCredentials` uses `NetworkCredentials`. These are configuration forms, so use the shared Setup contract. Credential values are edited by the config component. Do not replace a masked editor with a plain source renderer, or include real passwords in a skin demonstration.
+
+The receiver's front-panel mount summary is `NetworkMountsSummary` with `SetupSummary`, exposing `entry` and `value`. Design it independently of the main television list.

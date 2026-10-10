@@ -1,0 +1,82 @@
+{
+  "NetworkOverview": {
+    "adapterList": {
+      "Reserved_for_rowTemplate": 0,
+      "AdapterGlyph": 1,
+      "AdapterName": 2,
+      "AdapterType": 3,
+      "StatusText": 4,
+      "StatusColor": 5,
+      "StatusColorSelected": 6,
+      "MAC": 7,
+      "IPAddress": 8,
+      "Gateway": 9,
+      "Speed": 10,
+      "InternetGlyph": 11,
+      "ConnectionText": 12
+    },
+    "savedList": {
+      "Reserved_for_rowTemplate": 0,
+      "SSID": 1,
+      "BSSID": 2,
+      "Frequency": 3,
+      "Channel": 4,
+      "Encryption": 5,
+      "StatusText": 6,
+      "StatusGlyph": 7,
+      "StatusColor": 8,
+      "StatusColorSelected": 9
+    }
+  },
+  "NetworkWiFiScan": {
+    "list": {
+      "Name": 0,
+      "SSID": 1,
+      "BSSID": 2,
+      "Glyph": 3,
+      "Strength": 4,
+      "Percentage": 5,
+      "dBm": 6,
+      "Encryption": 7,
+      "ChannelFrequency": 8,
+      "Channel": 9,
+      "Frequency": 10
+    }
+  },
+  "NetworkTest": {
+    "list": {
+      "Glyph": 0,
+      "Label": 1,
+      "Result": 2,
+      "Detail": 3,
+      "Color": 4
+    }
+  },
+  "NetworkMountsOverview": {
+    "mountList": {
+      "ShareName": 0,
+      "Server": 1,
+      "RemotePath": 2,
+      "Protocol": 3,
+      "Mode": 4,
+      "Mounted": 5,
+      "Active": 6,
+      "Description": 7
+    }
+  },
+  "NetworkShares": {
+    "list": {
+      "Reserved_for_rowTemplate": 0,
+      "Glyph": 1,
+      "GlyphColor": 2,
+      "IPAddress": 3,
+      "Type": 4,
+      "Name": 5,
+      "LocalPath": 6,
+      "Description": 7,
+      "Username": 8,
+      "NameUsername": 9,
+      "Data": 10
+    }
+  }
+}

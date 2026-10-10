@@ -1,0 +1,44 @@
+---
+title: Network skin examples — run, inspect and adapt
+description: Six native network list examples with exact XML and Python data contracts, source provenance and clear rendering verification boundaries.
+---
+
+The [Handbook Skin Lab](../../lab/) now contains six network scenes after the foundations and advanced examples. Open the plugin and move with LEFT/RIGHT; EXIT closes it. These scenes do not open the production network controller and do not change the active skin.
+
+| Scene ID | What it demonstrates |
+| --- | --- |
+| `network-overview` | Header/data row templates, adapter focus and named state colours |
+| `network-profiles` | The same layout with the saved-profile list selected |
+| `network-wifi` | A single-mode scan row, horizontal panel, separate text fields and icon font |
+| `network-shares` | Different host/share rows in one native list |
+| `network-mounts` | A conventional mode with independent enabled and mounted columns |
+| `network-test` | Colour/glyph/text contracts for success, failure, skipped and busy |
+
+## Exact code behind the images
+
+Each illustrated chapter supplies the complete example XML and the full plugin ZIP. Inside that ZIP:
+
+- `network.py` supplies deliberately fictional tuples and the post-layout list focus/header behaviour.
+- `assets/network-contracts.json` holds the exact named index maps extracted from the pinned source.
+- `screens/network-*.xml` contains the visible layouts.
+- `plugin.py` opens the scenes and provides the explicit capture service.
+
+The native child templates are taken from `NetworkOverview`, `NetworkWiFiScan`, `NetworkShares`, `NetworkMountsOverview` and `NetworkTest`. The lab changes their outer geometry, teaching frame, foreground/selection colours and overview palette; it also sets an explicit heading font. It keeps the native list field names and row templates.
+
+The lab's fixture builder owns its colours directly; production `NetworkOverview` obtains those state colours through its `getOverviewColors()` method. The [overview chapter](../overview/) explains that extra readback step. A screenshot of a palette is not a substitute for understanding how the owner supplies its fields.
+
+## What the receiver captures establish
+
+The images are real English Enigma2 OSD captures with the native Listbox renderer, XML multi-content parser, icon font and row rendering. They show that the supplied examples draw on the test receiver. The overview pair also shows the visible difference between upper/lower focus.
+
+All hostnames, Wi-Fi identities, MAC addresses and IP addresses in these six examples are fictional. The addresses use documentation data. No saved network keys are loaded. The lab performs no network scan, activation, mount, server discovery or credential editing. Diagnostic rows are deliberately selected teaching states, not measured results.
+
+## Source and maintenance
+
+`data/network-skin.json` records the source revision, hashes of 16 reference files, 24 screen classes, their local component declarations and six list index maps. Base-class contracts are explained separately rather than guessed from a class's local assignments.
+
+The import script parses Python as data; it never imports Enigma2 into the documentation build. `scripts/build-network-skin-examples.py` derives the lab's six XML examples and index maps from that snapshot. The ordinary website build needs neither a receiver nor the source checkout.
+
+Every reviewed PNG is bound to its exact XML and common Python/assets by SHA-256 in the capture manifest. Editing a shared dependency requires a new capture run. The download package contains the same sources as those used for the screenshots.
+
+The [screen map](../screen-contracts/) links directly to each owner in the pinned OpenATV source. The source files also cover `skin.py`, generic List/XmlMultiContent/Listbox, native listbox content, Setup, network management, information and Processing. For general widget attributes, return to the searchable [skin.py API](../../api/).

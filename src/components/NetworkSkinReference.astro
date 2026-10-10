@@ -1,0 +1,36 @@
+---
+import { Code } from '@astrojs/starlight/components';
+import reference from '../../data/network-skin.json';
+interface Props { screen?: string; xml?: boolean; catalog?: boolean; }
+const { screen, xml = false, catalog = false } = Astro.props;
+const selected = reference.screens.find(item => item.name === screen);
+if (!catalog && !selected) throw new Error(`Unknown network screen: ${screen}`);
+const sourceUrl = (item: (typeof reference.screens)[number]) => `https://github.com/openatv/enigma2/blob/${reference.revision}/${item.path}#L${item.line}`;
+const visualComponents = (item: (typeof reference.screens)[number]) => Object.entries(item.components).filter(([,kind]) => kind && !kind.includes('ActionMap'));
+---
+{catalog ? <>
+  <p>Extracted from source revision <code>{reference.revision.slice(0, 10)}</code>. Components below are declared by each class itself; inherited Setup, help and information components are explained in the next chapter.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Python screen / source</th><th>Base / setup key</th><th>Locally declared visual components</th></tr></thead>
+    <tbody>{reference.screens.map(item => <tr>
+      <td><a href={sourceUrl(item)}><code>{item.name}</code></a></td>
+      <td>{item.bases.join(', ')}{item.setup && <><br />Setup key: <code>{item.setup}</code></>}</td>
+      <td>{visualComponents(item).map(([name,kind]) => <div><code>{name}</code> — {kind}</div>)}</td>
+    </tr>)}</tbody>
+  </table></div>
+</> : selected && <>
+  <p><a href={sourceUrl(selected)}>Source: <code>{selected.name}</code></a> — exact field names from the pinned Python owner:</p>
+  {Object.entries(selected.lists).map(([name, fields]) => <>
+    <p><strong><code>{name}</code> · List source</strong></p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>XML index name</th><th>Tuple position</th></tr></thead>
+      <tbody>{Object.entries(fields || {}).map(([field,position]) => <tr><td><code>{field}</code></td><td>{position}</td></tr>)}</tbody>
+    </table></div>
+  </>)}
+  {xml && selected.xml && <details>
+    <summary>Complete built-in {selected.name} fallback XML</summary>
+    <p>This is the source definition, including production button sources. It is distinct from the lab frame used in the illustration.</p>
+    <div translate="no"><Code code={selected.xml} lang="xml" /></div>
+  </details>}
+</>}
+<style>.table-wrap { overflow-x: auto; } td { vertical-align: top; } details { margin-block: 1.5rem; } summary { cursor: pointer; font-weight: 600; }</style>

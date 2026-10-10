@@ -94,13 +94,15 @@ Für den Standardworkflow sind kein persönlicher Zugriffstoken, keine FTP-Zugan
 
 ## Änderungen an Inhalten
 
-Der Entwicklerbereich wird absichtlich nur auf Englisch gepflegt: **30 Kapitel** unter `docs/developer-content/`, gespiegelt nach DE und EN. Mit `pnpm developers:sync` werden die Artikel und einzelnen Beispiel-Downloads aktualisiert; `pnpm build` prüft die Synchronität. Neue Entwicklerartikel brauchen einen passenden Eintrag in der Sidebar.
+Der Entwicklerbereich wird absichtlich nur auf Englisch gepflegt: **39 Kapitel** unter `docs/developer-content/`, gespiegelt nach DE und EN. Mit `pnpm developers:sync` werden die Artikel und einzelnen Beispiel-Downloads aktualisiert; `pnpm build` prüft die Synchronität. Neue Entwicklerartikel brauchen einen passenden Eintrag in der Sidebar.
 
 Die Skinning-Grundlagen enthalten zwölf echte OSD-Aufnahmen und ein isoliertes Beispielplugin in `examples/skinning/HandbookSkinLab/`. Bild- und XML-Prüfsummen stehen in `data/skin-lab-captures.json`. Nach Änderungen an einem gezeigten XML-Beispiel muss dessen Bild erneut aufgenommen und geprüft werden. Aufnahme und geprüfter Import mit `scripts/import-skin-lab-captures.py` sind in [CAPTURE.md](docs/CAPTURE.md) beschrieben. `python scripts/package-skin-lab.py` erstellt das deterministische Download-ZIP. Die API-Referenz wird mit `python scripts/import-skin-api.py ../enigma2` aus einem sauberen Quellstand und redaktionellen Erklärungen in `data/skin-api-notes.json` erzeugt. Der normale Build benötigt weder Receiver noch Enigma2-Checkout.
 
 Im Entwicklerbereich enthält die automatische Sprachauswahl zusätzlich **Deutsch — automatic**. Die normale DE-Handbuchfassung bleibt unverändert eine native Übersetzung. Beide Suchindizes finden die englischen Entwicklerbegriffe.
 
 Die zwölf Kapitel zur erweiterten Skin-Entwicklung ergänzen InfoBar-Datenketten, Sensoren, klassische und moderne Senderlisten, Templates/Stile, wiederverwendbare Panels und Icon-Fonts einschließlich der MultiPixmap-Glyphenoption. Neun zusätzliche native Beispiele erweitern das Lab auf 21 Szenen. `python scripts/import-skin-advanced.py ../enigma2` aktualisiert die 26 Quell-/Fontnachweise und die spezialisierten Senderlistenfelder. Beispielwerte und lokale Adapter stehen in `advanced.py`; sie verändern keine Senderlisten- oder Skin-Einstellungen.
+
+Danach folgen neun Kapitel zum Netzwerk-Skinning ab OpenATV 8.0: 24 Screenklassen, sechs benannte Listenverträge, XmlMultiContent/rowtemplate, Fokus und Paletten, WLAN, Shares/Mounts, Setup-Vererbung, Diagnose, Information und Processing. Sechs weitere echte OSD-Beispiele erweitern das Lab auf 27 Szenen. `python scripts/import-network-skin.py ../enigma2` importiert die Referenz; `python scripts/build-network-skin-examples.py` erzeugt die Beispiel-XMLs aus den festgehaltenen nativen Templates. Die fiktiven Daten in `network.py` ändern keine Netzwerkverbindung. Nach Änderungen erneut aufnehmen, visuell prüfen, importieren und das ZIP erstellen.
 
 Artikel liegen in `src/content/docs/de/` und `src/content/docs/en/`. Beide Sprachfassungen nutzen denselben relativen Dateinamen. Die sichtbaren Titel werden übersetzt. Markdown und MDX sind unterstützt.
 
@@ -120,7 +122,7 @@ Nach einem Import den Diff prüfen, neue oder geänderte Optionen redaktionell b
 
 ## Platzbedarf und Apache2
 
-`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Die Website enthält die freigegebenen Original-PNGs zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der geprüfte Build mit 319 Inhalten je Sprache einschließlich des Entwicklerbereichs belegt rund 307,39 MB in 3683 Dateien, etwa 30,74 Prozent des Budgets.
+`pnpm size` meldet die Größe von `dist/`. Die Pages-Veröffentlichung verwendet vorsichtshalber ein Budget von 1.000.000.000 Bytes und warnt ab 80 Prozent. Ungeprüfte Rohserien, `node_modules` und `.git` werden nicht veröffentlicht. Die Website enthält die freigegebenen Original-PNGs zum Vergrößern und automatisch erzeugte WebP-Versionen für die Artikelseite. Der Build mit 328 Inhalten je Sprache einschließlich des Entwicklerbereichs belegt rund 313 MB, etwa 31,3 Prozent des Budgets.
 
 Qualifizierte Inline-Code-Namen wie `config.plugins.umbra.color_recording` erhalten beim Build einen zusätzlichen Suchalias für den letzten Namensbestandteil. Der sichtbare Code bleibt unverändert. `scripts/setting-search-aliases.mjs` verwendet dazu den nativen Sätteri-AST-Hook und Pagefind-Indexattribute.
 

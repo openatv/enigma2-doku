@@ -1,0 +1,67 @@
+---
+title: Wi-Fi skinning — profiles, scan fields and activation
+description: Saved profiles versus scan results, status glyphs, BSSID and encryption fields, row-local panels and the Wi-Fi activator Label.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+import NetworkSkinReference from '../../../../../../components/NetworkSkinReference.astro';
+
+{/* Generated from docs/developer-content/skinning/network/wifi.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+Saved profiles and scan results answer different questions. A saved connection is a configuration the receiver can try; a scan result is an access point observed during a scan. A skinner must not merge their fields or assume their row formats are the same.
+
+## The saved-profile list
+
+<SkinExample id="network-profiles" alt="Native network overview with the lower saved Wi-Fi list selected and connected, saved and disabled glyphs" caption="Saved-profile focus: the layout is unchanged, but the selection highlight moves from adapterList to savedList." />
+
+The fields in `NetworkOverview.savedList` are:
+
+| Field | Presentation contract |
+| --- | --- |
+| `SSID` | Display name for the saved connection |
+| `StatusText` | Connected, Not Connected or Disabled; also supplies the header's Status caption |
+| `StatusGlyph` | Connected `EA77`, enabled but not live `EA78`, disabled `EA79` in `enigma2icons` |
+| `StatusColor`, `StatusColorSelected` | State colours from this list's overview palette |
+| `BSSID`, `Frequency`, `Channel` | Live connection information only; otherwise `-` |
+| `Encryption` | The configured encryption label, including WPA3/Enterprise variants when applicable |
+
+The source determines the live row from the adapter's link and matching SSID. Do not infer that all saved profiles are reachable just because they appear here. The trailing connection object at position 10 is private action data.
+
+The built-in data row displays `StatusGlyph` instead of `StatusText`. You can allocate a wider status column and add text for accessibility, but preserve the three meanings. Keep inactive status visible when the lower list loses focus; losing selection is not the same as disabling a profile.
+
+## Scan results use a single mode
+
+<SkinExample id="network-wifi" alt="Native Wi-Fi scan template with fictional SSID, BSSID, glyph, signal, encryption, channel and frequency columns" caption="The scan template uses a horizontal row panel and named fields. This is a rendering fixture, not a scan of the test location." />
+
+`NetworkWiFiScan` owns `list` as a List source and `description` as a named Label. It uses one `default` mode, not a header-selector row template. Tuple position zero is `Name`, so treating it as a row selector would break this screen.
+
+| Field | Meaning / use |
+| --- | --- |
+| `Name` | Combined display SSID and BSSID, useful for distinguishing access points |
+| `SSID`, `BSSID` | Separate values when your layout places them on different lines |
+| `Glyph` | Icon-font signal representation supplied by ScanResult |
+| `Strength` | Combined formatted signal text |
+| `Percentage`, `dBm` | Separate formatted signal strings |
+| `Encryption` | Security label supplied by the scan parser |
+| `ChannelFrequency` | Combined channel/frequency text |
+| `Channel`, `Frequency` | Separate formatted values |
+
+All these signal fields are prepared for text rendering. `Percentage` contains a percent sign; it is not a numeric input for a progress element. Adding a native bar would require a suitable numeric field from a Python owner, not simply pointing `progress` at that string.
+
+The built-in panel consumes columns from the left and frequency from the right. If you enlarge the SSID column without accounting for the others, the combined widths can overlap. At HD, a two-line layout with SSID and BSSID separated may be easier to read. Increase the row height and update the row's child geometry together.
+
+Long SSIDs, hidden/unknown names, long security labels, weak signal and an empty list all need deliberate space. Reserve the `description` area for scanning, count, empty and error feedback. Colour buttons and the source-provided count/status must remain legible while a scan is in progress.
+
+<NetworkSkinReference screen="NetworkWiFiScan" xml />
+
+## Configuration and activation
+
+`NetworkWiFiSetup` is a Setup form; it is not another scan list. Use its `config`, inherited help/description fields and dynamic key sources. Security choices can change the available form entries. Enterprise certificate/key provisioning is an administrative task outside this GUI; a skin cannot create unsupported editor fields by adding XML labels.
+
+`NetworkWiFiActivator` is a small separate screen with a named `status` Label and `key_red` source. Its status combines SSID, adapter and changing progress/result text with line breaks. Give the label enough height, allow multiple lines and let the owner control the Close caption. It does not provide a numeric percentage source.
+
+<NetworkSkinReference screen="NetworkWiFiActivator" xml />
+
+</DeveloperContent>

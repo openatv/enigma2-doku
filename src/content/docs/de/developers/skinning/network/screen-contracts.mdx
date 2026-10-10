@@ -1,0 +1,55 @@
+---
+title: Network screen map — owners, sources and components
+description: The 24 network screen classes and their exact visual contracts, including List sources, named Labels, Setup inheritance and fallback names.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+import NetworkSkinReference from '../../../../../../components/NetworkSkinReference.astro';
+
+{/* Generated from docs/developer-content/skinning/network/screen-contracts.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+A screen name is a lookup key, not a promise that all older widgets still exist. Begin with the Python class that owns the screen. Check its `self["..."]` assignments, its base classes and its `skinName` selection before writing XML.
+
+## Source widgets and named widgets
+
+```xml
+<!-- List is a Source: it needs a renderer and a template. -->
+<widget source="adapterList" render="Listbox"
+    position="20,20" size="1060,250">
+  <template name="Default" fonts="Regular;24" itemHeight="50">
+    <rowtemplate>
+      <text index="AdapterName" position="0,0" size="1060,50" font="0" />
+    </rowtemplate>
+    <rowtemplate>
+      <text index="AdapterName" position="0,0" size="1060,50" font="0" />
+    </rowtemplate>
+  </template>
+</widget>
+
+<!-- The scan screen owns a Label component, not a StaticText source. -->
+<widget name="description" position="20,400" size="1060,45"
+    font="Regular;22" />
+```
+
+The first fragment belongs to `NetworkOverview`; the second belongs to `NetworkWiFiScan` or `NetworkShares`. They are not a complete screen to combine indiscriminately. `name="description"` connects to an existing GUI component. `source="savedLabel" render="Label"` connects a renderer to a Source. These forms are not interchangeable.
+
+## Complete class map
+
+<NetworkSkinReference catalog />
+
+`actions`, `infoActions` and similar action maps receive keys; they are not visual widgets. `key_red`, `key_green` and the other `key_...` sources provide the current captions. The screen may set a caption to an empty string when an action is unavailable. Use `ConditionalShowHide` to preserve that behaviour instead of painting a permanent caption.
+
+## Inheritance matters
+
+- **Setup subclasses** inherit the `config` component, `description`, `footnote`, editing support and standard key sources. Their lookup sequence is explained in [forms and auxiliary screens](../setup-dialogs/).
+- **NetworkInformation** inherits `InformationNetwork`. Its visible text is the inherited `information` ScrollLabel; there is no `adapterList` in this screen.
+- **NetworkMountsSummary** selects `SetupSummary` and provides `entry` and `value` for the front-panel summary. It is not the television mount list.
+- **uShareSelection** exposes `checkList`, backed by `MultiFileSelectList`. A generic network row template is not its rendering interface.
+- **NetworkLogScreen** exposes `infotext`, a ScrollLabel. It first tries its caller-selected skin name, then `NetworkLogScreen`.
+- **RestartNetwork** selects `DUMMY` and uses the shared Processing overlay. Enlarging its zero-size fallback does not implement a network progress screen.
+
+Keep the content area, key bar and optional context/help indicators as separate layout regions. A named panel can share their geometry, but it must only reference sources that exist in every owner using it. Guard optional components with `conditional` as the common Setup fallback does.
+
+</DeveloperContent>

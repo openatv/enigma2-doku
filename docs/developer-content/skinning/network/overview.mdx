@@ -1,0 +1,84 @@
+---
+title: NetworkOverview — two lists, fixed headers and state colours
+description: Detailed adapterList and savedList contracts, focus, status versus internet, per-list palettes, header selectors and conditional key labels.
+---
+
+
+`NetworkOverview` owns an upper `adapterList`, a `savedLabel` heading and a lower `savedList`. The upper list selects an adapter; the lower list shows that wireless adapter's saved connections. Both lists must exist in the skin even when no Wi-Fi profiles are available.
+
+## Layout and focus
+
+<SkinExample id="network-overview" alt="Native network list example with the Wi-Fi adapter selected and three saved profiles underneath" caption="Adapter focus: the upper list has the selection highlight; the lower list remains visible with its state glyphs. All identities and addresses are fixtures." />
+
+The built-in 1280 × 720 layout uses a 1100 × 540 screen. Its upper rows are 50 pixels high; its lower rows are 35 pixels high. The lab places the same child templates in a larger teaching frame. If you change row heights, revise every column's vertical position and size as well as the list's total height. Setting only a larger font can clip the lower line of an adapter row.
+
+`adapterList` and `savedList` each use two row templates:
+
+| Row selector | Upper list | Lower list |
+| --- | --- | --- |
+| `0` | Adapter column headings | Saved-profile column headings |
+| `1` | Ethernet, Wi-Fi or VPN data | Saved Wi-Fi connection data |
+
+The Python owner marks the header non-selectable and locks it as the first row. Keep the header template first. Reversing the two definitions makes heading text use the data layout and ordinary rows use the heading layout.
+
+The owner sets `selectionEnabled()` independently for the two lists and routes navigation to the focused list. Right/last can enter the saved list when it has data; left/first returns to the adapter list. Do not make both lists look selected permanently. The [Wi-Fi chapter](../wifi/) shows the same layout with focus in the lower list.
+
+## Adapter fields and meaning
+
+| Fields | What the skin receives |
+| --- | --- |
+| `AdapterGlyph`, `AdapterName`, `AdapterType` | Icon-font character, interface name and translated type text |
+| `StatusText` | Deactivated, Connected, Not Connected, Cable Unplugged, or VPN-specific Up/Down |
+| `StatusColor`, `StatusColorSelected` | Packed normal and selected colours chosen by the owner |
+| `MAC`, `IPAddress`, `Gateway`, `Speed` | Already formatted text; unavailable values may be `-` |
+| `InternetGlyph` | Cloud glyph when the adapter has the corresponding internet state; empty when absent. VPN uses its own locked-cloud condition |
+| `ConnectionText` | Secondary line supplied by the network manager for this adapter |
+
+`Connected` describes link/association. It must not be relabelled as “Internet available”: internet checking is separate and can finish later. Wi-Fi bitrate, Ethernet speed and a throughput test are also different quantities; display the supplied `Speed` text without inventing a transfer-rate guarantee.
+
+The private adapter object follows the public fields at tuple position 13. It is used for actions, not for a text widget. VPN rows use the same drawing fields but do not behave as configurable physical adapters; the owner disables or changes actions accordingly.
+
+## Three or six palette entries
+
+Both list templates can supply `colors`. This is a **NetworkOverview-specific convention**, read from each source's `additionalTemplateAttributes` after the XML template is connected.
+
+```xml
+<template name="Default"
+    colors="#0078DFAD,#00FF7474,#0099ADCA,#00B5FFDA,#00FFC5C5,#00DAE4F2"
+    fonts="Regular;25,enigma2icons;38,Regular;24,Regular;18,enigma2icons;20,Regular;16"
+    itemHeight="50">
+  <!-- header and data rowtemplate definitions -->
+</template>
+```
+
+| Position | Meaning |
+| --- | --- |
+| 0 | Connected, normal row |
+| 1 | LAN with no link / applicable failure state, normal row |
+| 2 | Idle, disabled, not associated or saved-only, normal row |
+| 3 | Connected, selected row |
+| 4 | No-link state, selected row |
+| 5 | Idle state, selected row |
+
+With three entries, the same three colours are reused for selected rows. With six, you can preserve contrast against a different selection background. Other counts fall back to the owner's defaults and produce a diagnostic. Colours still need valid skin colour syntax.
+
+The row template must consume both fields:
+
+```xml
+<text index="StatusText" position="270,0" size="170,25" font="3"
+    foregroundColor="+StatusColor"
+    foregroundColorSelected="+StatusColorSelected"
+    padding="5,0" verticalAlignment="center" />
+```
+
+Changing the `colors` attribute alone has no visible effect if the row hard-codes white and never reads those fields. Conversely, `backgroundColorSelected` on the list changes the selection background, not the status palette. Test text against both backgrounds.
+
+## Saved-list visibility and keys
+
+For a selected non-Wi-Fi adapter, the owner empties `savedList` and `savedLabel`. The list region does not automatically collapse and reflow the rest of the screen. Keep a deliberate empty-state layout. The heading's `ConditionalShowHide` hides its renderer when its text is empty.
+
+`key_green`, `key_blue`, `key_yellow` and `key_info` change with focus and available actions. Retain `key_menu` and help access too. A skin must display the source text rather than baking “Connect” into every blue button: adapter selection and saved-profile selection have different meanings.
+
+## Exact index maps and complete fallback
+
+<NetworkSkinReference screen="NetworkOverview" xml />
