@@ -39,6 +39,7 @@ export default defineConfig({
         { slug: 'erste-schritte/menue-anpassen', label: 'OSD, Menüs & Bildschirmschoner', translations: { en: 'OSD, menus & screen saver' } },
         { slug: 'erste-schritte/infobar', label: 'Infobar verstehen', translations: { en: 'Understand the Infobar' } },
         { slug: 'erste-schritte/farbtasten-langdruck', label: 'Fernbedienung, Hotkeys & Langdruck', translations: { en: 'Remote buttons, hotkeys & long presses' } },
+        { slug: 'bedienung/fernbedienungs-finder', label: 'Fernbedienungs-Finder (VU+ Muster)', translations: { en: 'Remote finder (VU+ prototype)' } },
         { slug: 'settings/kanalliste', label: 'Senderliste & Stile', translations: { en: 'Channel list & styles' } },
         { slug: 'bedienung/systemanpassen', label: 'Systemeinstellungen anpassen', translations: { en: 'Customize system settings' } },
         { slug: 'skins/installieren', label: 'Skinauswahl & Vorlagen', translations: { en: 'Skin selection & templates' } },

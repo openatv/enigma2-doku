@@ -16,6 +16,7 @@ Ein gemeinsamer Linkblock am Seitenende führt in beiden Sprachen zu Forum, Enig
 - Infobar: Symbole, einfache Infoleiste, zweite INFO/ECM, Sendungsinformationen und OSD-Optionen
 - Versteckte Menüoptionen über MENU → MENU, vertikale/horizontale Menüs und Bearbeitungsmodus
 - Farbtasten, eigene Hotkeys und Langdruck-Verzeichnis aus der Keymap: 150 Zuordnungen für 77 Tastencodes
+- Interaktiver Fernbedienungs-Finder in DE/EN: VU+ DUO 4K LITE / vu6 als erstes Muster, 44 zugeordnete Tasten im Bild, neun Bildschirmzustände, Funktionssuche und Drücken/Loslassen/Langdruck; [Pflege und Erweiterung](docs/REMOTE-GUIDE.md)
 - Backup/Wiederherstellung, Flash Online und MultiBoot mit Erhalt des aktuellen Images
 - Downloads und unterstützte Modelle, USB-Neuinstallation sowie Softwareupdate im Vergleich zu Flash Online
 - AutoRestore mit Turbo/Fast/Slow, Rückübernahme von Einstellungen, Plugins, Feeds und lokalen Add-ons

@@ -1,0 +1,129 @@
+---
+import reference from '../../data/remote-reference.json';
+import * as definitions from '../../data/remote-guide.mjs';
+import { compileGuide } from '../lib/remote-guide.mjs';
+interface Props { lang: 'de' | 'en' }
+interface RemoteAction { flags: string; event: string; text: string; condition?: string; global: boolean; source: string }
+interface RemoteButton { id: string; name: string; location: string }
+interface RemoteScreen { id: string; label: string; description: string; powerBlocked: boolean; entries: { id: string; actions: RemoteAction[] }[] }
+interface RemoteModel { id: string; name: string; remote: string; image: string; buttons: RemoteButton[]; screens: RemoteScreen[] }
+const { lang } = Astro.props;
+const models: RemoteModel[] = compileGuide(reference, definitions, lang);
+const de = lang === 'de';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const labels = de ? {
+  model: 'Box suchen', choose: 'Modell / Fernbedienung', screen: 'Wo bin ich auf der Box?', filter: 'Funktion oder Taste suchen', reset: 'Suche leeren', count: 'Tasten gefunden', empty: 'Keine passende Taste. Suche leeren oder einen anderen Bildschirm wählen.', noModel: 'Dieses Modell ist im ersten Muster noch nicht enthalten. Verfügbar ist VU+ DUO 4K LITE (vu6).', selected: 'Gewählte Taste', noAction: 'Keine eigenständige Aktion in diesem Muster erfasst.', unmapped: 'Diese sichtbare Taste ist in vu6.xml nicht als Enigma2-Taste zugeordnet. Daraus lässt sich keine Enigma2-Funktion ableiten.', blocked: 'Setup sperrt Standby und die lange POWER-Aktion. Eine kurze POWER-Aktion wie das Öffnen des Ausschaltmenüs kann weiterhin greifen; zum Ausschalten zuerst Setup verlassen.', mapping: 'Technische Zuordnung und Quellcode', global: 'Global, sofern der Bildschirm die Taste nicht abfängt', local: 'In diesem Bildschirm', current: 'Auswahl', modelCount: 'Verfügbare Modelle', link: 'Link zu dieser Auswahl', hint: 'Taste im Bild oder in der Liste wählen. Die Webseite zeigt nur Erklärungen; sie bedient keinen Receiver.', defaultHint: 'Ausgangspunkt: Standard-keymap.xml, keine eigenen Hotkeys. Einstellbare und bedingte Funktionen stehen direkt bei der Aktion.', unlisted: 'Andere Ereignisse sind für diesen Zustand nicht dokumentiert. Das bedeutet nicht, dass die Taste in jedem Plugin wirkungslos ist.', imageAlt: 'VU+ Fernbedienung vu6 mit 44 zugeordneten Tasten', imageCaption: 'Markierung: ausgewählte Taste · kleine Punkte: Funktion im gewählten Bildschirm erfasst', show: 'Taste anzeigen', event: 'Betätigung', action: 'Funktion', button: 'Taste / Position', fallback: 'Alle Bildschirmbelegungen zum Nachlesen', source: 'Quellcode', live: 'Taste gewählt',
+} : {
+  model: 'Find your receiver', choose: 'Model / remote', screen: 'Where am I on the receiver?', filter: 'Find a function or button', reset: 'Clear search', count: 'buttons found', empty: 'No matching button. Clear the search or choose another screen.', noModel: 'This model is not included in the first prototype. VU+ DUO 4K LITE (vu6) is available.', selected: 'Selected button', noAction: 'No separate action recorded in this prototype.', unmapped: 'This visible button is not assigned as an Enigma2 button in vu6.xml. No Enigma2 function can be inferred from it.', blocked: 'Setup blocks standby and the long POWER action. A short POWER action such as opening the shutdown menu may still work; leave Setup before shutting down.', mapping: 'Technical mapping and source code', global: 'Global, unless intercepted by the screen', local: 'In this screen', current: 'Selection', modelCount: 'Available models', link: 'Link to this selection', hint: 'Select a button in the picture or list. This page only explains functions; it does not control a receiver.', defaultHint: 'Starting point: standard keymap.xml, no custom hotkeys. Configurable and conditional functions are noted with the action.', unlisted: 'Other events are not documented for this state. This does not mean the button has no effect in every plugin.', imageAlt: 'VU+ vu6 remote with 44 mapped buttons', imageCaption: 'Outline: selected button · small dots: function documented in this screen', show: 'Show button', event: 'Operation', action: 'Function', button: 'Button / position', fallback: 'Read all screen assignments', source: 'Source', live: 'Button selected',
+};
+---
+<section class="remote-explorer" data-remote-explorer data-pagefind-ignore>
+  <script is:inline type="application/json" data-remote-data set:html={JSON.stringify({ models, labels, lang, base }).replaceAll('<', '\u003c')} />
+  <div data-remote-ui hidden>
+    <p class="remote-intro">{labels.hint}</p>
+    <div class="remote-controls">
+      <label for="remote-model-search">{labels.model}<input id="remote-model-search" type="search" placeholder="VU+ DUO 4K LITE / vuduo4klite" autocomplete="off" /></label>
+      <label for="remote-model">{labels.choose}<select id="remote-model">{models.map(model => <option value={model.id}>{model.name} · {model.remote}</option>)}</select></label>
+      <label for="remote-screen" class="remote-screen-label">{labels.screen}<select id="remote-screen" /></label>
+    </div>
+    <p data-model-status role="status"></p>
+    <div data-remote-workspace>
+      <p data-screen-description class="remote-state"></p>
+      <p class="remote-note">{labels.defaultHint}</p>
+      <div class="remote-workspace">
+        <figure class="remote-figure">
+          <div class="remote-picture" data-remote-picture></div>
+          <figcaption>{labels.imageCaption}</figcaption>
+          <p class="remote-note">OE-Alliance remotes · <a href={`${base}/remotes/LICENSE.txt`}>GPLv3</a> · <a href={`${base}/remotes/vu6.xml`}>vu6.xml</a></p>
+        </figure>
+        <div class="remote-functions">
+          <section class="remote-detail" data-remote-detail aria-labelledby="remote-selected-title" tabindex="-1"></section>
+          <p data-selection-status class="remote-sr-only" role="status" aria-live="polite"></p>
+          <div class="remote-function-search">
+            <label for="remote-function-search">{labels.filter}</label>
+            <input id="remote-function-search" type="search" placeholder={de ? 'z. B. Timer, Untertitel, Menü' : 'e.g. timer, subtitles, menu'} autocomplete="off" />
+            <button type="button" data-remote-reset>{labels.reset}</button>
+          </div>
+          <p data-function-count role="status" aria-live="polite"></p>
+          <div class="remote-button-list" data-remote-list></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <noscript>
+    <p>{de ? 'Die interaktive Auswahl benötigt JavaScript. Alle Belegungen stehen auch in den folgenden Tabellen.' : 'Interactive selection requires JavaScript. All assignments are also available in the tables below.'}</p>
+    <img src={`${base}/${models[0].image}`} alt={labels.imageAlt} width="142" height="488" />
+  </noscript>
+</section>
+<section class="remote-reference">
+  <h2 id="button-tables">{labels.fallback}</h2>
+  <p>{de ? 'Die Tabellen sind auch ohne JavaScript lesbar und über die Handbuchsuche auffindbar. Drücken und Loslassen sind unterschiedliche Ereignisse.' : 'These tables work without JavaScript and are indexed by handbook search. Press and release are different events.'}</p>
+  {models[0].screens.map(screen => <details id={`remote-${screen.id}`}>
+    <summary>{screen.label}</summary>
+    <p>{screen.description}</p>
+    {screen.powerBlocked && <p>{labels.blocked}</p>}
+    <div class="remote-table-scroll" tabindex="0" role="region" aria-label={screen.label}>
+      <table><thead><tr><th>{labels.button}</th><th>{labels.event}</th><th>{labels.action}</th></tr></thead><tbody>
+        {screen.entries.filter(entry => entry.actions.length).flatMap(entry => {
+          const button = models[0].buttons.find(button => button.id === entry.id)!;
+          return entry.actions.map((action, i) => <tr>
+            <td>{button.name}{i === 0 && <small>{button.location}</small>}</td>
+            <td>{action.event}</td>
+            <td>{action.text}{action.condition && <small>{action.condition}</small>}<small>{action.global ? labels.global : labels.local} · <a href={action.source}>{labels.source}</a></small></td>
+          </tr>);
+        })}
+      </tbody></table>
+    </div>
+  </details>)}
+</section>
+<script>
+  import { initRemoteExplorers } from '../scripts/remote-explorer.mjs';
+  initRemoteExplorers();
+  document.addEventListener('astro:page-load', initRemoteExplorers);
+</script>
+<style is:global>
+  .remote-explorer { --remote-accent: var(--sl-color-text-accent); --remote-border: var(--sl-color-gray-5); margin-block: 1.5rem; }
+  .remote-explorer [hidden] { display:none !important; }
+  .remote-explorer label { display:block; font-weight:600; font-size:.94rem; }
+  .remote-explorer input, .remote-explorer select { display:block; width:100%; box-sizing:border-box; min-height:2.8rem; padding:.5rem .65rem; margin-top:.35rem; border:1px solid var(--remote-border); border-radius:.45rem; background:var(--sl-color-bg); color:var(--sl-color-text); font:inherit; }
+  .remote-controls { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; padding:1rem; border:1px solid var(--remote-border); border-radius:.75rem; background:var(--sl-color-bg-nav); }
+  .remote-controls > *, .remote-workspace > *, .remote-functions { min-width:0; margin-top:0 !important; }
+  .remote-screen-label { grid-column:1/-1; }
+  .remote-explorer .remote-note, .remote-explorer figcaption { font-size:.82rem; color:var(--sl-color-gray-2); }
+  .remote-workspace { display:grid; grid-template-columns:228px minmax(0, 1fr); gap:1.5rem; align-items:start; margin-top:1.25rem; }
+  .remote-figure { margin:0; position:sticky; top:5rem; }
+  .remote-picture { position:relative; width:228px; max-width:100%; margin-inline:auto; background:#fff; border-radius:1rem; }
+  .remote-picture img { display:block; width:100%; height:auto; margin:0; }
+  .remote-picture .remote-hotspot { position:absolute; transform:translate(-50%,-50%); width:15%; height:3.65%; padding:0; margin:0; border:2px solid transparent; border-radius:40%; background:transparent; cursor:pointer; }
+  .remote-picture .remote-hotspot[data-documented="true"]::after { content:""; position:absolute; bottom:-2px; right:0; background:#087cab; border:1px solid white; width:5px; height:5px; border-radius:100%; }
+  .remote-picture .remote-hotspot:hover, .remote-picture .remote-hotspot:focus-visible { background:#2b9ac444; border-color:#087cab; outline:2px solid white; }
+  .remote-picture .remote-hotspot[aria-pressed="true"] { border-color:#e95513; box-shadow:0 0 0 2px white; background:#ff9b132e; }
+  .remote-detail { padding:1rem; border:2px solid var(--remote-accent); border-radius:.75rem; background:var(--sl-color-bg-nav); scroll-margin-top:6rem; overflow-wrap:anywhere; }
+  .remote-detail:focus { outline:2px solid var(--remote-accent); outline-offset:3px; }
+  .remote-detail h3 { margin:0; font-size:1.2rem; }
+  .remote-detail p { margin:.6rem 0; }
+  .remote-detail .remote-event { border-top:1px solid var(--remote-border); padding-top:.6rem; margin-top:.6rem; }
+  .remote-detail .remote-event strong { font-size:.9rem; }
+  .remote-detail .remote-event p { font-size:.9rem; }
+  .remote-detail .remote-event small { display:block; color:var(--sl-color-gray-2); line-height:1.5; }
+  .remote-explorer details { font-size:.85rem; }
+  .remote-explorer code { overflow-wrap:anywhere; white-space:normal; }
+  .remote-function-search { margin-top:1.2rem; }
+  .remote-explorer button:not(.remote-hotspot) { color:var(--sl-color-text); background:var(--sl-color-bg); border:1px solid var(--remote-border); border-radius:.4rem; font:inherit; cursor:pointer; padding:.5rem .7rem; min-height:44px; }
+  .remote-explorer [data-remote-reset] { margin-top:.5rem; }
+  .remote-button-list { display:grid; gap:.5rem; max-height:35rem; overflow:auto; overscroll-behavior:contain; padding:.2rem; }
+  .remote-button-list button { display:block; width:100%; text-align:left; margin:0; }
+  .remote-button-list button[aria-pressed="true"] { border:2px solid var(--remote-accent); }
+  .remote-button-list small { display:block; font-size:.8rem; line-height:1.4; color:var(--sl-color-gray-2); }
+  .remote-sr-only { position:absolute; width:1px; height:1px; padding:0; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
+  .remote-reference small { display:block; margin-top:.25rem; font-size:.8rem; }
+  .remote-reference .remote-table-scroll { overflow:auto; }
+  .remote-reference table { display:table; min-width:34rem; width:100%; font-size:.9rem; }
+  .remote-reference td { vertical-align:top; }
+  @media (max-width: 740px) {
+    .remote-controls { grid-template-columns:1fr; }
+    .remote-workspace { grid-template-columns:1fr; }
+    .remote-figure { position:static; max-width:228px; margin-inline:auto; }
+    .remote-button-list { max-height:26rem; }
+  }
+</style>

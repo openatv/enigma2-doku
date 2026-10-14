@@ -1,0 +1,66 @@
+---
+title: "Remote control finder: VU+ DUO 4K LITE"
+description: "Find buttons on the vuduo4klite vu6 remote, look up their functions in each screen, and understand press, release and long-press actions."
+---
+
+import RemoteExplorer from '../../../../components/RemoteExplorer.astro';
+
+**Which button opens a function – and where is it on my remote?** Choose your receiver model and the screen currently visible on the receiver. Select a button in the picture or search for a function such as **timer**, **subtitle**, **recording** or **menu**.
+
+The first prototype covers **VU+ DUO 4K LITE**, model identifier **vuduo4klite**, with the **vu6** remote. The general handbook stays device-neutral; this finder adds the actual button positions and labels. Further models and remote variants can follow after review of this prototype.
+
+<RemoteExplorer lang="en" />
+
+## Find the buttons on this remote
+
+- **Receiver POWER** is at the top right. The red button at the top left is a different control and has no Enigma2 assignment in the reviewed remote XML.
+- **HELP** is at the right end of the symbol row directly below POWER. On this model Enigma2 receives it as **INFO**. During live TV it opens the configured INFO view, rather than automatically opening general button help.
+- **EPG** is below the navigation ring on the left. The remote XML calls its original code `KEY_INFO`; the model-specific remapping changes it to `KEY_EPG`. The finder preserves the visible label **EPG**.
+- **PVR** is above the ring on the left, **MENU** on the right. **EXIT** is below the ring on the right.
+- **CH+ / CH−** are below the ring on the right. Source code and other guides may call them **BOUQUET+ / BOUQUET−**. Their function depends on the screen.
+- **TIMER** is between the lower volume/channel controls, just above the playback row. The arrows beside **0** are separate buttons from both the navigation ring and the rewind/fast-forward buttons.
+
+The visible **AV** and **red POWER at top left** controls are included without inventing an Enigma2 function. The remote catalogue does not assign receiver keycodes to them. Any configured control of a television is separate.
+
+## Press, release and hold
+
+| Finder label | Meaning |
+| --- | --- |
+| On press | The action starts as you press down. It can also run before a later long press is detected. |
+| On short release | Press briefly, then release. Many colour and Infobar buttons respond at this point. |
+| Long press | Keep holding until the long action is recognised. There is no single duration in seconds for every device and setting. |
+| Repeat while held | An action such as navigation or volume adjustment repeats. This is different from a long-press event. |
+| Release after long press | Finishes a long operation, e.g. restoring the normal volume step size. |
+
+The input dispatcher distinguishes a short release from **Stop after a recognised long press**. Releasing after a long press therefore does not automatically run the short release action as well. Actions already triggered on press or repeat may still have run. Two short presses are different again: **MENU → MENU** first opens the main menu and then its OSD settings.
+
+## One button, different jobs
+
+**MENU** opens the main menu during live TV, the context menu in the channel list, settings in graphical EPG and file/folder actions in recordings. In a Setup selection field MENU opens the available choices; this action may be disabled for other field types.
+
+**PVR** during live TV opens recordings on a short press and MediaPlayer on a long press, if installed. In the native recordings list it opens directory selection. In an editable Setup text field or the on-screen keyboard, PVR can instead clear the text. Check the current screen before pressing it.
+
+**HELP (internally INFO)** opens event information during TV, a timer log in the timer overview, and switches insert/overwrite mode in the on-screen keyboard. Select the relevant screen in the finder to see the matching function.
+
+Colour buttons also have no permanent meaning. Green often saves settings, adds a timer in the timer overview, and accepts text in the on-screen keyboard. Several colour-button actions in graphical EPG and recordings are configurable. Follow the current on-screen label and your receiver’s settings.
+
+## Why my receiver behaves differently
+
+The finder describes **standard keymap.xml** and screen states verified against source code. It does not read your receiver settings. Differences can come from:
+
+- **Custom hotkeys** or **Menu → Setup → Usage & GUI → Remote Control Button Settings**.
+- Another keymap, alternative navigation or extra plugins. EMC is a separate recordings screen and is not described by the MovieSelection profile.
+- Another focus or subdialog: EPG bouquet selection, channel-list editing/moving, a timer editor, confirmation prompts, PiP or active timeshift.
+- Another handset or custom input-device remapping.
+
+Volume, mute and POWER have global handlers. A screen can intercept buttons or block actions, however. Setup blocks standby and the long POWER action, for example. “Global” therefore does not guarantee availability in every state.
+
+**No separate action recorded** describes coverage of this state; it does not promise that a plugin can never use the button. See [hotkey configuration](../../erste-schritte/farbtasten-langdruck/), [remote button settings](../../einstellungen/referenz/remotebutton/), [input devices](../eingabegeraete/) and the [long-press directory](../../anhaenge/langtasten/) for more options.
+
+## Where the mapping comes from
+
+This prototype connects four layers: **model → remote picture and button position → remapped keycode → action in the active screen**. For vuduo4klite, `configure.ac` enables `KEY_INFO_TO_KEY_EPG` and `KEY_HELP_TO_KEY_INFO`, among others. `lib/driver/rcinput.cpp` applies them in a defined order: HELP becomes INFO, but is not subsequently changed into EPG. An active custom remap table follows a separate processing path.
+
+`data/keymap.xml` supplies event flags and action names. ActionMaps, priorities, focus, `setEnabled()` and each screen’s Python handlers determine which actions actually apply. The finder therefore uses reviewed screen profiles instead of combining every keymap context. Each expandable technical mapping links to the relevant source snapshot.
+
+Reference: [OpenATV Enigma2 6588fdc15f04](https://github.com/openatv/enigma2/tree/6588fdc15f040293d212dc15ec63194e82c8269f); picture and positions: [OE-Alliance remotes, vu6](https://github.com/oe-alliance/remotes/tree/b5b834663e07f6c0ebc9fce90d0084036523044e). The unchanged image and remote XML come from this **GPLv3** repository. The prototype has been checked against these sources; physical button-by-button verification with a vuduo4klite handset remains part of the review.

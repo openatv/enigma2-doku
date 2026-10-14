@@ -25,6 +25,13 @@ globalThis.fetch = async input => {
 };
 const checks = [
   ...['de', 'en'].flatMap(lang => [
+    [lang, 'vuduo4klite', `/${lang}/bedienung/fernbedienungs-finder/`],
+    [lang, 'vu6', `/${lang}/bedienung/fernbedienungs-finder/`],
+    [lang, 'KEY_HELP_TO_KEY_INFO', `/${lang}/bedienung/fernbedienungs-finder/`],
+  ]),
+  ['de', 'Fernbedienungs-Finder', '/de/bedienung/fernbedienungs-finder/'],
+  ['en', 'remote control finder', '/en/bedienung/fernbedienungs-finder/'],
+  ...['de', 'en'].flatMap(lang => [
     [lang, 'attributes per native widget', `/${lang}/developers/skinning/api/widgets/`],
     [lang, 'ePixmap', `/${lang}/developers/skinning/api/widgets/`],
     [lang, 'RunningText', `/${lang}/developers/skinning/api/renderers/`],

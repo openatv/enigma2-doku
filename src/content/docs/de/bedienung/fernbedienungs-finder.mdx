@@ -1,0 +1,66 @@
+---
+title: "Fernbedienungs-Finder: VU+ DUO 4K LITE"
+description: "Die vuduo4klite-Fernbedienung vu6 im Bild: Tasten finden, Funktionen je Bildschirm suchen, Drücken, Loslassen und Langdruck verstehen."
+---
+
+import RemoteExplorer from '../../../../components/RemoteExplorer.astro';
+
+**Welche Taste öffnet welche Funktion – und wo sitzt sie auf meiner Fernbedienung?** Wähle zuerst dein Modell, dann den Bildschirm, den du gerade auf der Box siehst. Klicke eine Taste im Bild an oder suche nach einer Funktion, zum Beispiel **Timer**, **Untertitel**, **Aufnahme** oder **Menü**.
+
+Das erste Muster enthält die **VU+ DUO 4K LITE**, Modellkennung **vuduo4klite**, mit der Fernbedienung **vu6**. Das Handbuch bleibt in den allgemeinen Kapiteln geräteneutral; dieser Finder ergänzt die konkrete Lage und Beschriftung der Tasten. Weitere Modelle und Fernbedienungsvarianten folgen nach dem Review dieses Musters.
+
+<RemoteExplorer lang="de" />
+
+## Die Tasten auf dieser Fernbedienung finden
+
+- **POWER für den Receiver** sitzt ganz oben rechts. Die rote Taste oben links ist eine andere Taste und hat in der geprüften Remote-XML keine Enigma2-Zuordnung.
+- **HELP** steht in der Symbolreihe direkt unter POWER, ganz rechts. Bei diesem Modell kommt die Taste in Enigma2 als **INFO** an. Sie öffnet beim Fernsehen die eingestellte INFO-Ansicht, also nicht automatisch die allgemeine Tastenhilfe.
+- **EPG** sitzt links unterhalb des Steuerkreuzes. Die Remote-XML nennt den ursprünglichen Code `KEY_INFO`; die Modellanpassung macht daraus `KEY_EPG`. Im Finder bleibt die sichtbare Beschriftung **EPG** erhalten.
+- **PVR** sitzt oberhalb des Steuerkreuzes links, **MENU** rechts. **EXIT** sitzt unterhalb des Steuerkreuzes rechts.
+- **CH+ / CH−** liegen rechts unter dem Steuerkreuz. Quellcode und andere Anleitungen nennen diese Tasten auch **BOUQUET+ / BOUQUET−**. Ihre Funktion hängt vom Bildschirm ab.
+- **TIMER** sitzt zwischen den unteren Lautstärke-/Sendertasten, direkt über der Wiedergabereihe. Die Pfeile links und rechts neben **0** sind eigene Tasten, nicht die Pfeile des Steuerkreuzes und nicht die Spultasten.
+
+Die beiden im Bild sichtbaren Tasten **AV** und **rote POWER oben links** werden angezeigt, aber ohne erfundene Enigma2-Funktion. Das Remote-Verzeichnis ordnet ihnen keinen Receiver-Tastencode zu. Eine gegebenenfalls eingerichtete Steuerung des Fernsehers ist davon unabhängig.
+
+## Drücken, Loslassen und Halten
+
+| Anzeige im Finder | Bedeutung |
+| --- | --- |
+| Beim Drücken | Die Aktion beginnt schon beim Herunterdrücken. Sie kann auch vor einem später erkannten Langdruck ausgeführt werden. |
+| Beim kurzen Loslassen | Kurz drücken und wieder loslassen. Viele Farb- und Infobartasten reagieren erst dann. |
+| Lang drücken | Gedrückt halten, bis die lange Funktion erkannt wird. Es gibt nicht für alle Geräte und Einstellungen eine gemeinsame feste Sekundenangabe. |
+| Wiederholung beim Halten | Eine Aktion wie Navigation oder Lautstärke wird wiederholt. Das ist ein anderes Ereignis als Langdruck. |
+| Loslassen nach Langdruck | Abschluss einer langen Betätigung, z. B. Rückkehr zur normalen Lautstärkeschrittweite. |
+
+Die Eingabeverarbeitung unterscheidet den kurzen Release von **Stop nach erkanntem Langdruck**. Deshalb führt das Loslassen nach einem langen Tastendruck nicht automatisch zusätzlich die kurze Release-Aktion aus. Schon beim Drücken oder durch Wiederholung ausgelöste Aktionen können vorher trotzdem gelaufen sein. Zwei kurze Betätigungen sind wiederum etwas anderes: **MENU → MENU** öffnet erst das Hauptmenü und danach dessen OSD-Einstellungen.
+
+## Derselbe Knopf, eine andere Aufgabe
+
+**MENU** öffnet beim Fernsehen das Hauptmenü, in der Senderliste deren Kontextmenü, im grafischen EPG dessen Einstellungen und in der Aufnahmeliste Datei-/Ordneraktionen. In einer Setup-Auswahlzeile öffnet MENU die Wertauswahl; bei anderen Feldtypen muss diese Funktion nicht aktiv sein.
+
+**PVR** öffnet beim Fernsehen kurz die Aufnahmen und lang den MediaPlayer, sofern dieser installiert ist. In der nativen Aufnahmeliste öffnet PVR die Verzeichnisauswahl. In einem editierbaren Setup-Textfeld oder der Bildschirmtastatur kann PVR dagegen den Text löschen. Vor einer Betätigung deshalb den aktuellen Bildschirm beachten.
+
+**HELP (intern INFO)** zeigt im Fernsehen Sendungsinformationen, in der Timerliste ein Timerprotokoll und in der Bildschirmtastatur den Wechsel zwischen Einfügen und Überschreiben. Der Finder zeigt jeweils die Funktion für den gewählten Zustand.
+
+Farbtasten haben ebenfalls keine dauerhaft festgelegte Bedeutung. Im Setup ist Grün häufig Speichern, in der Timerübersicht Hinzufügen und in der Bildschirmtastatur Text übernehmen. Im grafischen EPG und in der Aufnahmeliste sind mehrere Farbtastenfunktionen einstellbar. Maßgeblich bleiben die aktuelle Bildschirmbeschriftung und die Einstellungen auf deiner Box.
+
+## Warum meine Box anders reagiert
+
+Der Finder beschreibt die **Standard-keymap.xml** und die im Quellcode belegten Bildschirmzustände. Er liest keine Einstellungen aus deinem Receiver. Abweichungen können entstehen durch:
+
+- **Eigene Hotkeys** oder Einstellungen unter **Menü → Einstellungen → Bedienung/Oberfläche → Fernbedienungseinstellungen**.
+- Eine andere Keymap, alternative Navigation oder zusätzliche Plugins. EMC ist beispielsweise eine eigene Aufnahmeliste und wird nicht durch das MovieSelection-Profil beschrieben.
+- Einen anderen Fokus oder Unterdialog: Bouquet-Auswahl im EPG, Bearbeiten/Verschieben in der Senderliste, Timer-Editor, Rückfragen, PiP oder laufendes Timeshift.
+- Eine andere Fernbedienung oder ein eigenes Eingabegeräte-Remapping.
+
+Lautstärke, Stumm und POWER besitzen globale Handler. Ein Bildschirm kann Tasten aber vorher abfangen oder Aktionen sperren. Setup blockiert beispielsweise Standby und die lange POWER-Aktion. „Global“ bedeutet daher nicht „in jeder Situation garantiert verfügbar“.
+
+**Keine eigenständige Aktion erfasst** ist eine Lücke im beschriebenen Zustand, keine Zusage, dass ein Plugin die Taste niemals verwenden kann. Verwende die [Hotkey-Anleitung](../../erste-schritte/farbtasten-langdruck/), die [Fernbedienungseinstellungen](../../einstellungen/referenz/remotebutton/), [Eingabegeräteoptionen](../eingabegeraete/) und das [Langtasten-Verzeichnis](../../anhaenge/langtasten/) für weitere Möglichkeiten.
+
+## Herkunft der Zuordnung
+
+Das Muster verbindet vier Ebenen: **Modell → Fernbedienungsbild und Tastenposition → umgeschlüsselter Tastencode → Aktion im aktiven Bildschirm**. Für vuduo4klite aktiviert `configure.ac` unter anderem `KEY_INFO_TO_KEY_EPG` und `KEY_HELP_TO_KEY_INFO`. `lib/driver/rcinput.cpp` verarbeitet sie in einer festgelegten Reihenfolge: HELP wird zu INFO, aber anschließend nicht noch einmal zu EPG. Eine aktive eigene Remap-Tabelle hat einen separaten Verarbeitungspfad.
+
+`data/keymap.xml` liefert die Ereignisflags und Aktionsnamen. Welche davon wirklich gelten, entscheiden die ActionMaps, ihre Priorität, der Fokus, `setEnabled()` und die Python-Handler des jeweiligen Screens. Der Finder verwendet deshalb geprüfte Bildschirmprofile statt sämtliche Keymap-Kontexte zusammenzuwerfen. Die aufklappbare technische Zuordnung verlinkt jeweils den passenden Quellstand.
+
+Referenz: [OpenATV Enigma2 6588fdc15f04](https://github.com/openatv/enigma2/tree/6588fdc15f040293d212dc15ec63194e82c8269f), Bild und Positionen: [OE-Alliance remotes, vu6](https://github.com/oe-alliance/remotes/tree/b5b834663e07f6c0ebc9fce90d0084036523044e). Das unveränderte Bild und die Remote-XML stammen aus diesem unter **GPLv3** veröffentlichten Bestand. Das Muster ist gegen diese Quellen geprüft; ein Abgleich jeder Taste mit einer physischen vuduo4klite-Fernbedienung steht für den Review noch aus.
