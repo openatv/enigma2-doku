@@ -1,5 +1,5 @@
 {
-  "schema": 1,
+  "schema": 2,
   "enigmaRevision": "6588fdc15f040293d212dc15ec63194e82c8269f",
   "remotesRevision": "b5b834663e07f6c0ebc9fce90d0084036523044e",
   "sources": {
@@ -11,13 +11,152 @@
       "sha256": "f0d687f18ee1480dfa61f2b40b7174fa7445fd6b8bba10685a6829343f6fae08",
       "classes": {}
     },
+    "data/menu.xml": {
+      "sha256": "5e54ab2261c7785292a60e386a05ba154c6b426b2505743b2b8a32bcc161b634",
+      "classes": {}
+    },
+    "data/setup.xml": {
+      "sha256": "24d64d081d01a47e6a11b50020ef706fe5ccdf2a527ccabf3d0d7579870eb2df",
+      "classes": {}
+    },
+    "po/de.po": {
+      "sha256": "d6b23c22824dbf7eab04dd197d236f3f25d61b2c5a1b8a6d109de5a8453ed86a",
+      "classes": {}
+    },
+    "main/enigma.cpp": {
+      "sha256": "56e9720dd17b2fd1f36af83a464d5f8e97028161ba3a1129ff58bd334a045c33",
+      "classes": {},
+      "functions": {
+        "object_dump": 50,
+        "setPrevAsciiCode": 60,
+        "getPrevAsciiCode": 65,
+        "keyEvent": 72,
+        "replace": 182,
+        "quitMainloop": 226,
+        "pauseInit": 251,
+        "resumeInit": 256,
+        "catchTermSignal": 266,
+        "main": 279,
+        "runMainloop": 472,
+        "getVFDSymbolsPoll": 502,
+        "getE2Flags": 512,
+        "checkLogin": 517,
+        "dump_malloc_stats": 557,
+        "setAnimation_current": 565,
+        "setAnimation_speed": 570,
+        "setAnimation_current_listbox": 575
+      }
+    },
     "lib/driver/rcinput.cpp": {
       "sha256": "1161692bf1705ba5b2003b19dfb1d6feaf52d6dbabece01efc1d03b716fc45c1",
-      "classes": {}
+      "classes": {},
+      "functions": {
+        "eRCDeviceInputDev::handleGamepadAxis": 59,
+        "eRCDeviceInputDev::handleCode": 103,
+        "eRCDeviceInputDev::setKeyMapping": 699,
+        "eRCDeviceInputDev::setExclusive": 715,
+        "addInputDevice": 845,
+        "removeInputDevice": 850,
+        "addAllInputDevices": 855,
+        "removeAllInputDevices": 860
+      }
+    },
+    "lib/driver/avcontrol.cpp": {
+      "sha256": "d3f057d1092741717267e629432ff6ef8618b60a2b74d2950205319d01323bab",
+      "classes": {},
+      "functions": {
+        "eAVControl::getVCRSlowBlanking": 220,
+        "eAVControl::fp_event": 237,
+        "eAVControl::startStopHDMIIn": 490,
+        "eAVControl::setInput": 733,
+        "eAVControl::setOSDAutoHideTimeout": 896,
+        "eAVControl::restartOSDTimer": 912,
+        "eAVControl::hideOSD": 921,
+        "eAVControl::fadeOSD": 930,
+        "eAVControl::restoreOSD": 945,
+        "eAVControl::setOSDWindowVisible": 953,
+        "eAVControl::handleOSDKey": 972
+      }
     },
     "lib/actions/action.cpp": {
       "sha256": "0e936697aaf12a4897c601a463a98c4aafe5d71229460f37c9aefcb5f0e7cc59",
-      "classes": {}
+      "classes": {},
+      "functions": {
+        "eActionMap::getInstance": 38,
+        "eActionMap::bindAction": 57,
+        "eActionMap::unbindAction": 80,
+        "eActionMap::bindKey": 93,
+        "eActionMap::unbindNativeKey": 125,
+        "eActionMap::unbindPythonKey": 138,
+        "eActionMap::bindTranslation": 151,
+        "eActionMap::bindToggle": 174,
+        "eActionMap::unbindKeyDomain": 192,
+        "eActionMap::keyPressed": 219
+      }
+    },
+    "lib/gui/elistbox.cpp": {
+      "sha256": "48a68e5bdc77eb522eca5ac0fdf6d3c4dbd50da65c5c1307a312a90276414d88",
+      "classes": {},
+      "functions": {
+        "eListbox::setScrollbarMode": 89,
+        "eListbox::setScrollbarScroll": 133,
+        "eListbox::setLockFirstRow": 144,
+        "eListbox::setContent": 158,
+        "eListbox::allowNativeKeys": 166,
+        "eListbox::moveToEnd": 195,
+        "eListbox::moveSelectionTo": 231,
+        "eListbox::setTopIndex": 241,
+        "eListbox::setStartIndex": 254,
+        "eListbox::setScrollbarPosition": 287,
+        "eListbox::updateScrollBar": 385,
+        "eListbox::event": 553,
+        "eListbox::recalcSize": 804,
+        "eListbox::recalcSizeAlignment": 901,
+        "eListbox::setItemHeight": 989,
+        "eListbox::setItemWidth": 1000,
+        "eListbox::setSelectionEnable": 1011,
+        "eListbox::entryAdded": 1019,
+        "eListbox::entryRemoved": 1080,
+        "eListbox::entryChanged": 1129,
+        "eListbox::entryReset": 1135,
+        "eListbox::setSpacingColor": 1171,
+        "eListbox::setBackgroundColor": 1178,
+        "eListbox::setBackgroundColorSelected": 1184,
+        "eListbox::setBackgroundColorRows": 1190,
+        "eListbox::setForegroundColor": 1196,
+        "eListbox::setForegroundColorSelected": 1202,
+        "eListbox::setBorderWidth": 1208,
+        "eListbox::setScrollbarBorderWidth": 1215,
+        "eListbox::setScrollbarForegroundPixmap": 1223,
+        "eListbox::setScrollbarBackgroundColor": 1230,
+        "eListbox::setScrollbarForegroundColor": 1238,
+        "eListbox::setScrollbarBorderColor": 1246,
+        "eListbox::setScrollbarBackgroundPixmap": 1254,
+        "eListbox::setScrollbarForegroundGradient": 1261,
+        "eListbox::setScrollbarBackgroundGradient": 1269,
+        "eListbox::setScrollbarRadius": 1277,
+        "eListbox::setItemAlignment": 1285,
+        "eListbox::invalidate": 1294,
+        "eListbox::setOrientation": 1309,
+        "eListbox::setItemSpacing": 1330,
+        "eListbox::setFont": 1342,
+        "eListbox::setSelectionZoom": 1349,
+        "eListbox::setSelectionZoomSize": 1368,
+        "eListbox::getItemPostion": 1389,
+        "eListbox::hapticFeedback": 1410,
+        "eListbox::moveSelection": 1421,
+        "eListbox::moveSelectionLineMode": 1837,
+        "eListbox::setItemCornerRadiusInternal": 1964,
+        "eListbox::setItemCornerRadius": 1970,
+        "eListbox::setItemCornerRadiusSelected": 1978,
+        "eListbox::setItemCornerRadiusMarked": 1983,
+        "eListbox::setItemCornerRadiusMarkedandSelected": 1988,
+        "eListbox::setItemGradientInternal": 1993,
+        "eListbox::setItemGradient": 2002,
+        "eListbox::setItemGradientSelected": 2007,
+        "eListbox::setItemGradientMarked": 2012,
+        "eListbox::setItemGradientMarkedandSelected": 2017
+      }
     },
     "lib/python/Components/ActionMap.py": {
       "sha256": "86fbbd969b82ceeb8a24c18b326137661e0c3aae38a48c3a73016890797eec41",
@@ -2474,6 +2613,979 @@
           "line": 1289,
           "methods": {
             "__init__": 1290
+          }
+        }
+      }
+    },
+    "lib/python/Components/AVSwitch.py": {
+      "sha256": "e75995bb1dbc8f6fb89c35ccc308841ce21a78bb85017fc59405be9133f837d0",
+      "classes": {
+        "AVSwitchBase": {
+          "line": 904,
+          "methods": {
+            "__init__": 1019,
+            "readAvailableModes": 1029,
+            "is24hzAvailable": 1033,
+            "readPreferredModes": 1036,
+            "getWindowsAxis": 1059,
+            "createConfig": 1082,
+            "isPortAvailable": 1131,
+            "isModeAvailable": 1134,
+            "isPortUsed": 1144,
+            "isWidescreenMode": 1151,
+            "getAspectRatioSetting": 1154,
+            "getFramebufferScale": 1165,
+            "getModeList": 1168,
+            "getPortList": 1177,
+            "setAspect": 1180,
+            "setAspectRatio": 1183,
+            "setColorFormat": 1200,
+            "setConfiguredMode": 1210,
+            "setInput": 1222,
+            "setVideoModeDirect": 1225,
+            "setMode": 1228,
+            "setPolicy43": 1255,
+            "setPolicy169": 1258,
+            "setWss": 1261,
+            "saveMode": 1264
+          }
+        },
+        "AVSwitch": {
+          "line": 1287,
+          "methods": {
+            "setInput": 1288,
+            "getAspectRatioSetting": 1291,
+            "setAspectRatio": 1294,
+            "getFramebufferScale": 1297
+          }
+        },
+        "VideomodeHotplug": {
+          "line": 1306,
+          "methods": {
+            "__init__": 1307,
+            "start": 1310,
+            "stop": 1313,
+            "hotplug": 1316
+          }
+        }
+      }
+    },
+    "lib/python/Components/UsageConfig.py": {
+      "sha256": "ebbb3b70f600102ba03e452805ae4fd37e11ad214b64ebb72a05db2d9ec297d1",
+      "classes": {}
+    },
+    "lib/python/Screens/Screen.py": {
+      "sha256": "054cd0dc84f1ccd2cde993a3c9061e006cdb91105f2baba15ee61a335b6b25dc",
+      "classes": {
+        "Screen": {
+          "line": 19,
+          "methods": {
+            "__init__": 26,
+            "__repr__": 69,
+            "execBegin": 72,
+            "execEnd": 97,
+            "doClose": 108,
+            "close": 125,
+            "show": 131,
+            "hide": 145,
+            "isAlreadyShown": 158,
+            "getStandAlone": 161,
+            "setStandAlone": 164,
+            "setTitle": 167,
+            "getTitle": 190,
+            "getScreenPath": 195,
+            "checkImage": 198,
+            "setImage": 222,
+            "getImage": 227,
+            "callHelpAction": 232,
+            "showHelp": 237,
+            "setFocus": 244,
+            "setKeyboardModeNone": 247,
+            "setKeyboardModeAscii": 251,
+            "saveKeyboardMode": 255,
+            "restoreKeyboardMode": 259,
+            "setDesktop": 264,
+            "setAnimationMode": 267,
+            "getRelatedScreen": 271,
+            "callLater": 283,
+            "screenContentChanged": 288,
+            "applySkin": 295,
+            "createGUIScreen": 320,
+            "deleteGUIScreen": 370,
+            "reloadSkin": 376,
+            "createSummary": 398,
+            "addSummary": 401,
+            "removeSummary": 405
+          }
+        },
+        "ScreenSummary": {
+          "line": 415,
+          "methods": {
+            "__init__": 424
+          }
+        }
+      }
+    },
+    "lib/python/Screens/Satconfig.py": {
+      "sha256": "ab38a61b59213d558de02ae12af0dcd37fa0ee2c63e3cde11943dbbeee7a12eb",
+      "classes": {
+        "ConfigReadOnlyValue": {
+          "line": 29,
+          "methods": {
+            "__init__": 30,
+            "isChanged": 33,
+            "save": 36,
+            "cancel": 39
+          }
+        },
+        "ServiceStopScreen": {
+          "line": 43,
+          "methods": {
+            "__init__": 44,
+            "pipAvailable": 54,
+            "getServiceSlot": 62,
+            "stopService": 68,
+            "__onClose": 90,
+            "restoreService": 94,
+            "restartPrevService": 100
+          }
+        },
+        "NimSetup": {
+          "line": 114,
+          "methods": {
+            "__init__": 117,
+            "layoutFinished": 162,
+            "selectionChanged": 176,
+            "cableTerrestrialTypes": 180,
+            "configWasSaved": 184,
+            "sectionWasConfigured": 187,
+            "copyTemplateElement": 190,
+            "copyTemplateSection": 197,
+            "applyCableTerrestrialTemplate": 203,
+            "restoreCableTerrestrialTemplate": 228,
+            "saveCableTerrestrialTemplate": 235,
+            "markCableTerrestrialConfigured": 243,
+            "stopInputPowerTimer": 252,
+            "updateInputPowerStatus": 255,
+            "addInputPowerEntry": 264,
+            "getUnicableUserBand": 268,
+            "validateUnicablePositions": 325,
+            "getInheritedUnicableUserBand": 338,
+            "appendInheritedUnicableUserBand": 374,
+            "synchronizeInheritedUnicableUserBands": 383,
+            "keyMenuCallback": 414,
+            "keyLeft": 427,
+            "setTextKeyBlue": 439,
+            "keyRight": 444,
+            "handleKeyFileCallback": 456,
+            "keyCancel": 460,
+            "saveAll": 466,
+            "cancelConfirm": 520,
+            "changeConfigurationMode": 550,
+            "nothingConnectedShortcut": 560,
+            "countrycodeToCountry": 568,
+            "createSimpleSetup": 571,
+            "createPositionerSetup": 600,
+            "adaptConfigModeChoices": 637,
+            "isCableTerrestrialMultiType": 660,
+            "getMultiTypeName": 663,
+            "appendMultiTypeConfigMode": 666,
+            "indentMultiTypeEntries": 676,
+            "frontendTypeEnabled": 693,
+            "synchronizeMultiTypeFrontend": 704,
+            "createSetup": 724,
+            "newConfig": 991,
+            "run": 1010,
+            "autoDiseqcRun": 1043,
+            "autoDiseqcCallback": 1047,
+            "fillListWithAdvancedSatEntrys": 1055,
+            "fillAdvancedList": 1253,
+            "unicableconnection": 1264,
+            "checkLoopthrough": 1299,
+            "keyOk": 1327,
+            "updateConfUserSatellitesList": 1338,
+            "keySave": 1343,
+            "keySaveRecordingConfirmed": 1380,
+            "deleteConfirmed": 1384,
+            "createSummary": 1416
+          }
+        },
+        "NimSelection": {
+          "line": 1420,
+          "methods": {
+            "__init__": 1423,
+            "loadFBCLinks": 1444,
+            "checkFBCLinks": 1459,
+            "exit": 1473,
+            "setResultClass": 1476,
+            "extraInfo": 1479,
+            "okbuttonClick": 1493,
+            "NimSetupCB": 1510,
+            "showNim": 1515,
+            "orbitalPositionToString": 1524,
+            "updateList": 1530
+          }
+        },
+        "SelectSatsEntryScreen": {
+          "line": 1669,
+          "methods": {
+            "__init__": 1685,
+            "save": 1712,
+            "cancel": 1716,
+            "sortBy": 1719
+          }
+        }
+      }
+    },
+    "lib/python/Screens/ScanSetup.py": {
+      "sha256": "82695446162105b629a2f08a89256f5e117d941ceed66710e67389268ce8789d",
+      "classes": {
+        "CableTransponderSearchSupport": {
+          "line": 177,
+          "methods": {
+            "__init__": 184,
+            "tryGetRawFrontend": 187,
+            "cableTransponderSearchSessionClosed": 208,
+            "cableTransponderSearchClosed": 223,
+            "getCableTransponderData": 227,
+            "startCableTransponderSearch": 281
+          }
+        },
+        "TerrestrialTransponderSearchSupport": {
+          "line": 416,
+          "methods": {
+            "terrestrialTransponderSearchSessionClosed": 423,
+            "terrestrialTransponderSearchClosed": 438,
+            "getTerrestrialTransponderData": 448,
+            "setTerrestrialTransponderData": 453,
+            "terrestrialTransponderInitSearchList": 505,
+            "terrestrialTransponderConvBandwidth_I": 514,
+            "terrestrialTransponderconvBandwidth_P": 525,
+            "terrestrialTransponderGetOpt": 536,
+            "terrestrialTransponderGetCmd": 542,
+            "startTerrestrialTransponderSearch": 565,
+            "terrestrialTransponderSearch": 599
+          }
+        },
+        "ScanSetup": {
+          "line": 608,
+          "methods": {
+            "__init__": 611,
+            "runAsync": 666,
+            "updateSatList": 670,
+            "TunerTypeChanged": 678,
+            "createSetup": 729,
+            "setConfigList": 936,
+            "Satexists": 940,
+            "newConfig": 946,
+            "createConfig": 1010,
+            "TriggeredByConfigElement": 1435,
+            "keyLeft": 1446,
+            "keyRight": 1450,
+            "handleKeyFileCallback": 1454,
+            "updateStatus": 1458,
+            "addSatTransponder": 1461,
+            "addCabTransponder": 1482,
+            "addTerTransponder": 1492,
+            "addATSCTransponder": 1495,
+            "keyGo": 1504,
+            "keyGoCheckTimeshiftCallback": 1511,
+            "setCableTransponderSearchResult": 1704,
+            "cableTransponderSearchFinished": 1707,
+            "setTerrestrialTransponderSearchResult": 1713,
+            "terrestrialTransponderSearchFinished": 1717,
+            "predefinedTranspondersList": 1723,
+            "humanReadableTransponder": 1766,
+            "compareTransponders": 1781,
+            "predefinedTerrTranspondersList": 1786,
+            "compareTerrTransponders": 1811,
+            "getTerrestrialRegionsList": 1815,
+            "predefinedCabTranspondersList": 1827,
+            "humanReadableCabTransponder": 1847,
+            "compareCabTransponders": 1855,
+            "predefinedATSCTranspondersList": 1860,
+            "startScan": 1874,
+            "startScanCallback": 1888,
+            "keyCancel": 1892,
+            "doCloseRecursive": 1898
+          }
+        },
+        "ScanSimple": {
+          "line": 1903,
+          "methods": {
+            "getNetworksForNim": 1906,
+            "__init__": 1923,
+            "updateScanOptions": 2089,
+            "runAsync": 2096,
+            "keyGo": 2100,
+            "keyGoCheckTimeshiftCallback": 2107,
+            "buildTransponderList": 2114,
+            "startScan": 2183,
+            "setCableTransponderSearchResult": 2196,
+            "cableTransponderSearchFinished": 2200,
+            "setTerrestrialTransponderSearchResult": 2203,
+            "terrestrialTransponderSearchFinished": 2209,
+            "keyCancel": 2212,
+            "doCloseRecursive": 2216,
+            "Satexists": 2220
+          }
+        }
+      }
+    },
+    "lib/python/Screens/ServiceScan.py": {
+      "sha256": "e90fa33a4bd9aca718a15256653eed97ab90d121e309874ebc3c07672cacff73",
+      "classes": {
+        "ServiceScan": {
+          "line": 27,
+          "methods": {
+            "__init__": 38,
+            "layoutFinished": 105,
+            "runScan": 109,
+            "newService": 135,
+            "statusChanged": 148,
+            "clearBouquetRepair": 356,
+            "finishBouquetRepair": 361,
+            "runLCNScanner": 378,
+            "keyCancel": 403,
+            "keyCloseRecursive": 406,
+            "finish": 409,
+            "keySave": 421,
+            "createSummary": 454
+          }
+        },
+        "ServiceScanSummary": {
+          "line": 458,
+          "methods": {
+            "__init__": 466,
+            "addWatcher": 476,
+            "removeWatcher": 484,
+            "updateProgress": 492,
+            "updateService": 495,
+            "updateScanState": 498
+          }
+        }
+      }
+    },
+    "lib/python/Screens/NetworkSetup.py": {
+      "sha256": "5a995fdf9f2b152518111de1958e170d420cae159c60e5bdfad8c1171a8ec204",
+      "classes": {
+        "NetworkOverview": {
+          "line": 92,
+          "methods": {
+            "__init__": 168,
+            "getCurrentAdapter": 272,
+            "getCurrentSaved": 276,
+            "layoutFinished": 280,
+            "checkInternet": 297,
+            "refreshAdapters": 306,
+            "buildAdapters": 333,
+            "buildAdapterRows": 345,
+            "getOverviewColors": 432,
+            "buildSaved": 449,
+            "buildSavedRows": 469,
+            "setListFocus": 529,
+            "updateButtons": 545,
+            "isConnectionLive": 578,
+            "keyOK": 581,
+            "openWiFiSetup": 588,
+            "openAdapterSetup": 591,
+            "setupClosed": 594,
+            "keyCloseRecursive": 605,
+            "keyMenu": 608,
+            "connectionLabel": 633,
+            "keyMenuContextCallback": 640,
+            "keyInfo": 713,
+            "keyGreen": 717,
+            "toggleAdapter": 724,
+            "promoteWiFiPriority": 733,
+            "toggleSaved": 738,
+            "keyYellow": 760,
+            "keyBlue": 765,
+            "keyTop": 773,
+            "keyPageUp": 776,
+            "keyUp": 779,
+            "keyLeft": 782,
+            "keyRight": 785,
+            "keyDown": 788,
+            "keyPageDown": 791,
+            "keyBottom": 794
+          }
+        },
+        "NetworkAdapterSetup": {
+          "line": 798,
+          "methods": {
+            "__init__": 799,
+            "buildConfigObjects": 811,
+            "keyShowInfo": 851,
+            "keySave": 854
+          }
+        },
+        "NetworkWiFiSetup": {
+          "line": 907,
+          "methods": {
+            "__init__": 908,
+            "buildConfigObjects": 919,
+            "keyShowInfo": 958,
+            "keySave": 961
+          }
+        },
+        "NetworkInformation": {
+          "line": 1006,
+          "methods": {
+            "__init__": 1007,
+            "displayInformation": 1011
+          }
+        },
+        "ScanResult": {
+          "line": 1016,
+          "methods": {
+            "signalGlyphs": 1027,
+            "signalDbmText": 1041,
+            "signalText": 1045,
+            "encLabel": 1049
+          }
+        },
+        "NetworkWiFiScan": {
+          "line": 1065,
+          "methods": {
+            "__init__": 1098,
+            "layoutFinished": 1148,
+            "keySelect": 1152,
+            "keyClose": 1161,
+            "closeRecursive": 1166,
+            "keyStartScan": 1171,
+            "channelFromFreq": 1226,
+            "parseIwScan": 1235,
+            "parseIwlist": 1322
+          }
+        },
+        "NetworkWiFiActivator": {
+          "line": 1433,
+          "methods": {
+            "__init__": 1442,
+            "keyClose": 1461,
+            "start": 1464,
+            "setStatus": 1476,
+            "beginPolling": 1479,
+            "checkIp": 1485,
+            "diagnoseFailure": 1511
+          }
+        },
+        "NetworkWiFiAddFlow": {
+          "line": 1532,
+          "methods": {
+            "start": 1534,
+            "openScan": 1548,
+            "pickAdapter": 1576
+          }
+        },
+        "NetworkTest": {
+          "line": 1590,
+          "methods": {
+            "__init__": 1636,
+            "layoutFinished": 1675,
+            "keyCloseRecursive": 1680,
+            "keyRestart": 1683,
+            "start": 1687
+          }
+        },
+        "DNSSettings": {
+          "line": 1763,
+          "methods": {
+            "__init__": 1764,
+            "createSetup": 1823,
+            "changedEntry": 1851,
+            "groupIndex": 1867,
+            "keySave": 1870,
+            "writeDnsCryptToml": 1893,
+            "keyMoveItemUp": 1995,
+            "keyMoveItemDown": 1998,
+            "moveItem": 2001
+          }
+        }
+      }
+    },
+    "lib/python/Screens/NetworkMounts.py": {
+      "sha256": "ae1771432e3d4734bc3869323b93e15c46e71ec651fb7440a923f704e46f0263",
+      "classes": {
+        "NetworkMountsOverview": {
+          "line": 24,
+          "methods": {
+            "__init__": 69,
+            "selectionChanged": 108,
+            "buildList": 126,
+            "keyEdit": 150,
+            "keySetupClosed": 155,
+            "applyMountChange": 163,
+            "mountSaved": 178,
+            "keyCloseRecursive": 181,
+            "keyMenu": 184,
+            "keyGreen": 251,
+            "keyYellow": 267,
+            "createSummary": 291
+          }
+        },
+        "NetworkMountsSummary": {
+          "line": 295,
+          "methods": {
+            "__init__": 296,
+            "addWatcher": 304,
+            "removeWatcher": 308,
+            "selectionChanged": 311
+          }
+        },
+        "NetworkMountSetup": {
+          "line": 316,
+          "methods": {
+            "__init__": 317,
+            "changedEntry": 377,
+            "keySave": 387
+          }
+        },
+        "NetworkShares": {
+          "line": 434,
+          "methods": {
+            "__init__": 486,
+            "selectionChanged": 537,
+            "buildList": 544,
+            "hostnameFor": 593,
+            "configuredMount": 597,
+            "startDiscovery": 603,
+            "onHostsChanged": 611,
+            "stopDiscovery": 615,
+            "keySelect": 624,
+            "toggleExpand": 634,
+            "startShareEnumeration": 658,
+            "finishProtocol": 681,
+            "enumerateNfs": 695,
+            "mergeShare": 713,
+            "enumerateSmb": 728,
+            "smbNegotiateRejected": 769,
+            "pickShare": 772,
+            "mountSaved": 808,
+            "keyCloseRecursive": 811,
+            "keyMenu": 814,
+            "credentialsClosed": 853,
+            "keyGreen": 857,
+            "keyRescan": 864
+          }
+        },
+        "NetworkCredentials": {
+          "line": 886,
+          "methods": {
+            "__init__": 890,
+            "keySave": 902
+          }
+        }
+      }
+    },
+    "lib/python/Screens/NetworkServices.py": {
+      "sha256": "6e8707d2468b92cf8679e1efd2a394bb336eb04ff6248ea2aad7c41d07f5a604",
+      "classes": {
+        "NetworkDaemons": {
+          "line": 31,
+          "methods": {
+            "__init__": 32,
+            "getDaemons": 45
+          }
+        },
+        "NetworkServicesSetup": {
+          "line": 49,
+          "methods": {
+            "__init__": 50,
+            "getRunningStatus": 67,
+            "getService": 78,
+            "createSetup": 107,
+            "selectionChanged": 114,
+            "toggleStartStop": 140,
+            "showLog": 160,
+            "showProgress": 165,
+            "opkgCallback": 169,
+            "keySave": 183
+          }
+        },
+        "NetworkInadynSetup": {
+          "line": 219,
+          "methods": {
+            "__init__": 220,
+            "changedEntry": 230,
+            "createSetup": 233,
+            "keySave": 274
+          }
+        },
+        "NetworkuShareSetup": {
+          "line": 300,
+          "methods": {
+            "__init__": 301,
+            "changedEntry": 319,
+            "createSetup": 322,
+            "keySave": 370,
+            "selectShares": 404
+          }
+        },
+        "uShareSelection": {
+          "line": 411,
+          "methods": {
+            "__init__": 412,
+            "layoutFinished": 441,
+            "selectionChanged": 446,
+            "keyYellow": 450,
+            "keyGreen": 454,
+            "exit": 458,
+            "keyOk": 461
+          }
+        },
+        "NetworkMiniDLNASetup": {
+          "line": 466,
+          "methods": {
+            "__init__": 467,
+            "changedEntry": 483,
+            "createSetup": 486,
+            "keySave": 531,
+            "selectShares": 564
+          }
+        },
+        "NetworkNFSSetup": {
+          "line": 571,
+          "methods": {
+            "__init__": 576,
+            "_readConf": 594,
+            "keySave": 637,
+            "_writeNfsConf": 642,
+            "_writeExports": 683,
+            "selectExports": 704
+          }
+        },
+        "NetworkSambaSetup": {
+          "line": 711,
+          "methods": {
+            "__init__": 714,
+            "keySave": 745
+          }
+        },
+        "NetworkPassword": {
+          "line": 763,
+          "methods": {
+            "__init__": 764,
+            "appClosed": 777,
+            "keySave": 795,
+            "randomPassword": 819
+          }
+        },
+        "NetworkLogScreen": {
+          "line": 829,
+          "methods": {
+            "__init__": 830,
+            "keyCancel": 855,
+            "closeRecursive": 859,
+            "showLog": 863
+          }
+        },
+        "NetworkZeroTierSetup": {
+          "line": 872,
+          "methods": {
+            "__init__": 877,
+            "changedEntry": 890,
+            "refreshInfo": 897,
+            "readAuthToken": 902,
+            "apiRequest": 910,
+            "getserviceStatus": 928,
+            "getMemberships": 936,
+            "isJoined": 940,
+            "setJoinLeaveButton": 947,
+            "toggleJoinLeave": 957,
+            "createSetup": 971,
+            "zerotierCli": 1024
+          }
+        }
+      }
+    },
+    "lib/python/Screens/DeviceManager.py": {
+      "sha256": "b43722dd247b5d744dea36858cb5bdea232aaa8bc7a75a2dc4694fc8b907f82f",
+      "classes": {
+        "StorageDeviceAction": {
+          "line": 39,
+          "methods": {
+            "__init__": 52,
+            "getActionParameters": 101,
+            "createSetup": 145,
+            "changedEntry": 175,
+            "keyCancel": 209,
+            "keySave": 212
+          }
+        },
+        "StorageDeviceManager": {
+          "line": 216,
+          "methods": {
+            "createDevicesList": 217,
+            "createDevice": 283,
+            "getMountPoints": 405
+          }
+        },
+        "DeviceManager": {
+          "line": 424,
+          "methods": {
+            "__init__": 487,
+            "buildList": 527,
+            "selectionChanged": 572,
+            "keyMenu": 610,
+            "keyClose": 613,
+            "keyMountPoints": 619,
+            "keyMountPoint": 626,
+            "keyBlue": 650,
+            "updateDevices": 709,
+            "stopTimeshift": 712,
+            "hddConfirmed": 719,
+            "showJobView": 730,
+            "JobViewCB": 735,
+            "getActionFunction": 742,
+            "keyActions": 752,
+            "createSummary": 883
+          }
+        },
+        "DeviceManagerMountPoints": {
+          "line": 887,
+          "methods": {
+            "__init__": 906,
+            "buildDevices": 971,
+            "appendEntries": 988,
+            "createSetup": 1002,
+            "changedEntry": 1008,
+            "sanitizedCustomMountPoint": 1016,
+            "setFootnote": 1019,
+            "keySave": 1029,
+            "closeRecursive": 1114,
+            "keyCancel": 1118
+          }
+        },
+        "DeviceManagerSetup": {
+          "line": 1123,
+          "methods": {
+            "__init__": 1126
+          }
+        },
+        "DevicesPanelSummary": {
+          "line": 1130,
+          "methods": {
+            "__init__": 1131,
+            "addWatcher": 1139,
+            "removeWatcher": 1143,
+            "selectionChanged": 1146
+          }
+        }
+      }
+    },
+    "lib/python/Screens/PluginBrowser.py": {
+      "sha256": "036d521d963a0c36f5a269dec277eb4f0bbe47681c3f1265cd62030c4754a163",
+      "classes": {
+        "PluginBrowser": {
+          "line": 143,
+          "methods": {
+            "__init__": 202,
+            "createGUIScreen": 294,
+            "doClose": 306,
+            "selectionChanged": 312,
+            "createFeedConfig": 330,
+            "checkWarnings": 362,
+            "layoutFinished": 379,
+            "startDownloadCheck": 383,
+            "internetCheckCallback": 395,
+            "openDownloadScreen": 407,
+            "isInternetCheckValid": 412,
+            "updatePluginList": 415,
+            "updateButtons": 430,
+            "keyCancel": 448,
+            "keyCloseRecursive": 453,
+            "toggleSortMode": 458,
+            "keySelect": 475,
+            "keyMenu": 507,
+            "keyRed": 516,
+            "keyGreen": 524,
+            "keyYellow": 533,
+            "childScreenClosedCallback": 548,
+            "keyEditMode": 552,
+            "keyTop": 557,
+            "keyPageUp": 563,
+            "keyUp": 569,
+            "keyFirst": 575,
+            "keyLeft": 581,
+            "keyRight": 587,
+            "keyLast": 593,
+            "keyDown": 599,
+            "keyPageDown": 605,
+            "keyBottom": 611,
+            "moveAction": 617,
+            "keyNumberGlobal": 623,
+            "quickSelectTimeout": 636,
+            "selectByStart": 647,
+            "createSummary": 658
+          }
+        },
+        "PluginBrowserSetup": {
+          "line": 662,
+          "methods": {
+            "__init__": 663,
+            "keyResetFeeds": 689,
+            "keyResetFeedsCallback": 697,
+            "keyResetFeedsCancel": 720,
+            "keySave": 727,
+            "swapGitHubDNS": 774,
+            "onUpdateSettings": 782
+          }
+        },
+        "PluginBrowserSummary": {
+          "line": 799,
+          "methods": {
+            "__init__": 800,
+            "addWatcher": 808,
+            "removeWatcher": 812,
+            "selectionChanged": 815
+          }
+        },
+        "PackageAction": {
+          "line": 820,
+          "methods": {
+            "getInternetErrorText": 883,
+            "__init__": 921,
+            "doClose": 1087,
+            "layoutFinished": 1093,
+            "internetCheckCallback": 1108,
+            "selectionChanged": 1117,
+            "keyCancel": 1145,
+            "keySearch": 1163,
+            "keySearchScopeCallback": 1172,
+            "keySearchCallback": 1179,
+            "keySelect": 1211,
+            "keyGreen": 1264,
+            "keyShowLog": 1363,
+            "keyPreviousCategory": 1366,
+            "keyNextCategory": 1375,
+            "fetchOpkgDataCallback": 1384,
+            "getPackageInfo": 1461,
+            "processListCallback": 1481,
+            "displayPluginList": 1521,
+            "setWaiting": 1599,
+            "keyNumberGlobal": 1622,
+            "quickSelectTimeout": 1635,
+            "selectByStart": 1646,
+            "createSummary": 1660
+          }
+        },
+        "PluginAction": {
+          "line": 1664,
+          "methods": {
+            "__init__": 1665
+          }
+        },
+        "PackageActionSummary": {
+          "line": 1669,
+          "methods": {
+            "__init__": 1670,
+            "addWatcher": 1679,
+            "removeWatcher": 1683,
+            "selectionChanged": 1686
+          }
+        },
+        "PackageActionLog": {
+          "line": 1698,
+          "methods": {
+            "__init__": 1710
+          }
+        }
+      }
+    },
+    "lib/python/Screens/MessageBox.py": {
+      "sha256": "c1b9ab02eea9334e6e9c2388e7ec3d9bdd9385fbf1e0bad44c7c3b8faf8fd264",
+      "classes": {
+        "MessageBox": {
+          "line": 11,
+          "methods": {
+            "__init__": 33,
+            "createActionMap": 90,
+            "__repr__": 111,
+            "layoutFinished": 114,
+            "processTimer": 136,
+            "stopTimer": 155,
+            "cancel": 162,
+            "select": 165,
+            "selectOk": 171,
+            "top": 174,
+            "pageUp": 177,
+            "up": 180,
+            "down": 183,
+            "pageDown": 186,
+            "bottom": 189,
+            "move": 192,
+            "autoResize": 199,
+            "createSummary": 202,
+            "reloadLayout": 205
+          }
+        },
+        "MessageBoxSummary": {
+          "line": 214,
+          "methods": {
+            "__init__": 215,
+            "addWatcher": 225,
+            "removeWatcher": 230,
+            "selectionChanged": 234
+          }
+        },
+        "ModalMessageBox": {
+          "line": 238,
+          "methods": {
+            "__init__": 241,
+            "showMessageBox": 249,
+            "close": 284
+          }
+        }
+      }
+    },
+    "lib/python/Screens/ChoiceBox.py": {
+      "sha256": "126577f2b9fbd4c8651d14ba2e32cf0564aa8637702518b3df857eee8d3d3bc5",
+      "classes": {
+        "ChoiceBoxNew": {
+          "line": 15,
+          "methods": {
+            "__init__": 16,
+            "layoutFinished": 98,
+            "instantiateActionMap": 101,
+            "keySelect": 109,
+            "keyRed": 114,
+            "keyGreen": 117,
+            "keyYellow": 120,
+            "keyBlue": 123,
+            "keyText": 126,
+            "keyNumberGlobal": 129,
+            "goKey": 132,
+            "goEntry": 137,
+            "keyTop": 146,
+            "keyPageUp": 149,
+            "keyLineUp": 152,
+            "keyLineDown": 155,
+            "keyPageDown": 158,
+            "keyBottom": 161,
+            "keyMoveItemUp": 164,
+            "keyMoveItemDown": 167,
+            "moveItem": 170,
+            "keyResetList": 187,
+            "keyCancel": 195,
+            "autoResize": 198,
+            "createSummary": 201
+          }
+        },
+        "ChoiceBoxSummary": {
+          "line": 205,
+          "methods": {
+            "__init__": 206,
+            "addWatcher": 224,
+            "removeWatcher": 229,
+            "selectionChanged": 233
+          }
+        },
+        "ChoiceBox": {
+          "line": 249,
+          "methods": {
+            "__init__": 250
           }
         }
       }
@@ -8491,6 +9603,3991 @@
       "key": "KEY_RIGHT",
       "action": "right",
       "flags": "mr"
+    },
+    {
+      "context": "NativeOSD",
+      "key": "KEY_0",
+      "action": "toggleAutoHidePause",
+      "flags": "l",
+      "origin": "native",
+      "source": "lib/driver/avcontrol.cpp",
+      "symbol": "eAVControl::handleOSDKey"
+    }
+  ],
+  "menu": [
+    {
+      "id": "mainmenu",
+      "key": "mainmenu",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        }
+      ],
+      "line": 18,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/information",
+      "key": "information",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        }
+      ],
+      "line": 20,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/information/distribution_info_screen",
+      "key": "distribution_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "About OpenATV",
+          "de": "Über OpenATV"
+        }
+      ],
+      "line": 21,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Information",
+      "className": "InformationDistribution"
+    },
+    {
+      "id": "mainmenu/information/receiver_info_screen",
+      "key": "receiver_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Receiver",
+          "de": "Receiver"
+        }
+      ],
+      "line": 22,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Information",
+      "className": "InformationReceiver"
+    },
+    {
+      "id": "mainmenu/information/benchmark_info_screen",
+      "key": "benchmark_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Benchmarks",
+          "de": "Benchmarks"
+        }
+      ],
+      "line": 23,
+      "level": "2",
+      "requires": null,
+      "conditional": "config.usage.informationShowAllMenuScreens.value",
+      "setup": null,
+      "module": "Information",
+      "className": "InformationBenchmark"
+    },
+    {
+      "id": "mainmenu/information/picture_info_screen",
+      "key": "picture_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Pictures",
+          "de": "Bilder"
+        }
+      ],
+      "line": 24,
+      "level": "0",
+      "requires": null,
+      "conditional": "config.usage.informationShowAllMenuScreens.value",
+      "setup": null,
+      "module": "Information",
+      "className": "InformationPicture"
+    },
+    {
+      "id": "mainmenu/information/tuner_info_screen",
+      "key": "tuner_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Tuners",
+          "de": "Tuner"
+        }
+      ],
+      "line": 25,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Information",
+      "className": "InformationTuner"
+    },
+    {
+      "id": "mainmenu/information/storage_info_screen",
+      "key": "storage_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Storage / Disks",
+          "de": "Laufwerke"
+        }
+      ],
+      "line": 26,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Information",
+      "className": "InformationStorage"
+    },
+    {
+      "id": "mainmenu/information/memory_info_screen",
+      "key": "memory_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Memory",
+          "de": "Speicher"
+        }
+      ],
+      "line": 27,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Information",
+      "className": "InformationMemory"
+    },
+    {
+      "id": "mainmenu/information/network_info_screen",
+      "key": "network_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        }
+      ],
+      "line": 28,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Information",
+      "className": "InformationNetwork"
+    },
+    {
+      "id": "mainmenu/information/multiboot_info_screen",
+      "key": "multiboot_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "MultiBoot",
+          "de": "MultiBoot"
+        }
+      ],
+      "line": 29,
+      "level": "0",
+      "requires": "canMultiBoot",
+      "conditional": null,
+      "setup": null,
+      "module": "Information",
+      "className": "InformationMultiBoot"
+    },
+    {
+      "id": "mainmenu/information/streaming_info_screen",
+      "key": "streaming_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Streaming",
+          "de": "Streaming"
+        }
+      ],
+      "line": 30,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Information",
+      "className": "InformationStreaming"
+    },
+    {
+      "id": "mainmenu/information/geolocation_info_screen",
+      "key": "geolocation_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Geolocation",
+          "de": "Standortbestimmung"
+        }
+      ],
+      "line": 31,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Information",
+      "className": "InformationGeolocation"
+    },
+    {
+      "id": "mainmenu/information/build_info_screen",
+      "key": "build_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Build",
+          "de": "Build"
+        }
+      ],
+      "line": 32,
+      "level": "2",
+      "requires": null,
+      "conditional": "config.usage.informationShowAllMenuScreens.value",
+      "setup": null,
+      "module": "Information",
+      "className": "InformationBuild"
+    },
+    {
+      "id": "mainmenu/information/system_info_screen",
+      "key": "system_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        }
+      ],
+      "line": 33,
+      "level": "2",
+      "requires": null,
+      "conditional": "config.usage.informationShowAllMenuScreens.value",
+      "setup": null,
+      "module": "Information",
+      "className": "InformationSystem"
+    },
+    {
+      "id": "mainmenu/information/commit_info_screen",
+      "key": "commit_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Commit",
+          "de": "Commit"
+        }
+      ],
+      "line": 34,
+      "level": "2",
+      "requires": null,
+      "conditional": "config.usage.informationShowAllMenuScreens.value",
+      "setup": null,
+      "module": "Information",
+      "className": "InformationCommit"
+    },
+    {
+      "id": "mainmenu/information/debug_info_screen",
+      "key": "debug_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Debug",
+          "de": "Debug"
+        }
+      ],
+      "line": 35,
+      "level": "2",
+      "requires": null,
+      "conditional": "config.usage.informationShowAllMenuScreens.value",
+      "setup": null,
+      "module": "Information",
+      "className": "InformationDebug"
+    },
+    {
+      "id": "mainmenu/information/translation_info_screen",
+      "key": "translation_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Translation",
+          "de": "Übersetzung"
+        }
+      ],
+      "line": 36,
+      "level": "2",
+      "requires": null,
+      "conditional": "config.usage.informationShowAllMenuScreens.value",
+      "setup": null,
+      "module": "Information",
+      "className": "InformationTranslation"
+    },
+    {
+      "id": "mainmenu/information/service_info_screen",
+      "key": "service_info_screen",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Information",
+          "de": "Informationen"
+        },
+        {
+          "en": "Service",
+          "de": "Sender"
+        }
+      ],
+      "line": 37,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Information",
+      "className": "InformationService"
+    },
+    {
+      "id": "mainmenu/timermenu",
+      "key": "timermenu",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Timers",
+          "de": "Timer"
+        }
+      ],
+      "line": 40,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/timermenu/timer_edit",
+      "key": "timer_edit",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Timers",
+          "de": "Timer"
+        },
+        {
+          "en": "RecordTimers",
+          "de": "Timer"
+        }
+      ],
+      "line": 41,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Timers",
+      "className": "RecordTimerOverview"
+    },
+    {
+      "id": "mainmenu/timermenu/powertimer_edit",
+      "key": "powertimer_edit",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Timers",
+          "de": "Timer"
+        },
+        {
+          "en": "Scheduler",
+          "de": "Aufgabenplanung"
+        }
+      ],
+      "line": 42,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Timers",
+      "className": "SchedulerOverview"
+    },
+    {
+      "id": "mainmenu/timermenu/crontimer_edit",
+      "key": "crontimer_edit",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Timers",
+          "de": "Timer"
+        },
+        {
+          "en": "Cron Timers",
+          "de": "CronTimer"
+        }
+      ],
+      "line": 43,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "CronTimer",
+      "className": "CronTimers"
+    },
+    {
+      "id": "mainmenu/timermenu/sleep",
+      "key": "sleep",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Timers",
+          "de": "Timer"
+        },
+        {
+          "en": "Sleep Timers",
+          "de": "Ausschalttimer"
+        }
+      ],
+      "line": 44,
+      "level": "0",
+      "requires": "DeepstandbySupport",
+      "conditional": null,
+      "setup": null,
+      "module": "SleepTimer",
+      "className": "SleepTimer"
+    },
+    {
+      "id": "mainmenu/movie_selection",
+      "key": "movie_selection",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Movie Selection",
+          "de": "Filmauswahl"
+        }
+      ],
+      "line": 46,
+      "level": "0",
+      "requires": null,
+      "conditional": "config.usage.movieSelectionInMenu.value",
+      "setup": null,
+      "module": "MovieSelection",
+      "className": "MovieSelection"
+    },
+    {
+      "id": "mainmenu/plugin_selection",
+      "key": "plugin_selection",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Plugin Browser",
+          "de": "Erweiterungen"
+        }
+      ],
+      "line": 47,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "PluginBrowser",
+      "className": "PluginBrowser"
+    },
+    {
+      "id": "mainmenu/scart_switch",
+      "key": "scart_switch",
+      "kind": "code",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "VCR Scart Settings",
+          "de": "VCR-Scartbuchse"
+        }
+      ],
+      "line": 48,
+      "level": "1",
+      "requires": "ScartSwitch",
+      "conditional": "config.usage.show_vcr_scart.value",
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup",
+      "key": "setup",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        }
+      ],
+      "line": 50,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/video_menu",
+      "key": "video_menu",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Video",
+          "de": "Bild"
+        }
+      ],
+      "line": 52,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/video_menu/video_setup",
+      "key": "video_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Video",
+          "de": "Bild"
+        },
+        {
+          "en": "Video Settings",
+          "de": "Bildeinstellungen"
+        }
+      ],
+      "line": 53,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "VideoMode",
+      "className": "VideoSetup"
+    },
+    {
+      "id": "mainmenu/setup/video_menu/osdsetup",
+      "key": "osdsetup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Video",
+          "de": "Bild"
+        },
+        {
+          "en": "OSD Calibration",
+          "de": "OSD-Kalibrierung"
+        }
+      ],
+      "line": 54,
+      "level": "1",
+      "requires": "OSDCalibration",
+      "conditional": null,
+      "setup": null,
+      "module": "OSDCalibration",
+      "className": "OSDCalibration"
+    },
+    {
+      "id": "mainmenu/setup/video_menu/setup_osd3d",
+      "key": "setup_osd3d",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Video",
+          "de": "Bild"
+        },
+        {
+          "en": "OSD 3D Settings",
+          "de": "OSD-3D-Konfiguration"
+        }
+      ],
+      "line": 55,
+      "level": "2",
+      "requires": "OSD3DCalibration",
+      "conditional": null,
+      "setup": "OSD3DCalibration",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/audio_menu",
+      "key": "audio_menu",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Audio",
+          "de": "Ton"
+        }
+      ],
+      "line": 58,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/audio_menu/audio_setup",
+      "key": "audio_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Audio",
+          "de": "Ton"
+        },
+        {
+          "en": "Audio Settings",
+          "de": "Toneinstellungen"
+        }
+      ],
+      "line": 59,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": "Audio",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/audio_menu/volume_adjust",
+      "key": "volume_adjust",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Audio",
+          "de": "Ton"
+        },
+        {
+          "en": "Volume Adjust Settings",
+          "de": "Lautstärkeanpassung"
+        }
+      ],
+      "line": 60,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "VolumeControl",
+      "className": "VolumeAdjustSettings"
+    },
+    {
+      "id": "mainmenu/setup/audio_menu/subtitle_setup",
+      "key": "subtitle_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Audio",
+          "de": "Ton"
+        },
+        {
+          "en": "Subtitle Settings",
+          "de": "Untertitel"
+        }
+      ],
+      "line": 61,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": "Subtitle",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/audio_menu/autolanguage_setup",
+      "key": "autolanguage_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Audio",
+          "de": "Ton"
+        },
+        {
+          "en": "Auto Language Settings",
+          "de": "Automatische Sprachauswahl"
+        }
+      ],
+      "line": 62,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": "AutoLanguage",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/rec",
+      "key": "rec",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Playback, Recording & Time Shift",
+          "de": "Aufnahmen / Timeshift"
+        }
+      ],
+      "line": 65,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/rec/playback_setup",
+      "key": "playback_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Playback, Recording & Time Shift",
+          "de": "Aufnahmen / Timeshift"
+        },
+        {
+          "en": "Playback Settings",
+          "de": "Wiedergabe"
+        }
+      ],
+      "line": 66,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Playback",
+      "className": "PlaybackSettings"
+    },
+    {
+      "id": "mainmenu/setup/rec/recording_setup",
+      "key": "recording_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Playback, Recording & Time Shift",
+          "de": "Aufnahmen / Timeshift"
+        },
+        {
+          "en": "Recording Settings",
+          "de": "Aufnahmen"
+        }
+      ],
+      "line": 67,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Recording",
+      "className": "RecordingSettings"
+    },
+    {
+      "id": "mainmenu/setup/rec/hdmirecord_setup",
+      "key": "hdmirecord_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Playback, Recording & Time Shift",
+          "de": "Aufnahmen / Timeshift"
+        },
+        {
+          "en": "HDMI-In Recording Settings",
+          "de": "HDMI-IN-Aufnahmen"
+        }
+      ],
+      "line": 68,
+      "level": "0",
+      "requires": "HDMIin",
+      "conditional": null,
+      "setup": "HDMIRecord",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/rec/timshift_setup",
+      "key": "timshift_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Playback, Recording & Time Shift",
+          "de": "Aufnahmen / Timeshift"
+        },
+        {
+          "en": "Time Shift Settings",
+          "de": "Timeshift"
+        }
+      ],
+      "line": 69,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Timeshift",
+      "className": "TimeshiftSettings"
+    },
+    {
+      "id": "mainmenu/setup/system",
+      "key": "system",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        }
+      ],
+      "line": 72,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/system/user_interface",
+      "key": "user_interface",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "OSD Settings",
+          "de": "OSD"
+        }
+      ],
+      "line": 74,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": "UserInterface",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/system/remote_setup",
+      "key": "remote_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Remote Control Button Settings",
+          "de": "Fernbedienungseinstellungen"
+        }
+      ],
+      "line": 75,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": "RemoteButton",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/system/channelselection_setup",
+      "key": "channelselection_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Channel Selection Settings",
+          "de": "Senderliste"
+        }
+      ],
+      "line": 76,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": "ChannelSelection",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/system/usage_setup",
+      "key": "usage_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Customize System Settings",
+          "de": "Systemeinstellungen"
+        }
+      ],
+      "line": 77,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": "Usage",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/system/skin_setup",
+      "key": "skin_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Skin Settings",
+          "de": "Skinauswahl"
+        }
+      ],
+      "line": 79,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "SkinSelection",
+      "className": "SkinSelection"
+    },
+    {
+      "id": "mainmenu/setup/system/picon_setup",
+      "key": "picon_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Picon Settings",
+          "de": "Piconeinstellungen"
+        }
+      ],
+      "line": 80,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Picon",
+      "className": "PiconSettings"
+    },
+    {
+      "id": "mainmenu/setup/system/display_setup",
+      "key": "display_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Display Settings",
+          "de": "Displayeinstellungen"
+        }
+      ],
+      "line": 81,
+      "level": "0",
+      "requires": "DisplaySetup",
+      "conditional": null,
+      "setup": "Display",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/system/led_setup",
+      "key": "led_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Configure front panel LEDs",
+          "de": "LEDs der Vorderseite einstellen"
+        }
+      ],
+      "line": 82,
+      "level": "1",
+      "requires": "LEDColorControl",
+      "conditional": null,
+      "setup": "LEDs",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/system/buttonsetup_setup",
+      "key": "buttonsetup_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Hotkey Settings",
+          "de": "Hotkey"
+        }
+      ],
+      "line": 83,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "ButtonSetup",
+      "className": "ButtonSetup"
+    },
+    {
+      "id": "mainmenu/setup/system/input_device_setup",
+      "key": "input_device_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Input Devices Settings",
+          "de": "Eingabegeräte"
+        }
+      ],
+      "line": 84,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "InputDeviceSetup",
+      "className": "InputDeviceSelection"
+    },
+    {
+      "id": "mainmenu/setup/system/remotecode",
+      "key": "remotecode",
+      "kind": "code",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Remote Control Code Settings",
+          "de": "Fernbedienungscode"
+        }
+      ],
+      "line": 85,
+      "level": "1",
+      "requires": "RemoteCode",
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/system/keyboard",
+      "key": "keyboard",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Keyboard Settings",
+          "de": "Tastatur"
+        }
+      ],
+      "line": 91,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "InputDeviceSetup",
+      "className": "KeyboardSelection"
+    },
+    {
+      "id": "mainmenu/setup/system/locale_setup",
+      "key": "locale_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Usage & GUI",
+          "de": "Bedienung / Oberfläche"
+        },
+        {
+          "en": "Locale / Language Settings",
+          "de": "Sprachauswahl"
+        }
+      ],
+      "line": 92,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "LocaleSelection",
+      "className": "LocaleSelection"
+    },
+    {
+      "id": "mainmenu/setup/epg",
+      "key": "epg",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        }
+      ],
+      "line": 95,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/epg/epg_setup",
+      "key": "epg_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        },
+        {
+          "en": "EPG Settings",
+          "de": "EPG"
+        }
+      ],
+      "line": 96,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": "EPG",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/epg/setup_epgmulti",
+      "key": "setup_epgmulti",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        },
+        {
+          "en": "MultiEPG Settings",
+          "de": "Multi-EPG"
+        }
+      ],
+      "line": 97,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": "EPGMulti",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/epg/setup_epgenhanced",
+      "key": "setup_epgenhanced",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        },
+        {
+          "en": "SingleEPG Settings",
+          "de": "Einzel-EPG"
+        }
+      ],
+      "line": 98,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": "EPGEnhanced",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/epg/setup_epginfobar",
+      "key": "setup_epginfobar",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        },
+        {
+          "en": "InfoBar EPG Settings",
+          "de": "Infoleisten-EPG"
+        }
+      ],
+      "line": 99,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": "EPGInfobar",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/epg/setup_epginfobargraphical",
+      "key": "setup_epginfobargraphical",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        },
+        {
+          "en": "Graphical InfoBar EPG Settings",
+          "de": "Grafischer Infoleisten-EPG"
+        }
+      ],
+      "line": 100,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": "EPGInfobarGraphical",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/epg/setup_epggraphical",
+      "key": "setup_epggraphical",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        },
+        {
+          "en": "GraphicalEPG Settings",
+          "de": "Grafischer EPG"
+        }
+      ],
+      "line": 101,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": "EPGGraphical",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/epg/setup_epgvertical",
+      "key": "setup_epgvertical",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        },
+        {
+          "en": "VerticalEPG Settings",
+          "de": "Vertikaler EPG"
+        }
+      ],
+      "line": 102,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": "EPGVertical",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/epg/loadepgcache",
+      "key": "loadepgcache",
+      "kind": "code",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        },
+        {
+          "en": "Load EPG Cache",
+          "de": "EPG-Cache laden"
+        }
+      ],
+      "line": 103,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/epg/saveepgcache",
+      "key": "saveepgcache",
+      "kind": "code",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        },
+        {
+          "en": "Save EPG Cache",
+          "de": "EPG-Cache speichern"
+        }
+      ],
+      "line": 115,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/epg/deleteepgcache",
+      "key": "deleteepgcache",
+      "kind": "code",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "EPG",
+          "de": "EPG"
+        },
+        {
+          "en": "Delete EPG Cache",
+          "de": "EPG-Cache löschen"
+        }
+      ],
+      "line": 127,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/scan",
+      "key": "scan",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Tuners, Scanning & Reception",
+          "de": "Empfang"
+        }
+      ],
+      "line": 146,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/scan/tuner_setup",
+      "key": "tuner_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Tuners, Scanning & Reception",
+          "de": "Empfang"
+        },
+        {
+          "en": "Tuner Configuration",
+          "de": "Tuner"
+        }
+      ],
+      "line": 147,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Satconfig",
+      "className": "NimSelection"
+    },
+    {
+      "id": "mainmenu/setup/scan/tuner_basic_settings",
+      "key": "tuner_basic_settings",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Tuners, Scanning & Reception",
+          "de": "Empfang"
+        },
+        {
+          "en": "Tuner Settings",
+          "de": "Tunereinstellungen"
+        }
+      ],
+      "line": 148,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": "Tuner",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/scan/auto_scan",
+      "key": "auto_scan",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Tuners, Scanning & Reception",
+          "de": "Empfang"
+        },
+        {
+          "en": "Automatic Scan",
+          "de": "Automatischer Suchlauf"
+        }
+      ],
+      "line": 149,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "ScanSetup",
+      "className": "ScanSimple"
+    },
+    {
+      "id": "mainmenu/setup/scan/manual_scan",
+      "key": "manual_scan",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Tuners, Scanning & Reception",
+          "de": "Empfang"
+        },
+        {
+          "en": "Manual Scan",
+          "de": "Manueller Suchlauf"
+        }
+      ],
+      "line": 150,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "ScanSetup",
+      "className": "ScanSetup"
+    },
+    {
+      "id": "mainmenu/setup/scan/dab_scan",
+      "key": "dab_scan",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Tuners, Scanning & Reception",
+          "de": "Empfang"
+        },
+        {
+          "en": "DAB+ Scan",
+          "de": "DAB+-Scan"
+        }
+      ],
+      "line": 151,
+      "level": "0",
+      "requires": "CanScanDAB",
+      "conditional": null,
+      "setup": null,
+      "module": "DABScan",
+      "className": "DABScan"
+    },
+    {
+      "id": "mainmenu/setup/scan/dab_usb_setup",
+      "key": "dab_usb_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Tuners, Scanning & Reception",
+          "de": "Empfang"
+        },
+        {
+          "en": "DAB+ Settings",
+          "de": "DAB+-Einstellungen"
+        }
+      ],
+      "line": 152,
+      "level": "0",
+      "requires": "HasDABSettings",
+      "conditional": null,
+      "setup": null,
+      "module": "RTLSDRSetup",
+      "className": "RTLSDRSetup"
+    },
+    {
+      "id": "mainmenu/setup/scan/fallbacktuner_settings",
+      "key": "fallbacktuner_settings",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Tuners, Scanning & Reception",
+          "de": "Empfang"
+        },
+        {
+          "en": "Fallback Remote Receiver Settings",
+          "de": "Reservereceiver-Einstellungen"
+        }
+      ],
+      "line": 153,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "SetupFallbacktuner",
+      "className": "SetupFallbacktuner"
+    },
+    {
+      "id": "mainmenu/setup/cam",
+      "key": "cam",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Decryption & Parental Control",
+          "de": "Entschlüsselung / Jugendschutz"
+        }
+      ],
+      "line": 156,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/cam/softcam_settings",
+      "key": "softcam_settings",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Decryption & Parental Control",
+          "de": "Entschlüsselung / Jugendschutz"
+        },
+        {
+          "en": "Softcam Settings",
+          "de": "Softcam-Einrichtung"
+        }
+      ],
+      "line": 157,
+      "level": "0",
+      "requires": "HAVEINITCAM",
+      "conditional": null,
+      "setup": null,
+      "module": "SoftcamSetup",
+      "className": "SoftcamSetup"
+    },
+    {
+      "id": "mainmenu/setup/cam/autocam_settings",
+      "key": "autocam_settings",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Decryption & Parental Control",
+          "de": "Entschlüsselung / Jugendschutz"
+        },
+        {
+          "en": "AutoCam Settings",
+          "de": "AutoCam-Einstellungen"
+        }
+      ],
+      "line": 158,
+      "level": "0",
+      "requires": "HAVEINITCAM",
+      "conditional": null,
+      "setup": null,
+      "module": "SoftcamSetup",
+      "className": "AutocamSetup"
+    },
+    {
+      "id": "mainmenu/setup/cam/cardserver_settings",
+      "key": "cardserver_settings",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Decryption & Parental Control",
+          "de": "Entschlüsselung / Jugendschutz"
+        },
+        {
+          "en": "Cardserver Settings",
+          "de": "Cardserver-Einstellungen"
+        }
+      ],
+      "line": 159,
+      "level": "0",
+      "requires": "HAVEINITCARDSERVER",
+      "conditional": null,
+      "setup": null,
+      "module": "SoftcamSetup",
+      "className": "CardserverSetup"
+    },
+    {
+      "id": "mainmenu/setup/cam/oscam_info",
+      "key": "oscam_info",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Decryption & Parental Control",
+          "de": "Entschlüsselung / Jugendschutz"
+        },
+        {
+          "en": "OSCam Information",
+          "de": "OSCam Informationen"
+        }
+      ],
+      "line": 160,
+      "level": "0",
+      "requires": "ShowOscamInfo",
+      "conditional": null,
+      "setup": null,
+      "module": "OScamInfo",
+      "className": "OSCamInfo"
+    },
+    {
+      "id": "mainmenu/setup/cam/cccam_info",
+      "key": "cccam_info",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Decryption & Parental Control",
+          "de": "Entschlüsselung / Jugendschutz"
+        },
+        {
+          "en": "CCcam Information",
+          "de": "CCcam-Informationen"
+        }
+      ],
+      "line": 161,
+      "level": "0",
+      "requires": "ShowCCCamInfo",
+      "conditional": null,
+      "setup": null,
+      "module": "CCcamInfo",
+      "className": "CCcamInfoMain"
+    },
+    {
+      "id": "mainmenu/setup/cam/ci_selection",
+      "key": "ci_selection",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Decryption & Parental Control",
+          "de": "Entschlüsselung / Jugendschutz"
+        },
+        {
+          "en": "Common Interface Settings",
+          "de": "CI-Einstellungen"
+        }
+      ],
+      "line": 162,
+      "level": "1",
+      "requires": "CommonInterface",
+      "conditional": null,
+      "setup": null,
+      "module": "Ci",
+      "className": "CiSelection"
+    },
+    {
+      "id": "mainmenu/setup/cam/softcsa_settings",
+      "key": "softcsa_settings",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Decryption & Parental Control",
+          "de": "Entschlüsselung / Jugendschutz"
+        },
+        {
+          "en": "SoftCSA Settings",
+          "de": "SoftCSA-Einstellungen"
+        }
+      ],
+      "line": 163,
+      "level": "0",
+      "requires": "HasSoftCSA",
+      "conditional": null,
+      "setup": "SoftCSA",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/cam/streamrelay_settings",
+      "key": "streamrelay_settings",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Decryption & Parental Control",
+          "de": "Entschlüsselung / Jugendschutz"
+        },
+        {
+          "en": "Stream Relay Settings",
+          "de": "Stream-Relay-Einstellungen"
+        }
+      ],
+      "line": 164,
+      "level": "2",
+      "requires": "HAVEINITCAM",
+      "conditional": null,
+      "setup": null,
+      "module": "SoftcamSetup",
+      "className": "StreamRelaySetup"
+    },
+    {
+      "id": "mainmenu/setup/cam/parental_setup",
+      "key": "parental_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Decryption & Parental Control",
+          "de": "Entschlüsselung / Jugendschutz"
+        },
+        {
+          "en": "Parental Control Settings",
+          "de": "Jugendschutzeinstellungen"
+        }
+      ],
+      "line": 165,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "ParentalControlSetup",
+      "className": "ParentalControlSetup"
+    },
+    {
+      "id": "mainmenu/setup/software_manager",
+      "key": "software_manager",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        }
+      ],
+      "line": 168,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/software_manager/manage_plugins",
+      "key": "manage_plugins",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Manage Plugins",
+          "de": "Plugins verwalten"
+        }
+      ],
+      "line": 169,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "PluginBrowser",
+      "className": "PackageAction"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/software_update",
+      "key": "software_update",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Software Update",
+          "de": "Software aktualisieren"
+        }
+      ],
+      "line": 170,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "SoftwareUpdate",
+      "className": "SoftwareUpdate"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/flash_online",
+      "key": "flash_online",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Flash Online",
+          "de": "Flashen online/lokal"
+        }
+      ],
+      "line": 171,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "FlashManager",
+      "className": "FlashManager"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/backup_image_dflash",
+      "key": "backup_image_dflash",
+      "kind": "code",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Image Backup",
+          "de": "Imagesicherung"
+        }
+      ],
+      "line": 172,
+      "level": "0",
+      "requires": "dFlash",
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/software_manager/backup_image_dbackup",
+      "key": "backup_image_dbackup",
+      "kind": "code",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Image Backup",
+          "de": "Imagesicherung"
+        }
+      ],
+      "line": 173,
+      "level": "0",
+      "requires": "dBackup",
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/software_manager/backup_image",
+      "key": "backup_image",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Image Backup",
+          "de": "Imagesicherung"
+        }
+      ],
+      "line": 174,
+      "level": "0",
+      "requires": "ImageBackup",
+      "conditional": null,
+      "setup": null,
+      "module": "ImageBackup",
+      "className": "ImageBackup"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/multiboot",
+      "key": "multiboot",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "MultiBoot Manager",
+          "de": "MultiBoot-Verwaltung"
+        }
+      ],
+      "line": 175,
+      "level": "0",
+      "requires": "canMultiBoot",
+      "conditional": null,
+      "setup": null,
+      "module": "MultiBootManager",
+      "className": "MultiBootManager"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/backup_system",
+      "key": "backup_system",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Backup System Settings",
+          "de": "Systemeinstellungen sichern"
+        }
+      ],
+      "line": 176,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "BackupRestore",
+      "className": "BackupHelper"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/restore_system",
+      "key": "restore_system",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Restore System Settings",
+          "de": "Systemeinstellungen wiederherstellen"
+        }
+      ],
+      "line": 177,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "BackupRestore",
+      "className": "BackupHelper"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/install_local",
+      "key": "install_local",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Install Local Extension",
+          "de": "Lokale Erweiterung installieren"
+        }
+      ],
+      "line": 178,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "BackupRestore",
+      "className": "BackupHelper"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/advanced_software",
+      "key": "advanced_software",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Advanced Options",
+          "de": "Erweiterte Optionen"
+        }
+      ],
+      "line": 180,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/software_manager/advanced_software/advanced_restore",
+      "key": "advanced_restore",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Advanced Options",
+          "de": "Erweiterte Optionen"
+        },
+        {
+          "en": "Advanced Restore",
+          "de": "Erweiterte Wiederherstellung"
+        }
+      ],
+      "line": 181,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "BackupRestore",
+      "className": "RestoreMenu"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/advanced_software/backup_default",
+      "key": "backup_default",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Advanced Options",
+          "de": "Erweiterte Optionen"
+        },
+        {
+          "en": "Show Default Backup Files",
+          "de": "Standardliste gesicherter Dateien"
+        }
+      ],
+      "line": 182,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "BackupRestore",
+      "className": "BackupHelper"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/advanced_software/backup_additional",
+      "key": "backup_additional",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Advanced Options",
+          "de": "Erweiterte Optionen"
+        },
+        {
+          "en": "Select Additional Backup Files",
+          "de": "Zusätzlich zu sichernde Dateien"
+        }
+      ],
+      "line": 183,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "BackupRestore",
+      "className": "BackupHelper"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/advanced_software/backup_excluded",
+      "key": "backup_excluded",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Advanced Options",
+          "de": "Erweiterte Optionen"
+        },
+        {
+          "en": "Select Excluded Backup Files",
+          "de": "Nicht zu sichernde Dateien"
+        }
+      ],
+      "line": 184,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "BackupRestore",
+      "className": "BackupHelper"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/advanced_software/package_manager",
+      "key": "package_manager",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Advanced Options",
+          "de": "Erweiterte Optionen"
+        },
+        {
+          "en": "Package Manager",
+          "de": "Paket-Manager"
+        }
+      ],
+      "line": 185,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "PluginBrowser",
+      "className": "PackageAction"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/advanced_software/upgrade_source",
+      "key": "upgrade_source",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Advanced Options",
+          "de": "Erweiterte Optionen"
+        },
+        {
+          "en": "Select Upgrade Source",
+          "de": "Upgradequelle auswählen"
+        }
+      ],
+      "line": 186,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Opkg",
+      "className": "PackageFeedSelection"
+    },
+    {
+      "id": "mainmenu/setup/software_manager/advanced_software/upgrade_settings",
+      "key": "upgrade_settings",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Software Management",
+          "de": "Softwareverwaltung"
+        },
+        {
+          "en": "Advanced Options",
+          "de": "Erweiterte Optionen"
+        },
+        {
+          "en": "Software Manager Settings",
+          "de": "Updateeinstellungen"
+        }
+      ],
+      "line": 187,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": "SoftwareManager",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/network",
+      "key": "network",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        }
+      ],
+      "line": 191,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/network/device_setup",
+      "key": "device_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "Network Overview",
+          "de": "Netzwerkübersicht"
+        }
+      ],
+      "line": 192,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkSetup",
+      "className": "NetworkOverview"
+    },
+    {
+      "id": "mainmenu/setup/network/mount_setup",
+      "key": "mount_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "Network Mounts Overview",
+          "de": "Netzwerkfreigabeübersicht"
+        }
+      ],
+      "line": 193,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkMounts",
+      "className": "NetworkMountsOverview"
+    },
+    {
+      "id": "mainmenu/setup/network/dns_setup",
+      "key": "dns_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "DNS Settings",
+          "de": "DNS-Einstellungen"
+        }
+      ],
+      "line": 194,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkSetup",
+      "className": "DNSSettings"
+    },
+    {
+      "id": "mainmenu/setup/network/password_setup",
+      "key": "password_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "Password Settings",
+          "de": "Passwort einrichten"
+        }
+      ],
+      "line": 195,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkServices",
+      "className": "NetworkPassword"
+    },
+    {
+      "id": "mainmenu/setup/network/networkservices_setup",
+      "key": "networkservices_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "Network Services",
+          "de": "Netzwerkdienste"
+        }
+      ],
+      "line": 196,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkServices",
+      "className": "NetworkServicesSetup"
+    },
+    {
+      "id": "mainmenu/setup/network/Inadyn_setup",
+      "key": "Inadyn_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "Inadyn Settings",
+          "de": "Inadyn (DynDNS)"
+        }
+      ],
+      "line": 197,
+      "level": "2",
+      "requires": "inadyn",
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkServices",
+      "className": "NetworkInadynSetup"
+    },
+    {
+      "id": "mainmenu/setup/network/minidlna_setup",
+      "key": "minidlna_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "MiniDLNA Settings",
+          "de": "MiniDLNA-Medienserver"
+        }
+      ],
+      "line": 198,
+      "level": "2",
+      "requires": "minidlna",
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkServices",
+      "className": "NetworkMiniDLNASetup"
+    },
+    {
+      "id": "mainmenu/setup/network/netushare_setup",
+      "key": "netushare_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "uShare Settings",
+          "de": "uShare-Medienserver"
+        }
+      ],
+      "line": 199,
+      "level": "2",
+      "requires": "ushare",
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkServices",
+      "className": "NetworkuShareSetup"
+    },
+    {
+      "id": "mainmenu/setup/network/netnfs_setup",
+      "key": "netnfs_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "NFS Server Settings",
+          "de": "NFS-Dateiserver"
+        }
+      ],
+      "line": 200,
+      "level": "2",
+      "requires": "nfsserver",
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkServices",
+      "className": "NetworkNFSSetup"
+    },
+    {
+      "id": "mainmenu/setup/network/netsamba_setup",
+      "key": "netsamba_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "Samba Server Settings",
+          "de": "Samba"
+        }
+      ],
+      "line": 201,
+      "level": "2",
+      "requires": "samba",
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkServices",
+      "className": "NetworkSambaSetup"
+    },
+    {
+      "id": "mainmenu/setup/network/zerotier_setup",
+      "key": "zerotier_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "Network",
+          "de": "Netzwerk"
+        },
+        {
+          "en": "ZeroTier Settings",
+          "de": "ZeroTier-Einstellungen"
+        }
+      ],
+      "line": 202,
+      "level": "2",
+      "requires": "zerotier",
+      "conditional": null,
+      "setup": null,
+      "module": "NetworkServices",
+      "className": "NetworkZeroTierSetup"
+    },
+    {
+      "id": "mainmenu/setup/extended",
+      "key": "extended",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        }
+      ],
+      "line": 205,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/extended/harddisk",
+      "key": "harddisk",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        },
+        {
+          "en": "Storage Devices",
+          "de": "Datenträger"
+        }
+      ],
+      "line": 207,
+      "level": "0",
+      "requires": "Harddisk",
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/extended/harddisk/device_manager",
+      "key": "device_manager",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        },
+        {
+          "en": "Storage Devices",
+          "de": "Datenträger"
+        },
+        {
+          "en": "Device Manager",
+          "de": "Geräteverwaltung"
+        }
+      ],
+      "line": 208,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "DeviceManager",
+      "className": "DeviceManager"
+    },
+    {
+      "id": "mainmenu/setup/extended/harddisk/swap_manager",
+      "key": "swap_manager",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        },
+        {
+          "en": "Storage Devices",
+          "de": "Datenträger"
+        },
+        {
+          "en": "Swap Manager",
+          "de": "Swap-Verwaltung"
+        }
+      ],
+      "line": 209,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "SwapManager",
+      "className": "Swap"
+    },
+    {
+      "id": "mainmenu/setup/extended/harddisk/flash_expander",
+      "key": "flash_expander",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        },
+        {
+          "en": "Storage Devices",
+          "de": "Datenträger"
+        },
+        {
+          "en": "Flash Expander",
+          "de": "Flash-Expander"
+        }
+      ],
+      "line": 210,
+      "level": "2",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "FlashExpander",
+      "className": "FlashExpander"
+    },
+    {
+      "id": "mainmenu/setup/extended/hdmicec",
+      "key": "hdmicec",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        },
+        {
+          "en": "HDMI-CEC Settings",
+          "de": "HDMI-CEC-Einstellungen"
+        }
+      ],
+      "line": 212,
+      "level": "0",
+      "requires": "HDMICEC",
+      "conditional": null,
+      "setup": null,
+      "module": "HDMICEC",
+      "className": "HDMICECSetup"
+    },
+    {
+      "id": "mainmenu/setup/extended/script_manager",
+      "key": "script_manager",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        },
+        {
+          "en": "Script Manager",
+          "de": "Skriptverwaltung"
+        }
+      ],
+      "line": 213,
+      "level": "1",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "ScriptRunner",
+      "className": "ScriptRunner"
+    },
+    {
+      "id": "mainmenu/setup/extended/time_setup",
+      "key": "time_setup",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        },
+        {
+          "en": "Time Settings",
+          "de": "Zeit"
+        }
+      ],
+      "line": 214,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Time",
+      "className": "Time"
+    },
+    {
+      "id": "mainmenu/setup/extended/logs_setup",
+      "key": "logs_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        },
+        {
+          "en": "Logs Settings",
+          "de": "Logs"
+        }
+      ],
+      "line": 215,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": "Logs",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/extended/rfmod_setup",
+      "key": "rfmod_setup",
+      "kind": "setup",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        },
+        {
+          "en": "RF Output Settings",
+          "de": "RF-Ausgang"
+        }
+      ],
+      "line": 216,
+      "level": "1",
+      "requires": "RfModulator",
+      "conditional": null,
+      "setup": "RFModulator",
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/setup/extended/factory_reset",
+      "key": "factory_reset",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Setup",
+          "de": "Einstellungen"
+        },
+        {
+          "en": "System",
+          "de": "System"
+        },
+        {
+          "en": "Factory Reset",
+          "de": "Werkseinstellungen"
+        }
+      ],
+      "line": 217,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "FactoryReset",
+      "className": "FactoryReset"
+    },
+    {
+      "id": "mainmenu/shutdown",
+      "key": "shutdown",
+      "kind": "menu",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        }
+      ],
+      "line": 221,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/shutdown/deep_standby",
+      "key": "deep_standby",
+      "kind": "code",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "Deep Standby",
+          "de": "Herunterfahren"
+        }
+      ],
+      "line": 222,
+      "level": "0",
+      "requires": "DeepstandbySupport",
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/shutdown/shutdown",
+      "key": "shutdown",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "Shutdown",
+          "de": "Herunterfahren"
+        }
+      ],
+      "line": 233,
+      "level": "0",
+      "requires": "!DeepstandbySupport",
+      "conditional": null,
+      "setup": null,
+      "module": "Standby",
+      "className": "TryQuitMainloop"
+    },
+    {
+      "id": "mainmenu/shutdown/multiboot",
+      "key": "multiboot",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "MultiBoot Manager",
+          "de": "MultiBoot-Verwaltung"
+        }
+      ],
+      "line": 175,
+      "level": "0",
+      "requires": "canMultiBoot",
+      "conditional": null,
+      "setup": null,
+      "module": "MultiBootManager",
+      "className": "MultiBootManager"
+    },
+    {
+      "id": "mainmenu/shutdown/kexec_multiboot",
+      "key": "kexec_multiboot",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "Enable Kexec MultiBoot",
+          "de": "Kexec MultiBoot einschalten"
+        }
+      ],
+      "line": 235,
+      "level": "2",
+      "requires": "cankexec",
+      "conditional": null,
+      "setup": null,
+      "module": "MultiBootManager",
+      "className": "KexecInit"
+    },
+    {
+      "id": "mainmenu/shutdown/chkroot_multiboot",
+      "key": "chkroot_multiboot",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "Enable Chkroot MultiBoot",
+          "de": "Chkroot MultiBoot aktivieren"
+        }
+      ],
+      "line": 236,
+      "level": "2",
+      "requires": "canchkroot",
+      "conditional": null,
+      "setup": null,
+      "module": "MultiBootManager",
+      "className": "ChkrootInit"
+    },
+    {
+      "id": "mainmenu/shutdown/wol_standby",
+      "key": "wol_standby",
+      "kind": "code",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "WOL Standby",
+          "de": "WOL-Standby"
+        }
+      ],
+      "line": 238,
+      "level": "0",
+      "requires": "GBWOL",
+      "conditional": null,
+      "setup": null,
+      "module": null,
+      "className": null
+    },
+    {
+      "id": "mainmenu/shutdown/standby",
+      "key": "standby",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "Standby",
+          "de": "Standby"
+        }
+      ],
+      "line": 249,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Standby",
+      "className": "Standby"
+    },
+    {
+      "id": "mainmenu/shutdown/sleep",
+      "key": "sleep",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "Sleep Timer",
+          "de": "Ausschalttimer"
+        }
+      ],
+      "line": 250,
+      "level": "0",
+      "requires": "DeepstandbySupport",
+      "conditional": null,
+      "setup": null,
+      "module": "SleepTimer",
+      "className": "SleepTimer"
+    },
+    {
+      "id": "mainmenu/shutdown/restart",
+      "key": "restart",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "Reboot",
+          "de": "Neu starten"
+        }
+      ],
+      "line": 251,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Standby",
+      "className": "TryQuitMainloop"
+    },
+    {
+      "id": "mainmenu/shutdown/restart_enigma",
+      "key": "restart_enigma",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "Restart GUI",
+          "de": "Bedienoberfläche neu starten"
+        }
+      ],
+      "line": 252,
+      "level": "0",
+      "requires": null,
+      "conditional": null,
+      "setup": null,
+      "module": "Standby",
+      "className": "TryQuitMainloop"
+    },
+    {
+      "id": "mainmenu/shutdown/maintenance_mode",
+      "key": "maintenance_mode",
+      "kind": "screen",
+      "path": [
+        {
+          "en": "Main Menu",
+          "de": "Hauptmenü"
+        },
+        {
+          "en": "Standby / Restart",
+          "de": "Standby / Neu starten"
+        },
+        {
+          "en": "Recovery Mode",
+          "de": "Wartungsmodus"
+        }
+      ],
+      "line": 253,
+      "level": "0",
+      "requires": "RecoveryMode",
+      "conditional": null,
+      "setup": null,
+      "module": "Standby",
+      "className": "TryQuitMainloop"
     }
   ]
 }

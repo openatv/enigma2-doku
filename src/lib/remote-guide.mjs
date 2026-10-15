@@ -15,8 +15,8 @@ export const eventText = (flags, lang) => [...flags].map(flag => eventLabels[lan
 
 export function locationText([x, y], lang) {
   const zones = lang === 'de'
-    ? ['Ganz oben', 'Symbolreihe unter POWER', 'Ziffernblock', 'Neben der 0', 'Farbtastenreihe', 'Oberhalb des Steuerkreuzes', 'Steuerkreuz', 'Unterhalb des Steuerkreuzes', 'Lautstärke-/Senderbereich', 'Wiedergabereihe', 'Untere Funktionstasten']
-    : ['At the very top', 'Symbol row below POWER', 'Number pad', 'Beside 0', 'Colour button row', 'Above the navigation ring', 'Navigation ring', 'Below the navigation ring', 'Volume/channel area', 'Playback row', 'Bottom function row'];
+    ? ['Ganz oben', 'Symbolreihe unter POWER', 'Ziffernblock', 'Reihe der 0', 'Farbtastenreihe', 'Oberhalb des Steuerkreuzes', 'Steuerkreuz', 'Unterhalb des Steuerkreuzes', 'Lautstärke-/Senderbereich', 'Wiedergabereihe', 'Untere Funktionstasten']
+    : ['At the very top', 'Symbol row below POWER', 'Number pad', 'Row containing 0', 'Colour button row', 'Above the navigation ring', 'Navigation ring', 'Below the navigation ring', 'Volume/channel area', 'Playback row', 'Bottom function row'];
   const limits = [30, 50, 115, 135, 155, 173, 228, 242, 300, 325, Infinity];
   const zone = zones[limits.findIndex(limit => y <= limit)];
   const side = x < 50 ? (lang === 'de' ? 'links' : 'left') : x > 90 ? (lang === 'de' ? 'rechts' : 'right') : (lang === 'de' ? 'mittig' : 'centre');
@@ -31,21 +31,38 @@ export function compileGuide(reference, definitions, lang) {
     const { printedLabels = {}, buttonNames = {}, unmappedButtons = [] } = handsets[model.remote] || {};
     const buttons = remote.buttons.map(button => ({ ...button, label: printedLabels[button.id] || button.xmlLabel, name: buttonNames[button.id]?.[lang] || printedLabels[button.id] || button.xmlLabel, key: remapKey(button.id, model.remaps), location: locationText(button.position, lang) }));
     buttons.push(...unmappedButtons.map(button => ({ ...button, label: button.label[lang], name: button.label[lang], key: null, location: locationText(button.position, lang) })));
-    return { ...model, image: remote.image, width: remote.width, height: remote.height, buttons, screens: screens.map(screen => {
+    const profiles = screens.map(screen => {
       const rules = [...screen.rules, ...globals.filter(rule => !screen.powerBlocked || rule.action !== 'power_long')];
       const entries = buttons.map(button => {
         const actions = rules.flatMap(rule => {
-          const evidence = reference.sources[rule.source.file]?.classes[rule.source.className];
-          if (!evidence || (rule.method && !evidence.methods[rule.method])) throw new Error(`Missing evidence: ${screen.id} / ${rule.source.className}.${rule.method}`);
+          const source = reference.sources[rule.source.file];
+          const evidence = source?.classes[rule.source.className];
+          const line = rule.source.symbol ? source?.functions?.[rule.source.symbol] : (rule.method ? evidence?.methods[rule.method] : evidence?.line);
+          if (!line) throw new Error(`Missing evidence: ${screen.id} / ${rule.source.symbol || rule.source.className + '.' + rule.method}`);
           const matches = reference.bindings.filter(binding => binding.context === rule.context && binding.action === rule.action && binding.key === button.key && (!rule.keys || rule.keys.includes(binding.key)));
-          return matches.map(binding => ({ flags: binding.flags, event: eventText(binding.flags, lang), text: rule.text[lang], condition: rule.condition?.[lang], global: rule.global || false, context: rule.context, action: rule.action, source: sourceURL(rule.source.file, evidence.methods[rule.method] || evidence.line) }));
+          return matches.map(binding => ({ flags: binding.flags, event: eventText(binding.flags, lang), text: rule.text[lang], condition: rule.condition?.[lang], native: binding.origin === 'native', global: rule.global || false, context: rule.context, action: rule.action, source: sourceURL(rule.source.file, line) }));
         });
         return { id: button.id, actions };
       });
-      return { id: screen.id, label: screen.label[lang], description: screen.description[lang], powerBlocked: screen.powerBlocked || false, entries };
-    }) };
+      return { id: screen.id, label: screen.label[lang], path: screen.path?.[lang] || screen.label[lang], description: screen.description[lang], powerBlocked: screen.powerBlocked || false, entries };
+    });
+    const locations = (reference.menu || []).flatMap(item => {
+      const profileId = item.kind === 'menu' ? 'menu' : item.kind === 'setup' ? 'setup' : definitions.menuProfiles?.[`${item.module}.${item.className}`];
+      const profile = profiles.find(profile => profile.id === profileId);
+      if (!profile) return [];
+      const path = item.path.map(part => part[lang]).join(' → ');
+      const availability = lang === 'de' ? 'Sichtbarkeit hängt von Einstellungsstufe, Hardware und installierten Funktionen ab.' : 'Visibility depends on setup level, hardware and installed features.';
+      return [{ ...profile, id: `route-${item.id.replaceAll('/', '-')}`, profile: profile.id, path, label: item.path.at(-1)[lang], description: `${profile.description} ${availability}`, menuSource: sourceURL('data/menu.xml', item.line) }];
+    });
+    return { ...model, image: remote.image, width: remote.width, height: remote.height, buttons, screens: [...profiles, ...locations] };
   });
 }
+
+// Route aliases share the reviewed profile at runtime instead of shipping each
+// button/action table again for every Setup page in menu.xml.
+export const packModels = models => models.map(model => ({ ...model, screens: model.screens.map(screen => screen.profile ? { ...screen, entries: undefined } : screen) }));
+export const hydrateModels = models => models.map(model => ({ ...model, screens: model.screens.map(screen => screen.profile ? { ...screen, entries: model.screens.find(profile => profile.id === screen.profile).entries } : screen) }));
+export const matchesScreen = (screen, query) => normalise(query).split(' ').filter(Boolean).every(term => normalise(`${screen.path} ${screen.label}`).includes(term));
 
 export function matchesSearch(button, entry, query) {
   const terms = normalise(query).split(' ').filter(Boolean);

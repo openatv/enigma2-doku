@@ -1,22 +1,14 @@
 // Reviewed screen contracts. keymap flags and physical positions come from the
 // generated reference; these descriptions deliberately do not union ActionMaps.
-const tr = (de, en) => ({ de, en });
-const group = (file, className, context, rows) => rows.map(([action, method, de, en, extra = {}]) => ({ context, action, method, text: tr(de, en), source: { file: `lib/python/${file}.py`, className }, ...extra }));
+import { tr, group, conditional, numbers, nav } from './remote-contracts.mjs';
+import { createSubscreens } from './remote-submenus.mjs';
+export { menuProfiles } from './remote-submenus.mjs';
 const ig = (className, context, rows) => group('Screens/InfoBarGenerics', className, context, rows);
-const conditional = (de, en) => ({ condition: tr(de, en) });
-const numbers = (file, className, method, de, en) => group(file, className, 'NumberActions', Array.from({ length: 10 }, (_, i) => [String(i), method, de, en]));
-const nav = (file, className, methods = {}) => group(file, className, 'NavigationActions', [
-  ['top', methods.top || 'keyTop', 'Zum Listenanfang.', 'Go to the top of the list.'],
-  ['pageUp', methods.pageUp || 'keyPageUp', 'Eine Seite nach oben.', 'Move up one page.'],
-  ['up', methods.up || 'keyUp', 'Eine Zeile nach oben.', 'Move up one row.'],
-  ['down', methods.down || 'keyDown', 'Eine Zeile nach unten.', 'Move down one row.'],
-  ['pageDown', methods.pageDown || 'keyPageDown', 'Eine Seite nach unten.', 'Move down one page.'],
-  ['bottom', methods.bottom || 'keyBottom', 'Zum Listenende.', 'Go to the bottom of the list.'],
-]);
 const configurable = conditional('Abhängig von den Fernbedienungs-/OSD-Einstellungen und eigenen Hotkeys.', 'Depends on remote/OSD settings and custom hotkeys.');
 const colours = ['red', 'green', 'yellow', 'blue'];
 
 export const globals = [
+  { context: 'NativeOSD', action: 'toggleAutoHidePause', text: tr('Automatisches Ausblenden des OSD pausieren; erneut lange 0 drücken zum Fortsetzen. Die Pause gilt bis zum nächsten GUI-Neustart.', 'Pause automatic OSD hiding; hold 0 again to resume. The pause lasts until the next GUI restart.'), source: { file: 'lib/driver/avcontrol.cpp', symbol: 'eAVControl::handleOSDKey' }, ...conditional('Nur bei aktiviertem „OSD automatisch ausblenden“ und unterstützter OSD-Transparenz. Der kurze 0-Befehl wird dabei nicht ausgeführt.', 'Requires Automatically hide OSD to be enabled and OSD alpha support. The short 0 action is suppressed.') },
   ...group('Screens/VolumeControl', 'VolumeControl', 'GlobalActions', [
     ['volumeUp', 'keyVolumeUp', 'Lauter; beim Halten wiederholen.', 'Increase volume; holding repeats.'],
     ['volumeDown', 'keyVolumeDown', 'Leiser; beim Halten wiederholen.', 'Decrease volume; holding repeats.'],
@@ -54,7 +46,7 @@ const mediaCommon = [
   ]),
 ];
 
-export const screens = [
+const baseScreens = [
   {
     id: 'tv', label: tr('Fernsehen / Infobar', 'Live TV / Infobar'),
     description: tr('Normales Fernsehen ohne geöffneten Dialog, Timeshift oder PiP-Bedienmodus. Eigene Hotkeys können die Belegung ändern.', 'Normal live TV without an open dialog, timeshift or PiP control mode. Custom hotkeys can override these assignments.'),
@@ -372,3 +364,5 @@ export const unmappedButtons = [{ id: 'TV_POWER', label: tr('Rote Power-Taste ob
 // Printed-label corrections and extra visible controls belong to the handset.
 // Another receiver may reuse vu6 with different model-specific remaps.
 export const handsets = { vu6: { printedLabels, buttonNames, unmappedButtons } };
+
+export const screens = [...baseScreens, ...createSubscreens(baseScreens)];

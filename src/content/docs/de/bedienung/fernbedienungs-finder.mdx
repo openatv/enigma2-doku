@@ -11,6 +11,30 @@ Das erste Muster enthält die **VU+ DUO 4K LITE**, Modellkennung **vuduo4klite**
 
 <RemoteExplorer lang="de" />
 
+## Auch in Untermenüs die richtige Taste finden
+
+Die Auswahl umfasst **38 Dialogzustände und 54 konkrete Menüpfade**. Mit der Menüpfadsuche findest du auch tiefere Ebenen wie **Einstellungen → Softwareverwaltung → Erweiterte Optionen → Paket-Manager** oder **Einstellungen → System → Datenträger → Geräteverwaltung**. Wähle danach bei Bedarf den geöffneten Unterdialog, etwa **Einhängepunkte**, **Geräteaktion vorbereiten**, **Server-Zugangsdaten** oder **Aufnahmetimer bearbeiten**.
+
+Ein Suchlauf hat getrennte Zustände für **läuft** und **Ergebnisliste**: Erst nach Abschluss wählt OK einen gefundenen Sender. Im **Plugin-Browser: Bearbeiten** verändert Rot die Sortierung; in der normalen Plugin-Auswahl öffnet Rot dagegen die Entfernung. Bei **DNS-Einstellungen** verschiebt Gelb einen Server, beim **Root-Passwort** erzeugt Gelb ein zufälliges Passwort. Die allgemeine Setup-Tabelle reicht für solche Unterschiede nicht aus.
+
+**Kontextmenü / weitere Auswahl** erklärt die nächste Ebene nach MENU, beispielsweise in der Netzwerkübersicht. Diese ChoiceBox erzeugt ihre Ziffern- und Farbzuordnungen direkt aus den angebotenen Einträgen. Maßgeblich ist die Markierung neben dem Eintrag; Rot muss dort nicht Abbrechen bedeuten. Die Menüpfade richten sich nach dem normalen Listenmenü. Einstellungsstufe, Hardware, Skin und installierte Plugins bestimmen, welche Einträge deine Box tatsächlich anzeigt.
+
+<span id="native-keys" />
+
+## Globale Funktionen aus C/C++: 0 lang und OSD
+
+**0 lang** pausiert das automatische Ausblenden des OSD. Halte **0 erneut**, um es wieder zu aktivieren. Voraussetzung ist **Menü → Einstellungen → Bedienung / Oberfläche → OSD → OSD automatisch ausblenden** und die Unterstützung der OSD-Transparenz durch die Hardware. Die vorübergehende Pause endet spätestens beim nächsten GUI-Neustart; die gespeicherte Einstellung wird dadurch nicht ausgeschaltet.
+
+Diese Funktion steht direkt in `eAVControl::handleOSDKey()` und wird **vor den normalen Bildschirm-ActionMaps** verarbeitet. Deshalb erscheint sie im Finder bei allen erfassten Bildschirmen, auch bei Eingabefeldern und Rückfragen. Eine Suche nur nach `flags="l"` in `keymap.xml` würde sie übersehen.
+
+Bei aktiviertem OSD-Auto-Hide gelten außerdem diese Regeln:
+
+- **OSD sichtbar, 0 kurz:** Die normale 0-Aktion wird erst beim Loslassen nachgereicht, etwa eine Zifferneingabe oder der Rücksprung zum vorherigen Sender.
+- **0 lang:** Nur die OSD-Pause wird umgeschaltet. Die kurze 0-Aktion wird unterdrückt; sie darf dabei weder zappen noch eine Ziffer eingeben.
+- **OSD bereits ausgeblendet:** Die erste Taste stellt nur die Anzeige wieder her. Auch Wiederholung, Langdruck und Loslassen dieses Aufweck-Tastendrucks werden abgefangen. Für die eigentliche Bildschirmaktion die Taste erneut betätigen. Die 0 besitzt zusätzlich die oben erklärte besondere Langdruck-Funktion.
+
+Das Ausblenden beendet keinen Dialog und stoppt keine Hintergrundaufgabe. Neu geöffnete Dialoge machen das OSD wieder sichtbar. Quellnachweise: [native OSD-Tastenverarbeitung](https://github.com/openatv/enigma2/blob/6588fdc15f040293d212dc15ec63194e82c8269f/lib/driver/avcontrol.cpp#L972), [Vorrang vor ActionMaps](https://github.com/openatv/enigma2/blob/6588fdc15f040293d212dc15ec63194e82c8269f/lib/actions/action.cpp#L219) und [Einstellung und Pausenmeldung](https://github.com/openatv/enigma2/blob/6588fdc15f040293d212dc15ec63194e82c8269f/lib/python/Components/AVSwitch.py#L274).
+
 ## Die Tasten auf dieser Fernbedienung finden
 
 - **POWER für den Receiver** sitzt ganz oben rechts. Die rote Taste oben links ist eine andere Taste und hat in der geprüften Remote-XML keine Enigma2-Zuordnung.
@@ -33,6 +57,8 @@ Die beiden im Bild sichtbaren Tasten **AV** und **rote POWER oben links** werden
 | Loslassen nach Langdruck | Abschluss einer langen Betätigung, z. B. Rückkehr zur normalen Lautstärkeschrittweite. |
 
 Die Eingabeverarbeitung unterscheidet den kurzen Release von **Stop nach erkanntem Langdruck**. Deshalb führt das Loslassen nach einem langen Tastendruck nicht automatisch zusätzlich die kurze Release-Aktion aus. Schon beim Drücken oder durch Wiederholung ausgelöste Aktionen können vorher trotzdem gelaufen sein. Zwei kurze Betätigungen sind wiederum etwas anderes: **MENU → MENU** öffnet erst das Hauptmenü und danach dessen OSD-Einstellungen.
+
+Auch die **Erkennung des Langdrucks** erfolgt zentral in C++: `main/enigma.cpp` erzeugt ihn aus Wiederholungsereignissen derselben Taste. Deshalb beeinflussen Fernbedienung und Wiederholungseinstellungen die Haltedauer. Unter **Fernbedienungseinstellungen → Emulation 'Langer-Druck' mit Taste** kannst du außerdem eine Vorschalttaste bestimmen: diese drücken, dann innerhalb von zehn Sekunden die Zieltaste auf derselben Fernbedienung drücken. Enigma2 erzeugt dafür einen Langdruck. Die Vorschalttaste verliert dabei ihre sonstige Funktion, weil dieser globale Handler sie vorher abfängt. Der Finder geht wie die Standardkonfiguration von ausgeschalteter Emulation aus. Bei der VU+-Fernbedienung gelten dabei die logischen Codes: gedrucktes HELP liefert INFO, gedrucktes EPG liefert EPG. [C++-Erkennung und Emulation](https://github.com/openatv/enigma2/blob/6588fdc15f040293d212dc15ec63194e82c8269f/main/enigma.cpp#L72).
 
 ## Derselbe Knopf, eine andere Aufgabe
 
@@ -61,6 +87,6 @@ Lautstärke, Stumm und POWER besitzen globale Handler. Ein Bildschirm kann Taste
 
 Das Muster verbindet vier Ebenen: **Modell → Fernbedienungsbild und Tastenposition → umgeschlüsselter Tastencode → Aktion im aktiven Bildschirm**. Für vuduo4klite aktiviert `configure.ac` unter anderem `KEY_INFO_TO_KEY_EPG` und `KEY_HELP_TO_KEY_INFO`. `lib/driver/rcinput.cpp` verarbeitet sie in einer festgelegten Reihenfolge: HELP wird zu INFO, aber anschließend nicht noch einmal zu EPG. Eine aktive eigene Remap-Tabelle hat einen separaten Verarbeitungspfad.
 
-`data/keymap.xml` liefert die Ereignisflags und Aktionsnamen. Welche davon wirklich gelten, entscheiden die ActionMaps, ihre Priorität, der Fokus, `setEnabled()` und die Python-Handler des jeweiligen Screens. Der Finder verwendet deshalb geprüfte Bildschirmprofile statt sämtliche Keymap-Kontexte zusammenzuwerfen. Die aufklappbare technische Zuordnung verlinkt jeweils den passenden Quellstand.
+`data/keymap.xml` liefert die Ereignisflags und Aktionsnamen. Hinzu kommen native C/C++-Handler, dynamisch erzeugte Python-Zuordnungen und die native Listensteuerung. Welche Bildschirmaktionen wirklich gelten, entscheiden die ActionMaps, ihre Priorität, der Fokus, `setEnabled()` und die Handler. `data/menu.xml` liefert die verschachtelten Menüpfade, die deutsche Übersetzung kommt aus `po/de.po`. Der Finder verwendet geprüfte Bildschirmprofile; nur nachweislich gemeinsame Dialoge teilen sich eine Tabelle. Die aufklappbare technische Zuordnung verlinkt jeweils den passenden Quellstand.
 
 Referenz: [OpenATV Enigma2 6588fdc15f04](https://github.com/openatv/enigma2/tree/6588fdc15f040293d212dc15ec63194e82c8269f), Bild und Positionen: [OE-Alliance remotes, vu6](https://github.com/oe-alliance/remotes/tree/b5b834663e07f6c0ebc9fce90d0084036523044e). Das unveränderte Bild und die Remote-XML stammen aus diesem unter **GPLv3** veröffentlichten Bestand. Das Muster ist gegen diese Quellen geprüft; ein Abgleich jeder Taste mit einer physischen vuduo4klite-Fernbedienung steht für den Review noch aus.

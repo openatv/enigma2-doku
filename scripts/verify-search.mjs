@@ -31,6 +31,12 @@ const checks = [
   ]),
   ['de', 'Fernbedienungs-Finder', '/de/bedienung/fernbedienungs-finder/'],
   ['en', 'remote control finder', '/en/bedienung/fernbedienungs-finder/'],
+  ['de', '0 lang', '/de/bedienung/fernbedienungs-finder/'],
+  ['en', 'hold 0', '/en/bedienung/fernbedienungs-finder/'],
+  ['de', 'Server-Zugangsdaten', '/de/bedienung/fernbedienungs-finder/'],
+  ['en', 'Server Credentials', '/en/bedienung/fernbedienungs-finder/'],
+  ['de', 'Kontextmenü weitere Auswahl', '/de/bedienung/fernbedienungs-finder/'],
+  ['en', 'Context Menu Further Choices', '/en/bedienung/fernbedienungs-finder/'],
   ...['de', 'en'].flatMap(lang => [
     [lang, 'attributes per native widget', `/${lang}/developers/skinning/api/widgets/`],
     [lang, 'ePixmap', `/${lang}/developers/skinning/api/widgets/`],

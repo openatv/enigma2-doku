@@ -3,7 +3,7 @@ import { createHash } from 'node:crypto';
 import { readFile } from 'node:fs/promises';
 import test from 'node:test';
 import * as definitions from '../data/remote-guide.mjs';
-import { compileGuide, eventText, matchesSearch, readSelection, remapKey } from '../src/lib/remote-guide.mjs';
+import { compileGuide, eventText, hydrateModels, matchesScreen, matchesSearch, packModels, readSelection, remapKey } from '../src/lib/remote-guide.mjs';
 
 const reference = JSON.parse(await readFile(new URL('../data/remote-reference.json', import.meta.url), 'utf8'));
 const guides = Object.fromEntries(['de', 'en'].map(lang => [lang, compileGuide(reference, definitions, lang)]));
@@ -38,12 +38,15 @@ test('every editorial contract has a keymap binding and source evidence in both 
     assert.ok(reference.bindings.some(binding => binding.context === rule.context && binding.action === rule.action), `${rule.context}/${rule.action}`);
     const source = reference.sources[rule.source.file];
     assert.match(source.sha256, /^[a-f0-9]{64}$/);
-    const owner = source.classes[rule.source.className];
-    assert.ok(owner);
-    if (rule.method) assert.ok(owner.methods[rule.method], `${rule.source.className}.${rule.method}`);
+    if (rule.source.symbol) assert.ok(source.functions[rule.source.symbol]);
+    else {
+      const owner = source.classes[rule.source.className];
+      assert.ok(owner);
+      if (rule.method) assert.ok(owner.methods[rule.method], `${rule.source.className}.${rule.method}`);
+    }
   }
   for (const lang of ['de', 'en']) {
-    assert.equal(guides[lang][0].screens.length, 9);
+    assert.ok(guides[lang][0].screens.length > 80);
     assert.equal(guides[lang][0].buttons.length, 46);
     for (const screen of guides[lang][0].screens) for (const row of screen.entries) for (const action of row.actions) {
       assert.match(action.flags, /^[mbrls]+$/);
@@ -51,6 +54,56 @@ test('every editorial contract has a keymap binding and source evidence in both 
       assert.ok(action.source.includes(reference.enigmaRevision));
     }
   }
+});
+
+test('native C++ zero-long is global, conditional and linked to its real handler', () => {
+  const native = reference.bindings.find(binding => binding.context === 'NativeOSD');
+  assert.equal(native.origin, 'native');
+  assert.equal(native.key, 'KEY_0');
+  assert.equal(native.flags, 'l');
+  for (const screen of guides.en[0].screens) {
+    const zero = screen.entries.find(entry => entry.id === 'KEY_0').actions;
+    const hold = zero.find(action => action.flags === 'l');
+    assert.ok(hold?.native && hold.global, screen.id);
+    assert.match(hold.condition, /Requires Automatically hide OSD/);
+    assert.match(hold.text, /hold 0 again/);
+    assert.match(hold.source, /lib\/driver\/avcontrol.cpp#L\d+/);
+  }
+});
+
+test('deep menu paths remain distinct, searchable and share profiles without duplicated payloads', () => {
+  const model = guides.de[0];
+  const logs = model.screens.find(screen => screen.id === 'route-mainmenu-setup-extended-logs_setup');
+  assert.equal(logs.profile, 'setup');
+  assert.ok(matchesScreen(logs, 'system logs'));
+  const epg = model.screens.find(screen => screen.id === 'route-mainmenu-setup-epg-setup_epggraphical');
+  assert.equal(epg.profile, 'setup');
+  assert.match(epg.menuSource, /data\/menu.xml#L\d+/);
+  const raw = JSON.parse(JSON.stringify(packModels(guides.de)));
+  assert.ok(raw[0].screens.filter(screen => screen.profile).every(screen => !screen.entries));
+  const hydrated = hydrateModels(raw);
+  assert.deepEqual(readSelection(hydrated, `?screen=${logs.id}&key=KEY_0`).screen.entries, JSON.parse(JSON.stringify(logs.entries)));
+  assert.ok(!model.screens.some(screen => screen.id.includes('flash_online'))); // No guessed Setup mapping.
+  assert.equal(new Set(model.screens.map(screen => screen.id)).size, model.screens.length);
+});
+
+test('subdialog states override parent shortcuts and distinguish running and finished operations', () => {
+  const actions = (screen, key) => entry(screen, key).actions.filter(action => !action.global).map(action => action.action);
+  assert.deepEqual(actions('scan-running', 'KEY_OK'), []);
+  assert.deepEqual(actions('scan-finished', 'KEY_OK'), ['ok']);
+  assert.deepEqual(actions('manual-scan', 'KEY_OK'), ['ok']);
+  assert.deepEqual(actions('manual-scan', 'KEY_MENU'), ['menu']);
+  assert.deepEqual(actions('tuner-config', 'KEY_YELLOW'), ['changetype']);
+  assert.match(entry('tuner-config', 'KEY_BLUE').actions[0].text, /Reset unsaved/);
+  assert.match(entry('tuner-list', 'KEY_LEFT').actions[0].source, /lib\/gui\/elistbox.cpp/);
+  assert.deepEqual(actions('network-adapter', 'KEY_HELP'), ['info']);
+  assert.deepEqual(actions('network-password', 'KEY_YELLOW'), ['yellow']);
+  assert.match(entry('network-password', 'KEY_YELLOW').actions[0].text, /random password/i);
+  assert.match(entry('dns', 'KEY_YELLOW').actions[0].text, /Move DNS/);
+  assert.match(entry('plugins', 'KEY_RED').actions[0].text, /removal/);
+  assert.match(entry('plugins-edit', 'KEY_RED').actions[0].text, /sort order/);
+  assert.equal(entry('network', 'KEY_EXIT').actions.find(action => action.action === 'close').flags, 'l');
+  assert.equal(entry('timer-log', 'KEY_EXIT').actions.some(action => action.flags === 'l'), false);
 });
 
 test('printed HELP and EPG stay distinct across screen contexts', () => {

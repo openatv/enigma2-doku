@@ -1,14 +1,17 @@
-import { eventLabels, matchesSearch, normalise, readSelection } from '../lib/remote-guide.mjs';
+import { eventLabels, hydrateModels, matchesScreen, matchesSearch, normalise, readSelection } from '../lib/remote-guide.mjs';
 
 export function initRemoteExplorers() {
   for (const root of document.querySelectorAll('[data-remote-explorer]')) {
     if (root.dataset.ready) continue;
     root.dataset.ready = 'true';
-    const { models, labels, lang, base } = JSON.parse(root.querySelector('[data-remote-data]').textContent);
+    const data = JSON.parse(root.querySelector('[data-remote-data]').textContent);
+    const { labels, lang, base } = data;
+    const models = hydrateModels(data.models);
     const $ = selector => root.querySelector(selector);
     const modelInput = $('#remote-model-search');
     const modelSelect = $('#remote-model');
     const screenSelect = $('#remote-screen');
+    const screenInput = $('#remote-screen-search');
     const functionInput = $('#remote-function-search');
     const detail = $('[data-remote-detail]');
     const list = $('[data-remote-list]');
@@ -48,6 +51,7 @@ export function initRemoteExplorers() {
       detail.append(title, element('p', button.location));
       if (!button.key) detail.append(element('p', labels.unmapped));
       else {
+        if (button.key === 'KEY_0') detail.append(element('p', labels.zero, 'remote-note'));
         if (screen.powerBlocked && button.key === 'KEY_POWER') detail.append(element('p', labels.blocked));
         for (const flag of ['m', 'b', 'l', 'r', 's']) {
           const actions = entry.actions.filter(action => action.flags.includes(flag));
@@ -58,7 +62,7 @@ export function initRemoteExplorers() {
           for (const action of actions) {
             block.append(element('p', action.text));
             if (action.condition) block.append(element('small', action.condition));
-            if (action.global) block.append(element('small', labels.global));
+            if (action.global) block.append(element('small', action.native ? labels.native : labels.global));
           }
           detail.append(block);
         }
@@ -101,7 +105,13 @@ export function initRemoteExplorers() {
     }
     function renderScreen() {
       screenSelect.value = screen.id;
-      $('[data-screen-description]').textContent = screen.description;
+      const description = $('[data-screen-description]');
+      description.replaceChildren(element('strong', screen.path), document.createTextNode(` — ${screen.description}`));
+      if (screen.menuSource) {
+        const sourceLink = element('a', labels.source);
+        sourceLink.href = screen.menuSource;
+        description.append(document.createTextNode(' · '), sourceLink);
+      }
       const picture = $('[data-remote-picture]');
       picture.replaceChildren();
       const image = element('img');
@@ -127,12 +137,28 @@ export function initRemoteExplorers() {
     }
     function renderModel() {
       modelSelect.value = model.id;
-      screenSelect.replaceChildren(...model.screens.map(item => {
-        const option = element('option', item.label);
-        option.value = item.id;
-        return option;
-      }));
-      renderScreen();
+      filterScreens();
+    }
+    function filterScreens() {
+      const matching = model.screens.filter(item => matchesScreen(item, screenInput.value));
+      screenSelect.replaceChildren();
+      for (const isRoute of [false, true]) {
+        const group = element('optgroup');
+        group.label = isRoute ? labels.routes : labels.profiles;
+        for (const item of matching.filter(item => Boolean(item.profile) === isRoute)) {
+          const option = element('option', item.path);
+          option.value = item.id;
+          group.append(option);
+        }
+        if (group.children.length) screenSelect.append(group);
+      }
+      screenSelect.disabled = !matching.length;
+      $('[data-screen-status]').textContent = matching.length ? `${matching.length} ${labels.screenCount}` : labels.noScreen;
+      $('[data-remote-workspace]').hidden = !matching.length || modelSelect.disabled;
+      if (matching.length) {
+        screen = matching.find(item => item.id === screen.id) || matching[0];
+        renderScreen();
+      }
     }
     function filterModels() {
       const query = normalise(modelInput.value).replaceAll(' ', '');
@@ -140,8 +166,9 @@ export function initRemoteExplorers() {
       for (const option of modelSelect.options) option.hidden = !matching.some(item => item.id === option.value);
       const found = matching.length > 0;
       modelSelect.disabled = !found;
-      screenSelect.disabled = !found;
-      $('[data-remote-workspace]').hidden = !found;
+      screenInput.disabled = !found;
+      screenSelect.disabled = !found || !screenSelect.options.length;
+      $('[data-remote-workspace]').hidden = !found || !screenSelect.options.length;
       $('[data-model-status]').textContent = found ? `${labels.modelCount}: ${matching.length}` : labels.noModel;
       if (found && !matching.some(item => item.id === model.id)) selectModel(matching[0].id);
     }
@@ -153,11 +180,12 @@ export function initRemoteExplorers() {
       updateURL();
     }
     modelInput.addEventListener('input', filterModels);
+    screenInput.addEventListener('input', () => { filterScreens(); if (screenSelect.options.length) updateURL(); });
     modelSelect.addEventListener('change', () => selectModel(modelSelect.value));
     screenSelect.addEventListener('change', () => { screen = model.screens.find(item => item.id === screenSelect.value); renderScreen(); updateURL(); });
     functionInput.addEventListener('input', renderList);
     $('[data-remote-reset]').addEventListener('click', () => { functionInput.value = ''; renderList(); functionInput.focus(); });
-    window.addEventListener('popstate', () => { ({ model, screen, button } = readSelection(models, location.search)); renderModel(); });
+    window.addEventListener('popstate', () => { ({ model, screen, button } = readSelection(models, location.search)); screenInput.value = ''; modelInput.value = ''; renderModel(); filterModels(); });
     renderModel();
     filterModels();
     $('[data-remote-ui]').hidden = false;

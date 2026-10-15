@@ -11,6 +11,30 @@ The first prototype covers **VU+ DUO 4K LITE**, model identifier **vuduo4klite**
 
 <RemoteExplorer lang="en" />
 
+## Find buttons inside submenus too
+
+The selection includes **38 dialog states and 54 concrete menu paths**. Search menu paths to find deeper levels such as **Setup → Software Management → Advanced Options → Package Manager** or **Setup → System → Storage Devices → Device Manager**. Then choose the open subdialog where needed: **Mount Points**, **Prepare Device Action**, **Server Credentials** or **Edit Recording Timer**, for example.
+
+Scanning has separate **running** and **results** states: OK selects a discovered service only after completion. In **Plugin Browser: Edit Mode**, red resets ordering; in normal plugin selection it opens removal. In **DNS Settings**, yellow moves a server; in **Set Root Password**, it generates a random password. The shared Setup table cannot describe these differences on its own.
+
+**Context Menu / Further Choices** describes the next level after MENU, for example in Network Overview. This ChoiceBox creates digit and colour shortcuts directly from its entries. Follow the marker beside each entry; red does not necessarily mean cancel. Menu paths assume the normal list-style menu. Setup level, hardware, skin and installed plugins determine which entries your receiver actually displays.
+
+<span id="native-keys" />
+
+## Global C/C++ functions: hold 0 and OSD
+
+**Hold 0** to pause automatic OSD hiding. **Hold 0 again** to resume it. This requires **Menu → Setup → Usage & GUI → OSD Settings → Automatically hide OSD** to be enabled and hardware support for OSD alpha. The temporary pause ends at the next GUI restart at the latest; it does not disable the saved setting.
+
+This function is implemented directly in `eAVControl::handleOSDKey()` and runs **before normal screen ActionMaps**. The finder therefore includes it in every reviewed screen, including input fields and confirmation dialogs. Searching only for `flags="l"` in `keymap.xml` would miss it.
+
+With OSD auto-hide enabled, these additional rules apply:
+
+- **OSD visible, short 0:** The normal 0 action is replayed only on release, such as entering a digit or recalling the previous channel.
+- **Long 0:** Only the OSD pause is toggled. The short 0 action is suppressed, so this must not zap or enter a digit.
+- **OSD already hidden:** The first button only restores the display. Repeat, long and release events belonging to that wake-up press are consumed too. Press again to perform the screen action. The 0 button additionally has the special long-press behaviour described above.
+
+Hiding the OSD does not close a dialog or stop background work. Newly opened dialogs restore visibility. Source evidence: [native OSD key handling](https://github.com/openatv/enigma2/blob/6588fdc15f040293d212dc15ec63194e82c8269f/lib/driver/avcontrol.cpp#L972), [precedence over ActionMaps](https://github.com/openatv/enigma2/blob/6588fdc15f040293d212dc15ec63194e82c8269f/lib/actions/action.cpp#L219) and [setting and pause notification](https://github.com/openatv/enigma2/blob/6588fdc15f040293d212dc15ec63194e82c8269f/lib/python/Components/AVSwitch.py#L274).
+
 ## Find the buttons on this remote
 
 - **Receiver POWER** is at the top right. The red button at the top left is a different control and has no Enigma2 assignment in the reviewed remote XML.
@@ -33,6 +57,8 @@ The visible **AV** and **red POWER at top left** controls are included without i
 | Release after long press | Finishes a long operation, e.g. restoring the normal volume step size. |
 
 The input dispatcher distinguishes a short release from **Stop after a recognised long press**. Releasing after a long press therefore does not automatically run the short release action as well. Actions already triggered on press or repeat may still have run. Two short presses are different again: **MENU → MENU** first opens the main menu and then its OSD settings.
+
+**Long-press detection** is also centralized in C++: `main/enigma.cpp` generates it from repeated events for the same button. The handset and repeat settings therefore affect how long you need to hold. **Remote Control Button Settings → Long press emulation with button** can assign a prefix button: press it, then press the target button within ten seconds on the same remote. Enigma2 generates a long press for that target. The prefix button loses its usual function because this global handler consumes it first. The finder assumes emulation is disabled, as in the default configuration. Logical keycodes apply on this VU+ remote: printed HELP sends INFO, printed EPG sends EPG. [C++ detection and emulation](https://github.com/openatv/enigma2/blob/6588fdc15f040293d212dc15ec63194e82c8269f/main/enigma.cpp#L72).
 
 ## One button, different jobs
 
@@ -61,6 +87,6 @@ Volume, mute and POWER have global handlers. A screen can intercept buttons or b
 
 This prototype connects four layers: **model → remote picture and button position → remapped keycode → action in the active screen**. For vuduo4klite, `configure.ac` enables `KEY_INFO_TO_KEY_EPG` and `KEY_HELP_TO_KEY_INFO`, among others. `lib/driver/rcinput.cpp` applies them in a defined order: HELP becomes INFO, but is not subsequently changed into EPG. An active custom remap table follows a separate processing path.
 
-`data/keymap.xml` supplies event flags and action names. ActionMaps, priorities, focus, `setEnabled()` and each screen’s Python handlers determine which actions actually apply. The finder therefore uses reviewed screen profiles instead of combining every keymap context. Each expandable technical mapping links to the relevant source snapshot.
+`data/keymap.xml` supplies event flags and action names. Native C/C++ handlers, dynamically generated Python assignments and native list navigation also contribute. ActionMaps, priorities, focus, `setEnabled()` and handlers determine which screen actions apply. `data/menu.xml` supplies nested menu paths; German labels come from `po/de.po`. The finder uses reviewed profiles and shares tables only for controls verified to be common. Each expandable technical mapping links to the relevant source snapshot.
 
 Reference: [OpenATV Enigma2 6588fdc15f04](https://github.com/openatv/enigma2/tree/6588fdc15f040293d212dc15ec63194e82c8269f); picture and positions: [OE-Alliance remotes, vu6](https://github.com/oe-alliance/remotes/tree/b5b834663e07f6c0ebc9fce90d0084036523044e). The unchanged image and remote XML come from this **GPLv3** repository. The prototype has been checked against these sources; physical button-by-button verification with a vuduo4klite handset remains part of the review.

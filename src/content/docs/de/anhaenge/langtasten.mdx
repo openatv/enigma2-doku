@@ -9,6 +9,8 @@ Dieses Verzeichnis ergänzt die [Anleitung zu Farbtasten und Langdruck](../../er
 
 ## So liest du die Einträge
 
+**Zusätzlich im nativen Code:** **0 lang** pausiert/aktiviert das automatische OSD-Ausblenden, wenn es eingeschaltet ist und die Hardware OSD-Transparenz unterstützt. Dieser globale C++-Handler steht nicht in der Keymap-Tabelle. Der [Fernbedienungs-Finder erklärt 0 lang und das Aufwecken des OSD](../../bedienung/fernbedienungs-finder/#native-keys) samt Verhalten beim kurzen Loslassen.
+
 **Kontext** bezeichnet eine Gruppe von Aktionen, die ein Bildschirm aktiviert. `ButtonSetupActions` gehört zur eigenen Tastenbelegung, `ColorActions` zu allgemeinen Farbtasten. Eine Zuordnung allein genügt nicht: Der geöffnete Bildschirm muss die Aktion auch implementieren und aktivieren.
 
 **Aktion im Quellcode** ist der technische Name, kein einzugebender Befehl. **Allgemeine Zuordnung** bedeutet, dass der Eintrag in der Keymap nicht auf einen bestimmten Gerätetreiber eingeschränkt ist. Es bedeutet nicht, dass er auf allen Bildschirmen wirkt. Spezielle Gerätezuordnungen bleiben als solche sichtbar; ihre Einzelheiten gehören nicht zur Grundanleitung.

@@ -1,15 +1,16 @@
 # Import source evidence only; never import or execute receiver modules.
 from argparse import ArgumentParser
-from ast import ClassDef, FunctionDef, parse, walk
+from ast import ClassDef, FunctionDef, literal_eval, parse, walk
 from hashlib import sha256
 from json import dumps
 from os.path import join
 from pathlib import Path
-from re import DOTALL, findall, search
+from re import DOTALL, MULTILINE, findall, finditer, search
 from shutil import copyfile, which
 from struct import unpack
 from subprocess import check_output
 from xml.etree.ElementTree import fromstring
+from xml.sax.saxutils import escape
 
 
 class RemoteReferenceImporter:
@@ -37,12 +38,15 @@ class RemoteReferenceImporter:
 		enigmaRevision = self.gitOutput(self.args.enigmaRoot, "rev-parse", "HEAD").decode().strip()
 		remotesRevision = self.gitOutput(self.args.remotesRoot, "rev-parse", "HEAD").decode().strip()
 		paths = (
-			"configure.ac", "data/keymap.xml", "lib/driver/rcinput.cpp", "lib/actions/action.cpp",
+			"configure.ac", "data/keymap.xml", "data/menu.xml", "data/setup.xml", "po/de.po", "main/enigma.cpp", "lib/driver/rcinput.cpp", "lib/driver/avcontrol.cpp", "lib/actions/action.cpp", "lib/gui/elistbox.cpp",
 			"lib/python/Components/ActionMap.py", "lib/python/Components/InputDevice.py", "lib/python/Components/ConfigList.py", "lib/python/Components/Timeshift.py",
 			"lib/python/StartEnigma.py", "lib/python/Screens/VolumeControl.py", "lib/python/Screens/InfoBar.py",
 			"lib/python/Screens/InfoBarGenerics.py", "lib/python/Screens/ButtonSetup.py", "lib/python/Screens/Menu.py",
 			"lib/python/Screens/ChannelSelection.py", "lib/python/Screens/Setup.py", "lib/python/Screens/EpgSelection.py",
-			"lib/python/Screens/MovieSelection.py", "lib/python/Screens/Timers.py", "lib/python/Screens/VirtualKeyBoard.py"
+			"lib/python/Screens/MovieSelection.py", "lib/python/Screens/Timers.py", "lib/python/Screens/VirtualKeyBoard.py",
+			"lib/python/Components/AVSwitch.py", "lib/python/Components/UsageConfig.py", "lib/python/Screens/Screen.py", "lib/python/Screens/Satconfig.py", "lib/python/Screens/ScanSetup.py",
+			"lib/python/Screens/ServiceScan.py", "lib/python/Screens/NetworkSetup.py", "lib/python/Screens/NetworkMounts.py", "lib/python/Screens/NetworkServices.py",
+			"lib/python/Screens/DeviceManager.py", "lib/python/Screens/PluginBrowser.py", "lib/python/Screens/MessageBox.py", "lib/python/Screens/ChoiceBox.py"
 		)
 		sources = {}
 		for path in paths:
@@ -53,6 +57,10 @@ class RemoteReferenceImporter:
 					if isinstance(node, ClassDef):
 						classes[node.name] = {"line": node.lineno, "methods": {x.name: x.lineno for x in node.body if isinstance(x, FunctionDef)}}
 			sources[path] = {"sha256": sha256(content).hexdigest(), "classes": classes}
+			if path.endswith(".cpp"):
+				sources[path]["functions"] = {x[1]: content[:x.start()].count(b"\n") + 1 for x in finditer(rb"^\w+ ((?:\w+::)?\w+)\([^\n]*\)\s*\n\{", content, MULTILINE)}
+				# JSON keys must be text, while offsets above refer to the original bytes.
+				sources[path]["functions"] = {key.decode(): value for key, value in sources[path]["functions"].items()}
 		configureText = self.readSource(self.args.enigmaRoot, "configure.ac", enigmaRevision).decode()
 		modelBlock = search(r'if test "\$BOXTYPE" == "vuduo4klite"; then(.*?)\nfi', configureText, flags=DOTALL)
 		if not modelBlock:
@@ -93,14 +101,57 @@ class RemoteReferenceImporter:
 				action = key.get("mapto") or key.get("mapTo")
 				if action:
 					bindings.append({"context": context.get("context"), "key": key.get("id"), "action": action, "flags": key.get("flags")})
-		result = {"schema": 1, "enigmaRevision": enigmaRevision, "remotesRevision": remotesRevision, "sources": sources, "remoteFiles": remoteFiles, "models": [{"id": "vuduo4klite", "name": "VU+ DUO 4K LITE", "aliases": ["vu duo 4k lite", "duo4klite", "vuduo4klite"], "remote": "vu6", "rcType": "0", "remaps": remaps}], "remotes": {"vu6": {"image": "remotes/vu6.png", "width": width, "height": height, "buttons": buttons}}, "bindings": bindings}
+		avText = self.readSource(self.args.enigmaRoot, "lib/driver/avcontrol.cpp", enigmaRevision).decode()
+		for expected in ('key == KEY_0', 'flags == eRCKey::flagLong', 'm_osdHidePaused = !m_osdHidePaused;', 'm_osdReplayZero = true;'):
+			if expected not in avText:
+				raise ValueError("Review changed native OSD zero-key handler")
+		bindings.append({"context": "NativeOSD", "key": "KEY_0", "action": "toggleAutoHidePause", "flags": "l", "origin": "native", "source": "lib/driver/avcontrol.cpp", "symbol": "eAVControl::handleOSDKey"})
+		menu = self.readMenu(enigmaRevision)
+		result = {"schema": 2, "enigmaRevision": enigmaRevision, "remotesRevision": remotesRevision, "sources": sources, "remoteFiles": remoteFiles, "models": [{"id": "vuduo4klite", "name": "VU+ DUO 4K LITE", "aliases": ["vu duo 4k lite", "duo4klite", "vuduo4klite"], "remote": "vu6", "rcType": "0", "remaps": remaps}], "remotes": {"vu6": {"image": "remotes/vu6.png", "width": width, "height": height, "buttons": buttons}}, "bindings": bindings, "menu": menu}
 		outputPath = Path(join(self.outputRoot, "data", "remote-reference.json"))
 		outputPath.write_text(dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
 		assetRoot = Path(join(self.outputRoot, "public", "remotes"))
 		assetRoot.mkdir(parents=True, exist_ok=True)
 		for source, target in (("png/vu6.png", "vu6.png"), ("xml/vu6.xml", "vu6.xml"), ("LICENSE", "LICENSE.txt")):
 			copyfile(join(self.args.remotesRoot, source), join(assetRoot, target))
-		print(f"Imported {len(buttons)} buttons, {len(bindings)} generic bindings; Enigma2 {enigmaRevision[:12]}.")
+		print(f"Imported {len(buttons)} buttons, {len(bindings) - 1} keymap bindings, 1 native binding, {len(menu)} menu entries; Enigma2 {enigmaRevision[:12]}.")
+
+	def readMenu(self, revision):
+		translations = {}
+		poText = self.readSource(self.args.enigmaRoot, "po/de.po", revision).decode()
+		for block in poText.split("\n\n"):
+			fields = {}
+			field = None
+			for line in block.splitlines():
+				if line.startswith(("msgid ", "msgstr ")):
+					field, value = line.split(" ", 1)
+					fields[field] = literal_eval(value)
+				elif line.startswith('"') and field:
+					fields[field] += literal_eval(line)
+				elif line.startswith("msg"):
+					field = None
+			if fields.get("msgid") and fields.get("msgstr"):
+				translations[fields["msgid"]] = fields["msgstr"]
+		menuText = self.readSource(self.args.enigmaRoot, "data/menu.xml", revision).decode()
+		entries = []
+
+		def visit(element, path, ancestors):
+			if element.tag not in ("menu", "item"):
+				return
+			key = element.get("key")
+			label = element.get("text", "")
+			path = [*path, {"en": label, "de": translations.get(label, label)}]
+			ancestry = [*ancestors, key]
+			setup = element.find("setup")
+			screen = element.find("screen")
+			kind = "menu" if element.tag == "menu" else "setup" if setup is not None else "screen" if screen is not None else "code"
+			line = next(index + 1 for index, text in enumerate(menuText.splitlines()) if f'key="{key}"' in text and f'text="{escape(label)}"' in text)
+			entries.append({"id": "/".join(ancestry), "key": key, "kind": kind, "path": path, "line": line, "level": element.get("level", "0"), "requires": element.get("requires"), "conditional": element.get("conditional"), "setup": setup.get("setupKey") if setup is not None else None, "module": screen.get("module") if screen is not None else None, "className": screen.get("screen", screen.get("module")) if screen is not None else None})
+			for child in element:
+				visit(child, path, ancestry)
+
+		visit(fromstring(menuText).find("menu"), [], [])
+		return entries
 
 
 if __name__ == "__main__":

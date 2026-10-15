@@ -9,6 +9,8 @@ This directory complements the [colour buttons and long-press guide](../../erste
 
 ## Reading the entries
 
+**Additional native-code function:** **Hold 0** pauses/resumes automatic OSD hiding when enabled and supported by the hardware’s OSD alpha control. This global C++ handler is absent from the keymap table. See [hold 0 and waking the OSD in the remote finder](../../bedienung/fernbedienungs-finder/#native-keys), including its short-release behaviour.
+
 **Context** identifies a group of actions enabled by a screen. `ButtonSetupActions` belongs to custom button assignments; `ColorActions` contains general colour actions. A binding alone is not enough: the current screen must implement and enable its action.
 
 **Source action** is a technical name, not a command to enter. **General binding** means the keymap entry is not restricted to a particular device driver. It does not mean that it works on every screen. Device-specific bindings remain identifiable; their details are outside the basic guide.
