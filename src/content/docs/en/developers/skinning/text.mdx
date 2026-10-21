@@ -45,4 +45,8 @@ The generic `borderWidth`/`borderColor` setters are overridden by `eLabel` to af
 
 Scrolling text is configured with `scrollText`, for example `direction=left,startDelay=1500,stepDelay=40,stepSize=2`. It is a time-dependent effect, so the static gallery does not demonstrate its movement. See the [parser reference](../api/functions/#functions-parseScrollText) for its option keys and verify the result on a receiver.
 
+## Underline a label or template field
+
+Use `underline="1"` on a label and `flags="underline"` on a text item inside an XML list template. These are different parsing contexts. The [underline recipe](../recipes/underline/) includes complete fragments, the default, a visual explanation and checks for insufficient height, clipping, custom drawing paths and older receiver builds.
+
 </DeveloperContent>

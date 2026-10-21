@@ -1,0 +1,40 @@
+---
+title: Deprecated skin attributes and migration
+description: Old skin attribute names, their replacements and before/after XML syntax, including inverted noWrap and selectionDisabled values.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+
+{/* Generated from docs/developer-content/skinning/api/deprecated.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+Use the [current attribute reference](../attributes/) for new skins. This page keeps old names searchable so you can update an existing skin. Entries distinguish **deprecated names with an active warning** from **compatibility spellings without an active warning** in the documented source snapshot. Both groups are excluded from the main attribute and per-widget lists.
+
+Changing documentation does not remove runtime support. No removal date is implied. Test your migrated skin on the oldest receiver build you support, including its plugins and custom renderers: a component can intercept an attribute before the central parser sees it.
+
+## Attribute migrations
+
+<SkinApi kind="deprecated" />
+
+## Deprecated values within current attributes
+
+These are **values**, not additional XML attribute names:
+
+| Before | After | Effect |
+| --- | --- | --- |
+| `scrollbarMode="showLeft"` | `scrollbarMode="showLeftOnDemand"` | Left scrollbar when needed |
+| `scale="scaleKeepAspect"` | `scale="keepAspect"` | Scale while preserving the image ratio |
+| `scale="scaleCenter"` / `scale="scaleMiddle"` | `scale="centerScaled"` | Scale proportionally and centre |
+| `scale="scaleLeftTop"` | `scale="leftTop"` | Scale proportionally and align top-left |
+| `scale="scaleLeftCenter"` / `scale="scaleLeftMiddle"` | `scale="leftCenter"` | Scale proportionally and align left-centre |
+| `scale="scaleLeftBottom"` | `scale="leftBottom"` | Scale proportionally and align bottom-left |
+| `scale="scaleCenterTop"` / `scale="scaleMiddleTop"` | `scale="centerTop"` | Scale proportionally and align top-centre |
+| `scale="scaleCenterBottom"` / `scale="scaleMiddleBottom"` | `scale="centerBottom"` | Scale proportionally and align bottom-centre |
+| `scale="scaleRightTop"` | `scale="rightTop"` | Scale proportionally and align top-right |
+| `scale="scaleRightCenter"` / `scale="scaleRightMiddle"` | `scale="rightCenter"` | Scale proportionally and align right-centre |
+| `scale="scaleRightBottom"` | `scale="rightBottom"` | Scale proportionally and align bottom-right |
+
+The central widget attribute `foregroundGradient` is deprecated, but the identically named field **inside template drawing elements remains a different API**. Do not run a global text replacement across a skin. Likewise, `noWrap` as an old attribute name is distinct from the current **value** in `wrap="noWrap"`.
+
+</DeveloperContent>

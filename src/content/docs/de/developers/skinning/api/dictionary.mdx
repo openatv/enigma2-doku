@@ -1,0 +1,23 @@
+---
+title: Skin dictionary — widgets, XML and attributes
+description: Find skin elements and attributes across native widgets, renderers, GUI components, global resources and list templates; search by name or effect.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+import SkinDictionary from '../../../../../../components/SkinDictionary.astro';
+
+{/* Generated from docs/developer-content/skinning/api/dictionary.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+Search here when you know an XML name but not which reference it belongs to. The same spelling can have different meanings in different contexts: compare `font` on a label with `font` in a list template, or `foregroundGradient` on a widget with that field inside a template.
+
+For the two common tasks, start with [underline on labels and template text](../../recipes/underline/) or [keep the last value column clear of the scrollbar](../../recipes/scrollbar/).
+
+The dictionary combines every central handler and native widget in the pinned inventories, their renderer/converter/GUI component classes, each recorded direct or inherited Python attribute handler, source classes, and the documented structural/template contexts. Each result leads to its matching reference. Central attributes and structural contexts include syntax and XML examples; class-specific results lead to the owning class's contract, including its constructor and skin parsing. Some class-specific entries still need further editorial examples.
+
+This is a dictionary of the **documented OpenATV core snapshot**, not a promise to know every third-party plugin or dynamically generated attribute. A name's presence does not imply it is valid on every widget. Deprecated and compatibility names are hidden initially; enable the checkbox to find their migrations. Context-specific current names remain visible even when the central spelling is deprecated.
+
+<SkinDictionary />
+
+</DeveloperContent>

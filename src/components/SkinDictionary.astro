@@ -1,0 +1,60 @@
+---
+import skin from '../../data/skin-api.json';
+import widgets from '../../data/widget-api.json';
+import help from '../../data/skin-attribute-help.json';
+import xml from '../../data/skin-xml-help.json';
+import { buildSkinDictionary } from '../lib/skin-dictionary.mjs';
+const entries = buildSkinDictionary(skin, widgets, help, xml);
+const categories = {attributes:'Central attributes',xml:'XML structure / templates',widgets:'Native widgets',renderers:'Renderers',converters:'Converters',components:'GUI components',sources:'Sources','component-attributes':'Component attributes'};
+---
+<section data-skin-dictionary>
+  <div class="filters" data-pagefind-ignore>
+    <label for="dictionary-query">Find a name or describe the effect</label>
+    <input type="search" id="dictionary-query" placeholder="underline, scrollbar, last column, fonts, pixmaps…" autocomplete="off" />
+    <label for="dictionary-category">Context</label>
+    <select id="dictionary-category"><option value="">All contexts</option>{Object.entries(categories).map(([value,label])=><option value={value}>{label}</option>)}</select>
+    <label class="legacy"><input id="dictionary-legacy" type="checkbox" /> Include deprecated and compatibility names</label>
+    <p role="status" aria-live="polite" data-dictionary-count>{entries.filter(entry=>!entry.legacy).length} entries</p>
+  </div>
+  <ul class="results">
+    {entries.map(entry=><li data-dictionary-entry data-category={entry.category} data-legacy={entry.legacy ? 'true' : 'false'} data-search={`${entry.name} ${entry.context} ${entry.summary} ${entry.search || ''}`.toLocaleLowerCase()} hidden={entry.legacy}>
+      <a href={entry.href}><code translate="no">{entry.name}</code></a>
+      <span class="context">{entry.context}{entry.legacy ? ' · migration' : ''}</span>
+      <p>{entry.summary}</p>
+    </li>)}
+  </ul>
+  <p data-dictionary-empty hidden>No match in this core snapshot. Try the class or component name, include compatibility names, or use the handbook search. A plugin can define additional attributes outside this inventory.</p>
+</section>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-skin-dictionary]').forEach(root => {
+    const query = root.querySelector<HTMLInputElement>('#dictionary-query')!;
+    const category = root.querySelector<HTMLSelectElement>('#dictionary-category')!;
+    const legacy = root.querySelector<HTMLInputElement>('#dictionary-legacy')!;
+    const entries = [...root.querySelectorAll<HTMLElement>('[data-dictionary-entry]')];
+    const update = () => {
+      const words = query.value.trim().toLocaleLowerCase().split(/\s+/).filter(Boolean);
+      let count = 0;
+      for (const entry of entries) {
+        entry.hidden = (entry.dataset.legacy === 'true' && !legacy.checked) || Boolean(category.value && category.value !== entry.dataset.category) || !words.every(word => entry.dataset.search!.includes(word));
+        if (!entry.hidden) count++;
+      }
+      root.querySelector('[data-dictionary-count]')!.textContent = `${count} matching entries`;
+      (root.querySelector('[data-dictionary-empty]') as HTMLElement).hidden = count !== 0;
+    };
+    query.addEventListener('input', update);
+    category.addEventListener('change', update);
+    legacy.addEventListener('change', update);
+    update();
+  });
+</script>
+<style>
+  .filters { padding: 1rem; border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; background: var(--sl-color-bg-sidebar); }
+  label { display: block; margin-block: .5rem; font-weight: 600; }
+  input[type=search], select { width: 100%; box-sizing: border-box; padding: .65rem; font: inherit; color: var(--sl-color-text); background: var(--sl-color-bg); border: 1px solid var(--sl-color-gray-3); border-radius: .3rem; }
+  .legacy { display: flex; align-items: center; gap: .6rem; margin-top: 1rem; }
+  .results { padding: 0; list-style: none; }
+  .results li { padding: 1rem 0; border-bottom: 1px solid var(--sl-color-gray-5); }
+  .context { display: block; margin-top: .25rem; color: var(--sl-color-gray-2); font-size: .85rem; overflow-wrap: anywhere; }
+  .results p { margin-block: .5rem 0; }
+  [hidden] { display: none; }
+</style>

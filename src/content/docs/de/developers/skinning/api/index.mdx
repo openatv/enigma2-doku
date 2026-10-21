@@ -15,12 +15,17 @@ This reference is extracted from OpenATV's `lib/python/skin.py` and annotated fo
 
 | Reference | Contents | Try searching for |
 | --- | --- | --- |
+| [Skin dictionary](./dictionary/) | One context-aware index across widgets, XML, central and Python component attributes | `underline`, `scrollbar`, `font`, `pixmaps` |
+| [XML structure and templates](./xml/) | Parent elements, context-specific values and XML fragments | `name`, `source`, `fonts`, `flags`, `alpha` |
 | [Attributes per widget](./widgets/) | 16 native classes, each with its complete applicable central attribute list, counts and native API | `eLabel`, `ePixmap`, `eListbox`, `eSlider` |
 | [Renderer API](./renderers/) | 41 module classes: native widgets, extra attributes, input contracts, constructors and methods | `RunningText`, `pixmaps`, `Progress` |
 | [Converter API](./converters/) | 63 module classes: argument parsing, option maps, properties, inheritance and methods | `FrontendInfo`, `ServicePosition`, `EventTime` |
 | [Named GUI components](./gui-components/) | 55 core GUI component classes and helpers, including composite widgets and addons | `ScrollLabel`, `Input`, `ServiceListLegacy` |
 | [API recipes](./contracts/) | Explained XML chains and class-specific argument syntax | `WithSeconds`, `ConditionalShowHide`, `ValueRange` |
-| [XML attributes](./attributes/) | All 125 `AttributeParser` attribute handlers, with purpose, aliases, native setters and parser links | `zPosition`, `alphaTest`, `padding`, `widgetBorderWidth` |
+| [Current XML attributes](./attributes/) | 99 current/reserved handlers with purpose, syntax, examples, defaults, supported widgets and limitations | `zPosition`, `alphaTest`, `padding`, `widgetBorderWidth` |
+| [Deprecated attributes and migration](./deprecated/) | 26 deprecated/compatibility names, replacements and value changes | `noWrap`, `selectionDisabled`, `textOffset` |
+| [Underline text](../recipes/underline/) | Label versus template syntax and visibility checks | `underline`, `flags` |
+| [List width and scrollbar](../recipes/scrollbar/) | Value-column resizing, ConfigList and the automatic XmlMultiContent path | `showOnDemandShrink`, `last column` |
 | [Functions and value parsers](./functions/) | All 54 top-level functions, signatures and extracted option tokens | `parseColor`, `parseCoordinate`, `readSkin` |
 | [Classes and their methods](./classes/) | All 10 top-level classes and links to their declared methods | `SkinContext`, `AttributeParser`, `TemplateParser` |
 | [Source / converter / renderer catalogue](./components/) | 124 matching module classes from those three source folders | `StaticText`, `ClockToText`, `Label` |

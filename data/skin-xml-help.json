@@ -1,0 +1,538 @@
+{
+  "revision": "f4135659cb5ee225efd84db1a944b5f72fa6b2a0",
+  "entries": [
+    {
+      "id": "skin",
+      "name": "skin",
+      "context": "Resource file",
+      "summary": "Root container for global resources and screen definitions.",
+      "attributes": {},
+      "example": "<skin>\n  <colors><color name=\"BodyText\" value=\"#00FFFFFF\" /></colors>\n</skin>",
+      "notes": []
+    },
+    {
+      "id": "screen",
+      "name": "screen",
+      "context": "Skin root",
+      "summary": "Register a screen definition selected by its Python screen class.",
+      "attributes": {
+        "name": "Screen name matched by the class skinName; case-sensitive.",
+        "id": "Output ID: 0 normally means the TV OSD; displays use their own IDs.",
+        "position": "x,y or center,center in the design coordinate system.",
+        "size": "width,height of the screen.",
+        "resolution": "width,height of the design coordinate system.",
+        "title": "Translated window title.",
+        "flags": "Comma-separated window flags, for example wfNoBorder.",
+        "ignoreWidgets": "Comma-separated optional Python widget names excluded from missing-widget warnings."
+      },
+      "example": "<screen name=\"ExampleScreen\" position=\"center,center\" size=\"600,400\" resolution=\"1920,1080\" title=\"Example\">\n  <eLabel position=\"20,20\" size=\"560,60\" font=\"Regular;28\" text=\"Hello\" />\n</screen>",
+      "notes": [
+        "The screen must be opened by Python; a skin file does not create a menu entry. Visual attributes are listed under eWindow."
+      ]
+    },
+    {
+      "id": "widget",
+      "name": "widget",
+      "context": "Inside a screen",
+      "summary": "Bind an existing component, connect a renderer to a source, or instantiate an addon.",
+      "attributes": {
+        "name": "Existing GUI component name; use the name declared by the screen.",
+        "source": "Existing source name, optionally a supported related-screen path.",
+        "render": "Renderer module/class name, for example Label or Listbox.",
+        "addon": "Addon class, for example ScreenHeader. Its own connection and attribute contract applies.",
+        "connection": "Comma-separated existing component names required by the addon."
+      },
+      "example": "<widget source=\"description\" render=\"Label\" position=\"20,20\" size=\"560,60\" font=\"Regular;28\" />",
+      "notes": [
+        "The example requires a source description exposing text. Use the component, source/renderer or addon form as appropriate; these do not create missing sources."
+      ]
+    },
+    {
+      "id": "convert",
+      "name": "convert",
+      "context": "Inside a source widget",
+      "summary": "Transform a source before the renderer consumes it.",
+      "attributes": {
+        "type": "Converter module/class name. Arguments belong in element text, not generic widget attributes."
+      },
+      "example": "<widget source=\"global.CurrentTime\" render=\"Label\" position=\"20,20\" size=\"300,60\" font=\"Regular;28\">\n  <convert type=\"ClockToText\">WithSeconds</convert>\n</widget>",
+      "notes": [
+        "Converter arguments are class-specific. Consult the converter reference for their separators and accepted options."
+      ]
+    },
+    {
+      "id": "decorations",
+      "name": "eLabel / ePixmap / eRectangle",
+      "context": "Inside a screen",
+      "summary": "Create decorative native widgets without a Python GUI component.",
+      "attributes": {
+        "position": "x,y within the current screen/panel.",
+        "size": "width,height of the decoration."
+      },
+      "example": "<eLabel position=\"20,20\" size=\"400,60\" font=\"Regular;28\" text=\"Example\" underline=\"1\" />",
+      "notes": [
+        "Use the native-widget reference for additional attributes. eRectangle uses backgroundColor for its fill."
+      ]
+    },
+    {
+      "id": "panel",
+      "name": "panel",
+      "context": "Inside a screen",
+      "summary": "Include a named screen/panel definition or arrange child widgets in a local layout context.",
+      "attributes": {
+        "name": "Optional existing screen/panel definition to include.",
+        "position": "x,y, fill or an edge docking position supported by the current layout.",
+        "size": "width,height of the local area.",
+        "layout": "stack, vertical or horizontal.",
+        "spacing": "Integer gap used by the layout context.",
+        "font": "Optional font alias/face for character-relative layout metrics."
+      },
+      "example": "<panel position=\"20,20\" size=\"560,100\" layout=\"horizontal\" spacing=\"8\">\n  <eLabel position=\"left\" size=\"200,60\" font=\"Regular;28\" text=\"Left\" />\n</panel>",
+      "notes": [
+        "Screen panels and panels inside list templates use different parsers."
+      ]
+    },
+    {
+      "id": "stack",
+      "name": "eStack",
+      "context": "Inside a screen",
+      "summary": "Create a native stack container for its child widgets.",
+      "attributes": {
+        "position": "x,y within the screen.",
+        "size": "width,height of the stack.",
+        "layout": "horizontal or vertical.",
+        "spacing": "Integer space between children."
+      },
+      "example": "<eStack position=\"20,20\" size=\"560,100\" layout=\"horizontal\" spacing=\"8\">\n  <eLabel position=\"left\" size=\"200,60\" font=\"Regular;28\" text=\"Item\" />\n</eStack>",
+      "notes": [
+        "Do not confuse the eStack element with the no-op stack attribute."
+      ]
+    },
+    {
+      "id": "output",
+      "name": "output / resolution",
+      "context": "Skin root",
+      "summary": "Set the GUI output resolution.",
+      "attributes": {
+        "id": "On output: output ID; omitted means GUI ID 0.",
+        "xres": "On resolution: horizontal pixels; loader fallback 720.",
+        "yres": "On resolution: vertical pixels; loader fallback 576.",
+        "bpp": "On resolution: bits per pixel, normally 32; non-32-bit palette loading is not implemented here."
+      },
+      "example": "<output id=\"0\"><resolution xres=\"1920\" yres=\"1080\" bpp=\"32\" /></output>",
+      "notes": []
+    },
+    {
+      "id": "include",
+      "name": "include",
+      "context": "Skin root",
+      "summary": "Load another skin resource file.",
+      "attributes": {
+        "filename": "Existing file resolved in the current skin path/scope.",
+        "conditional": "Optional Python expression evaluated by the loader. Omit for unconditional inclusion."
+      },
+      "example": "<include filename=\"skinparts/common.xml\" />",
+      "notes": [
+        "This conditional is an expression, unlike conditional on an ordinary screen child, which tests component names."
+      ]
+    },
+    {
+      "id": "colors",
+      "name": "colors / color",
+      "context": "Skin root",
+      "summary": "Register named colours or gradients for supported parsers.",
+      "attributes": {
+        "name": "On color: alias name.",
+        "value": "On color: #AARRGGBB or a named colour; a comma-containing value registers a gradient string."
+      },
+      "example": "<colors>\n  <color name=\"BodyText\" value=\"#00FFFFFF\" />\n  <color name=\"RowGradient\" value=\"#00203040,#006080A0,vertical\" />\n</colors>",
+      "notes": [
+        "AA is transparency: 00 opaque, FF transparent. Use the gradient only in attributes supporting gradients."
+      ]
+    },
+    {
+      "id": "font",
+      "name": "fonts / font",
+      "context": "Skin root",
+      "summary": "Register an existing font file under a face name.",
+      "attributes": {
+        "filename": "Existing font file resolved through the font/skin path.",
+        "name": "Registered face name; loader fallback Regular.",
+        "scale": "Integer percentage; default 100.",
+        "replacement": "Boolean replacement-font flag; default false.",
+        "render": "Integer native font-render option; default 0. Leave it at 0 unless your font requires another supported native mode."
+      },
+      "example": "<fonts><font filename=\"myfont.ttf\" name=\"MyFont\" scale=\"100\" replacement=\"0\" render=\"0\" /></fonts>",
+      "notes": [
+        "Replace myfont.ttf with an installed/bundled font. This font element is different from a widget font=\"Face;size\" attribute."
+      ]
+    },
+    {
+      "id": "alias",
+      "name": "fonts / alias",
+      "context": "Skin root",
+      "summary": "Give a font and layout metrics a reusable alias.",
+      "attributes": {
+        "name": "Alias name.",
+        "font": "Already registered face.",
+        "size": "Font size; default 20.",
+        "height": "Character-layout height metric; default 25.",
+        "width": "Character-layout width metric; default 18."
+      },
+      "example": "<fonts><alias name=\"BodyLarge\" font=\"Regular\" size=\"28\" height=\"36\" width=\"18\" /></fonts>",
+      "notes": [
+        "width and height are layout metrics, not measurements of each displayed string."
+      ]
+    },
+    {
+      "id": "parameter",
+      "name": "parameters / parameter",
+      "context": "Skin root",
+      "summary": "Supply named values consumed by Python components.",
+      "attributes": {
+        "name": "Exact parameter key expected by the component.",
+        "value": "Comma-separated typed values: integer, float, 0xHEX, #AARRGGBB, registered colour, Face;size, or *text for a string."
+      },
+      "example": "<parameters><parameter name=\"ConfigListSlider\" value=\"17,0\" /></parameters>",
+      "notes": [
+        "The key and tuple shape are component-specific. This example controls configuration slider height and border width."
+      ]
+    },
+    {
+      "id": "variable",
+      "name": "variables / variable",
+      "context": "Skin root",
+      "summary": "Register a coordinate pair used by parsers supporting variable substitution.",
+      "attributes": {
+        "name": "Variable name.",
+        "value": "Exactly two comma-separated coordinate strings in this loader."
+      },
+      "example": "<variables><variable name=\"BodyInset\" value=\"20,20\" /></variables>",
+      "notes": [
+        "Not a general XML macro. Use only in parsers that consult the variables table."
+      ]
+    },
+    {
+      "id": "switchpixmap",
+      "name": "switchpixmap / pixmap",
+      "context": "Skin root",
+      "summary": "Register a named, preloaded image.",
+      "attributes": {
+        "name": "Pixmap identifier.",
+        "filename": "Existing image file resolved in the skin scope."
+      },
+      "example": "<switchpixmap><pixmap name=\"statusIcon\" filename=\"icons/status.png\" /></switchpixmap>",
+      "notes": []
+    },
+    {
+      "id": "windowstyle",
+      "name": "windowstyle",
+      "context": "Skin root",
+      "summary": "Supply defaults shared by widgets using a window style.",
+      "attributes": {
+        "id": "Window style ID; omitted means GUI ID 0."
+      },
+      "example": "<windowstyle id=\"0\">\n  <label font=\"Regular;28\" />\n  <listbox font=\"Regular;24\" scrollbarMode=\"showOnDemand\" scrollbarWidth=\"12\" scrollbarOffset=\"4\" />\n  <configList entryFont=\"Regular;24\" valueFont=\"Regular;24\" headerFont=\"Regular;26\" />\n</windowstyle>",
+      "notes": [
+        "Global defaults are not identical to per-widget attribute parsing. Some listbox defaults affect global native state."
+      ]
+    },
+    {
+      "id": "window-config",
+      "name": "configList",
+      "context": "Inside windowstyle",
+      "summary": "Configure default configuration-label/value/header fonts and offsets.",
+      "attributes": {
+        "entryFont": "Face;size of entry labels.",
+        "valueFont": "Face;size of values.",
+        "headerFont": "Face;size of headers.",
+        "readOnlyColor": "Colour for read-only configuration entries; global, last loaded setting wins.",
+        "entryLeftOffset": "Integer entry left offset; fallback 15.",
+        "headerLeftOffset": "Integer header left offset; fallback 15.",
+        "indentSize": "Integer indentation step; fallback 20.",
+        "entryFontScale": "Recognised by the loader, but the pinned branch refers to style.guiObject. No working example is claimed for this path."
+      },
+      "example": "<configList entryFont=\"Regular;24\" valueFont=\"Regular;24\" headerFont=\"Regular;26\" entryLeftOffset=\"15\" headerLeftOffset=\"15\" indentSize=\"20\" />",
+      "notes": []
+    },
+    {
+      "id": "window-listbox",
+      "name": "listbox / scrolllabel",
+      "context": "Inside windowstyle",
+      "summary": "Set shared list and scrolling-label defaults.",
+      "attributes": {
+        "font": "listbox only: default list font, fallback Regular;20.",
+        "horizontalAlignment": "listbox only: default text alignment left/center/right/block.",
+        "verticalAlignment": "listbox only: top/center/middle/bottom.",
+        "enableWrapAround": "listbox only: Boolean list-navigation wrap.",
+        "scrollbarMode": "Native mode token; ScrollLabel later applies its own supported modes.",
+        "scrollbarWidth": "Integer scrollbar thickness.",
+        "scrollbarOffset": "Integer content-to-scrollbar gap.",
+        "scrollbarBorderWidth": "Integer scrollbar border thickness.",
+        "scrollbarScroll": "byPage or byLine.",
+        "scrollbarRadius": "radius[;edges] using the corner-radius parser."
+      },
+      "example": "<listbox font=\"Regular;24\" scrollbarMode=\"showOnDemand\" scrollbarWidth=\"12\" scrollbarOffset=\"4\" />",
+      "notes": [
+        "These are global defaults, parsed without per-screen scaling here. Explicit widget attributes can override them."
+      ]
+    },
+    {
+      "id": "window-other",
+      "name": "label / title / slider / stringList",
+      "context": "Inside windowstyle",
+      "summary": "Set other native style defaults.",
+      "attributes": {
+        "font": "On label/title: Face;size, fallback Regular;20.",
+        "offset": "On title: x,y title offset; fallback 20,5.",
+        "borderWidth": "On slider: integer default border width.",
+        "textPadding": "On stringList: one/two/four padding integers. This context still uses textPadding; do not rename it to padding solely because the central widget alias is deprecated."
+      },
+      "example": "<title font=\"Regular;28\" offset=\"20,5\" />",
+      "notes": []
+    },
+    {
+      "id": "margin",
+      "name": "margin",
+      "context": "Skin root",
+      "summary": "Set margins on the selected desktop.",
+      "attributes": {
+        "id": "Desktop ID, normally 0 for the TV GUI.",
+        "left": "Integer left margin.",
+        "top": "Integer top margin.",
+        "right": "Integer right margin.",
+        "bottom": "Integer bottom margin."
+      },
+      "example": "<margin id=\"0\" left=\"0\" top=\"0\" right=\"0\" bottom=\"0\" />",
+      "notes": []
+    },
+    {
+      "id": "template",
+      "name": "templates / template",
+      "context": "Inside a source widget",
+      "summary": "Define list row drawing operations for XmlMultiContent.",
+      "attributes": {
+        "name": "Template selector, normally Default; matches List.template.",
+        "fonts": "Comma-separated Face;size entries; child font indexes start at 0.",
+        "itemWidth": "Row width; when absent the surrounding widget width is used.",
+        "itemHeight": "Row height; supply a positive value.",
+        "component": "For external modern service-list templates: serviceList. This is not a generic XmlMultiContent selector."
+      },
+      "example": "<widget source=\"list\" render=\"Listbox\" position=\"20,20\" size=\"600,280\">\n  <template name=\"Default\" fonts=\"Regular;28\" itemHeight=\"70\">\n    <text index=\"0\" position=\"0,0\" size=\"600,70\" font=\"0\" />\n  </template>\n</widget>",
+      "notes": [
+        "Requires a List source called list, with text at tuple index 0. The loader inserts XmlMultiContent automatically. Unknown template attributes only have an effect when the owning component reads them."
+      ]
+    },
+    {
+      "id": "mode",
+      "name": "mode / rowtemplate",
+      "context": "Inside a list template",
+      "summary": "Choose a whole-list style or a per-row drawing variant.",
+      "attributes": {
+        "name": "On mode: style selector, normally default; matches List.style.",
+        "itemWidth": "On mode: optional row-width override.",
+        "itemHeight": "On mode: optional row-height override."
+      },
+      "example": "<mode name=\"default\" itemHeight=\"50\">\n  <text index=\"0\" position=\"0,0\" size=\"600,50\" font=\"0\" />\n</mode>",
+      "notes": [
+        "For rowtemplate variants, XML order gives the numeric selector used in tuple field 0. Rowtemplates share the template row size; no per-row itemHeight override."
+      ]
+    },
+    {
+      "id": "template-text",
+      "name": "text",
+      "context": "Inside a list template",
+      "summary": "Draw a text field from the row tuple, or static text.",
+      "attributes": {
+        "index": "Tuple number or an indexNames key supplied by the component; omit for static text.",
+        "text": "Static text when no row index is selected.",
+        "position": "x,y inside the row or template panel.",
+        "size": "width,height of the text rectangle.",
+        "font": "Zero-based integer index into the template fonts table; not Face;size.",
+        "flags": "Comma-separated blend, underline, scroll. Underlining here uses flags=\"underline\".",
+        "horizontalAlignment": "left, center, right or block.",
+        "verticalAlignment": "top, center/middle or bottom.",
+        "wrap": "noWrap/off/0, wrap/on/1, or ellipsis.",
+        "padding": "One/two/four values in left,top,right,bottom order; generic XmlMultiContent scales the padding.",
+        "foregroundColor": "Normal text colour; generic named-index lists can use +FieldName.",
+        "foregroundColorSelected": "Selected text colour.",
+        "backgroundColor": "Normal field background.",
+        "backgroundColorSelected": "Selected field background.",
+        "textBorderWidth": "Integer glyph-outline width.",
+        "textBorderColor": "Glyph-outline colour.",
+        "format": "Recorded by XmlMultiContent, but only effective if the owning screen consumes templateDataFormats.",
+        "conditional": "Construction-time expression in the template parser; not a live visibility binding."
+      },
+      "example": "<text index=\"0\" position=\"0,0\" size=\"600,70\" font=\"0\" flags=\"underline\" horizontalAlignment=\"left\" />",
+      "notes": [
+        "Field availability belongs to the owner. Named service-list fields and network fields are different contracts."
+      ]
+    },
+    {
+      "id": "template-images",
+      "name": "pixmap",
+      "context": "Inside a list template",
+      "summary": "Draw a row pixmap or a static image.",
+      "attributes": {
+        "index": "Row field index/name containing the image data expected by this builder.",
+        "pixmap": "Static image when no row index is selected.",
+        "position": "x,y inside the row.",
+        "size": "width,height inside the row.",
+        "alpha": "blend, test, or omitted for ordinary pixmap drawing. This is not alphaTest.",
+        "scale": "Pixmap scaling token, for example centerScaled.",
+        "padding": "One/two/four inset values for generic XmlMultiContent.",
+        "cornerRadius": "radius[;edges] where the drawing operation supports it."
+      },
+      "example": "<pixmap position=\"0,0\" size=\"80,50\" pixmap=\"icons/example.png\" alpha=\"blend\" scale=\"centerScaled\" />",
+      "notes": [
+        "Replace the image with an existing asset. A field storing an icon-font glyph is text, not a pixmap."
+      ]
+    },
+    {
+      "id": "template-shapes",
+      "name": "rectangle / progress",
+      "context": "Inside a list template",
+      "summary": "Draw row decorations or progress values.",
+      "attributes": {
+        "index": "For progress: row data field containing the progress value.",
+        "position": "x,y inside the row.",
+        "size": "width,height of the drawing rectangle.",
+        "foregroundColor": "Progress fill; also rectangle fill in the specialised service-list builder.",
+        "backgroundColor": "Generic XmlMultiContent rectangle fill/background.",
+        "foregroundColorSelected": "Selected-state foreground.",
+        "backgroundColorSelected": "Selected-state background.",
+        "borderWidth": "Integer outline width.",
+        "borderColor": "Normal outline colour.",
+        "borderColorSelected": "Selected outline colour where supported by the chosen operation.",
+        "cornerRadius": "radius[;edges].",
+        "foregroundGradient": "start[,middle],end,direction[,alphaBlend]. Current template field; do not migrate it as if it were the central deprecated attribute.",
+        "foregroundGradientSelected": "Selected-state gradient."
+      },
+      "example": "<rectangle position=\"0,0\" size=\"600,50\" backgroundColor=\"#00203040\" />",
+      "notes": [
+        "This example is for generic XmlMultiContent. ServiceListTemplateParser uses foregroundColor for a rectangle fill; inspect the owner before copying."
+      ]
+    },
+    {
+      "id": "template-panel",
+      "name": "panel",
+      "context": "Inside a list template",
+      "summary": "Arrange row drawing items in a local layout context.",
+      "attributes": {
+        "position": "Local x,y, fill or an edge placement supported by the template context.",
+        "size": "width,height of the row-local panel.",
+        "layout": "horizontal, vertical or stack.",
+        "spacing": "Integer layout gap.",
+        "autoGrow": "On a child item in a horizontal panel: any non-empty string requests leftover width for the first matching item. Omit to disable; the string \"0\" is non-empty and therefore does not disable it."
+      },
+      "example": "<panel position=\"0,0\" size=\"600,50\" layout=\"horizontal\" spacing=\"10\">\n  <text index=\"0\" position=\"left\" size=\"180,50\" font=\"0\" />\n  <text index=\"1\" position=\"left\" size=\"400,50\" font=\"0\" />\n</panel>",
+      "notes": [
+        "autoGrow is parsed during layout and is not the scrollbar shrink option. No autoGrow rendering example is claimed for this snapshot."
+      ]
+    },
+    {
+      "id": "resources-reuse",
+      "name": "constant-widgets / constant-widget / layouts / layout",
+      "context": "Skin root and references inside screens",
+      "summary": "Register reusable widget groups and insert them by name.",
+      "attributes": {
+        "name": "On constant-widget/layout: definition name; the same name selects it from a screen reference."
+      },
+      "example": "<skin>\n  <layouts>\n    <layout name=\"ExampleHeading\">\n      <eLabel position=\"20,20\" size=\"560,60\" font=\"Regular;28\" text=\"Heading\" />\n    </layout>\n  </layouts>\n  <screen name=\"ExampleScreen\" position=\"center,center\" size=\"600,400\">\n    <layout name=\"ExampleHeading\" />\n  </screen>\n</skin>",
+      "notes": [
+        "The layout element is a named resource reference; layout=\"horizontal\" on a panel is a separate attribute."
+      ]
+    },
+    {
+      "id": "resource-images",
+      "name": "screens / menus / setups",
+      "context": "Skin root",
+      "summary": "Map screen, menu or setup keys to images consumed by the UI.",
+      "attributes": {
+        "key": "On screen/menu/setup: one exact key requested by the consuming component.",
+        "keys": "On screen/menu/setup: comma-separated keys; used instead of key when supplied.",
+        "image": "Image path read by the consuming UI component."
+      },
+      "example": "<menus><menu key=\"mainmenu\" image=\"icons/menu.png\" /></menus>",
+      "notes": [
+        "Use a key that the target UI actually requests and an existing asset. This does not add a new menu or setup screen."
+      ]
+    },
+    {
+      "id": "window-color",
+      "name": "color",
+      "context": "Inside windowstyle",
+      "summary": "Set a named native style colour.",
+      "attributes": {
+        "name": "Native colour role without the col prefix, for example Background, Foreground or ListboxBackgroundSelected.",
+        "color": "Registered colour or #AARRGGBB. Unlike colors/color this attribute is named color, not value."
+      },
+      "example": "<color name=\"ListboxBackgroundSelected\" color=\"#00305070\" />",
+      "notes": [
+        "Native roles include Background, Foreground, ListboxBackground, ListboxForeground, ListboxBackgroundSelected, ListboxForegroundSelected, ListboxBackgroundMarked, ListboxForegroundMarked, ListboxBackgroundMarkedSelected, ListboxForegroundMarkedSelected, WindowTitleForeground, WindowTitleBackground, ScrollbarForeground, ScrollbarBackground, ScrollbarBorder, SliderForeground, SliderBackground and SliderBorder."
+      ]
+    },
+    {
+      "id": "window-border",
+      "name": "borderset / pixmap",
+      "context": "Inside windowstyle",
+      "summary": "Assign image pieces to a native window, button or list-entry border.",
+      "attributes": {
+        "name": "On borderset: bsWindow, bsButton or bsListboxEntry.",
+        "pos": "On pixmap: bpTopLeft, bpTop, bpTopRight, bpLeft, bpBackground, bpRight, bpBottomLeft, bpBottom or bpBottomRight.",
+        "filename": "Existing image file for that border piece."
+      },
+      "example": "<borderset name=\"bsWindow\"><pixmap pos=\"bpTopLeft\" filename=\"borders/top-left.png\" /></borderset>",
+      "notes": [
+        "Replace the asset path and supply the pieces needed by your design."
+      ]
+    },
+    {
+      "id": "subtitle",
+      "name": "subtitles / sub",
+      "context": "Skin root",
+      "summary": "Configure native subtitle font and outline styles.",
+      "attributes": {
+        "name": "Existing eSubtitleWidget face name, such as Subtitle_Regular.",
+        "font": "Registered Face;size.",
+        "foregroundColor": "Optional forced text colour; omitted means no forced colour.",
+        "borderColor": "Subtitle outline colour.",
+        "borderWidth": "Integer outline width, fallback 3.",
+        "shadowColor": "Legacy fallback used when borderColor is absent in this subtitle context."
+      },
+      "example": "<subtitles><sub name=\"Subtitle_Regular\" font=\"Regular;40\" foregroundColor=\"#00FFFFFF\" borderColor=\"#00000000\" borderWidth=\"3\" /></subtitles>",
+      "notes": [
+        "This affects the native subtitle style, not a normal label. Subtitle rendering may also depend on the subtitle format and receiver settings."
+      ]
+    },
+    {
+      "id": "applet",
+      "name": "applet",
+      "context": "Inside a screen",
+      "summary": "Attach trusted Python code to a screen callback.",
+      "attributes": {
+        "type": "onLayoutFinish or onContentChanged; the element body contains Python code."
+      },
+      "example": "<applet type=\"onLayoutFinish\">self.setTitle(\"Example\")</applet>",
+      "notes": [
+        "A skin applet executes code on the receiver. Keep ordinary appearance in XML attributes; this example only demonstrates callback placement."
+      ]
+    },
+    {
+      "id": "service-template-state",
+      "name": "foregroundColorMarked / foregroundColorMarkedAndSelected / backgroundColorMarked / backgroundColorMarkedAndSelected",
+      "context": "Modern service-list template mode/items",
+      "summary": "Choose colours for marked services and for a service that is marked and selected.",
+      "attributes": {
+        "foregroundColorMarked": "Text/foreground colour when marked.",
+        "foregroundColorMarkedAndSelected": "Text/foreground colour when marked and selected.",
+        "backgroundColorMarked": "Background when marked.",
+        "backgroundColorMarkedAndSelected": "Background when marked and selected."
+      },
+      "example": "<text index=\"ServiceName\" position=\"0,0\" size=\"600,50\" font=\"0\" foregroundColorMarked=\"#00FFD060\" foregroundColorMarkedAndSelected=\"#00FFFFFF\" />",
+      "notes": [
+        "This is a serviceList template field, not a generic XmlMultiContent tuple index or an ordinary widget attribute."
+      ]
+    }
+  ]
+}

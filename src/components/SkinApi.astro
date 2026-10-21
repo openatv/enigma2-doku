@@ -1,8 +1,20 @@
 ---
 import api from '../../data/skin-api.json';
-interface Props { kind: 'attributes' | 'functions' | 'classes' | 'components'; }
+import help from '../../data/skin-attribute-help.json';
+import widgets from '../../data/widget-api.json';
+interface Props { kind: 'attributes' | 'deprecated' | 'functions' | 'classes' | 'components'; }
 const { kind } = Astro.props;
-const entries = api[kind];
+const migrations: Record<string, any> = help.migrations;
+const explanations: Record<string, any> = help.attributes;
+const entries: any[] = kind === 'deprecated' ? api.attributes.filter(entry => migrations[entry.name]) : kind === 'attributes' ? api.attributes.filter(entry => !migrations[entry.name]) : api[kind];
+const entryKind = kind === 'deprecated' ? 'attributes' : kind;
+const migrationExample = (name: string) => {
+  const migration = migrations[name];
+  if (name === 'noWrap') return 'noWrap="1" → wrap="noWrap"\nnoWrap="0" → wrap="wrap"';
+  if (name === 'selectionDisabled') return 'selectionDisabled="1" → selection="0"\nselectionDisabled="0" → selection="1"';
+  const sample = migration.exampleValue || explanations[migration.replacement].example?.match(new RegExp(`${migration.replacement}="([^"]*)"`))?.[1] || '…';
+  return `${name}="${sample}"\n→ ${migration.replacement}="${sample}"`;
+};
 const sourceURL = (path: string, line: number) => `${api.repository}/blob/${api.revision}/${path}#L${line}`;
 const count = entries.length;
 ---
@@ -15,14 +27,30 @@ const count = entries.length;
   <p class="api-version">Source snapshot: <a href={sourceURL(api.path, 1)}>skin.py @ {api.revision.slice(0, 10)}</a>. The catalogue lists source capabilities; support also depends on the receiver build and native widget class.</p>
   <div class="api-entries">
     {entries.map((entry: any) => (
-      <section class="api-entry" id={`${kind}-${entry.category ? entry.category + '-' : ''}${entry.name}`} data-skin-entry>
-        <h3><a href={`#${kind}-${entry.category ? entry.category + '-' : ''}${entry.name}`}><code translate="no">{entry.name}</code></a></h3>
+      <section class="api-entry" id={`${entryKind}-${entry.category ? entry.category + '-' : ''}${entry.name}`} data-skin-entry>
+        <h3><a href={`#${entryKind}-${entry.category ? entry.category + '-' : ''}${entry.name}`}><code translate="no">{entry.name}</code></a></h3>
         {entry.group && <p class="api-group">{entry.group}{entry.deprecated ? ' · deprecated alias' : ''}{entry.no_op ? ' · no action in AttributeParser' : ''}</p>}
         {entry.summary && <p>{entry.summary}</p>}
+        {kind === 'attributes' && <>
+          <p><strong>Syntax and values:</strong> {explanations[entry.name].values}</p>
+          <p><strong>Native targets:</strong> {explanations[entry.name].widgets.length ? explanations[entry.name].widgets.map((name: string, i: number) => <>{i ? ', ' : ''}<a href={`../widgets/#${name}`}><code translate="no">{name}</code></a></>) : 'No matching native dispatch in this inventory. See the structural context or limitation below.'}</p>
+          <p><strong>If omitted:</strong> {explanations[entry.name].default}</p>
+          <p>{explanations[entry.name].context}</p>
+          {explanations[entry.name].example && <pre translate="no"><code>{explanations[entry.name].example}</code></pre>}
+          {explanations[entry.name].notes.length > 0 && <ul>{explanations[entry.name].notes.map((note: string) => <li>{note}</li>)}</ul>}
+          {explanations[entry.name].recipe && <p><a href={explanations[entry.name].recipe}>Worked example, visual explanation and troubleshooting →</a></p>}
+          {widgets.native.some(widget => widget.attributes.find(attr => attr.name === entry.name)?.variants.length! > 1) && <p>Check the per-widget table for solid/gradient and other value-specific support.</p>}
+        </>}
+        {kind === 'deprecated' && <>
+          <p><strong>{migrations[entry.name].status === 'deprecated' ? 'Deprecated: the pinned handler emits a deprecation warning.' : 'Compatibility spelling: accepted in this snapshot without an active deprecation warning.'}</strong></p>
+          <p>Update your skin to use <a href={`../attributes/#attributes-${migrations[entry.name].replacement}`}><code translate="no">{migrations[entry.name].replacement}</code></a>.</p>
+          <p>{migrations[entry.name].note}</p>
+          <pre translate="no"><code>{migrationExample(entry.name)}</code></pre>
+        </>}
         {kind === 'components' && <p>{entry.category} module. Extends <code translate="no">{entry.bases.join(', ')}</code>. {entry.properties.length ? <>Properties declared here: <code translate="no">{entry.properties.join(', ')}</code>.</> : 'Properties may be supplied by its base class or methods.'} A file in the source tree does not automatically create a source in every screen.</p>}
         {kind === 'functions' && <pre translate="no"><code>{entry.signature}</code></pre>}
         {entry.native_calls?.length > 0 && <p>Native target must provide: <code translate="no">{entry.native_calls.join(', ')}</code>.</p>}
-        {entry.alias && <p>Delegates to <a href={`#attributes-${entry.alias}`}><code translate="no">{entry.alias}</code></a>.</p>}
+        {entry.alias && kind !== 'deprecated' && <p>Delegates to <a href={`#attributes-${entry.alias}`}><code translate="no">{entry.alias}</code></a>.</p>}
         {entry.parsers?.length > 0 && <p>Value parsers: {entry.parsers.map((name: string, i: number) => <>{i ? ', ' : ''}<a href={`../functions/#functions-${name}`}><code translate="no">{name}</code></a></>)}.</p>}
         {entry.tokens?.length > 0 && <p>Tokens found in the parser: <code translate="no">{entry.tokens.join(', ')}</code>. These can belong to different sub-options; use the syntax explained above.</p>}
         {kind === 'classes' && <details><summary>Methods defined in this class ({entry.methods.length})</summary><ul>{entry.methods.map((method: any) => <li><a href={sourceURL(api.path, method.line)}><code translate="no">{method.signature}</code></a>{method.doc ? ` — ${method.doc}` : ''}</li>)}</ul></details>}
@@ -31,8 +59,15 @@ const count = entries.length;
     ))}
   </div>
   <p data-skin-empty hidden>No matching entry. Clear the filter or search the whole handbook above.</p>
+  {kind === 'attributes' && <details data-pagefind-ignore><summary>Old bookmarks: deprecated attributes and compatibility names</summary><p>These entries have moved to the <a href="../deprecated/">migration reference</a>.</p><ul>{Object.keys(migrations).map(name => <li id={`attributes-${name}`} data-legacy-target={`../deprecated/#attributes-${name}`}><a href={`../deprecated/#attributes-${name}`}><code translate="no">{name}</code> → {migrations[name].replacement}</a></li>)}</ul></details>}
 </section>
 <script>
+  const followLegacyAnchor = () => {
+    const target = document.getElementById(location.hash.slice(1))?.dataset.legacyTarget;
+    if (target) location.replace(new URL(target, location.href));
+  };
+  followLegacyAnchor();
+  window.addEventListener('hashchange', followLegacyAnchor);
   document.querySelectorAll<HTMLElement>('[data-skin-api]').forEach(root => {
     const input = root.querySelector<HTMLInputElement>('[data-skin-filter]')!;
     const entries = [...root.querySelectorAll<HTMLElement>('[data-skin-entry]')];

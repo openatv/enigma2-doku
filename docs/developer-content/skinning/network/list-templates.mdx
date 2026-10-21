@@ -88,3 +88,7 @@ The overview locks the first row with `setLockFirstRow(True)` and uses a native 
 Unknown template attributes are exposed as `additionalTemplateAttributes`; they do nothing unless the owner reads them. `NetworkOverview` explicitly reads `colors`. Likewise, the parser records a text `format` in `templateDataFormats`, but the network owners documented here do not consume that mapping. Do not advertise arbitrary `format` expressions as working network fields.
 
 Use [screen panels](../../advanced/panel-design/) for shared screen structure. A panel inside a list template belongs to the template parser and is not a reference to an arbitrary global screen panel.
+
+## Keep the rightmost value clear of the scrollbar
+
+See [list width and scrollbar](../../recipes/scrollbar/) for `scrollbarMode="showOnDemandShrink"`, the automatic rightmost-text adjustment in `XmlMultiContent`, and an example with a right-aligned value column. For underlining an individual field use [flags="underline"](../../recipes/underline/), not a label Boolean on the listbox.

@@ -1,0 +1,1445 @@
+{
+  "revision": "f4135659cb5ee225efd84db1a944b5f72fa6b2a0",
+  "verification": "Source-checked examples; receiver rendering is not claimed.",
+  "attributes": {
+    "align": {
+      "values": "The handler forwards the XML string unchanged to a native numeric/Boolean setter. No reliable general XML authoring syntax is established by this handler.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": null,
+      "context": "Omit this attribute unless the specific Python component handles it before native dispatch.",
+      "notes": [
+        "A matching native method declaration alone does not prove that a skin XML string is accepted.",
+        "For native stacks, readSkin derives a numeric alignment from the child position, for example left/right/center in a horizontal stack. Use that structural position syntax instead of supplying align manually."
+      ],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "alphaBlend": {
+      "values": "Boolean: 1 / yes / true / on / enabled enables it; 0 / no / false / off disables it. Case-insensitive. Other unrecognised strings also evaluate false.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" alphaBlend=\"1\" backgroundColor=\"#80203040\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "alphaTest": {
+      "values": "Case-sensitive options: on, off, blend.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" alphaTest=\"blend\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eLabel",
+        "ePixmap",
+        "eSlider",
+        "eVideoWidget"
+      ]
+    },
+    "animationMode": {
+      "values": "Case-sensitive options: disable, off, offshow, offhide, onshow, onhide, disable_onshow, disable_onhide.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<screen name=\"ExampleScreen\" position=\"center,center\" size=\"600,400\" animationMode=\"off\" />",
+      "context": "Screen declaration fragment; add the components required by your screen class.",
+      "notes": [],
+      "widgets": [
+        "eWindow"
+      ]
+    },
+    "animationPaused": {
+      "values": "No supported visible operation in the central AttributeParser handler of this snapshot.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": null,
+      "context": "Do not add this attribute to obtain a visual effect.",
+      "notes": [
+        "The handler is a no-op. Component-specific use, if any, must be documented by that component."
+      ],
+      "widgets": []
+    },
+    "backgroundColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white. A gradient can also use startColour[,middleColour],endColour,horizontal|vertical[,alphaBlend]. Use named colours or #AARRGGBB; the optional alphaBlend is Boolean. Only widgets with the gradient variant listed below accept it.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" foregroundColor=\"#00FFFFFF\" backgroundColor=\"#00203040\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [
+        "transparent=\"1\" can suppress background painting. A background image or content renderer can cover the colour."
+      ],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "backgroundColorEven": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" backgroundColorEven=\"#00FFFFFF\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "backgroundColorOdd": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" backgroundColorOdd=\"#00203040\" backgroundColorEven=\"#00304050\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "backgroundColorSelected": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white. A gradient can also use startColour[,middleColour],endColour,horizontal|vertical[,alphaBlend]. Use named colours or #AARRGGBB; the optional alphaBlend is Boolean. Only widgets with the gradient variant listed below accept it.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" backgroundColorSelected=\"#00FFFFFF\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "backgroundPixmap": {
+      "values": "Image filename, resolved in the skin context before loading. Supply an existing PNG/SVG or another supported image; the sample path must be replaced with your asset.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" backgroundPixmap=\"icons/example.png\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox",
+        "eSlider"
+      ]
+    },
+    "base": {
+      "values": "No supported visible operation in the central AttributeParser handler of this snapshot.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": null,
+      "context": "Do not add this attribute to obtain a visual effect.",
+      "notes": [
+        "The handler is a no-op. Component-specific use, if any, must be documented by that component."
+      ],
+      "widgets": []
+    },
+    "borderColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" borderWidth=\"2\" borderColor=\"#00000000\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [
+        "On eLabel and its subclasses this changes the glyph outline. Use widgetBorderWidth/widgetBorderColor for a rectangular frame."
+      ],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "borderWidth": {
+      "values": "Integer design pixels, scaled vertically with the screen. Use a non-negative value.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" borderWidth=\"2\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [
+        "On eLabel and its subclasses this changes the glyph outline. Use widgetBorderWidth/widgetBorderColor for a rectangular frame."
+      ],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "condition": {
+      "values": "A construction-time expression referring to config. or BoxInfo; optional leading ! negates it.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Expert options\" condition=\"config.usage.setup_level.index == 2\" />",
+      "context": "Structural XML fragment. Use it in the stated context and supply any named components in the screen class.",
+      "notes": [
+        "Processed during construction. It is not a live native drawing property."
+      ],
+      "widgets": []
+    },
+    "conditional": {
+      "values": "Comma-separated existing screen component names; include if at least one exists. This is not a Boolean value.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Settings\" conditional=\"config\" />",
+      "context": "Structural XML fragment. Use it in the stated context and supply any named components in the screen class.",
+      "notes": [
+        "Processed during construction. It is not a live native drawing property."
+      ],
+      "widgets": []
+    },
+    "connection": {
+      "values": "Comma-separated screen component names consumed by the selected addon. The addon defines which connections are needed.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget addon=\"ScreenHeader\" connection=\"Title\" position=\"20,20\" size=\"480,60\" />",
+      "context": "Structural XML fragment. Use it in the stated context and supply any named components in the screen class.",
+      "notes": [
+        "Processed during construction. It is not a live native drawing property."
+      ],
+      "widgets": []
+    },
+    "cornerRadius": {
+      "values": "Integer radius, optionally ; followed by comma-separated edges: topLeft, topRight, top, bottomLeft, bottomRight, bottom, left, right. Omit edges for all corners.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" backgroundColor=\"#00203040\" cornerRadius=\"12;topLeft,topRight\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "enableWrapAround": {
+      "values": "Boolean: 1 / yes / true / on / enabled enables it; 0 / no / false / off disables it. Case-insensitive. Other unrecognised strings also evaluate false.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" enableWrapAround=\"1\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "entryFont": {
+      "values": "Registered font face or alias, optionally followed by ;size. A numeric size is scaled vertically with the screen. Register the face before using it.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"config\" position=\"20,20\" size=\"480,250\" entryFont=\"Regular;28\" />",
+      "context": "Use on the existing name=\"config\" widget of a Setup/ConfigList screen. The corresponding header, value or separator must exist in its list content.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "errorCorrection": {
+      "values": "Case-sensitive options: low, medium, quartile, high.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget source=\"qrText\" render=\"QRCode\" position=\"20,20\" size=\"200,200\" errorCorrection=\"medium\" />",
+      "context": "Requires an existing source qrText supplying the text to encode; the renderer creates eQRCode.",
+      "notes": [],
+      "widgets": [
+        "eQRCode"
+      ]
+    },
+    "excludes": {
+      "values": "Comma-separated component names; skip if any exists.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"No settings\" excludes=\"config\" />",
+      "context": "Structural XML fragment. Use it in the stated context and supply any named components in the screen class.",
+      "notes": [
+        "Processed during construction. It is not a live native drawing property."
+      ],
+      "widgets": []
+    },
+    "flags": {
+      "values": "Comma-separated eWindow flag names, such as wfNoBorder. On template text, flags has a different meaning; see the underline recipe.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<screen name=\"ExampleScreen\" position=\"center,center\" size=\"600,400\" flags=\"wfNoBorder\" />",
+      "context": "Screen declaration fragment; add the components required by your screen class.",
+      "notes": [],
+      "widgets": [
+        "eWindow"
+      ]
+    },
+    "font": {
+      "values": "Registered font face or alias, optionally followed by ;size. A numeric size is scaled vertically with the screen. Register the face before using it.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "eVideoWidget"
+      ]
+    },
+    "fontScale": {
+      "values": "size;offset or width;offset. Offset is an integer; omitted offset is -4. An offset of 0 does not call the setter.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" fontScale=\"width;-4\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eListbox",
+        "eVideoWidget"
+      ]
+    },
+    "foregroundColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white. A gradient can also use startColour[,middleColour],endColour,horizontal|vertical[,alphaBlend]. Use named colours or #AARRGGBB; the optional alphaBlend is Boolean. Only widgets with the gradient variant listed below accept it.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" foregroundColor=\"#00FFFFFF\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eListbox",
+        "ePositionGauge",
+        "eQRCode",
+        "eSlider",
+        "eVideoWidget"
+      ]
+    },
+    "foregroundColorSelected": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" foregroundColorSelected=\"#00FFFFFF\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "gradientMode": {
+      "values": "legacy or explicit. Controls how a slider interprets its gradient; use only with a slider implementing setGradientMode.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget source=\"progress\" render=\"Progress\" position=\"20,20\" size=\"480,30\" foregroundColor=\"#00203040,#006080A0,horizontal\" gradientMode=\"explicit\" />",
+      "context": "Requires an existing source named progress that supplies the value/range contract expected by Progress.",
+      "notes": [],
+      "widgets": [
+        "eSlider"
+      ]
+    },
+    "headerFont": {
+      "values": "Registered font face or alias, optionally followed by ;size. A numeric size is scaled vertically with the screen. Register the face before using it.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"config\" position=\"20,20\" size=\"480,250\" headerFont=\"Regular;28\" />",
+      "context": "Use on the existing name=\"config\" widget of a Setup/ConfigList screen. The corresponding header, value or separator must exist in its list content.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "headerForegroundColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"config\" position=\"20,20\" size=\"480,250\" headerForegroundColor=\"#00FFFFFF\" />",
+      "context": "Use on the existing name=\"config\" widget of a Setup/ConfigList screen. The corresponding header, value or separator must exist in its list content.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "horizontalAlignment": {
+      "values": "Case-sensitive options: left, center, right, block.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" horizontalAlignment=\"right\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eListbox",
+        "eVideoWidget"
+      ]
+    },
+    "ignoreWidgets": {
+      "values": "Comma-separated optional widget names on a screen; controls the missing-widget check, not drawing.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<screen name=\"ExampleScreen\" position=\"center,center\" size=\"600,400\" ignoreWidgets=\"optionalLabel\" />",
+      "context": "Structural XML fragment. Use it in the stated context and supply any named components in the screen class.",
+      "notes": [
+        "Processed during construction. It is not a live native drawing property."
+      ],
+      "widgets": []
+    },
+    "includes": {
+      "values": "Comma-separated component names; include if at least one exists.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Settings\" includes=\"config\" />",
+      "context": "Structural XML fragment. Use it in the stated context and supply any named components in the screen class.",
+      "notes": [
+        "Processed during construction. It is not a live native drawing property."
+      ],
+      "widgets": []
+    },
+    "itemAlignment": {
+      "values": "Case-sensitive options: default, center, justify, leftTop, leftMiddle, leftBottom, rightTop, rightMiddle, rightBottom, centerTop, centerMiddle, centerBottom, justifyTop, justifyMiddle, justifyBottom, justifyLeft, justifyRight.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" itemAlignment=\"leftTop\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "itemCornerRadius": {
+      "values": "Integer radius, optionally ; followed by comma-separated edges: topLeft, topRight, top, bottomLeft, bottomRight, bottom, left, right. Omit edges for all corners.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" itemCornerRadius=\"12;topLeft,topRight\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "itemCornerRadiusMarked": {
+      "values": "Integer radius, optionally ; followed by comma-separated edges: topLeft, topRight, top, bottomLeft, bottomRight, bottom, left, right. Omit edges for all corners.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" itemCornerRadiusMarked=\"12;topLeft,topRight\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "itemCornerRadiusMarkedAndSelected": {
+      "values": "Integer radius, optionally ; followed by comma-separated edges: topLeft, topRight, top, bottomLeft, bottomRight, bottom, left, right. Omit edges for all corners.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": null,
+      "context": "The Python handler is present, but its native target name does not match the declaration in this snapshot. No working XML example is claimed.",
+      "notes": [
+        "The handler calls setItemCornerRadiusMarkedAndSelected, while eListbox declares a name with lower-case \"and\" (MarkedandSelected). This is a source mismatch, not evidence that changing the XML Boolean or colour will make it work."
+      ],
+      "widgets": []
+    },
+    "itemCornerRadiusSelected": {
+      "values": "Integer radius, optionally ; followed by comma-separated edges: topLeft, topRight, top, bottomLeft, bottomRight, bottom, left, right. Omit edges for all corners.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" itemCornerRadiusSelected=\"12;topLeft,topRight\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "itemGradient": {
+      "values": "startColour[,middleColour],endColour,horizontal|vertical[,alphaBlend]. Use named colours or #AARRGGBB; the optional alphaBlend is Boolean.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" itemGradient=\"#00203040,#006080A0,vertical\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "itemGradientMarked": {
+      "values": "startColour[,middleColour],endColour,horizontal|vertical[,alphaBlend]. Use named colours or #AARRGGBB; the optional alphaBlend is Boolean.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" itemGradientMarked=\"#00203040,#006080A0,vertical\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "itemGradientMarkedAndSelected": {
+      "values": "startColour[,middleColour],endColour,horizontal|vertical[,alphaBlend]. Use named colours or #AARRGGBB; the optional alphaBlend is Boolean.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": null,
+      "context": "The Python handler is present, but its native target name does not match the declaration in this snapshot. No working XML example is claimed.",
+      "notes": [
+        "The handler calls setItemGradientMarkedAndSelected, while eListbox declares a name with lower-case \"and\" (MarkedandSelected). This is a source mismatch, not evidence that changing the XML Boolean or colour will make it work."
+      ],
+      "widgets": []
+    },
+    "itemGradientSelected": {
+      "values": "startColour[,middleColour],endColour,horizontal|vertical[,alphaBlend]. Use named colours or #AARRGGBB; the optional alphaBlend is Boolean.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" itemGradientSelected=\"#00203040,#006080A0,vertical\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "itemHeight": {
+      "values": "Integer design pixels, scaled vertically with the screen. Use a non-negative value.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" itemHeight=\"50\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "itemSpacing": {
+      "values": "One integer for both directions, or horizontal,vertical gap in design pixels. Both axes scale with the screen.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" itemSpacing=\"8,4\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "itemWidth": {
+      "values": "Integer design pixels, scaled horizontally with the screen. Use a non-negative value.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" itemWidth=\"480\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "label": {
+      "values": "No supported visible operation in the central AttributeParser handler of this snapshot.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": null,
+      "context": "Do not add this attribute to obtain a visual effect.",
+      "notes": [
+        "The handler is a no-op. Component-specific use, if any, must be documented by that component."
+      ],
+      "widgets": []
+    },
+    "layout": {
+      "values": "On a panel: stack, vertical or horizontal. On eStack: horizontal or vertical.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<panel position=\"20,20\" size=\"480,100\" layout=\"horizontal\" spacing=\"8\" />",
+      "context": "Structural XML fragment. Use it in the stated context and supply any named components in the screen class.",
+      "notes": [
+        "Processed during construction. It is not a live native drawing property."
+      ],
+      "widgets": []
+    },
+    "listOrientation": {
+      "values": "Case-sensitive options: vertical, horizontal, grid.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" listOrientation=\"vertical\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "objectTypes": {
+      "values": "componentName,ClassName[,ClassName]. Keep the element only when the named component matches one of these class names.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"config\" objectTypes=\"config,ConfigList\" position=\"20,20\" size=\"480,250\" />",
+      "context": "Structural XML fragment. Use it in the stated context and supply any named components in the screen class.",
+      "notes": [
+        "Processed during construction. It is not a live native drawing property."
+      ],
+      "widgets": []
+    },
+    "orientation": {
+      "values": "Case-sensitive options: orHorizontal, orLeftToRight, orRightToLeft, orVertical, orTopToBottom, orBottomToTop.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget source=\"progress\" render=\"Progress\" position=\"20,20\" size=\"480,30\" orientation=\"orLeftToRight\" />",
+      "context": "Requires an existing source named progress that supplies the value/range contract expected by Progress.",
+      "notes": [],
+      "widgets": [
+        "eSlider"
+      ]
+    },
+    "overScan": {
+      "values": "The handler forwards the XML string unchanged to a native numeric/Boolean setter. No reliable general XML authoring syntax is established by this handler.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": null,
+      "context": "Omit this attribute unless the specific Python component handles it before native dispatch.",
+      "notes": [
+        "A matching native method declaration alone does not prove that a skin XML string is accepted."
+      ],
+      "widgets": [
+        "eVideoWidget"
+      ]
+    },
+    "padding": {
+      "values": "One integer for all sides; x,y repeats x,y,x,y; four integers are left,top,right,bottom. These values are passed through without screen scaling.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" padding=\"12,6,12,6\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [
+        "Two values repeat on opposite sides. This is not CSS top/right/bottom/left order."
+      ],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "pixmap": {
+      "values": "Image filename, resolved in the skin context before loading. Supply an existing PNG/SVG or another supported image; the sample path must be replaced with your asset.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<ePixmap position=\"20,20\" size=\"120,120\" pixmap=\"icons/example.png\" />",
+      "context": "Place inside a screen and replace icons/example.png with an existing skin asset.",
+      "notes": [],
+      "widgets": [
+        "eCanvas",
+        "ePixmap",
+        "eSlider",
+        "eSubtitleWidget"
+      ]
+    },
+    "pointer": {
+      "values": "imageFilename:x,y. x,y is the pointer anchor offset; the target must support pointer index 0.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget source=\"position\" render=\"PositionGauge\" position=\"20,20\" size=\"480,30\" pointer=\"icons/pointer.png:8,8\" />",
+      "context": "Requires an existing source position with the PositionGauge contract. Replace the image path with an existing skin asset.",
+      "notes": [],
+      "widgets": [
+        "ePositionGauge"
+      ]
+    },
+    "position": {
+      "values": "x,y coordinates in the design coordinate system. Literal numbers are scaled; parent-relative expressions such as center and percentages are context dependent.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "quietZone": {
+      "values": "Integer quiet-zone module count around a QR code. The parser uses 4 for an invalid integer; this is not ordinary pixel padding.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget source=\"qrText\" render=\"QRCode\" position=\"20,20\" size=\"200,200\" quietZone=\"4\" />",
+      "context": "Requires an existing source qrText supplying the text to encode; the renderer creates eQRCode.",
+      "notes": [],
+      "widgets": [
+        "eQRCode"
+      ]
+    },
+    "resolution": {
+      "values": "width,height of the screen design coordinate system, used to derive scaling.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<screen name=\"ExampleScreen\" position=\"center,center\" size=\"600,400\" resolution=\"1920,1080\" />",
+      "context": "Structural XML fragment. Use it in the stated context and supply any named components in the screen class.",
+      "notes": [
+        "Processed during construction. It is not a live native drawing property."
+      ],
+      "widgets": []
+    },
+    "scale": {
+      "values": "Case-sensitive options: none, 0, scale, 1, keepAspect, leftTop, leftCenter, leftMiddle, leftBottom, centerTop, middleTop, centerScaled, middleScaled, centerBottom, middleBottom, rightTop, rightCenter, rightMiddle, rightBottom, moveLeftTop, moveLeftCenter, moveLeftMiddle, moveLeftBottom, moveCenterTop, moveMiddleTop, moveCenter, moveMiddle, moveCenterBottom, moveMiddleBottom, moveRightTop, moveRightCenter, moveRightMiddle, moveRightBottom, off, on, aspect, center, width, height, stretch, fill.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<ePixmap position=\"20,20\" size=\"120,120\" pixmap=\"icons/example.png\" scale=\"centerScaled\" />",
+      "context": "Place inside a screen and replace icons/example.png with an existing skin asset.",
+      "notes": [
+        "Deprecated scale-prefixed option values are documented in the migration section. Scaling changes the pixmap inside its widget; it does not change screen resolution."
+      ],
+      "widgets": [
+        "eCanvas",
+        "ePixmap",
+        "eSlider"
+      ]
+    },
+    "scrollbarBackgroundColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarBackgroundColor=\"#00FFFFFF\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox",
+        "eSlider"
+      ]
+    },
+    "scrollbarBackgroundGradient": {
+      "values": "startColour[,middleColour],endColour,horizontal|vertical[,alphaBlend]. Use named colours or #AARRGGBB; the optional alphaBlend is Boolean.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarBackgroundGradient=\"#00203040,#006080A0,vertical\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox",
+        "eSlider"
+      ]
+    },
+    "scrollbarBackgroundPixmap": {
+      "values": "Image filename, resolved in the skin context before loading. Supply an existing PNG/SVG or another supported image; the sample path must be replaced with your asset.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarBackgroundPixmap=\"icons/example.png\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox",
+        "eSlider"
+      ]
+    },
+    "scrollbarBorderColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarBorderColor=\"#00FFFFFF\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox",
+        "eSlider"
+      ]
+    },
+    "scrollbarBorderWidth": {
+      "values": "Integer design pixels, scaled horizontally with the screen. Use a non-negative value.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarBorderWidth=\"1\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox",
+        "eSlider"
+      ]
+    },
+    "scrollbarForegroundColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarForegroundColor=\"#00FFFFFF\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox",
+        "eSlider"
+      ]
+    },
+    "scrollbarForegroundGradient": {
+      "values": "startColour[,middleColour],endColour,horizontal|vertical[,alphaBlend]. Use named colours or #AARRGGBB; the optional alphaBlend is Boolean.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarForegroundGradient=\"#00203040,#006080A0,vertical\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox",
+        "eSlider"
+      ]
+    },
+    "scrollbarForegroundPixmap": {
+      "values": "Image filename, resolved in the skin context before loading. Supply an existing PNG/SVG or another supported image; the sample path must be replaced with your asset.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarForegroundPixmap=\"icons/example.png\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox",
+        "eSlider"
+      ]
+    },
+    "scrollbarLength": {
+      "values": "Non-negative integer length, full (0) or auto (-1). On eListbox this sizes the scrollbar track along the list: full uses the widget extent; auto follows the laid-out item extent and offsets. It does not directly set the handle length.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarLength=\"auto\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "scrollbarMode": {
+      "values": "Case-sensitive options: showOnDemand, showAlways, showNever, showLeftOnDemand, showLeftAlways, showTopOnDemand, showTopAlways, showOnDemandShrink.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarMode=\"showOnDemandShrink\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [
+        "showOnDemandShrink enables on-demand scrolling plus content-width adjustment. It is not a separate Boolean attribute.",
+        "For MultiContent, the affected draw rectangle must extend past the reduced item width; the engine subtracts scrollbar width + offset. It does not select the last tuple by its index. Right-aligned text then shifts inward.",
+        "A renderer/converter or screen can override scrollbarMode after skin application. ScrollLabel has its own mode parser; not every eListbox mode applies to that composite component.",
+        "Use the worked example when the last column or last item overlaps the scrollbar and needs automatic width adjustment; it explains which value-column drawing rectangles actually shrink."
+      ],
+      "widgets": [
+        "eListbox"
+      ],
+      "recipe": "../../recipes/scrollbar/"
+    },
+    "scrollbarOffset": {
+      "values": "Integer gap between the list content and scrollbar in native pixels. This setter does not apply screen scaling.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarOffset=\"4\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "scrollbarRadius": {
+      "values": "Integer radius, optionally ; followed by comma-separated edges: topLeft, topRight, top, bottomLeft, bottomRight, bottom, left, right. Omit edges for all corners.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarRadius=\"12;topLeft,topRight\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "scrollbarScroll": {
+      "values": "Case-sensitive options: byPage, byLine.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarScroll=\"byPage\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "scrollbarWidth": {
+      "values": "Integer design pixels, scaled horizontally with the screen. Use a non-negative value.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" scrollbarWidth=\"12\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "scrollText": {
+      "values": "Comma-separated key=value pairs. direction: left/right/top/bottom; stepDelay, startDelay, endDelay: milliseconds; stepSize: pixels; repeat: integer; mode: cached/bounce/bounceCached/roll. Omitted sub-options start at stepDelay=100, startDelay=0, endDelay=0, repeat=0, stepSize=2; omit mode for normal scrolling.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" scrollText=\"direction=left,startDelay=1500,stepDelay=40,stepSize=2\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eListbox",
+        "eVideoWidget"
+      ]
+    },
+    "seekPointer": {
+      "values": "imageFilename:x,y. x,y is the pointer anchor offset; the target must support pointer index 1.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget source=\"position\" render=\"PositionGauge\" position=\"20,20\" size=\"480,30\" seekPointer=\"icons/seek.png:8,8\" />",
+      "context": "Requires an existing source position with the PositionGauge contract. Replace the image path with an existing skin asset.",
+      "notes": [],
+      "widgets": [
+        "ePositionGauge"
+      ]
+    },
+    "selection": {
+      "values": "Boolean: 1 / yes / true / on / enabled enables it; 0 / no / false / off disables it. Case-insensitive. Other unrecognised strings also evaluate false.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" selection=\"1\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "selectionPixmap": {
+      "values": "Image filename, resolved in the skin context before loading. Supply an existing PNG/SVG or another supported image; the sample path must be replaced with your asset.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" selectionPixmap=\"icons/example.png\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "selectionZoom": {
+      "values": "Non-negative integer percentage increment[,mode]. 25 means 125% of normal size; capped at 500. Modes: zoomContent, moveContent, ignoreContent.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" selectionZoom=\"25,zoomContent\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "selectionZoomSize": {
+      "values": "width,height[,mode]. Modes: zoomContent, moveContent, ignoreContent. Literal dimensions scale with the screen.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"list\" position=\"20,20\" size=\"480,250\" selectionZoomSize=\"520,70,zoomContent\" />",
+      "context": "This example requires an existing Python list component named list. For a Setup/ConfigList screen use its existing name=\"config\" instead; XML does not create the component.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "separatorLineColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"config\" position=\"20,20\" size=\"480,250\" separatorLineColor=\"#00FFFFFF\" />",
+      "context": "Use on the existing name=\"config\" widget of a Setup/ConfigList screen. The corresponding header, value or separator must exist in its list content.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "separatorLineSize": {
+      "values": "height, top,height, or left,top,width,height. top=-1 centres the line; width=-1 uses the available width minus margins.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"config\" position=\"20,20\" size=\"480,250\" separatorLineSize=\"1\" />",
+      "context": "Use on the existing name=\"config\" widget of a Setup/ConfigList screen. The corresponding header, value or separator must exist in its list content.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "shadowColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" foregroundColor=\"#00FFFFFF\" shadowColor=\"#00000000\" shadowOffset=\"2,2\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eVideoWidget"
+      ]
+    },
+    "shadowOffset": {
+      "values": "x,y coordinates in the design coordinate system. Literal numbers are scaled; parent-relative expressions such as center and percentages are context dependent.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" foregroundColor=\"#00FFFFFF\" shadowColor=\"#00000000\" shadowOffset=\"2,2\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eVideoWidget"
+      ]
+    },
+    "size": {
+      "values": "width,height in the design coordinate system. Literal values are scaled with the screen.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "spacing": {
+      "values": "Integer spacing used by the native stack/layout; panel spacing is handled by the structural parser.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eStack position=\"20,20\" size=\"480,100\" layout=\"horizontal\" spacing=\"8\">\n  <eLabel position=\"left\" size=\"200,60\" font=\"Regular;28\" text=\"Item\" />\n</eStack>",
+      "context": "Use on a native stack containing child widgets, or as structural panel spacing. For spacing between list items use itemSpacing.",
+      "notes": [],
+      "widgets": [
+        "eStack"
+      ]
+    },
+    "spacingColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": null,
+      "context": "Use on a native stack containing child widgets. It is not list row spacing; use itemSpacing on a listbox. In the pinned readSkin path, processStack only forwards selected structural fields, so spacingColor is not applied from this XML element.",
+      "notes": [
+        "eStack exposes the native setter, but processStack does not forward spacingColor in this snapshot. No working direct eStack XML example is claimed."
+      ],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "stack": {
+      "values": "No supported visible operation in the central AttributeParser handler of this snapshot.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": null,
+      "context": "Do not add this attribute to obtain a visual effect.",
+      "notes": [
+        "The handler is a no-op. Component-specific use, if any, must be documented by that component."
+      ],
+      "widgets": []
+    },
+    "tabWidth": {
+      "values": "Non-negative integer tab-stop width, or auto for automatic sizing.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" tabWidth=\"auto\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eVideoWidget"
+      ]
+    },
+    "tag": {
+      "values": "Integer native widget tag. This does not bind a Python component; use name for that.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" tag=\"1\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "text": {
+      "values": "XML text string; escape & as &amp; and < as &lt;. Translated and set initially; renderer/Python updates can replace it.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eQRCode",
+        "eVideoWidget"
+      ]
+    },
+    "textBorderColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" textBorderWidth=\"2\" textBorderColor=\"#00000000\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eVideoWidget"
+      ]
+    },
+    "textBorderWidth": {
+      "values": "Integer design pixels, scaled vertically with the screen. Use a non-negative value.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" textBorderWidth=\"2\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eVideoWidget"
+      ]
+    },
+    "title": {
+      "values": "XML text string used as the screen title; translated before application.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<screen name=\"ExampleScreen\" position=\"center,center\" size=\"600,400\" title=\"Example screen\" />",
+      "context": "Screen declaration fragment; add the components required by your screen class.",
+      "notes": [],
+      "widgets": [
+        "eWindow"
+      ]
+    },
+    "transparent": {
+      "values": "Boolean: 1 / yes / true / on / enabled enables it; 0 / no / false / off disables it. Case-insensitive. Other unrecognised strings also evaluate false.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" transparent=\"1\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "underline": {
+      "values": "Boolean: 1 / yes / true / on / enabled enables it; 0 / no / false / off disables it. Case-insensitive. Other unrecognised strings also evaluate false.",
+      "default": "Off for a newly constructed eLabel (m_underline=false). A component can change it later.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" underline=\"1\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [
+        "For ordinary eLabel/eButton text or a Label renderer. It does not underline every list row when placed on a listbox.",
+        "For text inside an XML list template use flags=\"underline\" on the text element. A template font is a numeric index, not Regular;28.",
+        "Test a single line with enough height for the font line height. The painter draws a one-pixel line using the foreground colour; clipping and text-marking paths can affect visibility."
+      ],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eVideoWidget"
+      ],
+      "recipe": "../../recipes/underline/"
+    },
+    "valueFont": {
+      "values": "Registered font face or alias, optionally followed by ;size. A numeric size is scaled vertically with the screen. Register the face before using it.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<widget name=\"config\" position=\"20,20\" size=\"480,250\" valueFont=\"Regular;28\" />",
+      "context": "Use on the existing name=\"config\" widget of a Setup/ConfigList screen. The corresponding header, value or separator must exist in its list content.",
+      "notes": [],
+      "widgets": [
+        "eListbox"
+      ]
+    },
+    "verticalAlignment": {
+      "values": "Case-sensitive options: top, center, middle, bottom.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" verticalAlignment=\"center\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eListbox",
+        "eVideoWidget"
+      ]
+    },
+    "widgetBorderColor": {
+      "values": "A registered colour name or #AARRGGBB. AA is transparency: 00 opaque, FF transparent. Example: #00FFFFFF is opaque white.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" widgetBorderColor=\"#00FFFFFF\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "widgetBorderWidth": {
+      "values": "Integer design pixels, scaled vertically with the screen. Use a non-negative value.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" widgetBorderWidth=\"2\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    },
+    "wrap": {
+      "values": "Case-sensitive options: ellipsis, noWrap, wrap.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" wrap=\"ellipsis\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [
+        "Use the named modes in new skins. The central parser also accepts numeric 0, 1, 2; template text has its own accepted tokens."
+      ],
+      "widgets": [
+        "eButton",
+        "eLabel",
+        "eListbox",
+        "eVideoWidget"
+      ]
+    },
+    "zPosition": {
+      "values": "Integer stacking order; higher values paint in front of lower values in the same parent.",
+      "default": "When omitted, the component, window style and native widget determine the result. There is no universal skin-wide default for this attribute.",
+      "example": "<eLabel position=\"20,20\" size=\"480,60\" font=\"Regular;28\" text=\"Example text\" zPosition=\"2\" />",
+      "context": "Place this element inside an existing screen; adapt its position and size to that screen.",
+      "notes": [],
+      "widgets": [
+        "eButton",
+        "eCanvas",
+        "eGauge",
+        "eInput",
+        "eLabel",
+        "eListbox",
+        "ePixmap",
+        "ePositionGauge",
+        "eQRCode",
+        "eRectangle",
+        "eSlider",
+        "eStack",
+        "eSubtitleWidget",
+        "eVideoWidget",
+        "eWidget",
+        "eWindow"
+      ]
+    }
+  },
+  "migrations": {
+    "alphatest": {
+      "replacement": "alphaTest",
+      "status": "compatibility",
+      "note": "Keep the value and use the replacement name."
+    },
+    "backgroundColorRows": {
+      "replacement": "backgroundColorEven",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "backgroundGradient": {
+      "replacement": "backgroundColor",
+      "status": "deprecated",
+      "exampleValue": "#00203040,#00406080,vertical",
+      "note": "Keep the complete start[,middle],end,direction[,alphaBlend] gradient value. This migration applies to central widget attributes; foregroundGradient inside a template drawing item is a separate, current API."
+    },
+    "backgroundGradientSelected": {
+      "replacement": "backgroundColorSelected",
+      "status": "deprecated",
+      "exampleValue": "#00203040,#00406080,vertical",
+      "note": "Keep the complete start[,middle],end,direction[,alphaBlend] gradient value. This migration applies to central widget attributes; foregroundGradient inside a template drawing item is a separate, current API."
+    },
+    "foregroundGradient": {
+      "replacement": "foregroundColor",
+      "status": "deprecated",
+      "exampleValue": "#00203040,#00406080,vertical",
+      "note": "Keep the complete start[,middle],end,direction[,alphaBlend] gradient value. This migration applies to central widget attributes; foregroundGradient inside a template drawing item is a separate, current API."
+    },
+    "hAlign": {
+      "replacement": "horizontalAlignment",
+      "status": "compatibility",
+      "note": "Keep the value and use the replacement name."
+    },
+    "halign": {
+      "replacement": "horizontalAlignment",
+      "status": "compatibility",
+      "note": "Keep the value and use the replacement name."
+    },
+    "noWrap": {
+      "replacement": "wrap",
+      "status": "compatibility",
+      "note": "Invert the Boolean meaning: noWrap=\"1\" becomes wrap=\"noWrap\"; noWrap=\"0\" becomes wrap=\"wrap\". Do not just rename the attribute."
+    },
+    "OverScan": {
+      "replacement": "overScan",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "scaleFlags": {
+      "replacement": "scale",
+      "status": "compatibility",
+      "note": "Keep the value and use the replacement name."
+    },
+    "scrollbarBackgroundPicture": {
+      "replacement": "scrollbarBackgroundPixmap",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "scrollbarbackgroundPixmap": {
+      "replacement": "scrollbarBackgroundPixmap",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "scrollbarSliderBorderColor": {
+      "replacement": "scrollbarBorderColor",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "scrollbarSliderBorderWidth": {
+      "replacement": "scrollbarBorderWidth",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "scrollbarSliderForegroundColor": {
+      "replacement": "scrollbarForegroundColor",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "scrollbarSliderPicture": {
+      "replacement": "scrollbarForegroundPixmap",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "scrollbarSliderPixmap": {
+      "replacement": "scrollbarForegroundPixmap",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "secondFont": {
+      "replacement": "valueFont",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "secondfont": {
+      "replacement": "valueFont",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "seek_pointer": {
+      "replacement": "seekPointer",
+      "status": "compatibility",
+      "note": "Keep the value and use the replacement name."
+    },
+    "selectionDisabled": {
+      "replacement": "selection",
+      "status": "compatibility",
+      "note": "Invert the Boolean meaning: selectionDisabled=\"1\" becomes selection=\"0\"; selectionDisabled=\"0\" becomes selection=\"1\"."
+    },
+    "sliderPixmap": {
+      "replacement": "scrollbarForegroundPixmap",
+      "status": "deprecated",
+      "note": "Keep the value and use the replacement name."
+    },
+    "textOffset": {
+      "replacement": "padding",
+      "status": "deprecated",
+      "note": "Keep the one-, two- or four-value padding syntax. Two values mean left,top,left,top; four mean left,top,right,bottom."
+    },
+    "textPadding": {
+      "replacement": "padding",
+      "status": "deprecated",
+      "note": "Keep the one-, two- or four-value padding syntax. Two values mean left,top,left,top; four mean left,top,right,bottom."
+    },
+    "vAlign": {
+      "replacement": "verticalAlignment",
+      "status": "compatibility",
+      "note": "Keep the value and use the replacement name."
+    },
+    "valign": {
+      "replacement": "verticalAlignment",
+      "status": "compatibility",
+      "note": "Keep the value and use the replacement name."
+    }
+  }
+}

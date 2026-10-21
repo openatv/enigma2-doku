@@ -1,0 +1,17 @@
+---
+import xml from '../../data/skin-xml-help.json';
+---
+{xml.entries.map(entry=><section id={`xml-${entry.id}`}>
+  <h2><code translate="no">{entry.name}</code></h2>
+  <p><strong>Context:</strong> {entry.context}. {entry.summary}</p>
+  {Object.keys(entry.attributes).length > 0 && <div class="table-scroll"><table><thead><tr><th>Attribute</th><th>Syntax and purpose</th></tr></thead><tbody>{Object.entries(entry.attributes).map(([name,meaning])=><tr><td><code translate="no">{name}</code></td><td>{meaning}</td></tr>)}</tbody></table></div>}
+  <pre translate="no"><code>{entry.example}</code></pre>
+  {entry.notes.length > 0 && <ul>{entry.notes.map(note=><li>{note}</li>)}</ul>}
+</section>)}
+<style>
+  section { scroll-margin-top: 6rem; }
+  .table-scroll { overflow-x: auto; }
+  td { vertical-align: top; }
+  pre { max-width: 100%; overflow-x: auto; }
+  code { overflow-wrap: anywhere; }
+</style>

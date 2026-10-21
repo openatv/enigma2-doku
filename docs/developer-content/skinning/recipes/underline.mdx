@@ -1,0 +1,65 @@
+---
+title: Underline text — labels and list templates
+description: Working XML syntax for underline="1" on eLabel and flags="underline" on template text, with scope, clipping checks and source evidence.
+---
+
+## Choose the syntax for the text you are drawing
+
+| Context | Syntax | Where to put it |
+| --- | --- | --- |
+| Decorative `eLabel`, named Label component or `render="Label"` | `underline="1"` | On that label/widget |
+| `text` inside an XML list template | `flags="underline"` | On the individual `text` element |
+| A listbox containing many text fields | No universal underline switch for its entries | Change the template's text fields |
+
+The central Boolean accepts `1`, `yes`, `true`, `on`, `enabled` and `underline` as true, case-insensitively. `0`, `no`, `false` and `off` turn it off; other unrecognised strings also evaluate false. A newly constructed native label starts with underlining off.
+
+## Ordinary label
+
+Paste these elements **inside an existing screen**. No new Python component is needed for decorative `eLabel` elements. The registered `Regular` font is required.
+
+```xml
+<eLabel position="20,20" size="600,70" font="Regular;28"
+        text="Underlined text" underline="1"
+        foregroundColor="#00FFFFFF" backgroundColor="#00203040"
+        horizontalAlignment="left" verticalAlignment="top" wrap="noWrap" />
+<eLabel position="20,100" size="600,70" font="Regular;28"
+        text="Plain text" underline="0"
+        foregroundColor="#00FFFFFF" backgroundColor="#00203040"
+        horizontalAlignment="left" verticalAlignment="top" wrap="noWrap" />
+```
+
+<SkinBehaviour kind="underline" />
+
+For a dynamic label use the same attribute on its existing widget, for example `name="description"` or `source="description" render="Label"`, according to how that screen creates its content. Declaring a name or source in XML does not create the Python object.
+
+## Text in an XML list template
+
+This fragment requires an existing `Components.Sources.List` named `list` with a text value at tuple index `0`. Put it inside that screen. The nested template selects the normal `Default` template and uses its first font (`font="0"`).
+
+```xml
+<widget source="list" render="Listbox" position="20,20" size="600,280">
+  <template name="Default" fonts="Regular;28" itemHeight="70">
+    <text index="0" position="0,0" size="600,70" font="0"
+          horizontalAlignment="left" verticalAlignment="top"
+          flags="underline" foregroundColor="#00FFFFFF" />
+  </template>
+</widget>
+```
+
+Combine text flags with commas, for example `flags="blend,underline"`. Do not use `underline="1"` as a substitute on this template item: its parser builds drawing flags from `flags`. Conversely, the central `flags` handler on a screen expects **window flags**, not these text flags.
+
+## If no underline is visible
+
+1. Identify the actual drawing path. A Label renderer uses `eLabel`; a Canvas renderer, RunningText implementation or custom list renderer can draw text itself and may not use the label's underline state.
+2. Start with one short line, top alignment, no padding and plenty of height, as above. Font line height can exceed the numeric font size. The native painter draws a one-pixel underline and clips it to the drawing area; a short rectangle can hide it while leaving the letters visible.
+3. Check foreground/background contrast and overlapping widgets. The line uses the foreground colour, so it can be subtle.
+4. Check that the skin fragment is actually loaded and look for `[Skin] Error: Attribute 'underline'` in the Enigma2 log. An older receiver build may lack the setter or drawing support.
+5. Avoid using this as a multiline text-decoration guarantee. In this snapshot the painter derives one underline rectangle from the text bounding box; marked/editing text has separate branches that can take precedence.
+
+The exact reason for an existing skin's missing underline cannot be established without its XML, widget type and receiver build.
+
+## Verification
+
+These examples were checked against source revision `f4135659cb5ee225efd84db1a944b5f72fa6b2a0`; the diagram is an illustration, **not a receiver capture**. The new snippets have not been visually tested on hardware. Relevant implementations: [central attribute handler](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/skin.py#L1464), [template text flags](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/skin.py#L2200), and [native underline painting and clipping](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/gdi/grc.cpp#L1044).
+
+See also the [underline reference](../../api/attributes/#attributes-underline), [text layout examples](../../text/) and [XML list pipeline](../../network/list-templates/).

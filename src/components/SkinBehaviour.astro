@@ -1,0 +1,26 @@
+---
+interface Props { kind: 'underline' | 'scrollbar'; }
+const { kind } = Astro.props;
+---
+<figure>
+  {kind === 'underline' ? <div class="samples">
+    <div><code>underline="0"</code><p class="sample">Example text</p></div>
+    <div><code>underline="1"</code><p class="sample underlined">Example text</p></div>
+  </div> : <div class="samples">
+    <div><strong>Scrollbar hidden</strong><div class="row"><span>Setting</span><span>Value</span></div><small>Text ends at the full row width.</small></div>
+    <div><strong>Scrollbar visible</strong><div class="row shrunk"><span>Setting</span><span>Value</span><i aria-label="Scrollbar"></i></div><small>Right-aligned value moves inward by width + gap.</small></div>
+  </div>}
+  <figcaption>Conceptual illustration, not an Enigma2 screenshot. Actual font metrics, spacing and rendering depend on the receiver and skin.</figcaption>
+</figure>
+<style>
+  figure { margin: 1.5rem 0; padding: 1rem; border: 1px solid var(--sl-color-gray-5); border-radius: .5rem; }
+  .samples { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1.5rem; }
+  .samples > div { margin: 0; }
+  .sample, .row { background: #203040; color: white; padding: 1rem; font: 1.25rem sans-serif; }
+  .underlined { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: .2em; }
+  .row { display: flex; justify-content: space-between; position: relative; margin-block: .75rem; }
+  .shrunk { padding-right: 2.5rem; }
+  i { position: absolute; right: .5rem; top: .5rem; bottom: .5rem; width: .5rem; background: #92c7f5; border-radius: .25rem; }
+  figcaption, small { font-size: .85rem; }
+  figcaption { margin-top: 1rem; }
+</style>

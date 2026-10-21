@@ -10,9 +10,9 @@ import WidgetApi from '../../../../../../components/WidgetApi.astro';
 {/* Generated from docs/developer-content/skinning/api/widgets.mdx. Edit the shared English source. */}
 <DeveloperContent>
 
-A `<widget>` has no universal fixed set of visual attributes. Its Python component or renderer chooses a native class, and that class determines which setters exist. This reference lists **all applicable central `AttributeParser` names for each of the 16 native widget classes in the source snapshot**, including inherited setters and aliases.
+A `<widget>` has no universal fixed set of visual attributes. Its Python component or renderer chooses a native class, and that class determines which setters exist. This reference lists the **current central `AttributeParser` names for each of the 16 native widget classes in the source snapshot**, including inherited setters. [Deprecated names and compatibility spellings](../deprecated/) are listed separately.
 
-For example, `eLabel` has **39** applicable central names, `ePixmap` **23**, `eListbox` **83** and `eSlider` **44**. These are counts of recognised attribute **names**, not counts of independent visual features. An alias and its preferred spelling both count. `backgroundColor` counts once even when it accepts both a solid colour and a gradient.
+The counts below are computed from the current-name list. They describe recognised attribute **names**, not independent visual features. `backgroundColor` counts once even when it accepts both a solid colour and a gradient. Native setter existence is a dispatch check; each linked entry also explains XML conversion and content requirements.
 
 ## Find the widget behind the XML
 

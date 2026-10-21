@@ -1,0 +1,77 @@
+---
+title: Keep list values clear of the scrollbar
+description: scrollbarMode="showOnDemandShrink", ConfigList sizing and XmlMultiContent rightmost text resizing, with XML examples and troubleshooting.
+---
+import DeveloperContent from '../../../../../../components/DeveloperContent.astro';
+import SkinExample from '../../../../../../components/SkinExample.astro';
+import SkinApi from '../../../../../../components/SkinApi.astro';
+import SkinBehaviour from '../../../../../../components/SkinBehaviour.astro';
+
+{/* Generated from docs/developer-content/skinning/recipes/scrollbar.mdx. Edit the shared English source. */}
+<DeveloperContent>
+
+The central option is **`scrollbarMode="showOnDemandShrink"`**. It shows the scrollbar when needed and enables width adjustment for supported MultiContent drawing operations at the right edge. It is a value of `scrollbarMode`, not a separate `autoWidth` or `shrink` Boolean attribute.
+
+## Existing Setup / ConfigList widget
+
+In the screen you are already skinning, adapt its existing `config` widget:
+
+```xml
+<widget name="config" position="20,20" size="800,300"
+        itemHeight="50" scrollbarMode="showOnDemandShrink"
+        scrollbarWidth="12" scrollbarOffset="4"
+        entryFont="Regular;24" valueFont="Regular;24" />
+```
+
+This requires the screen's existing `ConfigList` component; it is not a standalone screen definition. Its normal configuration-value renderer already calculates available space from the current item width. The explicit shrink flag is relevant to fixed drawing rectangles in **MultiContent** lists. Similar appearance does not mean ConfigList and every list template share the same resizing mechanism.
+
+## A list with a right-aligned value column
+
+This example requires an existing `Components.Sources.List` called `list`, with two text fields per tuple: index `0` is the label and index `1` is its value. Place it inside that screen and populate enough entries to exceed six rows.
+
+```xml
+<widget source="list" render="Listbox" position="20,20" size="800,300"
+        scrollbarMode="showOnDemandShrink" scrollbarWidth="12" scrollbarOffset="4">
+  <template name="Default" fonts="Regular;24" itemWidth="800" itemHeight="50">
+    <text index="0" position="0,0" size="480,50" font="0"
+          horizontalAlignment="left" verticalAlignment="center" />
+    <text index="1" position="500,0" size="300,50" font="0"
+          horizontalAlignment="right" verticalAlignment="center" />
+  </template>
+</widget>
+```
+
+<SkinBehaviour kind="scrollbar" />
+
+For this unscaled geometry, a visible scrollbar occupies `12 + 4 = 16` pixels. The value box ends at `500 + 300 = 800`. Reducing its width to `284` moves its right-aligned text edge to `784`, leaving the scrollbar and gap free. The field's x-coordinate stays at `500`. Left-aligned text would keep its starting position and gain a smaller drawing area.
+
+## Which items change width?
+
+`showOnDemandShrink` does **not** mean “always resize the final tuple item”. Native MultiContent checks whether a supported drawing rectangle extends beyond the reduced item width and subtracts the visible scrollbar offset. A small field that already ends before that edge is unaffected. The offset is zero while the scrollbar is hidden.
+
+There is also an automatic path in `XmlMultiContent`: the parser finds the drawing item with the largest `x + width`; if that item is text, it marks the width negative internally. The native text painter interprets that marker as “subtract the scrollbar offset for a vertical list”. This can already keep the rightmost text clear with ordinary `showOnDemand`. Do not add a negative XML size to copy that internal marker. With the full-width geometry above, that automatic adjustment and the overflow check do not require two manual deductions.
+
+`autoGrow` in a horizontal template panel concerns leftover layout space at parse time. It is a different mechanism and is not the scrollbar visibility option.
+
+## Modes and troubleshooting
+
+| Value | Behaviour |
+| --- | --- |
+| `showOnDemand` | Show when needed; content-specific sizing still applies |
+| `showOnDemandShrink` | On-demand mode plus the native MultiContent overflow-width adjustment |
+| `showAlways` | Always reserve/show the scrollbar according to native layout |
+| `showNever` | No visible scrollbar |
+| `showLeftOnDemand`, `showLeftAlways` | Left-side variants |
+| `showTopOnDemand`, `showTopAlways` | Top-side variants for appropriate layouts |
+
+Use exact case. `showLeft` is an old value; use `showLeftOnDemand` in new skins. There is no corresponding `showLeftOnDemandShrink` token in this snapshot.
+
+If nothing changes, first test with both fewer and more entries than fit. Then check the selected template/mode, the field's right edge and alignment, and any renderer/converter or screen code overriding `scrollbarMode`. Avoid combining a manually reduced value width with another reduction unless you intend the extra space. `ScrollLabel` is a composite component with its own mode handling; do not assume it accepts every native listbox token. Test horizontal/grid layouts separately.
+
+## Verification
+
+The XML and behaviour were checked against source revision `f4135659cb5ee225efd84db1a944b5f72fa6b2a0`; the diagram is illustrative and the new snippets have not been tested on a receiver. Evidence: [mode parser](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/skin.py#L836), [native shrink mode](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/gui/elistbox.cpp#L89), [visible scrollbar offset](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/gui/elistbox.cpp#L531), [MultiContent text width](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/gui/elistboxcontent.cpp#L2154), and [automatic rightmost-text marker](https://github.com/openatv/enigma2/blob/f4135659cb5ee225efd84db1a944b5f72fa6b2a0/lib/python/Components/Converter/XmlMultiContent.py#L80).
+
+See the [scrollbarMode reference](../../api/attributes/#attributes-scrollbarMode) and [template geometry](../../network/list-templates/).
+
+</DeveloperContent>

@@ -25,6 +25,14 @@ globalThis.fetch = async input => {
 };
 const checks = [
   ...['de', 'en'].flatMap(lang => [
+    [lang, 'showOnDemandShrink', `/${lang}/developers/skinning/recipes/scrollbar/`],
+    [lang, 'underline', `/${lang}/developers/skinning/recipes/underline/`],
+    [lang, 'selectionDisabled', `/${lang}/developers/skinning/api/deprecated/`],
+    [lang, 'noWrap', `/${lang}/developers/skinning/api/deprecated/`],
+    [lang, 'autoGrow', `/${lang}/developers/skinning/api/xml/`],
+    [lang, 'Skin dictionary', `/${lang}/developers/skinning/api/dictionary/`],
+  ]),
+  ...['de', 'en'].flatMap(lang => [
     [lang, 'vuduo4klite', `/${lang}/bedienung/fernbedienungs-finder/`],
     [lang, 'vu6', `/${lang}/bedienung/fernbedienungs-finder/`],
     [lang, 'KEY_HELP_TO_KEY_INFO', `/${lang}/bedienung/fernbedienungs-finder/`],

@@ -1,0 +1,12 @@
+---
+title: Skin XML structure and template syntax
+description: Context-specific XML syntax and examples for screens, sources, global resources, fonts, window styles and list drawing elements.
+---
+
+These entries cover names consumed **outside the central widget attribute parser**. Start with the [dictionary](../dictionary/) to find an attribute across contexts. Combine the structural entries below with the [current visual attributes](../attributes/) supported by the actual widget.
+
+Examples are fragments for the stated parent element. Supply the existing files, screen components and sources described by each example. They were checked against the pinned source; no new receiver rendering test is claimed. Defaults are stated only where the loader supplies them. Component/runtime settings can override them.
+
+<SkinXml />
+
+For the complete service-list field contracts and additional state colours, see [service-list templates](../../advanced/template-reference/). For generic row indexes, named fields and mixed row templates, see [XmlMultiContent](../../network/list-templates/). XML resource loading is defined by [loadSingleSkinData](../functions/#functions-loadSingleSkinData), screen construction by [readSkin](../functions/#functions-readSkin).

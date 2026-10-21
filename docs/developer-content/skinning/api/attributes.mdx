@@ -1,12 +1,16 @@
 ---
 title: XML attribute reference
-description: Search every AttributeParser skin.py handler, its purpose, native setters, parser, compatibility alias and implementation link.
+description: Current skin XML attributes with purpose, accepted values, applicable widgets, XML examples, defaults and troubleshooting.
 ---
 
 ## Search attributes
 
-This list covers the 125 attribute handlers in the pinned `skin.py`. It includes current names, compatibility aliases and structural/no-op handlers. For `name`, `source`, `render` and global resource elements, start with the [API overview](../).
+This list contains the **99 current or reserved handlers** from the pinned `skin.py`. The other **26 deprecated or compatibility names** have moved to the [migration reference](../deprecated/). For a name used elsewhere in a skin, start with the [skin dictionary](../dictionary/): it also indexes XML structure, list templates and Python component attributes.
 
-Recognising an attribute does not mean every native widget supports it. Follow the parser link for value syntax and the implementation link for target-specific behaviour. The [foundation examples](../../) demonstrate the most common attributes with actual receiver results.
+Each entry gives its purpose, value syntax, supported native classes, an XML example where the handler has an established authoring use, and limitations. Examples are source-checked fragments for an existing screen; named widgets and sources must already exist. Reserved no-op handlers and raw native setters without established XML conversion are explicitly identified instead of supplying a misleading example.
+
+Omission and invalid input are different: a parser fallback is not the default appearance of every widget. The active window style, component and renderer may supply or override a value. The [foundation examples](../../) have actual receiver captures; the new reference snippets do not claim a receiver rendering test.
+
+Looking for the value column moving inward when a scrollbar appears? See [scrollbarMode="showOnDemandShrink"](../../recipes/scrollbar/). For text underlining, see the [label and template examples](../../recipes/underline/).
 
 <SkinApi kind="attributes" />

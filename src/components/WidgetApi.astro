@@ -1,9 +1,13 @@
 ---
 import api from '../../data/widget-api.json';
 import skin from '../../data/skin-api.json';
+import help from '../../data/skin-attribute-help.json';
 interface Props { kind: 'native' | 'renderers' | 'converters' | 'components'; }
 const { kind } = Astro.props;
-const entries: any[] = api[kind];
+const migrations: Record<string, any> = help.migrations;
+const explanations: Record<string, any> = help.attributes;
+const currentAttributes = (entry: any) => entry.attributes.filter((attr: any) => !migrations[attr.name]);
+const entries: any[] = kind === 'native' ? api.native.map(entry => ({ ...entry, attributes: currentAttributes(entry) })) : api[kind];
 const labels = { native: 'native widgets', renderers: 'renderer classes', converters: 'converter-folder classes', components: 'GUI component classes' };
 const attributes = new Map(skin.attributes.map(a => [a.name, a]));
 const native = new Map(api.native.map(a => [a.name, a]));
@@ -16,7 +20,7 @@ const entryID = (entry: any) => kind === 'native' ? entry.name : entry.id.replac
     <input id={`widget-filter-${kind}`} type="search" data-widget-filter placeholder="For example: eLabel, pixmaps, boolean…" autocomplete="off" />
     <p data-widget-count role="status" aria-live="polite">{entries.length} entries</p>
   </div>
-  <p class="source-note">Source snapshot <a href={sourceURL('lib/python/skin.py', 1)}>{api.revision.slice(0, 10)}</a>. Counts include aliases, exclude structural XML names and do not count Python properties as XML attributes.</p>
+  <p class="source-note">Source snapshot <a href={sourceURL('lib/python/skin.py', 1)}>{api.revision.slice(0, 10)}</a>. Current attribute counts exclude legacy names and structural XML names. <a href="../deprecated/">Deprecated attributes and compatibility migrations</a> have their own reference.</p>
   <nav aria-label={`${labels[kind]} quick index`} class="quick-index">
     {entries.map(entry => <a href={`#${entryID(entry)}`}><code translate="no">{entry.name}</code>{kind === 'native' ? ` (${entry.attributes.length})` : ''}</a>)}
   </nav>
@@ -27,7 +31,7 @@ const entryID = (entry: any) => kind === 'native' ? entry.name : entry.id.replac
       {entry.doc && !entry.summary && <p>{entry.doc}</p>}
       <p class="source-note"><a href={sourceURL(entry.path, entry.line)}><code translate="no">{entry.path}</code>, line {entry.line} ↗</a></p>
       {kind === 'native' ? <>
-        <p><strong>{entry.attributes.length} central XML attribute names</strong>, including aliases. Inherits {entry.bases.length ? <code translate="no">{entry.bases.join(', ')}</code> : 'no other widget'}. Appearance also depends on the Python component and content.</p>
+        <p><strong>{entry.attributes.length} current central XML attribute names.</strong> Inherits {entry.bases.length ? <code translate="no">{entry.bases.join(', ')}</code> : 'no other widget'}. Appearance also depends on the Python component and content.</p>
         <details open={entry.name === 'eLabel'}>
           <summary>Attributes, meaning and supported value variants ({entry.attributes.length})</summary>
           <div class="table-scroll" tabindex="0" role="region" aria-label={`${entry.name} attributes`}>
@@ -36,7 +40,7 @@ const entryID = (entry: any) => kind === 'native' ? entry.name : entry.id.replac
                 const attr: any = attributes.get(item.name);
                 return <tr>
                   <td><a href={`../attributes/#attributes-${item.name}`}><code translate="no">{item.name}</code></a>{attr.alias && <small>Delegates to <code translate="no">{attr.alias}</code></small>}{attr.deprecated && <small>Deprecated spelling</small>}</td>
-                  <td>{attr.summary}{item.note && <p><strong>{item.note}</strong></p>}{attr.parsers?.length > 0 && <p>Syntax: {attr.parsers.map((parser: string, i: number) => <>{i ? ', ' : ''}<a href={`../functions/#functions-${parser}`}><code translate="no">{parser}</code></a></>)}</p>}</td>
+                  <td>{attr.summary}{item.note && <p><strong>{item.note}</strong></p>}<p>{explanations[item.name].values}</p><p><a href={`../attributes/#attributes-${item.name}`}>XML example, defaults and limitations</a></p></td>
                   <td>{item.variants.map((variant: any) => <p>{variant.value}: {variant.calls.map((call: string, i: number) => <>{i ? ', ' : ''}<a href={sourceURL(entry.methods[call].path, entry.methods[call].line)}><code translate="no">{call}</code></a></>)}</p>)}</td>
                 </tr>;
               })}
@@ -48,7 +52,7 @@ const entryID = (entry: any) => kind === 'native' ? entry.name : entry.id.replac
         </details>
       </> : <>
         <p>Class: <code translate="no">{entry.id}</code>. Bases: <code translate="no">{entry.base_names.join(', ') || 'none'}</code>.</p>
-        {kind !== 'converters' && <p>{entry.widget ? <>Native root: <a href={`../widgets/#${entry.widget}`}><code translate="no">{entry.widget}</code></a> ({native.get(entry.widget)?.attributes.length ?? 'see source'} central attribute names).</> : entry.created_widgets.length ? <>Created by <code translate="no">createWidget()</code>: {entry.created_widgets.map((name: string, i: number) => <>{i ? ', ' : ''}<a href={`../widgets/#${name}`}><code translate="no">{name}</code></a></>)}. The constructor may choose a widget by mode.</> : <>No single <code translate="no">GUI_WIDGET</code> declaration. Inspect the construction contract below; this can be a base/helper, composite or non-visual class.</>}</p>}
+        {kind !== 'converters' && <p>{entry.widget ? <>Native root: <a href={`../widgets/#${entry.widget}`}><code translate="no">{entry.widget}</code></a> ({native.has(entry.widget) ? currentAttributes(native.get(entry.widget)).length : 'see source'} current central attribute names).</> : entry.created_widgets.length ? <>Created by <code translate="no">createWidget()</code>: {entry.created_widgets.map((name: string, i: number) => <>{i ? ', ' : ''}<a href={`../widgets/#${name}`}><code translate="no">{name}</code></a></>)}. The constructor may choose a widget by mode.</> : <>No single <code translate="no">GUI_WIDGET</code> declaration. Inspect the construction contract below; this can be a base/helper, composite or non-visual class.</>}</p>}
         {kind === 'converters' && <p>{entry.is_converter ? 'Inherits Converter.' : 'Helper: does not inherit Converter.'} {entry.is_base ? 'Use a concrete implementation for a skin chain.' : 'Constructor arguments belong inside <convert>; they are not widget attributes.'}</p>}
         {kind !== 'converters' && <p>Names explicitly handled in this class's <code translate="no">applySkin</code>: <strong>{entry.custom_attributes.length}</strong>. {entry.custom_attributes.length > 0 ? <code translate="no">{entry.custom_attributes.join(', ')}</code> : 'No named comparisons or local-handler dispatch found here; check inherited handling below.'} These can override central meanings.</p>}
         {entry.inherited_attribute_handlers.length > 0 && <details><summary>Inherited Python attribute handlers</summary><ul>{entry.inherited_attribute_handlers.map((parent: any) => <li><code translate="no">{parent.owner}</code>: <code translate="no">{parent.names.join(', ')}</code></li>)}</ul><p>Inheritance does not mean every branch calls every base handler. The applySkin implementations below show delegation and precedence.</p></details>}
